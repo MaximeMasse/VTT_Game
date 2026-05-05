@@ -21,6 +21,7 @@ offset_right = 12247.0
 offset_bottom = 2771.0
 
 [node name="Habillage" type="Node2D" parent="." unique_id=98157492]
+visibility_layer = 2
 
 [node name="M1C1" type="Sprite2D" parent="Habillage" unique_id=2136892983]
 position = Vector2(1579, 582)
@@ -47,7 +48,7 @@ texture = ExtResource("6_fm8v1")
 collision_mask = 0
 
 [node name="Floor" type="CollisionPolygon2D" parent="Floor" unique_id=1976626582]
-polygon = PackedVector2Array(-230, 64, 316, 65, 373, 69, 421, 84, 498, 131, 559, 174, 614, 223, 681, 285, 736, 335, 793, 371, 867, 402, 924, 425, 987, 443, 1063, 454, 1184, 470, 3373, 466, 2007, 628, 1270, 667, 219, 572)
+polygon = PackedVector2Array(-230, 64, 316, 65, 373, 69, 421, 84, 498, 131, 559, 174, 614, 223, 660, 265, 710, 311, 741, 335, 779, 357, 813, 378, 858, 400, 905, 422, 953, 439, 992, 449, 1043, 456, 1106, 462, 1184, 470, 3373, 466, 2007, 628, 1270, 667, 219, 572)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor" unique_id=547365855]
 polygon = PackedVector2Array(1705, 476, 1753, 474, 1795, 470, 1841, 462, 1862, 453, 1886, 436, 1913, 409, 1995, 315, 2038, 323, 2079, 353, 2127, 397, 2207, 422, 2324, 358, 2387, 303, 2451, 227, 2529, 193, 2823, 246, 2884, 289, 2922, 333, 2965, 383, 3016, 424, 3061, 450, 3132, 471)
@@ -68,7 +69,8 @@ polygon = PackedVector2Array(7938, 1389, 8079, 1492, 8252, 1544, 8455, 1596, 864
 
 [node name="Start" parent="Assets" unique_id=1752885992 instance=ExtResource("3_tud23")]
 unique_name_in_owner = true
-position = Vector2(1.0000153, -34)
+top_level = true
+position = Vector2(1.549721e-05, -5.841255e-06)
 scale = Vector2(0.2689295, 0.2576923)
 
 [node name="Finish" parent="Assets" unique_id=1211676905 instance=ExtResource("4_o5g0d")]

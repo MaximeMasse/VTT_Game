@@ -65,6 +65,7 @@ animations = [{
 size = Vector2(108, 32)
 
 [node name="Bike" type="Node2D" unique_id=1924211386]
+visibility_layer = 2
 script = ExtResource("1_leoqd")
 
 [node name="Roue_avant" type="RigidBody2D" parent="." unique_id=442044832]

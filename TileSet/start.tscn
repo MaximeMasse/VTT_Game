@@ -1,8 +1,27 @@
 [gd_scene format=3 uid="uid://dwkcoiv7k6b8u"]
 
-[ext_resource type="Texture2D" uid="uid://bv3uhnj1xh4k8" path="res://Images/Mapping/Start.png" id="1_35dxj"]
+[ext_resource type="Texture2D" uid="uid://dmeqmyah31mg" path="res://Images/Mapping/Assets/start_back.png" id="1_dot2w"]
+[ext_resource type="Texture2D" uid="uid://ctgbbwhv58cxn" path="res://Images/Mapping/Assets/start_front.png" id="2_x5djw"]
+[ext_resource type="Texture2D" uid="uid://vrrxlv0cap0h" path="res://Images/Mapping/Assets/rock_big_1.png" id="3_x5djw"]
 
-[node name="Start" type="Sprite2D" unique_id=1752885992]
+[node name="Start" type="Node2D" unique_id=1781584949]
 position = Vector2(-4.7683716e-07, 0)
 scale = Vector2(0.33420366, 0.32820514)
-texture = ExtResource("1_35dxj")
+
+[node name="StartBack" type="Sprite2D" parent="." unique_id=1003886527]
+z_index = -10
+position = Vector2(68.82031, -255.9375)
+scale = Vector2(1.5, 3)
+texture = ExtResource("1_dot2w")
+
+[node name="StartFront" type="Sprite2D" parent="." unique_id=1425621464]
+z_index = 10
+position = Vector2(-143.625, -30.468737)
+scale = Vector2(2, 3)
+texture = ExtResource("2_x5djw")
+
+[node name="RockBig1" type="Sprite2D" parent="." unique_id=151658148]
+z_index = 11
+position = Vector2(-128.66406, 505.78122)
+scale = Vector2(1.4652216, 1.5710449)
+texture = ExtResource("3_x5djw")

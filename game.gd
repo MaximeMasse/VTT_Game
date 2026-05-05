@@ -2,7 +2,7 @@ extends Node2D
 
 # Config
 const TIME_SCALE = 1 
-const ECHELLE = Global.ECHELLE
+var ECHELLE = Global.ECHELLE
 #Screen
 var RATIO := 0.8
 var ASPECT := 16.0 / 9.0

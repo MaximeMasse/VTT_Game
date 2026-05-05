@@ -1,6 +1,6 @@
 extends Node2D
 
-const ECHELLE = Global.ECHELLE
+var ECHELLE = Global.ECHELLE
 # Accélération
 var ACCÉLÉRATION :float = Global.current_profile["stats"]["ACCÉLÉRATION"]
 var FRICTION :float = Global.current_profile["stats"]["FRICTION"]

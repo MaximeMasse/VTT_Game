@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://b4p6wo6qok4sk"]
 
 [ext_resource type="Script" uid="uid://clgocw3oket3p" path="res://TileSet/finish.gd" id="1_7tdds"]
-[ext_resource type="Texture2D" uid="uid://8hjjyr2m5ukq" path="res://Images/Mapping/Finish.png" id="1_iy0nh"]
+[ext_resource type="Texture2D" uid="uid://28ni6g18d20j" path="res://Images/Mapping/Assets/finish_back.png" id="2_ggg7k"]
+[ext_resource type="Texture2D" uid="uid://c6e3m7y44678u" path="res://Images/Mapping/Assets/finish_front.png" id="3_gnoa8"]
+[ext_resource type="Texture2D" uid="uid://bb53ivx7kwmg7" path="res://Images/Mapping/Assets/rock_small_1.png" id="4_05bfc"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_iy0nh"]
 a = Vector2(-1, 191)
@@ -73,10 +75,6 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_7tdds")
 
-[node name="Image" type="Sprite2D" parent="." unique_id=1211676905]
-scale = Vector2(0.1793478, 0.17934781)
-texture = ExtResource("1_iy0nh")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1668148133]
 shape = SubResource("SegmentShape2D_iy0nh")
 
@@ -113,6 +111,24 @@ process_material = SubResource("ParticleProcessMaterial_ggg7k")
 unique_name_in_owner = true
 emitting = false
 amount = 500
-lifetime = 1.4000000000000001
+lifetime = 1.4
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_gnoa8")
+
+[node name="FinishBack" type="Sprite2D" parent="." unique_id=1942263506]
+z_index = -10
+position = Vector2(33.274715, -65)
+scale = Vector2(0.6, 1.3)
+texture = ExtResource("2_ggg7k")
+
+[node name="FinishFront" type="Sprite2D" parent="." unique_id=371665047]
+z_index = 10
+position = Vector2(-106, 25)
+scale = Vector2(0.6, 1.3)
+texture = ExtResource("3_gnoa8")
+
+[node name="RockSmall1" type="Sprite2D" parent="FinishFront" unique_id=1620996310]
+z_index = 12
+position = Vector2(5.9999943, 149.99998)
+scale = Vector2(1.2513661, 1.0942029)
+texture = ExtResource("4_05bfc")
