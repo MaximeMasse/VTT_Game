@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://c6l7y8jhln7o0"]
+
+[ext_resource type="Texture2D" uid="uid://yi704cdgxsnw" path="res://Avatar/Players/Rose/base_intégral.png" id="1_37p78"]
+[ext_resource type="Script" uid="uid://bphltpsx8rlj8" path="res://hud.gd" id="1_64ctp"]
+[ext_resource type="Texture2D" uid="uid://ld2k0x7688er" path="res://Images/HUD/chrono.png" id="2_1xsix"]
+[ext_resource type="Texture2D" uid="uid://brbdbtxmgfwl7" path="res://Images/HUD/piston_0.png" id="2_a2258"]
+[ext_resource type="Texture2D" uid="uid://by53st7ljhdsx" path="res://Images/HUD/contact_red.png" id="3_1xsix"]
+[ext_resource type="Texture2D" uid="uid://bj5w3ph0yvust" path="res://Images/HUD/jump_green.png" id="4_rftc2"]
+
+[sub_resource type="SystemFont" id="SystemFont_61f8s"]
+font_names = PackedStringArray("Pixel Game")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2snw"]
+border_color = Color(0.021434633, 0.021434639, 0.021434609, 1)
+
+[sub_resource type="Theme" id="Theme_1xsix"]
+
+[sub_resource type="SystemFont" id="SystemFont_g10ll"]
+font_names = PackedStringArray("Pixel Game")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64ctp"]
+bg_color = Color(0.11119685, 0.11119685, 0.11119678, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sq4i"]
+bg_color = Color(0.3626686, 0.621988, 0.2774344, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="HUD" type="CanvasLayer" unique_id=1185251805]
+script = ExtResource("1_64ctp")
+
+[node name="Live" type="Control" parent="." unique_id=1430096508]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 878.0
+offset_bottom = 256.0
+
+[node name="Vitesse_label" type="Label" parent="Live" unique_id=228378803]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 44.0
+offset_top = 22.0
+offset_right = 345.0
+offset_bottom = 76.0
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("SystemFont_61f8s")
+theme_override_font_sizes/font_size = 39
+theme_override_styles/focus = SubResource("StyleBoxFlat_n2snw")
+text = "Speed : 20 km/h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time_label" type="Label" parent="Live" unique_id=1322865968]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 561.0
+offset_top = 47.0
+offset_right = 721.0
+offset_bottom = 87.0
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("SystemFont_61f8s")
+theme_override_font_sizes/font_size = 39
+theme_override_styles/focus = SubResource("StyleBoxFlat_n2snw")
+text = "01:25.524"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chrono" type="Sprite2D" parent="Live/Time_label" unique_id=679044178]
+position = Vector2(-26, 13)
+scale = Vector2(0.08812261, 0.08812254)
+texture = ExtResource("2_1xsix")
+
+[node name="Penalty_label" type="Label" parent="Live/Time_label" unique_id=1443984111]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 27.0
+offset_top = 63.0
+offset_right = 130.0
+offset_bottom = 103.0
+theme = SubResource("Theme_1xsix")
+theme_override_colors/font_color = Color(1, 0.047058824, 0.047058824, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("SystemFont_61f8s")
+theme_override_font_sizes/font_size = 39
+theme_override_styles/focus = SubResource("StyleBoxFlat_n2snw")
+text = "+ 5 sec"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Show_penalty_timer" type="Timer" parent="Live/Time_label/Penalty_label" unique_id=1600921287]
+unique_name_in_owner = true
+process_callback = 0
+one_shot = true
+
+[node name="Avancement_bar" type="ProgressBar" parent="Live" unique_id=2004697716]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 39.0
+offset_top = 89.0
+offset_right = 349.27032
+offset_bottom = 129.0
+theme_override_fonts/font = SubResource("SystemFont_g10ll")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/background = SubResource("StyleBoxFlat_64ctp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8sq4i")
+
+[node name="Piston" type="TextureRect" parent="Live" unique_id=558769554]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 403.0
+offset_top = 243.0
+offset_right = 467.0
+offset_bottom = 435.0
+rotation = 1.570242
+scale = Vector2(0.5813941, 0.7537003)
+texture = ExtResource("2_a2258")
+expand_mode = 1
+
+[node name="ContactRed" type="TextureRect" parent="Live/Piston" unique_id=19723200]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 192.0
+texture = ExtResource("3_1xsix")
+expand_mode = 1
+
+[node name="JumpSignal" type="TextureRect" parent="Live/Piston" unique_id=920471755]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 192.0
+texture = ExtResource("4_rftc2")
+expand_mode = 1
+
+[node name="Joueur" type="Control" parent="." unique_id=1077279434]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 205.0
+offset_top = 581.0
+offset_right = 1071.0
+offset_bottom = 681.0
+
+[node name="Controle" type="Control" parent="." unique_id=1941632284]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BaseIntégral" type="Sprite2D" parent="Controle" unique_id=436578611]
+position = Vector2(1072.8334, 142)
+scale = Vector2(1.9156866, 1.6196085)
+texture = ExtResource("1_37p78")
+
+[node name="V_ang_arrière_label" type="Label" parent="Controle" unique_id=1185604839]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 925.0
+offset_top = 266.0
+offset_right = 1038.0
+offset_bottom = 289.0
+text = "Vang = 555 rps"
+
+[node name="Couple_arrière_label" type="Label" parent="Controle" unique_id=106206164]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 925.0
+offset_top = 289.0
+offset_right = 1082.0
+offset_bottom = 312.0
+text = "Couple = 1000 N/rad"
+
+[node name="V_ang_avant_label" type="Label" parent="Controle" unique_id=1050980345]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1111.0
+offset_top = 266.0
+offset_right = 1224.0
+offset_bottom = 289.0
+text = "Vang = 200 rps"
+
+[node name="Couple_avant_label" type="Label" parent="Controle" unique_id=987406141]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1111.0
+offset_top = 289.0
+offset_right = 1268.0
+offset_bottom = 312.0
+text = "Couple = 1000 N/rad"
+
+[connection signal="timeout" from="Live/Time_label/Penalty_label/Show_penalty_timer" to="." method="_on_show_penalty_timer_timeout"]

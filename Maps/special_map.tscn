@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b6w3wstkemj0d"]
+
+[ext_resource type="Script" uid="uid://w568xvmqrmxm" path="res://Maps/special_map.gd" id="1_ie2cs"]
+[ext_resource type="Texture2D" uid="uid://fpgfx00q6lsa" path="res://Images/Mapping/Cover/Spécial_cover.png" id="2_bnonu"]
+[ext_resource type="Texture2D" uid="uid://cewiirxhq1a0l" path="res://Images/Mapping/Assets/tremplin1.png" id="3_munlb"]
+[ext_resource type="PackedScene" uid="uid://dwkcoiv7k6b8u" path="res://TileSet/start.tscn" id="5_yv0b4"]
+[ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="6_vjext"]
+[ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="7_i30on"]
+
+[node name="Node2D" type="Node2D" unique_id=608244672]
+script = ExtResource("1_ie2cs")
+
+[node name="SpécialCover" type="Sprite2D" parent="." unique_id=2264141]
+position = Vector2(1115, 1511)
+texture = ExtResource("2_bnonu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1736536773]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2022082043]
+polygon = PackedVector2Array(-113, 125, -53, 106, 12, 106, 42, 113, 86, 133, 141, 169, 196, 217, 262, 293, 322, 386, 392, 519, 421, 578, 445, 608, 472, 667, 477, 984, 509, 1005, 564, 1039, 603, 1062, 679, 1074, 768, 1092, 805, 1104, 862, 1144, 924, 1176, 982, 1230, 1014, 1275, 1074, 1365, 1094, 1398, 1138, 1433, 1184, 1455, 1228, 1458, 1264, 1451, 1181, 1542, 1181, 1620, 1140, 1767, 1165, 1797, 1208, 1748, 1239, 1760, 1301, 1781, 1395, 1818, 1442, 1836, 1473, 1801, 1506, 1738, 1516, 1697, 1498, 1649, 1500, 1576, 1516, 1567, 1537, 1571, 1576, 1596, 1590, 1606, 1619, 1602, 1646, 1588, 1681, 1586, 1726, 1592, 1754, 1615, 1785, 1639, 1855, 1647, 1925, 1643, 1960, 1629, 1941, 1664, 1894, 1711, 1871, 1748, 1880, 1764, 1991, 1783, 2050, 1779, 2157, 1822, 2210, 1855, 2266, 1890, 2274, 1923, 2258, 1958, 2315, 2011, 2377, 2038, 2412, 2064, 2440, 2110, 2469, 2188, 2477, 2257, 2496, 2329, 2510, 2381, 2527, 2411, 2553, 2442, 2590, 2465, 2625, 2471, 2648, 2475, 2693, 2475, 2730, 2469, 2753, 2463, 2808, 2463, 2896, 2465, 3034, 2461, 3118, 2463, 3036, 2709, 1756, 2533, 425, 1847)
+
+[node name="Tremplin1" type="Sprite2D" parent="StaticBody2D" unique_id=1947231116]
+position = Vector2(1154, 1456)
+rotation = 1.0471976
+texture = ExtResource("3_munlb")
+
+[node name="Checkpoint_1" parent="." unique_id=1495936311 instance=ExtResource("6_vjext")]
+unique_name_in_owner = true
+position = Vector2(693, 988)
+
+[node name="Finish" parent="." unique_id=1211676905 instance=ExtResource("7_i30on")]
+unique_name_in_owner = true
+position = Vector2(2655, 2349.0137)
+scale = Vector2(0.13315205, 0.13381174)
+
+[node name="Start" parent="." unique_id=1752885992 instance=ExtResource("5_yv0b4")]
+unique_name_in_owner = true
+position = Vector2(71, 63)
+scale = Vector2(0.19060053, 0.15384616)

@@ -1,0 +1,235 @@
+[gd_scene format=3 uid="uid://byprtoaxd03pl"]
+
+[ext_resource type="Script" uid="uid://snafuxjgjqen" path="res://menus.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://bwrqce6up6ic2" path="res://Images/Menus/Fond_main.png" id="2_ak5mw"]
+[ext_resource type="Texture2D" uid="uid://bfagchbmge633" path="res://Images/Menus/Controls/continue_up.png" id="3_uc4vm"]
+[ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="4_36kji"]
+[ext_resource type="Texture2D" uid="uid://c3xj1yg5je54w" path="res://Images/Menus/Controls/newplayer_up.png" id="5_fehud"]
+[ext_resource type="Texture2D" uid="uid://ceek7lbikb1io" path="res://Images/Menus/Controls/newplayer_down.png" id="6_42xp8"]
+[ext_resource type="Texture2D" uid="uid://dn0bc86432dey" path="res://Images/Menus/Controls/changeprofile_up.png" id="7_5my7x"]
+[ext_resource type="Texture2D" uid="uid://d08eh4t7oa1m7" path="res://Images/Menus/Controls/changeprofile_down.png" id="8_ola75"]
+[ext_resource type="Texture2D" uid="uid://dsx0fmasyr23e" path="res://Avatar/Players/Noir/Avatar.png" id="9_uc4vm"]
+[ext_resource type="Texture2D" uid="uid://3tw50m1kswsx" path="res://Images/Menus/Controls/left_arrow.png" id="10_fehud"]
+[ext_resource type="Texture2D" uid="uid://dwrj7okppwap6" path="res://Images/Menus/Controls/right_arrow.png" id="11_42xp8"]
+[ext_resource type="Texture2D" uid="uid://bxpvqii7llwk8" path="res://Images/Menus/Controls/ok_up.png" id="12_5my7x"]
+[ext_resource type="Texture2D" uid="uid://n82c8ivh0jec" path="res://Images/Menus/Controls/ok_down.png" id="13_ola75"]
+[ext_resource type="Texture2D" uid="uid://ckcatq8ntvr6k" path="res://Images/Menus/Fond_carrière.png" id="14_67va8"]
+[ext_resource type="Texture2D" uid="uid://cp4jn4mpwmuou" path="res://Images/Menus/Controls/lineedit.png" id="14_mtcp4"]
+[ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Fond_maps.png" id="15_ldcro"]
+[ext_resource type="Texture2D" uid="uid://csv76qg6eonqu" path="res://Images/Menus/Controls/up_arrow.png" id="15_mtcp4"]
+
+[sub_resource type="SystemFont" id="SystemFont_jw3nv"]
+font_names = PackedStringArray("Pixel Game")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31usj"]
+bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+border_width_left = 10
+border_width_top = 5
+border_width_right = 10
+border_width_bottom = 5
+border_color = Color(0.19757637, 0.15522161, 0.050800897, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="SystemFont" id="SystemFont_k6ik4"]
+font_names = PackedStringArray("Pixel Game")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bhlvn"]
+texture = ExtResource("14_mtcp4")
+expand_margin_left = 45.0
+expand_margin_top = 2.0
+expand_margin_right = 45.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mtcp4"]
+
+[node name="Menus" type="Control" unique_id=932821872]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=219930268]
+position = Vector2(637, 358)
+
+[node name="MainMenu" type="CanvasLayer" parent="." unique_id=1816500359]
+unique_name_in_owner = true
+
+[node name="Fond" type="TextureRect" parent="MainMenu" unique_id=2016181312]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_ak5mw")
+expand_mode = 1
+
+[node name="ContinueButton" type="TextureButton" parent="MainMenu" unique_id=446465935]
+unique_name_in_owner = true
+offset_left = 576.0
+offset_top = 304.0
+offset_right = 704.0
+offset_bottom = 360.0
+texture_normal = ExtResource("3_uc4vm")
+texture_pressed = ExtResource("4_36kji")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="NewPlayerButton" type="TextureButton" parent="MainMenu" unique_id=1132126293]
+offset_left = 576.0
+offset_top = 368.0
+offset_right = 704.0
+offset_bottom = 424.0
+texture_normal = ExtResource("5_fehud")
+texture_pressed = ExtResource("6_42xp8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ProfileButton" type="TextureButton" parent="MainMenu" unique_id=1019094533]
+offset_left = 576.0
+offset_top = 432.0
+offset_right = 704.0
+offset_bottom = 488.0
+texture_normal = ExtResource("7_5my7x")
+texture_pressed = ExtResource("8_ola75")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="NewPlayer" type="CanvasLayer" parent="." unique_id=779630377]
+unique_name_in_owner = true
+
+[node name="Fond" type="ColorRect" parent="NewPlayer" unique_id=428475855]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.36586395, 9.756103e-05, 0.36922282, 1)
+
+[node name="Choix" type="TextureRect" parent="NewPlayer" unique_id=850525315]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -196.0
+offset_right = 156.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("9_uc4vm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BoutonGauche" type="TextureButton" parent="NewPlayer" unique_id=1528679975]
+offset_left = 384.0
+offset_top = 320.0
+offset_right = 448.0
+offset_bottom = 360.0
+texture_normal = ExtResource("10_fehud")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BoutonDroite" type="TextureButton" parent="NewPlayer" unique_id=1408048854]
+offset_left = 833.0
+offset_top = 320.0
+offset_right = 896.0
+offset_bottom = 360.0
+texture_normal = ExtResource("11_42xp8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Ok" type="TextureButton" parent="NewPlayer" unique_id=402949389]
+offset_left = 599.0
+offset_top = 595.0
+offset_right = 682.0
+offset_bottom = 639.0
+texture_normal = ExtResource("12_5my7x")
+texture_pressed = ExtResource("13_ola75")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="NameLabel" type="Label" parent="NewPlayer" unique_id=2030678519]
+offset_left = 173.0
+offset_top = 449.0
+offset_right = 300.0
+offset_bottom = 484.0
+theme_override_colors/font_color = Color(0.7294118, 0.7254902, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_jw3nv")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_31usj")
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLineEdit" type="LineEdit" parent="NewPlayer" unique_id=1337938617]
+unique_name_in_owner = true
+offset_left = 126.0
+offset_top = 468.0
+offset_right = 347.0
+offset_bottom = 556.0
+theme_override_colors/font_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+theme_override_colors/font_placeholder_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+theme_override_fonts/font = SubResource("SystemFont_k6ik4")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_bhlvn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mtcp4")
+placeholder_text = "Your Name"
+alignment = 1
+max_length = 17
+
+[node name="Titre" type="Label" parent="NewPlayer" unique_id=2113431342]
+offset_left = 510.0
+offset_top = 67.0
+offset_right = 769.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.7294118, 0.7254902, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_jw3nv")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_31usj")
+text = "Select Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChangeProfile" type="CanvasLayer" parent="." unique_id=1516896262]
+unique_name_in_owner = true
+
+[node name="Carriere" type="CanvasLayer" parent="." unique_id=14536346]
+unique_name_in_owner = true
+
+[node name="Fond" type="TextureRect" parent="Carriere" unique_id=1857188082]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("14_67va8")
+expand_mode = 1
+
+[node name="BoutonChoixMap" type="TextureButton" parent="Carriere" unique_id=1521398409]
+offset_left = 704.0
+offset_top = 280.0
+offset_right = 744.0
+offset_bottom = 320.0
+texture_normal = ExtResource("15_mtcp4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Upgrades" type="CanvasLayer" parent="Carriere" unique_id=1973075995]
+unique_name_in_owner = true
+
+[node name="ChoixMap" type="CanvasLayer" parent="." unique_id=766752152]
+unique_name_in_owner = true
+visible = false
+
+[node name="Fond" type="TextureRect" parent="ChoixMap" unique_id=1092760061]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("15_ldcro")
+expand_mode = 1
+
+[connection signal="pressed" from="MainMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MainMenu/NewPlayerButton" to="." method="_on_new_player_button_pressed"]
+[connection signal="pressed" from="NewPlayer/BoutonGauche" to="." method="_on_bouton_gauche_pressed"]
+[connection signal="pressed" from="NewPlayer/BoutonDroite" to="." method="_on_bouton_droite_pressed"]
+[connection signal="pressed" from="NewPlayer/Ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="Carriere/BoutonChoixMap" to="." method="_on_bouton_choix_map_pressed"]

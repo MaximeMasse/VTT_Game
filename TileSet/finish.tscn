@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://b4p6wo6qok4sk"]
+
+[ext_resource type="Script" uid="uid://clgocw3oket3p" path="res://TileSet/finish.gd" id="1_7tdds"]
+[ext_resource type="Texture2D" uid="uid://8hjjyr2m5ukq" path="res://Images/Mapping/Finish.png" id="1_iy0nh"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_iy0nh"]
+a = Vector2(-1, 191)
+b = Vector2(1, -290)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7tdds"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 100, 0)
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, -1, 1)
+spread = 26.53
+flatness = 0.676
+initial_velocity_min = 150.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 98, 0)
+scale_max = 2.0
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iy0nh"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 100, 0)
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 1
+emission_sphere_radius = 6.6
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 350.0
+gravity = Vector3(0, 98, 0)
+scale_max = 2.0
+scale_over_velocity_min = 10.0
+scale_over_velocity_max = 50.0
+color = Color(0.06666667, 0.8862745, 0.023529412, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1br6h"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 75, 0)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 98, 0)
+scale_max = 2.0
+color = Color(0.046002887, 0.28383717, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ggg7k"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 100, 0)
+emission_shape_scale = Vector3(1, 100, 1)
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 150.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 98, 0)
+scale_max = 2.0
+color = Color(1, 1, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gnoa8"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 120, 0)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 98, 0)
+scale_max = 3.0
+color = Color(1, 0.35763314, 0.99153453, 1)
+
+[node name="Finish" type="Area2D" unique_id=859229829]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_7tdds")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1211676905]
+scale = Vector2(0.1793478, 0.17934781)
+texture = ExtResource("1_iy0nh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1668148133]
+shape = SubResource("SegmentShape2D_iy0nh")
+
+[node name="FW1" type="GPUParticles2D" parent="." unique_id=465048357]
+unique_name_in_owner = true
+emitting = false
+amount = 500
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7tdds")
+
+[node name="FW2" type="GPUParticles2D" parent="." unique_id=1197356071]
+unique_name_in_owner = true
+emitting = false
+amount = 400
+lifetime = 1.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_iy0nh")
+
+[node name="FW3" type="GPUParticles2D" parent="." unique_id=611858881]
+unique_name_in_owner = true
+emitting = false
+amount = 300
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1br6h")
+
+[node name="FW4" type="GPUParticles2D" parent="." unique_id=822733856]
+unique_name_in_owner = true
+emitting = false
+amount = 300
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ggg7k")
+
+[node name="FW5" type="GPUParticles2D" parent="." unique_id=673702204]
+unique_name_in_owner = true
+emitting = false
+amount = 500
+lifetime = 1.4000000000000001
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_gnoa8")

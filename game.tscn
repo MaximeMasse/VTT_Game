@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://ceb13othey6n2"]
+
+[ext_resource type="Script" uid="uid://b0a3cwwlbqhvm" path="res://game.gd" id="1_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://fwov5u20clh3" path="res://Images/Fond2.png" id="2_feb5d"]
+[ext_resource type="Texture2D" uid="uid://bg87b1ha0jjfv" path="res://Images/Menus/Controls/resume_up.png" id="4_ryrav"]
+[ext_resource type="PackedScene" uid="uid://c6l7y8jhln7o0" path="res://hud.tscn" id="5_7jktm"]
+[ext_resource type="Texture2D" uid="uid://byv50krroasxt" path="res://Images/Menus/Controls/abandon_up.png" id="5_eow3j"]
+[ext_resource type="Texture2D" uid="uid://g81m2v0n4xey" path="res://Images/Menus/Controls/resume_down.png" id="5_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://bgwsl2opkxsyv" path="res://Images/Menus/Controls/abandon_down.png" id="6_j5wjh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
+bg_color = Color(0.2845835, 0.019549267, 0.51773006, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="SystemFont" id="SystemFont_fc0e3"]
+font_names = PackedStringArray("Pixel Game")
+
+[sub_resource type="SystemFont" id="SystemFont_j5wjh"]
+font_names = PackedStringArray("Pixel Game")
+
+[node name="Game" type="Node2D" unique_id=687301190]
+process_mode = 3
+script = ExtResource("1_fc0e3")
+
+[node name="Fond_jeu" type="CanvasLayer" parent="." unique_id=14753229]
+layer = -33
+
+[node name="TextureRect" type="TextureRect" parent="Fond_jeu" unique_id=2009930523]
+offset_top = -8.0
+offset_right = 1294.2222
+offset_bottom = 720.0
+texture = ExtResource("2_feb5d")
+expand_mode = 1
+
+[node name="HUD" parent="." unique_id=1185251805 instance=ExtResource("5_7jktm")]
+unique_name_in_owner = true
+
+[node name="MapContainer" type="Node2D" parent="." unique_id=1502284966]
+unique_name_in_owner = true
+
+[node name="BikeContainer" type="Node2D" parent="." unique_id=100482909]
+unique_name_in_owner = true
+
+[node name="MenuPause" type="CanvasLayer" parent="." unique_id=1815683310]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="Panel" type="Panel" parent="MenuPause" unique_id=1799553443]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -151.0
+offset_right = 99.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_feb5d")
+
+[node name="Label" type="Label" parent="MenuPause/Panel" unique_id=609975466]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = 9.0
+offset_right = 51.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7294118, 0.7254902, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 45
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="TextureButton" parent="MenuPause/Panel" unique_id=1132162140]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -7.0
+offset_right = 32.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_ryrav")
+texture_pressed = ExtResource("5_j5wjh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AbandonButton" type="TextureButton" parent="MenuPause/Panel" unique_id=393053779]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 56.0
+offset_right = 32.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_eow3j")
+texture_pressed = ExtResource("6_j5wjh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Camera" type="Camera2D" parent="." unique_id=308465975]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1252788223]
+
+[node name="Ingame_Label" type="Label" parent="CanvasLayer" unique_id=1326302586]
+unique_name_in_owner = true
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 732.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_j5wjh")
+theme_override_font_sizes/font_size = 45
+text = "Get Ready !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MenuPause/Panel/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MenuPause/Panel/AbandonButton" to="." method="_on_abandon_button_pressed"]

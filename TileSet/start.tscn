@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dwkcoiv7k6b8u"]
+
+[ext_resource type="Texture2D" uid="uid://bv3uhnj1xh4k8" path="res://Images/Mapping/Start.png" id="1_35dxj"]
+
+[node name="Start" type="Sprite2D" unique_id=1752885992]
+position = Vector2(-4.7683716e-07, 0)
+scale = Vector2(0.33420366, 0.32820514)
+texture = ExtResource("1_35dxj")

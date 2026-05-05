@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://kdrqinqeql22"]
+
+[ext_resource type="Script" uid="uid://ciql0r70b14mf" path="res://Bikes/bike_0.gd" id="1_eea15"]
+
+[node name="God" type="Node2D" unique_id=1045044174]
+script = ExtResource("1_eea15")
+
+[node name="Cadre" type="Node2D" parent="." unique_id=1773187320]
+unique_name_in_owner = true
