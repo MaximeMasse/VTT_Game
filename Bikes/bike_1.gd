@@ -32,6 +32,11 @@ var current_state := "slow_riding"
 
 signal crashed
 
+func _ready():
+	roue_avant.mass = 5
+	roue_arrière.mass = 1
+	cadre.mass = 20
+
 func _physics_process(delta):
 	if not can_drive:
 		Global.vitesse = Vector2.ZERO
