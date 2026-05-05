@@ -5,6 +5,7 @@ var choix_perso := 1
 var dico_menus := {}
 
 func _ready():
+	#print(ProjectSettings.globalize_path("user://"))
 	#Config
 	SaveManager.load_config()
 	apply_audio_config()

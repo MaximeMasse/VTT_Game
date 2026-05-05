@@ -16,7 +16,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ow0o1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5jr4r"]
-radius = 32.0
+radius = 34.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ow0o1"]
 radius = 30.0
@@ -24,7 +24,7 @@ radius = 30.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f5gm3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el0nv"]
-radius = 32.0
+radius = 34.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f5gm3"]
 radius = 29.0
@@ -156,10 +156,12 @@ position = Vector2(55, 46)
 node_a = NodePath("../Cadre")
 node_b = NodePath("../Roue_avant")
 
-[node name="WheelieTimer" type="Timer" parent="." unique_id=424286073]
+[node name="ChangeState_Timer" type="Timer" parent="." unique_id=1708863427]
 unique_name_in_owner = true
 process_callback = 0
-wait_time = 0.4
+wait_time = 0.5
+one_shot = true
+ignore_time_scale = true
 
 [connection signal="body_entered" from="Cadre/Corps" to="." method="_on_crash"]
-[connection signal="timeout" from="WheelieTimer" to="." method="_on_wheelie_timer_timeout"]
+[connection signal="timeout" from="ChangeState_Timer" to="." method="_on_change_state_timer_timeout"]

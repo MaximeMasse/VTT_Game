@@ -1,6 +1,7 @@
 extends Node2D
 
 # Config
+const TIME_SCALE = 1 
 #Screen
 var RATIO := 0.8
 var ASPECT := 16.0 / 9.0
@@ -18,7 +19,7 @@ var avancement := 0
 var is_paused := false
 
 func _ready():
-	#Engine.time_scale = 0.25
+	Engine.time_scale = TIME_SCALE
 	var cursor = load("res://Images/Menus/Controls/cursor.png")
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(0, 0))
 	%MenuPause.hide()
@@ -30,6 +31,9 @@ func _ready():
 	var new_size = Vector2i(screen_width,screen_height)
 	DisplayServer.window_set_size(Vector2i(screen_width,screen_height))
 	DisplayServer.window_set_position(screen_rect.position + (screen_rect.size - new_size) / 2)
+	
+	# Connections
+	Global.new_best.connect(%HUD.update_best_tricks)
 	
 	# Chargements
 	load_map()
@@ -54,6 +58,8 @@ func _input(event):
 		if event.is_action_pressed("Pause"):
 			toggle_pause()
 		if Input.is_action_just_pressed("Restart"):
+			%HUD.reset()
+			AudioManager.stop_music()
 			velo_courant.queue_free()
 			load_bike()
 		if Input.is_action_just_pressed("Respawn"):
@@ -97,14 +103,15 @@ func start_countdown():
 	for i in [3, 2, 1]:
 		%Ingame_Label.text = str(i)
 		AudioManager.play_sfx(str(i))
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1,true,true,true).timeout
 	%Ingame_Label.text = "GO !"
 	AudioManager.play_sfx("Go")
 	AudioManager.play_sfx("horn")
 	velo_courant.can_drive = true
 	race_started = true
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1,true,true,true).timeout
 	%Ingame_Label.hide()
+	AudioManager.play_music("Map_" + str(Global.current_map))
 	
 
 func _process(delta):

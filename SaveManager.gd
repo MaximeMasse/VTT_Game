@@ -23,6 +23,7 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		"id": id,
 		"name": player_name,
 		"avatar": avatar_id,
+		"bike_model": 2, 
 		"stats": {
 			"ACCÉLÉRATION" : 3000.0,
 			"V_MAX" : 50,
@@ -35,6 +36,11 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		},
 		"upgrades": {
 			"RESPAWN_PENALTY" : 5.0
+		},
+		"best_tricks":{
+			"Air": {"length":0.0,"duration":0.0},
+			"Wheelie": {"length":0.0,"duration":0.0},
+			"Nose Wheelie": {"length":0.0,"duration":0.0}
 		}
 	}
 	save_profile(profile)

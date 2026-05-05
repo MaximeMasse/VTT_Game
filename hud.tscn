@@ -7,16 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://by53st7ljhdsx" path="res://Images/HUD/contact_red.png" id="3_1xsix"]
 [ext_resource type="Texture2D" uid="uid://bj5w3ph0yvust" path="res://Images/HUD/jump_green.png" id="4_rftc2"]
 
-[sub_resource type="SystemFont" id="SystemFont_61f8s"]
+[sub_resource type="SystemFont" id="SystemFont_1xsix"]
 font_names = PackedStringArray("Pixel Game")
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2snw"]
 border_color = Color(0.021434633, 0.021434639, 0.021434609, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_61f8s"]
+font_names = PackedStringArray("Pixel Game")
+subpixel_positioning = 0
 
 [sub_resource type="Theme" id="Theme_1xsix"]
 
 [sub_resource type="SystemFont" id="SystemFont_g10ll"]
 font_names = PackedStringArray("Pixel Game")
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64ctp"]
 bg_color = Color(0.11119685, 0.11119685, 0.11119678, 1)
@@ -31,6 +37,9 @@ corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
+
+[sub_resource type="SystemFont" id="SystemFont_rftc2"]
+font_names = PackedStringArray("Pixel Game")
 
 [node name="HUD" type="CanvasLayer" unique_id=1185251805]
 script = ExtResource("1_64ctp")
@@ -50,7 +59,7 @@ offset_top = 22.0
 offset_right = 345.0
 offset_bottom = 76.0
 theme_override_constants/outline_size = 14
-theme_override_fonts/font = SubResource("SystemFont_61f8s")
+theme_override_fonts/font = SubResource("SystemFont_1xsix")
 theme_override_font_sizes/font_size = 39
 theme_override_styles/focus = SubResource("StyleBoxFlat_n2snw")
 text = "Speed : 20 km/h"
@@ -141,13 +150,93 @@ offset_bottom = 192.0
 texture = ExtResource("4_rftc2")
 expand_mode = 1
 
+[node name="Tricks_label" type="Label" parent="Live" unique_id=520126678]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 566.0
+offset_top = 188.0
+offset_right = 717.0
+offset_bottom = 263.0
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("SystemFont_61f8s")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxFlat_n2snw")
+text = "Air
+5 m | 12 sec"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Joueur" type="Control" parent="." unique_id=1077279434]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 205.0
-offset_top = 581.0
-offset_right = 1071.0
-offset_bottom = 681.0
+offset_left = 814.0
+offset_top = 17.0
+offset_right = 1258.0
+offset_bottom = 189.0
+
+[node name="BestTricks" type="GridContainer" parent="Joueur" unique_id=1250583665]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 20.0
+offset_right = 430.0
+offset_bottom = 91.0
+columns = 2
+
+[node name="BestAir" type="Label" parent="Joueur/BestTricks" unique_id=723131198]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
+theme_override_fonts/font = SubResource("SystemFont_rftc2")
+theme_override_font_sizes/font_size = 20
+text = "Best air :"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Air_label" type="Label" parent="Joueur/BestTricks" unique_id=1373973314]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
+theme_override_fonts/font = SubResource("SystemFont_rftc2")
+theme_override_font_sizes/font_size = 20
+text = "12 m | 5 sec"
+vertical_alignment = 1
+
+[node name="BestWheelie" type="Label" parent="Joueur/BestTricks" unique_id=2065302035]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
+theme_override_fonts/font = SubResource("SystemFont_rftc2")
+theme_override_font_sizes/font_size = 20
+text = "Best Wheelie :"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Wheelie_label" type="Label" parent="Joueur/BestTricks" unique_id=1818426143]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
+theme_override_fonts/font = SubResource("SystemFont_rftc2")
+theme_override_font_sizes/font_size = 20
+text = "28 m | 11 sec"
+vertical_alignment = 1
+
+[node name="BestNose" type="Label" parent="Joueur/BestTricks" unique_id=955582772]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
+theme_override_fonts/font = SubResource("SystemFont_rftc2")
+theme_override_font_sizes/font_size = 20
+text = "Best Nose Wheelie :"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Nose_label" type="Label" parent="Joueur/BestTricks" unique_id=1760026773]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
+theme_override_fonts/font = SubResource("SystemFont_rftc2")
+theme_override_font_sizes/font_size = 20
+text = "210 m | 255 sec"
+vertical_alignment = 1
 
 [node name="Controle" type="Control" parent="." unique_id=1941632284]
 visible = false

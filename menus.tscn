@@ -99,6 +99,7 @@ stretch_mode = 0
 
 [node name="NewPlayer" type="CanvasLayer" parent="." unique_id=779630377]
 unique_name_in_owner = true
+visible = false
 
 [node name="Fond" type="ColorRect" parent="NewPlayer" unique_id=428475855]
 offset_right = 1280.0
@@ -195,9 +196,11 @@ vertical_alignment = 1
 
 [node name="ChangeProfile" type="CanvasLayer" parent="." unique_id=1516896262]
 unique_name_in_owner = true
+visible = false
 
 [node name="Carriere" type="CanvasLayer" parent="." unique_id=14536346]
 unique_name_in_owner = true
+visible = false
 
 [node name="Fond" type="TextureRect" parent="Carriere" unique_id=1857188082]
 offset_right = 1280.0

@@ -2,7 +2,10 @@ extends Node
 
 # Dicos
 var dico_music := {
-	"MainMenu": preload("res://Sound/Music/awesomeness.wav")
+	"MainMenu": preload("res://Sound/Music/awesomeness.wav"),
+	"Map_0": preload("res://Sound/Music/Map_0.mp3"),
+	"Map_1": preload("res://Sound/Music/Map_1.mp3"),
+	"Map_2": preload("res://Sound/Music/Map_2.mp3")
 }
 var dico_sfx := {
 	"fireworks": preload("res://Sound/SFX/fireworks.wav"),
@@ -26,7 +29,7 @@ var dico_ground_sfx := {
 		1: preload("res://Sound/SFX/Ground/high_speed_1.wav"),
 		2: preload("res://Sound/SFX/Ground/high_speed_2.wav")
 	},
-	"air":{
+	"Air":{
 		1: preload("res://Sound/SFX/Ground/air_1.wav"),
 		2: preload("res://Sound/SFX/Ground/air_2.wav"),
 		3: preload("res://Sound/SFX/Ground/air_3.wav")
@@ -35,11 +38,16 @@ var dico_ground_sfx := {
 		1: preload("res://Sound/SFX/Ground/landing_1.wav"),
 		2: preload("res://Sound/SFX/Ground/landing_2.wav")
 	},
-	"wheelie": {
+	"Wheelie": {
 		1: preload("res://Sound/SFX/Ground/wheeling_1.wav"),
 		2: preload("res://Sound/SFX/Ground/wheeling_2.wav"),
 		3: preload("res://Sound/SFX/Ground/wheeling_3.wav")
-	}
+	},
+	"Nose Wheelie": {
+		1: preload("res://Sound/SFX/Ground/wheeling_1.wav"),
+		2: preload("res://Sound/SFX/Ground/wheeling_2.wav"),
+		3: preload("res://Sound/SFX/Ground/wheeling_3.wav")
+	},
 }
 var dico_ui := {
 	"click": preload("res://Sound/UI/click.wav")
@@ -101,13 +109,12 @@ func stop_sfx():
 
 func play_ground_sfx(music):
 	var specific_dict = dico_ground_sfx[music]
-	var stream = specific_dict[3]
-	#randi_range(1,specific_dict.size())
+	var stream = specific_dict[randi_range(1,specific_dict.size())]
 	for player in ground_sfx_players:
 		if not player.playing:
 			player.stream = stream
 			player.play()
-			return
+			return player
 
 func stop_ground_sfx():
 	for player in ground_sfx_players:

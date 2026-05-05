@@ -7,7 +7,7 @@ var current_profile := {}
 var config := {}
 
 # Sélections
-var current_map := 2
+var current_map := 1
 
 # HUD
 var race_time := 0.0
@@ -16,6 +16,8 @@ var vitesse := Vector2.ZERO
 var player_position := Vector2.ZERO
 var avancement := 0
 var taux_compression := 0
+var current_trick := ""
+var trick_datas := Vector2.ZERO
 var penalty_to_show := false
 
 # Position and cp speed
@@ -42,6 +44,8 @@ var dico_avatars := {
 	2:preload("res://Avatar/Players/Rose/Avatar.png")
 }
 
+signal new_best
+
 func get_current_map():
 	return dico_maps[current_map]
 
@@ -53,3 +57,14 @@ func checkpoint_update(cp : String):
 		current_cp = cp
 		cp_player_speed = vitesse
 		cp_player_pos = player_position
+
+func valid_trick():
+	if current_trick != "":
+		if current_profile["best_tricks"][current_trick]["length"] < trick_datas.x:
+			print("New best ",current_trick," length", trick_datas.x, " meters !!")
+			current_profile["best_tricks"][current_trick]["length"] = trick_datas.x
+			new_best.emit()
+		if current_profile["best_tricks"][current_trick]["duration"] < trick_datas.y:
+			print("New best ",current_trick," time", trick_datas.y, " seconds !!")
+			current_profile["best_tricks"][current_trick]["duration"] = trick_datas.y
+			new_best.emit()

@@ -1,3 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+builds/
+exports/
+
+*.exe
+*.apk
+*.aab
+*.pck
+
+.DS_Store
+Thumbs.db
