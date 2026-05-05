@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://1g14hovqb8tt"]
+
+[ext_resource type="Script" uid="uid://duifn4bnckf84" path="res://Maps/map_0.gd" id="1_mei6p"]
+[ext_resource type="PackedScene" uid="uid://dwkcoiv7k6b8u" path="res://TileSet/start.tscn" id="7_puugl"]
+[ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="8_e1l6w"]
+[ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="9_4hqvm"]
+
+[node name="Map" type="Node2D" unique_id=1845493518]
+script = ExtResource("1_mei6p")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1721831737]
+visible = false
+offset_left = -590.0
+offset_top = -270.0
+offset_right = 1236.0
+offset_bottom = 991.0
+
+[node name="Habillage" type="Node2D" parent="." unique_id=98157492]
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1261897849]
+
+[node name="Floor" type="CollisionPolygon2D" parent="Floor" unique_id=1976626582]
+polygon = PackedVector2Array(-322, 62, 961, 64, 1132, 69, 1184, 73, 1232, 80, 1297, 94, 1369, 119, 1569, 203, 1759, 292, 1807, 314, 1868, 339, 1931, 356, 2009, 358, 2088, 345, 2164, 326, 2186, 316, 2203, 309, 2220, 305, 2259, 301, 2312, 301, 2354, 319, 2397, 350, 2482, 389, 2598, 397, 2937, 397, 3281, 396, 2163, 604, 1640, 619, 1298, 487)
+
+[node name="Assets" type="Node2D" parent="." unique_id=1345368999]
+
+[node name="Start" parent="Assets" unique_id=1752885992 instance=ExtResource("7_puugl")]
+unique_name_in_owner = true
+position = Vector2(1.0000153, -34)
+scale = Vector2(0.2689295, 0.2576923)
+
+[node name="Finish" parent="Assets" unique_id=1211676905 instance=ExtResource("8_e1l6w")]
+unique_name_in_owner = true
+position = Vector2(11591, 1932)
+
+[node name="Checkpoint_1" parent="Assets" unique_id=1495936311 instance=ExtResource("9_4hqvm")]
+unique_name_in_owner = true
+position = Vector2(3375, 520)
+
+[node name="Checkpoint_2" parent="Assets" unique_id=1899925259 instance=ExtResource("9_4hqvm")]
+unique_name_in_owner = true
+position = Vector2(6207, 588)
+
+[connection signal="body_entered" from="Assets/Finish" to="." method="_on_finish_body_entered"]
+[connection signal="body_entered" from="Assets/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]
+[connection signal="body_entered" from="Assets/Checkpoint_2" to="." method="_on_checkpoint_2_body_entered"]

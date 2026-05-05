@@ -26,7 +26,7 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		"bike_model": 2, 
 		"stats": {
 			"ACCÉLÉRATION" : 3000.0,
-			"V_MAX" : 50,
+			"FRICTION" : 50,
 			"FORCE_FREINS" : 50,
 			"COUPLE_CADRE_SOL" : 140000000.0,
 			"COUPLE_CADRE_AIR" : 20000000.0,

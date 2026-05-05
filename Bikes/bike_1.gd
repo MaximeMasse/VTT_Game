@@ -1,8 +1,9 @@
 extends Node2D
 
+const ECHELLE = Global.ECHELLE
 # Accélération
 var ACCÉLÉRATION :float = Global.current_profile["stats"]["ACCÉLÉRATION"]
-var V_MAX :int = Global.current_profile["stats"]["V_MAX"]
+var FRICTION :float = Global.current_profile["stats"]["FRICTION"]
 #Freins
 var FORCE_FREINS :int = Global.current_profile["stats"]["FORCE_FREINS"]
 # Balance
@@ -12,6 +13,8 @@ var COUPLE_CADRE_AIR :float = Global.current_profile["stats"]["COUPLE_CADRE_AIR"
 var GREEN_TIME :float = Global.current_profile["stats"]["GREEN_TIME"]
 var SWEET_SPOT :float = Global.current_profile["stats"]["SWEET_SPOT"]
 var FORCE_SAUT :float = Global.current_profile["stats"]["FORCE_SAUT"]
+
+const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 
 @onready var couple_cadre_actuel := 0.0
 
@@ -24,44 +27,42 @@ var FORCE_SAUT :float = Global.current_profile["stats"]["FORCE_SAUT"]
 
 var can_drive := false
 var temps_compression := 0.0
-var was_wheelie := false
+var previous_state := "slow_riding"
+var current_state := "slow_riding"
 
 signal crashed
 
 func _physics_process(delta):
 	if not can_drive:
 		Global.vitesse = Vector2.ZERO
+		Global.current_trick = ""
 		roue_arrière.constant_force = Vector2.ZERO
 		return
 	
 	# Tracking
-	Global.vitesse = cadre.linear_velocity * Global.ECHELLE * 3.6
+	Global.vitesse = cadre.linear_velocity * ECHELLE * 3.6
+	var traveled = (cadre.global_position - Global.player_position).length() * ECHELLE
 	Global.player_position = cadre.global_position
 	Global.contact_sol = contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies()
-	var is_wheelie = contact_sol_arrière.has_overlapping_bodies() and not contact_sol_avant.has_overlapping_bodies()
+	current_state = get_current_state()
+	
+	# Frictions
+	print(Global.race_time,";",Global.vitesse.length(),";",FRICTION * Global.vitesse.length_squared()*delta,";",(ACCÉLÉRATION * delta/ECHELLE))
+	cadre.apply_central_force((FRICTION * Global.vitesse.length_squared()*delta) * Vector2.LEFT.rotated(rotation))
 	
 	# Actions
 	# Tjs actif
 	if Input.is_action_just_released("Pédaler"):
 		animation.pause()
-		
-	# Wheelie
-	if is_wheelie and not was_wheelie:
-		%WheelieTimer.start()
-	if was_wheelie and not is_wheelie :
-		%WheelieTimer.stop()
-		AudioManager.stop_ground_sfx()
-	was_wheelie = is_wheelie
 	
 	# Si contact arrière
 	if contact_sol_arrière.has_overlapping_bodies():
 		# Accélération
 		if Input.is_action_pressed("Pédaler") \
-		and not Input.is_action_pressed("Frein_arrière") \
-		and Global.vitesse.length() < V_MAX:
-			roue_arrière.apply_central_force((ACCÉLÉRATION * delta) * Vector2.RIGHT.rotated(rotation))
+		and not Input.is_action_pressed("Frein_arrière"):
+			roue_arrière.apply_central_force((ACCÉLÉRATION * delta/ECHELLE) * Vector2.RIGHT.rotated(rotation))
 			animation.play("pédale")
-		
+			
 		# Frein arrière
 		if Input.is_action_pressed("Frein_arrière"):
 			roue_arrière.linear_velocity = lerp(
@@ -101,6 +102,61 @@ func _physics_process(delta):
 			cadre.apply_central_impulse(FORCE_SAUT * Global.taux_compression * Vector2.UP.rotated(rotation))
 			temps_compression = 0
 			Global.taux_compression = 0
+	
+	# States
+	#print("Timer off : ",%ChangeState_Timer.is_stopped()," | previous_state : ",previous_state,
+	#" | current_state : ",current_state, " | Global.current_trick :",Global.current_trick,
+	#" | Trick length : ",Global.trick_datas.x," | Trick duration ",Global.trick_datas.y)
+	if %ChangeState_Timer.is_stopped():
+		if current_state == previous_state: Global.trick_datas += Vector2(traveled,delta)
+		else:
+			if current_state not in TRICK_LIST:
+				Global.valid_trick()
+				AudioManager.stop_ground_sfx()
+				AudioManager.play_ground_sfx(current_state)
+				Global.current_trick = ""
+			else:
+				if previous_state in TRICK_LIST:
+					Global.valid_trick()
+					AudioManager.stop_ground_sfx()
+					if current_state == "Air": AudioManager.play_ground_sfx(current_state)
+					else: AudioManager.play_ground_sfx("landing")
+				%ChangeState_Timer.start()
+				Global.current_trick = ""
+				Global.trick_datas = Vector2.ZERO
+	else:
+		if current_state == previous_state: Global.trick_datas += Vector2(traveled,delta)
+		else:
+			if current_state in TRICK_LIST: %ChangeState_Timer.start()
+			else: %ChangeState_Timer.stop()
+			Global.current_trick = ""
+			Global.trick_datas = Vector2.ZERO
+			
+	previous_state = get_current_state()
+
+func _on_change_state_timer_timeout() -> void:
+	#print("Timer timed out")
+	AudioManager.stop_ground_sfx()
+	AudioManager.play_ground_sfx(current_state)
+	Global.current_trick = current_state
+
+func _on_crash(body):
+	AudioManager.stop_ground_sfx()
+	AudioManager.play_sfx("ouch")
+	AudioManager.play_sfx("bone_crack")
+	crashed.emit()
+	queue_free()
+
+func get_current_state()-> String:
+	if contact_sol_arrière.has_overlapping_bodies() and contact_sol_avant.has_overlapping_bodies():
+		if Global.vitesse.length() < 20: return "slow_riding"
+		elif Global.vitesse.length() < 40: return "medium_riding"
+		else: return "fast_riding"
+	elif contact_sol_arrière.has_overlapping_bodies():
+		return "Wheelie"
+	elif contact_sol_avant.has_overlapping_bodies():
+		return "Nose Wheelie"
+	else: return "Air"
 
 func temps_compression_en_pourcentage(temps):
 	var pourcentage :int
@@ -109,13 +165,3 @@ func temps_compression_en_pourcentage(temps):
 	elif temps <= GREEN_TIME + 2 * SWEET_SPOT: pourcentage = 100
 	else: pourcentage = int(100 * (2 + (2 * SWEET_SPOT - temps)/GREEN_TIME))
 	return pourcentage
-
-func _on_wheelie_timer_timeout():
-	AudioManager.play_ground_sfx("wheelie")
-
-func _on_crash(body):
-	AudioManager.stop_ground_sfx()
-	AudioManager.play_sfx("ouch")
-	AudioManager.play_sfx("bone_crack")
-	crashed.emit()
-	queue_free()

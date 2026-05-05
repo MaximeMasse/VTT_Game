@@ -2,6 +2,7 @@ extends Node2D
 
 # Config
 const TIME_SCALE = 1 
+const ECHELLE = Global.ECHELLE
 #Screen
 var RATIO := 0.8
 var ASPECT := 16.0 / 9.0
@@ -95,7 +96,7 @@ func respawn_bike():
 	Global.penalty_to_show = true
 	Global.race_time += Global.current_profile["upgrades"]["RESPAWN_PENALTY"]
 	velo_courant.global_position = Global.cp_player_pos
-	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (Global.ECHELLE * 3.6)
+	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (ECHELLE * 3.6)
 
 func start_countdown():
 	race_started = false
@@ -103,13 +104,13 @@ func start_countdown():
 	for i in [3, 2, 1]:
 		%Ingame_Label.text = str(i)
 		AudioManager.play_sfx(str(i))
-		await get_tree().create_timer(1,true,true,true).timeout
+		await get_tree().create_timer(1).timeout
 	%Ingame_Label.text = "GO !"
 	AudioManager.play_sfx("Go")
 	AudioManager.play_sfx("horn")
 	velo_courant.can_drive = true
 	race_started = true
-	await get_tree().create_timer(1,true,true,true).timeout
+	await get_tree().create_timer(1).timeout
 	%Ingame_Label.hide()
 	AudioManager.play_music("Map_" + str(Global.current_map))
 	

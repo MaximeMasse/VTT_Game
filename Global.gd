@@ -7,7 +7,7 @@ var current_profile := {}
 var config := {}
 
 # Sélections
-var current_map := 1
+var current_map := 0
 
 # HUD
 var race_time := 0.0
@@ -30,6 +30,7 @@ var menu_to_show := "MainMenu"
 
 # Dicos
 var dico_maps := {
+	0:preload("res://Maps/map_0.tscn"),
 	1:preload("res://Maps/map_1.tscn"),
 	2:preload("res://Maps/map_2.tscn"),
 	5:preload("res://Maps/special_map.tscn")

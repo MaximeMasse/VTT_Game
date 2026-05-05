@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b7ojyut055h2d"]
 
-[ext_resource type="Script" uid="uid://b30dcngjq18rk" path="res://Bikes/bike_2.gd" id="1_6cy87"]
+[ext_resource type="Script" uid="uid://cuxuy38j56qnh" path="res://Bikes/bike_1.gd" id="1_6cy87"]
 [ext_resource type="Texture2D" uid="uid://dpoq51muy56et" path="res://Avatar/Bikes/Roue_1.png" id="2_8v3d4"]
 [ext_resource type="Script" uid="uid://bh38sk1jgvljh" path="res://Bikes/cadre.gd" id="3_eng8b"]
 [ext_resource type="Texture2D" uid="uid://64pn0ef160o5" path="res://Avatar/Players/Noir/Rider_1.png" id="4_oms1c"]
@@ -161,7 +161,6 @@ unique_name_in_owner = true
 process_callback = 0
 wait_time = 0.5
 one_shot = true
-ignore_time_scale = true
 
 [connection signal="body_entered" from="Cadre/Corps" to="." method="_on_crash"]
 [connection signal="timeout" from="ChangeState_Timer" to="." method="_on_change_state_timer_timeout"]

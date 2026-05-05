@@ -8,14 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://bj5w3ph0yvust" path="res://Images/HUD/jump_green.png" id="4_rftc2"]
 
 [sub_resource type="SystemFont" id="SystemFont_1xsix"]
-font_names = PackedStringArray("Pixel Game")
+font_names = PackedStringArray("Pixel Game", "Jersey 10")
 subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2snw"]
 border_color = Color(0.021434633, 0.021434639, 0.021434609, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_61f8s"]
-font_names = PackedStringArray("Pixel Game")
+font_names = PackedStringArray("Pixel Game", "Jersey 10")
 subpixel_positioning = 0
 
 [sub_resource type="Theme" id="Theme_1xsix"]
@@ -39,7 +39,8 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="SystemFont" id="SystemFont_rftc2"]
-font_names = PackedStringArray("Pixel Game")
+font_names = PackedStringArray("Pixel Game", "Jersey 10")
+subpixel_positioning = 0
 
 [node name="HUD" type="CanvasLayer" unique_id=1185251805]
 script = ExtResource("1_64ctp")
@@ -178,10 +179,10 @@ offset_bottom = 189.0
 
 [node name="BestTricks" type="GridContainer" parent="Joueur" unique_id=1250583665]
 layout_mode = 0
-offset_left = 178.0
-offset_top = 20.0
-offset_right = 430.0
-offset_bottom = 91.0
+offset_left = 187.0
+offset_top = 11.0
+offset_right = 427.0
+offset_bottom = 88.0
 columns = 2
 
 [node name="BestAir" type="Label" parent="Joueur/BestTricks" unique_id=723131198]
