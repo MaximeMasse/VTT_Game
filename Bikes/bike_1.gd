@@ -33,11 +33,14 @@ var current_state := "slow_riding"
 signal crashed
 
 func _ready():
-	roue_avant.mass = 5
+	roue_avant.mass = 1
 	roue_arrière.mass = 1
-	cadre.mass = 20
+	cadre.mass = 10
 
 func _physics_process(delta):
+	
+	draw_circle(cadre.center_of_mass, 5, Color.RED)
+	
 	if not can_drive:
 		Global.vitesse = Vector2.ZERO
 		Global.current_trick = ""
@@ -47,13 +50,18 @@ func _physics_process(delta):
 	# Tracking
 	Global.vitesse = cadre.linear_velocity * ECHELLE * 3.6
 	var traveled = (cadre.global_position - Global.player_position).length() * ECHELLE
+	var acceleration_direction: Vector2
+	if cadre.linear_velocity.length() > 5.0:
+		acceleration_direction = cadre.linear_velocity.normalized()
+	else:
+		acceleration_direction = Vector2.RIGHT.rotated(rotation)
 	Global.player_position = cadre.global_position
 	Global.contact_sol = contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies()
 	current_state = get_current_state()
 	
 	# Frictions
 	print(Global.race_time,";",Global.vitesse.length(),";",FRICTION * Global.vitesse.length_squared()*delta,";",(ACCÉLÉRATION * delta/ECHELLE))
-	cadre.apply_central_force((FRICTION * Global.vitesse.length_squared()*delta) * Vector2.LEFT.rotated(rotation))
+	cadre.apply_central_force(-(FRICTION * Global.vitesse.length_squared()*delta) * acceleration_direction)
 	
 	# Actions
 	# Tjs actif
@@ -65,14 +73,14 @@ func _physics_process(delta):
 		# Accélération
 		if Input.is_action_pressed("Pédaler") \
 		and not Input.is_action_pressed("Frein_arrière"):
-			roue_arrière.apply_central_force((ACCÉLÉRATION * delta/ECHELLE) * Vector2.RIGHT.rotated(rotation))
+			roue_arrière.apply_central_force((ACCÉLÉRATION * delta/ECHELLE) * acceleration_direction)
 			animation.play("pédale")
 			
 		# Frein arrière
 		if Input.is_action_pressed("Frein_arrière"):
 			roue_arrière.linear_velocity = lerp(
 				roue_arrière.linear_velocity, Vector2(0.0,0.0), 0.5 * FORCE_FREINS * delta)
-				
+	
 	# Si contact avant
 	if contact_sol_avant.has_overlapping_bodies():
 		if Input.is_action_pressed("Frein_avant"):
@@ -96,7 +104,7 @@ func _physics_process(delta):
 			couple_cadre_actuel = COUPLE_CADRE_AIR * delta
 		else:
 			couple_cadre_actuel = 0.0
-	cadre.constant_torque = couple_cadre_actuel
+	cadre.apply_torque(couple_cadre_actuel)
 	
 	# Jump (si un contact)
 	if contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies():

@@ -53,12 +53,17 @@ func _input(event):
 		Global.current_map = 4
 	if event.is_action_pressed("Map5"):
 		Global.current_map = 5
+
+	
+		
+		
 	
 	# InGame
 	if race_started:
 		if event.is_action_pressed("Pause"):
 			toggle_pause()
 		if Input.is_action_just_pressed("Restart"):
+			SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
 			%HUD.reset()
 			AudioManager.stop_music()
 			velo_courant.queue_free()
