@@ -25,14 +25,18 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		"avatar": avatar_id,
 		"bike_model": 2, 
 		"stats": {
-			"ACCÉLÉRATION" : 3000.0,
-			"FRICTION" : 50,
-			"FORCE_FREINS" : 50,
-			"COUPLE_CADRE_SOL" : 140000000.0,
-			"COUPLE_CADRE_AIR" : 20000000.0,
-			"GREEN_TIME" : 0.5,
-			"SWEET_SPOT" : 0.1,
-			"FORCE_SAUT" : 300.0
+			"ACCÉLÉRATION": 10000.0,
+			"FRICTION" : 150,
+			"CM_OFFSET" : [5,25],
+			"COUPLE_CADRE_AIR": 400000.0,
+			"COUPLE_CADRE_SOL": 1700000.0,
+			"BALANCE_CONTROL" : 100.0,
+			"AV_CONTROL" : 2.0,
+			"FORCE_FREINS": 50,
+			"FORCE_SAUT": 125.0,
+			"GREEN_TIME": 0.3,
+			"SWEET_SPOT": 0.2,
+			"AIR_SPEED_CONTROL": 5.0
 		},
 		"upgrades": {
 			"RESPAWN_PENALTY" : 5.0

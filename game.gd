@@ -53,19 +53,17 @@ func _input(event):
 		Global.current_map = 4
 	if event.is_action_pressed("Map5"):
 		Global.current_map = 5
-
-	
-		
-		
 	
 	# InGame
 	if race_started:
 		if event.is_action_pressed("Pause"):
 			toggle_pause()
 		if Input.is_action_just_pressed("Restart"):
+			SaveManager.load_config()
 			SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
 			%HUD.reset()
 			AudioManager.stop_music()
+			AudioManager.stop_sfx()
 			velo_courant.queue_free()
 			load_bike()
 		if Input.is_action_just_pressed("Respawn"):
@@ -90,6 +88,8 @@ func load_bike():
 	velo_courant.crashed.connect(respawn_bike)
 	Global.race_time = 0.0
 	Global.current_cp = "start"
+	Global.cp_player_speed = Vector2.ZERO
+	Global.cp_player_pos = Vector2.ZERO
 	start_countdown()
 
 func respawn_bike():
@@ -109,7 +109,7 @@ func start_countdown():
 	for i in [3, 2, 1]:
 		%Ingame_Label.text = str(i)
 		AudioManager.play_sfx(str(i))
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0).timeout
 	%Ingame_Label.text = "GO !"
 	AudioManager.play_sfx("Go")
 	AudioManager.play_sfx("horn")

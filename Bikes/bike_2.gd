@@ -1,21 +1,23 @@
 extends Node2D
 
+var ECHELLE = Global.ECHELLE
 # Accélération
 var ACCÉLÉRATION :float = Global.current_profile["stats"]["ACCÉLÉRATION"]
-var V_MAX :int = Global.current_profile["stats"]["V_MAX"]
+var FRICTION :float = Global.current_profile["stats"]["FRICTION"]
 #Freins
-var FORCE_FREINS :int = Global.current_profile["stats"]["FORCE_FREINS"]
+var FORCE_FREINS :float = Global.current_profile["stats"]["FORCE_FREINS"]
 # Balance
-var COUPLE_CADRE_SOL :float = Global.current_profile["stats"]["COUPLE_CADRE_SOL"]
-var COUPLE_CADRE_AIR :float = Global.current_profile["stats"]["COUPLE_CADRE_AIR"]
+var BALANCE_CONTROL :float =  Global.current_profile["stats"]["BALANCE_CONTROL"]
+var BACK_POSITION := Vector2(Global.current_profile["stats"]["BACK_POSITION"][0],
+	Global.current_profile["stats"]["BACK_POSITION"][1])
+var FRONT_POSITION := Vector2(Global.current_profile["stats"]["FRONT_POSITION"][0],
+	Global.current_profile["stats"]["FRONT_POSITION"][1])
 # Saut
 var GREEN_TIME :float = Global.current_profile["stats"]["GREEN_TIME"]
 var SWEET_SPOT :float = Global.current_profile["stats"]["SWEET_SPOT"]
 var FORCE_SAUT :float = Global.current_profile["stats"]["FORCE_SAUT"]
 
 const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
-
-@onready var couple_cadre_actuel := 0.0
 
 @onready var roue_arrière := %Roue_arrière
 @onready var contact_sol_arrière := %Contact_sol_arrière
@@ -25,11 +27,24 @@ const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 @onready var animation := %Animation
 
 var can_drive := false
+var current_CM := Vector2.ZERO
 var temps_compression := 0.0
 var previous_state := "slow_riding"
 var current_state := "slow_riding"
 
 signal crashed
+
+func _ready():
+	reset()
+	roue_avant.mass = 2
+	roue_arrière.mass = 2
+	cadre.mass = 35
+
+func reset():
+	for parts in [cadre, roue_avant, roue_arrière]:
+		parts.linear_velocity = Vector2.ZERO
+		parts.angular_velocity = 0.0
+	temps_compression = 0.0
 
 func _physics_process(delta):
 	if not can_drive:
@@ -39,11 +54,19 @@ func _physics_process(delta):
 		return
 	
 	# Tracking
-	Global.vitesse = cadre.linear_velocity * Global.ECHELLE * 3.6
-	var traveled = (cadre.global_position - Global.player_position).length() * Global.ECHELLE
+	Global.vitesse = cadre.linear_velocity * ECHELLE * 3.6
+	var traveled = (cadre.global_position - Global.player_position).length() * ECHELLE
+	var acceleration_direction: Vector2
+	if cadre.linear_velocity.x > 5.0:
+		acceleration_direction = cadre.linear_velocity.normalized()
+	else:
+		acceleration_direction = Vector2.RIGHT.rotated(rotation)
 	Global.player_position = cadre.global_position
 	Global.contact_sol = contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies()
 	current_state = get_current_state()
+	
+	# Frictions
+	cadre.apply_central_force(-(FRICTION * Global.vitesse.length_squared()*delta) * acceleration_direction)
 	
 	# Actions
 	# Tjs actif
@@ -54,43 +77,31 @@ func _physics_process(delta):
 	if contact_sol_arrière.has_overlapping_bodies():
 		# Accélération
 		if Input.is_action_pressed("Pédaler") \
-		and not Input.is_action_pressed("Frein_arrière") \
-		and Global.vitesse.length() < V_MAX:
-			roue_arrière.apply_central_force((ACCÉLÉRATION * delta) * Vector2.RIGHT.rotated(rotation))
+		and not Input.is_action_pressed("Frein_arrière"):
+			roue_arrière.apply_central_force((ACCÉLÉRATION * delta/ECHELLE) * acceleration_direction)
 			animation.play("pédale")
-		
 		# Frein arrière
 		if Input.is_action_pressed("Frein_arrière"):
 			roue_arrière.linear_velocity = lerp(
-				roue_arrière.linear_velocity, Vector2(0.0,0.0), 0.5 * FORCE_FREINS * delta)
-				
+				roue_arrière.linear_velocity, Vector2(0.0,0.0), 1.0-exp(-0.5 * FORCE_FREINS * delta))
 	# Si contact avant
 	if contact_sol_avant.has_overlapping_bodies():
 		if Input.is_action_pressed("Frein_avant"):
 			roue_avant.linear_velocity = lerp(
-				roue_avant.linear_velocity, Vector2(0.0,0.0), FORCE_FREINS * delta)
+				roue_avant.linear_velocity, Vector2(0.0,0.0), 1.0-exp(-FORCE_FREINS * delta))
 		
-	# Balance au sol
-	if contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies():
-		if Input.is_action_pressed("Arrière"):
-			couple_cadre_actuel = -2 * COUPLE_CADRE_SOL * delta
-		elif Input.is_action_pressed("Avant"):
-			couple_cadre_actuel = COUPLE_CADRE_SOL * delta
-		else:
-			couple_cadre_actuel = 0.0
-	# Balance en l'air
-	else:
-		Global.taux_compression = 0
-		if Input.is_action_pressed("Arrière"):
-			couple_cadre_actuel = -1.5 * COUPLE_CADRE_AIR * delta
-		elif Input.is_action_pressed("Avant"):
-			couple_cadre_actuel = COUPLE_CADRE_AIR * delta
-		else:
-			couple_cadre_actuel = 0.0
-	cadre.constant_torque = couple_cadre_actuel
-	
+	# Balance
+	var target_CM := Vector2.ZERO
+	if Input.is_action_pressed("Arrière"):
+		target_CM = BACK_POSITION
+	if Input.is_action_pressed("Avant"):
+		target_CM = FRONT_POSITION
+	current_CM = current_CM.lerp(target_CM,1.0 - exp(-BALANCE_CONTROL*delta))
+	cadre.center_of_mass = current_CM
+
+
 	# Jump (si un contact)
-	if contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies():
+	if Global.contact_sol:
 		if Input.is_action_pressed("Jump"):
 			temps_compression += delta
 			Global.taux_compression = temps_compression_en_pourcentage(temps_compression)
@@ -98,8 +109,9 @@ func _physics_process(delta):
 			cadre.apply_central_impulse(FORCE_SAUT * Global.taux_compression * Vector2.UP.rotated(rotation))
 			temps_compression = 0
 			Global.taux_compression = 0
+	else : Global.taux_compression = 0
 	
-	# States
+	# Tricks States
 	#print("Timer off : ",%ChangeState_Timer.is_stopped()," | previous_state : ",previous_state,
 	#" | current_state : ",current_state, " | Global.current_trick :",Global.current_trick,
 	#" | Trick length : ",Global.trick_datas.x," | Trick duration ",Global.trick_datas.y)

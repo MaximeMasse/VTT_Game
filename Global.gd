@@ -7,7 +7,7 @@ var current_profile := {}
 var config := {}
 
 # Sélections
-var current_map := 2
+var current_map := 1
 
 # HUD
 var race_time := 0.0
@@ -63,10 +63,8 @@ func checkpoint_update(cp : String):
 func valid_trick():
 	if current_trick != "":
 		if current_profile["best_tricks"][current_trick]["length"] < trick_datas.x:
-			print("New best ",current_trick," length", trick_datas.x, " meters !!")
 			current_profile["best_tricks"][current_trick]["length"] = trick_datas.x
 			new_best.emit()
 		if current_profile["best_tricks"][current_trick]["duration"] < trick_datas.y:
-			print("New best ",current_trick," time", trick_datas.y, " seconds !!")
 			current_profile["best_tricks"][current_trick]["duration"] = trick_datas.y
 			new_best.emit()

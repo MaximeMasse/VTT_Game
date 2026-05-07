@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://b7ojyut055h2d"]
 
-[ext_resource type="Script" uid="uid://cuxuy38j56qnh" path="res://Bikes/bike_1.gd" id="1_6cy87"]
+[ext_resource type="Script" uid="uid://b30dcngjq18rk" path="res://Bikes/bike_2.gd" id="1_msbpd"]
 [ext_resource type="Texture2D" uid="uid://dpoq51muy56et" path="res://Avatar/Bikes/Roue_1.png" id="2_8v3d4"]
-[ext_resource type="Script" uid="uid://bh38sk1jgvljh" path="res://Bikes/cadre.gd" id="3_eng8b"]
 [ext_resource type="Texture2D" uid="uid://64pn0ef160o5" path="res://Avatar/Players/Noir/Rider_1.png" id="4_oms1c"]
 [ext_resource type="Texture2D" uid="uid://dx2j86w7mw2p0" path="res://Avatar/Players/Noir/Rider_2.png" id="5_hwhmb"]
 [ext_resource type="Texture2D" uid="uid://d1rxrxwh3ajqb" path="res://Avatar/Players/Noir/Rider_3.png" id="6_p8aeu"]
@@ -10,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://6sdkhuslwkc" path="res://Avatar/Players/Noir/Rider_5.png" id="8_prbyu"]
 [ext_resource type="Texture2D" uid="uid://b6gsrjd7m3gj0" path="res://Avatar/Players/Noir/Rider_6.png" id="9_crcm0"]
 [ext_resource type="Texture2D" uid="uid://c8657jcrqurb7" path="res://Avatar/Players/Noir/Rider_7.png" id="10_gx1yi"]
+[ext_resource type="Script" uid="uid://cbdp84xoxff1t" path="res://Bikes/bike_mass_center.gd" id="11_msbpd"]
 [ext_resource type="Texture2D" uid="uid://c1x65ktxdq8m8" path="res://Avatar/Players/Noir/Rider_8.png" id="11_n05id"]
-[ext_resource type="Texture2D" uid="uid://b1x5hov2qgrqo" path="res://Avatar/Players/Juju.png" id="12_p6j0b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ow0o1"]
 
@@ -65,7 +64,8 @@ animations = [{
 size = Vector2(108, 32)
 
 [node name="Bike" type="Node2D" unique_id=1924211386]
-script = ExtResource("1_6cy87")
+visibility_layer = 2
+script = ExtResource("1_msbpd")
 
 [node name="Roue_avant" type="RigidBody2D" parent="." unique_id=442044832]
 unique_name_in_owner = true
@@ -117,7 +117,6 @@ unique_name_in_owner = true
 collision_layer = 2
 mass = 60.0
 center_of_mass_mode = 1
-script = ExtResource("3_eng8b")
 
 [node name="Animation" type="AnimatedSprite2D" parent="Cadre" unique_id=1371691081]
 unique_name_in_owner = true
@@ -140,11 +139,10 @@ position = Vector2(3, 31.663673)
 scale = Vector2(1, 1.0070754)
 polygon = PackedVector2Array(9, -91.01967, 23, -93.00562, 39, -84.06885, 22, -51.300697, 43, -18.532547, 23, -6.6168575, 17, 12.249655, -18, 13.242628, -44, -42.36393, -30, -65.20234)
 
-[node name="Juju" type="Sprite2D" parent="Cadre" unique_id=783116584]
-visible = false
-position = Vector2(2, 2.0000005)
-scale = Vector2(0.06535947, 0.038766347)
-texture = ExtResource("12_p6j0b")
+[node name="Bike_MassCenter" type="Node2D" parent="Cadre" unique_id=178776828]
+unique_name_in_owner = true
+z_index = 25
+script = ExtResource("11_msbpd")
 
 [node name="Joint_arrière" type="PinJoint2D" parent="." unique_id=113849391]
 position = Vector2(-50, 44)
