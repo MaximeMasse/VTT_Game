@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://jl8awcmsao1g"]
+
+[ext_resource type="Script" uid="uid://28fn6fdx6h46" path="res://Maps/map_3.gd" id="1_oilso"]
+[ext_resource type="Texture2D" uid="uid://bxacxsdfusqlg" path="res://Images/Mapping/Cover/flat.png" id="2_b0rr0"]
+[ext_resource type="PackedScene" uid="uid://dwkcoiv7k6b8u" path="res://TileSet/start.tscn" id="3_pymfl"]
+[ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="4_pla12"]
+[ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="5_b0rr0"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pymfl"]
+b = Vector2(7132, 236)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pla12"]
+b = Vector2(4994, 863)
+
+[node name="Node2D" type="Node2D" unique_id=76721891]
+script = ExtResource("1_oilso")
+
+[node name="Flat" type="Sprite2D" parent="." unique_id=1384039101]
+position = Vector2(1726.0001, 98.00001)
+rotation = 0.027593628
+scale = Vector2(2.3782551, 1)
+texture = ExtResource("2_b0rr0")
+
+[node name="Flat2" type="Sprite2D" parent="." unique_id=674053896]
+position = Vector2(5288, 219.00003)
+rotation = 0.034160487
+scale = Vector2(2.3782551, 1)
+texture = ExtResource("2_b0rr0")
+
+[node name="Start" parent="." unique_id=1752885992 instance=ExtResource("3_pymfl")]
+unique_name_in_owner = true
+position = Vector2(6, -31.000008)
+
+[node name="Flat4" type="Sprite2D" parent="." unique_id=1009204954]
+position = Vector2(12072.001, 1129.9998)
+rotation = 0.1604514
+scale = Vector2(2.3782551, 1)
+texture = ExtResource("2_b0rr0")
+
+[node name="Flat3" type="Sprite2D" parent="." unique_id=1312310811]
+position = Vector2(8885.999, 592.99994)
+rotation = 0.17033553
+scale = Vector2(2.3782551, 1)
+texture = ExtResource("2_b0rr0")
+
+[node name="Finish" parent="." unique_id=859229829 instance=ExtResource("4_pla12")]
+unique_name_in_owner = true
+position = Vector2(12011, 996)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1651504015]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=273301144]
+position = Vector2(-95, 0)
+shape = SubResource("SegmentShape2D_pymfl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=2050595358]
+position = Vector2(7038, 235)
+shape = SubResource("SegmentShape2D_pla12")
+
+[node name="Checkpoint_1" parent="." unique_id=1899925259 instance=ExtResource("5_b0rr0")]
+unique_name_in_owner = true
+position = Vector2(7039, 173)
+
+[connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
+[connection signal="body_entered" from="Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]

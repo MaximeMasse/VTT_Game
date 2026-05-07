@@ -118,7 +118,6 @@ unique_name_in_owner = true
 collision_layer = 2
 mass = 60.0
 center_of_mass_mode = 1
-script = ExtResource("3_rbhft")
 
 [node name="Animation" type="AnimatedSprite2D" parent="Cadre" unique_id=1371691081]
 unique_name_in_owner = true
@@ -146,6 +145,11 @@ visible = false
 position = Vector2(2, 2.0000005)
 scale = Vector2(0.06535947, 0.038766347)
 texture = ExtResource("11_pck5q")
+
+[node name="Bike_MassCenter" type="Node2D" parent="Cadre" unique_id=178776828]
+unique_name_in_owner = true
+z_index = 25
+script = ExtResource("3_rbhft")
 
 [node name="Joint_arrière" type="PinJoint2D" parent="." unique_id=113849391]
 position = Vector2(-50, 44)

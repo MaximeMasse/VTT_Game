@@ -36,11 +36,9 @@ func _ready():
 	roue_avant.mass = 1
 	roue_arrière.mass = 1
 	cadre.mass = 10
+	cadre.center_of_mass = Vector2(10,15)
 
 func _physics_process(delta):
-	
-	draw_circle(cadre.center_of_mass, 5, Color.RED)
-	
 	if not can_drive:
 		Global.vitesse = Vector2.ZERO
 		Global.current_trick = ""
