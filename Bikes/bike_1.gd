@@ -13,6 +13,7 @@ var COUPLE_CADRE_SOL :float = Global.current_profile["stats"]["COUPLE_CADRE_SOL"
 var COUPLE_CADRE_AIR :float = Global.current_profile["stats"]["COUPLE_CADRE_AIR"]
 var BALANCE_CONTROL :float = Global.current_profile["stats"]["BALANCE_CONTROL"]
 var AV_CONTROL :float = Global.current_profile["stats"]["AV_CONTROL"]
+var AIR_ROTATION_CONTROL :float = Global.current_profile["stats"]["AIR_ROTATION_CONTROL"]
 # Saut
 var GREEN_TIME :float = Global.current_profile["stats"]["GREEN_TIME"]
 var SWEET_SPOT :float = Global.current_profile["stats"]["SWEET_SPOT"]
@@ -114,6 +115,8 @@ func _physics_process(delta):
 	else : 
 		# Balance
 		couple_cible = input_balance * COUPLE_CADRE_AIR
+		# Rotation control
+		cadre.angular_velocity = clampf(cadre.angular_velocity,-AIR_ROTATION_CONTROL,AIR_ROTATION_CONTROL)
 		# Air speed control
 		if not Input.is_action_pressed("Pédaler"):
 			cadre.linear_velocity -= AIR_SPEED_CONTROL * acceleration_direction

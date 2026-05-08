@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://1g14hovqb8tt"]
 
 [ext_resource type="Script" uid="uid://duifn4bnckf84" path="res://Maps/map_0.gd" id="1_mei6p"]
+[ext_resource type="Texture2D" uid="uid://drxpwn0ljif44" path="res://Images/Mapping/Textures/terre_4.png" id="2_wux8b"]
+[ext_resource type="Texture2D" uid="uid://d30y0hteyrgce" path="res://Images/Mapping/Textures/under_road_1.png" id="4_sal8n"]
 [ext_resource type="Texture2D" uid="uid://bydviu6i2qrl2" path="res://Images/Mapping/Bike_model.png" id="5_2m57o"]
 [ext_resource type="PackedScene" uid="uid://dwkcoiv7k6b8u" path="res://TileSet/start.tscn" id="7_puugl"]
+[ext_resource type="Texture2D" uid="uid://cd22yhfyqh57" path="res://Images/Mapping/Textures/grass_1.png" id="7_svcth"]
 [ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="8_e1l6w"]
 [ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="9_4hqvm"]
 
 [sub_resource type="Curve2D" id="Curve2D_2m57o"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -257, 62, 0, 0, 0, 0, 771, 62, -69.212006, -41.261, 69.212006, 41.261, 987, 105, 0, 0, 0, 0, 1317, 290, 0, 0, 0, 0, 1596, 442, -102.48701, -9.317, 102.48701, 9.317, 1801, 499, 0, 0, 0, 0, 2120, 506, -50, 14, 50, -14, 2390, 488, 0, 0, 0, 0, 2567, 387)
+"points": PackedVector2Array(0, 0, 0, 0, -469, 64, 0, 0, 0, 0, 771, 62, -69.212006, -41.261, 69.212006, 41.261, 987, 105, 0, 0, 0, 0, 1317, 290, 0, 0, 0, 0, 1596, 442, -102.48701, -9.317, 102.48701, 9.317, 1801, 499, 0, 0, 0, 0, 2120, 506, -50, 14, 50, -14, 2390, 488, 0, 0, 0, 0, 2567, 387)
 }
 point_count = 9
 
@@ -32,30 +35,27 @@ point_count = 5
 
 [node name="Map" type="Node2D" unique_id=1845493518]
 script = ExtResource("1_mei6p")
+road_texture = ExtResource("2_wux8b")
+up_texture = ExtResource("7_svcth")
+down_offset = Vector2(0, 60)
+down_texture = ExtResource("4_sal8n")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1721831737]
-visible = false
-offset_left = -590.0
-offset_top = -270.0
-offset_right = 1236.0
-offset_bottom = 991.0
+[node name="Spots" type="Node2D" parent="." unique_id=1345368999]
 
-[node name="Assets" type="Node2D" parent="." unique_id=1345368999]
-
-[node name="Start" parent="Assets" unique_id=1752885992 instance=ExtResource("7_puugl")]
+[node name="Start" parent="Spots" unique_id=1752885992 instance=ExtResource("7_puugl")]
 unique_name_in_owner = true
 position = Vector2(1.0000153, -34)
 scale = Vector2(0.2689295, 0.2576923)
 
-[node name="Finish" parent="Assets" unique_id=1211676905 instance=ExtResource("8_e1l6w")]
+[node name="Finish" parent="Spots" unique_id=1211676905 instance=ExtResource("8_e1l6w")]
 unique_name_in_owner = true
 position = Vector2(11591, 1932)
 
-[node name="Checkpoint_1" parent="Assets" unique_id=1495936311 instance=ExtResource("9_4hqvm")]
+[node name="Checkpoint_1" parent="Spots" unique_id=1495936311 instance=ExtResource("9_4hqvm")]
 unique_name_in_owner = true
 position = Vector2(4962, 557)
 
-[node name="Checkpoint_2" parent="Assets" unique_id=1899925259 instance=ExtResource("9_4hqvm")]
+[node name="Checkpoint_2" parent="Spots" unique_id=1899925259 instance=ExtResource("9_4hqvm")]
 unique_name_in_owner = true
 position = Vector2(8245, 844)
 
@@ -84,6 +84,8 @@ unique_name_in_owner = true
 [node name="Textures" type="Node2D" parent="." unique_id=580291734]
 unique_name_in_owner = true
 
-[connection signal="body_entered" from="Assets/Finish" to="." method="_on_finish_body_entered"]
-[connection signal="body_entered" from="Assets/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]
-[connection signal="body_entered" from="Assets/Checkpoint_2" to="." method="_on_checkpoint_2_body_entered"]
+[node name="Assets" type="Node2D" parent="." unique_id=1612230551]
+
+[connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
+[connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]
+[connection signal="body_entered" from="Spots/Checkpoint_2" to="." method="_on_checkpoint_2_body_entered"]

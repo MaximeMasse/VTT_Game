@@ -66,6 +66,8 @@ func _input(event):
 			AudioManager.stop_sfx()
 			velo_courant.queue_free()
 			map_courante.queue_free()
+			velo_courant = null
+			await get_tree().process_frame
 			load_map()
 			load_bike()
 		if Input.is_action_just_pressed("Respawn"):
@@ -73,7 +75,9 @@ func _input(event):
 			respawn_bike()
 
 func load_map():
-	map_courante = Global.get_current_map().instantiate()
+	var path : String = Global.get_current_map()
+	var map_scene := ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE)
+	map_courante = map_scene.instantiate()
 	%MapContainer.add_child(map_courante)
 	map_courante.finish.connect(map_finished)
 	map_data = map_courante.get_level_data()

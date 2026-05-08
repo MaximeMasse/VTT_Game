@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b6gsrjd7m3gj0" path="res://Avatar/Players/Noir/Rider_6.png" id="8_56yun"]
 [ext_resource type="Texture2D" uid="uid://c8657jcrqurb7" path="res://Avatar/Players/Noir/Rider_7.png" id="9_vsv0l"]
 [ext_resource type="Texture2D" uid="uid://c1x65ktxdq8m8" path="res://Avatar/Players/Noir/Rider_8.png" id="10_wxucg"]
-[ext_resource type="Script" uid="uid://cbdp84xoxff1t" path="res://Bikes/bike_mass_center.gd" id="11_rcaeu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ow0o1"]
 
@@ -142,7 +141,6 @@ polygon = PackedVector2Array(9, -91.01967, 23, -93.00562, 39, -84.06885, 22, -51
 [node name="Bike_MassCenter" type="Node2D" parent="Cadre" unique_id=178776828]
 unique_name_in_owner = true
 z_index = 25
-script = ExtResource("11_rcaeu")
 
 [node name="Joint_arrière" type="PinJoint2D" parent="." unique_id=113849391]
 position = Vector2(-50, 44)
