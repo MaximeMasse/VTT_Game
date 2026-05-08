@@ -35,6 +35,7 @@ var couple_cadre_actuel :float = 0.0
 var temps_compression := 0.0
 var previous_state := "slow_riding"
 var current_state := "slow_riding"
+var input_enabled := true
 
 signal crashed
 
@@ -70,7 +71,7 @@ func _physics_process(delta):
 		acceleration_direction = Vector2.RIGHT.rotated(rotation)
 	Global.player_position = cadre.global_position
 	Global.contact_sol = contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies()
-	var input_balance := Input.get_axis("Arrière", "Avant")
+	var input_balance := Input.get_axis("Arrière", "Avant") if input_enabled else 0.0
 	var couple_cible := 0.0
 	
 	# Frictions

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pnhixmarwqyj"
-path="res://.godot/imported/start.png-7d879c1a62c95876e9de30780a539772.ctex"
+uid="uid://b73u573tnpyi1"
+path="res://.godot/imported/rock_line_1.png-8dcbe847419a4f1dfb68cabefacad325.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Mapping/Assets/start.png"
-dest_files=["res://.godot/imported/start.png-7d879c1a62c95876e9de30780a539772.ctex"]
+source_file="res://Images/Mapping/Cover/rock_line_1.png"
+dest_files=["res://.godot/imported/rock_line_1.png-8dcbe847419a4f1dfb68cabefacad325.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djhysd2746eis"
-path="res://.godot/imported/terre_1.png-96370e04d45b17241b5459a7065611a6.ctex"
+uid="uid://dwt7vutc8p3fx"
+path="res://.godot/imported/Fond_nuages.png-0f98280105a47fc4b8b7710de6967390.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Mapping/Textures/terre_1.png"
-dest_files=["res://.godot/imported/terre_1.png-96370e04d45b17241b5459a7065611a6.ctex"]
+source_file="res://Images/Mapping/Fonds/Fond_nuages.png"
+dest_files=["res://.godot/imported/Fond_nuages.png-0f98280105a47fc4b8b7710de6967390.ctex"]
 
 [params]
 

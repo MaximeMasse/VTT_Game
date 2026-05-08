@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ceb13othey6n2"]
 
 [ext_resource type="Script" uid="uid://b0a3cwwlbqhvm" path="res://game.gd" id="1_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://fwov5u20clh3" path="res://Images/Fond2.png" id="2_feb5d"]
 [ext_resource type="Texture2D" uid="uid://bg87b1ha0jjfv" path="res://Images/Menus/Controls/resume_up.png" id="4_ryrav"]
 [ext_resource type="PackedScene" uid="uid://c6l7y8jhln7o0" path="res://hud.tscn" id="5_7jktm"]
 [ext_resource type="Texture2D" uid="uid://byv50krroasxt" path="res://Images/Menus/Controls/abandon_up.png" id="5_eow3j"]
@@ -24,16 +23,6 @@ font_names = PackedStringArray("Pixel Game")
 [node name="Game" type="Node2D" unique_id=687301190]
 process_mode = 3
 script = ExtResource("1_fc0e3")
-
-[node name="Fond_jeu" type="CanvasLayer" parent="." unique_id=14753229]
-layer = -33
-
-[node name="TextureRect" type="TextureRect" parent="Fond_jeu" unique_id=2009930523]
-offset_top = -8.0
-offset_right = 1294.2222
-offset_bottom = 720.0
-texture = ExtResource("2_feb5d")
-expand_mode = 1
 
 [node name="HUD" parent="." unique_id=1185251805 instance=ExtResource("5_7jktm")]
 unique_name_in_owner = true

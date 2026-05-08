@@ -101,6 +101,7 @@ func load_bike():
 func respawn_bike():
 	velo_courant = Global.get_profile_bike().instantiate()
 	%BikeContainer.add_child(velo_courant)
+	disable_inputs_for_x_second(0.5)
 	velo_courant.can_drive = true
 	camera_target = velo_courant.cadre
 	velo_courant.crashed.connect(respawn_bike)
@@ -124,7 +125,11 @@ func start_countdown():
 	await get_tree().create_timer(1).timeout
 	%Ingame_Label.hide()
 	AudioManager.play_music("Map_" + str(Global.current_map))
-	
+
+func disable_inputs_for_x_second(x:float):
+	velo_courant.input_enabled = false
+	await get_tree().create_timer(x).timeout
+	velo_courant.input_enabled = true
 
 func _process(delta):
 	if is_instance_valid(camera_target):

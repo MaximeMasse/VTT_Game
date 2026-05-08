@@ -3,11 +3,24 @@
 [ext_resource type="Script" uid="uid://duifn4bnckf84" path="res://Maps/map_0.gd" id="1_mei6p"]
 [ext_resource type="Texture2D" uid="uid://drxpwn0ljif44" path="res://Images/Mapping/Textures/terre_4.png" id="2_wux8b"]
 [ext_resource type="Texture2D" uid="uid://d30y0hteyrgce" path="res://Images/Mapping/Textures/under_road_1.png" id="4_sal8n"]
-[ext_resource type="Texture2D" uid="uid://bydviu6i2qrl2" path="res://Images/Mapping/Bike_model.png" id="5_2m57o"]
 [ext_resource type="PackedScene" uid="uid://dwkcoiv7k6b8u" path="res://TileSet/start.tscn" id="7_puugl"]
 [ext_resource type="Texture2D" uid="uid://cd22yhfyqh57" path="res://Images/Mapping/Textures/grass_1.png" id="7_svcth"]
+[ext_resource type="Texture2D" uid="uid://uuoan5p7uhve" path="res://Images/Mapping/Cover/forest_3.png" id="8_4hqvm"]
 [ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="8_e1l6w"]
+[ext_resource type="Texture2D" uid="uid://b73u573tnpyi1" path="res://Images/Mapping/Cover/rock_line_1.png" id="9_2k2xf"]
 [ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="9_4hqvm"]
+[ext_resource type="Texture2D" uid="uid://dwt7vutc8p3fx" path="res://Images/Mapping/Fonds/Fond_nuages.png" id="9_sydi8"]
+[ext_resource type="Texture2D" uid="uid://vrrxlv0cap0h" path="res://Images/Mapping/Assets/Rocks/rock_big_1.png" id="9_y2cw0"]
+[ext_resource type="Texture2D" uid="uid://b60tpv2slrwef" path="res://Images/Mapping/Fonds/Fond_montagnes.png" id="10_2k2xf"]
+[ext_resource type="Texture2D" uid="uid://bb53ivx7kwmg7" path="res://Images/Mapping/Assets/Rocks/rock_small_1.png" id="11_6tt68"]
+[ext_resource type="Texture2D" uid="uid://5k4i7haivqc0" path="res://Images/Mapping/Assets/Rocks/rock_small_2.png" id="12_jldr1"]
+[ext_resource type="Texture2D" uid="uid://dqdmt8cisjb1h" path="res://Images/Mapping/Cover/Forest_2.png" id="13_e1l6w"]
+[ext_resource type="Texture2D" uid="uid://bbdicpo6bmg06" path="res://Images/Mapping/Cover/Forest_1.png" id="14_4hqvm"]
+[ext_resource type="Texture2D" uid="uid://bflvkvtg4acd" path="res://Images/Mapping/Cover/Forest_5.png" id="16_m15sf"]
+[ext_resource type="Texture2D" uid="uid://c3ksrwijri7lb" path="res://Images/Mapping/Assets/Pannels/Compress.png" id="17_7jcjq"]
+[ext_resource type="Texture2D" uid="uid://d1rdp8aqfol8r" path="res://Images/Mapping/Cover/forest_4.png" id="17_dhc5w"]
+[ext_resource type="Texture2D" uid="uid://j3x0atdxtbhy" path="res://Images/Mapping/Assets/Pannels/Jump.png" id="18_c1anf"]
+[ext_resource type="Texture2D" uid="uid://cehaaa47dsmid" path="res://Images/Mapping/Assets/Tinys.png" id="19_dhc5w"]
 
 [sub_resource type="Curve2D" id="Curve2D_2m57o"]
 _data = {
@@ -17,21 +30,15 @@ point_count = 9
 
 [sub_resource type="Curve2D" id="Curve2D_wux8b"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 3599, 334, -150.05125, -96.46152, 150.05125, 96.46152, 3944, 428, -96.00735, -48.30403, 96.00735, 48.30403, 4209, 624, 0, 0, 0, 0, 4574, 692, 0, 0, 0, 0, 5395, 695, -136.16132, 42.458904, 136.16132, -42.458904, 5769, 647)
+"points": PackedVector2Array(0, 0, 0, 0, 3075, 247, -150.05125, -96.46152, 150.05125, 96.46152, 3547, 338, 0, 0, 0, 0, 3833, 514, -178.00735, -15.304031, 178.00735, 15.304031, 4209, 624, 0, 0, 0, 0, 4637, 632, 0, 0, 0, 0, 5159, 634, -211.46552, 49.950237, 211.46552, -49.950237, 5571, 604, -54.09466, 63.110435, 54.09466, -63.110435, 5853, 471, 0, 0, 0, 0, 5918, 377, 0, 0, 0, 0, 6135, 379, -35.124374, -61.316986, 35.124374, 61.316986, 6205, 569, 0, 0, 0, 0, 6312, 698, -55.532055, -40.283016, 55.532055, 40.283016, 6429, 800, -155.06697, -12.587052, 155.06697, 12.587052, 6728, 880, -92.72727, 32.727272, 92.72727, -32.727272, 7212, 844, -18.63861, 21.737011, 18.63861, -21.737011, 7450, 721)
 }
-point_count = 6
+point_count = 16
 
-[sub_resource type="Curve2D" id="Curve2D_svcth"]
+[sub_resource type="Curve2D" id="Curve2D_7jcjq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 6170, 635, 0, 0, 0, 0, 6969, 633)
+"points": PackedVector2Array(0, 0, 0, 0, 8006, 700, 0, 0, 0, 0, 8397, 723)
 }
 point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_sal8n"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 7278, 768, -70.86245, -40.262756, 70.86245, 40.262756, 7439, 881, -85.35704, -11.273572, 85.35704, 11.273572, 7638, 950, 0, 0, 0, 0, 8079, 972, 0, 0, 0, 0, 8416, 975)
-}
-point_count = 5
 
 [node name="Map" type="Node2D" unique_id=1845493518]
 script = ExtResource("1_mei6p")
@@ -44,7 +51,7 @@ down_texture = ExtResource("4_sal8n")
 
 [node name="Start" parent="Spots" unique_id=1752885992 instance=ExtResource("7_puugl")]
 unique_name_in_owner = true
-position = Vector2(1.0000153, -34)
+position = Vector2(1.1920929e-07, -19.000004)
 scale = Vector2(0.2689295, 0.2576923)
 
 [node name="Finish" parent="Spots" unique_id=1211676905 instance=ExtResource("8_e1l6w")]
@@ -53,15 +60,11 @@ position = Vector2(11591, 1932)
 
 [node name="Checkpoint_1" parent="Spots" unique_id=1495936311 instance=ExtResource("9_4hqvm")]
 unique_name_in_owner = true
-position = Vector2(4962, 557)
+position = Vector2(4459, 557)
 
 [node name="Checkpoint_2" parent="Spots" unique_id=1899925259 instance=ExtResource("9_4hqvm")]
 unique_name_in_owner = true
-position = Vector2(8245, 844)
-
-[node name="BikeModel" type="Sprite2D" parent="." unique_id=326328508]
-position = Vector2(2438, 286)
-texture = ExtResource("5_2m57o")
+position = Vector2(8941, 419)
 
 [node name="Paths" type="Node2D" parent="." unique_id=1436220943]
 unique_name_in_owner = true
@@ -72,11 +75,8 @@ curve = SubResource("Curve2D_2m57o")
 [node name="Path2D2" type="Path2D" parent="Paths" unique_id=1386315039]
 curve = SubResource("Curve2D_wux8b")
 
-[node name="Path2D3" type="Path2D" parent="Paths" unique_id=656999091]
-curve = SubResource("Curve2D_svcth")
-
-[node name="Path2D4" type="Path2D" parent="Paths" unique_id=326477390]
-curve = SubResource("Curve2D_sal8n")
+[node name="Path2D3" type="Path2D" parent="Paths" unique_id=1828924453]
+curve = SubResource("Curve2D_7jcjq")
 
 [node name="Floors" type="StaticBody2D" parent="." unique_id=11458257]
 unique_name_in_owner = true
@@ -85,6 +85,236 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Assets" type="Node2D" parent="." unique_id=1612230551]
+
+[node name="RockBig1" type="Sprite2D" parent="Assets" unique_id=1313140531]
+position = Vector2(2570.0002, 482.99997)
+rotation = 0.34994236
+texture = ExtResource("9_y2cw0")
+
+[node name="RockSmall1" type="Sprite2D" parent="Assets" unique_id=908387738]
+position = Vector2(2516, 531)
+texture = ExtResource("11_6tt68")
+
+[node name="RockSmall2" type="Sprite2D" parent="Assets" unique_id=840918315]
+position = Vector2(2530, 573)
+texture = ExtResource("12_jldr1")
+
+[node name="RockBig2" type="Sprite2D" parent="Assets" unique_id=385013086]
+z_index = 1
+position = Vector2(3102, 311.00012)
+rotation = -0.34929037
+scale = Vector2(0.80875576, 0.83593756)
+texture = ExtResource("9_y2cw0")
+
+[node name="FrontForest" type="Node2D" parent="Assets" unique_id=1214418813]
+
+[node name="Forest2" type="Sprite2D" parent="Assets/FrontForest" unique_id=1118898969]
+z_index = 49
+position = Vector2(1103, 447)
+texture = ExtResource("13_e1l6w")
+region_enabled = true
+region_rect = Rect2(0, 0, 984.6493, 1024.3396)
+
+[node name="Forest1" type="Sprite2D" parent="Assets/FrontForest" unique_id=961370583]
+z_index = 44
+position = Vector2(242, 453)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+texture = ExtResource("14_4hqvm")
+region_enabled = true
+region_rect = Rect2(0, 0, 739.75464, 1024)
+
+[node name="Forest3" type="Sprite2D" parent="Assets/FrontForest" unique_id=1794607140]
+z_index = 90
+position = Vector2(-124, 325)
+texture = ExtResource("14_4hqvm")
+region_enabled = true
+region_rect = Rect2(0, 0, 695.81665, 1024)
+
+[node name="Forest5" type="Sprite2D" parent="Assets/FrontForest" unique_id=812789218]
+z_index = 25
+position = Vector2(4696, 812)
+texture = ExtResource("16_m15sf")
+region_enabled = true
+region_rect = Rect2(0, 0, 1415.6582, 724)
+
+[node name="Forest4" type="Sprite2D" parent="Assets/FrontForest" unique_id=2124459279]
+position = Vector2(3698, 646)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+texture = ExtResource("14_4hqvm")
+region_enabled = true
+region_rect = Rect2(826.4895, 0, 707.57324, 1024)
+
+[node name="Forest6" type="Sprite2D" parent="Assets/FrontForest" unique_id=1691523014]
+z_index = 5
+position = Vector2(2972, 659)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+texture = ExtResource("13_e1l6w")
+region_enabled = true
+region_rect = Rect2(0, 0, 833.6219, 1024)
+
+[node name="Forest7" type="Sprite2D" parent="Assets/FrontForest" unique_id=1156717791]
+z_index = 6
+position = Vector2(6224, 821)
+texture = ExtResource("17_dhc5w")
+region_enabled = true
+region_rect = Rect2(0, 0, 437.03845, 890)
+
+[node name="Forest8" type="Sprite2D" parent="Assets/FrontForest" unique_id=1298962908]
+z_index = 10
+position = Vector2(5635, 807)
+texture = ExtResource("14_4hqvm")
+region_enabled = true
+region_rect = Rect2(750.88153, 0, 785.11847, 1024)
+
+[node name="Forest9" type="Sprite2D" parent="Assets/FrontForest" unique_id=920738569]
+z_index = 13
+position = Vector2(7026, 1104)
+texture = ExtResource("8_4hqvm")
+
+[node name="Forest10" type="Sprite2D" parent="Assets/FrontForest" unique_id=70840456]
+z_index = 82
+position = Vector2(2058, 759)
+texture = ExtResource("8_4hqvm")
+
+[node name="RockLine" type="Node2D" parent="Assets" unique_id=1804139372]
+
+[node name="RockLine3" type="Sprite2D" parent="Assets/RockLine" unique_id=743484996]
+position = Vector2(1308.4471, 409.8524)
+rotation = 0.50037426
+scale = Vector2(0.5355493, 1.5644048)
+texture = ExtResource("9_2k2xf")
+
+[node name="RockLine1" type="Sprite2D" parent="Assets/RockLine" unique_id=899705208]
+z_index = 25
+position = Vector2(237, 186.5)
+scale = Vector2(1, 1.759124)
+texture = ExtResource("9_2k2xf")
+
+[node name="RockLine2" type="Sprite2D" parent="Assets/RockLine" unique_id=443865896]
+position = Vector2(2131.75, 594)
+scale = Vector2(0.6941368, 1)
+texture = ExtResource("9_2k2xf")
+
+[node name="RockLine4" type="Sprite2D" parent="Assets/RockLine" unique_id=89656313]
+position = Vector2(4818, 755)
+scale = Vector2(1, 2.0401459)
+texture = ExtResource("9_2k2xf")
+
+[node name="RockLine5" type="Sprite2D" parent="Assets/RockLine" unique_id=1327936058]
+position = Vector2(6028, 534)
+scale = Vector2(0.4977221, 2.2810218)
+texture = ExtResource("9_2k2xf")
+region_enabled = true
+region_rect = Rect2(376.623, 0, 439.38025, 137)
+
+[node name="RockLine6" type="Sprite2D" parent="Assets/RockLine" unique_id=637646973]
+z_index = -20
+position = Vector2(3254.4248, 384.19092)
+rotation = 3.1415927
+scale = Vector2(0.8899177, -1.9775244)
+texture = ExtResource("9_2k2xf")
+region_enabled = true
+region_rect = Rect2(0, 0, 641.96295, 137)
+
+[node name="RockLine7" type="Sprite2D" parent="Assets/RockLine" unique_id=1718485626]
+z_index = -29
+position = Vector2(3716.0002, 535)
+rotation = 0.4998479
+scale = Vector2(0.82798135, 1.6133205)
+texture = ExtResource("9_2k2xf")
+region_enabled = true
+region_rect = Rect2(365.2105, 0, 972.91327, 137)
+
+[node name="RockLine8" type="Sprite2D" parent="Assets/RockLine" unique_id=1306771409]
+z_index = 1
+position = Vector2(6120, 644.9999)
+rotation = 0.61514574
+scale = Vector2(0.7309394, 1.9306569)
+texture = ExtResource("9_2k2xf")
+region_enabled = true
+region_rect = Rect2(867.3593, 0, 442.23346, 137)
+
+[node name="RockLine9" type="Sprite2D" parent="Assets/RockLine" unique_id=54569353]
+position = Vector2(5841.999, 634.00006)
+rotation = -0.6850249
+scale = Vector2(1, 2.3182418)
+texture = ExtResource("9_2k2xf")
+region_enabled = true
+region_rect = Rect2(0, 0, 350.9449, 137)
+
+[node name="RockLine10" type="Sprite2D" parent="Assets/RockLine" unique_id=2139321667]
+z_index = 7
+position = Vector2(7491, 879)
+rotation = -0.3402146
+scale = Vector2(1, 2.226042)
+texture = ExtResource("9_2k2xf")
+region_enabled = true
+region_rect = Rect2(861.65314, 0, 476.47064, 137)
+
+[node name="Pannels" type="Node2D" parent="Assets" unique_id=65779085]
+
+[node name="Compress" type="Sprite2D" parent="Assets/Pannels" unique_id=119919755]
+position = Vector2(1398.9999, 253.99997)
+rotation = 0.5705031
+texture = ExtResource("17_7jcjq")
+
+[node name="Jump" type="Sprite2D" parent="Assets/Pannels" unique_id=1075015875]
+z_index = -5
+position = Vector2(2428, 373)
+rotation = -0.45361
+texture = ExtResource("18_c1anf")
+
+[node name="Tinys" type="Sprite2D" parent="Assets" unique_id=1144386792]
+position = Vector2(5915.0005, 430)
+scale = Vector2(0.55357057, 0.491959)
+texture = ExtResource("19_dhc5w")
+region_enabled = true
+region_rect = Rect2(331.47308, 576.1954, 182.59961, 171.18713)
+
+[node name="Tinys2" type="Sprite2D" parent="Assets" unique_id=1942065479]
+position = Vector2(6134, 431.99976)
+rotation = 0.70784277
+texture = ExtResource("19_dhc5w")
+region_enabled = true
+region_rect = Rect2(188.81714, 744.52936, 176.89337, 116.977844)
+
+[node name="RockSmall3" type="Sprite2D" parent="Assets" unique_id=623810588]
+z_index = 6
+position = Vector2(7471, 757)
+texture = ExtResource("12_jldr1")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=746463856]
+
+[node name="Ciel" type="ParallaxLayer" parent="ParallaxBackground" unique_id=146799377]
+position = Vector2(-3, -3)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(3550, 0)
+
+[node name="Fond2" type="Sprite2D" parent="ParallaxBackground/Ciel" unique_id=930560975]
+position = Vector2(1510.0001, 307)
+scale = Vector2(2.3193357, 2.319336)
+texture = ExtResource("9_sydi8")
+
+[node name="Montagnes" type="ParallaxLayer" parent="ParallaxBackground" unique_id=691336840]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(3550, 0)
+
+[node name="FondMontagnes" type="Sprite2D" parent="ParallaxBackground/Montagnes" unique_id=781013625]
+position = Vector2(1508.0001, 319)
+scale = Vector2(2.319, 2.319)
+texture = ExtResource("10_2k2xf")
+
+[node name="Foret" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1577013277]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(3550, 0)
+
+[node name="Forest4" type="Sprite2D" parent="ParallaxBackground/Foret" unique_id=1981675213]
+position = Vector2(1507, 528)
+scale = Vector2(2.319, 2.319)
+texture = ExtResource("17_dhc5w")
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]
