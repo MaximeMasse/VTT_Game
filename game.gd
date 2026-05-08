@@ -65,6 +65,8 @@ func _input(event):
 			AudioManager.stop_music()
 			AudioManager.stop_sfx()
 			velo_courant.queue_free()
+			map_courante.queue_free()
+			load_map()
 			load_bike()
 		if Input.is_action_just_pressed("Respawn"):
 			velo_courant.queue_free()

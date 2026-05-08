@@ -90,12 +90,12 @@ func _physics_process(delta):
 		# Frein arrière
 		if Input.is_action_pressed("Frein_arrière"):
 			roue_arrière.linear_velocity = lerp(
-				roue_arrière.linear_velocity, Vector2(0.0,0.0), 1.0-exp(-0.5 * FORCE_FREINS * delta))
+				roue_arrière.linear_velocity, Vector2(0.0,0.0), 0.5 * FORCE_FREINS * delta)
 	# Si contact avant
 	if contact_sol_avant.has_overlapping_bodies():
 		if Input.is_action_pressed("Frein_avant"):
 			roue_avant.linear_velocity = lerp(
-				roue_avant.linear_velocity, Vector2(0.0,0.0), 1.0-exp(-FORCE_FREINS * delta))
+				roue_avant.linear_velocity, Vector2(0.0,0.0), FORCE_FREINS * delta)
 	
 	# Air or Ground
 	if Global.contact_sol:

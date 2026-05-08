@@ -6,6 +6,30 @@
 [ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="8_e1l6w"]
 [ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="9_4hqvm"]
 
+[sub_resource type="Curve2D" id="Curve2D_2m57o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -257, 62, 0, 0, 0, 0, 771, 62, -69.212006, -41.261, 69.212006, 41.261, 987, 105, 0, 0, 0, 0, 1317, 290, 0, 0, 0, 0, 1596, 442, -102.48701, -9.317, 102.48701, 9.317, 1801, 499, 0, 0, 0, 0, 2120, 506, -50, 14, 50, -14, 2390, 488, 0, 0, 0, 0, 2567, 387)
+}
+point_count = 9
+
+[sub_resource type="Curve2D" id="Curve2D_wux8b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3599, 334, -150.05125, -96.46152, 150.05125, 96.46152, 3944, 428, -96.00735, -48.30403, 96.00735, 48.30403, 4209, 624, 0, 0, 0, 0, 4574, 692, 0, 0, 0, 0, 5395, 695, -136.16132, 42.458904, 136.16132, -42.458904, 5769, 647)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_svcth"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 6170, 635, 0, 0, 0, 0, 6969, 633)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_sal8n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7278, 768, -70.86245, -40.262756, 70.86245, 40.262756, 7439, 881, -85.35704, -11.273572, 85.35704, 11.273572, 7638, 950, 0, 0, 0, 0, 8079, 972, 0, 0, 0, 0, 8416, 975)
+}
+point_count = 5
+
 [node name="Map" type="Node2D" unique_id=1845493518]
 script = ExtResource("1_mei6p")
 
@@ -15,8 +39,6 @@ offset_left = -590.0
 offset_top = -270.0
 offset_right = 1236.0
 offset_bottom = 991.0
-
-[node name="Habillage" type="Node2D" parent="." unique_id=98157492]
 
 [node name="Assets" type="Node2D" parent="." unique_id=1345368999]
 
@@ -35,17 +57,32 @@ position = Vector2(4962, 557)
 
 [node name="Checkpoint_2" parent="Assets" unique_id=1899925259 instance=ExtResource("9_4hqvm")]
 unique_name_in_owner = true
-position = Vector2(6207, 588)
-
-[node name="Floor" type="StaticBody2D" parent="." unique_id=421347947]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor" unique_id=1081561578]
-position = Vector2(-468, -4)
-polygon = PackedVector2Array(-322, 64, 768, 64, 1000, 64, 1131, 66, 1196, 71, 1282, 84, 1340, 94, 1426, 108, 1494, 122, 1720, 162, 1845, 189, 1964, 227, 2074, 278, 2263, 358, 2406, 403, 2619, 438, 2850, 466, 3191, 486, 3413, 486, 3490, 476, 3588, 449, 3681, 415, 3784, 343, 3815, 403, 3897, 489, 4007, 531, 4099, 531, 4187, 480, 4262, 405, 4418, 474, 4588, 544, 4768, 613, 4916, 655, 5153, 694, 5704, 693, 5129, 846, 3787, 753, 1189, 515)
+position = Vector2(8245, 844)
 
 [node name="BikeModel" type="Sprite2D" parent="." unique_id=326328508]
-position = Vector2(3290, 417)
+position = Vector2(2438, 286)
 texture = ExtResource("5_2m57o")
+
+[node name="Paths" type="Node2D" parent="." unique_id=1436220943]
+unique_name_in_owner = true
+
+[node name="Path2D" type="Path2D" parent="Paths" unique_id=413647674]
+curve = SubResource("Curve2D_2m57o")
+
+[node name="Path2D2" type="Path2D" parent="Paths" unique_id=1386315039]
+curve = SubResource("Curve2D_wux8b")
+
+[node name="Path2D3" type="Path2D" parent="Paths" unique_id=656999091]
+curve = SubResource("Curve2D_svcth")
+
+[node name="Path2D4" type="Path2D" parent="Paths" unique_id=326477390]
+curve = SubResource("Curve2D_sal8n")
+
+[node name="Floors" type="StaticBody2D" parent="." unique_id=11458257]
+unique_name_in_owner = true
+
+[node name="Textures" type="Node2D" parent="." unique_id=580291734]
+unique_name_in_owner = true
 
 [connection signal="body_entered" from="Assets/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Assets/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]

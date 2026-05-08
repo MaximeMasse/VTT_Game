@@ -7,7 +7,7 @@ var current_profile := {}
 var config := {}
 
 # Sélections
-var current_map := 1
+var current_map := 0
 
 # HUD
 var race_time := 0.0
