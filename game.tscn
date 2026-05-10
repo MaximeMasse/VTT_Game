@@ -32,6 +32,7 @@ unique_name_in_owner = true
 
 [node name="BikeContainer" type="Node2D" parent="." unique_id=100482909]
 unique_name_in_owner = true
+z_index = 2
 
 [node name="MenuPause" type="CanvasLayer" parent="." unique_id=1815683310]
 unique_name_in_owner = true

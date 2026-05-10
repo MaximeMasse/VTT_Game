@@ -61,14 +61,13 @@ func _physics_process(delta):
 	
 	# Tracking
 	current_state = get_current_state()
-	print(-cadre.rotation_degrees,";",cadre.angular_velocity)
 	Global.vitesse = cadre.linear_velocity * ECHELLE * 3.6
 	var traveled = (cadre.global_position - Global.player_position).length() * ECHELLE
 	var acceleration_direction: Vector2
 	if cadre.linear_velocity.x > 5.0:
 		acceleration_direction = cadre.linear_velocity.normalized()
 	else:
-		acceleration_direction = Vector2.RIGHT.rotated(rotation)
+		acceleration_direction = Vector2.RIGHT.rotated(cadre.rotation)
 	Global.player_position = cadre.global_position
 	Global.contact_sol = contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies()
 	var input_balance := Input.get_axis("Arrière", "Avant") if input_enabled else 0.0
@@ -110,7 +109,7 @@ func _physics_process(delta):
 			temps_compression += delta
 			Global.taux_compression = temps_compression_en_pourcentage(temps_compression)
 		if Input.is_action_just_released("Jump"):
-			cadre.apply_central_impulse(FORCE_SAUT * Global.taux_compression * Vector2.UP.rotated(rotation))
+			cadre.apply_central_impulse(FORCE_SAUT * Global.taux_compression * Vector2.UP.rotated(cadre.rotation))
 			temps_compression = 0
 			Global.taux_compression = 0
 	else : 
@@ -129,35 +128,61 @@ func _physics_process(delta):
 	cadre.apply_torque(couple_cadre_actuel)
 	
 	# Tricks States
+	# State didn't change recently
 	if %ChangeState_Timer.is_stopped():
-		if current_state == previous_state: Global.trick_datas += Vector2(traveled,delta)
+		# Previous = current, store tricks info, check rotation
+		if current_state == previous_state:
+			Global.trick_datas += Vector2(traveled,delta)
+			if current_state == "Air":
+				Global.air_rotation += angle_difference(cadre.rotation,Global.previous_air_angle)
+				Global.previous_air_angle = cadre.rotation
+				print("rota actuelle : ",cadre.rotation)
+				Global.check_air_rotation()
+		# Previous != current
 		else:
+			# Combo ended
 			if current_state not in TRICK_LIST:
 				Global.valid_trick()
 				AudioManager.stop_ground_sfx()
 				AudioManager.play_ground_sfx(current_state)
 				Global.current_trick = ""
+			# New trick
 			else:
+				# Combo
 				if previous_state in TRICK_LIST:
 					Global.valid_trick()
 					AudioManager.stop_ground_sfx()
-					if current_state == "Air": AudioManager.play_ground_sfx(current_state)
+					if current_state == "Air":AudioManager.play_ground_sfx(current_state)
 					else: AudioManager.play_ground_sfx("landing")
 				%ChangeState_Timer.start()
 				Global.current_trick = ""
 				Global.trick_datas = Vector2.ZERO
+				Global.previous_air_angle = cadre.rotation
+				Global.air_rotation = 0.0
+	# State changed recently, timer on
 	else:
-		if current_state == previous_state: Global.trick_datas += Vector2(traveled,delta)
+		# Previous = current, store tricks info
+		if current_state == previous_state:
+			Global.trick_datas += Vector2(traveled,delta)
+			Global.air_rotation += angle_difference(cadre.rotation,Global.previous_air_angle)
+			Global.previous_air_angle = cadre.rotation
+		# Previous != current
 		else:
-			if current_state in TRICK_LIST: %ChangeState_Timer.start()
+			# New is also a trick so Restart Timer
+			if current_state in TRICK_LIST:
+				%ChangeState_Timer.start()
+				if current_state == "Air":
+					Global.previous_air_angle = cadre.rotation
+					Global.air_rotation = 0.0
+			# New isn't a trick so stop Timer
 			else: %ChangeState_Timer.stop()
 			Global.current_trick = ""
 			Global.trick_datas = Vector2.ZERO
+			Global.air_rotation = 0.0
 			
 	previous_state = current_state
 
 func _on_change_state_timer_timeout() -> void:
-	#print("Timer timed out")
 	AudioManager.stop_ground_sfx()
 	AudioManager.play_ground_sfx(current_state)
 	Global.current_trick = current_state

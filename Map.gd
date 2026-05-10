@@ -1,7 +1,7 @@
 extends Node
 
 @export var step := 32
-@export var terrain_depth := 600
+@export var terrain_depth := 4000
 
 func generate_all_collisions(paths_node:Node2D,static_body:StaticBody2D):
 	# Supprime les anciennes collisions générées
@@ -42,7 +42,7 @@ func create_collision_from_path(path: Path2D, static_body: StaticBody2D):
 	collision.polygon = polygon
 	static_body.add_child(collision)
 
-func generate_all_visuals(paths_node:Node2D,visuals:Node2D,road_texture_data:Dictionary,up_texture_data:Dictionary,down_texture_data:Dictionary):
+func generate_all_visuals(paths_node:Node2D,visuals:Node2D,road_texture_data:Dictionary,up_texture_data:Dictionary,down_texture_data:Dictionary,under_texture_data:Dictionary):
 	for child in visuals.get_children():
 		child.queue_free()
 	
@@ -56,6 +56,9 @@ func generate_all_visuals(paths_node:Node2D,visuals:Node2D,road_texture_data:Dic
 			#Down Road
 			var down_path := create_offset_path(path,down_texture_data["Offset"])
 			create_visual_from_path(down_path, visuals,down_texture_data)
+			#Undercover
+			var under_path := create_offset_path(path,under_texture_data["Offset"])
+			create_visual_from_path(under_path, visuals,under_texture_data)
 
 func create_offset_path(path: Path2D, offset: Vector2) -> Path2D:
 	var new_path := Path2D.new()

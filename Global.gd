@@ -11,16 +11,20 @@ var current_map := 0
 
 # HUD
 var race_time := 0.0
+var penalty_to_show := false
 var contact_sol := true
 var vitesse := Vector2.ZERO
 var player_position := Vector2.ZERO
 var avancement := 0
 var taux_compression := 0
+
+#Tricks
 var current_trick := ""
 var trick_datas := Vector2.ZERO
-var penalty_to_show := false
+var previous_air_angle := 0.0
+var air_rotation := 0.0
 
-# Position and cp speed
+# CP position and speed
 var current_cp := "start"
 var cp_player_speed := Vector2.ZERO
 var cp_player_pos := Vector2.ZERO
@@ -59,6 +63,11 @@ func checkpoint_update(cp : String):
 		current_cp = cp
 		cp_player_speed = vitesse
 		cp_player_pos = player_position
+
+func check_air_rotation():
+	print("Angle d'avant : ",previous_air_angle, " | rota totale : ",air_rotation)
+	if air_rotation > PI :print("Backflip")
+	if air_rotation < -PI :print("Frontflip")
 
 func valid_trick():
 	if current_trick != "":
