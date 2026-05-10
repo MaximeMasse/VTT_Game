@@ -65,9 +65,10 @@ func checkpoint_update(cp : String):
 		cp_player_pos = player_position
 
 func check_air_rotation():
-	print("Angle d'avant : ",previous_air_angle, " | rota totale : ",air_rotation)
-	if air_rotation > PI :print("Backflip")
-	if air_rotation < -PI :print("Frontflip")
+	if air_rotation > PI :
+		print(1+floor((air_rotation-PI)/(2*PI)),"Backflip")
+	if air_rotation < -PI :
+		print(1+floor(-(PI+air_rotation)/(2*PI)),"Front")
 
 func valid_trick():
 	if current_trick != "":
