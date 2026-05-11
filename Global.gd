@@ -18,11 +18,11 @@ var player_position := Vector2.ZERO
 var avancement := 0
 var taux_compression := 0
 
-#Tricks
-var current_trick := ""
-var trick_datas := Vector2.ZERO
-var previous_air_angle := 0.0
-var air_rotation := 0.0
+##Tricks
+#var current_trick := ""
+#var trick_datas := Vector2.ZERO
+#var previous_air_angle := 0.0
+#var air_rotation := 0.0
 
 # CP position and speed
 var current_cp := "start"
@@ -64,17 +64,17 @@ func checkpoint_update(cp : String):
 		cp_player_speed = vitesse
 		cp_player_pos = player_position
 
-func check_air_rotation():
-	if air_rotation > PI :
-		print(1+floor((air_rotation-PI)/(2*PI)),"Backflip")
-	if air_rotation < -PI :
-		print(1+floor(-(PI+air_rotation)/(2*PI)),"Front")
-
-func valid_trick():
-	if current_trick != "":
-		if current_profile["best_tricks"][current_trick]["length"] < trick_datas.x:
-			current_profile["best_tricks"][current_trick]["length"] = trick_datas.x
-			new_best.emit()
-		if current_profile["best_tricks"][current_trick]["duration"] < trick_datas.y:
-			current_profile["best_tricks"][current_trick]["duration"] = trick_datas.y
-			new_best.emit()
+func check_air_rotation(angle):
+	if angle > PI :
+		print(1+floor((angle-PI)/(2*PI)),"Backflip")
+	if angle < -PI :
+		print(1+floor(-(PI+angle)/(2*PI)),"Front")
+#
+#func valid_trick():
+	#if current_trick != "":
+		#if current_profile["best_tricks"][current_trick]["length"] < trick_datas.x:
+			#current_profile["best_tricks"][current_trick]["length"] = trick_datas.x
+			#new_best.emit()
+		#if current_profile["best_tricks"][current_trick]["duration"] < trick_datas.y:
+			#current_profile["best_tricks"][current_trick]["duration"] = trick_datas.y
+			#new_best.emit()

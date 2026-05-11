@@ -7,15 +7,19 @@ var FRICTION :float = Global.current_profile["stats"]["FRICTION"]
 #Freins
 var FORCE_FREINS :float = Global.current_profile["stats"]["FORCE_FREINS"]
 # Balance
-var BALANCE_CONTROL :float =  Global.current_profile["stats"]["BALANCE_CONTROL"]
-var BACK_POSITION := Vector2(Global.current_profile["stats"]["BACK_POSITION"][0],
-	Global.current_profile["stats"]["BACK_POSITION"][1])
-var FRONT_POSITION := Vector2(Global.current_profile["stats"]["FRONT_POSITION"][0],
-	Global.current_profile["stats"]["FRONT_POSITION"][1])
+var CM_OFFSET:= Vector2(Global.current_profile["stats"]["CM_OFFSET"][0],
+								Global.current_profile["stats"]["CM_OFFSET"][1]) 
+var COUPLE_CADRE_SOL :float = Global.current_profile["stats"]["COUPLE_CADRE_SOL"]
+var COUPLE_CADRE_AIR :float = Global.current_profile["stats"]["COUPLE_CADRE_AIR"]
+var BALANCE_CONTROL :float = Global.current_profile["stats"]["BALANCE_CONTROL"]
+var AV_CONTROL :float = Global.current_profile["stats"]["AV_CONTROL"]
+var AIR_ROTATION_CONTROL :float = Global.current_profile["stats"]["AIR_ROTATION_CONTROL"]
 # Saut
 var GREEN_TIME :float = Global.current_profile["stats"]["GREEN_TIME"]
 var SWEET_SPOT :float = Global.current_profile["stats"]["SWEET_SPOT"]
 var FORCE_SAUT :float = Global.current_profile["stats"]["FORCE_SAUT"]
+# Air control
+var AIR_SPEED_CONTROL :float = Global.current_profile["stats"]["AIR_SPEED_CONTROL"]
 
 const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 
@@ -26,53 +30,64 @@ const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 @onready var cadre := %Cadre
 @onready var animation := %Animation
 
+# Variables
+# Physics
 var can_drive := false
-var current_CM := Vector2.ZERO
+var input_enabled := true
+var couple_cadre_actuel :float = 0.0
 var temps_compression := 0.0
-var previous_state := "slow_riding"
-var current_state := "slow_riding"
+# States
+var previous_frame_state :String
+var actual_state :String
+var potential_state:String
+var in_trick :bool
 
 signal crashed
 
 func _ready():
-	reset()
-	roue_avant.mass = 2
-	roue_arrière.mass = 2
-	cadre.mass = 35
+	reset_physic()
+	reset_states()
 
-func reset():
+func reset_physic():
 	for parts in [cadre, roue_avant, roue_arrière]:
 		parts.linear_velocity = Vector2.ZERO
 		parts.angular_velocity = 0.0
+	couple_cadre_actuel = 0.0
 	temps_compression = 0.0
+	cadre.center_of_mass = CM_OFFSET
 
+func reset_states():
+	previous_frame_state = "slow_riding"
+	actual_state = "slow_riding"
+	potential_state = ""
+	in_trick = false
+	
 func _physics_process(delta):
 	if not can_drive:
 		Global.vitesse = Vector2.ZERO
-		Global.current_trick = ""
 		roue_arrière.constant_force = Vector2.ZERO
 		return
 	
-	# Tracking
+	# HUD Tracking
 	Global.vitesse = cadre.linear_velocity * ECHELLE * 3.6
-	var traveled = (cadre.global_position - Global.player_position).length() * ECHELLE
+	Global.player_position = cadre.global_position
+	Global.contact_sol = contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies()
+	#Acceleration direction
 	var acceleration_direction: Vector2
 	if cadre.linear_velocity.x > 5.0:
 		acceleration_direction = cadre.linear_velocity.normalized()
 	else:
-		acceleration_direction = Vector2.RIGHT.rotated(rotation)
-	Global.player_position = cadre.global_position
-	Global.contact_sol = contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies()
-	current_state = get_current_state()
+		acceleration_direction = Vector2.RIGHT.rotated(cadre.rotation)
 	
 	# Frictions
 	cadre.apply_central_force(-(FRICTION * Global.vitesse.length_squared()*delta) * acceleration_direction)
 	
 	# Actions
+	var input_balance := Input.get_axis("Arrière", "Avant") if input_enabled else 0.0
+	var couple_cible := 0.0
 	# Tjs actif
 	if Input.is_action_just_released("Pédaler"):
 		animation.pause()
-	
 	# Si contact arrière
 	if contact_sol_arrière.has_overlapping_bodies():
 		# Accélération
@@ -81,72 +96,52 @@ func _physics_process(delta):
 			roue_arrière.apply_central_force((ACCÉLÉRATION * delta/ECHELLE) * acceleration_direction)
 			animation.play("pédale")
 		# Frein arrière
-		if Input.is_action_pressed("Frein_arrière"):
+		if Input.is_action_pressed("Frein_arrière") and input_enabled:
 			roue_arrière.linear_velocity = lerp(
-				roue_arrière.linear_velocity, Vector2(0.0,0.0), 1.0-exp(-0.5 * FORCE_FREINS * delta))
+				roue_arrière.linear_velocity, Vector2(0.0,0.0), 0.5 * FORCE_FREINS * delta)
 	# Si contact avant
 	if contact_sol_avant.has_overlapping_bodies():
-		if Input.is_action_pressed("Frein_avant"):
+		if Input.is_action_pressed("Frein_avant") and input_enabled:
 			roue_avant.linear_velocity = lerp(
-				roue_avant.linear_velocity, Vector2(0.0,0.0), 1.0-exp(-FORCE_FREINS * delta))
-		
-	# Balance
-	var target_CM := Vector2.ZERO
-	if Input.is_action_pressed("Arrière"):
-		target_CM = BACK_POSITION
-	if Input.is_action_pressed("Avant"):
-		target_CM = FRONT_POSITION
-	current_CM = current_CM.lerp(target_CM,1.0 - exp(-BALANCE_CONTROL*delta))
-	cadre.center_of_mass = current_CM
-
-
-	# Jump (si un contact)
+				roue_avant.linear_velocity, Vector2(0.0,0.0), FORCE_FREINS * delta)
+	# Air or Ground
 	if Global.contact_sol:
+		# Balance
+		couple_cible = input_balance * COUPLE_CADRE_SOL
+		# Balance enhancer
+		cadre.angular_velocity = clampf(cadre.angular_velocity,-AV_CONTROL,AV_CONTROL)
+		# Jump
 		if Input.is_action_pressed("Jump"):
 			temps_compression += delta
 			Global.taux_compression = temps_compression_en_pourcentage(temps_compression)
 		if Input.is_action_just_released("Jump"):
-			cadre.apply_central_impulse(FORCE_SAUT * Global.taux_compression * Vector2.UP.rotated(rotation))
+			cadre.apply_central_impulse(FORCE_SAUT * Global.taux_compression * Vector2.UP.rotated(cadre.rotation))
 			temps_compression = 0
 			Global.taux_compression = 0
-	else : Global.taux_compression = 0
+	else : 
+		# Balance
+		couple_cible = input_balance * COUPLE_CADRE_AIR
+		# Rotation control
+		cadre.angular_velocity = clampf(cadre.angular_velocity,-AIR_ROTATION_CONTROL,AIR_ROTATION_CONTROL)
+		# Air speed control
+		if not Input.is_action_pressed("Pédaler"):
+			cadre.linear_velocity -= AIR_SPEED_CONTROL * acceleration_direction
+		# No Jump
+		Global.taux_compression = 0
+	# Apply balance
+	couple_cadre_actuel = lerp(couple_cadre_actuel,couple_cible,1.0-exp(-BALANCE_CONTROL * delta))
+	cadre.apply_torque(couple_cadre_actuel)
 	
-	# Tricks States
-	#print("Timer off : ",%ChangeState_Timer.is_stopped()," | previous_state : ",previous_state,
-	#" | current_state : ",current_state, " | Global.current_trick :",Global.current_trick,
-	#" | Trick length : ",Global.trick_datas.x," | Trick duration ",Global.trick_datas.y)
-	if %ChangeState_Timer.is_stopped():
-		if current_state == previous_state: Global.trick_datas += Vector2(traveled,delta)
-		else:
-			if current_state not in TRICK_LIST:
-				Global.valid_trick()
-				AudioManager.stop_ground_sfx()
-				AudioManager.play_ground_sfx(current_state)
-				Global.current_trick = ""
-			else:
-				if previous_state in TRICK_LIST:
-					Global.valid_trick()
-					AudioManager.stop_ground_sfx()
-					if current_state == "Air": AudioManager.play_ground_sfx(current_state)
-					else: AudioManager.play_ground_sfx("landing")
-				%ChangeState_Timer.start()
-				Global.current_trick = ""
-				Global.trick_datas = Vector2.ZERO
+	# States
+	var current_frame_state = get_current_state()
+	if actual_state not in TRICK_LIST:
+		if current_frame_state in TRICK_LIST:%Trick_status_changer.start()
 	else:
-		if current_state == previous_state: Global.trick_datas += Vector2(traveled,delta)
-		else:
-			if current_state in TRICK_LIST: %ChangeState_Timer.start()
-			else: %ChangeState_Timer.stop()
-			Global.current_trick = ""
-			Global.trick_datas = Vector2.ZERO
+		if current_frame_state not in TRICK_LIST:
 			
-	previous_state = get_current_state()
 
-func _on_change_state_timer_timeout() -> void:
-	#print("Timer timed out")
-	AudioManager.stop_ground_sfx()
-	AudioManager.play_ground_sfx(current_state)
-	Global.current_trick = current_state
+func _on_trick_status_changer_timeout():
+	actual_state = previous_frame_state
 
 func _on_crash(body):
 	AudioManager.stop_ground_sfx()
