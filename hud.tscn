@@ -17,8 +17,6 @@ border_color = Color(0.021434633, 0.021434639, 0.021434609, 1)
 font_names = PackedStringArray("Pixel Game", "Jersey 10")
 subpixel_positioning = 0
 
-[sub_resource type="Theme" id="Theme_1xsix"]
-
 [sub_resource type="SystemFont" id="SystemFont_g10ll"]
 font_names = PackedStringArray("Pixel Game")
 subpixel_positioning = 0
@@ -95,7 +93,6 @@ offset_left = 27.0
 offset_top = 63.0
 offset_right = 130.0
 offset_bottom = 103.0
-theme = SubResource("Theme_1xsix")
 theme_override_colors/font_color = Color(1, 0.047058824, 0.047058824, 1)
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = SubResource("SystemFont_61f8s")
@@ -199,17 +196,17 @@ offset_bottom = 189.0
 
 [node name="BestTricks" type="GridContainer" parent="Joueur" unique_id=1250583665]
 layout_mode = 0
-offset_left = 187.0
-offset_top = 11.0
-offset_right = 427.0
-offset_bottom = 88.0
+offset_left = 162.0
+offset_top = -1.0
+offset_right = 450.0
+offset_bottom = 82.0
 columns = 2
 
 [node name="BestAir" type="Label" parent="Joueur/BestTricks" unique_id=723131198]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
+theme_override_colors/font_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
 theme_override_fonts/font = SubResource("SystemFont_rftc2")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 23
 text = "Best air :"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -219,7 +216,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
 theme_override_fonts/font = SubResource("SystemFont_rftc2")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 23
 text = "12 m | 5 sec"
 vertical_alignment = 1
 
@@ -227,7 +224,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
 theme_override_fonts/font = SubResource("SystemFont_rftc2")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 23
 text = "Best Wheelie :"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -237,7 +234,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
 theme_override_fonts/font = SubResource("SystemFont_rftc2")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 23
 text = "28 m | 11 sec"
 vertical_alignment = 1
 
@@ -245,7 +242,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
 theme_override_fonts/font = SubResource("SystemFont_rftc2")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 23
 text = "Best Nose Wheelie :"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -255,7 +252,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.20942935, 0.20441288, 0.23454857, 1)
 theme_override_fonts/font = SubResource("SystemFont_rftc2")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 23
 text = "210 m | 255 sec"
 vertical_alignment = 1
 

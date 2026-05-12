@@ -1,5 +1,14 @@
 extends CanvasLayer
 
+var colors := {
+	"RED":Color(1,0.04,0.04,1),
+	"YELLOW":Color(0.85,0.86,0,1),
+	"DARK_GREY":Color(0.2,0.2,0.23,1),
+	"LIGHT_GREEN":Color(0.2,0.9,0.23,1)
+}
+
+var best_trick_labels:Dictionary
+
 var dico_saut :={
 	Vector2(0,10):["Red",load("res://Images/HUD/piston_0.png")],
 	Vector2(10,20):["res://Images/HUD/jump_orange.png",load("res://Images/HUD/piston_10.png")],
@@ -17,7 +26,8 @@ var is_tricking :bool
 
 func _ready():
 	reset()
-	update_best_tricks()
+	best_trick_labels={"Air":%Air_label,"Wheelie":%Wheelie_label,"Nose Wheelie":%Nose_label}
+	for trick in ["Wheelie","Nose Wheelie","Air"]:update_best_tricks(trick,false)
 
 func reset():
 	%Penalty_label.text = "+ " + str(int(Global.current_profile["upgrades"]["RESPAWN_PENALTY"])) + " sec"
@@ -32,17 +42,18 @@ func update_combo(trick_list):
 	for trick in trick_list: combo_text += trick + " + "
 	%Combo_label.text = combo_text
 
-func update_best_tricks():
-	%Air_label.text = str(round_to(Global.current_profile["best_tricks"]["Air"]["length"],1)) + " m | "\
-		+ str(round_to(Global.current_profile["best_tricks"]["Air"]["duration"],1)) + " sec"
-	%Wheelie_label.text = str(round_to(Global.current_profile["best_tricks"]["Wheelie"]["length"],1)) + " m | "\
-		+ str(round_to(Global.current_profile["best_tricks"]["Wheelie"]["duration"],1)) + " sec"
-	%Nose_label.text = str(round_to(Global.current_profile["best_tricks"]["Nose Wheelie"]["length"],1)) + " m | "\
-		+ str(round_to(Global.current_profile["best_tricks"]["Nose Wheelie"]["duration"],1)) + " sec"
+func update_best_tricks(trick_name,effect=true):
+	best_trick_labels[trick_name].text = str(round_to(Global.current_profile["best_tricks"][trick_name]["length"],1)) + " m | "\
+		+ str(round_to(Global.current_profile["best_tricks"][trick_name]["duration"],1)) + " sec"
+	if effect :
+		best_trick_labels[trick_name].add_theme_color_override("font_color", colors["LIGHT_GREEN"])
+		await get_tree().create_timer(1).timeout
+		best_trick_labels[trick_name].add_theme_color_override("font_color", colors["DARK_GREY"])
 
 func _physics_process(delta):
 	%Time_label.text = format_time(Global.race_time)
 	if Global.penalty_to_show and %Show_penalty_timer.is_stopped():
+		%Tricks_label.add_theme_color_override("font_color", colors["RED"])
 		%Penalty_label.show()
 		Global.penalty_to_show = false
 		%Show_penalty_timer.start()
@@ -65,7 +76,7 @@ func _physics_process(delta):
 
 func trick_reset():
 	is_tricking = false
-	%Tricks_label.hide()
+	fade_out_label(%Tricks_label)
 	%Combo_label.text = ""
 	
 func trick_activate():
@@ -103,3 +114,4 @@ func fade_out_label(label: Label):
 
 func _on_show_penalty_timer_timeout():
 	fade_out_label(%Penalty_label)
+	%Tricks_label.add_theme_color_override("font_color", colors["YELLOW"])

@@ -70,7 +70,6 @@ script = ExtResource("1_leoqd")
 unique_name_in_owner = true
 position = Vector2(55, 46)
 collision_layer = 0
-mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_ow0o1")
 
 [node name="Contact_sol_avant" type="Area2D" parent="Roue_avant" unique_id=1755217802]
@@ -92,7 +91,6 @@ texture = ExtResource("2_4osgm")
 unique_name_in_owner = true
 position = Vector2(-50, 44)
 collision_layer = 0
-mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_f5gm3")
 inertia = 0.75
 
@@ -114,7 +112,7 @@ texture = ExtResource("2_4osgm")
 [node name="Cadre" type="RigidBody2D" parent="." unique_id=793041427]
 unique_name_in_owner = true
 collision_layer = 2
-mass = 60.0
+mass = 30.0
 center_of_mass_mode = 1
 
 [node name="Animation" type="AnimatedSprite2D" parent="Cadre" unique_id=1371691081]
@@ -138,10 +136,6 @@ position = Vector2(3, 31.663673)
 scale = Vector2(1, 1.0070754)
 polygon = PackedVector2Array(9, -91.01967, 23, -93.00562, 39, -84.06885, 22, -51.300697, 43, -18.532547, 23, -6.6168575, 17, 12.249655, -18, 13.242628, -44, -42.36393, -30, -65.20234)
 
-[node name="Bike_MassCenter" type="Node2D" parent="Cadre" unique_id=178776828]
-unique_name_in_owner = true
-z_index = 25
-
 [node name="Joint_arrière" type="PinJoint2D" parent="." unique_id=113849391]
 position = Vector2(-50, 44)
 node_a = NodePath("../Cadre")
@@ -152,11 +146,11 @@ position = Vector2(55, 46)
 node_a = NodePath("../Cadre")
 node_b = NodePath("../Roue_avant")
 
-[node name="ChangeState_Timer" type="Timer" parent="." unique_id=1708863427]
+[node name="Trick_status_changer" type="Timer" parent="." unique_id=1708863427]
 unique_name_in_owner = true
 process_callback = 0
 wait_time = 0.5
 one_shot = true
 
 [connection signal="body_entered" from="Cadre/Corps" to="." method="_on_crash"]
-[connection signal="timeout" from="ChangeState_Timer" to="." method="_on_change_state_timer_timeout"]
+[connection signal="timeout" from="Trick_status_changer" to="." method="_on_trick_status_changer_timeout"]

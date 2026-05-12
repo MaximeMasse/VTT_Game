@@ -23,6 +23,8 @@ var taux_compression := 0
 var current_trick := {}
 var potential_trick := {}
 var current_combo :Array[Dictionary]= []
+var naming := {1:"",2:"Double",3:"Triple",4:"Quadruple",5:"Quintuple",6:"Sextuple",7:"Septuple"}
+var tricks_values : Dictionary = {}
 
 # CP position and speed
 var current_cp := "start"
@@ -107,18 +109,24 @@ func check_air_rotation():
 	if name_changed and rotation_name != current_trick["trick"]:current_trick["trick"]=rotation_name
 
 func valid_combo():
-	print("combo validé :")
-	for trick in current_combo:print(trick)
+	var score := 0
+	for trick_datas in current_combo:
+		var trick :String
+		var number_of_rotation :int
+		if trick_datas["trick"] not in ["Air","Wheelie","Nose Wheelie"]:
+			trick = "Air"
+		else:trick = trick_datas["trick"]
+		check_best(trick,trick_datas["length"],trick_datas["duration"])
 
 func name_rotation(number_of_rotation:int)->String:
-	var naming := {1:"",2:"Double",3:"Triple"}
-	return naming[number_of_rotation]
+	return naming[number_of_rotation] + " " if number_of_rotation in naming else "Wow, too much "
 
-#func valid_trick():
-	#if current_trick != "":
-		#if current_profile["best_tricks"][current_trick]["length"] < trick_datas.x:
-			#current_profile["best_tricks"][current_trick]["length"] = trick_datas.x
-			#new_best.emit()
-		#if current_profile["best_tricks"][current_trick]["duration"] < trick_datas.y:
-			#current_profile["best_tricks"][current_trick]["duration"] = trick_datas.y
-			#new_best.emit()
+func check_best(trick_name:String,length,duration):
+	var is_new_best := false
+	if current_profile["best_tricks"][trick_name]["length"] < length:
+		current_profile["best_tricks"][trick_name]["length"] = length
+		is_new_best = true
+	if current_profile["best_tricks"][trick_name]["duration"] < duration:
+		current_profile["best_tricks"][trick_name]["duration"] = duration
+		is_new_best = true
+	if is_new_best:new_best.emit(trick_name)
