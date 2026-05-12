@@ -148,7 +148,7 @@ node_b = NodePath("../Roue_avant")
 
 [node name="Trick_status_changer" type="Timer" parent="." unique_id=1615973415]
 unique_name_in_owner = true
-wait_time = 0.1
+wait_time = 0.5
 
 [connection signal="body_entered" from="Cadre/Corps" to="." method="_on_crash"]
 [connection signal="timeout" from="Trick_status_changer" to="." method="_on_trick_status_changer_timeout"]

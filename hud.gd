@@ -22,6 +22,12 @@ func reset():
 	%Penalty_label.hide()
 	%Piston.hide()
 	%Tricks_label.hide()
+	%Combo_label.text = ""
+	
+func update_combo(trick_list):
+	var combo_text := ""
+	for trick in trick_list: combo_text += trick + " + "
+	%Combo_label.text = combo_text
 
 func update_best_tricks():
 	%Air_label.text = str(round_to(Global.current_profile["best_tricks"]["Air"]["length"],1)) + " m | "\

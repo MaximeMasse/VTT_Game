@@ -37,16 +37,21 @@ var input_enabled := true
 var couple_cadre_actuel :float = 0.0
 var temps_compression := 0.0
 # States
-var previous_frame_state :String
+var current_frame_state :String
 var actual_state :String
-var potential_state:String
-var in_trick :bool
+var previous_actual_state :String
+ # Tricks
+var is_tricking :bool
+var current_trick := {}
+var potential_trick := {}
+var current_combo :Array[Dictionary]= []
 
 signal crashed
 
 func _ready():
 	reset_physic()
 	reset_states()
+	reset_tricks()
 
 func reset_physic():
 	for parts in [cadre, roue_avant, roue_arrière]:
@@ -57,10 +62,15 @@ func reset_physic():
 	cadre.center_of_mass = CM_OFFSET
 
 func reset_states():
-	previous_frame_state = "slow_riding"
+	current_frame_state = "slow_riding"
 	actual_state = "slow_riding"
-	potential_state = ""
-	in_trick = false
+	previous_actual_state = "slow_riding"
+	
+func reset_tricks():
+	is_tricking = false
+	current_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
+	potential_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
+	current_combo = []
 	
 func _physics_process(delta):
 	if not can_drive:
@@ -70,7 +80,10 @@ func _physics_process(delta):
 	
 	# HUD Tracking
 	Global.vitesse = cadre.linear_velocity * ECHELLE * 3.6
+	var traveled = (cadre.global_position - Global.player_position).length() * ECHELLE
 	Global.player_position = cadre.global_position
+	var rotated = angle_difference(cadre.rotation,Global.player_rotation)
+	Global.player_rotation = cadre.rotation
 	Global.contact_sol = contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies()
 	#Acceleration direction
 	var acceleration_direction: Vector2
@@ -132,16 +145,49 @@ func _physics_process(delta):
 	couple_cadre_actuel = lerp(couple_cadre_actuel,couple_cible,1.0-exp(-BALANCE_CONTROL * delta))
 	cadre.apply_torque(couple_cadre_actuel)
 	
-	# States
-	var current_frame_state = get_current_state()
-	if actual_state not in TRICK_LIST:
-		if current_frame_state in TRICK_LIST:%Trick_status_changer.start()
+	# Actual State determination
+	current_frame_state = get_current_state()
+	if current_frame_state not in TRICK_LIST:
+		actual_state = current_frame_state
+		%Trick_status_changer.stop()
+	elif %Trick_status_changer.is_stopped():
+		reset_tricks()
+		%Trick_status_changer.start()
+		potential_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
+	# Tracking if waiting to become real
+	if not %Trick_status_changer.is_stopped():
+		potential_trick["length"] += traveled
+		potential_trick["duration"] += delta
+		potential_trick["rotation"] += rotated
+		
+	#Actually tricking
+	if actual_state in TRICK_LIST:
+		current_trick["length"] += traveled
+		current_trick["duration"] += delta
+		current_trick["rotation"] += rotated
+		# Combo starting
+		if previous_actual_state not in TRICK_LIST:
+			current_trick = potential_trick.duplicate()
+			current_trick["trick"] = actual_state
+			print("Simple trick starting : ",current_trick)
+		# Combo continue
+		elif actual_state != previous_actual_state:
+			current_combo.append(current_trick.duplicate())
+			current_trick = potential_trick.duplicate()
+			current_trick["trick"] = actual_state
+			print("Combo : ",current_combo," + ",current_trick)
+	# Not tricking
 	else:
-		if current_frame_state not in TRICK_LIST:
+		# Combo end
+		if previous_actual_state in TRICK_LIST:
+			current_combo.append(current_trick.duplicate())
+			Global.valid_combo(current_combo)
+			reset_tricks()
 			
+	previous_actual_state = actual_state
 
 func _on_trick_status_changer_timeout():
-	actual_state = previous_frame_state
+	actual_state = current_frame_state
 
 func _on_crash(body):
 	AudioManager.stop_ground_sfx()

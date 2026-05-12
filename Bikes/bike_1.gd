@@ -136,7 +136,7 @@ func _physics_process(delta):
 			if current_state == "Air":
 				Global.air_rotation += angle_difference(cadre.rotation,Global.previous_air_angle)
 				Global.previous_air_angle = cadre.rotation
-				Global.check_air_rotation()
+				#Global.check_air_rotation()
 		# Previous != current
 		else:
 			# Combo ended

@@ -15,6 +15,7 @@ var penalty_to_show := false
 var contact_sol := true
 var vitesse := Vector2.ZERO
 var player_position := Vector2.ZERO
+var player_rotation := 0.0
 var avancement := 0
 var taux_compression := 0
 
@@ -69,7 +70,12 @@ func check_air_rotation(angle):
 		print(1+floor((angle-PI)/(2*PI)),"Backflip")
 	if angle < -PI :
 		print(1+floor(-(PI+angle)/(2*PI)),"Front")
-#
+
+func valid_combo(combo:Array[Dictionary]):
+	print("combo validé :")
+	for trick in combo:print(trick)
+	
+
 #func valid_trick():
 	#if current_trick != "":
 		#if current_profile["best_tricks"][current_trick]["length"] < trick_datas.x:
