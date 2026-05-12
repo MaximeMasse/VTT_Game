@@ -35,7 +35,9 @@ func _ready():
 	
 	# Connections
 	Global.new_best.connect(%HUD.update_best_tricks)
-	
+	Global.hud_trick_activate.connect(%HUD.trick_activate)
+	Global.hud_trick_reset.connect(%HUD.trick_reset)
+	Global.hud_combo_update.connect(%HUD.combo_update)
 	# Chargements
 	load_map()
 	load_bike()

@@ -55,7 +55,6 @@ func reset():
 func _physics_process(delta):
 	if not can_drive:
 		Global.vitesse = Vector2.ZERO
-		Global.current_trick = ""
 		roue_arrière.constant_force = Vector2.ZERO
 		return
 	
@@ -144,7 +143,7 @@ func _physics_process(delta):
 				Global.valid_trick()
 				AudioManager.stop_ground_sfx()
 				AudioManager.play_ground_sfx(current_state)
-				Global.current_trick = ""
+				#Global.current_trick = ""
 			# New trick
 			else:
 				# Combo
@@ -154,7 +153,7 @@ func _physics_process(delta):
 					if current_state == "Air":AudioManager.play_ground_sfx(current_state)
 					else: AudioManager.play_ground_sfx("landing")
 				%ChangeState_Timer.start()
-				Global.current_trick = ""
+				#Global.current_trick = ""
 				Global.trick_datas = Vector2.ZERO
 				Global.previous_air_angle = cadre.rotation
 				Global.air_rotation = 0.0
@@ -175,7 +174,7 @@ func _physics_process(delta):
 					Global.air_rotation = 0.0
 			# New isn't a trick so stop Timer
 			else: %ChangeState_Timer.stop()
-			Global.current_trick = ""
+			#Global.current_trick = ""
 			Global.trick_datas = Vector2.ZERO
 			Global.air_rotation = 0.0
 			
@@ -184,7 +183,7 @@ func _physics_process(delta):
 func _on_change_state_timer_timeout() -> void:
 	AudioManager.stop_ground_sfx()
 	AudioManager.play_ground_sfx(current_state)
-	Global.current_trick = current_state
+	#Global.current_trick = current_state
 
 func _on_crash(body):
 	AudioManager.stop_ground_sfx()

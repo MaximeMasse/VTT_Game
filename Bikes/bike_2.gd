@@ -40,18 +40,17 @@ var temps_compression := 0.0
 var current_frame_state :String
 var actual_state :String
 var previous_actual_state :String
- # Tricks
-var is_tricking :bool
-var current_trick := {}
-var potential_trick := {}
-var current_combo :Array[Dictionary]= []
+
 
 signal crashed
+#signal hud_trick_reset
+#signal hud_trick_activate
 
 func _ready():
 	reset_physic()
 	reset_states()
-	reset_tricks()
+	Global.reset_tricks()
+	
 
 func reset_physic():
 	for parts in [cadre, roue_avant, roue_arrière]:
@@ -65,12 +64,6 @@ func reset_states():
 	current_frame_state = "slow_riding"
 	actual_state = "slow_riding"
 	previous_actual_state = "slow_riding"
-	
-func reset_tricks():
-	is_tricking = false
-	current_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
-	potential_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
-	current_combo = []
 	
 func _physics_process(delta):
 	if not can_drive:
@@ -150,42 +143,43 @@ func _physics_process(delta):
 	if current_frame_state not in TRICK_LIST:
 		actual_state = current_frame_state
 		%Trick_status_changer.stop()
-	elif %Trick_status_changer.is_stopped():
-		reset_tricks()
+	elif current_frame_state != actual_state and %Trick_status_changer.is_stopped():
+		Global.potential_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
 		%Trick_status_changer.start()
-		potential_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
 	# Tracking if waiting to become real
 	if not %Trick_status_changer.is_stopped():
-		potential_trick["length"] += traveled
-		potential_trick["duration"] += delta
-		potential_trick["rotation"] += rotated
+		Global.trick_update(traveled,delta,rotated,true)
 		
 	#Actually tricking
 	if actual_state in TRICK_LIST:
-		current_trick["length"] += traveled
-		current_trick["duration"] += delta
-		current_trick["rotation"] += rotated
+		Global.trick_update(traveled,delta,rotated)
 		# Combo starting
 		if previous_actual_state not in TRICK_LIST:
-			current_trick = potential_trick.duplicate()
-			current_trick["trick"] = actual_state
-			print("Simple trick starting : ",current_trick)
+			Global.new_trick(actual_state)
 		# Combo continue
 		elif actual_state != previous_actual_state:
-			current_combo.append(current_trick.duplicate())
-			current_trick = potential_trick.duplicate()
-			current_trick["trick"] = actual_state
-			print("Combo : ",current_combo," + ",current_trick)
+			Global.combo_update()
+			Global.new_trick(actual_state)
 	# Not tricking
 	else:
 		# Combo end
 		if previous_actual_state in TRICK_LIST:
-			current_combo.append(current_trick.duplicate())
-			Global.valid_combo(current_combo)
-			reset_tricks()
-			
+			Global.combo_update()
+			Global.valid_combo()
+			Global.reset_tricks()
+
+	# Audio
+	if actual_state != previous_actual_state: ground_sfx_change()
+	
 	previous_actual_state = actual_state
 
+func ground_sfx_change():
+	AudioManager.stop_ground_sfx()
+	if previous_actual_state == "Air":
+		AudioManager.play_ground_sfx("landing")
+		await get_tree().create_timer(0.5).timeout
+	AudioManager.play_ground_sfx(actual_state)
+	
 func _on_trick_status_changer_timeout():
 	actual_state = current_frame_state
 

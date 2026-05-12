@@ -13,6 +13,8 @@ var dico_saut :={
 	Vector2(90,100):["res://Images/HUD/jump_green.png",load("res://Images/HUD/piston_90.png")]
 }
 
+var is_tricking :bool
+
 func _ready():
 	reset()
 	update_best_tricks()
@@ -22,6 +24,7 @@ func reset():
 	%Penalty_label.hide()
 	%Piston.hide()
 	%Tricks_label.hide()
+	is_tricking = false
 	%Combo_label.text = ""
 	
 func update_combo(trick_list):
@@ -56,10 +59,21 @@ func _physics_process(delta):
 					%JumpSignal.show()
 					%JumpSignal.texture = load(dico_saut[seuils][0])
 	else : %Piston.hide()
-	#if Global.current_trick != "":
-		#%Tricks_label.text = Global.current_trick + "\n" + str(round_to(Global.trick_datas.x,1)) + " m | " + str(round_to(Global.trick_datas.y,1)) + " sec"
-		#%Tricks_label.show()
-	#else: %Tricks_label.hide()
+	if is_tricking: %Tricks_label.text = Global.current_trick["trick"] + "\n"\
+	 + str(round_to(Global.current_trick["length"],1)) + " m | "\
+	 + str(round_to(Global.current_trick["duration"],1)) + " sec"
+
+func trick_reset():
+	is_tricking = false
+	%Tricks_label.hide()
+	%Combo_label.text = ""
+	
+func trick_activate():
+	is_tricking = true
+	%Tricks_label.show()
+
+func combo_update(text):
+	%Combo_label.text += text + " + "
 
 func format_time(t: float) -> String:
 	var minutes := int(t) / 60
