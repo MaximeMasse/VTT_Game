@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://jorh80hom1vp"]
 
-[ext_resource type="Texture2D" uid="uid://dtgeosdh1piea" path="res://Images/Mapping/Assets/cp_back.png" id="1_lrb17"]
-[ext_resource type="Texture2D" uid="uid://cb28wrvm6orlf" path="res://Images/Mapping/Assets/cp_front.png" id="2_of7ku"]
-[ext_resource type="Texture2D" uid="uid://5k4i7haivqc0" path="res://Images/Mapping/Assets/rock_small_2.png" id="3_ox4py"]
+[ext_resource type="Texture2D" uid="uid://dtgeosdh1piea" path="res://Images/Mapping/Assets/Flags/cp_back.png" id="1_lrb17"]
+[ext_resource type="Texture2D" uid="uid://cb28wrvm6orlf" path="res://Images/Mapping/Assets/Flags/cp_front.png" id="2_of7ku"]
+[ext_resource type="Texture2D" uid="uid://5k4i7haivqc0" path="res://Images/Mapping/Assets/Rocks/rock_small_2.png" id="3_ox4py"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xrx5v"]
 a = Vector2(0, 128)

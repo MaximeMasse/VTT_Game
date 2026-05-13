@@ -9,6 +9,11 @@ var config := {}
 # Sélections
 var current_map := 0
 
+# Boost
+var BOOST_MAX_QUANTITY :float
+var ONE_TIME_RATIO :int
+var BOOST_CONSUMPTION :float
+
 # HUD
 var race_time := 0.0
 var penalty_to_show := false
@@ -62,12 +67,22 @@ var dico_avatars := {
 	1:preload("res://Avatar/Players/Noir/Avatar.png"),
 	2:preload("res://Avatar/Players/Rose/Avatar.png")
 }
+var dico_scenes :={
+	"Main_Game":"res://game.tscn"
+}
 
 signal hud_trick_reset
 signal hud_trick_activate
 signal hud_combo_update
 signal hud_score_update
 signal hud_new_best
+
+func start_mod(scene_name:String):
+	# Boost
+	BOOST_MAX_QUANTITY = Global.current_profile["boost"]["BOOST_MAX_QUANTITY"]
+	ONE_TIME_RATIO = Global.current_profile["boost"]["ONE_TIME_RATIO"]
+	BOOST_CONSUMPTION = Global.current_profile["boost"]["BOOST_CONSUMPTION"]
+	get_tree().change_scene_to_file(dico_scenes[scene_name])
 
 func get_current_map():
 	return dico_maps[current_map]

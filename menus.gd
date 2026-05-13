@@ -11,10 +11,8 @@ func _ready():
 	apply_audio_config()
 	AudioManager.play_music("MainMenu")
 	var last_id:int = Global.config.get("profil_en_cours")
-
 	if last_id != 0:
 		var profile = SaveManager.load_profile(last_id)
-
 		if not profile.is_empty():
 			SaveManager.set_current_profile(profile)
 			%ContinueButton.show()
@@ -22,7 +20,6 @@ func _ready():
 			%ContinueButton.hide()
 	else:
 		%ContinueButton.hide()
-	
 	#Mouse
 	var cursor = load("res://Images/Menus/Controls/cursor.png")
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(0, 0))
@@ -52,7 +49,7 @@ func apply_audio_config():
 func _on_continue_button_pressed():
 	AudioManager.play_ui("click")
 	AudioManager.stop_music()
-	get_tree().change_scene_to_file("res://game.tscn")
+	Global.start_mod("Main_Game")
 
 func _on_new_player_button_pressed():
 	AudioManager.play_ui("click")

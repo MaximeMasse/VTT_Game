@@ -222,7 +222,6 @@ unique_name_in_owner = true
 
 [node name="ChoixMap" type="CanvasLayer" parent="." unique_id=766752152]
 unique_name_in_owner = true
-visible = false
 
 [node name="Fond" type="TextureRect" parent="ChoixMap" unique_id=1092760061]
 offset_right = 1280.0

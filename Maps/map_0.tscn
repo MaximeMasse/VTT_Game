@@ -103,6 +103,7 @@ down_texture = ExtResource("4_tisqc")
 under_texture = ExtResource("5_o1mje")
 
 [node name="SpecialParts" type="StaticBody2D" parent="." unique_id=839341710]
+collision_mask = 0
 
 [node name="Tinys" type="Sprite2D" parent="SpecialParts" unique_id=2086086056]
 z_index = 2
@@ -176,6 +177,7 @@ curve = SubResource("Curve2D_4wpxc")
 
 [node name="Floors" type="StaticBody2D" parent="." unique_id=11458257]
 unique_name_in_owner = true
+collision_mask = 0
 
 [node name="Textures" type="Node2D" parent="." unique_id=580291734]
 unique_name_in_owner = true
@@ -305,6 +307,11 @@ position = Vector2(10946, 1434)
 texture = ExtResource("14_4hqvm")
 region_enabled = true
 region_rect = Rect2(428.45535, 0, 325.39694, 1024)
+
+[node name="Forest18" type="Sprite2D" parent="Assets/FrontForest" unique_id=1275304124]
+z_index = 6
+position = Vector2(11837, 1819)
+texture = ExtResource("8_4hqvm")
 
 [node name="RockTrees" type="Node2D" parent="Assets" unique_id=1804139372]
 
@@ -436,6 +443,12 @@ texture = ExtResource("19_dhc5w")
 region_enabled = true
 region_rect = Rect2(331.47308, 576.1954, 182.59961, 171.18713)
 
+[node name="Tinys3" type="Sprite2D" parent="Assets/RockTrees" unique_id=1943543283]
+position = Vector2(12261, 1587)
+texture = ExtResource("19_dhc5w")
+region_enabled = true
+region_rect = Rect2(0, 0, 166.5589, 281.22455)
+
 [node name="Tinys2" type="Sprite2D" parent="Assets/RockTrees" unique_id=1942065479]
 position = Vector2(6134, 431.99976)
 rotation = 0.70784277
@@ -542,17 +555,6 @@ position = Vector2(1356.9999, 466)
 scale = Vector2(2.319, 2.319)
 texture = ExtResource("17_dhc5w")
 region_rect = Rect2(43.605103, 0, 1492.3949, 890)
-
-[node name="Forest3" type="Sprite2D" parent="." unique_id=1275304124]
-z_index = 6
-position = Vector2(11837, 1819)
-texture = ExtResource("8_4hqvm")
-
-[node name="Tinys" type="Sprite2D" parent="." unique_id=1943543283]
-position = Vector2(12261, 1587)
-texture = ExtResource("19_dhc5w")
-region_enabled = true
-region_rect = Rect2(0, 0, 166.5589, 281.22455)
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]

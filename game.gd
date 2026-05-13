@@ -76,10 +76,10 @@ func _input(event):
 			load_bike()
 		if Input.is_action_just_pressed("Respawn"):
 			velo_courant.queue_free()
-			map_courante.queue_free()
+			#map_courante.queue_free()
 			velo_courant = null
 			await get_tree().process_frame
-			load_map()
+			#load_map()
 			respawn_bike()
 
 func load_map():

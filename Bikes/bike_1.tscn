@@ -69,7 +69,7 @@ script = ExtResource("1_leoqd")
 [node name="Roue_avant" type="RigidBody2D" parent="." unique_id=442044832]
 unique_name_in_owner = true
 position = Vector2(55, 46)
-collision_layer = 0
+collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_ow0o1")
 
 [node name="Contact_sol_avant" type="Area2D" parent="Roue_avant" unique_id=1755217802]
@@ -111,7 +111,7 @@ texture = ExtResource("2_4osgm")
 
 [node name="Cadre" type="RigidBody2D" parent="." unique_id=793041427]
 unique_name_in_owner = true
-collision_layer = 2
+collision_layer = 0
 mass = 30.0
 center_of_mass_mode = 1
 

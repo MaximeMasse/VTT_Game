@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://brbdbtxmgfwl7" path="res://Images/HUD/piston_0.png" id="2_a2258"]
 [ext_resource type="Texture2D" uid="uid://by53st7ljhdsx" path="res://Images/HUD/contact_red.png" id="3_1xsix"]
 [ext_resource type="Texture2D" uid="uid://bj5w3ph0yvust" path="res://Images/HUD/jump_green.png" id="4_rftc2"]
+[ext_resource type="Texture2D" uid="uid://v7m21rkumyb6" path="res://Images/HUD/back_boost_gauge.png" id="6_61f8s"]
+[ext_resource type="Texture2D" uid="uid://cs6m4x184ulnh" path="res://Images/HUD/boost_gauge.png" id="7_g10ll"]
+[ext_resource type="Texture2D" uid="uid://bpoiq5c82jbft" path="res://Images/HUD/Boost_segment.png" id="8_gpiub"]
 
 [sub_resource type="SystemFont" id="SystemFont_1xsix"]
 font_names = PackedStringArray("Pixel Game", "Jersey 10")
@@ -50,13 +53,15 @@ anchors_preset = 0
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-offset_left = 44.0
-offset_top = 22.0
-offset_right = 345.0
-offset_bottom = 76.0
+offset_left = 84.0
+offset_top = 26.0
+offset_right = 299.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = SubResource("SystemFont_1xsix")
-theme_override_font_sizes/font_size = 39
+theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxFlat_n2snw")
 text = "Speed : 20 km/h"
 horizontal_alignment = 1
@@ -108,12 +113,12 @@ one_shot = true
 [node name="Avancement_bar" type="ProgressBar" parent="Live" unique_id=2004697716]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 39.0
-offset_top = 89.0
-offset_right = 349.27032
-offset_bottom = 129.0
+offset_left = 42.0
+offset_top = 79.0
+offset_right = 342.0
+offset_bottom = 110.0
 theme_override_fonts/font = SubResource("SystemFont_g10ll")
-theme_override_font_sizes/font_size = 34
+theme_override_font_sizes/font_size = 30
 theme_override_styles/background = SubResource("StyleBoxFlat_64ctp")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8sq4i")
 
@@ -213,7 +218,7 @@ offset_right = 944.0
 offset_bottom = 235.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_color = Color(0.8862745, 0.6431373, 0, 1)
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = SubResource("SystemFont_61f8s")
 theme_override_font_sizes/font_size = 30
@@ -239,6 +244,30 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_n2snw")
 text = "Score : 54000 points"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Boost_gauge" type="TextureProgressBar" parent="Live" unique_id=1716161023]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 0
+offset_left = 42.0
+offset_top = 138.00003
+offset_right = 142.0
+offset_bottom = 153.00003
+scale = Vector2(3, 2.054)
+value = 10.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_61f8s")
+texture_progress = ExtResource("7_g10ll")
+
+[node name="Boost_segment" type="TextureRect" parent="Live" unique_id=1932674558]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 138.0
+offset_right = 140.0
+offset_bottom = 169.0
+texture = ExtResource("8_gpiub")
+expand_mode = 1
 
 [node name="Joueur" type="Control" parent="." unique_id=1077279434]
 layout_mode = 3
