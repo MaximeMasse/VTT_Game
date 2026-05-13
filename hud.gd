@@ -27,6 +27,7 @@ var is_tricking :bool
 
 func _ready():
 	reset()
+	%Trick_scored_label.hide()
 	best_trick_labels={"Air":%Air_label,"Wheelie":%Wheelie_label,"Nose Wheelie":%Nose_label}
 	for trick in ["Wheelie","Nose Wheelie","Air"]:update_best_tricks(trick,false)
 
@@ -41,11 +42,11 @@ func reset():
 	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
 	
 func update_score(points):
-	%Trick_score_label.text = "+ " + str(int(points)) + " Points" 
-	%Trick_score_label.show()
+	%Trick_scored_label.text = "+ " + str(int(points)) + " Points" 
+	%Trick_scored_label.show()
 	%Score_label.add_theme_color_override("font_color", colors["ORANGE"])
 	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
-	fade_out_label(%Trick_score_label,1)
+	fade_out_label(%Trick_scored_label,1)
 	await get_tree().create_timer(1).timeout
 	%Score_label.add_theme_color_override("font_color", colors["YELLOW"])
 
@@ -85,8 +86,7 @@ func _physics_process(delta):
 
 func trick_reset():
 	is_tricking = false
-	#fade_out_label(%Tricks_label,0.5)
-	#%Trick_score_label.hide()
+	%Trick_score_label.hide()
 	%Tricks_label.hide()
 	%Combo_label.text = ""
 	
