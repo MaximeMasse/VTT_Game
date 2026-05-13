@@ -20,6 +20,8 @@ var SWEET_SPOT :float = Global.current_profile["stats"]["SWEET_SPOT"]
 var FORCE_SAUT :float = Global.current_profile["stats"]["FORCE_SAUT"]
 # Air control
 var AIR_SPEED_CONTROL :float = Global.current_profile["stats"]["AIR_SPEED_CONTROL"]
+# Boost
+var BOOST_ACCELERATION :float = Global.current_profile["boost"]["BOOST_ACCELERATION"]
 
 const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 
@@ -90,6 +92,9 @@ func _physics_process(delta):
 	# Tjs actif
 	if Input.is_action_just_released("Pédaler"):
 		animation.pause()
+	# Boost
+	if Input.is_action_pressed("Boost") and input_enabled:
+		cadre.apply_central_force(BOOST_ACCELERATION * delta * acceleration_direction/ECHELLE)
 	# Si contact arrière
 	if contact_sol_arrière.has_overlapping_bodies():
 		# Accélération

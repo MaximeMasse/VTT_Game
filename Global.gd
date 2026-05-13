@@ -22,11 +22,14 @@ var current_score :float
 
 #Tricks
 var current_trick := {}
+var potential_trick_score :int
+var potential_combo_score :int
 var potential_trick := {}
 var current_combo :Array[Dictionary]= []
 var rotation_name_and_point := {1:["",1.0],2:["Double",2.0],3:["Triple",3.0],
 							4:["Quadruple",4.0],5:["Quintuple",5.0],6:["Sextuple",6.0],7:["Septuple",7.0]}
 var tricks_values : Dictionary = {
+	"":0,
 	"Air":50,
 	"Wheelie":100,
 	"Nose Wheelie":150,
@@ -66,7 +69,6 @@ signal hud_combo_update
 signal hud_score_update
 signal hud_new_best
 
-
 func get_current_map():
 	return dico_maps[current_map]
 
@@ -81,6 +83,8 @@ func checkpoint_update(cp : String):
 
 func reset_tricks():
 	current_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
+	potential_trick_score = 0
+	potential_combo_score = 0
 	potential_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
 	current_combo = []
 	hud_trick_reset.emit()
@@ -100,8 +104,10 @@ func trick_update(distance,time,angle,potential:bool=false):
 		current_trick["duration"] += time
 		current_trick["rotation"] += angle
 		if current_trick["trick"] not in ["","Wheelie","Nose Wheelie"]:check_air_rotation()
+		potential_trick_score = trick_score(current_trick) * 2 ** current_combo.size()
 
 func combo_update():
+	potential_combo_score += potential_trick_score
 	current_combo.append(current_trick.duplicate())
 	hud_combo_update.emit(current_trick["trick"])
 
@@ -118,27 +124,35 @@ func check_air_rotation():
 	if name_changed and rotation_name != current_trick["trick"]:current_trick["trick"]=rotation_name
 
 func valid_combo():
-	var score := 0
 	for trick_datas in current_combo:
+		var trick_to_check :String
+		if trick_datas["trick"] not in ["Air","Wheelie","Nose Wheelie"]:trick_to_check = "Air"
+		# If wheelie ou air
+		else:trick_to_check = trick_datas["trick"]
+		check_best(trick_to_check,trick_datas["length"],trick_datas["duration"])
+	Global.current_score += potential_combo_score
+	hud_score_update.emit(potential_combo_score)
+	
+func combo_score()-> int:
+	var score :int = 0
+	var combo_multiplier :int = 0
+	for trick_datas in current_combo:
+		score += trick_score(trick_datas) * 2 ** combo_multiplier
+		combo_multiplier += 1
+	return score
+
+func trick_score(trick_datas:Dictionary)->int:
 		var trick_base_score :float
 		var length_modifier :float = (trick_datas["length"]/20)+1
 		var duration_modifier :float = (trick_datas["duration"]/5)+1
-		var trick_to_check :String
 		# If front ou Back
 		if trick_datas["trick"] not in ["Air","Wheelie","Nose Wheelie"]:
 			var rotation_modifier :float= points_rotation(1+int((abs(trick_datas["rotation"])-PI)/(2*PI)))
 			trick_base_score = tricks_values[trick_datas["trick"].split(" ")[-1]] * rotation_modifier
-			trick_to_check = "Air"
 		# If wheelie ou air
 		else:
 			trick_base_score = tricks_values[trick_datas["trick"]] 
-			trick_to_check = trick_datas["trick"]
-		score += trick_base_score * length_modifier * duration_modifier
-		check_best(trick_to_check,trick_datas["length"],trick_datas["duration"])
-		print("Trick analysé : ",trick_datas,"base score : ",trick_base_score," | length_modifier : ",length_modifier," | duration_modifier : ",duration_modifier," | trick score (cumul) : ",score," | trick to check : ",trick_to_check)
-	score *= 2 ** (current_combo.size()-1)
-	Global.current_score += score
-	hud_score_update.emit(score)
+		return int(trick_base_score * length_modifier * duration_modifier)
 
 func name_rotation(number_of_rotation:int)->String:
 	return rotation_name_and_point[number_of_rotation][0] + " " if number_of_rotation in rotation_name_and_point else "Wow, too much "

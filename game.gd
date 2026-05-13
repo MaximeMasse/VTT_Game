@@ -62,6 +62,7 @@ func _input(event):
 		if event.is_action_pressed("Pause"):
 			toggle_pause()
 		if Input.is_action_just_pressed("Restart"):
+			Global.current_score = 0
 			SaveManager.load_config()
 			SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
 			%HUD.reset()
@@ -88,7 +89,6 @@ func load_map():
 	%MapContainer.add_child(map_courante)
 	map_courante.finish.connect(map_finished)
 	map_data = map_courante.get_level_data()
-	Global.current_score = 0
 
 func map_finished():
 	AudioManager.play_sfx("fireworks")

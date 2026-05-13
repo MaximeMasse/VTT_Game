@@ -77,19 +77,23 @@ func _physics_process(delta):
 					%JumpSignal.show()
 					%JumpSignal.texture = load(dico_saut[seuils][0])
 	else : %Piston.hide()
-	if is_tricking: %Tricks_label.text = Global.current_trick["trick"] + "\n"\
-	 + str(round_to(Global.current_trick["length"],1)) + " m | "\
-	 + str(round_to(Global.current_trick["duration"],1)) + " sec"
+	if is_tricking:
+		%Tricks_label.text = Global.current_trick["trick"] + "\n"\
+	 		+ str(round_to(Global.current_trick["length"],1)) + " m | "\
+	 		+ str(round_to(Global.current_trick["duration"],1)) + " sec"
+		%Trick_score_label.text = str(int(Global.potential_combo_score+Global.potential_trick_score)) + " Points"
 
 func trick_reset():
 	is_tricking = false
-	fade_out_label(%Tricks_label,0.5)
-	#%Tricks_label.hide()
+	#fade_out_label(%Tricks_label,0.5)
+	#%Trick_score_label.hide()
+	%Tricks_label.hide()
 	%Combo_label.text = ""
 	
 func trick_activate():
 	is_tricking = true
 	%Tricks_label.show()
+	%Trick_score_label.show()
 
 func update_combo(text):
 	%Combo_label.text += text + " + "

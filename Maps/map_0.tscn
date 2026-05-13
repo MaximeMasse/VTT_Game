@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="8_e1l6w"]
 [ext_resource type="Texture2D" uid="uid://b73u573tnpyi1" path="res://Images/Mapping/Cover/rock_line_1.png" id="9_2k2xf"]
 [ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="9_4hqvm"]
-[ext_resource type="Texture2D" uid="uid://dwt7vutc8p3fx" path="res://Images/Mapping/Fonds/Fond_nuages.png" id="9_sydi8"]
 [ext_resource type="Texture2D" uid="uid://vrrxlv0cap0h" path="res://Images/Mapping/Assets/Rocks/rock_big_1.png" id="9_y2cw0"]
 [ext_resource type="Texture2D" uid="uid://b60tpv2slrwef" path="res://Images/Mapping/Fonds/Fond_montagnes.png" id="10_2k2xf"]
 [ext_resource type="Texture2D" uid="uid://bb53ivx7kwmg7" path="res://Images/Mapping/Assets/Rocks/rock_small_1.png" id="11_6tt68"]
@@ -29,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cx4dshvuh8its" path="res://Images/Mapping/Assets/Pannels/Down.png" id="24_o1mje"]
 [ext_resource type="Texture2D" uid="uid://ch02ec022aunp" path="res://Images/Mapping/Assets/Pannels/Brake.png" id="25_2xn1y"]
 [ext_resource type="Texture2D" uid="uid://dv2sapakursy5" path="res://Images/Mapping/Assets/Pannels/Cliff.png" id="26_2wbil"]
+[ext_resource type="Texture2D" uid="uid://cwexp7uo8isb8" path="res://Images/Mapping/Fonds/Background_landscape.png" id="29_2xn1y"]
 [ext_resource type="Texture2D" uid="uid://brg38ffdjplxy" path="res://Images/Mapping/Assets/Rocks/Cliff.png" id="30_2xn1y"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8lorq"]
@@ -61,13 +61,13 @@ point_count = 6
 
 [sub_resource type="Curve2D" id="Curve2D_8lorq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 9808, 810, -68.59486, -72.882034, 68.59486, 72.882034, 9953, 1085, -87.88716, -38.584606, 87.88716, 38.584606, 10161, 1243, -55.902004, 18.634, 55.902004, -18.634, 10437, 1270, 0, 0, 0, 0, 10515, 1230)
+"points": PackedVector2Array(0, 0, 0, 0, 9756, 743, -68.59486, -72.882034, 68.59486, 72.882034, 9953, 1085, -87.88716, -38.584606, 87.88716, 38.584606, 10161, 1243, -55.902004, 18.634, 55.902004, -18.634, 10437, 1270, 0, 0, 0, 0, 10515, 1230)
 }
 point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_b55o7"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 11132, 1386, 0, 0, 0, 0, 11247.465, 1458.6466, -127.77601, -26.620003, 127.77601, 26.620003, 11555, 1600, -135.76201, 42.592003, 135.76201, -42.592003, 12022, 1562, 0, 0, 0, 0, 12295, 1458, -139.95332, 49.603714, 139.95332, -49.603714, 12592, 1346, -124.00928, 28.344978, 124.00928, -28.344978, 12907, 1246, 0, 0, 0, 0, 13265, 1222, 0, 0, 0, 0, 14090, 1223, -224.0051, -11.7897415, 224.0051, 11.7897415, 14701, 1227, -221.8615, -73.31075, 221.8615, 73.31075, 15304, 1300, -64.130005, -49.61, 64.130005, 49.61, 15746, 1511, -113.18152, -124.97126, 113.18152, 124.97126, 16052, 1803, 0, 0, 0, 0, 16748, 2932, -56.51281, -75.999985, 56.51281, 75.999985, 16960, 3299, -40.92307, -38.97435, 40.92307, 38.97435, 17131, 3478, -85.743576, -40.92307, 85.743576, 40.92307, 17359, 3657, -72.102554, -13.641024, 72.102554, 13.641024, 17586, 3722, -107.17947, -11.611749, 107.17947, 11.611749, 17883, 3765, -83.79485, 17.538458, 83.79485, -17.538458, 18164, 3763, -75.999985, 37.025635, 75.999985, -37.025635, 18384, 3705, 0, 0, 0, 0, 18557, 3545)
+"points": PackedVector2Array(0, 0, 0, 0, 11132, 1386, 0, 0, 0, 0, 11247.465, 1458.6466, -127.77601, -26.620003, 127.77601, 26.620003, 11555, 1600, -135.76201, 42.592003, 135.76201, -42.592003, 12022, 1562, 0, 0, 0, 0, 12295, 1458, -139.95332, 49.603714, 139.95332, -49.603714, 12592, 1346, -124.00928, 28.344978, 124.00928, -28.344978, 12907, 1246, 0, 0, 0, 0, 13265, 1222, 0, 0, 0, 0, 14090, 1223, -224.0051, -11.7897415, 224.0051, 11.7897415, 14701, 1227, -221.8615, -73.31075, 221.8615, 73.31075, 15304, 1300, -64.130005, -49.61, 64.130005, 49.61, 15746, 1511, -113.18152, -124.97126, 113.18152, 124.97126, 16052, 1803, 0, 0, 0, 0, 16748, 2932, -56.51281, -75.999985, 56.51281, 75.999985, 16960, 3299, -40.92307, -38.97435, 40.92307, 38.97435, 17131, 3478, -85.743576, -40.92307, 85.743576, 40.92307, 17361, 3652, -72.102554, -13.641024, 72.102554, 13.641024, 17586, 3722, -107.17947, -11.611749, 107.17947, 11.611749, 17881, 3768, -72.97315, 8.644285, 72.97315, -8.644285, 18164, 3763, -50.95193, 34.432907, 50.95193, -34.432907, 18422, 3687, 0, 0, 0, 0, 18567, 3546)
 }
 point_count = 22
 
@@ -79,9 +79,9 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_2wbil"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 19533, 3608, -251.07434, -75.322296, 251.07434, 75.322296, 20622, 4792, -284.88843, 59.73467, 284.88843, -59.73467, 21846, 4708, 0, 0, 0, 0, 22267, 4483)
+"points": PackedVector2Array(0, 0, 0, 0, 19533, 3608, -90.49827, -70.26201, 90.49827, 70.26201, 20353, 4561, -106.34347, -20.749945, 106.34347, 20.749945, 20640, 4719, -284.88843, 59.73467, 284.88843, -59.73467, 21846, 4708, 0, 0, 0, 0, 22267, 4483)
 }
-point_count = 4
+point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_e3fhd"]
 _data = {
@@ -181,20 +181,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Assets" type="Node2D" parent="." unique_id=1612230551]
-
-[node name="RockBig1" type="Sprite2D" parent="Assets" unique_id=1313140531]
-z_index = 41
-position = Vector2(2770.0002, 567.99994)
-rotation = 0.34994236
-texture = ExtResource("9_y2cw0")
-
-[node name="RockSmall1" type="Sprite2D" parent="Assets" unique_id=908387738]
-position = Vector2(2501, 513)
-texture = ExtResource("11_6tt68")
-
-[node name="RockSmall2" type="Sprite2D" parent="Assets" unique_id=840918315]
-position = Vector2(2535, 589)
-texture = ExtResource("12_jldr1")
 
 [node name="FrontForest" type="Node2D" parent="Assets" unique_id=1214418813]
 
@@ -305,38 +291,53 @@ texture = ExtResource("14_4hqvm")
 region_enabled = true
 region_rect = Rect2(404.8759, 0, 344.2606, 1024)
 
-[node name="RockLine" type="Node2D" parent="Assets" unique_id=1804139372]
+[node name="Forest16" type="Sprite2D" parent="Assets/FrontForest" unique_id=2050018768]
+position = Vector2(10541, 1466)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+texture = ExtResource("14_4hqvm")
+region_enabled = true
+region_rect = Rect2(265.75687, 0, 485.73752, 1024)
 
-[node name="RockLine3" type="Sprite2D" parent="Assets/RockLine" unique_id=743484996]
+[node name="Forest17" type="Sprite2D" parent="Assets/FrontForest" unique_id=323284876]
+z_index = 1
+position = Vector2(10946, 1434)
+texture = ExtResource("14_4hqvm")
+region_enabled = true
+region_rect = Rect2(428.45535, 0, 325.39694, 1024)
+
+[node name="RockTrees" type="Node2D" parent="Assets" unique_id=1804139372]
+
+[node name="RockLine3" type="Sprite2D" parent="Assets/RockTrees" unique_id=743484996]
 position = Vector2(1314.4471, 391.85236)
 rotation = 0.50037426
 scale = Vector2(0.5355493, 1.5644048)
 texture = ExtResource("9_2k2xf")
 
-[node name="RockLine1" type="Sprite2D" parent="Assets/RockLine" unique_id=899705208]
+[node name="RockLine1" type="Sprite2D" parent="Assets/RockTrees" unique_id=899705208]
 z_index = 25
 position = Vector2(237, 160.50002)
 scale = Vector2(1, 1.759124)
 texture = ExtResource("9_2k2xf")
 
-[node name="RockLine2" type="Sprite2D" parent="Assets/RockLine" unique_id=443865896]
+[node name="RockLine2" type="Sprite2D" parent="Assets/RockTrees" unique_id=443865896]
 position = Vector2(2131.75, 594)
 scale = Vector2(0.6941368, 1)
 texture = ExtResource("9_2k2xf")
 
-[node name="RockLine4" type="Sprite2D" parent="Assets/RockLine" unique_id=89656313]
+[node name="RockLine4" type="Sprite2D" parent="Assets/RockTrees" unique_id=89656313]
 position = Vector2(4818, 738.00006)
 scale = Vector2(1, 2.0401459)
 texture = ExtResource("9_2k2xf")
 
-[node name="RockLine5" type="Sprite2D" parent="Assets/RockLine" unique_id=1327936058]
+[node name="RockLine5" type="Sprite2D" parent="Assets/RockTrees" unique_id=1327936058]
 position = Vector2(6028, 534)
 scale = Vector2(0.4977221, 2.2810218)
 texture = ExtResource("9_2k2xf")
 region_enabled = true
 region_rect = Rect2(376.623, 0, 439.38025, 137)
 
-[node name="RockLine6" type="Sprite2D" parent="Assets/RockLine" unique_id=637646973]
+[node name="RockLine6" type="Sprite2D" parent="Assets/RockTrees" unique_id=637646973]
 position = Vector2(3724, 380)
 rotation = 3.1415927
 scale = Vector2(0.8899177, -1.9775244)
@@ -344,7 +345,7 @@ texture = ExtResource("9_2k2xf")
 region_enabled = true
 region_rect = Rect2(0, 0, 641.96295, 137)
 
-[node name="RockLine7" type="Sprite2D" parent="Assets/RockLine" unique_id=1718485626]
+[node name="RockLine7" type="Sprite2D" parent="Assets/RockTrees" unique_id=1718485626]
 z_index = -29
 position = Vector2(3168, 504.00006)
 rotation = -0.28230777
@@ -353,7 +354,7 @@ texture = ExtResource("9_2k2xf")
 region_enabled = true
 region_rect = Rect2(365.2105, 0, 972.91327, 137)
 
-[node name="RockLine8" type="Sprite2D" parent="Assets/RockLine" unique_id=1306771409]
+[node name="RockLine8" type="Sprite2D" parent="Assets/RockTrees" unique_id=1306771409]
 z_index = 1
 position = Vector2(6120, 644.9999)
 rotation = 0.61514574
@@ -362,7 +363,7 @@ texture = ExtResource("9_2k2xf")
 region_enabled = true
 region_rect = Rect2(867.3593, 0, 442.23346, 137)
 
-[node name="RockLine9" type="Sprite2D" parent="Assets/RockLine" unique_id=54569353]
+[node name="RockLine9" type="Sprite2D" parent="Assets/RockTrees" unique_id=54569353]
 position = Vector2(5841.999, 634.00006)
 rotation = -0.6850249
 scale = Vector2(1, 2.3182418)
@@ -370,7 +371,7 @@ texture = ExtResource("9_2k2xf")
 region_enabled = true
 region_rect = Rect2(0, 0, 350.9449, 137)
 
-[node name="RockLine10" type="Sprite2D" parent="Assets/RockLine" unique_id=2139321667]
+[node name="RockLine10" type="Sprite2D" parent="Assets/RockTrees" unique_id=2139321667]
 z_index = 7
 position = Vector2(7491, 879)
 rotation = -0.3402146
@@ -379,11 +380,68 @@ texture = ExtResource("9_2k2xf")
 region_enabled = true
 region_rect = Rect2(861.65314, 0, 476.47064, 137)
 
-[node name="Forest4" type="Sprite2D" parent="Assets/RockLine" unique_id=44625626]
+[node name="Forest4" type="Sprite2D" parent="Assets/RockTrees" unique_id=44625626]
 position = Vector2(3671, 504)
 texture = ExtResource("17_dhc5w")
 region_enabled = true
 region_rect = Rect2(320.84564, 0, 690.4547, 798)
+
+[node name="RockBig1" type="Sprite2D" parent="Assets/RockTrees" unique_id=21648250]
+position = Vector2(11075, 1455.0001)
+rotation = -3.019308
+scale = Vector2(1, -1)
+texture = ExtResource("9_y2cw0")
+
+[node name="RockBig2" type="Sprite2D" parent="Assets/RockTrees" unique_id=1313140531]
+z_index = 41
+position = Vector2(2770.0002, 567.99994)
+rotation = 0.34994236
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("9_y2cw0")
+
+[node name="RockSmall1" type="Sprite2D" parent="Assets/RockTrees" unique_id=908387738]
+position = Vector2(2501, 513)
+texture = ExtResource("11_6tt68")
+
+[node name="RockSmall2" type="Sprite2D" parent="Assets/RockTrees" unique_id=840918315]
+position = Vector2(2535, 589)
+texture = ExtResource("12_jldr1")
+
+[node name="RockSmall3" type="Sprite2D" parent="Assets/RockTrees" unique_id=623810588]
+z_index = 6
+position = Vector2(7471, 757)
+texture = ExtResource("12_jldr1")
+
+[node name="RockSmall4" type="Sprite2D" parent="Assets/RockTrees" unique_id=1405410898]
+position = Vector2(2980, 490.99994)
+scale = Vector2(0.84057957, 0.8405797)
+texture = ExtResource("11_6tt68")
+
+[node name="RockBig3" type="Sprite2D" parent="Assets/RockTrees" unique_id=1245329304]
+position = Vector2(2944, 614)
+texture = ExtResource("9_y2cw0")
+
+[node name="RockLine11" type="Sprite2D" parent="Assets/RockTrees" unique_id=1276112651]
+position = Vector2(10546, 1306.0006)
+rotation = -0.49964437
+scale = Vector2(0.5813294, 1.5145985)
+texture = ExtResource("9_2k2xf")
+region_enabled = true
+region_rect = Rect2(387.87018, 0, 372.55597, 137)
+
+[node name="Tinys" type="Sprite2D" parent="Assets/RockTrees" unique_id=1144386792]
+position = Vector2(5915.0005, 430)
+scale = Vector2(0.55357057, 0.491959)
+texture = ExtResource("19_dhc5w")
+region_enabled = true
+region_rect = Rect2(331.47308, 576.1954, 182.59961, 171.18713)
+
+[node name="Tinys2" type="Sprite2D" parent="Assets/RockTrees" unique_id=1942065479]
+position = Vector2(6134, 431.99976)
+rotation = 0.70784277
+texture = ExtResource("19_dhc5w")
+region_enabled = true
+region_rect = Rect2(188.81714, 744.52936, 176.89337, 116.977844)
 
 [node name="Pannels" type="Node2D" parent="Assets" unique_id=65779085]
 
@@ -426,91 +484,52 @@ z_index = -8
 position = Vector2(6019, 296)
 texture = ExtResource("24_8lorq")
 
-[node name="Tinys" type="Sprite2D" parent="Assets" unique_id=1144386792]
-position = Vector2(5915.0005, 430)
-scale = Vector2(0.55357057, 0.491959)
-texture = ExtResource("19_dhc5w")
-region_enabled = true
-region_rect = Rect2(331.47308, 576.1954, 182.59961, 171.18713)
-
-[node name="Tinys2" type="Sprite2D" parent="Assets" unique_id=1942065479]
-position = Vector2(6134, 431.99976)
-rotation = 0.70784277
-texture = ExtResource("19_dhc5w")
-region_enabled = true
-region_rect = Rect2(188.81714, 744.52936, 176.89337, 116.977844)
-
-[node name="RockSmall3" type="Sprite2D" parent="Assets" unique_id=623810588]
-z_index = 6
-position = Vector2(7471, 757)
-texture = ExtResource("12_jldr1")
-
-[node name="RockSmall4" type="Sprite2D" parent="Assets" unique_id=1405410898]
-position = Vector2(2980, 490.99994)
-scale = Vector2(0.84057957, 0.8405797)
-texture = ExtResource("11_6tt68")
-
-[node name="RockBig2" type="Sprite2D" parent="Assets" unique_id=1245329304]
-position = Vector2(2944, 614)
-texture = ExtResource("9_y2cw0")
-
-[node name="Ctrl" type="Sprite2D" parent="Assets" unique_id=116245571]
+[node name="Ctrl" type="Sprite2D" parent="Assets/Pannels" unique_id=116245571]
 position = Vector2(9433, 573)
 texture = ExtResource("23_t7wo3")
 
-[node name="Down" type="Sprite2D" parent="Assets" unique_id=203290549]
+[node name="Down" type="Sprite2D" parent="Assets/Pannels" unique_id=203290549]
 position = Vector2(9704, 570)
 texture = ExtResource("24_o1mje")
 
-[node name="Brake" type="Sprite2D" parent="Assets" unique_id=221049323]
+[node name="Brake" type="Sprite2D" parent="Assets/Pannels" unique_id=221049323]
 position = Vector2(9560, 570)
 texture = ExtResource("25_2xn1y")
 
-[node name="Cliff" type="Sprite2D" parent="Assets" unique_id=955131155]
+[node name="Cliff" type="Sprite2D" parent="Assets/Pannels" unique_id=955131155]
 position = Vector2(9826.001, 701)
-rotation = 0.17888205
+rotation = 0.17888203
 texture = ExtResource("26_2wbil")
 
-[node name="RockLine1" type="Sprite2D" parent="Assets" unique_id=1276112651]
-position = Vector2(10546, 1306.0006)
-rotation = -0.49964437
-scale = Vector2(0.5813294, 1.5145985)
-texture = ExtResource("9_2k2xf")
+[node name="Cliff2" type="Sprite2D" parent="Assets/Pannels" unique_id=549679564]
+position = Vector2(12346, 1570.0001)
+scale = Vector2(0.5213482, 0.55280876)
+texture = ExtResource("30_2xn1y")
 region_enabled = true
-region_rect = Rect2(387.87018, 0, 372.55597, 137)
-
-[node name="Forest1" type="Sprite2D" parent="Assets" unique_id=2050018768]
-position = Vector2(10541, 1466)
-scale = Vector2(-1, 1)
-texture = ExtResource("14_4hqvm")
-region_enabled = true
-region_rect = Rect2(265.75687, 0, 485.73752, 1024)
-
-[node name="Forest2" type="Sprite2D" parent="Assets" unique_id=323284876]
-z_index = 1
-position = Vector2(10946, 1434)
-texture = ExtResource("14_4hqvm")
-region_enabled = true
-region_rect = Rect2(428.45535, 0, 325.39694, 1024)
+region_rect = Rect2(234.64209, 0, 239.35791, 445)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=746463856]
 
 [node name="Ciel" type="ParallaxLayer" parent="ParallaxBackground" unique_id=146799377]
 position = Vector2(-3, -3)
 motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(3550, 0)
+motion_mirroring = Vector2(3070, 0)
 
-[node name="Fond2" type="Sprite2D" parent="ParallaxBackground/Ciel" unique_id=930560975]
-position = Vector2(1510.0001, 307)
-scale = Vector2(2.3193357, 2.319336)
-texture = ExtResource("9_sydi8")
+[node name="BackgroundLandscape" type="Sprite2D" parent="ParallaxBackground/Ciel" unique_id=1818437109]
+position = Vector2(1281, 716)
+scale = Vector2(2, 2)
+texture = ExtResource("29_2xn1y")
 
 [node name="Montagnes" type="ParallaxLayer" parent="ParallaxBackground" unique_id=691336840]
 motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(3550, 0)
 
 [node name="FondMontagnes" type="Sprite2D" parent="ParallaxBackground/Montagnes" unique_id=781013625]
 position = Vector2(1508.0001, 319)
+scale = Vector2(2.319, 2.319)
+texture = ExtResource("10_2k2xf")
+
+[node name="FondMontagnes2" type="Sprite2D" parent="ParallaxBackground/Montagnes" unique_id=308102664]
+position = Vector2(4996, 329)
 scale = Vector2(2.319, 2.319)
 texture = ExtResource("10_2k2xf")
 
@@ -524,23 +543,10 @@ scale = Vector2(2.319, 2.319)
 texture = ExtResource("17_dhc5w")
 region_rect = Rect2(43.605103, 0, 1492.3949, 890)
 
-[node name="RockBig1" type="Sprite2D" parent="." unique_id=21648250]
-position = Vector2(11075, 1455.0001)
-rotation = 0.12228468
-scale = Vector2(-1, 1)
-texture = ExtResource("9_y2cw0")
-
 [node name="Forest3" type="Sprite2D" parent="." unique_id=1275304124]
 z_index = 6
 position = Vector2(11837, 1819)
 texture = ExtResource("8_4hqvm")
-
-[node name="Cliff" type="Sprite2D" parent="." unique_id=549679564]
-position = Vector2(12346, 1570.0001)
-scale = Vector2(0.5213482, 0.55280876)
-texture = ExtResource("30_2xn1y")
-region_enabled = true
-region_rect = Rect2(234.64209, 0, 239.35791, 445)
 
 [node name="Tinys" type="Sprite2D" parent="." unique_id=1943543283]
 position = Vector2(12261, 1587)
