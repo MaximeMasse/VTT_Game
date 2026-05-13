@@ -41,7 +41,6 @@ var current_frame_state :String
 var actual_state :String
 var previous_actual_state :String
 
-
 signal crashed
 
 func _ready():

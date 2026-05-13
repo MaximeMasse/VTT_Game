@@ -4,7 +4,8 @@ var colors := {
 	"RED":Color(1,0.04,0.04,1),
 	"YELLOW":Color(0.85,0.86,0,1),
 	"DARK_GREY":Color(0.2,0.2,0.23,1),
-	"LIGHT_GREEN":Color(0.2,0.9,0.23,1)
+	"LIGHT_GREEN":Color(0.2,0.9,0.23,1),
+	"ORANGE":Color(0.76,0.37,0,1)
 }
 
 var best_trick_labels:Dictionary
@@ -36,11 +37,17 @@ func reset():
 	%Tricks_label.hide()
 	is_tricking = false
 	%Combo_label.text = ""
+	%Trick_score_label.hide()
+	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
 	
-func update_combo(trick_list):
-	var combo_text := ""
-	for trick in trick_list: combo_text += trick + " + "
-	%Combo_label.text = combo_text
+func update_score(points):
+	%Trick_score_label.text = "+ " + str(int(points)) + " Points" 
+	%Trick_score_label.show()
+	%Score_label.add_theme_color_override("font_color", colors["ORANGE"])
+	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
+	fade_out_label(%Trick_score_label,1)
+	await get_tree().create_timer(1).timeout
+	%Score_label.add_theme_color_override("font_color", colors["YELLOW"])
 
 func update_best_tricks(trick_name,effect=true):
 	best_trick_labels[trick_name].text = str(round_to(Global.current_profile["best_tricks"][trick_name]["length"],1)) + " m | "\
@@ -76,14 +83,15 @@ func _physics_process(delta):
 
 func trick_reset():
 	is_tricking = false
-	fade_out_label(%Tricks_label)
+	fade_out_label(%Tricks_label,0.5)
+	#%Tricks_label.hide()
 	%Combo_label.text = ""
 	
 func trick_activate():
 	is_tricking = true
 	%Tricks_label.show()
 
-func combo_update(text):
+func update_combo(text):
 	%Combo_label.text += text + " + "
 
 func format_time(t: float) -> String:
@@ -96,16 +104,16 @@ func round_to(value: float, decimals: int) -> float:
 	var factor = pow(10, decimals)
 	return round(value * factor) / factor
 
-func fade_out_label(label: Label):
+func fade_out_label(label: Label,effect_duration: float):
 	var initial_scale = label.scale
 	var initial_position = label.position
 	var initial_transparency = label.modulate.a
 	var tween = create_tween()
-	tween.tween_property(label, "modulate:a", 0.0, 1.0)\
+	tween.tween_property(label, "modulate:a", 0.0, effect_duration)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_OUT)
-	tween.parallel().tween_property(label, "scale", Vector2(1.5, 1.5), 1.0)
-	tween.parallel().tween_property(label, "position:y", label.position.y - 50, 1.0)
+	tween.parallel().tween_property(label, "scale", Vector2(1.5, 1.5), effect_duration)
+	tween.parallel().tween_property(label, "position:y", label.position.y - 50, effect_duration)
 	await tween.finished
 	label.hide()
 	label.scale = initial_scale
@@ -113,5 +121,5 @@ func fade_out_label(label: Label):
 	label.modulate.a = initial_transparency
 
 func _on_show_penalty_timer_timeout():
-	fade_out_label(%Penalty_label)
+	fade_out_label(%Penalty_label,1)
 	%Tricks_label.add_theme_color_override("font_color", colors["YELLOW"])

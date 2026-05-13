@@ -34,10 +34,11 @@ func _ready():
 	DisplayServer.window_set_position(screen_rect.position + (screen_rect.size - new_size) / 2)
 	
 	# Connections
-	Global.new_best.connect(%HUD.update_best_tricks)
+	Global.hud_new_best.connect(%HUD.update_best_tricks)
 	Global.hud_trick_activate.connect(%HUD.trick_activate)
 	Global.hud_trick_reset.connect(%HUD.trick_reset)
-	Global.hud_combo_update.connect(%HUD.combo_update)
+	Global.hud_combo_update.connect(%HUD.update_combo)
+	Global.hud_score_update.connect(%HUD.update_score)
 	# Chargements
 	load_map()
 	load_bike()
@@ -87,6 +88,7 @@ func load_map():
 	%MapContainer.add_child(map_courante)
 	map_courante.finish.connect(map_finished)
 	map_data = map_courante.get_level_data()
+	Global.current_score = 0
 
 func map_finished():
 	AudioManager.play_sfx("fireworks")

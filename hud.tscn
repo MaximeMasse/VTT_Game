@@ -45,8 +45,6 @@ script = ExtResource("1_64ctp")
 [node name="Live" type="Control" parent="." unique_id=1430096508]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 878.0
-offset_bottom = 256.0
 
 [node name="Vitesse_label" type="Label" parent="Live" unique_id=228378803]
 unique_name_in_owner = true
@@ -186,20 +184,61 @@ text = "Wheelie + Backflip +"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Trick_score_label" type="Label" parent="Live" unique_id=2121368560]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 816.0
+offset_top = 180.0
+offset_right = 942.0
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("SystemFont_61f8s")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxFlat_n2snw")
+text = "+ 8600 Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score_label" type="Label" parent="Live" unique_id=1499990347]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1011.0
+offset_top = 127.0
+offset_right = 1239.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("SystemFont_61f8s")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = SubResource("StyleBoxFlat_n2snw")
+text = "Score : 54000 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Joueur" type="Control" parent="." unique_id=1077279434]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 814.0
+offset_left = 1032.0
 offset_top = 17.0
 offset_right = 1258.0
-offset_bottom = 189.0
+offset_bottom = 113.0
 
 [node name="BestTricks" type="GridContainer" parent="Joueur" unique_id=1250583665]
-layout_mode = 0
-offset_left = 162.0
-offset_top = -1.0
-offset_right = 450.0
-offset_bottom = 82.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35200003
+anchor_right = 0.35200003
+offset_left = -134.55202
+offset_top = 1.0
+offset_right = 153.448
+offset_bottom = 84.0
 columns = 2
 
 [node name="BestAir" type="Label" parent="Joueur/BestTricks" unique_id=723131198]
