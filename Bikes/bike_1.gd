@@ -43,6 +43,7 @@ var current_frame_state :String
 var actual_state :String
 var previous_actual_state :String
 
+signal boost_consumed
 signal crashed
 
 func _ready():
@@ -93,8 +94,10 @@ func _physics_process(delta):
 	if Input.is_action_just_released("Pédaler"):
 		animation.pause()
 	# Boost
-	if Input.is_action_pressed("Boost") and input_enabled:
+	if Input.is_action_pressed("Boost") and input_enabled and Global.current_boost > 0:
 		cadre.apply_central_force(BOOST_ACCELERATION * delta * acceleration_direction/ECHELLE)
+		Global.current_boost -= Global.BOOST_CONSUMPTION * delta
+		boost_consumed.emit()
 	# Si contact arrière
 	if contact_sol_arrière.has_overlapping_bodies():
 		# Accélération

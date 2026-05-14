@@ -100,10 +100,12 @@ func load_bike():
 	%BikeContainer.add_child(velo_courant)
 	camera_target = velo_courant.cadre
 	velo_courant.crashed.connect(respawn_bike)
+	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
 	Global.race_time = 0.0
 	Global.current_cp = "start"
 	Global.cp_player_speed = Vector2.ZERO
 	Global.cp_player_pos = Vector2.ZERO
+	Global.current_boost = 0
 	start_countdown()
 
 func respawn_bike():
@@ -113,6 +115,7 @@ func respawn_bike():
 	velo_courant.can_drive = true
 	camera_target = velo_courant.cadre
 	velo_courant.crashed.connect(respawn_bike)
+	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
 	Global.penalty_to_show = true
 	Global.race_time += Global.current_profile["upgrades"]["RESPAWN_PENALTY"]
 	velo_courant.global_position = Global.cp_player_pos

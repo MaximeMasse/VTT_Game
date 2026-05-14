@@ -247,25 +247,23 @@ vertical_alignment = 1
 
 [node name="Boost_gauge" type="TextureProgressBar" parent="Live" unique_id=1716161023]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 10)
 layout_mode = 0
 offset_left = 42.0
-offset_top = 138.00003
-offset_right = 142.0
-offset_bottom = 153.00003
-scale = Vector2(3, 2.054)
-value = 10.0
-nine_patch_stretch = true
+offset_top = 137.0
+offset_right = 342.0
+offset_bottom = 167.0
+max_value = 10000.0
+value = 5000.0
 texture_under = ExtResource("6_61f8s")
 texture_progress = ExtResource("7_g10ll")
 
 [node name="Boost_segment" type="TextureRect" parent="Live" unique_id=1932674558]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 40.0
-offset_top = 138.0
-offset_right = 140.0
-offset_bottom = 169.0
+offset_left = 42.0
+offset_top = 137.0
+offset_right = 192.0
+offset_bottom = 167.0
 texture = ExtResource("8_gpiub")
 expand_mode = 1
 

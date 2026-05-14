@@ -25,6 +25,8 @@ var dico_saut :={
 
 var is_tricking :bool
 var label_is_fading :Dictionary
+var boost_gauge_size:float
+var boost_segment_max_size:float
 
 func _ready():
 	reset()
@@ -42,11 +44,18 @@ func reset():
 	%Combo_label.text = ""
 	%Trick_score_label.hide()
 	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
-	set_boost_size()
+	%Boost_gauge.value = 0
+	#%Boost_segment.hide()
+	set_boost_geometry()
 
-func set_boost_size():
-	%Boost_gauge.scale.x = (Global.BOOST_MAX_QUANTITY/2500)-1
-	%Boost_segment.size.x = int(%Boost_gauge.size.x * %Boost_gauge.scale.x/Global.ONE_TIME_RATIO)
+func set_boost_geometry():
+	boost_gauge_size = %Boost_gauge.size.x * Global.BOOST_MAX_QUANTITY/10000
+	%Boost_gauge.scale.x = (Global.BOOST_MAX_QUANTITY/10000)
+	boost_segment_max_size = boost_gauge_size/Global.ONE_TIME_RATIO
+
+func set_boost_segment_geometry():
+	%Boost_segment.position.x = %Boost_gauge.position.x + Global.current_boost * boost_gauge_size / Global.BOOST_MAX_QUANTITY
+	%Boost_segment.size.x = clampf(boost_segment_max_size,0,boost_gauge_size+%Boost_gauge.position.x-%Boost_segment.position.x)
 	
 func update_score(points):
 	%Trick_scored_label.text = "+ " + str(int(points)) + " Points" 
@@ -90,17 +99,21 @@ func _physics_process(delta):
 	 		+ str(round_to(Global.current_trick["length"],1)) + " m | "\
 	 		+ str(round_to(Global.current_trick["duration"],1)) + " sec"
 		%Trick_score_label.text = str(int(Global.potential_combo_score+Global.potential_trick_score)) + " Points"
+	%Boost_gauge.value = Global.current_boost + min(Global.potential_combo_score + Global.potential_trick_score,Global.ONE_TIME_QUANTITY)
 
 func trick_reset():
 	is_tricking = false
 	%Trick_score_label.hide()
 	fade_out_label(%Tricks_label,Vector2(1,1),Vector2(0,50),1)
 	%Combo_label.text = ""
+	%Boost_segment.hide()
 	
 func trick_activate():
 	is_tricking = true
 	%Tricks_label.show()
 	%Trick_score_label.show()
+	set_boost_segment_geometry()
+	%Boost_segment.show()
 
 func update_combo(text):
 	%Combo_label.text += text + " + "

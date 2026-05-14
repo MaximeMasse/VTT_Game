@@ -9,11 +9,6 @@ var config := {}
 # Sélections
 var current_map := 0
 
-# Boost
-var BOOST_MAX_QUANTITY :float
-var ONE_TIME_RATIO :int
-var BOOST_CONSUMPTION :float
-
 # HUD
 var race_time := 0.0
 var penalty_to_show := false
@@ -31,16 +26,13 @@ var potential_trick_score :int
 var potential_combo_score :int
 var potential_trick := {}
 var current_combo :Array[Dictionary]= []
-var rotation_name_and_point := {1:["",1.0],2:["Double",2.0],3:["Triple",3.0],
-							4:["Quadruple",4.0],5:["Quintuple",5.0],6:["Sextuple",6.0],7:["Septuple",7.0]}
-var tricks_values : Dictionary = {
-	"":0,
-	"Air":50,
-	"Wheelie":100,
-	"Nose Wheelie":150,
-	"Backflip":100,
-	"Frontflip":150
-}
+
+# Boost
+var BOOST_MAX_QUANTITY :float
+var ONE_TIME_RATIO :int
+var BOOST_CONSUMPTION :float
+var ONE_TIME_QUANTITY :float
+var current_boost:float
 
 # CP position and speed
 var current_cp := "start"
@@ -49,6 +41,19 @@ var cp_player_pos := Vector2.ZERO
 
 #Menus
 var menu_to_show := "MainMenu"
+
+var rotation_name_and_point := {1:["",1.0],2:["Double",2.0],3:["Triple",3.0],
+							4:["Quadruple",4.0],5:["Quintuple",5.0],6:["Sextuple",6.0],7:["Septuple",7.0]}
+var tricks_values : Dictionary = {
+	"":0,
+	"length_to_double":10,
+	"duration_to_double":3,
+	"Air":50,
+	"Wheelie":100,
+	"Nose Wheelie":150,
+	"Backflip":100,
+	"Frontflip":150
+}
 
 # Dicos
 var dico_maps := {
@@ -79,9 +84,10 @@ signal hud_new_best
 
 func start_mod(scene_name:String):
 	# Boost
-	BOOST_MAX_QUANTITY = Global.current_profile["boost"]["BOOST_MAX_QUANTITY"]
-	ONE_TIME_RATIO = Global.current_profile["boost"]["ONE_TIME_RATIO"]
-	BOOST_CONSUMPTION = Global.current_profile["boost"]["BOOST_CONSUMPTION"]
+	BOOST_MAX_QUANTITY = current_profile["boost"]["BOOST_MAX_QUANTITY"]
+	ONE_TIME_RATIO = current_profile["boost"]["ONE_TIME_RATIO"]
+	BOOST_CONSUMPTION = current_profile["boost"]["BOOST_CONSUMPTION"]
+	ONE_TIME_QUANTITY = BOOST_MAX_QUANTITY/ONE_TIME_RATIO
 	get_tree().change_scene_to_file(dico_scenes[scene_name])
 
 func get_current_map():
@@ -145,7 +151,8 @@ func valid_combo():
 		# If wheelie ou air
 		else:trick_to_check = trick_datas["trick"]
 		check_best(trick_to_check,trick_datas["length"],trick_datas["duration"])
-	Global.current_score += potential_combo_score
+	current_score += potential_combo_score
+	current_boost = clampf(current_boost+min(potential_combo_score,ONE_TIME_QUANTITY),0,BOOST_MAX_QUANTITY)  
 	hud_score_update.emit(potential_combo_score)
 	
 func combo_score()-> int:
@@ -158,8 +165,8 @@ func combo_score()-> int:
 
 func trick_score(trick_datas:Dictionary)->int:
 		var trick_base_score :float
-		var length_modifier :float = (trick_datas["length"]/20)+1
-		var duration_modifier :float = (trick_datas["duration"]/5)+1
+		var length_modifier :float = (trick_datas["length"]/tricks_values["length_to_double"])+1
+		var duration_modifier :float = (trick_datas["duration"]/tricks_values["duration_to_double"])+1
 		# If front ou Back
 		if trick_datas["trick"] not in ["Air","Wheelie","Nose Wheelie"]:
 			var rotation_modifier :float= points_rotation(1+int((abs(trick_datas["rotation"])-PI)/(2*PI)))
