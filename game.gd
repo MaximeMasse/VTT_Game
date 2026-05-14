@@ -65,13 +65,13 @@ func _input(event):
 			Global.current_score = 0
 			SaveManager.load_config()
 			SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
-			%HUD.reset()
 			AudioManager.stop_music()
 			AudioManager.stop_sfx()
 			velo_courant.queue_free()
 			map_courante.queue_free()
 			velo_courant = null
 			await get_tree().process_frame
+			%HUD.reset()
 			load_map()
 			load_bike()
 		if Input.is_action_just_pressed("Respawn"):
@@ -102,10 +102,10 @@ func load_bike():
 	velo_courant.crashed.connect(respawn_bike)
 	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
 	Global.race_time = 0.0
-	Global.current_cp = "start"
-	Global.cp_player_speed = Vector2.ZERO
-	Global.cp_player_pos = Vector2.ZERO
-	Global.current_boost = 0
+	#Global.current_cp = "start"
+	#Global.cp_player_speed = Vector2.ZERO
+	#Global.cp_player_pos = Vector2.ZERO
+	#Global.current_boost = 0
 	start_countdown()
 
 func respawn_bike():
@@ -120,6 +120,7 @@ func respawn_bike():
 	Global.race_time += Global.current_profile["upgrades"]["RESPAWN_PENALTY"]
 	velo_courant.global_position = Global.cp_player_pos
 	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (ECHELLE * 3.6)
+	print(velo_courant)
 
 func start_countdown():
 	race_started = false

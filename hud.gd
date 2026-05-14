@@ -49,6 +49,7 @@ func reset():
 	set_boost_geometry()
 
 func set_boost_geometry():
+	%Boost_gauge.max_value = Global.BOOST_MAX_QUANTITY
 	boost_gauge_size = %Boost_gauge.size.x * Global.BOOST_MAX_QUANTITY/10000
 	%Boost_gauge.scale.x = (Global.BOOST_MAX_QUANTITY/10000)
 	boost_segment_max_size = boost_gauge_size/Global.ONE_TIME_RATIO

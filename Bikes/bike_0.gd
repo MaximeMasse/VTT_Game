@@ -9,6 +9,7 @@ var previous_state := "slow_riding"
 var current_state := "slow_riding"
 
 signal crashed
+signal boost_consumed
 
 func _process(delta):
 	var direction = Input.get_vector("Arrière", "Avant", "Pédaler", "Frein_avant")

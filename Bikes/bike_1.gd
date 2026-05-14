@@ -108,12 +108,12 @@ func _physics_process(delta):
 		# Frein arrière
 		if Input.is_action_pressed("Frein_arrière") and input_enabled:
 			roue_arrière.linear_velocity = lerp(
-				roue_arrière.linear_velocity, Vector2(0.0,0.0), 0.5 * FORCE_FREINS * delta)
+				roue_arrière.linear_velocity, Vector2.ZERO, 0.5 * FORCE_FREINS * delta)
 	# Si contact avant
 	if contact_sol_avant.has_overlapping_bodies():
 		if Input.is_action_pressed("Frein_avant") and input_enabled:
 			roue_avant.linear_velocity = lerp(
-				roue_avant.linear_velocity, Vector2(0.0,0.0), FORCE_FREINS * delta)
+				roue_avant.linear_velocity, Vector2.ZERO, FORCE_FREINS * delta)
 	# Air or Ground
 	if Global.contact_sol:
 		# Balance
@@ -212,3 +212,8 @@ func temps_compression_en_pourcentage(temps):
 	elif temps <= GREEN_TIME + 2 * SWEET_SPOT: pourcentage = 100
 	else: pourcentage = int(100 * (2 + (2 * SWEET_SPOT - temps)/GREEN_TIME))
 	return pourcentage
+
+func _to_string():
+	return "Player : " + str(Global.current_profile["name"])\
+	+ "\nBike model : " + str(Global.current_profile["bike_model"])\
+	+ "\nSpeed : " + str(cadre.linear_velocity/ (ECHELLE * 3.6))
