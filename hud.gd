@@ -22,6 +22,7 @@ var dico_saut :={
 	Vector2(80,90):["res://Images/HUD/jump_yellow.png",load("res://Images/HUD/piston_80.png")],
 	Vector2(90,100):["res://Images/HUD/jump_green.png",load("res://Images/HUD/piston_90.png")]
 }
+var dico_to_hide :Dictionary
 
 var is_tricking :bool
 var label_is_fading :Dictionary
@@ -34,6 +35,9 @@ func _ready():
 	best_trick_labels={"Air":%Air_label,"Wheelie":%Wheelie_label,"Nose Wheelie":%Nose_label}
 	label_is_fading = {%Penalty_label:false,%Tricks_label:false,%Trick_scored_label:false}
 	for trick in ["Wheelie","Nose Wheelie","Air"]:update_best_tricks(trick,false)
+	dico_to_hide ={
+		"on_finish":[%Tricks_label,%Combo_label]
+	}
 
 func reset():
 	%Penalty_label.text = "+ " + str(int(Global.current_profile["upgrades"]["RESPAWN_PENALTY"])) + " sec"
@@ -45,8 +49,10 @@ func reset():
 	%Trick_score_label.hide()
 	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
 	%Boost_gauge.value = 0
-	#%Boost_segment.hide()
 	set_boost_geometry()
+	for moment in dico_to_hide:set_visibility(moment,true)
+
+func set_visibility(moment:String,visibility):for node in dico_to_hide[moment]:node.visible = visibility
 
 func set_boost_geometry():
 	%Boost_gauge.max_value = Global.BOOST_MAX_QUANTITY
@@ -76,7 +82,7 @@ func update_best_tricks(trick_name,effect=true):
 		best_trick_labels[trick_name].add_theme_color_override("font_color", colors["DARK_GREY"])
 
 func _physics_process(delta):
-	%Time_label.text = format_time(Global.race_time)
+	%Time_label.text = Global.format_time(Global.race_time)
 	if Global.penalty_to_show and %Show_penalty_timer.is_stopped():
 		%Tricks_label.add_theme_color_override("font_color", colors["RED"])
 		%Penalty_label.show()
@@ -118,12 +124,6 @@ func trick_activate():
 
 func update_combo(text):
 	%Combo_label.text += text + " + "
-
-func format_time(t: float) -> String:
-	var minutes := int(t) / 60
-	var seconds := int(t) % 60
-	var ms := int((t - int(t)) * 1000)
-	return "%02d:%02d.%03d" % [minutes, seconds, ms]
 
 func round_to(value: float, decimals: int) -> float:
 	var factor = pow(10, decimals)

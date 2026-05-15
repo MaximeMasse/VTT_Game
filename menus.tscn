@@ -4,19 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://bwrqce6up6ic2" path="res://Images/Menus/Fond_main.png" id="2_ak5mw"]
 [ext_resource type="Texture2D" uid="uid://bfagchbmge633" path="res://Images/Menus/Controls/continue_up.png" id="3_uc4vm"]
 [ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="4_36kji"]
+[ext_resource type="Texture2D" uid="uid://dv62chm0uslkm" path="res://Images/Menus/Controls/continue_hover.png" id="5_bhlvn"]
 [ext_resource type="Texture2D" uid="uid://c3xj1yg5je54w" path="res://Images/Menus/Controls/newplayer_up.png" id="5_fehud"]
 [ext_resource type="Texture2D" uid="uid://ceek7lbikb1io" path="res://Images/Menus/Controls/newplayer_down.png" id="6_42xp8"]
 [ext_resource type="Texture2D" uid="uid://dn0bc86432dey" path="res://Images/Menus/Controls/changeprofile_up.png" id="7_5my7x"]
 [ext_resource type="Texture2D" uid="uid://d08eh4t7oa1m7" path="res://Images/Menus/Controls/changeprofile_down.png" id="8_ola75"]
+[ext_resource type="Texture2D" uid="uid://ctocf5vylqfro" path="res://Images/Menus/Controls/newplayer_hover.png" id="8_vnyao"]
 [ext_resource type="Texture2D" uid="uid://dsx0fmasyr23e" path="res://Avatar/Players/Noir/Avatar.png" id="9_uc4vm"]
 [ext_resource type="Texture2D" uid="uid://3tw50m1kswsx" path="res://Images/Menus/Controls/left_arrow.png" id="10_fehud"]
 [ext_resource type="Texture2D" uid="uid://dwrj7okppwap6" path="res://Images/Menus/Controls/right_arrow.png" id="11_42xp8"]
+[ext_resource type="Texture2D" uid="uid://blsbepqeqpqgd" path="res://Images/Menus/Controls/changeprofile_hover.png" id="11_yp7sa"]
 [ext_resource type="Texture2D" uid="uid://bxpvqii7llwk8" path="res://Images/Menus/Controls/ok_up.png" id="12_5my7x"]
 [ext_resource type="Texture2D" uid="uid://n82c8ivh0jec" path="res://Images/Menus/Controls/ok_down.png" id="13_ola75"]
 [ext_resource type="Texture2D" uid="uid://ckcatq8ntvr6k" path="res://Images/Menus/Fond_carrière.png" id="14_67va8"]
 [ext_resource type="Texture2D" uid="uid://cp4jn4mpwmuou" path="res://Images/Menus/Controls/lineedit.png" id="14_mtcp4"]
 [ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Fond_maps.png" id="15_ldcro"]
 [ext_resource type="Texture2D" uid="uid://csv76qg6eonqu" path="res://Images/Menus/Controls/up_arrow.png" id="15_mtcp4"]
+[ext_resource type="Texture2D" uid="uid://d3s2ymvh17wfv" path="res://Images/Menus/Controls/ok_hover.png" id="17_uvnkm"]
 
 [sub_resource type="SystemFont" id="SystemFont_jw3nv"]
 font_names = PackedStringArray("Pixel Game")
@@ -72,28 +76,39 @@ offset_left = 576.0
 offset_top = 304.0
 offset_right = 704.0
 offset_bottom = 360.0
+focus_neighbor_top = NodePath("../ProfileButton")
+focus_neighbor_bottom = NodePath("../NewPlayerButton")
 texture_normal = ExtResource("3_uc4vm")
 texture_pressed = ExtResource("4_36kji")
+texture_focused = ExtResource("5_bhlvn")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="NewPlayerButton" type="TextureButton" parent="MainMenu" unique_id=1132126293]
+unique_name_in_owner = true
 offset_left = 576.0
 offset_top = 368.0
 offset_right = 704.0
 offset_bottom = 424.0
+focus_neighbor_top = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../ProfileButton")
 texture_normal = ExtResource("5_fehud")
 texture_pressed = ExtResource("6_42xp8")
+texture_focused = ExtResource("8_vnyao")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ProfileButton" type="TextureButton" parent="MainMenu" unique_id=1019094533]
+unique_name_in_owner = true
 offset_left = 576.0
 offset_top = 432.0
 offset_right = 704.0
 offset_bottom = 488.0
+focus_neighbor_top = NodePath("../NewPlayerButton")
+focus_neighbor_bottom = NodePath("../ContinueButton")
 texture_normal = ExtResource("7_5my7x")
 texture_pressed = ExtResource("8_ola75")
+texture_focused = ExtResource("11_yp7sa")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -125,6 +140,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="BoutonGauche" type="TextureButton" parent="NewPlayer" unique_id=1528679975]
+unique_name_in_owner = true
 offset_left = 384.0
 offset_top = 320.0
 offset_right = 448.0
@@ -134,6 +150,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="BoutonDroite" type="TextureButton" parent="NewPlayer" unique_id=1408048854]
+unique_name_in_owner = true
 offset_left = 833.0
 offset_top = 320.0
 offset_right = 896.0
@@ -143,12 +160,14 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Ok" type="TextureButton" parent="NewPlayer" unique_id=402949389]
+unique_name_in_owner = true
 offset_left = 599.0
 offset_top = 595.0
 offset_right = 682.0
 offset_bottom = 639.0
 texture_normal = ExtResource("12_5my7x")
 texture_pressed = ExtResource("13_ola75")
+texture_focused = ExtResource("17_uvnkm")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -222,6 +241,7 @@ unique_name_in_owner = true
 
 [node name="ChoixMap" type="CanvasLayer" parent="." unique_id=766752152]
 unique_name_in_owner = true
+visible = false
 
 [node name="Fond" type="TextureRect" parent="ChoixMap" unique_id=1092760061]
 offset_right = 1280.0

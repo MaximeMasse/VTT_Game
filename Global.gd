@@ -7,7 +7,7 @@ var current_profile := {}
 var config := {}
 
 # Sélections
-var current_map := 0
+var current_map := "0"
 
 # HUD
 var race_time := 0.0
@@ -39,6 +39,11 @@ var current_cp := "start"
 var cp_player_speed := Vector2.ZERO
 var cp_player_pos := Vector2.ZERO
 
+# End map
+var new_best_time :bool
+var new_best_score :bool
+var previous_best :Dictionary
+
 #Menus
 var menu_to_show := "MainMenu"
 
@@ -57,11 +62,11 @@ var tricks_values : Dictionary = {
 
 # Dicos
 var dico_maps := {
-	0:"res://Maps/map_0.tscn",
-	1:"res://Maps/map_1.tscn",
-	2:"res://Maps/map_2.tscn",
-	3:"res://Maps/map_3.tscn",
-	5:"res://Maps/special_map.tscn"
+	"0":"res://Maps/map_0.tscn",
+	"1":"res://Maps/map_1.tscn",
+	"2":"res://Maps/map_2.tscn",
+	"3":"res://Maps/map_3.tscn",
+	"5":"res://Maps/special_map.tscn"
 }
 var dico_vélo := {
 	0:preload("res://Bikes/bike_0.tscn"),
@@ -150,7 +155,7 @@ func valid_combo():
 		if trick_datas["trick"] not in ["Air","Wheelie","Nose Wheelie"]:trick_to_check = "Air"
 		# If wheelie ou air
 		else:trick_to_check = trick_datas["trick"]
-		check_best(trick_to_check,trick_datas["length"],trick_datas["duration"])
+		check_best_tricks(trick_to_check,trick_datas["length"],trick_datas["duration"])
 	current_score += potential_combo_score
 	current_boost = clampf(current_boost+min(potential_combo_score,ONE_TIME_QUANTITY),0,BOOST_MAX_QUANTITY)  
 	hud_score_update.emit(potential_combo_score)
@@ -176,13 +181,7 @@ func trick_score(trick_datas:Dictionary)->int:
 			trick_base_score = tricks_values[trick_datas["trick"]] 
 		return int(trick_base_score * length_modifier * duration_modifier)
 
-func name_rotation(number_of_rotation:int)->String:
-	return rotation_name_and_point[number_of_rotation][0] + " " if number_of_rotation in rotation_name_and_point else "Wow, too much "
-
-func points_rotation(number_of_rotation:int)->float:
-	return rotation_name_and_point[number_of_rotation][1] if number_of_rotation in rotation_name_and_point else 10.0
-
-func check_best(trick_name:String,length,duration):
+func check_best_tricks(trick_name:String,length,duration):
 	var is_new_best := false
 	if current_profile["best_tricks"][trick_name]["length"] < length:
 		current_profile["best_tricks"][trick_name]["length"] = length
@@ -191,3 +190,38 @@ func check_best(trick_name:String,length,duration):
 		current_profile["best_tricks"][trick_name]["duration"] = duration
 		is_new_best = true
 	if is_new_best:hud_new_best.emit(trick_name)
+
+func end_map():
+	check_map_record()
+	SaveManager.save_profile(current_profile)
+
+func check_map_record():
+	new_best_score = false
+	new_best_time = false
+	previous_best = {"time":"-","score":"-"}
+	if current_map in current_profile["map_record"]:
+		previous_best = current_profile["map_record"][current_map].duplicate()
+		if previous_best["time"] > Global.race_time:
+			new_best_time = true
+			current_profile["map_record"][current_map]["time"]=Global.race_time
+		if previous_best["score"] < Global.current_score:
+			new_best_score = true
+			current_profile["map_record"][current_map]["score"]=Global.current_score
+	else:
+		current_profile["map_record"][current_map] = {}
+		new_best_time = true
+		current_profile["map_record"][current_map]["time"]=Global.race_time
+		new_best_score = true
+		current_profile["map_record"][current_map]["score"]=Global.current_score
+
+func format_time(t: float) -> String:
+	var minutes := int(t) / 60
+	var seconds := int(t) % 60
+	var ms := int((t - int(t)) * 1000)
+	return "%02d:%02d.%03d" % [minutes, seconds, ms]
+
+func name_rotation(number_of_rotation:int)->String:
+	return rotation_name_and_point[number_of_rotation][0] + " " if number_of_rotation in rotation_name_and_point else "Wow, too much "
+
+func points_rotation(number_of_rotation:int)->float:
+	return rotation_name_and_point[number_of_rotation][1] if number_of_rotation in rotation_name_and_point else 10.0

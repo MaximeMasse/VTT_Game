@@ -18,12 +18,14 @@ var race_started := false
 var distance_restante := 0.0
 var avancement := 0
 var is_paused := false
+var is_finished :=false
 
 func _ready():
 	Engine.time_scale = TIME_SCALE
 	var cursor = load("res://Images/Menus/Controls/cursor.png")
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(0, 0))
-	%MenuPause.hide()
+	%Pause_Menu.hide()
+	%Finish_Menu.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	# Screen size
 	var screen_rect = DisplayServer.screen_get_usable_rect()
@@ -32,7 +34,8 @@ func _ready():
 	var new_size = Vector2i(screen_width,screen_height)
 	DisplayServer.window_set_size(Vector2i(screen_width,screen_height))
 	DisplayServer.window_set_position(screen_rect.position + (screen_rect.size - new_size) / 2)
-	
+	# Buttons
+	set_up_buttons(self)
 	# Connections
 	Global.hud_new_best.connect(%HUD.update_best_tricks)
 	Global.hud_trick_activate.connect(%HUD.trick_activate)
@@ -45,35 +48,13 @@ func _ready():
 
 func _input(event):
 	
-	#Debug
-	if event.is_action_pressed("Map1"):
-		Global.current_map = 1
-	if event.is_action_pressed("Map2"):
-		Global.current_map = 2
-	if event.is_action_pressed("Map3"):
-		Global.current_map = 3
-	if event.is_action_pressed("Map4"):
-		Global.current_map = 4
-	if event.is_action_pressed("Map5"):
-		Global.current_map = 5
-	
 	# InGame
-	if race_started:
+	if race_started and not is_finished:
 		if event.is_action_pressed("Pause"):
 			toggle_pause()
 		if Input.is_action_just_pressed("Restart"):
-			Global.current_score = 0
-			SaveManager.load_config()
-			SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
-			AudioManager.stop_music()
-			AudioManager.stop_sfx()
 			velo_courant.queue_free()
-			map_courante.queue_free()
-			velo_courant = null
-			await get_tree().process_frame
-			%HUD.reset()
-			load_map()
-			load_bike()
+			restart()
 		if Input.is_action_just_pressed("Respawn"):
 			velo_courant.queue_free()
 			#map_courante.queue_free()
@@ -81,6 +62,20 @@ func _input(event):
 			await get_tree().process_frame
 			#load_map()
 			respawn_bike()
+
+func restart():
+	Global.current_score = 0
+	SaveManager.load_config()
+	SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
+	AudioManager.stop_music()
+	AudioManager.stop_sfx()
+	map_courante.queue_free()
+	velo_courant = null
+	await get_tree().process_frame
+	%HUD.reset()
+	load_map()
+	load_bike()
+	is_finished = false
 
 func load_map():
 	var path : String = Global.get_current_map()
@@ -91,8 +86,24 @@ func load_map():
 	map_data = map_courante.get_level_data()
 
 func map_finished():
+	is_finished = true
+	Global.end_map()
+	AudioManager.stop_music()
 	AudioManager.play_sfx("fireworks")
+	AudioManager.play_music("Victory")
 	camera_target = map_data["finish"]
+	%Finish_Menu.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	%Time_label.text = Global.format_time(Global.race_time)
+	#var previous_time := "-" if str(Global.previous_best["time"]) == "-" else Global.format_time(Global.previous_best["time"])
+	%PreviousTime_label.text = "-" if str(Global.previous_best["time"]) == "-" else Global.format_time(Global.previous_best["time"])
+	%NewBestTime_label.visible = Global.new_best_time
+	%Score_label.text = str(int(Global.current_score))
+	%PreviousScore_label.text = "-" if str(Global.previous_best["score"]) == "-" else str(int(Global.previous_best["score"]))
+	%NewBestScore_label.visible = Global.new_best_score
+	await get_tree().create_timer(3).timeout
+	velo_courant.queue_free()
+	AudioManager.stop_ground_sfx()
 
 func load_bike():
 	race_started = false
@@ -102,10 +113,10 @@ func load_bike():
 	velo_courant.crashed.connect(respawn_bike)
 	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
 	Global.race_time = 0.0
-	#Global.current_cp = "start"
-	#Global.cp_player_speed = Vector2.ZERO
-	#Global.cp_player_pos = Vector2.ZERO
-	#Global.current_boost = 0
+	Global.current_cp = "start"
+	Global.cp_player_speed = Vector2.ZERO
+	Global.cp_player_pos = Vector2.ZERO
+	Global.current_boost = 0
 	start_countdown()
 
 func respawn_bike():
@@ -120,7 +131,6 @@ func respawn_bike():
 	Global.race_time += Global.current_profile["upgrades"]["RESPAWN_PENALTY"]
 	velo_courant.global_position = Global.cp_player_pos
 	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (ECHELLE * 3.6)
-	print(velo_courant)
 
 func start_countdown():
 	race_started = false
@@ -152,9 +162,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	# Tracking
+	if not race_started or is_paused or is_finished:return
 	# Temps
-	if race_started:
-		Global.race_time += delta
+	Global.race_time += delta
 	# Avancement
 	if is_instance_valid(velo_courant):
 		if velo_courant.cadre.global_position.x < map_data["start"].global_position.x:
@@ -169,15 +179,37 @@ func toggle_pause():
 	is_paused = !is_paused
 	get_tree().paused = is_paused
 	if is_paused:
-		%MenuPause.show()
+		%Pause_Menu.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
-		%MenuPause.hide()
+		%Pause_Menu.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-func _on_resume_button_pressed():
-	toggle_pause()
+func _on_resume_button_pressed():toggle_pause()
 
 func _on_abandon_button_pressed():
 	toggle_pause()
+	Global.menu_to_show = "Carrière"
 	get_tree().change_scene_to_file("res://menus.tscn")
+
+func _on_retry_button_pressed():
+	%Finish_Menu.hide()
+	restart()
+
+func _on_continue_pressed():
+	Global.menu_to_show = "Carrière"
+	get_tree().change_scene_to_file("res://menus.tscn")
+
+func set_up_buttons(node):
+	for child in node.get_children():
+		if child is BaseButton:
+			child.mouse_entered.connect(func(): on_button_hover(child))
+			child.mouse_exited.connect(func(): on_button_hover_exit(child))
+			child.focus_entered.connect(func(): on_button_focus(child))
+			child.pressed.connect(func():on_button_pressed(child))
+		set_up_buttons(child)
+
+func on_button_hover(button:BaseButton):button.grab_focus()
+func on_button_hover_exit(button:BaseButton):get_viewport().gui_release_focus()
+func on_button_focus(button:BaseButton):AudioManager.play_ui("hover")
+func on_button_pressed(button:BaseButton):AudioManager.play_ui("click")

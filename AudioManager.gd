@@ -3,6 +3,7 @@ extends Node
 # Dicos
 var dico_music := {
 	"MainMenu": preload("res://Sound/Music/awesomeness.wav"),
+	"Victory": preload("res://Sound/Music/Victory_music.wav"),
 	"Map_0": preload("res://Sound/Music/Map_0.mp3"),
 	"Map_1": preload("res://Sound/Music/Map_1.mp3"),
 	"Map_2": preload("res://Sound/Music/Map_2.mp3"),
@@ -51,7 +52,8 @@ var dico_ground_sfx := {
 	},
 }
 var dico_ui := {
-	"click": preload("res://Sound/UI/click.wav")
+	"click": preload("res://Sound/UI/click.wav"),
+	"hover": preload("res://Sound/UI/hover.wav")
 }
 
 var music_player: AudioStreamPlayer

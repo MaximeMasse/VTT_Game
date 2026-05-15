@@ -46,6 +46,7 @@ subpixel_positioning = 0
 script = ExtResource("1_64ctp")
 
 [node name="Live" type="Control" parent="." unique_id=1430096508]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 
