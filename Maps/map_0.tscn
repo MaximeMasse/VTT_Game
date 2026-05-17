@@ -129,7 +129,7 @@ scale = Vector2(0.2689295, 0.2576923)
 
 [node name="Finish" parent="Spots" unique_id=1211676905 instance=ExtResource("8_e1l6w")]
 unique_name_in_owner = true
-position = Vector2(563, -25)
+position = Vector2(30422, 5523)
 
 [node name="Checkpoint_1" parent="Spots" unique_id=1495936311 instance=ExtResource("9_4hqvm")]
 unique_name_in_owner = true

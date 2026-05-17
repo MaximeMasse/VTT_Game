@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://spm2uebf1l7p"]
+
+[ext_resource type="Texture2D" uid="uid://dgr0fbngoe0ap" path="res://Avatar/Players/Noir/Parts/Torso.png" id="1_yopfs"]
+[ext_resource type="Texture2D" uid="uid://cyxhktu8rytwy" path="res://Avatar/Players/Noir/Parts/ArmUp.png" id="2_ebwee"]
+[ext_resource type="Texture2D" uid="uid://ccvupc2df2dn1" path="res://Avatar/Players/Noir/Parts/ArmDown.png" id="3_n48cn"]
+[ext_resource type="Texture2D" uid="uid://wqtlbnur7qhw" path="res://Avatar/Players/Noir/Parts/Head.png" id="4_guemb"]
+[ext_resource type="Texture2D" uid="uid://bx5ejuywa206g" path="res://Avatar/Players/Noir/Parts/FrontLegDown.png" id="5_rwb2u"]
+[ext_resource type="Texture2D" uid="uid://b4v6e6732f8ej" path="res://Avatar/Players/Noir/Parts/Foot.png" id="6_31gvc"]
+[ext_resource type="Texture2D" uid="uid://bdr4j61y40qeq" path="res://Avatar/Players/Noir/Parts/FrontLegUp.png" id="7_1g6wr"]
+[ext_resource type="Texture2D" uid="uid://c4t0scvx0frsc" path="res://Avatar/Players/Noir/Parts/BackLegUp.png" id="8_e8uev"]
+[ext_resource type="Texture2D" uid="uid://b18dxncxn8sb6" path="res://Avatar/Players/Noir/Parts/BackLegDown.png" id="9_mdj7n"]
+[ext_resource type="Texture2D" uid="uid://bydviu6i2qrl2" path="res://Images/Mapping/Bike_model.png" id="10_btq85"]
+[ext_resource type="Texture2D" uid="uid://dab07jkylox3v" path="res://Avatar/Players/Noir/Parts/Frame.png" id="11_ebwee"]
+
+[node name="Node2D" type="Node2D" unique_id=256030153]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=2057054040]
+
+[node name="Torso" type="Bone2D" parent="Skeleton2D" unique_id=2099411672]
+
+[node name="Torso" type="Sprite2D" parent="Skeleton2D/Torso" unique_id=1247564414]
+position = Vector2(15, -15)
+scale = Vector2(0.21890546, 0.2189055)
+texture = ExtResource("1_yopfs")
+
+[node name="ArmUp" type="Bone2D" parent="Skeleton2D/Torso" unique_id=883927339]
+position = Vector2(31, -27)
+
+[node name="ArmUp" type="Sprite2D" parent="Skeleton2D/Torso/ArmUp" unique_id=486854421]
+position = Vector2(5.0000005, 9.999999)
+rotation = -0.41216654
+scale = Vector2(0.251669, 0.25166908)
+texture = ExtResource("2_ebwee")
+
+[node name="ArmLow" type="Bone2D" parent="Skeleton2D/Torso/ArmUp" unique_id=1109959305]
+position = Vector2(13, 20)
+
+[node name="ArmDown" type="Sprite2D" parent="Skeleton2D/Torso/ArmUp/ArmLow" unique_id=1790196928]
+position = Vector2(15, 6)
+scale = Vector2(0.22916664, 0.22916669)
+texture = ExtResource("3_n48cn")
+
+[node name="Head" type="Bone2D" parent="Skeleton2D/Torso" unique_id=1514384974]
+position = Vector2(39, -34)
+
+[node name="Head" type="Sprite2D" parent="Skeleton2D/Torso/Head" unique_id=404163846]
+position = Vector2(14, -2.0000038)
+scale = Vector2(0.24324313, 0.24324323)
+texture = ExtResource("4_guemb")
+
+[node name="FrontLegUp" type="Bone2D" parent="Skeleton2D/Torso" unique_id=920780403]
+
+[node name="FrontLegDown" type="Bone2D" parent="Skeleton2D/Torso/FrontLegUp" unique_id=338812168]
+position = Vector2(31, 8)
+
+[node name="FrontFoot" type="Bone2D" parent="Skeleton2D/Torso/FrontLegUp/FrontLegDown" unique_id=729411734]
+position = Vector2(-7, 36)
+
+[node name="FrontLegDown" type="Sprite2D" parent="Skeleton2D/Torso/FrontLegUp/FrontLegDown" unique_id=550421785]
+position = Vector2(-3, 17)
+rotation = -0.31320366
+scale = Vector2(0.20368877, 0.20368882)
+texture = ExtResource("5_rwb2u")
+
+[node name="Foot" type="Sprite2D" parent="Skeleton2D/Torso/FrontLegUp/FrontLegDown" unique_id=1513048398]
+position = Vector2(-2.0000005, 38)
+scale = Vector2(0.1666666, 0.16666658)
+texture = ExtResource("6_31gvc")
+
+[node name="FrontLegUp" type="Sprite2D" parent="Skeleton2D/Torso/FrontLegUp" unique_id=343283073]
+position = Vector2(16, 7.0000005)
+rotation = -0.40110537
+scale = Vector2(0.18342972, 0.18342979)
+texture = ExtResource("7_1g6wr")
+
+[node name="BackLegUp" type="Bone2D" parent="Skeleton2D/Torso" unique_id=839607837]
+
+[node name="BackLegUp" type="Sprite2D" parent="Skeleton2D/Torso/BackLegUp" unique_id=1465321489]
+position = Vector2(5.999999, 19.000002)
+rotation = 0.50589925
+scale = Vector2(0.22656728, 0.22656725)
+texture = ExtResource("8_e8uev")
+
+[node name="BackLegDown" type="Bone2D" parent="Skeleton2D/Torso/BackLegUp" unique_id=1126513633]
+position = Vector2(15, 35)
+
+[node name="BackLegDown" type="Sprite2D" parent="Skeleton2D/Torso/BackLegUp/BackLegDown" unique_id=1442573443]
+position = Vector2(-5, 13)
+rotation = -0.27548134
+scale = Vector2(0.22033894, 0.22033893)
+texture = ExtResource("9_mdj7n")
+
+[node name="BackFoot" type="Bone2D" parent="Skeleton2D/Torso/BackLegUp/BackLegDown" unique_id=939774395]
+position = Vector2(-10, 34)
+
+[node name="Foot" type="Sprite2D" parent="Skeleton2D/Torso/BackLegUp/BackLegDown" unique_id=138265158]
+position = Vector2(-7, 34)
+scale = Vector2(0.1333334, 0.13333334)
+texture = ExtResource("6_31gvc")
+
+[node name="BikeModel" type="Sprite2D" parent="." unique_id=2062809141]
+visible = false
+position = Vector2(27, 22)
+texture = ExtResource("10_btq85")
+
+[node name="Frame" type="Sprite2D" parent="." unique_id=280664251]
+position = Vector2(27, 38)
+scale = Vector2(0.095854916, 0.095854916)
+texture = ExtResource("11_ebwee")

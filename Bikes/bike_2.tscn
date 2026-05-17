@@ -2,19 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b30dcngjq18rk" path="res://Bikes/bike_2.gd" id="1_msbpd"]
 [ext_resource type="Texture2D" uid="uid://dpoq51muy56et" path="res://Avatar/Bikes/Roue_1.png" id="2_8v3d4"]
-[ext_resource type="Texture2D" uid="uid://64pn0ef160o5" path="res://Avatar/Players/Noir/Rider_1.png" id="4_oms1c"]
-[ext_resource type="Texture2D" uid="uid://dx2j86w7mw2p0" path="res://Avatar/Players/Noir/Rider_2.png" id="5_hwhmb"]
-[ext_resource type="Texture2D" uid="uid://d1rxrxwh3ajqb" path="res://Avatar/Players/Noir/Rider_3.png" id="6_p8aeu"]
-[ext_resource type="Texture2D" uid="uid://c18puj8pryg30" path="res://Avatar/Players/Noir/Rider_4.png" id="7_rsllu"]
-[ext_resource type="Texture2D" uid="uid://6sdkhuslwkc" path="res://Avatar/Players/Noir/Rider_5.png" id="8_prbyu"]
-[ext_resource type="Texture2D" uid="uid://b6gsrjd7m3gj0" path="res://Avatar/Players/Noir/Rider_6.png" id="9_crcm0"]
-[ext_resource type="Texture2D" uid="uid://c8657jcrqurb7" path="res://Avatar/Players/Noir/Rider_7.png" id="10_gx1yi"]
-[ext_resource type="Texture2D" uid="uid://c1x65ktxdq8m8" path="res://Avatar/Players/Noir/Rider_8.png" id="11_n05id"]
+[ext_resource type="PackedScene" uid="uid://spm2uebf1l7p" path="res://Avatar/Players/Skeleton.tscn" id="3_bio7g"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ow0o1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5jr4r"]
-radius = 34.0
+radius = 33.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ow0o1"]
 radius = 30.0
@@ -27,38 +20,6 @@ radius = 34.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_f5gm3"]
 radius = 29.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_icaxi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_oms1c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_hwhmb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_p8aeu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_rsllu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_prbyu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_crcm0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_gx1yi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_n05id")
-}],
-"loop": true,
-"name": &"pédale",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_el0nv"]
 size = Vector2(108, 32)
 
@@ -69,7 +30,7 @@ script = ExtResource("1_msbpd")
 [node name="Roue_avant" type="RigidBody2D" parent="." unique_id=442044832]
 unique_name_in_owner = true
 position = Vector2(55, 46)
-collision_layer = 0
+collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_ow0o1")
 
 [node name="Contact_sol_avant" type="Area2D" parent="Roue_avant" unique_id=1755217802]
@@ -111,16 +72,9 @@ texture = ExtResource("2_8v3d4")
 
 [node name="Cadre" type="RigidBody2D" parent="." unique_id=793041427]
 unique_name_in_owner = true
-collision_layer = 2
+collision_layer = 0
 mass = 30.0
 center_of_mass_mode = 1
-
-[node name="Animation" type="AnimatedSprite2D" parent="Cadre" unique_id=1371691081]
-unique_name_in_owner = true
-scale = Vector2(0.32222223, 0.32222226)
-sprite_frames = SubResource("SpriteFrames_icaxi")
-animation = &"pédale"
-frame_progress = 0.29819673
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cadre" unique_id=78675063]
 position = Vector2(3, 31)
@@ -136,6 +90,9 @@ position = Vector2(3, 31.663673)
 scale = Vector2(1, 1.0070754)
 polygon = PackedVector2Array(9, -91.01967, 23, -93.00562, 39, -84.06885, 22, -51.300697, 43, -18.532547, 23, -6.6168575, 17, 12.249655, -18, 13.242628, -44, -42.36393, -30, -65.20234)
 
+[node name="Skeleton" parent="Cadre" unique_id=256030153 instance=ExtResource("3_bio7g")]
+position = Vector2(-27, -14)
+
 [node name="Joint_arrière" type="PinJoint2D" parent="." unique_id=113849391]
 position = Vector2(-50, 44)
 node_a = NodePath("../Cadre")
@@ -146,8 +103,9 @@ position = Vector2(55, 46)
 node_a = NodePath("../Cadre")
 node_b = NodePath("../Roue_avant")
 
-[node name="Trick_status_changer" type="Timer" parent="." unique_id=1615973415]
+[node name="Trick_status_changer" type="Timer" parent="." unique_id=1708863427]
 unique_name_in_owner = true
+process_callback = 0
 wait_time = 0.5
 one_shot = true
 

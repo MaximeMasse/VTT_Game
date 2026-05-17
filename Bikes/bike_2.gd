@@ -20,6 +20,8 @@ var SWEET_SPOT :float = Global.current_profile["stats"]["SWEET_SPOT"]
 var FORCE_SAUT :float = Global.current_profile["stats"]["FORCE_SAUT"]
 # Air control
 var AIR_SPEED_CONTROL :float = Global.current_profile["stats"]["AIR_SPEED_CONTROL"]
+# Boost
+var BOOST_ACCELERATION :float = Global.current_profile["boost"]["BOOST_ACCELERATION"]
 
 const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 
@@ -28,7 +30,7 @@ const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 @onready var contact_sol_avant := %Contact_sol_avant
 @onready var roue_avant := %Roue_avant
 @onready var cadre := %Cadre
-@onready var animation := %Animation
+#@onready var animation := %Animation
 
 # Variables
 # Physics
@@ -41,16 +43,13 @@ var current_frame_state :String
 var actual_state :String
 var previous_actual_state :String
 
-
+signal boost_consumed
 signal crashed
-#signal hud_trick_reset
-#signal hud_trick_activate
 
 func _ready():
 	reset_physic()
 	reset_states()
 	Global.reset_tricks()
-	
 
 func reset_physic():
 	for parts in [cadre, roue_avant, roue_arrière]:
@@ -92,24 +91,29 @@ func _physics_process(delta):
 	var input_balance := Input.get_axis("Arrière", "Avant") if input_enabled else 0.0
 	var couple_cible := 0.0
 	# Tjs actif
-	if Input.is_action_just_released("Pédaler"):
-		animation.pause()
+	if Input.is_action_just_released("Pédaler"):pass
+		#animation.pause()
+	# Boost
+	if Input.is_action_pressed("Boost") and input_enabled and Global.current_boost > 0:
+		cadre.apply_central_force(BOOST_ACCELERATION * delta * acceleration_direction/ECHELLE)
+		Global.current_boost -= Global.BOOST_CONSUMPTION * delta
+		boost_consumed.emit()
 	# Si contact arrière
 	if contact_sol_arrière.has_overlapping_bodies():
 		# Accélération
 		if Input.is_action_pressed("Pédaler") \
 		and not Input.is_action_pressed("Frein_arrière"):
 			roue_arrière.apply_central_force((ACCÉLÉRATION * delta/ECHELLE) * acceleration_direction)
-			animation.play("pédale")
+			#animation.play("pédale")
 		# Frein arrière
 		if Input.is_action_pressed("Frein_arrière") and input_enabled:
 			roue_arrière.linear_velocity = lerp(
-				roue_arrière.linear_velocity, Vector2(0.0,0.0), 0.5 * FORCE_FREINS * delta)
+				roue_arrière.linear_velocity, Vector2.ZERO, 0.5 * FORCE_FREINS * delta)
 	# Si contact avant
 	if contact_sol_avant.has_overlapping_bodies():
 		if Input.is_action_pressed("Frein_avant") and input_enabled:
 			roue_avant.linear_velocity = lerp(
-				roue_avant.linear_velocity, Vector2(0.0,0.0), FORCE_FREINS * delta)
+				roue_avant.linear_velocity, Vector2.ZERO, FORCE_FREINS * delta)
 	# Air or Ground
 	if Global.contact_sol:
 		# Balance
@@ -208,3 +212,8 @@ func temps_compression_en_pourcentage(temps):
 	elif temps <= GREEN_TIME + 2 * SWEET_SPOT: pourcentage = 100
 	else: pourcentage = int(100 * (2 + (2 * SWEET_SPOT - temps)/GREEN_TIME))
 	return pourcentage
+
+func _to_string():
+	return "Player : " + str(Global.current_profile["name"])\
+	+ "\nBike model : " + str(Global.current_profile["bike_model"])\
+	+ "\nSpeed : " + str(cadre.linear_velocity/ (ECHELLE * 3.6))
