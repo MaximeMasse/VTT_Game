@@ -91,8 +91,7 @@ func _physics_process(delta):
 	var input_balance := Input.get_axis("Arrière", "Avant") if input_enabled else 0.0
 	var couple_cible := 0.0
 	# Tjs actif
-	if Input.is_action_just_released("Pédaler"):pass
-		#animation.pause()
+	%Skeleton.lean(input_balance)
 	# Boost
 	if Input.is_action_pressed("Boost") and input_enabled and Global.current_boost > 0:
 		cadre.apply_central_force(BOOST_ACCELERATION * delta * acceleration_direction/ECHELLE)
@@ -104,6 +103,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("Pédaler") \
 		and not Input.is_action_pressed("Frein_arrière"):
 			roue_arrière.apply_central_force((ACCÉLÉRATION * delta/ECHELLE) * acceleration_direction)
+			%Skeleton.crank_rotate(Global.vitesse.length()/5 * delta)
 			#animation.play("pédale")
 		# Frein arrière
 		if Input.is_action_pressed("Frein_arrière") and input_enabled:

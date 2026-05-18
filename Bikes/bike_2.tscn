@@ -91,6 +91,7 @@ scale = Vector2(1, 1.0070754)
 polygon = PackedVector2Array(9, -91.01967, 23, -93.00562, 39, -84.06885, 22, -51.300697, 43, -18.532547, 23, -6.6168575, 17, 12.249655, -18, 13.242628, -44, -42.36393, -30, -65.20234)
 
 [node name="Skeleton" parent="Cadre" unique_id=256030153 instance=ExtResource("3_bio7g")]
+unique_name_in_owner = true
 position = Vector2(-27, -14)
 
 [node name="Joint_arrière" type="PinJoint2D" parent="." unique_id=113849391]
