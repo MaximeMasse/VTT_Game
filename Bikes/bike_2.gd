@@ -91,7 +91,7 @@ func _physics_process(delta):
 	var input_balance := Input.get_axis("Arrière", "Avant") if input_enabled else 0.0
 	var couple_cible := 0.0
 	# Tjs actif
-	%Skeleton.lean(input_balance)
+	#%Skeleton.lean(input_balance)
 	# Boost
 	if Input.is_action_pressed("Boost") and input_enabled and Global.current_boost > 0:
 		cadre.apply_central_force(BOOST_ACCELERATION * delta * acceleration_direction/ECHELLE)
@@ -104,7 +104,6 @@ func _physics_process(delta):
 		and not Input.is_action_pressed("Frein_arrière"):
 			roue_arrière.apply_central_force((ACCÉLÉRATION * delta/ECHELLE) * acceleration_direction)
 			%Skeleton.crank_rotate(Global.vitesse.length()/5 * delta)
-			#animation.play("pédale")
 		# Frein arrière
 		if Input.is_action_pressed("Frein_arrière") and input_enabled:
 			roue_arrière.linear_velocity = lerp(
@@ -124,10 +123,13 @@ func _physics_process(delta):
 		if Input.is_action_pressed("Jump"):
 			temps_compression += delta
 			Global.taux_compression = temps_compression_en_pourcentage(temps_compression)
-		if Input.is_action_just_released("Jump"):
+			%Skeleton.compress()
+		elif Input.is_action_just_released("Jump"):
 			cadre.apply_central_impulse(FORCE_SAUT * Global.taux_compression * Vector2.UP.rotated(cadre.rotation))
+			%Skeleton.jump(Global.taux_compression)
 			temps_compression = 0
 			Global.taux_compression = 0
+		else:%Skeleton.lean(input_balance)
 	else : 
 		# Balance
 		couple_cible = input_balance * COUPLE_CADRE_AIR
@@ -210,7 +212,7 @@ func temps_compression_en_pourcentage(temps):
 	if temps < GREEN_TIME:
 		pourcentage = int((temps/GREEN_TIME) * 100)
 	elif temps <= GREEN_TIME + 2 * SWEET_SPOT: pourcentage = 100
-	else: pourcentage = int(100 * (2 + (2 * SWEET_SPOT - temps)/GREEN_TIME))
+	else: pourcentage = max(int(100 * (2 + (2 * SWEET_SPOT - temps)/GREEN_TIME)),0)
 	return pourcentage
 
 func _to_string():

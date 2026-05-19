@@ -17,7 +17,7 @@ var vitesse := Vector2.ZERO
 var player_position := Vector2.ZERO
 var player_rotation := 0.0
 var avancement := 0
-var taux_compression := 0
+var taux_compression :float= 0
 var current_score :float
 
 #Tricks

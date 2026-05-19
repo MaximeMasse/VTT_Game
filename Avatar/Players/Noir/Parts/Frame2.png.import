@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b18dxncxn8sb6"
-path="res://.godot/imported/BackLegDown.png-83aa9ddac9ccd59f58c23e8b19620c00.ctex"
+uid="uid://cje06rru604c3"
+path="res://.godot/imported/Frame2.png-3a058655560385bf891f5466793d8662.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Avatar/Players/Noir/Parts/BackLegDown.png"
-dest_files=["res://.godot/imported/BackLegDown.png-83aa9ddac9ccd59f58c23e8b19620c00.ctex"]
+source_file="res://Avatar/Players/Noir/Parts/Frame2.png"
+dest_files=["res://.godot/imported/Frame2.png-3a058655560385bf891f5466793d8662.ctex"]
 
 [params]
 
