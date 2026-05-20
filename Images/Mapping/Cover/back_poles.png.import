@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3mpc6idsv35m"
-path="res://.godot/imported/M1_C3.png-6ce902e6cec7746b00d996f36d8ce3cc.ctex"
+uid="uid://tqg8418a4wax"
+path="res://.godot/imported/back_poles.png-7abd2fe4f3fa2bb9fe33551b228a7e34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Mapping/Cover/Map1/M1_C3.png"
-dest_files=["res://.godot/imported/M1_C3.png-6ce902e6cec7746b00d996f36d8ce3cc.ctex"]
+source_file="res://Images/Mapping/Cover/back_poles.png"
+dest_files=["res://.godot/imported/back_poles.png-7abd2fe4f3fa2bb9fe33551b228a7e34.ctex"]
 
 [params]
 

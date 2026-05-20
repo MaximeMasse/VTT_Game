@@ -106,6 +106,8 @@ func load_bike():
 	Global.current_cp = "start"
 	Global.cp_player_speed = Vector2.ZERO
 	Global.cp_player_pos = Vector2.ZERO
+	Global.cp_player_score = 0
+	Global.cp_player_boost = 0
 	Global.current_score = 0
 	Global.current_boost = 0
 	start_countdown()

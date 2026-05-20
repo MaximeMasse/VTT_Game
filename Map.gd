@@ -2,6 +2,7 @@ extends Node
 
 @export var step := 32
 @export var terrain_depth := 4000
+@export var platform_depth := 1
 
 func generate_all_collisions(paths_node:Node2D,static_body:StaticBody2D):
 	# Supprime les anciennes collisions générées
@@ -42,10 +43,49 @@ func create_collision_from_path(path: Path2D, static_body: StaticBody2D):
 	collision.polygon = polygon
 	static_body.add_child(collision)
 
+func generate_platforms_collisions(paths_node:Node2D,static_body:StaticBody2D):
+	# Supprime les anciennes collisions générées
+	for child in static_body.get_children():
+		if child is CollisionPolygon2D:
+			child.queue_free()
+	# Crée une collision par Path2D
+	for path in paths_node.get_children():
+		if path is Path2D:
+			create_collision_from_platform(path, static_body)
+			
+func create_collision_from_platform(path: Path2D, static_body: StaticBody2D):
+	var curve = path.curve
+	if curve == null or curve.point_count < 2:
+		return
+	var polygon := PackedVector2Array()
+	var length = curve.get_baked_length()
+	var d := 0.0
+	# Points du haut, espacés pour éviter trop de mini-segments
+	while d <= length:
+		var local_point = curve.sample_baked(d)
+		var world_point = path.to_global(local_point)
+		var body_point = static_body.to_local(world_point)
+		polygon.append(body_point)
+		d += step
+	# Dernier point exact
+	var last_local = curve.sample_baked(length)
+	var last_world = path.to_global(last_local)
+	var last_body = static_body.to_local(last_world)
+	if polygon.size() == 0 or polygon[polygon.size() - 1].distance_to(last_body) > 1.0:
+		polygon.append(last_body)
+	# Ferme le terrain vers le bas
+	for k in range(polygon.size()-1,0,-1):
+		polygon.append(polygon[k]+Vector2(0,platform_depth))
+	#var first = polygon[0]
+	#var last = polygon[polygon.size() - 1]
+	#polygon.append(Vector2(last.x, last.y + platform_depth))
+	#polygon.append(Vector2(first.x, first.y + platform_depth))
+	var collision = CollisionPolygon2D.new()
+	collision.polygon = polygon
+	static_body.add_child(collision)
+
 func generate_all_visuals(paths_node:Node2D,visuals:Node2D,road_texture_data:Dictionary,up_texture_data:Dictionary,down_texture_data:Dictionary,under_texture_data:Dictionary):
-	for child in visuals.get_children():
-		child.queue_free()
-	
+	for child in visuals.get_children():child.queue_free()
 	for path in paths_node.get_children():
 		if path is Path2D:
 			# Road
@@ -64,6 +104,7 @@ func create_offset_path(path: Path2D, offset: Vector2) -> Path2D:
 	var new_path := Path2D.new()
 	var new_curve := Curve2D.new()
 	var curve = path.curve
+	var natural_offset := path.position
 	if curve == null:
 		return new_path
 	for i in range(curve.point_count):
@@ -71,13 +112,12 @@ func create_offset_path(path: Path2D, offset: Vector2) -> Path2D:
 		var in_ctrl = curve.get_point_in(i)
 		var out_ctrl = curve.get_point_out(i)
 		new_curve.add_point(
-			pos + offset,
+			pos + offset + natural_offset,
 			in_ctrl,
 			out_ctrl
 		)
 	new_path.curve = new_curve
 	return new_path
-	
 
 func create_visual_from_path(path: Path2D, visuals: Node2D,texture_data:Dictionary):
 	var curve = path.curve
@@ -139,6 +179,10 @@ func create_visual_from_path(path: Path2D, visuals: Node2D,texture_data:Dictiona
 	mesh_instance.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
 	mesh_instance.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	visuals.add_child(mesh_instance)
+
+func generate_platforms_visuals(paths_node:Node2D,visuals:Node2D,texture_data:Dictionary):
+	for child in visuals.get_children():child.queue_free()
+	for path in paths_node.get_children():if path is Path2D:create_visual_from_path(path, visuals,texture_data)
 
 func v3(p: Vector2) -> Vector3:
 	return Vector3(p.x, p.y, 0)

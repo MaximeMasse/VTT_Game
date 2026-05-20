@@ -90,6 +90,12 @@ Pause={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="Floor"
+2d_render/layer_2="Checkpoint"
+2d_render/layer_3="Platform"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

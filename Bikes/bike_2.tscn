@@ -32,11 +32,13 @@ script = ExtResource("1_msbpd")
 unique_name_in_owner = true
 position = Vector2(56.785, 45)
 collision_layer = 2
+collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_ow0o1")
 
 [node name="Contact_sol_avant" type="Area2D" parent="Roue_avant" unique_id=1755217802]
 unique_name_in_owner = true
 collision_layer = 0
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roue_avant/Contact_sol_avant" unique_id=746553309]
 shape = SubResource("CircleShape2D_5jr4r")
@@ -53,12 +55,14 @@ texture = ExtResource("2_4xcus")
 unique_name_in_owner = true
 position = Vector2(-50.385, 45.305)
 collision_layer = 0
+collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_f5gm3")
 inertia = 0.75
 
 [node name="Contact_sol_arrière" type="Area2D" parent="Roue_arrière" unique_id=357878945]
 unique_name_in_owner = true
 collision_layer = 0
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roue_arrière/Contact_sol_arrière" unique_id=1268581741]
 shape = SubResource("CircleShape2D_el0nv")
@@ -74,6 +78,7 @@ texture = ExtResource("2_8v3d4")
 [node name="Cadre" type="RigidBody2D" parent="." unique_id=793041427]
 unique_name_in_owner = true
 collision_layer = 0
+collision_mask = 5
 mass = 30.0
 center_of_mass_mode = 1
 
@@ -83,6 +88,7 @@ shape = SubResource("RectangleShape2D_el0nv")
 
 [node name="Corps" type="Area2D" parent="Cadre" unique_id=2142933239]
 collision_layer = 0
+collision_mask = 5
 linear_damp = 5000.0
 angular_damp = 5000.0
 

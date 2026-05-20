@@ -20,6 +20,9 @@ var avancement := 0
 var taux_compression :float= 0
 var current_score :float
 
+# Floors
+var floor_is : int
+
 #Tricks
 var current_trick := {}
 var potential_trick_score :int

@@ -92,12 +92,11 @@ func _on_ok_pressed():
 	var profile = SaveManager.create_profile(pseudo, avatar_id)
 	show_menu(%Carriere)
 
+func _on_bouton_choix_map_pressed():
+	AudioManager.play_ui("click")
+	show_menu(%ChoixMap)
+
 func on_button_hover(button:BaseButton):button.grab_focus()
 func on_button_hover_exit(button:BaseButton):get_viewport().gui_release_focus()
 func on_button_focus(button:BaseButton):AudioManager.play_ui("hover")
 func on_button_pressed(button:BaseButton):AudioManager.play_ui("click")
-
-func _on_bouton_choix_map_pressed():
-	AudioManager.play_ui("click")
-	show_menu(%ChoixMap)
-	

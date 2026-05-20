@@ -189,19 +189,23 @@ func _on_trick_status_changer_timeout():
 	actual_state = current_frame_state
 
 func _on_crash(body):
-	AudioManager.stop_ground_sfx()
-	AudioManager.play_sfx("ouch")
-	AudioManager.play_sfx("bone_crack")
-	crashed.emit()
+	if body.get_collision_layer() in [1,Global.floor_is]:
+		AudioManager.stop_ground_sfx()
+		AudioManager.play_sfx("ouch")
+		AudioManager.play_sfx("bone_crack")
+		crashed.emit()
 
 func get_current_state()-> String:
 	if contact_sol_arrière.has_overlapping_bodies() and contact_sol_avant.has_overlapping_bodies():
+		Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
 		if Global.vitesse.length() < 20: return "slow_riding"
 		elif Global.vitesse.length() < 40: return "medium_riding"
 		else: return "fast_riding"
 	elif contact_sol_arrière.has_overlapping_bodies():
+		Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
 		return "Wheelie"
 	elif contact_sol_avant.has_overlapping_bodies():
+		Global.floor_is = contact_sol_avant.get_overlapping_bodies()[0].get_collision_layer()
 		return "Nose Wheelie"
 	else: return "Air"
 
