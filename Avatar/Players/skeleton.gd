@@ -8,10 +8,10 @@ var front_position := Vector2(27,-2)
 var front_rotation := deg_to_rad(23.5)
 var leaning_speed := 0.1
 var leaning_return_speed := 0.8
-var low_position := Vector2(-29,28)
-var low_rotation := deg_to_rad(7)
-var high_position := Vector2(8,-1)
-var high_rotation := deg_to_rad(-9.5)
+var low_position := Vector2(14,16)
+var low_rotation := deg_to_rad(17)
+var high_position := Vector2(-4,-10)
+var high_rotation := deg_to_rad(7)
 var jumping_speed := 0.8
 
 var is_jumping : bool
@@ -20,7 +20,7 @@ func crank_rotate(angle: float):
 	%Cranks.rotate(angle)
 
 func lean(input:float):
-	if is_jumping:return
+	if Global.taux_compression > 0.0 or is_jumping:return
 	var target_position := rest_position
 	var target_rotation := rest_rotation
 	var moving_speed := leaning_return_speed
@@ -36,11 +36,12 @@ func lean(input:float):
 	%Torso.rotation = lerp_angle(%Torso.rotation,target_rotation,moving_speed)
 
 func compress():
-	%Torso.position = rest_position + (Global.taux_compression/100) * (low_position-rest_position)
-	%Torso.rotation = rest_rotation + (Global.taux_compression/100) * (low_rotation-rest_rotation)
+	%Torso.position = lerp(%Torso.position,rest_position + (Global.taux_compression/100) * (low_position-rest_position),0.5)
+	%Torso.rotation = lerp_angle(%Torso.rotation,rest_rotation + (Global.taux_compression/100) * (low_rotation-rest_rotation),0.5)
 	
 func jump(puissance):
 	is_jumping = true
-	%AnimationPlayer.play("jump")
+	%Torso.position = lerp(%Torso.position,high_position,clampf(puissance/100,0.1,1))
+	%Torso.rotation = lerp_angle(%Torso.rotation,high_rotation,clampf(puissance/100,0.1,1))
 	await get_tree().create_timer(0.5).timeout
 	is_jumping = false

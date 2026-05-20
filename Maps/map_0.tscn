@@ -143,6 +143,14 @@ position = Vector2(8420, 648)
 unique_name_in_owner = true
 position = Vector2(13956, 1071)
 
+[node name="CrashZone" type="Area2D" parent="Spots" unique_id=2108489664]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spots/CrashZone" unique_id=1125669360]
+build_mode = 1
+polygon = PackedVector2Array(-986, 229, 28048, 7842, 28402, 5950, 27759, 6327, 26946, 6603, 26083, 6327, 25327, 5912, 24523, 5818, 23902, 6016, 21928, 5501, 21237, 4484, 20443, 4287, 18946, 4419, 17120, 3533, 15394, 1622, 13915, 1459, 12801, 1556, 11970, 1804, 11445, 1716, 10030, 1522, 9478, 1054, 8436, 979, 7348, 1286, 3651, 780, 2381, 977)
+
 [node name="Paths" type="Node2D" parent="." unique_id=1436220943]
 unique_name_in_owner = true
 
@@ -186,6 +194,7 @@ unique_name_in_owner = true
 [node name="Assets" type="Node2D" parent="." unique_id=1612230551]
 
 [node name="FrontForest" type="Node2D" parent="Assets" unique_id=1214418813]
+z_index = 1
 
 [node name="Forest38" type="Sprite2D" parent="Assets/FrontForest" unique_id=1641406201]
 z_index = 5
@@ -842,3 +851,4 @@ texture = ExtResource("14_4hqvm")
 [connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_2" to="." method="_on_checkpoint_2_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_3" to="." method="_on_checkpoint_3_body_entered"]
+[connection signal="body_entered" from="Spots/CrashZone" to="." method="_on_crash_zone_body_entered"]

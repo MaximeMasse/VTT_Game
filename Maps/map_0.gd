@@ -32,6 +32,7 @@ func get_level_data():
 		"cp3": %Checkpoint_3
 		}
 
+signal out_of_bounds
 signal finish
 
 func _ready():
@@ -65,15 +66,11 @@ func _ready():
 	Map.generate_all_collisions(%Paths,%Floors)
 	Map.generate_all_visuals(%Paths,%Textures,road,up,down,under)
 
+func _on_crash_zone_body_entered(body):out_of_bounds.emit()
 func _on_finish_body_entered(body):
 	%Finish.activate()
 	finish.emit()
 
-func _on_checkpoint_1_body_entered(body):
-	Global.checkpoint_update("cp1")
-
-func _on_checkpoint_2_body_entered(body):
-	Global.checkpoint_update("cp2")
-
-func _on_checkpoint_3_body_entered(body):
-	Global.checkpoint_update("cp3")
+func _on_checkpoint_1_body_entered(body):Global.checkpoint_update("cp1")
+func _on_checkpoint_2_body_entered(body):Global.checkpoint_update("cp2")
+func _on_checkpoint_3_body_entered(body):Global.checkpoint_update("cp3")

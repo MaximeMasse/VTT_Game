@@ -34,10 +34,12 @@ var BOOST_CONSUMPTION :float
 var ONE_TIME_QUANTITY :float
 var current_boost:float
 
-# CP position and speed
-var current_cp := "start"
-var cp_player_speed := Vector2.ZERO
-var cp_player_pos := Vector2.ZERO
+# CP datas
+var current_cp : String
+var cp_player_speed : Vector2
+var cp_player_pos : Vector2
+var cp_player_score : float
+var cp_player_boost : float
 
 # End map
 var new_best_time :bool
@@ -106,6 +108,8 @@ func checkpoint_update(cp : String):
 		current_cp = cp
 		cp_player_speed = vitesse
 		cp_player_pos = player_position
+		cp_player_score = current_score
+		cp_player_boost = current_boost
 
 func reset_tricks():
 	current_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}

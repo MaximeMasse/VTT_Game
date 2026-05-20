@@ -47,24 +47,13 @@ func _ready():
 	load_bike()
 
 func _input(event):
-	
-	# InGame
 	if race_started and not is_finished:
-		if event.is_action_pressed("Pause"):
-			toggle_pause()
-		if Input.is_action_just_pressed("Restart"):
-			velo_courant.queue_free()
-			restart()
-		if Input.is_action_just_pressed("Respawn"):
-			velo_courant.queue_free()
-			#map_courante.queue_free()
-			velo_courant = null
-			await get_tree().process_frame
-			#load_map()
-			respawn_bike()
+		if event.is_action_pressed("Pause"):toggle_pause()
+		if Input.is_action_just_pressed("Restart"):restart()
+		if Input.is_action_just_pressed("Respawn"):respawn_bike()
 
 func restart():
-	Global.current_score = 0
+	velo_courant.queue_free()
 	SaveManager.load_config()
 	SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
 	AudioManager.stop_music()
@@ -75,6 +64,7 @@ func restart():
 	%HUD.reset()
 	load_map()
 	load_bike()
+	%HUD.update_score(Global.current_score)
 	is_finished = false
 
 func load_map():
@@ -83,6 +73,7 @@ func load_map():
 	map_courante = map_scene.instantiate()
 	%MapContainer.add_child(map_courante)
 	map_courante.finish.connect(map_finished)
+	map_courante.out_of_bounds.connect(respawn_bike)
 	map_data = map_courante.get_level_data()
 
 func map_finished():
@@ -95,7 +86,6 @@ func map_finished():
 	%Finish_Menu.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	%Time_label.text = Global.format_time(Global.race_time)
-	#var previous_time := "-" if str(Global.previous_best["time"]) == "-" else Global.format_time(Global.previous_best["time"])
 	%PreviousTime_label.text = "-" if str(Global.previous_best["time"]) == "-" else Global.format_time(Global.previous_best["time"])
 	%NewBestTime_label.visible = Global.new_best_time
 	%Score_label.text = str(int(Global.current_score))
@@ -116,10 +106,14 @@ func load_bike():
 	Global.current_cp = "start"
 	Global.cp_player_speed = Vector2.ZERO
 	Global.cp_player_pos = Vector2.ZERO
+	Global.current_score = 0
 	Global.current_boost = 0
 	start_countdown()
 
 func respawn_bike():
+	velo_courant.queue_free()
+	velo_courant = null
+	await get_tree().process_frame
 	velo_courant = Global.get_profile_bike().instantiate()
 	%BikeContainer.add_child(velo_courant)
 	disable_inputs_for_x_second(0.5)
@@ -131,6 +125,9 @@ func respawn_bike():
 	Global.race_time += Global.current_profile["upgrades"]["RESPAWN_PENALTY"]
 	velo_courant.global_position = Global.cp_player_pos
 	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (ECHELLE * 3.6)
+	Global.current_score = Global.cp_player_score
+	Global.current_boost = Global.cp_player_boost
+	%HUD.update_score(Global.current_score)
 
 func start_countdown():
 	race_started = false

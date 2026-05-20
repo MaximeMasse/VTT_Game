@@ -91,7 +91,7 @@ func _physics_process(delta):
 	var input_balance := Input.get_axis("Arrière", "Avant") if input_enabled else 0.0
 	var couple_cible := 0.0
 	# Tjs actif
-	#%Skeleton.lean(input_balance)
+	%Skeleton.lean(input_balance)
 	# Boost
 	if Input.is_action_pressed("Boost") and input_enabled and Global.current_boost > 0:
 		cadre.apply_central_force(BOOST_ACCELERATION * delta * acceleration_direction/ECHELLE)
@@ -129,7 +129,6 @@ func _physics_process(delta):
 			%Skeleton.jump(Global.taux_compression)
 			temps_compression = 0
 			Global.taux_compression = 0
-		else:%Skeleton.lean(input_balance)
 	else : 
 		# Balance
 		couple_cible = input_balance * COUPLE_CADRE_AIR
@@ -194,7 +193,6 @@ func _on_crash(body):
 	AudioManager.play_sfx("ouch")
 	AudioManager.play_sfx("bone_crack")
 	crashed.emit()
-	queue_free()
 
 func get_current_state()-> String:
 	if contact_sol_arrière.has_overlapping_bodies() and contact_sol_avant.has_overlapping_bodies():
