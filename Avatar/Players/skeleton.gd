@@ -1,5 +1,9 @@
 extends Node2D
 
+#Textures
+@export var head_texture : Texture2D
+@export var torso_texture : Texture2D
+
 var rest_position := Vector2(-6.565,4.63)
 var rest_rotation := deg_to_rad(0)
 var back_position := Vector2(-26,19)
@@ -15,6 +19,10 @@ var high_rotation := deg_to_rad(7)
 var jumping_speed := 0.8
 
 var is_jumping : bool
+
+func _ready():
+	%HeadSprite.texture = head_texture
+	%TorsoSprite.texture = torso_texture
 
 func crank_rotate(angle: float):
 	%Cranks.rotate(angle)

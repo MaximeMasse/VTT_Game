@@ -25,25 +25,28 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		"avatar": avatar_id,
 		"bike_model": 2, 
 		"stats": {
-			"ACCÉLÉRATION": 10000.0,
-			"FRICTION" : 150,
-			"CM_OFFSET" : [0,0],
+			"ACCÉLÉRATION": 5000.0,
+			"AIR_ROTATION_CONTROL": 2.0,
+			"AIR_SPEED_CONTROL": 0.0,
+			"AV_CONTROL": 10.0,
+			"BALANCE_CONTROL": 10.0,
+			"CM_OFFSET": [
+				0.0,
+				0.0
+			],
 			"COUPLE_CADRE_AIR": 400000.0,
-			"AIR_ROTATION_CONTROL" :2.0,
 			"COUPLE_CADRE_SOL": 1700000.0,
-			"BALANCE_CONTROL" : 10.0,
-			"AV_CONTROL" : 10.0,
-			"FORCE_FREINS": 75,
+			"FORCE_FREINS": 75.0,
 			"FORCE_SAUT": 100.0,
-			"GREEN_TIME": 1,
-			"SWEET_SPOT":0.1,
-			"AIR_SPEED_CONTROL": 0.0
+			"FRICTION": 150.0,
+			"GREEN_TIME": 1.0,
+			"SWEET_SPOT": 0.1
 		},
 		"boost": {
-			"BOOST_ACCELERATION" : 5000.0,
-			"BOOST_MAX_QUANTITY" : 5000,
-			"ONE_TIME_RATIO" : 5,
-			"BOOST_CONSUMPTION" : 1000
+			"BOOST_ACCELERATION": 5000.0,
+			"BOOST_CONSUMPTION": 2500.0,
+			"BOOST_MAX_QUANTITY": 5000.0,
+			"ONE_TIME_RATIO": 5.0
 		},
 		"upgrades": {
 			"RESPAWN_PENALTY" : 5.0
@@ -52,7 +55,9 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 			"Air": {"length":0.0,"duration":0.0},
 			"Wheelie": {"length":0.0,"duration":0.0},
 			"Nose Wheelie": {"length":0.0,"duration":0.0}
-		}
+		},
+		"best_combo": [],
+		"map_record": {}
 	}
 	save_profile(profile)
 	set_current_profile(profile)
@@ -81,7 +86,7 @@ func load_profile(profile_id: int) -> Dictionary:
 
 func set_current_profile(profile: Dictionary) -> void:
 	Global.current_profile = profile
-	Global.current_profile_id = int(profile["id"])
+	#Global.current_profile_id = int(profile["id"])
 
 	Global.config["profil_en_cours"] = int(profile["id"])
 	save_config()

@@ -30,7 +30,8 @@ const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 @onready var contact_sol_avant := %Contact_sol_avant
 @onready var roue_avant := %Roue_avant
 @onready var cadre := %Cadre
-#@onready var animation := %Animation
+
+@export var ground_distance_smoothing := 0.5
 
 # Variables
 # Physics
@@ -177,6 +178,15 @@ func _physics_process(delta):
 	if actual_state != previous_actual_state: ground_sfx_change()
 	
 	previous_actual_state = actual_state
+
+func _process(delta):
+	# Floor detection
+	%FloorScan.global_rotation = 0.0
+	if %FloorScan.is_colliding():
+		Global.ground_distance = lerp(Global.ground_distance,
+			cadre.global_position.distance_to(%FloorScan.get_collision_point()),
+			ground_distance_smoothing
+			)
 
 func ground_sfx_change():
 	AudioManager.stop_ground_sfx()

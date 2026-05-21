@@ -101,6 +101,10 @@ polygon = PackedVector2Array(-10, -110.87916, 23, -106.907265, 17, -86.0548, 7, 
 unique_name_in_owner = true
 position = Vector2(-23.87, -13.19)
 
+[node name="FloorScan" type="RayCast2D" parent="Cadre" unique_id=1407081841]
+unique_name_in_owner = true
+target_position = Vector2(0, 1000)
+
 [node name="Joint_arrière" type="PinJoint2D" parent="." unique_id=113849391]
 position = Vector2(-50.385, 45.305)
 node_a = NodePath("../Cadre")

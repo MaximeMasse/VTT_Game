@@ -2,12 +2,12 @@ extends Node
 
 # Config
 const ECHELLE = 1.7/152
-var current_profile_id := 0
+#var current_profile_id := 0
 var current_profile := {}
 var config := {}
 
 # Sélections
-var current_map := "0"
+var current_map := "1"
 
 # HUD
 var race_time := 0.0
@@ -22,6 +22,8 @@ var current_score :float
 
 # Floors
 var floor_is : int
+var bike_ground_distance : float
+var ground_distance : float
 
 #Tricks
 var current_trick := {}
@@ -74,13 +76,15 @@ var dico_maps := {
 	"5":"res://Maps/special_map.tscn"
 }
 var dico_vélo := {
-	0:preload("res://Bikes/bike_0.tscn"),
-	1:preload("res://Bikes/bike_1.tscn"),
-	2:preload("res://Bikes/bike_2.tscn"),
+	0:"res://Bikes/bike_0.tscn",
+	1:"res://Bikes/bike_1.tscn",
+	2:"res://Bikes/bike_2.tscn",
 }
 var dico_avatars := {
-	1:preload("res://Avatar/Players/Noir/Avatar.png"),
-	2:preload("res://Avatar/Players/Rose/Avatar.png")
+	1:preload("res://Avatar/Players/Base/Woman.png"),
+	2:preload("res://Avatar/Players/Base/Man.png"),
+	3:preload("res://Avatar/Players/Base/Girl.png"),
+	4:preload("res://Avatar/Players/Base/Cat.png")
 }
 var dico_scenes :={
 	"Main_Game":"res://game.tscn"
@@ -103,8 +107,7 @@ func start_mod(scene_name:String):
 func get_current_map():
 	return dico_maps[current_map]
 
-func get_profile_bike():
-	return dico_vélo[int(current_profile["bike_model"])]
+func get_profile_bike()->String:return dico_vélo[int(current_profile["bike_model"])]
 
 func checkpoint_update(cp : String):
 	if current_cp != cp:

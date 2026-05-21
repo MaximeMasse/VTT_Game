@@ -3,10 +3,8 @@
 [ext_resource type="Script" uid="uid://dqmbjmjind4s3" path="res://Avatar/Players/skeleton.gd" id="1_guemb"]
 [ext_resource type="Texture2D" uid="uid://dgr0fbngoe0ap" path="res://Avatar/Players/Noir/Parts/Torso.png" id="1_yopfs"]
 [ext_resource type="Texture2D" uid="uid://cyxhktu8rytwy" path="res://Avatar/Players/Noir/Parts/ArmUp.png" id="2_ebwee"]
-[ext_resource type="Texture2D" uid="uid://dedmatapicjn8" path="res://Avatar/Players/Cat/Head.png" id="2_n48cn"]
 [ext_resource type="Texture2D" uid="uid://cje06rru604c3" path="res://Avatar/Players/Noir/Parts/Frame2.png" id="3_guemb"]
 [ext_resource type="Texture2D" uid="uid://ccvupc2df2dn1" path="res://Avatar/Players/Noir/Parts/ArmDown.png" id="3_n48cn"]
-[ext_resource type="Texture2D" uid="uid://bsjhfcrud463x" path="res://Avatar/Players/Cat/Torso.png" id="3_rwb2u"]
 [ext_resource type="Texture2D" uid="uid://wqtlbnur7qhw" path="res://Avatar/Players/Noir/Parts/Head.png" id="4_guemb"]
 [ext_resource type="Texture2D" uid="uid://bx5ejuywa206g" path="res://Avatar/Players/Noir/Parts/FrontLegDown.png" id="5_rwb2u"]
 [ext_resource type="Texture2D" uid="uid://b4v6e6732f8ej" path="res://Avatar/Players/Noir/Parts/Foot.png" id="6_31gvc"]
@@ -48,8 +46,6 @@ modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_rwb2u")
 
 [node name="Node2D" type="Node2D" unique_id=256030153]
 script = ExtResource("1_guemb")
-head_texture = ExtResource("2_n48cn")
-torso_texture = ExtResource("3_rwb2u")
 
 [node name="Bike" type="Node2D" parent="." unique_id=1777311058]
 
@@ -97,7 +93,6 @@ position = Vector2(-6.565, 4.63)
 rest = Transform2D(1, 0, 0, 1, -6.565, 4.63)
 
 [node name="TorsoSprite" type="Sprite2D" parent="Skeleton2D/Torso" unique_id=1247564414]
-unique_name_in_owner = true
 position = Vector2(10.581717, -21.787209)
 rotation = -0.34906584
 scale = Vector2(0.09999994, 0.09999994)

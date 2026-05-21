@@ -39,6 +39,8 @@ font_names = PackedStringArray("Pixel Game")
 [node name="Game" type="Node2D" unique_id=687301190]
 process_mode = 3
 script = ExtResource("1_fc0e3")
+ymin_offset = -50.0
+ymax_offset = 300.0
 
 [node name="HUD" parent="." unique_id=1185251805 instance=ExtResource("5_7jktm")]
 unique_name_in_owner = true

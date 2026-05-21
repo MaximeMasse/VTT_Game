@@ -8,10 +8,12 @@ var RATIO := 0.8
 var ASPECT := 16.0 / 9.0
 
 # Variables
-var camera_offset := Vector2(400,0)
-@export var xspeed_offset_ratio := 7
-@export var yspeed_offset_ratio := 9
-@export var camera_smooth := 3.0
+@export var camera_offset := Vector2(300,0)
+@export var ymin_offset :float= -100
+@export var ymax_offset :float= 1000
+@export var xspeed_offset_ratio := 15
+@export var yspeed_offset_ratio := 15
+@export var camera_smooth := 2.0
 @export var no_zoom_speed := 30
 @export var min_zoom := 0.8
 @export var max_zoom := 1.1
@@ -99,7 +101,7 @@ func map_finished():
 
 func load_bike():
 	race_started = false
-	velo_courant = Global.get_profile_bike().instantiate()
+	velo_courant = load(Global.get_profile_bike()).instantiate()
 	%BikeContainer.add_child(velo_courant)
 	camera_target = velo_courant.cadre
 	velo_courant.crashed.connect(respawn_bike)
@@ -119,7 +121,7 @@ func respawn_bike():
 	velo_courant.queue_free()
 	if is_finished:return
 	await get_tree().process_frame
-	velo_courant = Global.get_profile_bike().instantiate()
+	velo_courant = load(Global.get_profile_bike()).instantiate()
 	%BikeContainer.add_child(velo_courant)
 	disable_inputs_for_x_second(0.5)
 	velo_courant.can_drive = true
@@ -157,8 +159,10 @@ func disable_inputs_for_x_second(x:float):
 
 func _process(delta):
 	if is_instance_valid(camera_target) and not is_finished and velo_courant.input_enabled and race_started:
-		var speed_offset := Vector2(xspeed_offset_ratio * Global.vitesse.x,yspeed_offset_ratio * Global.vitesse.y)
-		print(speed_offset.x,";",speed_offset.y)
+		var xoffset :float= Global.vitesse.x * xspeed_offset_ratio
+		var yoffset :float= clamp(Global.vitesse.y * yspeed_offset_ratio + Global.ground_distance,ymin_offset,ymax_offset)
+		var speed_offset := Vector2(xoffset,yoffset)
+		print(Global.bike_ground_distance,";",Global.ground_distance)
 		%Camera.global_position = %Camera.global_position.lerp(
 			camera_target.global_position + camera_offset + speed_offset,
 			camera_smooth * delta
