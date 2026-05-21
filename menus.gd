@@ -46,7 +46,7 @@ func set_up_buttons(node):
 			child.pressed.connect(func():on_button_pressed(child))
 		set_up_buttons(child)
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("ui_down"):
 		%ContinueButton.grab_focus()
 	elif Input.is_action_just_pressed("ui_up"):
@@ -64,39 +64,33 @@ func apply_audio_config():
 	AudioManager.set_bus_volume("UI", Global.config.get("ui_volume", 0.8))
 
 func _on_continue_button_pressed():
-	AudioManager.play_ui("click")
 	AudioManager.stop_music()
 	Global.start_mod("Main_Game")
 
 func _on_new_player_button_pressed():
-	AudioManager.play_ui("click")
 	show_menu(%NewPlayer)
 	%Choix.texture = Global.dico_avatars[choix_perso]
 	
 func _on_bouton_gauche_pressed():
-	AudioManager.play_ui("click")
 	if choix_perso > 1:
 		choix_perso -= 1
 	%Choix.texture = Global.dico_avatars[choix_perso]
 
 func _on_bouton_droite_pressed():
-	AudioManager.play_ui("click")
 	if choix_perso < Global.dico_avatars.size():
 		choix_perso += 1
 	%Choix.texture = Global.dico_avatars[choix_perso]
 
 func _on_ok_pressed():
-	AudioManager.play_ui("click")
 	var pseudo = %NameLineEdit.text
 	var avatar_id = choix_perso
-	var profile = SaveManager.create_profile(pseudo, avatar_id)
+	SaveManager.create_profile(pseudo, avatar_id)
 	show_menu(%Carriere)
 
 func _on_bouton_choix_map_pressed():
-	AudioManager.play_ui("click")
 	show_menu(%ChoixMap)
 
 func on_button_hover(button:BaseButton):button.grab_focus()
-func on_button_hover_exit(button:BaseButton):get_viewport().gui_release_focus()
-func on_button_focus(button:BaseButton):AudioManager.play_ui("hover")
-func on_button_pressed(button:BaseButton):AudioManager.play_ui("click")
+func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()
+func on_button_focus(_button:BaseButton):AudioManager.play_ui("hover")
+func on_button_pressed(_button:BaseButton):AudioManager.play_ui("click")

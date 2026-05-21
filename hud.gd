@@ -81,7 +81,7 @@ func update_best_tricks(trick_name,effect=true):
 		await get_tree().create_timer(1).timeout
 		best_trick_labels[trick_name].add_theme_color_override("font_color", colors["DARK_GREY"])
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	%Time_label.text = Global.format_time(Global.race_time)
 	if Global.penalty_to_show and %Show_penalty_timer.is_stopped():
 		%Tricks_label.add_theme_color_override("font_color", colors["RED"])

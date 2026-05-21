@@ -9,8 +9,13 @@ var ASPECT := 16.0 / 9.0
 
 # Variables
 var camera_offset := Vector2(400,0)
+@export var xspeed_offset_ratio := 7
+@export var yspeed_offset_ratio := 9
+@export var camera_smooth := 3.0
+@export var no_zoom_speed := 30
+@export var min_zoom := 0.8
+@export var max_zoom := 1.1
 var camera_target: Node2D = null
-var camera_smooth := 5.0
 var map_courante :Node2D
 var velo_courant :Node2D
 var map_data := {}
@@ -53,13 +58,13 @@ func _input(event):
 		if Input.is_action_just_pressed("Respawn"):respawn_bike()
 
 func restart():
-	velo_courant.queue_free()
+	%Camera.global_position = camera_target.global_position
+	if not is_finished:velo_courant.queue_free()
 	SaveManager.load_config()
 	SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
 	AudioManager.stop_music()
 	AudioManager.stop_sfx()
 	map_courante.queue_free()
-	velo_courant = null
 	await get_tree().process_frame
 	%HUD.reset()
 	load_map()
@@ -77,12 +82,12 @@ func load_map():
 	map_data = map_courante.get_level_data()
 
 func map_finished():
+	camera_target = map_data["finish"]
 	is_finished = true
 	Global.end_map()
 	AudioManager.stop_music()
 	AudioManager.play_sfx("fireworks")
 	AudioManager.play_music("Victory")
-	camera_target = map_data["finish"]
 	%Finish_Menu.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	%Time_label.text = Global.format_time(Global.race_time)
@@ -91,9 +96,6 @@ func map_finished():
 	%Score_label.text = str(int(Global.current_score))
 	%PreviousScore_label.text = "-" if str(Global.previous_best["score"]) == "-" else str(int(Global.previous_best["score"]))
 	%NewBestScore_label.visible = Global.new_best_score
-	await get_tree().create_timer(3).timeout
-	velo_courant.queue_free()
-	AudioManager.stop_ground_sfx()
 
 func load_bike():
 	race_started = false
@@ -113,8 +115,9 @@ func load_bike():
 	start_countdown()
 
 func respawn_bike():
+	%Camera.global_position = camera_target.global_position
 	velo_courant.queue_free()
-	velo_courant = null
+	if is_finished:return
 	await get_tree().process_frame
 	velo_courant = Global.get_profile_bike().instantiate()
 	%BikeContainer.add_child(velo_courant)
@@ -153,11 +156,18 @@ func disable_inputs_for_x_second(x:float):
 	velo_courant.input_enabled = true
 
 func _process(delta):
-	if is_instance_valid(camera_target):
+	if is_instance_valid(camera_target) and not is_finished and velo_courant.input_enabled and race_started:
+		var speed_offset := Vector2(xspeed_offset_ratio * Global.vitesse.x,yspeed_offset_ratio * Global.vitesse.y)
+		print(speed_offset.x,";",speed_offset.y)
 		%Camera.global_position = %Camera.global_position.lerp(
-			camera_target.global_position + camera_offset,
+			camera_target.global_position + camera_offset + speed_offset,
 			camera_smooth * delta
 		)
+		var zoom_factor := clampf(no_zoom_speed/Global.vitesse.length(),min_zoom,max_zoom)
+		%Camera.zoom = %Camera.zoom.lerp(Vector2(zoom_factor,zoom_factor),camera_smooth * delta)
+	else:
+		%Camera.global_position = camera_target.global_position + camera_offset
+		%Camera.zoom = Vector2.ONE
 
 func _physics_process(delta):
 	# Tracking
@@ -209,6 +219,6 @@ func set_up_buttons(node):
 		set_up_buttons(child)
 
 func on_button_hover(button:BaseButton):button.grab_focus()
-func on_button_hover_exit(button:BaseButton):get_viewport().gui_release_focus()
-func on_button_focus(button:BaseButton):AudioManager.play_ui("hover")
-func on_button_pressed(button:BaseButton):AudioManager.play_ui("click")
+func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()
+func on_button_focus(_button:BaseButton):AudioManager.play_ui("hover")
+func on_button_pressed(_button:BaseButton):AudioManager.play_ui("click")

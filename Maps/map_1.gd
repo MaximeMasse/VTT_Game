@@ -77,9 +77,9 @@ func _ready():
 	Map.generate_platforms_collisions(%PlatformsPaths,%Platforms)
 	Map.generate_platforms_visuals(%PlatformsPaths,%PlatformsTextures,platform)
 
-func _on_crash_zone_body_entered(body):out_of_bounds.emit()
-func _on_finish_body_entered(body):
+func _on_crash_zone_body_entered(_body):out_of_bounds.emit()
+func _on_finish_body_entered(_body):
 	%Finish.activate()
 	finish.emit()
 
-func _on_checkpoint_1_body_entered(body):Global.checkpoint_update("cp1")
+func _on_checkpoint_1_body_entered(_body):Global.checkpoint_update("cp1")

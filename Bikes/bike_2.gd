@@ -190,6 +190,7 @@ func _on_trick_status_changer_timeout():
 
 func _on_crash(body):
 	if body.get_collision_layer() in [1,Global.floor_is]:
+		queue_free()
 		AudioManager.stop_ground_sfx()
 		AudioManager.play_sfx("ouch")
 		AudioManager.play_sfx("bone_crack")
