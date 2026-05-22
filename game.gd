@@ -162,7 +162,6 @@ func _process(delta):
 		var xoffset :float= Global.vitesse.x * xspeed_offset_ratio
 		var yoffset :float= clamp(Global.vitesse.y * yspeed_offset_ratio + Global.ground_distance,ymin_offset,ymax_offset)
 		var speed_offset := Vector2(xoffset,yoffset)
-		print(Global.bike_ground_distance,";",Global.ground_distance)
 		%Camera.global_position = %Camera.global_position.lerp(
 			camera_target.global_position + camera_offset + speed_offset,
 			camera_smooth * delta

@@ -22,7 +22,6 @@ var current_score :float
 
 # Floors
 var floor_is : int
-var bike_ground_distance : float
 var ground_distance : float
 
 #Tricks

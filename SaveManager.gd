@@ -73,15 +73,12 @@ func load_profile(profile_id: int) -> Dictionary:
 
 	if not FileAccess.file_exists(path):
 		return {}
-
 	var file := FileAccess.open(path, FileAccess.READ)
 	var text := file.get_as_text()
-
 	var json := JSON.new()
 	if json.parse(text) != OK:
 		push_error("Profil corrompu : ",profile_id)
 		return {}
-
 	return json.data
 
 func set_current_profile(profile: Dictionary) -> void:

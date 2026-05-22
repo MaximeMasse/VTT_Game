@@ -30,7 +30,8 @@ const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 @onready var contact_sol_avant := %Contact_sol_avant
 @onready var roue_avant := %Roue_avant
 @onready var cadre := %Cadre
-@onready var animation := %Animation
+
+@export var ground_distance_smoothing := 0.5
 
 # Variables
 # Physics
@@ -91,8 +92,7 @@ func _physics_process(delta):
 	var input_balance := Input.get_axis("Arrière", "Avant") if input_enabled else 0.0
 	var couple_cible := 0.0
 	# Tjs actif
-	if Input.is_action_just_released("Pédaler"):
-		animation.pause()
+	%Skeleton.lean(input_balance)
 	# Boost
 	if Input.is_action_pressed("Boost") and input_enabled and Global.current_boost > 0:
 		cadre.apply_central_force(BOOST_ACCELERATION * delta * acceleration_direction/ECHELLE)
@@ -104,7 +104,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("Pédaler") \
 		and not Input.is_action_pressed("Frein_arrière"):
 			roue_arrière.apply_central_force((ACCÉLÉRATION * delta/ECHELLE) * acceleration_direction)
-			animation.play("pédale")
+			%Skeleton.crank_rotate(Global.vitesse.length()/5 * delta)
 		# Frein arrière
 		if Input.is_action_pressed("Frein_arrière") and input_enabled:
 			roue_arrière.linear_velocity = lerp(
@@ -124,8 +124,10 @@ func _physics_process(delta):
 		if Input.is_action_pressed("Jump"):
 			temps_compression += delta
 			Global.taux_compression = temps_compression_en_pourcentage(temps_compression)
-		if Input.is_action_just_released("Jump"):
+			%Skeleton.compress()
+		elif Input.is_action_just_released("Jump"):
 			cadre.apply_central_impulse(FORCE_SAUT * Global.taux_compression * Vector2.UP.rotated(cadre.rotation))
+			%Skeleton.jump(Global.taux_compression)
 			temps_compression = 0
 			Global.taux_compression = 0
 	else : 
@@ -177,6 +179,16 @@ func _physics_process(delta):
 	
 	previous_actual_state = actual_state
 
+func _process(delta):
+	# Floor detection
+	%FloorScan.global_rotation = 0.0
+	if %FloorScan.is_colliding():
+		Global.floor_is = %FloorScan.get_collider().get_collision_layer()
+		Global.ground_distance = lerp(Global.ground_distance,
+			cadre.global_position.distance_to(%FloorScan.get_collision_point()),
+			ground_distance_smoothing
+			)
+
 func ground_sfx_change():
 	AudioManager.stop_ground_sfx()
 	if previous_actual_state == "Air":
@@ -187,21 +199,25 @@ func ground_sfx_change():
 func _on_trick_status_changer_timeout():
 	actual_state = current_frame_state
 
-func _on_crash(body):
-	AudioManager.stop_ground_sfx()
-	AudioManager.play_sfx("ouch")
-	AudioManager.play_sfx("bone_crack")
-	crashed.emit()
-	queue_free()
+#func _on_crash(body):
+	#if body.get_collision_layer() in [1,Global.floor_is]:
+		#queue_free()
+		#AudioManager.stop_ground_sfx()
+		#AudioManager.play_sfx("ouch")
+		#AudioManager.play_sfx("bone_crack")
+		#crashed.emit()
 
 func get_current_state()-> String:
 	if contact_sol_arrière.has_overlapping_bodies() and contact_sol_avant.has_overlapping_bodies():
+		#Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
 		if Global.vitesse.length() < 20: return "slow_riding"
 		elif Global.vitesse.length() < 40: return "medium_riding"
 		else: return "fast_riding"
 	elif contact_sol_arrière.has_overlapping_bodies():
+		#Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
 		return "Wheelie"
 	elif contact_sol_avant.has_overlapping_bodies():
+		#Global.floor_is = contact_sol_avant.get_overlapping_bodies()[0].get_collision_layer()
 		return "Nose Wheelie"
 	else: return "Air"
 
@@ -210,10 +226,19 @@ func temps_compression_en_pourcentage(temps):
 	if temps < GREEN_TIME:
 		pourcentage = int((temps/GREEN_TIME) * 100)
 	elif temps <= GREEN_TIME + 2 * SWEET_SPOT: pourcentage = 100
-	else: pourcentage = int(100 * (2 + (2 * SWEET_SPOT - temps)/GREEN_TIME))
+	else: pourcentage = max(int(100 * (2 + (2 * SWEET_SPOT - temps)/GREEN_TIME)),0)
 	return pourcentage
 
 func _to_string():
 	return "Player : " + str(Global.current_profile["name"])\
 	+ "\nBike model : " + str(Global.current_profile["bike_model"])\
 	+ "\nSpeed : " + str(cadre.linear_velocity/ (ECHELLE * 3.6))
+
+
+func _on_skeleton_contact(body: Node2D) -> void:
+	if body.get_collision_layer() in [1,Global.floor_is]:
+		queue_free()
+		AudioManager.stop_ground_sfx()
+		AudioManager.play_sfx("ouch")
+		AudioManager.play_sfx("bone_crack")
+		crashed.emit()

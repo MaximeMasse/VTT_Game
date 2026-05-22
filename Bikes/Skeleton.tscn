@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://spm2uebf1l7p"]
 
-[ext_resource type="Script" uid="uid://dqmbjmjind4s3" path="res://Avatar/Players/skeleton.gd" id="1_guemb"]
+[ext_resource type="Script" uid="uid://dqmbjmjind4s3" path="res://Bikes/skeleton.gd" id="1_guemb"]
 [ext_resource type="Texture2D" uid="uid://dgr0fbngoe0ap" path="res://Avatar/Players/Noir/Parts/Torso.png" id="1_yopfs"]
 [ext_resource type="Texture2D" uid="uid://cyxhktu8rytwy" path="res://Avatar/Players/Noir/Parts/ArmUp.png" id="2_ebwee"]
 [ext_resource type="Texture2D" uid="uid://dedmatapicjn8" path="res://Avatar/Players/Cat/Head.png" id="2_n48cn"]
 [ext_resource type="Texture2D" uid="uid://cje06rru604c3" path="res://Avatar/Players/Noir/Parts/Frame2.png" id="3_guemb"]
 [ext_resource type="Texture2D" uid="uid://ccvupc2df2dn1" path="res://Avatar/Players/Noir/Parts/ArmDown.png" id="3_n48cn"]
 [ext_resource type="Texture2D" uid="uid://bsjhfcrud463x" path="res://Avatar/Players/Cat/Torso.png" id="3_rwb2u"]
-[ext_resource type="Texture2D" uid="uid://wqtlbnur7qhw" path="res://Avatar/Players/Noir/Parts/Head.png" id="4_guemb"]
 [ext_resource type="Texture2D" uid="uid://bx5ejuywa206g" path="res://Avatar/Players/Noir/Parts/FrontLegDown.png" id="5_rwb2u"]
 [ext_resource type="Texture2D" uid="uid://b4v6e6732f8ej" path="res://Avatar/Players/Noir/Parts/Foot.png" id="6_31gvc"]
 [ext_resource type="Texture2D" uid="uid://bdr4j61y40qeq" path="res://Avatar/Players/Noir/Parts/FrontLegUp.png" id="7_1g6wr"]
+[ext_resource type="Texture2D" uid="uid://wqtlbnur7qhw" path="res://Avatar/Players/Noir/Parts/Head.png" id="7_guemb"]
 [ext_resource type="Texture2D" uid="uid://di35rmolkk7r5" path="res://Avatar/Players/Noir/Parts/BackLegUp.png" id="8_e8uev"]
 [ext_resource type="Texture2D" uid="uid://h6lao655nl20" path="res://Avatar/Players/Noir/Parts/pedal.png" id="8_n48cn"]
 
@@ -95,6 +95,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_rwb2u")
 unique_name_in_owner = true
 position = Vector2(-6.565, 4.63)
 rest = Transform2D(1, 0, 0, 1, -6.565, 4.63)
+editor_settings/show_bone_gizmo = false
 
 [node name="TorsoSprite" type="Sprite2D" parent="Skeleton2D/Torso" unique_id=1247564414]
 unique_name_in_owner = true
@@ -106,17 +107,19 @@ texture = ExtResource("1_yopfs")
 [node name="Head" type="Bone2D" parent="Skeleton2D/Torso" unique_id=37263414]
 position = Vector2(26.835, -46.56)
 rest = Transform2D(1, 0, 0, 1, 26.835, -46.56)
+editor_settings/show_bone_gizmo = false
 
 [node name="HeadSprite" type="Sprite2D" parent="Skeleton2D/Torso/Head" unique_id=404163846]
 unique_name_in_owner = true
-position = Vector2(12.221716, -9.772209)
+position = Vector2(12.2, -9.725)
 rotation = -0.34906584
 scale = Vector2(0.09999984, 0.09999984)
-texture = ExtResource("4_guemb")
+texture = ExtResource("7_guemb")
 
 [node name="ArmUp" type="Bone2D" parent="Skeleton2D/Torso" unique_id=226689406]
 position = Vector2(19.565, -43.63)
 rest = Transform2D(1, 0, 0, 1, 19.565, -43.63)
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmUp" type="Sprite2D" parent="Skeleton2D/Torso/ArmUp" unique_id=486854421]
@@ -131,6 +134,7 @@ rest = Transform2D(1, 0, 0, 1, 11, 27)
 auto_calculate_length_and_angle = false
 length = 39.842
 bone_angle = 31.138988
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmDown" type="Sprite2D" parent="Skeleton2D/Torso/ArmUp/ArmDown" unique_id=1790196928]
@@ -141,6 +145,7 @@ texture = ExtResource("3_n48cn")
 
 [node name="FrontLegUp" type="Bone2D" parent="Skeleton2D/Torso" unique_id=1443132383]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="FrontLegDown" type="Bone2D" parent="Skeleton2D/Torso/FrontLegUp" unique_id=1464097745]
@@ -149,6 +154,7 @@ rest = Transform2D(1, 0, 0, 1, 36.305, -0.775)
 auto_calculate_length_and_angle = false
 length = 46.5
 bone_angle = 97.536964
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="FrontLegDown2" type="Sprite2D" parent="Skeleton2D/Torso/FrontLegUp/FrontLegDown" unique_id=550421785]
@@ -171,6 +177,7 @@ texture = ExtResource("7_1g6wr")
 
 [node name="BackLegUp" type="Bone2D" parent="Skeleton2D/Torso" unique_id=446982607]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="BackLegDown" type="Bone2D" parent="Skeleton2D/Torso/BackLegUp" unique_id=1783574500]
@@ -178,7 +185,8 @@ position = Vector2(28.565, 22.285)
 rest = Transform2D(1, 0, 0, 1, 28.565, 22.285)
 auto_calculate_length_and_angle = false
 length = 46.5
-bone_angle = 112.97895
+bone_angle = 112.978935
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="BackLegDown2" type="Sprite2D" parent="Skeleton2D/Torso/BackLegUp/BackLegDown" unique_id=1442573443]

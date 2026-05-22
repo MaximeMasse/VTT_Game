@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b30dcngjq18rk" path="res://Bikes/bike_2.gd" id="1_msbpd"]
 [ext_resource type="Texture2D" uid="uid://eauofmbwxu31" path="res://Avatar/Bikes/Roue_2.png" id="2_4xcus"]
 [ext_resource type="Texture2D" uid="uid://dpoq51muy56et" path="res://Avatar/Bikes/Roue_1.png" id="2_8v3d4"]
-[ext_resource type="PackedScene" uid="uid://spm2uebf1l7p" path="res://Avatar/Players/Skeleton.tscn" id="3_bio7g"]
+[ext_resource type="PackedScene" uid="uid://spm2uebf1l7p" path="res://Bikes/Skeleton.tscn" id="3_bio7g"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ow0o1"]
 
