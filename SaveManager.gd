@@ -23,7 +23,7 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		"id": id,
 		"name": player_name,
 		"avatar": avatar_id,
-		"bike_model": 2, 
+		"bike_model": 1, 
 		"stats": {
 			"ACCÉLÉRATION": 5000.0,
 			"AIR_ROTATION_CONTROL": 2.0,

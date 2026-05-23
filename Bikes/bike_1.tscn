@@ -7,18 +7,18 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ow0o1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5jr4r"]
-radius = 37.0
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ow0o1"]
-radius = 33.5
+radius = 28.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f5gm3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el0nv"]
-radius = 37.0
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f5gm3"]
-radius = 33.5
+radius = 28.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_el0nv"]
 size = Vector2(108, 32)
@@ -47,7 +47,7 @@ debug_color = Color(0.8320646, 0.37110016, 0.34363505, 0.41960785)
 shape = SubResource("CircleShape2D_ow0o1")
 
 [node name="Roue1" type="Sprite2D" parent="Roue_avant" unique_id=1336900336]
-scale = Vector2(0.132, 0.132)
+scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_bsf8o")
 
 [node name="Roue_arrière" type="RigidBody2D" parent="." unique_id=351523618]
@@ -71,7 +71,7 @@ debug_color = Color(0.79715145, 0.39814758, 0.39487606, 0.41960785)
 shape = SubResource("CircleShape2D_f5gm3")
 
 [node name="Roue1" type="Sprite2D" parent="Roue_arrière" unique_id=679119151]
-scale = Vector2(0.132, 0.132)
+scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_bsf8o")
 
 [node name="Cadre" type="RigidBody2D" parent="." unique_id=793041427]
@@ -85,26 +85,15 @@ center_of_mass_mode = 1
 position = Vector2(3, 31)
 shape = SubResource("RectangleShape2D_el0nv")
 
-[node name="Corps" type="Area2D" parent="Cadre" unique_id=2142933239]
-collision_layer = 0
-collision_mask = 5
-linear_damp = 5000.0
-angular_damp = 5000.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cadre/Corps" unique_id=2028473793]
-position = Vector2(3, 31.663673)
-scale = Vector2(1, 1.0070754)
-polygon = PackedVector2Array(-10, -110.87916, 23, -106.907265, 17, -86.0548, 7, -64.209366, 34, -42.36393, 43, -18.532547, 23, -6.6168575, -23, -6.6168575, -44, -42.36393, -31, -75.13208)
-
-[node name="Skeleton" parent="Cadre/Corps" unique_id=256030153 instance=ExtResource("4_1nxxo")]
-unique_name_in_owner = true
-position = Vector2(-19.355, -14.71)
-
 [node name="FloorScan" type="RayCast2D" parent="Cadre" unique_id=1407081841]
 unique_name_in_owner = true
 position = Vector2(0, 33)
 target_position = Vector2(0, 1000)
 collision_mask = 5
+
+[node name="Skeleton" parent="Cadre" unique_id=256030153 instance=ExtResource("4_1nxxo")]
+unique_name_in_owner = true
+position = Vector2(-21.09, -12.36)
 
 [node name="Joint_arrière" type="PinJoint2D" parent="." unique_id=113849391]
 position = Vector2(-50.385, 45.305)
@@ -122,5 +111,5 @@ process_callback = 0
 wait_time = 0.5
 one_shot = true
 
-[connection signal="contact" from="Cadre/Corps/Skeleton" to="." method="_on_skeleton_contact"]
+[connection signal="contact" from="Cadre/Skeleton" to="." method="_on_skeleton_contact"]
 [connection signal="timeout" from="Trick_status_changer" to="." method="_on_trick_status_changer_timeout"]

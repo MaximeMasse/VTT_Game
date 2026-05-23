@@ -183,6 +183,7 @@ func _process(delta):
 	# Floor detection
 	%FloorScan.global_rotation = 0.0
 	if %FloorScan.is_colliding():
+		Global.floor_is = %FloorScan.get_collider().get_collision_layer()
 		Global.ground_distance = lerp(Global.ground_distance,
 			cadre.global_position.distance_to(%FloorScan.get_collision_point()),
 			ground_distance_smoothing
@@ -198,25 +199,25 @@ func ground_sfx_change():
 func _on_trick_status_changer_timeout():
 	actual_state = current_frame_state
 
-func _on_crash(body):
-	if body.get_collision_layer() in [1,Global.floor_is]:
-		queue_free()
-		AudioManager.stop_ground_sfx()
-		AudioManager.play_sfx("ouch")
-		AudioManager.play_sfx("bone_crack")
-		crashed.emit()
+#func _on_crash(body):
+	#if body.get_collision_layer() in [1,Global.floor_is]:
+		#queue_free()
+		#AudioManager.stop_ground_sfx()
+		#AudioManager.play_sfx("ouch")
+		#AudioManager.play_sfx("bone_crack")
+		#crashed.emit()
 
 func get_current_state()-> String:
 	if contact_sol_arrière.has_overlapping_bodies() and contact_sol_avant.has_overlapping_bodies():
-		Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
+		#Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
 		if Global.vitesse.length() < 20: return "slow_riding"
 		elif Global.vitesse.length() < 40: return "medium_riding"
 		else: return "fast_riding"
 	elif contact_sol_arrière.has_overlapping_bodies():
-		Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
+		#Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
 		return "Wheelie"
 	elif contact_sol_avant.has_overlapping_bodies():
-		Global.floor_is = contact_sol_avant.get_overlapping_bodies()[0].get_collision_layer()
+		#Global.floor_is = contact_sol_avant.get_overlapping_bodies()[0].get_collision_layer()
 		return "Nose Wheelie"
 	else: return "Air"
 
@@ -232,3 +233,12 @@ func _to_string():
 	return "Player : " + str(Global.current_profile["name"])\
 	+ "\nBike model : " + str(Global.current_profile["bike_model"])\
 	+ "\nSpeed : " + str(cadre.linear_velocity/ (ECHELLE * 3.6))
+
+
+func _on_skeleton_contact(body: Node2D) -> void:
+	if body.get_collision_layer() in [1,Global.floor_is]:
+		queue_free()
+		AudioManager.stop_ground_sfx()
+		AudioManager.play_sfx("ouch")
+		AudioManager.play_sfx("bone_crack")
+		crashed.emit()

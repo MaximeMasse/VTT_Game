@@ -1,6 +1,6 @@
 extends Control
 
-var choix_perso := 1
+var choix_perso :int= 1
 
 var dico_menus := {}
 
@@ -69,26 +69,30 @@ func _on_continue_button_pressed():
 
 func _on_new_player_button_pressed():
 	show_menu(%NewPlayer)
-	%Choix.texture = Global.dico_avatars[choix_perso]
+	%Choix.texture = Global.dico_avatars[choix_perso][0]
 	
 func _on_bouton_gauche_pressed():
 	if choix_perso > 1:
 		choix_perso -= 1
-	%Choix.texture = Global.dico_avatars[choix_perso]
+	%Choix.texture = Global.dico_avatars[choix_perso][0]
 
 func _on_bouton_droite_pressed():
 	if choix_perso < Global.dico_avatars.size():
 		choix_perso += 1
-	%Choix.texture = Global.dico_avatars[choix_perso]
+	%Choix.texture = Global.dico_avatars[choix_perso][0]
 
 func _on_ok_pressed():
 	var pseudo = %NameLineEdit.text
 	var avatar_id = choix_perso
 	SaveManager.create_profile(pseudo, avatar_id)
+	if choix_perso in [3,4]:Global.current_profile["bike_model"] = 2
+	SaveManager.save_profile(Global.current_profile)
 	show_menu(%Carriere)
 
 func _on_bouton_choix_map_pressed():
-	show_menu(%ChoixMap)
+	AudioManager.stop_music()
+	Global.start_mod("Main_Game")
+	#show_menu(%ChoixMap)
 
 func on_button_hover(button:BaseButton):button.grab_focus()
 func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()

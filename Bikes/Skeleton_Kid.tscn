@@ -1,0 +1,278 @@
+[gd_scene format=3 uid="uid://e25qq6np40nf"]
+
+[ext_resource type="Script" uid="uid://bwqn2eq7heghx" path="res://Bikes/skeleton_kid.gd" id="1_aw1bn"]
+[ext_resource type="Texture2D" uid="uid://cdra431w73lv5" path="res://Avatar/Bikes/crank_0.png" id="2_ndfsv"]
+[ext_resource type="Texture2D" uid="uid://c8np02ymrmdlr" path="res://Avatar/Bikes/HandleBar_0.png" id="3_x3r2q"]
+[ext_resource type="Texture2D" uid="uid://d200s2ju5vr03" path="res://Avatar/Bikes/Frame_no_handle_0.png" id="4_h28e3"]
+[ext_resource type="Texture2D" uid="uid://caa1plq1qkrwy" path="res://Avatar/Players/Girl/ArmUp.png" id="5_0ju7o"]
+[ext_resource type="Texture2D" uid="uid://d1i0pxi4045pb" path="res://Avatar/Players/Girl/ArmBackDown.png" id="6_aw1bn"]
+[ext_resource type="Texture2D" uid="uid://bjchkx753vfbu" path="res://Avatar/Players/Girl/Torso.png" id="7_ndfsv"]
+[ext_resource type="Texture2D" uid="uid://dsd471jr57o67" path="res://Avatar/Players/Girl/Head.png" id="8_x3r2q"]
+[ext_resource type="Texture2D" uid="uid://ca731au4juctx" path="res://Avatar/Players/Girl/ArmDown.png" id="9_h28e3"]
+[ext_resource type="Texture2D" uid="uid://bpkfqyoav6xon" path="res://Avatar/Players/Girl/FrontLegUp.png" id="10_qtgfl"]
+[ext_resource type="Texture2D" uid="uid://f1m1pnphujwi" path="res://Avatar/Players/Man/Foot.png" id="11_pxt8j"]
+[ext_resource type="Texture2D" uid="uid://bom8i4lthrlqp" path="res://Avatar/Players/Girl/FrontLegDown.png" id="12_3i05o"]
+[ext_resource type="Texture2D" uid="uid://dtws3fmd2yhic" path="res://Avatar/Players/Girl/BackLegUp.png" id="13_5w3y4"]
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_0ju7o"]
+target_nodepath = NodePath("../Bike/Cranks/FrontPedal")
+joint_one_bone_idx = 6
+joint_one_bone2d_node = NodePath("Torso/FrontLegUp")
+joint_two_bone_idx = 7
+joint_two_bone2d_node = NodePath("Torso/FrontLegUp/FrontLegDown")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_aw1bn"]
+target_nodepath = NodePath("../Bike/Cranks/BackPedal")
+joint_one_bone_idx = 8
+joint_one_bone2d_node = NodePath("Torso/BackLegUp")
+joint_two_bone_idx = 9
+joint_two_bone2d_node = NodePath("Torso/BackLegUp/BackLegDown")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_ndfsv"]
+target_nodepath = NodePath("../Bike/HandleBarFront")
+flip_bend_direction = true
+joint_one_bone_idx = 4
+joint_one_bone2d_node = NodePath("Torso/ArmUpFront")
+joint_two_bone_idx = 5
+joint_two_bone2d_node = NodePath("Torso/ArmUpFront/ArmDownFront")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_x3r2q"]
+target_nodepath = NodePath("../Bike/HandleBarBack")
+flip_bend_direction = true
+joint_one_bone_idx = 1
+joint_one_bone2d_node = NodePath("Torso/ArmUpBack")
+joint_two_bone_idx = 2
+joint_two_bone2d_node = NodePath("Torso/ArmUpBack/ArmDownBack")
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_aw1bn"]
+enabled = true
+modification_count = 4
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_0ju7o")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_aw1bn")
+modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_ndfsv")
+modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_x3r2q")
+
+[node name="Node2D" type="Node2D" unique_id=256030153]
+script = ExtResource("1_aw1bn")
+
+[node name="Bike" type="Node2D" parent="." unique_id=1777311058]
+
+[node name="Cranks" type="Node2D" parent="Bike" unique_id=1295083780]
+unique_name_in_owner = true
+position = Vector2(14.701, 60.044)
+scale = Vector2(0.1, 0.1)
+
+[node name="BackPedal" type="Marker2D" parent="Bike/Cranks" unique_id=1970570498]
+position = Vector2(-101.51, 99.94)
+scale = Vector2(0.99999976, 0.99999976)
+
+[node name="BackPedal2" type="Sprite2D" parent="Bike/Cranks/BackPedal" unique_id=1728573260]
+position = Vector2(46.620014, -47.045044)
+rotation = 2.3561945
+scale = Vector2(0.9999993, 0.9999993)
+texture = ExtResource("2_ndfsv")
+
+[node name="FrontPedal" type="Marker2D" parent="Bike/Cranks" unique_id=1868790669]
+position = Vector2(102.27, -102.753)
+scale = Vector2(10.432432, 10.432432)
+
+[node name="FrontPedal" type="Sprite2D" parent="Bike/Cranks/FrontPedal" unique_id=911638089]
+z_index = 1
+position = Vector2(-4.499262, 4.532688)
+rotation = -0.7853982
+scale = Vector2(0.095854886, 0.095854886)
+texture = ExtResource("2_ndfsv")
+
+[node name="HandleBarFront" type="Marker2D" parent="Bike" unique_id=2037047375]
+position = Vector2(55.16, 9)
+scale = Vector2(0.1, 0.1)
+
+[node name="HandleBar0" type="Sprite2D" parent="Bike/HandleBarFront" unique_id=1186375200]
+position = Vector2(111.14996, 224.7373)
+scale = Vector2(1.06, 1.0287516)
+texture = ExtResource("3_x3r2q")
+
+[node name="Frame" type="Sprite2D" parent="Bike" unique_id=280664251]
+position = Vector2(23.195168, 38.5)
+scale = Vector2(0.108781375, 0.1016129)
+texture = ExtResource("4_h28e3")
+
+[node name="HandleBarBack" type="Marker2D" parent="Bike" unique_id=436506584]
+position = Vector2(60.695, 7)
+
+[node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=2007751221]
+position = Vector2(-5.98, 7.895)
+modification_stack = SubResource("SkeletonModificationStack2D_aw1bn")
+
+[node name="Torso" type="Bone2D" parent="Skeleton2D" unique_id=1472905729]
+unique_name_in_owner = true
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="ArmUpBack" type="Bone2D" parent="Skeleton2D/Torso" unique_id=1195128463]
+position = Vector2(29, -22)
+rest = Transform2D(1, 0, 0, 1, 29, -22)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="ArmUpBack" type="Sprite2D" parent="Skeleton2D/Torso/ArmUpBack" unique_id=486854421]
+unique_name_in_owner = true
+position = Vector2(5.1624107, 7.308605)
+rotation = -0.48608917
+scale = Vector2(0.032214995, 0.06996731)
+texture = ExtResource("5_0ju7o")
+
+[node name="ArmDownBack" type="Bone2D" parent="Skeleton2D/Torso/ArmUpBack" unique_id=184812252]
+position = Vector2(9.98, 15.215)
+rest = Transform2D(1, 0, 0, 1, 9.98, 15.215)
+auto_calculate_length_and_angle = false
+length = 27.978
+bone_angle = 10.344999
+metadata/_local_pose_override_enabled_ = true
+
+[node name="ArmDownBack" type="Sprite2D" parent="Skeleton2D/Torso/ArmUpBack/ArmDownBack" unique_id=2021221376]
+unique_name_in_owner = true
+position = Vector2(15.0188675, 3.0646334)
+rotation = 0.031095704
+scale = Vector2(0.08499739, 0.042689048)
+texture = ExtResource("6_aw1bn")
+
+[node name="TorsoSprite" type="Sprite2D" parent="Skeleton2D/Torso" unique_id=1247564414]
+unique_name_in_owner = true
+position = Vector2(12.98, -13.895)
+rotation = -0.1308997
+scale = Vector2(0.08094564, 0.08017703)
+texture = ExtResource("7_ndfsv")
+
+[node name="Head" type="Bone2D" parent="Skeleton2D/Torso" unique_id=263006739]
+position = Vector2(30, -29)
+rest = Transform2D(1, 0, 0, 1, 30, -29)
+auto_calculate_length_and_angle = false
+length = 16.405
+bone_angle = -18.835
+
+[node name="HeadSprite" type="Sprite2D" parent="Skeleton2D/Torso/Head" unique_id=404163846]
+unique_name_in_owner = true
+position = Vector2(7.9799995, -8.895)
+scale = Vector2(0.09999965, 0.09999965)
+texture = ExtResource("8_x3r2q")
+
+[node name="ArmUpFront" type="Bone2D" parent="Skeleton2D/Torso" unique_id=313615051]
+position = Vector2(22.52, -29.8)
+rest = Transform2D(1, 0, 0, 1, 22.52, -29.8)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="ArmUp" type="Sprite2D" parent="Skeleton2D/Torso/ArmUpFront" unique_id=2026410660]
+unique_name_in_owner = true
+position = Vector2(3.459999, 10.904998)
+rotation = -0.2748015
+scale = Vector2(0.037156638, 0.083473064)
+texture = ExtResource("5_0ju7o")
+
+[node name="ArmDownFront" type="Bone2D" parent="Skeleton2D/Torso/ArmUpFront" unique_id=1826470587]
+position = Vector2(8.35, 23.555)
+rest = Transform2D(1, 0, 0, 1, 8.35, 23.555)
+auto_calculate_length_and_angle = false
+length = 31.05
+bone_angle = 13.474998
+metadata/_local_pose_override_enabled_ = true
+
+[node name="ArmDown" type="Sprite2D" parent="Skeleton2D/Torso/ArmUpFront/ArmDownFront" unique_id=1790196928]
+unique_name_in_owner = true
+position = Vector2(17.549997, 3.8149986)
+rotation = 0.08701466
+scale = Vector2(0.08817171, 0.036262937)
+texture = ExtResource("9_h28e3")
+
+[node name="FrontLegUp" type="Bone2D" parent="Skeleton2D/Torso" unique_id=830557354]
+rotation = -0.2553988
+rest = Transform2D(0.9675626, -0.2526313, 0.2526313, 0.9675626, 0, 0)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="FrontLegUp" type="Sprite2D" parent="Skeleton2D/Torso/FrontLegUp" unique_id=343283073]
+unique_name_in_owner = true
+position = Vector2(14.424599, 8.008892)
+rotation = 0.16868272
+scale = Vector2(0.11456236, 0.05593887)
+texture = ExtResource("10_qtgfl")
+
+[node name="FrontLegDown" type="Bone2D" parent="Skeleton2D/Torso/FrontLegUp" unique_id=1142112601]
+position = Vector2(31.128712, 15.362401)
+rotation = 0.52501327
+scale = Vector2(0.99999964, 0.99999964)
+rest = Transform2D(0.865317, 0.5012243, -0.5012243, 0.865317, 31.128712, 15.362401)
+auto_calculate_length_and_angle = false
+length = 35.307
+bone_angle = 79.493996
+metadata/_local_pose_override_enabled_ = true
+
+[node name="FrontFoot" type="Sprite2D" parent="Skeleton2D/Torso/FrontLegUp/FrontLegDown" unique_id=1513048398]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(5.0459595, 29.278706)
+rotation = 0.027091565
+scale = Vector2(0.10000004, 0.10000004)
+texture = ExtResource("11_pxt8j")
+
+[node name="FrontLegDown" type="Sprite2D" parent="Skeleton2D/Torso/FrontLegUp/FrontLegDown" unique_id=550421785]
+unique_name_in_owner = true
+position = Vector2(-0.21976471, 11.068402)
+rotation = -0.4891814
+scale = Vector2(0.064658895, 0.067442276)
+texture = ExtResource("12_3i05o")
+
+[node name="BackLegUp" type="Bone2D" parent="Skeleton2D/Torso" unique_id=514258993]
+rotation = -0.011765122
+rest = Transform2D(0.9999308, -0.011764851, 0.011764851, 0.9999308, 0, 0)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="BackLegUp" type="Sprite2D" parent="Skeleton2D/Torso/BackLegUp" unique_id=1128885996]
+unique_name_in_owner = true
+z_index = -2
+position = Vector2(10.825062, 13.2332735)
+rotation = 0.5384364
+scale = Vector2(0.11180967, 0.064633794)
+texture = ExtResource("13_5w3y4")
+
+[node name="BackLegDown" type="Bone2D" parent="Skeleton2D/Torso/BackLegUp" unique_id=1071242969]
+position = Vector2(23.259, 24.069)
+rotation = 0.015299137
+scale = Vector2(0.9999994, 0.9999994)
+rest = Transform2D(0.9998824, 0.015298531, -0.015298531, 0.9998824, 23.259, 24.069)
+auto_calculate_length_and_angle = false
+length = 40.492
+bone_angle = 108.52499
+metadata/_local_pose_override_enabled_ = true
+
+[node name="BackLegDown" type="Sprite2D" parent="Skeleton2D/Torso/BackLegUp/BackLegDown" unique_id=1442573443]
+unique_name_in_owner = true
+z_index = -2
+position = Vector2(-7.871352, 12.524208)
+rotation = 0.10453187
+scale = Vector2(0.073846094, 0.08600149)
+texture = ExtResource("12_3i05o")
+
+[node name="BackFoot" type="Sprite2D" parent="Skeleton2D/Torso/BackLegUp/BackLegDown" unique_id=138265158]
+unique_name_in_owner = true
+z_index = -2
+position = Vector2(-12.942762, 33.35727)
+rotation = 0.2931719
+scale = Vector2(0.10000006, 0.10000006)
+texture = ExtResource("11_pxt8j")
+
+[node name="Tail" type="Sprite2D" parent="Skeleton2D/Torso" unique_id=1747951533]
+unique_name_in_owner = true
+position = Vector2(-31.02, -2.895)
+scale = Vector2(0.1, 0.1)
+
+[node name="Contact" type="Area2D" parent="Skeleton2D/Torso" unique_id=1275096779]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-0.58500004, 8.735001)
+rotation = 0.087266415
+scale = Vector2(0.9999982, 0.9999982)
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Skeleton2D/Torso/Contact" unique_id=976369075]
+polygon = PackedVector2Array(-6.9883685, -6.043936, -4.049453, -18.346916, 21.577997, -46.688393, 23.172092, -62.889, 30.880198, -66.574844, 43.270336, -62.639725, 52.372936, -50.386417, 35.66158, -34.870865, 38.35122, -27.075602, 68.4611, -15.656371, 60.242252, 5.139118, 40.54231, 20.916142, 17.542631, 21.924534, 4.455247, 10.019846)
+
+[connection signal="body_entered" from="Skeleton2D/Torso/Contact" to="." method="_on_contact_body_entered"]
