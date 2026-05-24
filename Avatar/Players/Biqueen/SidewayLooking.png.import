@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h4sbj4n2tu7f"
-path="res://.godot/imported/ChatGPT Image 21 mai 2026, 15_18_50.png-53326b73550c9594bf6471be1936e75e.ctex"
+uid="uid://chd7fm3pig0k"
+path="res://.godot/imported/SidewayLooking.png-db2481742d41e392e48d47d3cc943f51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Avatar/Players/Biqueen/ChatGPT Image 21 mai 2026, 15_18_50.png"
-dest_files=["res://.godot/imported/ChatGPT Image 21 mai 2026, 15_18_50.png-53326b73550c9594bf6471be1936e75e.ctex"]
+source_file="res://Avatar/Players/Biqueen/SidewayLooking.png"
+dest_files=["res://.godot/imported/SidewayLooking.png-db2481742d41e392e48d47d3cc943f51.ctex"]
 
 [params]
 

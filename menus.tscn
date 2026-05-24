@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Fond_maps.png" id="15_ldcro"]
 [ext_resource type="Texture2D" uid="uid://csv76qg6eonqu" path="res://Images/Menus/Controls/up_arrow.png" id="15_mtcp4"]
 [ext_resource type="Texture2D" uid="uid://d3s2ymvh17wfv" path="res://Images/Menus/Controls/ok_hover.png" id="17_uvnkm"]
+[ext_resource type="PackedScene" uid="uid://csmqtdn1bqmdt" path="res://dialog.tscn" id="20_vnyao"]
 
 [sub_resource type="SystemFont" id="SystemFont_jw3nv"]
 font_names = PackedStringArray("Pixel Game")
@@ -224,7 +225,12 @@ offset_bottom = 720.0
 texture = ExtResource("14_67va8")
 expand_mode = 1
 
+[node name="Dialog" parent="Carriere" unique_id=149525802 instance=ExtResource("20_vnyao")]
+unique_name_in_owner = true
+typing_speed = null
+
 [node name="BoutonChoixMap" type="TextureButton" parent="Carriere" unique_id=1521398409]
+unique_name_in_owner = true
 offset_left = 704.0
 offset_top = 280.0
 offset_right = 744.0
@@ -238,6 +244,7 @@ unique_name_in_owner = true
 
 [node name="ChoixMap" type="CanvasLayer" parent="." unique_id=766752152]
 unique_name_in_owner = true
+visible = false
 
 [node name="Fond" type="TextureRect" parent="ChoixMap" unique_id=1092760061]
 offset_right = 1280.0

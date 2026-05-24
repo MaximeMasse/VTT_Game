@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gtgsjvo0x6x"
-path="res://.godot/imported/Girl.png-4c1ee46d1e44bbc5c1394afe12faf157.ctex"
+path="res://.godot/imported/Avatar.png-2c2b28e1ce4ee8ea969d012f74047830.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Avatar/Players/Base/Girl.png"
-dest_files=["res://.godot/imported/Girl.png-4c1ee46d1e44bbc5c1394afe12faf157.ctex"]
+source_file="res://Avatar/Players/Girl/Avatar.png"
+dest_files=["res://.godot/imported/Avatar.png-2c2b28e1ce4ee8ea969d012f74047830.ctex"]
 
 [params]
 

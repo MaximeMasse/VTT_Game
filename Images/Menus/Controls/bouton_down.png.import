@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1ji7tqnrjshp"
-path="res://.godot/imported/Cat.png-bc2dbda3c67e624f03405e94db74e3fe.ctex"
+uid="uid://cel5vbv4d2qmx"
+path="res://.godot/imported/bouton_down.png-74f0bb25cbdfc77d9d320937a9e11cba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Avatar/Players/Base/Cat.png"
-dest_files=["res://.godot/imported/Cat.png-bc2dbda3c67e624f03405e94db74e3fe.ctex"]
+source_file="res://Images/Menus/Controls/bouton_down.png"
+dest_files=["res://.godot/imported/bouton_down.png-74f0bb25cbdfc77d9d320937a9e11cba.ctex"]
 
 [params]
 

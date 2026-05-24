@@ -69,17 +69,15 @@ func _on_continue_button_pressed():
 
 func _on_new_player_button_pressed():
 	show_menu(%NewPlayer)
-	%Choix.texture = Global.dico_avatars[choix_perso][0]
+	%Choix.texture = load("res://Avatar/Players/" + Global.dico_avatars[choix_perso] + "/Avatar.png")
 	
 func _on_bouton_gauche_pressed():
-	if choix_perso > 1:
-		choix_perso -= 1
-	%Choix.texture = Global.dico_avatars[choix_perso][0]
+	if choix_perso > 1:choix_perso -= 1
+	%Choix.texture = load("res://Avatar/Players/" + Global.dico_avatars[choix_perso] + "/Avatar.png")
 
 func _on_bouton_droite_pressed():
-	if choix_perso < Global.dico_avatars.size():
-		choix_perso += 1
-	%Choix.texture = Global.dico_avatars[choix_perso][0]
+	if choix_perso < Global.dico_avatars.size():choix_perso += 1
+	%Choix.texture = load("res://Avatar/Players/" + Global.dico_avatars[choix_perso] + "/Avatar.png")
 
 func _on_ok_pressed():
 	var pseudo = %NameLineEdit.text
@@ -88,6 +86,10 @@ func _on_ok_pressed():
 	if choix_perso in [3,4]:Global.current_profile["bike_model"] = 2
 	SaveManager.save_profile(Global.current_profile)
 	show_menu(%Carriere)
+	if Global.get_profile_data("state") == "tuto":
+		%BoutonChoixMap.visible = false
+		%BoutonChoixMap.disabled = true
+		%Dialog.play_scene("tuto")
 
 func _on_bouton_choix_map_pressed():
 	AudioManager.stop_music()

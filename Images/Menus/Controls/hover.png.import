@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tat201xsyt04"
-path="res://.godot/imported/Man.png-3e6b2aa08b84c83fc44c26b8b3825898.ctex"
+uid="uid://djxt2btl2cdv7"
+path="res://.godot/imported/hover.png-79aa7cf17183b2b44bce694964258eb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Avatar/Players/Base/Man.png"
-dest_files=["res://.godot/imported/Man.png-3e6b2aa08b84c83fc44c26b8b3825898.ctex"]
+source_file="res://Images/Menus/Controls/hover.png"
+dest_files=["res://.godot/imported/hover.png-79aa7cf17183b2b44bce694964258eb7.ctex"]
 
 [params]
 

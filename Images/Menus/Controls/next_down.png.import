@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsdwxeu3bpr3f"
-path="res://.godot/imported/Boy.png-9c9f5e157991a9baf67376b4f3304632.ctex"
+uid="uid://c2lyid6qidng8"
+path="res://.godot/imported/next_down.png-f1f0dd71299e5f54cf187b11ac035c1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Avatar/Players/Base/Boy.png"
-dest_files=["res://.godot/imported/Boy.png-9c9f5e157991a9baf67376b4f3304632.ctex"]
+source_file="res://Images/Menus/Controls/next_down.png"
+dest_files=["res://.godot/imported/next_down.png-f1f0dd71299e5f54cf187b11ac035c1d.ctex"]
 
 [params]
 

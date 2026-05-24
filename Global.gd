@@ -80,15 +80,16 @@ var dico_vélo := {
 	2:"res://Bikes/bike_2.tscn",
 }
 var dico_avatars := {
-	1:[preload("res://Avatar/Players/Base/Woman.png"),"res://Avatar/Players/Woman/"],
-	2:[preload("res://Avatar/Players/Base/Man.png"),"res://Avatar/Players/Man/"],
-	3:[preload("res://Avatar/Players/Base/Girl.png"),"res://Avatar/Players/Girl/"],
-	4:[preload("res://Avatar/Players/Base/Boy.png"),"res://Avatar/Players/Boy/"],
-	5:[preload("res://Avatar/Players/Base/Cat.png"),"res://Avatar/Players/Cat/"]
+	1:"Woman",
+	2:"Man",
+	3:"Girl",
+	4:"Boy",
+	5:"Cat"
 }
 var dico_scenes :={
 	"Main_Game":"res://game.tscn"
 }
+"res://Avatar/Players/Biqueen/Avatar.png"
 
 signal hud_trick_reset
 signal hud_trick_activate
@@ -105,10 +106,11 @@ func start_mod(scene_name:String):
 	get_tree().change_scene_to_file(dico_scenes[scene_name])
 
 func get_current_map():return dico_maps[current_map]
-
-func get_sprites_path()->String:return dico_avatars[int(current_profile["avatar"])][1]
-
+func get_sprites_path()->String:
+	if current_profile != {}:return "res://Avatar/Players/" + dico_avatars[int(current_profile["avatar"])] + "/"
+	else:return ""
 func get_profile_bike()->String:return dico_vélo[int(current_profile["bike_model"])]
+func get_profile_data(data:String)->String:return current_profile[data]
 
 func checkpoint_update(cp : String):
 	if current_cp != cp:
