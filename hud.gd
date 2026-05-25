@@ -5,7 +5,8 @@ var colors := {
 	"YELLOW":Color(0.85,0.86,0,1),
 	"DARK_GREY":Color(0.2,0.2,0.23,1),
 	"LIGHT_GREEN":Color(0.2,0.9,0.23,1),
-	"ORANGE":Color(0.76,0.37,0,1)
+	"ORANGE":Color(0.76,0.37,0,1),
+	"LIGHT_BLUE":Color(0.29,0.37,0.96,1)
 }
 
 var best_trick_labels:Dictionary

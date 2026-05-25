@@ -22,6 +22,12 @@
 [ext_resource type="Texture2D" uid="uid://csv76qg6eonqu" path="res://Images/Menus/Controls/up_arrow.png" id="15_mtcp4"]
 [ext_resource type="Texture2D" uid="uid://d3s2ymvh17wfv" path="res://Images/Menus/Controls/ok_hover.png" id="17_uvnkm"]
 [ext_resource type="PackedScene" uid="uid://csmqtdn1bqmdt" path="res://dialog.tscn" id="20_vnyao"]
+[ext_resource type="Texture2D" uid="uid://bn1vl0t1t2ntr" path="res://Images/Menus/Controls/yes_up.png" id="22_0x8je"]
+[ext_resource type="Texture2D" uid="uid://deej7nsdys71d" path="res://Images/Menus/Controls/yes_down.png" id="23_x8e7r"]
+[ext_resource type="Texture2D" uid="uid://csb1d3cb4u7n6" path="res://Images/Menus/Controls/yes_hover.png" id="24_ytvri"]
+[ext_resource type="Texture2D" uid="uid://vud5kjhd6byj" path="res://Images/Menus/Controls/no_up.png" id="25_1vj8o"]
+[ext_resource type="Texture2D" uid="uid://drvv3f57uleo2" path="res://Images/Menus/Controls/no_down.png" id="26_6i8wr"]
+[ext_resource type="Texture2D" uid="uid://cp3l6n6his8e4" path="res://Images/Menus/Controls/no_hover.png" id="27_638l8"]
 
 [sub_resource type="SystemFont" id="SystemFont_jw3nv"]
 font_names = PackedStringArray("Pixel Game")
@@ -49,6 +55,21 @@ expand_margin_top = 2.0
 expand_margin_right = 45.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mtcp4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnyao"]
+bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="SystemFont" id="SystemFont_yp7sa"]
+font_names = PackedStringArray("Pixel Game")
 
 [node name="Menus" type="Control" unique_id=932821872]
 layout_mode = 3
@@ -225,22 +246,83 @@ offset_bottom = 720.0
 texture = ExtResource("14_67va8")
 expand_mode = 1
 
-[node name="Dialog" parent="Carriere" unique_id=149525802 instance=ExtResource("20_vnyao")]
-unique_name_in_owner = true
-typing_speed = null
-
 [node name="BoutonChoixMap" type="TextureButton" parent="Carriere" unique_id=1521398409]
 unique_name_in_owner = true
-offset_left = 704.0
-offset_top = 280.0
-offset_right = 744.0
-offset_bottom = 320.0
+offset_left = 482.0
+offset_top = 258.0
+offset_right = 535.0
+offset_bottom = 341.0
 texture_normal = ExtResource("15_mtcp4")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Upgrades" type="CanvasLayer" parent="Carriere" unique_id=1973075995]
 unique_name_in_owner = true
+
+[node name="Tuto" type="Control" parent="Carriere" unique_id=645137887]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Dialog" parent="Carriere/Tuto" unique_id=149525802 instance=ExtResource("20_vnyao")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="TutoPanels" type="Panel" parent="Carriere/Tuto" unique_id=1543292226]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 578.0
+offset_top = 360.0
+offset_right = 832.0
+offset_bottom = 498.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vnyao")
+
+[node name="StartTutoPanel" type="Control" parent="Carriere/Tuto/TutoPanels" unique_id=1039697468]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Carriere/Tuto/TutoPanels/StartTutoPanel" unique_id=381066402]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 18.0
+offset_right = 200.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("SystemFont_yp7sa")
+theme_override_font_sizes/font_size = 25
+text = "Start Tutorial ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutoYesButton" type="TextureButton" parent="Carriere/Tuto/TutoPanels/StartTutoPanel" unique_id=2048123386]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 72.0
+offset_right = 94.0
+offset_bottom = 104.0
+texture_normal = ExtResource("22_0x8je")
+texture_pressed = ExtResource("23_x8e7r")
+texture_focused = ExtResource("24_ytvri")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TutoNoButton" type="TextureButton" parent="Carriere/Tuto/TutoPanels/StartTutoPanel" unique_id=781107381]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 72.0
+offset_right = 222.0
+offset_bottom = 104.0
+texture_normal = ExtResource("25_1vj8o")
+texture_pressed = ExtResource("26_6i8wr")
+texture_focused = ExtResource("27_638l8")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="ChoixMap" type="CanvasLayer" parent="." unique_id=766752152]
 unique_name_in_owner = true
@@ -258,3 +340,6 @@ expand_mode = 1
 [connection signal="pressed" from="NewPlayer/BoutonDroite" to="." method="_on_bouton_droite_pressed"]
 [connection signal="pressed" from="NewPlayer/Ok" to="." method="_on_ok_pressed"]
 [connection signal="pressed" from="Carriere/BoutonChoixMap" to="." method="_on_bouton_choix_map_pressed"]
+[connection signal="scene_ended" from="Carriere/Tuto/Dialog" to="." method="_on_dialog_scene_ended"]
+[connection signal="pressed" from="Carriere/Tuto/TutoPanels/StartTutoPanel/TutoYesButton" to="." method="_on_tuto_yes_button_pressed"]
+[connection signal="pressed" from="Carriere/Tuto/TutoPanels/StartTutoPanel/TutoNoButton" to="." method="_on_tuto_no_button_pressed"]

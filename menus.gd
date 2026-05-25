@@ -87,8 +87,7 @@ func _on_ok_pressed():
 	SaveManager.save_profile(Global.current_profile)
 	show_menu(%Carriere)
 	if Global.get_profile_data("state") == "tuto":
-		%BoutonChoixMap.visible = false
-		%BoutonChoixMap.disabled = true
+		%BoutonChoixMap.hide()
 		%Dialog.play_scene("tuto")
 
 func _on_bouton_choix_map_pressed():
@@ -100,3 +99,18 @@ func on_button_hover(button:BaseButton):button.grab_focus()
 func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()
 func on_button_focus(_button:BaseButton):AudioManager.play_ui("hover")
 func on_button_pressed(_button:BaseButton):AudioManager.play_ui("click")
+
+
+func _on_dialog_scene_ended(scene_name):
+	if scene_name == "tuto":
+		%TutoPanels.show()
+		%StartTutoPanel.show()
+
+func _on_tuto_yes_button_pressed():
+	%StartTutoPanel.hide()
+	%Dialog.play_scene("tuto_start")
+
+func _on_tuto_no_button_pressed():
+	%TutoPanels.hide()
+	%Dialog.play_scene("tuto_skip")
+	%BoutonChoixMap.show()
