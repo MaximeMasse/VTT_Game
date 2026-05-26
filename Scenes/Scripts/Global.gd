@@ -2,7 +2,6 @@ extends Node
 
 # Config
 const ECHELLE = 1.7/152
-#var current_profile_id := 0
 var current_profile := {}
 var config := {}
 
@@ -87,9 +86,10 @@ var dico_avatars := {
 	5:"Cat"
 }
 var dico_scenes :={
-	"Main_Game":"res://game.tscn"
+	"Menus":"res://Scenes/menus.tscn",
+	"Main_Game":"res://Scenes/Games/game.tscn",
+	"Tuto_Game":"res://Scenes/Games/tuto_game.tscn"
 }
-"res://Avatar/Players/Biqueen/Avatar.png"
 
 signal hud_trick_reset
 signal hud_trick_activate

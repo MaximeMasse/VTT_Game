@@ -32,8 +32,7 @@ func _ready():
 		"NewPlayer":%NewPlayer,
 		"ChangeProfile":%ChangeProfile,
 		"Carrière":%Carriere,
-		"Upgrades":%Upgrades,
-		"ChoixMap":%ChoixMap
+		"Chairlift":%ChairliftMenu
 	}
 	show_menu(dico_menus[Global.menu_to_show])
 
@@ -53,8 +52,7 @@ func _unhandled_input(_event):
 		%ProfileButton.grab_focus()
 
 func show_menu(menu):
-	for men in dico_menus:
-		dico_menus[men].hide()
+	for men in dico_menus:dico_menus[men].hide()
 	menu.show()
 
 func apply_audio_config():
@@ -65,7 +63,7 @@ func apply_audio_config():
 
 func _on_continue_button_pressed():
 	AudioManager.stop_music()
-	Global.start_mod("Main_Game")
+	Global.start_mod("Tuto_Game")
 
 func _on_new_player_button_pressed():
 	show_menu(%NewPlayer)
@@ -87,16 +85,12 @@ func _on_ok_pressed():
 	SaveManager.save_profile(Global.current_profile)
 	show_menu(%Carriere)
 	if Global.get_profile_data("state") == "tuto":
+		%StartTutoPanel.hide()
 		%Tuto.show()
 		for button in %Spots.get_children():button.disabled = true
-		%Dialog.play_scene("tuto")
+		%DialogTuto.play_scene("tuto")
 
-func _on_chairlift_pressed() -> void:
-	AudioManager.stop_music()
-	Global.start_mod("Main_Game")
-	#show_menu(%ChoixMap)
-
-func _on_dialog_scene_ended(scene_name):
+func _on_dialog_tuto_scene_ended(scene_name):
 	if scene_name == "tuto":
 		%StartTutoPanel.show()
 	elif scene_name == "tuto_start":%Chairlift.disabled = false
@@ -107,11 +101,25 @@ func _on_dialog_scene_ended(scene_name):
 
 func _on_tuto_yes_button_pressed():
 	%StartTutoPanel.hide()
-	%Dialog.play_scene("tuto_start")
+	%DialogTuto.play_scene("tuto_start")
 
 func _on_tuto_no_button_pressed():
 	%TutoPanels.hide()
-	%Dialog.play_scene("tuto_skip")
+	%DialogTuto.play_scene("tuto_skip")
+
+func _on_chairlift_pressed() -> void:
+	AudioManager.stop_music()
+	show_menu(%ChairliftMenu)
+	if Global.get_profile_data("state") == "tuto":
+		for button in %Maps.get_children():button.hide()
+		%DialogChairlift.play_scene("tuto")
+
+func _on_dialog_chairlift_scene_ended(scene_name):
+	%Map0_Button.show()
+
+func _on_map_0_button_pressed():
+	Global.start_mod("Tuto_Game")
+
 
 func on_button_hover(button:BaseButton):if not button.disabled:button.grab_focus()
 func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()

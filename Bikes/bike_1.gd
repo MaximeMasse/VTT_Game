@@ -199,14 +199,6 @@ func ground_sfx_change():
 func _on_trick_status_changer_timeout():
 	actual_state = current_frame_state
 
-#func _on_crash(body):
-	#if body.get_collision_layer() in [1,Global.floor_is]:
-		#queue_free()
-		#AudioManager.stop_ground_sfx()
-		#AudioManager.play_sfx("ouch")
-		#AudioManager.play_sfx("bone_crack")
-		#crashed.emit()
-
 func get_current_state()-> String:
 	if contact_sol_arrière.has_overlapping_bodies() and contact_sol_avant.has_overlapping_bodies():
 		#Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()

@@ -95,6 +95,10 @@ Pause={
 2d_render/layer_1="Floor"
 2d_render/layer_2="Checkpoint"
 2d_render/layer_3="Platform"
+2d_physics/layer_1="Floor"
+2d_physics/layer_2="Special Effects"
+2d_physics/layer_3="Platform"
+2d_physics/layer_4="Camera Helper"
 
 [physics]
 

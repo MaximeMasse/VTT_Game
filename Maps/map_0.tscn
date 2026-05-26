@@ -96,6 +96,10 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2wbil"]
+a = Vector2(-15, -6)
+b = Vector2(603, -272)
+
 [node name="Map" type="Node2D" unique_id=1845493518]
 script = ExtResource("1_mei6p")
 road_texture = ExtResource("2_wux8b")
@@ -106,19 +110,18 @@ under_texture = ExtResource("5_o1mje")
 [node name="SpecialParts" type="StaticBody2D" parent="." unique_id=839341710]
 collision_mask = 0
 
-[node name="Tinys" type="Sprite2D" parent="SpecialParts" unique_id=2086086056]
-z_index = 2
-position = Vector2(9558, 677.00024)
-rotation = -0.19160287
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("19_dhc5w")
-region_enabled = true
-region_rect = Rect2(638.0001, 403.36313, 433.8003, 199.27542)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialParts" unique_id=1490674438]
 position = Vector2(9443, 612.00006)
 rotation = -0.0010755789
 shape = SubResource("SegmentShape2D_8lorq")
+
+[node name="Tinys" type="Sprite2D" parent="SpecialParts/CollisionShape2D" unique_id=2086086056]
+z_index = 2
+position = Vector2(114.92969, 65.1239)
+rotation = -0.1905273
+texture = ExtResource("19_dhc5w")
+region_enabled = true
+region_rect = Rect2(638.0001, 403.36313, 433.8003, 199.27542)
 
 [node name="Spots" type="Node2D" parent="." unique_id=1345368999]
 
@@ -846,6 +849,14 @@ texture = ExtResource("16_m15sf")
 position = Vector2(1618, 4355)
 scale = Vector2(2.15, 2.15)
 texture = ExtResource("14_4hqvm")
+
+[node name="CameraEffects" type="Area2D" parent="." unique_id=514580993]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraEffects" unique_id=1321764425]
+position = Vector2(27701, 6011)
+shape = SubResource("SegmentShape2D_2wbil")
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]

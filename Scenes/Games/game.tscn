@@ -1,0 +1,390 @@
+[gd_scene format=3 uid="uid://ceb13othey6n2"]
+
+[ext_resource type="Script" uid="uid://b0a3cwwlbqhvm" path="res://Scenes/Games/game.gd" id="1_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://bg87b1ha0jjfv" path="res://Images/Menus/Controls/resume_up.png" id="4_ryrav"]
+[ext_resource type="PackedScene" uid="uid://c6l7y8jhln7o0" path="res://Scenes/hud.tscn" id="5_7jktm"]
+[ext_resource type="Texture2D" uid="uid://0sq3ldihvxtv" path="res://Images/Menus/Controls/resume_hover.png" id="5_215e1"]
+[ext_resource type="Texture2D" uid="uid://byv50krroasxt" path="res://Images/Menus/Controls/abandon_up.png" id="5_eow3j"]
+[ext_resource type="Texture2D" uid="uid://g81m2v0n4xey" path="res://Images/Menus/Controls/resume_down.png" id="5_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://bgwsl2opkxsyv" path="res://Images/Menus/Controls/abandon_down.png" id="6_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://b4wk8v5s3ct7r" path="res://Images/Menus/Controls/retry_up.png" id="7_hve3p"]
+[ext_resource type="Texture2D" uid="uid://itr7nq5s3o1w" path="res://Images/Menus/Controls/abandon_hover.png" id="8_7sc4i"]
+[ext_resource type="Texture2D" uid="uid://br7sxbwtmc840" path="res://Images/Menus/Controls/retry_down.png" id="8_mfdv2"]
+[ext_resource type="Texture2D" uid="uid://bfagchbmge633" path="res://Images/Menus/Controls/continue_up.png" id="9_iotsf"]
+[ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="10_lc2xo"]
+[ext_resource type="Texture2D" uid="uid://daoo66xd1rllp" path="res://Images/Menus/Controls/retry_hover.png" id="11_80cx4"]
+[ext_resource type="Texture2D" uid="uid://dv62chm0uslkm" path="res://Images/Menus/Controls/continue_hover.png" id="14_e8heu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
+bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.18039216, 0.007843138, 0.3372549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="SystemFont" id="SystemFont_fc0e3"]
+font_names = PackedStringArray("Pixel Game", "Pixel Tactical", "Pharmakon")
+
+[sub_resource type="SystemFont" id="SystemFont_ryrav"]
+font_names = PackedStringArray("Pharmakon")
+
+[sub_resource type="SystemFont" id="SystemFont_j5wjh"]
+font_names = PackedStringArray("Pixel Game")
+
+[node name="Game" type="Node2D" unique_id=687301190]
+process_mode = 3
+script = ExtResource("1_fc0e3")
+
+[node name="HUD" parent="." unique_id=1185251805 instance=ExtResource("5_7jktm")]
+unique_name_in_owner = true
+
+[node name="MapContainer" type="Node2D" parent="." unique_id=1502284966]
+unique_name_in_owner = true
+
+[node name="BikeContainer" type="Node2D" parent="." unique_id=100482909]
+unique_name_in_owner = true
+z_index = 2
+
+[node name="InGame_Menus" type="CanvasLayer" parent="." unique_id=1815683310]
+
+[node name="Pause_Menu" type="Panel" parent="InGame_Menus" unique_id=1799553443]
+unique_name_in_owner = true
+process_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -151.0
+offset_right = 99.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_feb5d")
+
+[node name="Label" type="Label" parent="InGame_Menus/Pause_Menu" unique_id=609975466]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = 9.0
+offset_right = 51.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7294118, 0.7254902, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 45
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="TextureButton" parent="InGame_Menus/Pause_Menu" unique_id=1132162140]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -7.0
+offset_right = 32.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_ryrav")
+texture_pressed = ExtResource("5_j5wjh")
+texture_focused = ExtResource("5_215e1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AbandonButton" type="TextureButton" parent="InGame_Menus/Pause_Menu" unique_id=393053779]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 56.0
+offset_right = 32.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_eow3j")
+texture_pressed = ExtResource("6_j5wjh")
+texture_focused = ExtResource("8_7sc4i")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Finish_Menu" type="Panel" parent="InGame_Menus" unique_id=179839196]
+unique_name_in_owner = true
+process_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.99994
+offset_top = -294.0
+offset_right = 262.99994
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5891235, 1.910302)
+theme_override_styles/panel = SubResource("StyleBoxFlat_feb5d")
+
+[node name="Label" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=1045431519]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.31384
+offset_top = 13.610413
+offset_right = 49.686157
+offset_bottom = 60.61041
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7294118, 0.7254902, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 40
+text = "FINISH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=1093521803]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.60439
+offset_top = 65.95815
+offset_right = -0.6043854
+offset_bottom = 81.95815
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 15
+text = "Race Time :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=807612801]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.550735
+offset_top = 82.70944
+offset_right = -0.5507355
+offset_bottom = 98.70944
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 15
+text = "Previous Best :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time_label" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=32275046]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 10.689636
+offset_top = 65.95815
+offset_right = 59.689636
+offset_bottom = 81.95815
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 15
+text = "00:28.012"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviousTime_label" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=1141371717]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 10.689606
+offset_top = 82.70943
+offset_right = 59.689606
+offset_bottom = 98.70943
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 15
+text = "00:28.012"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=2028905675]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.36168
+offset_top = 116.21199
+offset_right = -0.36167908
+offset_bottom = 132.21199
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 15
+text = "Score :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=1020135202]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.550735
+offset_top = 132.96323
+offset_right = -0.5507355
+offset_bottom = 148.96323
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 15
+text = "Previous Best :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score_label" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=1775426491]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 10.689636
+offset_top = 116.21199
+offset_right = 59.689636
+offset_bottom = 132.21199
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 15
+text = "12543"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviousScore_label" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=1896041543]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 10.689636
+offset_top = 132.96327
+offset_right = 59.689636
+offset_bottom = 148.96327
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 15
+text = "8726"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewBestTime_label" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=1275943969]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 157.36124
+offset_top = 51.522034
+offset_right = 199.36124
+offset_bottom = 63.522034
+rotation = 0.87315524
+theme_override_colors/font_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_ryrav")
+theme_override_font_sizes/font_size = 10
+text = "New Best !"
+
+[node name="NewBestScore_label" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=1110049564]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 157.45639
+offset_top = 103.24475
+offset_right = 199.45639
+offset_bottom = 115.24475
+rotation = 0.87315524
+theme_override_colors/font_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_ryrav")
+theme_override_font_sizes/font_size = 10
+text = "New Best !"
+
+[node name="RetryButton" type="TextureButton" parent="InGame_Menus/Finish_Menu" unique_id=1618135702]
+layout_mode = 0
+offset_left = 24.33258
+offset_top = 233.47098
+offset_right = 73.77014
+offset_bottom = 266.97357
+texture_normal = ExtResource("7_hve3p")
+texture_pressed = ExtResource("8_mfdv2")
+texture_focused = ExtResource("11_80cx4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Continue" type="TextureButton" parent="InGame_Menus/Finish_Menu" unique_id=2118756166]
+layout_mode = 0
+offset_left = 123.20773
+offset_top = 233.47095
+offset_right = 172.64532
+offset_bottom = 266.9735
+texture_normal = ExtResource("9_iotsf")
+texture_pressed = ExtResource("10_lc2xo")
+texture_focused = ExtResource("14_e8heu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Camera" type="Camera2D" parent="." unique_id=308465975]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1252788223]
+
+[node name="Ingame_Label" type="Label" parent="CanvasLayer" unique_id=1326302586]
+unique_name_in_owner = true
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 732.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_j5wjh")
+theme_override_font_sizes/font_size = 45
+text = "Get Ready !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="InGame_Menus/Pause_Menu/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="InGame_Menus/Pause_Menu/AbandonButton" to="." method="_on_abandon_button_pressed"]
+[connection signal="pressed" from="InGame_Menus/Finish_Menu/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="InGame_Menus/Finish_Menu/Continue" to="." method="_on_continue_pressed"]

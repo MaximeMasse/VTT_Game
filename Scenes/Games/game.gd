@@ -8,9 +8,9 @@ var RATIO := 0.8
 var ASPECT := 16.0 / 9.0
 
 # Variables
-@export var camera_offset := Vector2(300,0)
+@export var camera_offset := Vector2(300,50)
 @export var ymin_offset :float= -100
-@export var ymax_offset :float= 1000
+@export var ymax_offset :float= 300
 @export var xspeed_offset_ratio := 15
 @export var yspeed_offset_ratio := 15
 @export var camera_smooth := 2.0
@@ -86,6 +86,7 @@ func load_map():
 func map_finished():
 	camera_target = map_data["finish"]
 	is_finished = true
+	Global.avancement = 100
 	Global.end_map()
 	AudioManager.stop_music()
 	AudioManager.play_sfx("fireworks")
@@ -179,13 +180,10 @@ func _physics_process(delta):
 	Global.race_time += delta
 	# Avancement
 	if is_instance_valid(velo_courant):
-		if velo_courant.cadre.global_position.x < map_data["start"].global_position.x:
-			Global.avancement = 0
-		elif velo_courant.cadre.global_position.x >= map_data["finish"].global_position.x:
-			Global.avancement = 100
-		else:
-			Global.avancement = (
-				1-(map_data["finish"].global_position.x - velo_courant.cadre.global_position.x)/map_data["finish"].global_position.x)*100
+		Global.avancement = clampi(100 * (
+			1-(map_data["finish"].global_position.x - velo_courant.cadre.global_position.x)
+			/map_data["finish"].global_position.x),
+			0,100)
 	
 func toggle_pause():
 	is_paused = !is_paused
@@ -202,7 +200,7 @@ func _on_resume_button_pressed():toggle_pause()
 func _on_abandon_button_pressed():
 	toggle_pause()
 	Global.menu_to_show = "Carrière"
-	get_tree().change_scene_to_file("res://menus.tscn")
+	Global.start_mod("Menus")
 
 func _on_retry_button_pressed():
 	%Finish_Menu.hide()
@@ -210,7 +208,7 @@ func _on_retry_button_pressed():
 
 func _on_continue_pressed():
 	Global.menu_to_show = "Carrière"
-	get_tree().change_scene_to_file("res://menus.tscn")
+	Global.start_mod("Menus")
 
 func set_up_buttons(node):
 	for child in node.get_children():

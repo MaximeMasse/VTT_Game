@@ -89,7 +89,8 @@ shape = SubResource("RectangleShape2D_el0nv")
 unique_name_in_owner = true
 position = Vector2(0, 33)
 target_position = Vector2(0, 1000)
-collision_mask = 5
+collision_mask = 13
+collide_with_areas = true
 
 [node name="Skeleton" parent="Cadre" unique_id=256030153 instance=ExtResource("4_1nxxo")]
 unique_name_in_owner = true

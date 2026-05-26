@@ -1,18 +1,19 @@
-[gd_scene format=3 uid="uid://csmqtdn1bqmdt"]
+[gd_scene format=3 uid="uid://ysg3q6oybscp"]
 
-[ext_resource type="Texture2D" uid="uid://bgakseio1l8p0" path="res://Avatar/Players/Biqueen/Avatar.png" id="1_5wlj5"]
-[ext_resource type="Script" uid="uid://byctpw0ndrn06" path="res://dialog.gd" id="1_w7j6r"]
-[ext_resource type="Texture2D" uid="uid://tat201xsyt04" path="res://Avatar/Players/Man/Avatar.png" id="2_w7j6r"]
-[ext_resource type="Texture2D" uid="uid://dw221buwvrsel" path="res://Images/Menus/Controls/next_up.png" id="4_37fld"]
-[ext_resource type="Texture2D" uid="uid://c2lyid6qidng8" path="res://Images/Menus/Controls/next_down.png" id="5_3kgf7"]
-[ext_resource type="Texture2D" uid="uid://dum6hh7qc2q5t" path="res://Images/Menus/Controls/next_hover.png" id="6_utfmx"]
+[ext_resource type="Script" uid="uid://dafspnj4mm4yw" path="res://Scenes/Dialogs/dialog_chairlift.gd" id="1_g4h4j"]
+[ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Fond_maps.png" id="2_ngbna"]
+[ext_resource type="Texture2D" uid="uid://bgakseio1l8p0" path="res://Avatar/Players/Biqueen/Avatar.png" id="2_o4b1r"]
+[ext_resource type="Texture2D" uid="uid://tat201xsyt04" path="res://Avatar/Players/Man/Avatar.png" id="3_ngbna"]
+[ext_resource type="Texture2D" uid="uid://dw221buwvrsel" path="res://Images/Menus/Controls/next_up.png" id="4_3it35"]
+[ext_resource type="Texture2D" uid="uid://c2lyid6qidng8" path="res://Images/Menus/Controls/next_down.png" id="5_g7cnv"]
+[ext_resource type="Texture2D" uid="uid://dum6hh7qc2q5t" path="res://Images/Menus/Controls/next_hover.png" id="6_366nl"]
 
 [sub_resource type="Animation" id="Animation_4uc3s"]
 resource_name = "Char1_arrive"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialog/ToHide/Char1:visible")
+tracks/0/path = NodePath("DialogChairlift/ToHide/Char1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Dialog/ToHide/Char1:position")
+tracks/1/path = NodePath("DialogChairlift/ToHide/Char1:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +37,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Dialog/ToHide/Char1:rotation")
+tracks/2/path = NodePath("DialogChairlift/ToHide/Char1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -48,7 +49,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Dialog/ToHide/Char1Pannel:visible")
+tracks/3/path = NodePath("DialogChairlift/ToHide/Char1Pannel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -60,7 +61,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Dialog/ToHide/Char2Pannel:visible")
+tracks/4/path = NodePath("DialogChairlift/ToHide/Char2Pannel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -76,7 +77,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialog/ToHide/Char1:visible")
+tracks/0/path = NodePath("DialogChairlift/ToHide/Char1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,7 +89,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Dialog/ToHide/Char1Pannel:visible")
+tracks/1/path = NodePath("DialogChairlift/ToHide/Char1Pannel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -103,19 +104,19 @@ resource_name = "Char1_leave"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialog/ToHide/Char1:position")
+tracks/0/path = NodePath("DialogChairlift/ToHide/Char1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(313, 494), Vector2(-195, 468)]
+"values": [Vector2(549, 612), Vector2(373.99997, 577)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Dialog/ToHide/Char1:rotation")
+tracks/1/path = NodePath("DialogChairlift/ToHide/Char1:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -127,14 +128,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Dialog/ToHide/Char1:scale")
+tracks/2/path = NodePath("DialogChairlift/ToHide/Char1:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.4, -0.4), Vector2(0.4, -0.4)]
+"values": [Vector2(0.08258763, -0.08258763), Vector2(0.060569007, -0.060569007)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DialogChairlift/ToHide/Char1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_hyg80"]
@@ -142,7 +155,7 @@ resource_name = "Char1_to_lift"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialog/ToHide/NextButton:visible")
+tracks/0/path = NodePath("DialogChairlift/ToHide/NextButton:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -154,7 +167,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Dialog/ToHide/Char2Pannel:visible")
+tracks/1/path = NodePath("DialogChairlift/ToHide/Char2Pannel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -166,7 +179,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Dialog/ToHide/Char2:position")
+tracks/2/path = NodePath("DialogChairlift/ToHide/Char2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -178,7 +191,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Dialog/ToHide/Char2:rotation")
+tracks/3/path = NodePath("DialogChairlift/ToHide/Char2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -190,7 +203,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Dialog/ToHide/Char2:visible")
+tracks/4/path = NodePath("DialogChairlift/ToHide/Char2:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -202,7 +215,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Dialog/ToHide/Char1Pannel:visible")
+tracks/5/path = NodePath("DialogChairlift/ToHide/Char1Pannel:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -214,7 +227,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Dialog/ToHide/Char1:position")
+tracks/6/path = NodePath("DialogChairlift/ToHide/Char1:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -226,7 +239,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Dialog/ToHide/Char1:rotation")
+tracks/7/path = NodePath("DialogChairlift/ToHide/Char1:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -238,7 +251,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Dialog/ToHide/Char1:visible")
+tracks/8/path = NodePath("DialogChairlift/ToHide/Char1:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -250,7 +263,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Dialog/ToHide/Char1:scale")
+tracks/9/path = NodePath("DialogChairlift/ToHide/Char1:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -265,7 +278,7 @@ resource_name = "Char2_arrive"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialog/ToHide/Char2:visible")
+tracks/0/path = NodePath("DialogChairlift/ToHide/Char2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -277,19 +290,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Dialog/ToHide/Char2:position")
+tracks/1/path = NodePath("DialogChairlift/ToHide/Char2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1431, 425), Vector2(988.0001, 453.00003)]
+"values": [Vector2(514, 884), Vector2(708, 599)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Dialog/ToHide/Char2:rotation")
+tracks/2/path = NodePath("DialogChairlift/ToHide/Char2:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -301,19 +314,19 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Dialog/ToHide/Char2Pannel:visible")
+tracks/3/path = NodePath("DialogChairlift/ToHide/Char2Pannel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Dialog/ToHide/Char1Pannel:visible")
+tracks/4/path = NodePath("DialogChairlift/ToHide/Char1Pannel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -322,6 +335,66 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DialogChairlift/ToHide/Char1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(549, 612), Vector2(549, 612)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DialogChairlift/ToHide/Char1:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.1415927, 3.1415927]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DialogChairlift/ToHide/Char1:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.082587644, -0.082587644), Vector2(0.082587644, -0.082587644)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DialogChairlift/ToHide/Char1:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DialogChairlift/ToHide/Char2:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.19929901, -0.19929901), Vector2(0.07265146, -0.07265146)]
+}
 
 [sub_resource type="Animation" id="Animation_j3pup"]
 resource_name = "Char2_fade"
@@ -329,7 +402,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialog/ToHide/NextButton:visible")
+tracks/0/path = NodePath("DialogChairlift/ToHide/NextButton:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -341,7 +414,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Dialog/ToHide/Char2Pannel:visible")
+tracks/1/path = NodePath("DialogChairlift/ToHide/Char2Pannel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -353,7 +426,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Dialog/ToHide/Char1Pannel:visible")
+tracks/2/path = NodePath("DialogChairlift/ToHide/Char1Pannel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -365,7 +438,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Dialog/ToHide/Char2:visible")
+tracks/3/path = NodePath("DialogChairlift/ToHide/Char2:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -377,50 +450,50 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Dialog/ToHide/Char2:position")
+tracks/4/path = NodePath("DialogChairlift/ToHide/Char2:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.4666667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(988, 453), Vector2(988, 453), Vector2(988, 453)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Dialog/ToHide/Char2:rotation")
+tracks/5/path = NodePath("DialogChairlift/ToHide/Char2:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.4666667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [3.1415927, 3.1415927, 3.1415927]
+"values": [Vector2(708, 599), Vector2(708, 599), Vector2(708, 599)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Dialog/ToHide/Char2:scale")
+tracks/6/path = NodePath("DialogChairlift/ToHide/Char2:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.4666667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.35, -0.35), Vector2(0.35, -0.35), Vector2(0.35, -0.35)]
+"values": [3.1415927, 3.1415927, 3.1415927]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Dialog/ToHide/Char2:modulate")
+tracks/7/path = NodePath("DialogChairlift/ToHide/Char2:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.4666667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Vector2(0.072651476, -0.072651476), Vector2(0.072651476, -0.072651476), Vector2(0.072651476, -0.072651476)]
 }
 
 [sub_resource type="Animation" id="Animation_37fld"]
@@ -429,7 +502,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialog/ToHide/Char2:visible")
+tracks/0/path = NodePath("DialogChairlift/ToHide/Char2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -441,7 +514,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Dialog/ToHide/Char2Pannel:visible")
+tracks/1/path = NodePath("DialogChairlift/ToHide/Char2Pannel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -456,7 +529,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialog/ToHide/Char1:visible")
+tracks/0/path = NodePath("DialogChairlift/ToHide/Char1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -468,7 +541,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Dialog/ToHide/Char1:position")
+tracks/1/path = NodePath("DialogChairlift/ToHide/Char1:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -480,7 +553,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Dialog/ToHide/Char1:rotation")
+tracks/2/path = NodePath("DialogChairlift/ToHide/Char1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -492,7 +565,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Dialog/ToHide/Char1Pannel:visible")
+tracks/3/path = NodePath("DialogChairlift/ToHide/Char1Pannel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -504,7 +577,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Dialog/ToHide/Char2:visible")
+tracks/4/path = NodePath("DialogChairlift/ToHide/Char2:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -516,7 +589,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Dialog/ToHide/Char2:position")
+tracks/5/path = NodePath("DialogChairlift/ToHide/Char2:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -528,7 +601,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Dialog/ToHide/Char2:rotation")
+tracks/6/path = NodePath("DialogChairlift/ToHide/Char2:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -540,7 +613,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Dialog/ToHide/Char2Pannel:visible")
+tracks/7/path = NodePath("DialogChairlift/ToHide/Char2Pannel:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -552,7 +625,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Dialog/ToHide/NextButton:visible")
+tracks/8/path = NodePath("DialogChairlift/ToHide/NextButton:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -564,7 +637,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Dialog/ToHide/Char1:scale")
+tracks/9/path = NodePath("DialogChairlift/ToHide/Char1:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -576,7 +649,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Dialog/ToHide/Char2:scale")
+tracks/10/path = NodePath("DialogChairlift/ToHide/Char2:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -588,7 +661,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Dialog/ToHide/Char2:modulate")
+tracks/11/path = NodePath("DialogChairlift/ToHide/Char2:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -604,7 +677,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialog/ToHide/Char1:position")
+tracks/0/path = NodePath("DialogChairlift/ToHide/Char1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -616,7 +689,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Dialog/ToHide/Char1:rotation")
+tracks/1/path = NodePath("DialogChairlift/ToHide/Char1:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -628,7 +701,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Dialog/ToHide/Char1:visible")
+tracks/2/path = NodePath("DialogChairlift/ToHide/Char1:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -640,7 +713,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Dialog/ToHide/Char2:position")
+tracks/3/path = NodePath("DialogChairlift/ToHide/Char2:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -652,7 +725,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Dialog/ToHide/Char2:visible")
+tracks/4/path = NodePath("DialogChairlift/ToHide/Char2:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -664,7 +737,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Dialog/ToHide/Char2:rotation")
+tracks/5/path = NodePath("DialogChairlift/ToHide/Char2:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -676,7 +749,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Dialog/ToHide/Char1Pannel:visible")
+tracks/6/path = NodePath("DialogChairlift/ToHide/Char1Pannel:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -688,7 +761,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Dialog/ToHide/Char2Pannel:visible")
+tracks/7/path = NodePath("DialogChairlift/ToHide/Char2Pannel:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -700,7 +773,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Dialog/ToHide/NextButton:visible")
+tracks/8/path = NodePath("DialogChairlift/ToHide/NextButton:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -755,14 +828,22 @@ corner_radius_bottom_left = 8
 font_names = PackedStringArray("Pixel Code")
 subpixel_positioning = 0
 
-[node name="Dialog" type="Control" unique_id=149525802]
+[node name="DialogChairlift" type="Control" unique_id=149525802]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_w7j6r")
+script = ExtResource("1_g4h4j")
+
+[node name="Fond" type="TextureRect" parent="." unique_id=1954633334]
+visible = false
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_ngbna")
+expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1062273109]
 unique_name_in_owner = true
@@ -777,28 +858,25 @@ offset_bottom = 40.0
 
 [node name="Char1" type="Sprite2D" parent="ToHide" unique_id=1277297257]
 unique_name_in_owner = true
-visible = false
-position = Vector2(240.99997, 456.99997)
+position = Vector2(549, 612)
 rotation = 3.1415927
-scale = Vector2(0.4, -0.4)
-texture = ExtResource("1_5wlj5")
+scale = Vector2(0.08258763, -0.08258763)
+texture = ExtResource("2_o4b1r")
 
 [node name="Char2" type="Sprite2D" parent="ToHide" unique_id=445763456]
 unique_name_in_owner = true
-visible = false
-position = Vector2(1431, 425)
+position = Vector2(514, 884)
 rotation = 3.1415927
-scale = Vector2(0.35, -0.35)
-texture = ExtResource("2_w7j6r")
+scale = Vector2(0.19929901, -0.19929901)
+texture = ExtResource("3_ngbna")
 
 [node name="Char1Pannel" type="PanelContainer" parent="ToHide" unique_id=429021139]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
-offset_left = 449.0
-offset_top = 64.0
-offset_right = 704.0
-offset_bottom = 320.0
+offset_left = 64.0
+offset_top = 512.0
+offset_right = 448.0
+offset_bottom = 703.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5wlj5")
 
 [node name="Char1Text" type="RichTextLabel" parent="ToHide/Char1Pannel" unique_id=6007562]
@@ -807,18 +885,18 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_5wlj5")
 theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 text = "Hey You !"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Char2Pannel" type="PanelContainer" parent="ToHide" unique_id=1566218045]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
-offset_left = 705.0
-offset_top = 64.0
-offset_right = 961.0
-offset_bottom = 320.0
+offset_left = 832.0
+offset_top = 512.0
+offset_right = 1216.0
+offset_bottom = 704.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_w7j6r")
 
 [node name="Char2Text" type="RichTextLabel" parent="ToHide/Char2Pannel" unique_id=1347485460]
@@ -827,6 +905,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_w7j6r")
 theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 text = "Wow, that's nice here !"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -835,14 +914,14 @@ vertical_alignment = 1
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_left = 640.0
-offset_top = 384.00003
-offset_right = 2346.667
-offset_bottom = 1237.3325
+offset_left = 544.0
+offset_top = 640.0
+offset_right = 2250.667
+offset_bottom = 1493.3325
 scale = Vector2(0.075, 0.075)
-texture_normal = ExtResource("4_37fld")
-texture_pressed = ExtResource("5_3kgf7")
-texture_focused = ExtResource("6_utfmx")
+texture_normal = ExtResource("4_3it35")
+texture_pressed = ExtResource("5_g7cnv")
+texture_focused = ExtResource("6_366nl")
 ignore_texture_size = true
 stretch_mode = 0
 

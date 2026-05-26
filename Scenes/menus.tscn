@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://byprtoaxd03pl"]
 
-[ext_resource type="Script" uid="uid://snafuxjgjqen" path="res://menus.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://snafuxjgjqen" path="res://Scenes/menus.gd" id="1_06t4h"]
 [ext_resource type="Texture2D" uid="uid://bwrqce6up6ic2" path="res://Images/Menus/Fond_main.png" id="2_ak5mw"]
 [ext_resource type="Texture2D" uid="uid://bfagchbmge633" path="res://Images/Menus/Controls/continue_up.png" id="3_uc4vm"]
 [ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="4_36kji"]
@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cp4jn4mpwmuou" path="res://Images/Menus/Controls/lineedit.png" id="14_mtcp4"]
 [ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Fond_maps.png" id="15_ldcro"]
 [ext_resource type="Texture2D" uid="uid://d3s2ymvh17wfv" path="res://Images/Menus/Controls/ok_hover.png" id="17_uvnkm"]
-[ext_resource type="PackedScene" uid="uid://csmqtdn1bqmdt" path="res://dialog.tscn" id="20_vnyao"]
+[ext_resource type="PackedScene" uid="uid://csmqtdn1bqmdt" path="res://Scenes/Dialogs/dialog_tuto.tscn" id="20_vnyao"]
 [ext_resource type="Texture2D" uid="uid://k8tl2mijfawq" path="res://Images/Menus/Shops/Map.png" id="20_x8e7r"]
 [ext_resource type="Texture2D" uid="uid://dtuu21v3lrrm6" path="res://Images/Menus/Shops/Map_focused.png" id="21_ytvri"]
 [ext_resource type="Texture2D" uid="uid://bn1vl0t1t2ntr" path="res://Images/Menus/Controls/yes_up.png" id="22_0x8je"]
@@ -35,6 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://drvv3f57uleo2" path="res://Images/Menus/Controls/no_down.png" id="26_6i8wr"]
 [ext_resource type="Texture2D" uid="uid://cp3l6n6his8e4" path="res://Images/Menus/Controls/no_hover.png" id="27_638l8"]
 [ext_resource type="Texture2D" uid="uid://cllyfs0hf7xw5" path="res://Images/Menus/Shops/Trailer_focused.png" id="27_duoyf"]
+[ext_resource type="PackedScene" uid="uid://ysg3q6oybscp" path="res://Scenes/Dialogs/dialog_chairlift.tscn" id="36_6glyx"]
+[ext_resource type="Texture2D" uid="uid://mp076uys4gx0" path="res://Images/Menus/Maps/Map0.png" id="36_hagod"]
+[ext_resource type="Texture2D" uid="uid://bhwdw6clbkwqf" path="res://Images/Menus/Maps/Map0_focused.png" id="37_6glyx"]
 
 [sub_resource type="SystemFont" id="SystemFont_jw3nv"]
 font_names = PackedStringArray("Pixel Game")
@@ -53,13 +56,15 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="SystemFont" id="SystemFont_k6ik4"]
-font_names = PackedStringArray("Pixel Game")
+font_names = PackedStringArray("Pixel Code")
+font_weight = 999
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bhlvn"]
 texture = ExtResource("14_mtcp4")
 expand_margin_left = 45.0
-expand_margin_top = 2.0
+expand_margin_top = 7.0
 expand_margin_right = 45.0
+expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mtcp4"]
 
@@ -221,7 +226,7 @@ offset_bottom = 556.0
 theme_override_colors/font_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
 theme_override_colors/font_placeholder_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
 theme_override_fonts/font = SubResource("SystemFont_k6ik4")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 23
 theme_override_styles/normal = SubResource("StyleBoxTexture_bhlvn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mtcp4")
 placeholder_text = "Your Name"
@@ -305,9 +310,6 @@ texture_focused = ExtResource("27_duoyf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Upgrades" type="CanvasLayer" parent="Carriere" unique_id=1973075995]
-unique_name_in_owner = true
-
 [node name="Tuto" type="Control" parent="Carriere" unique_id=645137887]
 unique_name_in_owner = true
 layout_mode = 3
@@ -315,7 +317,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Dialog" parent="Carriere/Tuto" unique_id=149525802 instance=ExtResource("20_vnyao")]
+[node name="DialogTuto" parent="Carriere/Tuto" unique_id=149525802 instance=ExtResource("20_vnyao")]
 unique_name_in_owner = true
 layout_mode = 1
 
@@ -329,7 +331,6 @@ offset_bottom = 400.0
 
 [node name="StartTutoPanel" type="Panel" parent="Carriere/Tuto/TutoPanels" unique_id=1543292226]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_right = 254.0
 offset_bottom = 138.0
@@ -373,15 +374,37 @@ texture_focused = ExtResource("27_638l8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ChoixMap" type="CanvasLayer" parent="." unique_id=766752152]
+[node name="ChairliftMenu" type="CanvasLayer" parent="." unique_id=766752152]
 unique_name_in_owner = true
-visible = false
 
-[node name="Fond" type="TextureRect" parent="ChoixMap" unique_id=1092760061]
+[node name="Fond" type="TextureRect" parent="ChairliftMenu" unique_id=1092760061]
 offset_right = 1280.0
 offset_bottom = 720.0
 texture = ExtResource("15_ldcro")
 expand_mode = 1
+
+[node name="DialogChairlift" parent="ChairliftMenu" unique_id=393227050 instance=ExtResource("36_6glyx")]
+unique_name_in_owner = true
+z_index = 2
+
+[node name="Maps" type="Control" parent="ChairliftMenu" unique_id=1258441414]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Map0_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=1586592481]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 287.0
+offset_top = 504.0
+offset_right = 375.0
+offset_bottom = 592.0
+texture_normal = ExtResource("36_hagod")
+texture_focused = ExtResource("37_6glyx")
+ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="pressed" from="MainMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MainMenu/NewPlayerButton" to="." method="_on_new_player_button_pressed"]
@@ -389,6 +412,8 @@ expand_mode = 1
 [connection signal="pressed" from="NewPlayer/BoutonDroite" to="." method="_on_bouton_droite_pressed"]
 [connection signal="pressed" from="NewPlayer/Ok" to="." method="_on_ok_pressed"]
 [connection signal="pressed" from="Carriere/Spots/Chairlift" to="." method="_on_chairlift_pressed"]
-[connection signal="scene_ended" from="Carriere/Tuto/Dialog" to="." method="_on_dialog_scene_ended"]
+[connection signal="scene_ended" from="Carriere/Tuto/DialogTuto" to="." method="_on_dialog_tuto_scene_ended"]
 [connection signal="pressed" from="Carriere/Tuto/TutoPanels/StartTutoPanel/TutoYesButton" to="." method="_on_tuto_yes_button_pressed"]
 [connection signal="pressed" from="Carriere/Tuto/TutoPanels/StartTutoPanel/TutoNoButton" to="." method="_on_tuto_no_button_pressed"]
+[connection signal="scene_ended" from="ChairliftMenu/DialogChairlift" to="." method="_on_dialog_chairlift_scene_ended"]
+[connection signal="pressed" from="ChairliftMenu/Maps/Map0_Button" to="." method="_on_map_0_button_pressed"]
