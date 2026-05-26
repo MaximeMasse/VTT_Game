@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3fv5v8vtq4g0"
-path="res://.godot/imported/Foot.png-0c1a2bab5a0f2429f1920b32799ef1e8.ctex"
+uid="uid://cllyfs0hf7xw5"
+path="res://.godot/imported/Trailer_focused.png-56829343d4040f3f118f544a5871e3fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Avatar/Players/Boy/Foot.png"
-dest_files=["res://.godot/imported/Foot.png-0c1a2bab5a0f2429f1920b32799ef1e8.ctex"]
+source_file="res://Images/Menus/Shops/Trailer_focused.png"
+dest_files=["res://.godot/imported/Trailer_focused.png-56829343d4040f3f118f544a5871e3fb.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3fv5v8vtq4g0"
-path="res://.godot/imported/Foot.png-0c1a2bab5a0f2429f1920b32799ef1e8.ctex"
+uid="uid://clib2qu4ygej7"
+path="res://.godot/imported/Bikeshop_focused.png-995e6b557706f4b3d419176500a25581.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Avatar/Players/Boy/Foot.png"
-dest_files=["res://.godot/imported/Foot.png-0c1a2bab5a0f2429f1920b32799ef1e8.ctex"]
+source_file="res://Images/Menus/Shops/Bikeshop_focused.png"
+dest_files=["res://.godot/imported/Bikeshop_focused.png-995e6b557706f4b3d419176500a25581.ctex"]
 
 [params]
 

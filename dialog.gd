@@ -9,7 +9,7 @@ var full_text := ""
 var char_index := 0
 var next_act := false
 var is_typing := false
-@export var typing_speed := 0.1
+@export var typing_speed := 0.01
 
 func _ready():%ToHide.visible = false
 
@@ -19,11 +19,11 @@ func dico_update():
 			"Char1":"res://Avatar/Players/Biqueen/Avatar.png",
 			"Char2":Global.get_sprites_path() + "Avatar.png",
 			"acts":[
-				"Char2_arrive",
+				"anim_Char2_arrive",
 				"dialog_char2_Wow, that's nice here !",
-				"Char1_arrive",
-				"final_char1_Hey, You !! It's your first time right ? I've never seen you around before.\n
-				Would you like to learn more about the place ?",
+				"anim_Char1_arrive",
+				"final_char1_Hey, You !! It's your first time right ? I've never seen you around before.\n\n" +
+				"Would you like to learn more about the place ?",
 			],
 		},
 		"tuto_start":{
@@ -31,7 +31,12 @@ func dico_update():
 			"Char2":Global.get_sprites_path() + "Avatar.png",
 			"acts":[
 				"dialog_char2_Sure, tell me everything.",
-				"final_char1_Ok, let me show you how things work",
+				"dialog_char1_Ok, let me show you how things work.\n\n" +
+				"First, meet me by the chairlift when you're ready.",
+				"anim_Char1_to_lift",
+				"dialog_char2_Well.....       \n\n" +
+				"Ok, I guess",
+				"anim-final_Char2_fade"
 			]
 		},
 		"tuto_skip":{
@@ -39,7 +44,10 @@ func dico_update():
 			"Char2":Global.get_sprites_path() + "Avatar.png",
 			"acts":[
 				"dialog_char2_Nahh, I'm fine.",
-				"final_char1_My bad Mr. Know-it-all. I'll stop bothering you.",
+				"dialog_char1_My bad Mr. Know-it-all ! I'll stop bothering you.",
+				"anim_Char1_leave",
+				"dialog_char2_Yes, do that, thank you !",
+				"anim-final_Char2_fade"
 			]
 		}
 	}
@@ -63,6 +71,7 @@ func play_scene(scene:String)->void:
 	%Char2.texture = load(dico_dialogs[scene]["Char2"])
 	for anim in dico_dialogs[scene]["acts"]:
 		if anim.split("_")[0] in ["dialog","final"]:
+			if talking_panel != null:talking_panel.hide()
 			talking_panel = %Char1Pannel if anim.split("_")[1] == "char1" else %Char2Pannel
 			talking_label = %Char1Text if anim.split("_")[1] == "char1" else %Char2Text
 			next_act = false
@@ -70,8 +79,11 @@ func play_scene(scene:String)->void:
 			while not next_act: await get_tree().process_frame
 			%NextButton.hide()
 		else:
-			%AnimationPlayer.play(anim)
+			if talking_panel != null:talking_panel.hide()
+			%AnimationPlayer.play(anim.split("_",true,1)[1])
 			await %AnimationPlayer.animation_finished
+			if anim.split("_",true,1)[0] == "anim-final":scene_ended.emit(current_scene)
+			
 		
 func show_dialog(text: String,final: String):
 	is_typing = true
@@ -92,5 +104,4 @@ func talk(final :String):
 	else: scene_ended.emit(current_scene)
 
 func _on_next_button_pressed():
-	talking_panel.hide()
 	next_act = true

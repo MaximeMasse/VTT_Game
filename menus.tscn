@@ -19,15 +19,22 @@
 [ext_resource type="Texture2D" uid="uid://ckcatq8ntvr6k" path="res://Images/Menus/Fond_carrière.png" id="14_67va8"]
 [ext_resource type="Texture2D" uid="uid://cp4jn4mpwmuou" path="res://Images/Menus/Controls/lineedit.png" id="14_mtcp4"]
 [ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Fond_maps.png" id="15_ldcro"]
-[ext_resource type="Texture2D" uid="uid://csv76qg6eonqu" path="res://Images/Menus/Controls/up_arrow.png" id="15_mtcp4"]
 [ext_resource type="Texture2D" uid="uid://d3s2ymvh17wfv" path="res://Images/Menus/Controls/ok_hover.png" id="17_uvnkm"]
 [ext_resource type="PackedScene" uid="uid://csmqtdn1bqmdt" path="res://dialog.tscn" id="20_vnyao"]
+[ext_resource type="Texture2D" uid="uid://k8tl2mijfawq" path="res://Images/Menus/Shops/Map.png" id="20_x8e7r"]
+[ext_resource type="Texture2D" uid="uid://dtuu21v3lrrm6" path="res://Images/Menus/Shops/Map_focused.png" id="21_ytvri"]
 [ext_resource type="Texture2D" uid="uid://bn1vl0t1t2ntr" path="res://Images/Menus/Controls/yes_up.png" id="22_0x8je"]
+[ext_resource type="Texture2D" uid="uid://de8h4qi18a8w6" path="res://Images/Menus/Shops/Bikeshop.png" id="22_35c38"]
 [ext_resource type="Texture2D" uid="uid://deej7nsdys71d" path="res://Images/Menus/Controls/yes_down.png" id="23_x8e7r"]
+[ext_resource type="Texture2D" uid="uid://clib2qu4ygej7" path="res://Images/Menus/Shops/Bikeshop_focused.png" id="23_yvt0d"]
+[ext_resource type="Texture2D" uid="uid://cig3k4rp62xqx" path="res://Images/Menus/Shops/Workshop.png" id="24_hagod"]
 [ext_resource type="Texture2D" uid="uid://csb1d3cb4u7n6" path="res://Images/Menus/Controls/yes_hover.png" id="24_ytvri"]
 [ext_resource type="Texture2D" uid="uid://vud5kjhd6byj" path="res://Images/Menus/Controls/no_up.png" id="25_1vj8o"]
+[ext_resource type="Texture2D" uid="uid://cr78io004766d" path="res://Images/Menus/Shops/Workshop_focused.png" id="25_6glyx"]
+[ext_resource type="Texture2D" uid="uid://dnjwimidm76hc" path="res://Images/Menus/Shops/Trailer.png" id="26_1r1vo"]
 [ext_resource type="Texture2D" uid="uid://drvv3f57uleo2" path="res://Images/Menus/Controls/no_down.png" id="26_6i8wr"]
 [ext_resource type="Texture2D" uid="uid://cp3l6n6his8e4" path="res://Images/Menus/Controls/no_hover.png" id="27_638l8"]
+[ext_resource type="Texture2D" uid="uid://cllyfs0hf7xw5" path="res://Images/Menus/Shops/Trailer_focused.png" id="27_duoyf"]
 
 [sub_resource type="SystemFont" id="SystemFont_jw3nv"]
 font_names = PackedStringArray("Pixel Game")
@@ -246,13 +253,55 @@ offset_bottom = 720.0
 texture = ExtResource("14_67va8")
 expand_mode = 1
 
-[node name="BoutonChoixMap" type="TextureButton" parent="Carriere" unique_id=1521398409]
+[node name="Spots" type="Control" parent="Carriere" unique_id=1565680603]
 unique_name_in_owner = true
-offset_left = 482.0
-offset_top = 258.0
-offset_right = 535.0
-offset_bottom = 341.0
-texture_normal = ExtResource("15_mtcp4")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Chairlift" type="TextureButton" parent="Carriere/Spots" unique_id=1521398409]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 553.0
+offset_top = 185.0
+offset_right = 997.0
+offset_bottom = 458.0
+texture_normal = ExtResource("20_x8e7r")
+texture_focused = ExtResource("21_ytvri")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Bikeshop" type="TextureButton" parent="Carriere/Spots" unique_id=681298754]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 275.0
+offset_right = 624.0
+offset_bottom = 522.0
+texture_normal = ExtResource("22_35c38")
+texture_focused = ExtResource("23_yvt0d")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Workshop" type="TextureButton" parent="Carriere/Spots" unique_id=290554185]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 307.0
+offset_right = 385.0
+offset_bottom = 636.0
+texture_normal = ExtResource("24_hagod")
+texture_focused = ExtResource("25_6glyx")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Trailer" type="TextureButton" parent="Carriere/Spots" unique_id=77370362]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 293.0
+offset_right = 1282.0
+offset_bottom = 585.0
+texture_normal = ExtResource("26_1r1vo")
+texture_focused = ExtResource("27_duoyf")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -260,6 +309,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 
 [node name="Tuto" type="Control" parent="Carriere" unique_id=645137887]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -269,22 +319,21 @@ offset_bottom = 40.0
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="TutoPanels" type="Panel" parent="Carriere/Tuto" unique_id=1543292226]
+[node name="TutoPanels" type="Control" parent="Carriere/Tuto" unique_id=1039697468]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 578.0
+offset_top = 360.0
+offset_right = 618.0
+offset_bottom = 400.0
+
+[node name="StartTutoPanel" type="Panel" parent="Carriere/Tuto/TutoPanels" unique_id=1543292226]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_left = 578.0
-offset_top = 360.0
-offset_right = 832.0
-offset_bottom = 498.0
+offset_right = 254.0
+offset_bottom = 138.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vnyao")
-
-[node name="StartTutoPanel" type="Control" parent="Carriere/Tuto/TutoPanels" unique_id=1039697468]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Carriere/Tuto/TutoPanels/StartTutoPanel" unique_id=381066402]
 layout_mode = 0
@@ -339,7 +388,7 @@ expand_mode = 1
 [connection signal="pressed" from="NewPlayer/BoutonGauche" to="." method="_on_bouton_gauche_pressed"]
 [connection signal="pressed" from="NewPlayer/BoutonDroite" to="." method="_on_bouton_droite_pressed"]
 [connection signal="pressed" from="NewPlayer/Ok" to="." method="_on_ok_pressed"]
-[connection signal="pressed" from="Carriere/BoutonChoixMap" to="." method="_on_bouton_choix_map_pressed"]
+[connection signal="pressed" from="Carriere/Spots/Chairlift" to="." method="_on_chairlift_pressed"]
 [connection signal="scene_ended" from="Carriere/Tuto/Dialog" to="." method="_on_dialog_scene_ended"]
 [connection signal="pressed" from="Carriere/Tuto/TutoPanels/StartTutoPanel/TutoYesButton" to="." method="_on_tuto_yes_button_pressed"]
 [connection signal="pressed" from="Carriere/Tuto/TutoPanels/StartTutoPanel/TutoNoButton" to="." method="_on_tuto_no_button_pressed"]
