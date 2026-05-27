@@ -37,7 +37,8 @@ func _ready():
 	label_is_fading = {%Penalty_label:false,%Tricks_label:false,%Trick_scored_label:false}
 	for trick in ["Wheelie","Nose Wheelie","Air"]:update_best_tricks(trick,false)
 	dico_to_hide ={
-		"on_finish":[%Tricks_label,%Combo_label]
+		"on_finish":[%Tricks_label,%Combo_label],
+		"tuto_0":[%Live,%Joueur]
 	}
 
 func reset():

@@ -67,6 +67,7 @@ var tricks_values : Dictionary = {
 
 # Dicos
 var dico_maps := {
+	"tuto":"res://Maps/map_tuto.tscn",
 	"0":"res://Maps/map_0.tscn",
 	"1":"res://Maps/map_1.tscn",
 	"2":"res://Maps/map_2.tscn",

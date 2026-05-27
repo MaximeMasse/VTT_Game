@@ -70,5 +70,4 @@ func jump(puissance):
 	await get_tree().create_timer(0.5).timeout
 	is_jumping = false
 
-
 func _on_contact_body_entered(body: Node2D) -> void:contact.emit(body)

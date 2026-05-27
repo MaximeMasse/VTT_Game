@@ -397,10 +397,10 @@ offset_bottom = 40.0
 [node name="Map0_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=1586592481]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 287.0
-offset_top = 504.0
-offset_right = 375.0
-offset_bottom = 592.0
+offset_left = 773.0
+offset_top = 152.0
+offset_right = 861.0
+offset_bottom = 240.0
 texture_normal = ExtResource("36_hagod")
 texture_focused = ExtResource("37_6glyx")
 ignore_texture_size = true

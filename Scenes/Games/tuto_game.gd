@@ -49,11 +49,17 @@ func _ready():
 	Global.hud_trick_reset.connect(%HUD.trick_reset)
 	Global.hud_combo_update.connect(%HUD.update_combo)
 	Global.hud_score_update.connect(%HUD.update_score)
-	# Tuto specifics
-	%HUD.hide()
 	# Chargements
 	load_map()
-	load_bike()
+	#load_bike()
+	# Tuto specifics
+	%HUD.set_visibility("tuto_0",false)
+	%Ingame_Label.hide()
+	camera_target = %Pov1
+	camera_target.global_position -= camera_offset
+	%AnimationPlayer.play("intro")
+	%Char1Text.text = ""
+	
 
 func _input(event):
 	if race_started and not is_finished:
@@ -68,19 +74,16 @@ func restart():
 	SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
 	AudioManager.stop_music()
 	AudioManager.stop_sfx()
-	map_courante.queue_free()
+	#map_courante.queue_free()
 	await get_tree().process_frame
 	%HUD.reset()
-	load_map()
+	#load_map()
 	load_bike()
 	%HUD.update_score(Global.current_score)
 	is_finished = false
 
 func load_map():
-	var path : String = Global.get_current_map()
-	var map_scene := ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE)
-	map_courante = map_scene.instantiate()
-	%MapContainer.add_child(map_courante)
+	map_courante = %Map
 	map_courante.finish.connect(map_finished)
 	map_courante.out_of_bounds.connect(respawn_bike)
 	map_data = map_courante.get_level_data()
@@ -104,7 +107,6 @@ func map_finished():
 
 func load_bike():
 	race_started = false
-	
 	velo_courant = load(Global.get_profile_bike()).instantiate()
 	%BikeContainer.add_child(velo_courant)
 	camera_target = velo_courant.cadre
@@ -162,7 +164,7 @@ func disable_inputs_for_x_second(x:float):
 	velo_courant.input_enabled = true
 
 func _process(delta):
-	if is_instance_valid(camera_target) and not is_finished and velo_courant.input_enabled and race_started:
+	if is_instance_valid(camera_target) and not is_finished and race_started and velo_courant.input_enabled:
 		var xoffset :float= Global.vitesse.x * xspeed_offset_ratio
 		var yoffset :float= clamp(Global.vitesse.y * yspeed_offset_ratio + Global.ground_distance,ymin_offset,ymax_offset)
 		var speed_offset := Vector2(xoffset,yoffset)
@@ -174,7 +176,7 @@ func _process(delta):
 		%Camera.zoom = %Camera.zoom.lerp(Vector2(zoom_factor,zoom_factor),camera_smooth * delta)
 	else:
 		%Camera.global_position = camera_target.global_position + camera_offset
-		%Camera.zoom = Vector2.ONE
+		#%Camera.zoom = Vector2.ONE
 
 func _physics_process(delta):
 	# Tracking

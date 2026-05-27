@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://jorh80hom1vp"]
 
-[ext_resource type="Texture2D" uid="uid://dtgeosdh1piea" path="res://Images/Mapping/Assets/Flags/cp_back.png" id="1_lrb17"]
-[ext_resource type="Texture2D" uid="uid://cb28wrvm6orlf" path="res://Images/Mapping/Assets/Flags/cp_front.png" id="2_of7ku"]
-[ext_resource type="Texture2D" uid="uid://5k4i7haivqc0" path="res://Images/Mapping/Assets/Rocks/rock_small_2.png" id="3_ox4py"]
+[ext_resource type="Texture2D" uid="uid://cuaa8pw764o50" path="res://Images/Mapping/Assets/Flags/cp_back_2.png" id="1_yw0ko"]
+[ext_resource type="Texture2D" uid="uid://dkbp55uj5ch0u" path="res://Images/Mapping/Assets/Flags/cp_front_2.png" id="2_lrb17"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xrx5v"]
 a = Vector2(0, 128)
@@ -19,16 +18,10 @@ shape = SubResource("SegmentShape2D_xrx5v")
 z_index = -10
 position = Vector2(23.99997, -49.999996)
 scale = Vector2(0.4, 1.3)
-texture = ExtResource("1_lrb17")
+texture = ExtResource("1_yw0ko")
 
 [node name="CpFront" type="Sprite2D" parent="." unique_id=1268092869]
 z_index = 10
-position = Vector2(-68.00006, 20.999998)
-scale = Vector2(0.4, 1.3)
-texture = ExtResource("2_of7ku")
-
-[node name="RockSmall2" type="Sprite2D" parent="CpFront" unique_id=1724047592]
-z_index = 11
-position = Vector2(-2.9999988, 148)
-scale = Vector2(1.1366119, 1.1449275)
-texture = ExtResource("3_ox4py")
+position = Vector2(-51.999996, 75)
+scale = Vector2(0.54090947, 1.3)
+texture = ExtResource("2_lrb17")

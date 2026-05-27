@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bdpjfnidittu" path="res://Scenes/Games/tuto_game.gd" id="1_fhkho"]
 [ext_resource type="PackedScene" uid="uid://c6l7y8jhln7o0" path="res://Scenes/hud.tscn" id="2_eujfs"]
+[ext_resource type="PackedScene" uid="uid://dbbque6hh3wa3" path="res://Maps/map_tuto.tscn" id="3_g33hj"]
 [ext_resource type="Texture2D" uid="uid://bg87b1ha0jjfv" path="res://Images/Menus/Controls/resume_up.png" id="3_w68fh"]
 [ext_resource type="Texture2D" uid="uid://g81m2v0n4xey" path="res://Images/Menus/Controls/resume_down.png" id="4_ewbjj"]
+[ext_resource type="Texture2D" uid="uid://drxpwn0ljif44" path="res://Images/Mapping/Textures/terre_4.png" id="4_m26ym"]
 [ext_resource type="Texture2D" uid="uid://0sq3ldihvxtv" path="res://Images/Menus/Controls/resume_hover.png" id="5_2q8ac"]
+[ext_resource type="Texture2D" uid="uid://cd22yhfyqh57" path="res://Images/Mapping/Textures/grass_1.png" id="5_hrtud"]
+[ext_resource type="Texture2D" uid="uid://bu5rffusgbr1h" path="res://Images/Mapping/Textures/dirt_1.png" id="6_7bnou"]
 [ext_resource type="Texture2D" uid="uid://byv50krroasxt" path="res://Images/Menus/Controls/abandon_up.png" id="6_47705"]
+[ext_resource type="Texture2D" uid="uid://dmf26y3qj1cnc" path="res://Images/Mapping/Textures/under_rocks_1.png" id="7_ubdf1"]
 [ext_resource type="Texture2D" uid="uid://bgwsl2opkxsyv" path="res://Images/Menus/Controls/abandon_down.png" id="7_ueste"]
 [ext_resource type="Texture2D" uid="uid://itr7nq5s3o1w" path="res://Images/Menus/Controls/abandon_hover.png" id="8_ljqvp"]
 [ext_resource type="Texture2D" uid="uid://b4wk8v5s3ct7r" path="res://Images/Menus/Controls/retry_up.png" id="9_2rkfv"]
@@ -14,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://bfagchbmge633" path="res://Images/Menus/Controls/continue_up.png" id="12_1w3rl"]
 [ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="13_36eu1"]
 [ext_resource type="Texture2D" uid="uid://dv62chm0uslkm" path="res://Images/Menus/Controls/continue_hover.png" id="14_g81iy"]
+[ext_resource type="Texture2D" uid="uid://bgakseio1l8p0" path="res://Avatar/Players/Biqueen/Avatar.png" id="20_7bnou"]
+[ext_resource type="Texture2D" uid="uid://dg0y8wwil5yc5" path="res://Avatar/Players/Man/Avatar_bike.png" id="21_ubdf1"]
+[ext_resource type="Texture2D" uid="uid://dw221buwvrsel" path="res://Images/Menus/Controls/next_up.png" id="22_ubdf1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
 bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
@@ -36,6 +44,159 @@ font_names = PackedStringArray("Pharmakon")
 [sub_resource type="SystemFont" id="SystemFont_j5wjh"]
 font_names = PackedStringArray("Pixel Game")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jwj4"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 50.0
+bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="SystemFont" id="SystemFont_y8ojh"]
+font_names = PackedStringArray("Pixel Code")
+subpixel_positioning = 0
+
+[sub_resource type="Animation" id="Animation_t1loh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/Avatar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/AvatarBike:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_o3mju"]
+resource_name = "intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, 6), Vector2(1.235, 1.235)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/Avatar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/AvatarBike:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gtja8"]
+_data = {
+&"RESET": SubResource("Animation_t1loh"),
+&"intro": SubResource("Animation_o3mju")
+}
+
 [node name="Game" type="Node2D" unique_id=687301190]
 process_mode = 3
 script = ExtResource("1_fhkho")
@@ -44,7 +205,13 @@ script = ExtResource("1_fhkho")
 unique_name_in_owner = true
 
 [node name="MapContainer" type="Node2D" parent="." unique_id=1502284966]
+
+[node name="Map" parent="MapContainer" unique_id=1845493518 instance=ExtResource("3_g33hj")]
 unique_name_in_owner = true
+road_texture = ExtResource("4_m26ym")
+up_texture = ExtResource("5_hrtud")
+down_texture = ExtResource("6_7bnou")
+under_texture = ExtResource("7_ubdf1")
 
 [node name="BikeContainer" type="Node2D" parent="." unique_id=100482909]
 unique_name_in_owner = true
@@ -366,6 +533,8 @@ stretch_mode = 0
 
 [node name="Camera" type="Camera2D" parent="." unique_id=308465975]
 unique_name_in_owner = true
+position = Vector2(-782, -181)
+zoom = Vector2(6, 6)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1252788223]
 
@@ -383,6 +552,87 @@ theme_override_font_sizes/font_size = 45
 text = "Get Ready !"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Tuto" type="Control" parent="." unique_id=1441898673]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Avatar" type="Sprite2D" parent="Tuto" unique_id=80643142]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-916, -189.00002)
+scale = Vector2(0.13476573, 0.13476573)
+texture = ExtResource("20_7bnou")
+
+[node name="AvatarBike" type="Sprite2D" parent="Tuto" unique_id=112116030]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-740, -180)
+rotation = 0.23056334
+scale = Vector2(0.6064108, 0.6064109)
+texture = ExtResource("21_ubdf1")
+
+[node name="Char1Pannel" type="PanelContainer" parent="Tuto" unique_id=235299396]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -1279.0
+offset_top = -256.0
+offset_right = -1024.0
+offset_bottom = -65.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3jwj4")
+
+[node name="Char1Text" type="RichTextLabel" parent="Tuto/Char1Pannel" unique_id=295512363]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_y8ojh")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "Well, Here we are.
+Let's see the basics"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InstructionPannel" type="PanelContainer" parent="Tuto" unique_id=1831027349]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -717.0
+offset_top = -69.0
+offset_right = -333.0
+offset_bottom = 122.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3jwj4")
+
+[node name="Text" type="RichTextLabel" parent="Tuto/InstructionPannel" unique_id=709745893]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_y8ojh")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Hey You !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pov1" type="Marker2D" parent="Tuto" unique_id=170066243]
+unique_name_in_owner = true
+position = Vector2(-782, -181)
+
+[node name="TutoNextButton" type="TextureButton" parent="Tuto" unique_id=844950985]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -1184.0
+offset_top = -112.0
+offset_right = -1120.0
+offset_bottom = -72.0
+texture_normal = ExtResource("22_ubdf1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=361273684]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_gtja8")
 
 [connection signal="pressed" from="InGame_Menus/Pause_Menu/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="InGame_Menus/Pause_Menu/AbandonButton" to="." method="_on_abandon_button_pressed"]

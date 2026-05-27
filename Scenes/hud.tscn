@@ -4,10 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://ld2k0x7688er" path="res://Images/HUD/chrono.png" id="2_1xsix"]
 [ext_resource type="Texture2D" uid="uid://brbdbtxmgfwl7" path="res://Images/HUD/piston_0.png" id="2_a2258"]
 [ext_resource type="Texture2D" uid="uid://by53st7ljhdsx" path="res://Images/HUD/contact_red.png" id="3_1xsix"]
+[ext_resource type="Texture2D" uid="uid://bqmie3bghtagg" path="res://Images/HUD/back_gauge.png" id="3_5ep0j"]
+[ext_resource type="Texture2D" uid="uid://b03qvlnng3dg7" path="res://Images/HUD/avancement_gauge.png" id="4_4f5kr"]
 [ext_resource type="Texture2D" uid="uid://bj5w3ph0yvust" path="res://Images/HUD/jump_green.png" id="4_rftc2"]
 [ext_resource type="Texture2D" uid="uid://v7m21rkumyb6" path="res://Images/HUD/back_boost_gauge.png" id="6_61f8s"]
 [ext_resource type="Texture2D" uid="uid://cs6m4x184ulnh" path="res://Images/HUD/boost_gauge.png" id="7_g10ll"]
 [ext_resource type="Texture2D" uid="uid://bpoiq5c82jbft" path="res://Images/HUD/Boost_segment.png" id="8_gpiub"]
+[ext_resource type="Texture2D" uid="uid://bm2sdlcrnpvbe" path="res://Images/HUD/life_gauge.png" id="11_4f5kr"]
 
 [sub_resource type="SystemFont" id="SystemFont_1xsix"]
 font_names = PackedStringArray("Pixel Game", "Jersey 10")
@@ -19,24 +22,6 @@ border_color = Color(0.021434633, 0.021434639, 0.021434609, 1)
 [sub_resource type="SystemFont" id="SystemFont_61f8s"]
 font_names = PackedStringArray("Pixel Game", "Jersey 10")
 subpixel_positioning = 0
-
-[sub_resource type="SystemFont" id="SystemFont_g10ll"]
-font_names = PackedStringArray("Pixel Game")
-subpixel_positioning = 0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64ctp"]
-bg_color = Color(0.11119685, 0.11119685, 0.11119678, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sq4i"]
-bg_color = Color(0.3626686, 0.621988, 0.2774344, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
 
 [sub_resource type="SystemFont" id="SystemFont_rftc2"]
 font_names = PackedStringArray("Pixel Game", "Jersey 10")
@@ -54,10 +39,10 @@ anchors_preset = 0
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-offset_left = 1001.0
-offset_top = 606.0
-offset_right = 1216.0
-offset_bottom = 646.0
+offset_left = 114.0
+offset_top = 593.0
+offset_right = 329.0
+offset_bottom = 633.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 14
@@ -73,9 +58,9 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 offset_left = 561.0
-offset_top = 47.0
+offset_top = 23.0
 offset_right = 721.0
-offset_bottom = 87.0
+offset_bottom = 63.0
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = SubResource("SystemFont_61f8s")
 theme_override_font_sizes/font_size = 39
@@ -93,10 +78,9 @@ texture = ExtResource("2_1xsix")
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-offset_left = 27.0
-offset_top = 63.0
-offset_right = 130.0
-offset_bottom = 103.0
+offset_left = 169.0
+offset_right = 272.0
+offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 0.047058824, 0.047058824, 1)
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = SubResource("SystemFont_61f8s")
@@ -111,17 +95,17 @@ unique_name_in_owner = true
 process_callback = 0
 one_shot = true
 
-[node name="Avancement_bar" type="ProgressBar" parent="Live" unique_id=2004697716]
+[node name="Avancement_bar" type="TextureProgressBar" parent="Live" unique_id=909779236]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 959.0
-offset_top = 659.0
-offset_right = 1259.0
-offset_bottom = 690.0
-theme_override_fonts/font = SubResource("SystemFont_g10ll")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/background = SubResource("StyleBoxFlat_64ctp")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8sq4i")
+offset_left = 63.0
+offset_top = 640.0
+offset_right = 383.0
+offset_bottom = 681.0
+value = 51.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_5ep0j")
+texture_progress = ExtResource("4_4f5kr")
 
 [node name="Piston" type="TextureRect" parent="Live" unique_id=558769554]
 unique_name_in_owner = true
@@ -268,7 +252,19 @@ offset_bottom = 672.0
 texture = ExtResource("8_gpiub")
 expand_mode = 1
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Live" unique_id=995603035]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 88.0
+offset_right = 743.0
+offset_bottom = 128.0
+value = 31.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_5ep0j")
+texture_progress = ExtResource("11_4f5kr")
+
 [node name="Joueur" type="Control" parent="." unique_id=1077279434]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1032.0
