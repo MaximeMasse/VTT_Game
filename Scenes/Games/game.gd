@@ -1,14 +1,14 @@
 extends Node2D
 
 # Config
-const TIME_SCALE = 1 
+const TIME_SCALE = 1
 var ECHELLE = Global.ECHELLE
 #Screen
 var RATIO := 0.8
 var ASPECT := 16.0 / 9.0
 
 # Variables
-@export var camera_offset := Vector2(300,50)
+@export var camera_offset := Vector2(300,-50)
 @export var ymin_offset :float= -100
 @export var ymax_offset :float= 300
 @export var xspeed_offset_ratio := 15
@@ -17,9 +17,9 @@ var ASPECT := 16.0 / 9.0
 @export var no_zoom_speed := 30
 @export var min_zoom := 0.8
 @export var max_zoom := 1.1
-var camera_target: Node2D = null
-var map_courante :Node2D
-var velo_courant :Node2D
+var camera_target : Node2D = null
+var map_courante : Node2D
+var velo_courant : Node2D
 var map_data := {}
 var race_started := false
 var distance_restante := 0.0

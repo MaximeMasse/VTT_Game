@@ -8,7 +8,7 @@ var RATIO := 0.8
 var ASPECT := 16.0 / 9.0
 
 # Variables
-@export var camera_offset := Vector2(300,50)
+@export var camera_offset := Vector2(300,-50)
 @export var ymin_offset :float= -100
 @export var ymax_offset :float= 300
 @export var xspeed_offset_ratio := 15
@@ -49,6 +49,8 @@ func _ready():
 	Global.hud_trick_reset.connect(%HUD.trick_reset)
 	Global.hud_combo_update.connect(%HUD.update_combo)
 	Global.hud_score_update.connect(%HUD.update_score)
+	# Tuto specifics
+	%HUD.hide()
 	# Chargements
 	load_map()
 	load_bike()
@@ -102,6 +104,7 @@ func map_finished():
 
 func load_bike():
 	race_started = false
+	
 	velo_courant = load(Global.get_profile_bike()).instantiate()
 	%BikeContainer.add_child(velo_courant)
 	camera_target = velo_courant.cadre

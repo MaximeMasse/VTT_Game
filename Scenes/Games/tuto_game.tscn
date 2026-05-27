@@ -51,10 +51,10 @@ unique_name_in_owner = true
 z_index = 2
 
 [node name="InGame_Menus" type="CanvasLayer" parent="." unique_id=1815683310]
-process_mode = 2
 
 [node name="Pause_Menu" type="Panel" parent="InGame_Menus" unique_id=1799553443]
 unique_name_in_owner = true
+process_mode = 2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -112,5 +112,4 @@ process_callback = 0
 wait_time = 0.5
 one_shot = true
 
-[connection signal="contact" from="Cadre/Skeleton" to="." method="_on_skeleton_contact"]
 [connection signal="timeout" from="Trick_status_changer" to="." method="_on_trick_status_changer_timeout"]
