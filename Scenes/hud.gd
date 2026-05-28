@@ -37,8 +37,10 @@ func _ready():
 	label_is_fading = {%Penalty_label:false,%Tricks_label:false,%Trick_scored_label:false}
 	for trick in ["Wheelie","Nose Wheelie","Air"]:update_best_tricks(trick,false)
 	dico_to_hide ={
-		"on_finish":[%Tricks_label,%Combo_label],
-		"tuto_0":[%Live,%Joueur]
+		"on_finish":[[%Tricks_label,%Combo_label],false],
+		"Intro":[[%Vitesse_label,%Time_label,%Avancement_bar,%Tricks_label,%Combo_label,%Trick_score_label,%Trick_scored_label,%Score_label,%Boost_gauge,%Boost_segment,%HPBar,%Joueur],false],
+		"Time_HP":[[%HPBar,%Time_label],true],
+		"Speed_Progress":[[%Vitesse_label,%Avancement_bar],true]
 	}
 
 func reset():
@@ -52,9 +54,9 @@ func reset():
 	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
 	%Boost_gauge.value = 0
 	set_boost_geometry()
-	for moment in dico_to_hide:set_visibility(moment,true)
+	for moment in dico_to_hide:set_visibility(moment)
 
-func set_visibility(moment:String,visibility):for node in dico_to_hide[moment]:node.visible = visibility
+func set_visibility(moment:String):for node in dico_to_hide[moment][0]:node.visible = dico_to_hide[moment][1]
 
 func set_boost_geometry():
 	%Boost_gauge.max_value = Global.BOOST_MAX_QUANTITY

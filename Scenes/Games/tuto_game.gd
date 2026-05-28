@@ -7,6 +7,20 @@ var ECHELLE = Global.ECHELLE
 var RATIO := 0.8
 var ASPECT := 16.0 / 9.0
 
+# Tuto
+var act : String
+var current_act : String
+var dico_acts := {
+	"Intro":["Well, Here we are.\nLet's see the basics","Time_HP"],
+	"Time_HP":["This 2 up here are the Holy [color=white]Timer[/color] and your [color=red]HP Bar[/color].\n"+
+			"They should be your main focus during the game. I think it's pretty clear on what happend when they reach [color=red]ZERO[/color] !",
+			"Speed_Progress"],
+	"Speed_Progress":["You obviously have to finish the Map. Down here, you can see the [color=green]Progress Bar[/color].\n"+
+			"You also have [color=blue]Checkpoints markers[/color]. In case of trouble, you will be respawned at the last [color=blue]Checkpoint[/color] you've reach.\n"+
+			"And there's a [color=orange]Speedometer[/color] because why not.",
+			"Next"],
+}
+
 # Variables
 @export var camera_offset := Vector2(300,-50)
 @export var ymin_offset :float= -100
@@ -51,15 +65,22 @@ func _ready():
 	Global.hud_score_update.connect(%HUD.update_score)
 	# Chargements
 	load_map()
-	#load_bike()
 	# Tuto specifics
-	%HUD.set_visibility("tuto_0",false)
 	%Ingame_Label.hide()
+	%AvatarBike.texture = load(Global.get_sprites_path() + "Avatar_bike.png")
 	camera_target = %Pov1
 	camera_target.global_position -= camera_offset
-	%AnimationPlayer.play("intro")
-	%Char1Text.text = ""
-	
+	current_act = "Intro"
+	_on_tuto_next_button_pressed()
+
+func _on_tuto_next_button_pressed():
+	print(current_act)
+	%HUD.set_visibility(current_act)
+	%AnimationPlayer.play(current_act)
+	await %AnimationPlayer.animation_finished
+	%Char1Text.text = dico_acts[current_act][0]
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	current_act = dico_acts[current_act][1]
 
 func _input(event):
 	if race_started and not is_finished:

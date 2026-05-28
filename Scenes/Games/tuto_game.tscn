@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://bgakseio1l8p0" path="res://Avatar/Players/Biqueen/Avatar.png" id="20_7bnou"]
 [ext_resource type="Texture2D" uid="uid://dg0y8wwil5yc5" path="res://Avatar/Players/Man/Avatar_bike.png" id="21_ubdf1"]
 [ext_resource type="Texture2D" uid="uid://dw221buwvrsel" path="res://Images/Menus/Controls/next_up.png" id="22_ubdf1"]
+[ext_resource type="Texture2D" uid="uid://c2lyid6qidng8" path="res://Images/Menus/Controls/next_down.png" id="23_y8ojh"]
+[ext_resource type="Texture2D" uid="uid://dum6hh7qc2q5t" path="res://Images/Menus/Controls/next_hover.png" id="24_t1loh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
 bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
@@ -63,6 +65,84 @@ corner_radius_bottom_left = 8
 [sub_resource type="SystemFont" id="SystemFont_y8ojh"]
 font_names = PackedStringArray("Pixel Code")
 subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ojh"]
+content_margin_left = 209.0
+content_margin_top = 20.0
+bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Animation" id="Animation_o3mju"]
+resource_name = "Intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, 6), Vector2(1.235, 1.235)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/Avatar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/AvatarBike:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_t1loh"]
 length = 0.001
@@ -126,57 +206,165 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/InstructionPannel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tuto/InstructionPannel:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tuto/InstructionPannel/Text:text")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["                        [colour=white]Timer[/colour]
+                        [colour=red]Timer[/colour]"]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tuto/InstructionPannel:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-895, -471)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tuto/InstructionPannel:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Tuto/InstructionPannel:size")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(284, 106)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_left")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [209.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_top")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_y8ojh")]
+}
 
-[sub_resource type="Animation" id="Animation_o3mju"]
-resource_name = "intro"
-length = 2.0
+[sub_resource type="Animation" id="Animation_y8ojh"]
+resource_name = "Speed_Progress"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera:zoom")
+tracks/0/path = NodePath("Tuto/InstructionPannel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(6, 6), Vector2(1.235, 1.235)]
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-895, -471), Vector2(-1284, 8), Vector2(-1284, 8)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/1/path = NodePath("Tuto/InstructionPannel:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [0.0, 0.0, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tuto/Avatar:modulate")
+tracks/2/path = NodePath("Tuto/InstructionPannel:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tuto/AvatarBike:modulate")
+tracks/3/path = NodePath("Tuto/InstructionPannel:size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(289, 106), Vector2(423, 97), Vector2(423, 97)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -185,16 +373,162 @@ tracks/4/path = NodePath("Tuto/TutoNextButton:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/InstructionPannel/Text:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["[color=white]Timer[/color]
+
+[color=red]HP Bar[/color]", "[color=orange]Speed[/color]
+
+[color=green]Progress Bar[/color]", "[color=orange]Speed[/color]
+
+[color=green]Progress Bar[/color]"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tuto/InstructionPannel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_top")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [15.0, 10.0, 10.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_left")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [210.0, 285.0, 285.0]
+}
+
+[sub_resource type="Animation" id="Animation_gtja8"]
+resource_name = "Time_HP"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/InstructionPannel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/InstructionPannel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/InstructionPannel/Text:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["", "[color=white]Timer[/color]
+
+[color=red]HP Bar[/color]"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_y8ojh"), SubResource("StyleBoxFlat_y8ojh")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_left")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [210.0, 210.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [15.0, 15.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gtja8"]
 _data = {
+&"Intro": SubResource("Animation_o3mju"),
 &"RESET": SubResource("Animation_t1loh"),
-&"intro": SubResource("Animation_o3mju")
+&"Speed_Progress": SubResource("Animation_y8ojh"),
+&"Time_HP": SubResource("Animation_gtja8")
 }
 
 [node name="Game" type="Node2D" unique_id=687301190]
@@ -566,6 +900,7 @@ scale = Vector2(0.13476573, 0.13476573)
 texture = ExtResource("20_7bnou")
 
 [node name="AvatarBike" type="Sprite2D" parent="Tuto" unique_id=112116030]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-740, -180)
 rotation = 0.23056334
@@ -576,9 +911,9 @@ texture = ExtResource("21_ubdf1")
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_left = -1279.0
-offset_top = -256.0
-offset_right = -1024.0
+offset_left = -1296.0
+offset_top = -394.0
+offset_right = -976.0
 offset_bottom = -65.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3jwj4")
 
@@ -590,29 +925,29 @@ theme_override_fonts/normal_font = SubResource("SystemFont_y8ojh")
 theme_override_font_sizes/normal_font_size = 15
 bbcode_enabled = true
 text = "Well, Here we are.
-Let's see the basics"
+Let's see the basics."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InstructionPannel" type="PanelContainer" parent="Tuto" unique_id=1831027349]
 unique_name_in_owner = true
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -717.0
-offset_top = -69.0
-offset_right = -333.0
-offset_bottom = 122.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3jwj4")
+offset_left = -895.0
+offset_top = -471.0
+offset_right = -606.0
+offset_bottom = -365.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y8ojh")
 
 [node name="Text" type="RichTextLabel" parent="Tuto/InstructionPannel" unique_id=709745893]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_y8ojh")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Hey You !"
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "                        [colour=white]Timer[/colour]
+                        [colour=red]Timer[/colour]"
 
 [node name="Pov1" type="Marker2D" parent="Tuto" unique_id=170066243]
 unique_name_in_owner = true
@@ -622,11 +957,13 @@ position = Vector2(-782, -181)
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_left = -1184.0
+offset_left = -1168.0
 offset_top = -112.0
-offset_right = -1120.0
+offset_right = -1104.0
 offset_bottom = -72.0
 texture_normal = ExtResource("22_ubdf1")
+texture_pressed = ExtResource("23_y8ojh")
+texture_focused = ExtResource("24_t1loh")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -638,3 +975,4 @@ libraries/ = SubResource("AnimationLibrary_gtja8")
 [connection signal="pressed" from="InGame_Menus/Pause_Menu/AbandonButton" to="." method="_on_abandon_button_pressed"]
 [connection signal="pressed" from="InGame_Menus/Finish_Menu/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="InGame_Menus/Finish_Menu/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Tuto/TutoNextButton" to="." method="_on_tuto_next_button_pressed"]
