@@ -6,10 +6,8 @@ var colors := {
 	"DARK_GREY":Color(0.2,0.2,0.23,1),
 	"LIGHT_GREEN":Color(0.2,0.9,0.23,1),
 	"ORANGE":Color(0.76,0.37,0,1),
-	"LIGHT_BLUE":Color(0.29,0.37,0.96,1)
+	"LIGHT_BLUE":Color("4a5ef5ff")
 }
-
-var best_trick_labels:Dictionary
 
 var dico_saut :={
 	Vector2(0,10):["Red",load("res://Images/HUD/piston_0.png")],
@@ -25,6 +23,7 @@ var dico_saut :={
 }
 var dico_to_hide :Dictionary
 
+var best_trick_labels:Dictionary
 var is_tricking :bool
 var label_is_fading :Dictionary
 var boost_gauge_size:float
@@ -40,11 +39,26 @@ func _ready():
 		"on_finish":[[%Tricks_label,%Combo_label],false],
 		"Intro":[[%Vitesse_label,%Time_label,%Avancement_bar,%Tricks_label,%Combo_label,%Trick_score_label,%Trick_scored_label,%Score_label,%Boost_gauge,%Boost_segment,%HPBar,%Joueur],false],
 		"Time_HP":[[%HPBar,%Time_label],true],
-		"Speed_Progress":[[%Vitesse_label,%Avancement_bar],true]
+		"Speed_Progress":[[%Vitesse_label,%Avancement_bar],true],
+		"Next":[[],true],
+		"To_start":[[],true],
+		"1st_crash":[[%Boost_segment,%Tricks_label,%Combo_label,%Trick_score_label,%Trick_scored_label,%Score_label],false],
+		"Jump":[[%Piston],true],
+		"Jump2":[[],true],
+		"Jump3":[[],true],
+		"To_balance":[[],true],
+		"Balance":[[%Boost_segment,%Tricks_label,%Combo_label,%Trick_score_label,%Trick_scored_label,%Score_label],false],
+		"Brake":[[%Boost_segment,%Tricks_label,%Combo_label,%Trick_score_label,%Trick_scored_label,%Score_label],false],
+		"Boost":[[%Boost_segment,%Tricks_label,%Combo_label,%Trick_score_label,%Trick_scored_label,%Score_label],false],
+		"Boost2":[[],false],
+		"Boost3":[[%Boost_gauge],true],
+		"Boost4":[[%Boost_segment],true],
+		"End":[[%Boost_segment,%Tricks_label,%Combo_label,%Trick_score_label,%Trick_scored_label,%Score_label],false],
+		"End2":[[],true],
 	}
 
 func reset():
-	%Penalty_label.text = "+ " + str(int(Global.current_profile["upgrades"]["RESPAWN_PENALTY"])) + " sec"
+	%Penalty_label.text = "+ " + str(int(Global.current_profile["upgrades"]["RESPAWN_TIME_PENALTY"])) + " sec"
 	%Penalty_label.hide()
 	%Piston.hide()
 	%Tricks_label.hide()
@@ -57,6 +71,8 @@ func reset():
 	for moment in dico_to_hide:set_visibility(moment)
 
 func set_visibility(moment:String):for node in dico_to_hide[moment][0]:node.visible = dico_to_hide[moment][1]
+
+func update_HP_Bar():%HPBar.value = Global.current_hp
 
 func set_boost_geometry():
 	%Boost_gauge.max_value = Global.BOOST_MAX_QUANTITY
@@ -84,33 +100,6 @@ func update_best_tricks(trick_name,effect=true):
 		best_trick_labels[trick_name].add_theme_color_override("font_color", colors["LIGHT_GREEN"])
 		await get_tree().create_timer(1).timeout
 		best_trick_labels[trick_name].add_theme_color_override("font_color", colors["DARK_GREY"])
-
-func _physics_process(_delta):
-	%Time_label.text = Global.format_time(Global.race_time)
-	if Global.penalty_to_show and %Show_penalty_timer.is_stopped():
-		%Tricks_label.add_theme_color_override("font_color", colors["RED"])
-		%Penalty_label.show()
-		Global.penalty_to_show = false
-		%Show_penalty_timer.start()
-	%Vitesse_label.text = "Speed : " + str(int(Global.vitesse.length())) + " km/h"
-	%Avancement_bar.value = Global.avancement
-	%ContactRed.visible = !Global.contact_sol
-	if Global.taux_compression > 0.0:
-		%Piston.show()
-		for seuils in dico_saut:
-			if Global.taux_compression >= seuils.x and Global.taux_compression < seuils.y:
-				%Piston.texture = dico_saut[seuils][1]
-				if dico_saut[seuils][0] == "Red": %JumpSignal.hide()
-				else:
-					%JumpSignal.show()
-					%JumpSignal.texture = load(dico_saut[seuils][0])
-	else : %Piston.hide()
-	if is_tricking:
-		%Tricks_label.text = Global.current_trick["trick"] + "\n"\
-	 		+ str(round_to(Global.current_trick["length"],1)) + " m | "\
-	 		+ str(round_to(Global.current_trick["duration"],1)) + " sec"
-		%Trick_score_label.text = str(int(Global.potential_combo_score+Global.potential_trick_score)) + " Points"
-	%Boost_gauge.value = Global.current_boost + min(Global.potential_combo_score + Global.potential_trick_score,Global.ONE_TIME_QUANTITY)
 
 func trick_reset():
 	is_tricking = false
@@ -155,3 +144,30 @@ func fade_out_label(label: Label,scaling: Vector2,offseting: Vector2,effect_dura
 func _on_show_penalty_timer_timeout():
 	fade_out_label(%Penalty_label,Vector2(1.5,1.5),Vector2(0,50),1)
 	%Tricks_label.add_theme_color_override("font_color", colors["YELLOW"])
+
+func _physics_process(_delta):
+	%Time_label.text = Global.format_time(Global.race_time)
+	if Global.penalty_to_show and %Show_penalty_timer.is_stopped():
+		%Tricks_label.add_theme_color_override("font_color", colors["RED"])
+		%Penalty_label.show()
+		Global.penalty_to_show = false
+		%Show_penalty_timer.start()
+	%Vitesse_label.text = "Speed : " + str(int(Global.vitesse.length())) + " km/h"
+	%Avancement_bar.value = Global.avancement
+	%ContactRed.visible = !Global.contact_sol
+	if Global.taux_compression > 0.0:
+		%Piston.show()
+		for seuils in dico_saut:
+			if Global.taux_compression >= seuils.x and Global.taux_compression < seuils.y:
+				%Piston.texture = dico_saut[seuils][1]
+				if dico_saut[seuils][0] == "Red": %JumpSignal.hide()
+				else:
+					%JumpSignal.show()
+					%JumpSignal.texture = load(dico_saut[seuils][0])
+	else : %Piston.hide()
+	if is_tricking:
+		%Tricks_label.text = Global.current_trick["trick"] + "\n"\
+	 		+ str(round_to(Global.current_trick["length"],1)) + " m | "\
+	 		+ str(round_to(Global.current_trick["duration"],1)) + " sec"
+		%Trick_score_label.text = str(int(Global.potential_combo_score+Global.potential_trick_score)) + " Points"
+	%Boost_gauge.value = Global.current_boost + min(Global.potential_combo_score + Global.potential_trick_score,Global.ONE_TIME_QUANTITY)

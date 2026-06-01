@@ -179,7 +179,7 @@ func _physics_process(delta):
 	
 	previous_actual_state = actual_state
 
-func _process(delta):
+func _process(_delta):
 	# Floor detection
 	%FloorScan.global_rotation = 0.0
 	if %FloorScan.is_colliding():

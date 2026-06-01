@@ -1,6 +1,7 @@
 extends Node
 
 # Config
+var debug = true
 const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}
@@ -9,8 +10,9 @@ var config := {}
 var current_map := "0"
 
 # HUD
-var race_time := 0.0
+var race_time : float
 var penalty_to_show := false
+var current_hp : float
 var contact_sol := true
 var vitesse := Vector2.ZERO
 var player_position := Vector2.ZERO
@@ -57,7 +59,7 @@ var rotation_name_and_point := {1:["",1.0],2:["Double",2.0],3:["Triple",3.0],
 var tricks_values : Dictionary = {
 	"":0,
 	"length_to_double":10,
-	"duration_to_double":3,
+	"duration_to_double":2,
 	"Air":50,
 	"Wheelie":100,
 	"Nose Wheelie":150,
@@ -67,12 +69,8 @@ var tricks_values : Dictionary = {
 
 # Dicos
 var dico_maps := {
-	"tuto":"res://Maps/map_tuto.tscn",
 	"0":"res://Maps/map_0.tscn",
-	"1":"res://Maps/map_1.tscn",
-	"2":"res://Maps/map_2.tscn",
-	"3":"res://Maps/map_3.tscn",
-	"5":"res://Maps/special_map.tscn"
+	"1":"res://Maps/map_1.tscn"
 }
 var dico_vélo := {
 	0:"res://Bikes/bike_0.tscn",
@@ -112,6 +110,24 @@ func get_sprites_path()->String:
 	else:return ""
 func get_profile_bike()->String:return dico_vélo[int(current_profile["bike_model"])]
 func get_profile_data(data:String)->String:return current_profile[data]
+
+func set_start_values():
+	race_time = 0.0
+	current_hp = 100
+	current_cp = "start"
+	cp_player_speed = Vector2.ZERO
+	cp_player_pos = Vector2.ZERO
+	cp_player_score = 0
+	cp_player_boost = 0
+	current_score = 0
+	current_boost = 0
+
+func handle_crash():
+	penalty_to_show = true
+	race_time += current_profile["upgrades"]["RESPAWN_TIME_PENALTY"]
+	current_hp -= current_profile["upgrades"]["RESPAWN_HP_PENALTY"]
+	current_score = cp_player_score
+	current_boost = cp_player_boost
 
 func checkpoint_update(cp : String):
 	if current_cp != cp:
@@ -229,7 +245,7 @@ func check_map_record():
 		current_profile["map_record"][current_map]["score"]=Global.current_score
 
 func format_time(t: float) -> String:
-	var minutes := int(t) / 60
+	var minutes := int(t/60)
 	var seconds := int(t) % 60
 	var ms := int((t - int(t)) * 1000)
 	return "%02d:%02d.%03d" % [minutes, seconds, ms]

@@ -23,6 +23,8 @@ extends Node2D
 @export var under_visual_step := 20.0
 @export var under_repeat_px := 566.0
 
+var cp_passed : Dictionary
+
 func get_level_data():
 	return {
 		"start": %Start,
@@ -34,6 +36,7 @@ func get_level_data():
 
 signal out_of_bounds
 signal finish
+signal act_done
 
 func _ready():
 	var road :={
@@ -71,6 +74,18 @@ func _on_finish_body_entered(_body):
 	%Finish.activate()
 	finish.emit()
 
-func _on_checkpoint_1_body_entered(_body):Global.checkpoint_update("cp1")
-func _on_checkpoint_2_body_entered(_body):Global.checkpoint_update("cp2")
-func _on_checkpoint_3_body_entered(_body):Global.checkpoint_update("cp3")
+func _on_checkpoint_1_body_entered(_body):
+	Global.checkpoint_update("cp1")
+	if not cp_passed.get("cp1",false):
+		cp_passed["cp1"] = true
+		act_done.emit()
+func _on_checkpoint_2_body_entered(_body):
+	Global.checkpoint_update("cp2")
+	if not cp_passed.get("cp2",false):
+		cp_passed["cp2"] = true
+		act_done.emit()
+func _on_checkpoint_3_body_entered(_body):
+	Global.checkpoint_update("cp3")
+	if not cp_passed.get("cp3",false):
+		cp_passed["cp3"] = true
+		act_done.emit()

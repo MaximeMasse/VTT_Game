@@ -50,7 +50,8 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 			"ONE_TIME_RATIO": 5.0
 		},
 		"upgrades": {
-			"RESPAWN_PENALTY" : 5.0
+			"RESPAWN_TIME_PENALTY" : 5.0,
+			"RESPAWN_HP_PENALTY" : 20
 		},
 		"best_tricks":{
 			"Air": {"length":0.0,"duration":0.0},
@@ -58,7 +59,10 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 			"Nose Wheelie": {"length":0.0,"duration":0.0}
 		},
 		"best_combo": [],
-		"map_record": {}
+		"map_record": {},
+		"current_run": {
+			"finished_maps" : []
+		}
 	}
 	save_profile(profile)
 	set_current_profile(profile)

@@ -109,7 +109,7 @@ rotation = -0.0010755789
 shape = SubResource("SegmentShape2D_8lorq")
 
 [node name="Tinys" type="Sprite2D" parent="SpecialParts/CollisionShape2D" unique_id=2086086056]
-z_index = 2
+z_index = 1
 position = Vector2(114.92969, 65.1239)
 rotation = -0.1905273
 texture = ExtResource("6_gxuys")
@@ -133,11 +133,11 @@ position = Vector2(4487, 468)
 
 [node name="Checkpoint_2" parent="Spots" unique_id=1899925259 instance=ExtResource("9_cgsra")]
 unique_name_in_owner = true
-position = Vector2(8420, 648)
+position = Vector2(8420, 621)
 
 [node name="Checkpoint_3" parent="Spots" unique_id=370764797 instance=ExtResource("9_cgsra")]
 unique_name_in_owner = true
-position = Vector2(13956, 1071)
+position = Vector2(13956, 1041)
 
 [node name="CrashZone" type="Area2D" parent="Spots" unique_id=2108489664]
 collision_layer = 0
@@ -274,7 +274,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1455.2212, 1024)
 
 [node name="Forest11" type="Sprite2D" parent="Assets/FrontForest" unique_id=1886656289]
-z_index = 30
+z_index = 2
 position = Vector2(8451, 943)
 rotation = 3.1415927
 scale = Vector2(1, -1)
@@ -331,7 +331,7 @@ position = Vector2(11837, 1819)
 texture = ExtResource("14_7pkd1")
 
 [node name="Forest19" type="Sprite2D" parent="Assets/FrontForest" unique_id=1347301425]
-z_index = 10
+z_index = 2
 position = Vector2(13547.999, 1498)
 scale = Vector2(1.3770318, 1.3684211)
 texture = ExtResource("13_80eed")

@@ -4,6 +4,7 @@ extends Node
 var dico_music := {
 	"MainMenu": preload("res://Sound/Music/awesomeness.wav"),
 	"Victory": preload("res://Sound/Music/Victory_music.wav"),
+	"Tuto": preload("res://Sound/Music/Tuto.wav"),
 	"Map_0": preload("res://Sound/Music/Map_0.mp3"),
 	"Map_1": preload("res://Sound/Music/Map_1.mp3"),
 	"Map_2": preload("res://Sound/Music/Map_2.mp3"),

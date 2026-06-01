@@ -38,6 +38,9 @@
 [ext_resource type="PackedScene" uid="uid://ysg3q6oybscp" path="res://Scenes/Dialogs/dialog_chairlift.tscn" id="36_6glyx"]
 [ext_resource type="Texture2D" uid="uid://mp076uys4gx0" path="res://Images/Menus/Maps/Map0.png" id="36_hagod"]
 [ext_resource type="Texture2D" uid="uid://bhwdw6clbkwqf" path="res://Images/Menus/Maps/Map0_focused.png" id="37_6glyx"]
+[ext_resource type="Texture2D" uid="uid://2rxyc335n81e" path="res://Images/Menus/Maps/Map_valid.png" id="39_hgswm"]
+[ext_resource type="Texture2D" uid="uid://c7jdhcmkuorhl" path="res://Images/Menus/Maps/Map1.png" id="40_hbxnh"]
+[ext_resource type="Texture2D" uid="uid://dxu8o2xnnmenv" path="res://Images/Menus/Maps/Map1_focused.png" id="41_o23ee"]
 
 [sub_resource type="SystemFont" id="SystemFont_jw3nv"]
 font_names = PackedStringArray("Pixel Game")
@@ -405,6 +408,29 @@ texture_normal = ExtResource("36_hagod")
 texture_focused = ExtResource("37_6glyx")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="MapValid" type="Sprite2D" parent="ChairliftMenu/Maps/Map0_Button" unique_id=978238667]
+scale = Vector2(0.08691406, 0.08691406)
+texture = ExtResource("39_hgswm")
+centered = false
+
+[node name="Map1_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=859385007]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 744.0
+offset_top = 266.0
+offset_right = 832.0
+offset_bottom = 354.0
+texture_normal = ExtResource("40_hbxnh")
+texture_focused = ExtResource("41_o23ee")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MapValid" type="Sprite2D" parent="ChairliftMenu/Maps/Map1_Button" unique_id=1337501480]
+position = Vector2(-0.63, -1.285)
+scale = Vector2(0.087, 0.087)
+texture = ExtResource("39_hgswm")
+centered = false
 
 [connection signal="pressed" from="MainMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MainMenu/NewPlayerButton" to="." method="_on_new_player_button_pressed"]

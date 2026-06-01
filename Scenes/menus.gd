@@ -2,7 +2,17 @@ extends Control
 
 var choix_perso :int= 1
 
-var dico_menus := {}
+@onready var dico_menus := {
+		"MainMenu":%MainMenu,
+		"NewPlayer":%NewPlayer,
+		"ChangeProfile":%ChangeProfile,
+		"Carrière":%Carriere,
+		"Chairlift":%ChairliftMenu
+	}
+@onready var dico_map_buttons := {
+	"0" : [%Map0_Button,["1"]],
+	"1" : [%Map1_Button,[]]
+}
 
 func _ready():
 	#print(ProjectSettings.globalize_path("user://"))
@@ -26,15 +36,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# Buttons
 	set_up_buttons(self)
-	#Menuing
-	dico_menus = {
-		"MainMenu":%MainMenu,
-		"NewPlayer":%NewPlayer,
-		"ChangeProfile":%ChangeProfile,
-		"Carrière":%Carriere,
-		"Chairlift":%ChairliftMenu
-	}
-	show_menu(dico_menus[Global.menu_to_show])
+	show_menu(Global.menu_to_show)
 
 func set_up_buttons(node):
 	for child in node.get_children():
@@ -51,9 +53,27 @@ func _unhandled_input(_event):
 	elif Input.is_action_just_pressed("ui_up"):
 		%ProfileButton.grab_focus()
 
-func show_menu(menu):
+func show_menu(menu:String):
 	for men in dico_menus:dico_menus[men].hide()
-	menu.show()
+	if menu == "Chairlift":map_progress_update()
+	dico_menus[menu].show()
+	
+func map_progress_update():
+	for map in dico_map_buttons: 
+		dico_map_buttons[map][0].hide()
+		dico_map_buttons[map][0].get_child(0).hide()
+	var node_to_check :Array = ["0"]
+	var tree_done := false
+	while not tree_done:
+		print(node_to_check)
+		if node_to_check.size() > 0 :
+			var current_map : String = node_to_check.pop_front()
+			dico_map_buttons[current_map][0].show()
+			if current_map in Global.current_profile["current_run"]["finished_maps"]:
+				dico_map_buttons[current_map][0].get_child(0).show()
+				node_to_check.append_array(dico_map_buttons[current_map][1])
+		else:tree_done=true
+
 
 func apply_audio_config():
 	AudioManager.set_bus_volume("Music", Global.config.get("music_volume", 0.8))
@@ -63,10 +83,11 @@ func apply_audio_config():
 
 func _on_continue_button_pressed():
 	AudioManager.stop_music()
-	Global.start_mod("Tuto_Game")
+	show_menu("Chairlift")
+	#Global.start_mod("Tuto_Game")
 
 func _on_new_player_button_pressed():
-	show_menu(%NewPlayer)
+	show_menu("NewPlayer")
 	%Choix.texture = load("res://Avatar/Players/" + Global.dico_avatars[choix_perso] + "/Avatar.png")
 	
 func _on_bouton_gauche_pressed():
@@ -83,7 +104,7 @@ func _on_ok_pressed():
 	SaveManager.create_profile(pseudo, avatar_id)
 	if choix_perso in [3,4]:Global.current_profile["bike_model"] = 2
 	SaveManager.save_profile(Global.current_profile)
-	show_menu(%Carriere)
+	show_menu("Carrière")
 	if Global.get_profile_data("state") == "tuto":
 		%StartTutoPanel.hide()
 		%Tuto.show()
@@ -96,7 +117,7 @@ func _on_dialog_tuto_scene_ended(scene_name):
 	elif scene_name == "tuto_start":%Chairlift.disabled = false
 	elif scene_name == "tuto_skip":
 		%Tuto.hide()
-		Global.get_profile_data("state") == "other"
+		Global.current_profile["state"] = "other"
 		for button in %Spots.get_children():button.disabled = false
 
 func _on_tuto_yes_button_pressed():
@@ -109,17 +130,14 @@ func _on_tuto_no_button_pressed():
 
 func _on_chairlift_pressed() -> void:
 	AudioManager.stop_music()
-	show_menu(%ChairliftMenu)
+	show_menu("Chairlift")
 	if Global.get_profile_data("state") == "tuto":
 		for button in %Maps.get_children():button.hide()
 		%DialogChairlift.play_scene("tuto")
 
-func _on_dialog_chairlift_scene_ended(scene_name):
-	%Map0_Button.show()
+func _on_dialog_chairlift_scene_ended(_scene_name):%Map0_Button.show()
 
-func _on_map_0_button_pressed():
-	Global.start_mod("Tuto_Game")
-
+func _on_map_0_button_pressed():Global.start_mod("Tuto_Game")
 
 func on_button_hover(button:BaseButton):if not button.disabled:button.grab_focus()
 func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()

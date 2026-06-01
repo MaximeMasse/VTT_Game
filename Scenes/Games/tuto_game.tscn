@@ -20,10 +20,14 @@
 [ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="13_36eu1"]
 [ext_resource type="Texture2D" uid="uid://dv62chm0uslkm" path="res://Images/Menus/Controls/continue_hover.png" id="14_g81iy"]
 [ext_resource type="Texture2D" uid="uid://bgakseio1l8p0" path="res://Avatar/Players/Biqueen/Avatar.png" id="20_7bnou"]
+[ext_resource type="Texture2D" uid="uid://h4sbj4n2tu7f" path="res://Avatar/Players/Biqueen/Regular.png" id="21_t1loh"]
 [ext_resource type="Texture2D" uid="uid://dg0y8wwil5yc5" path="res://Avatar/Players/Man/Avatar_bike.png" id="21_ubdf1"]
 [ext_resource type="Texture2D" uid="uid://dw221buwvrsel" path="res://Images/Menus/Controls/next_up.png" id="22_ubdf1"]
 [ext_resource type="Texture2D" uid="uid://c2lyid6qidng8" path="res://Images/Menus/Controls/next_down.png" id="23_y8ojh"]
 [ext_resource type="Texture2D" uid="uid://dum6hh7qc2q5t" path="res://Images/Menus/Controls/next_hover.png" id="24_t1loh"]
+[ext_resource type="Texture2D" uid="uid://bxpvqii7llwk8" path="res://Images/Menus/Controls/ok_up.png" id="25_6gurv"]
+[ext_resource type="Texture2D" uid="uid://n82c8ivh0jec" path="res://Images/Menus/Controls/ok_down.png" id="26_jqggj"]
+[ext_resource type="Texture2D" uid="uid://d3s2ymvh17wfv" path="res://Images/Menus/Controls/ok_hover.png" id="27_2haye"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
 bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
@@ -47,10 +51,10 @@ font_names = PackedStringArray("Pharmakon")
 font_names = PackedStringArray("Pixel Game")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jwj4"]
-content_margin_left = 15.0
-content_margin_top = 15.0
-content_margin_right = 15.0
-content_margin_bottom = 50.0
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 60.0
 bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
 border_width_left = 5
 border_width_top = 5
@@ -67,9 +71,9 @@ font_names = PackedStringArray("Pixel Code")
 subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ojh"]
-content_margin_left = 209.0
-content_margin_top = 20.0
-bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+content_margin_left = 210.0
+content_margin_top = 15.0
+bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -79,6 +83,955 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1loh"]
+content_margin_left = 285.0
+content_margin_top = 10.0
+bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="SystemFont" id="SystemFont_o3mju"]
+font_names = PackedStringArray("Pixel Code")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3mju"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="SystemFont" id="SystemFont_t1loh"]
+font_names = PackedStringArray("Pixel Code")
+
+[sub_resource type="Animation" id="Animation_2haye"]
+resource_name = "1st_crash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/Char1Pannel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, -320), Vector2(576, -320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/Char1Pannel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/AvatarBike:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, -11), Vector2(6, -11)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/AvatarBike:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.043242365, 0.043242365]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3102, 486), Vector2(300, -50)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tuto/AvatarBike:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tuto/TutoNextButton:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(704, -48), Vector2(704, -48)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tuto/TutoNextButton:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_adtlk"]
+resource_name = "Balance"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7185, 815), Vector2(4661, 463), Vector2(4661, 463)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/Biqueen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.3999999, 1.7999997, 2.1999998, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(6032.0005, 322), Vector2(5291, 582), Vector2(5022, 592.00006), Vector2(4799, 590), Vector2(4770, 587)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/Biqueen:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.3999999, 1.7999997, 2.1999998, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.08276688, -0.115699634, -0.115699634, -0.03366132, -0.03366132]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/Biqueen:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.3999999, 1.7999997, 2.1999998, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.146, 0.146), Vector2(-0.14599998, 0.146), Vector2(-0.14599998, 0.146), Vector2(-0.14599998, 0.146), Vector2(-0.14599998, 0.146)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/Char1Pannel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, -320), Vector2(4833, 224)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/Char1Pannel:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tuto/TutoNextButton:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(704, -48), Vector2(4960, 496)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tuto/TutoNextButton:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Tuto/AvatarBike:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4489, 507.99988), Vector2(4489, 507.99988), Vector2(4489, 507.99988)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Tuto/AvatarBike:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.37497583, 0.37497583, 0.37497583]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Tuto/AvatarBike:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Tuto/AvatarBike:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yihe6"]
+resource_name = "Boost"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(23459, 5110), Vector2(14272, 963)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/Biqueen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(14333, 1097.0001), Vector2(14333, 1097.0001)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/Biqueen:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-12.587934, -12.587934]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/Biqueen:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.14599998, 0.146), Vector2(-0.14599998, 0.146)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/Biqueen:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/AvatarBike:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(13959.001, 1083.9999), Vector2(13959.001, 1083.9999)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tuto/AvatarBike:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.0025020838, -0.0025020838]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tuto/AvatarBike:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tuto/AvatarBike:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Tuto/TutoNextButton:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(14560, 976), Vector2(14560, 976)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Tuto/TutoNextButton:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Tuto/Char1Pannel:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(14432, 704), Vector2(14432, 704)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Tuto/Char1Pannel:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Camera:zoom")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x00sa"]
+resource_name = "Boost2"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_rn73c"]
+resource_name = "Boost3"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/BoostPannel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/BoostPannel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qjqpm"]
+resource_name = "Boost4"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/BoostPannel/RichTextLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["      [color=orange]Boost Gauge[/color]", "      [color=orange]Boost Gauge[/color]
+
+
+
+[color=blue]Max one time gain"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/BoostPannel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/BoostPannel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_xt6la"]
+resource_name = "Brake"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(10748, 1237), Vector2(8510, 658), Vector2(8510, 658)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/AvatarBike:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8427.999, 665), Vector2(8427.999, 665)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/AvatarBike:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0007109046, 0.0007109046]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/AvatarBike:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/AvatarBike:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/Biqueen:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.6666667, 1, 1.5333334, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(9645, 586.99994), Vector2(9645, 586.99994), Vector2(9293.002, 585.00006), Vector2(9069, 604), Vector2(8836.999, 643.9999), Vector2(8708, 667.9998)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tuto/Biqueen:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.6666667, 1, 1.5333334, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-6.224692, -6.313171, -6.3245487, -6.472434, -6.563764, -6.563764]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tuto/Biqueen:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.6666667, 1, 1.5333334, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.146, 0.146), Vector2(-0.146, 0.146), Vector2(-0.14599998, 0.146), Vector2(-0.14599998, 0.146), Vector2(-0.14599998, 0.146), Vector2(-0.14599998, 0.146)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tuto/Char1Pannel:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8792, 320)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Tuto/Char1Pannel:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Tuto/TutoNextButton:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8928, 592)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Tuto/TutoNextButton:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Camera:zoom")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.235, 1.235), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t26de"]
+resource_name = "End"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/Biqueen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/Biqueen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(30926, 5463), Vector2(30926, 5463)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/Biqueen:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-25.160704, -25.160704]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/Biqueen:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.146, 0.146), Vector2(0.146, 0.146)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/Char1Pannel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(30504, 5240), Vector2(30504, 5240)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/Char1Pannel:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tuto/TutoNextButton:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(30632, 5512), Vector2(30632, 5512)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tuto/TutoNextButton:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_h0iu0"]
+resource_name = "End2"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/EndTutoButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_o3mju"]
 resource_name = "Intro"
@@ -110,7 +1063,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tuto/Avatar:modulate")
+tracks/2/path = NodePath("Tuto/Biqueen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -139,6 +1092,153 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/TimeHPPannel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tuto/SpeedProgressPannel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tuto/TutoNextButton:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1168, -120), Vector2(-1168, -120)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tuto/TutoNextButton:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tuto/Char1Pannel:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1296, -392), Vector2(-1296, -392)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Tuto/Char1Pannel:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_smw20"]
+resource_name = "Jump"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_dso7e"]
+resource_name = "Jump2"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_382a6"]
+resource_name = "Jump3"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_6gurv"]
+resource_name = "Next"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/TimeHPPannel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/SpeedProgressPannel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/SpeedProgressPannel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -156,7 +1256,449 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(6, 6)]
+"values": [Vector2(1.235, 1.235)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/TimeHPPannel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/SpeedProgressPannel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/TimeHPPannel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tuto/SpeedProgressPannel:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tuto/Biqueen:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-916, -189.00002)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tuto/Biqueen:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tuto/Biqueen:texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_7bnou")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Tuto/Biqueen:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.13476573, 0.13476573)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-782, -181)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Tuto/Char1Pannel:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1296, -392)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Tuto/Char1Pannel:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Tuto/AvatarBike:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-740, -180)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Tuto/AvatarBike:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.23056334]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Tuto/TutoNextButton:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1168, -120)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Tuto/TutoNextButton:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Tuto/AvatarBike:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Tuto/AvatarBike:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Tuto/Biqueen:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Tuto/BoostPannel/RichTextLabel:text")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["      [color=orange]Boost Gauge[/color]"]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Tuto/BoostPannel:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Tuto/BoostPannel:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Tuto/EndTutoButton:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_y8ojh"]
+resource_name = "Speed_Progress"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/TimeHPPannel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/TimeHPPannel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/SpeedProgressPannel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/SpeedProgressPannel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_gtja8"]
+resource_name = "Time_HP"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/TimeHPPannel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/TimeHPPannel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/SpeedProgressPannel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_o3tud"]
+resource_name = "To_balance"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/AvatarBike:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -173,96 +1715,247 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tuto/Avatar:modulate")
+tracks/2/path = NodePath("Tuto/TutoNextButton:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tuto/AvatarBike:modulate")
+tracks/3/path = NodePath("Tuto/Biqueen:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.1, 1.4, 1.7333332, 2.1000001, 2.4333332, 2.8, 3.2, 3.5000002, 4, 4.366667, 4.9000006, 5.4000006, 5.9000006, 6.0666676, 6.4333344, 6.8, 7.200001, 7.466667, 7.8666677, 8.2, 8.433333, 8.666667, 8.9, 9.1, 9.333333, 9.533334, 9.700001, 9.833334, 9.933333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(443, 7), Vector2(443, 7), Vector2(732, 5.000004), Vector2(910.00006, 19.000004), Vector2(1013.0001, 55.99997), Vector2(1159, 137.99997), Vector2(1367, 251.00003), Vector2(1590, 372.99994), Vector2(1771, 434.00003), Vector2(2014, 449.00003), Vector2(2260, 449), Vector2(2488.0002, 416), Vector2(2620, 369), Vector2(2746, 344.00006), Vector2(2899, 361), Vector2(3014.9998, 374), Vector2(3087, 362.9999), Vector2(3268, 305.99997), Vector2(3539, 261.00003), Vector2(3856.0002, 270.00015), Vector2(3996, 311.00015), Vector2(4196, 402.0001), Vector2(4565, 555.0001), Vector2(4789, 589.00006), Vector2(5185.9995, 589), Vector2(5426, 570), Vector2(5679, 515.99994), Vector2(5809, 439.00024), Vector2(5865, 356.00024), Vector2(5865, 356.00024), Vector2(5900, 279.00003), Vector2(5996, 287), Vector2(6032.0005, 322)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/4/path = NodePath("Tuto/Biqueen:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.1, 1.4, 1.7333332, 2.1000001, 2.4333332, 2.8, 3.2, 3.5000002, 4, 4.366667, 4.9000006, 5.4000006, 5.9000006, 6.0666676, 6.4333344, 6.8, 7.200001, 7.466667, 7.8666677, 8.2, 8.433333, 8.666667, 8.9, 9.1, 9.333333, 9.533334, 9.700001, 9.833334, 9.933333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.0071412846, 0.086356536, 0.086356536, 0.32415646, 0.57643807, 0.6013857, 0.6013857, 0.57062554, 0.275491, 0.0923357, 0.057291795, -0.06840022, -0.132494, -0.0062342733, 0.1183468, 0.1183468, -0.21273258, -0.21273258, 0.00042782724, 0.24239883, 0.5118772, 0.5118772, 0.4267207, 0.13191527, 0.017962404, -0.06567552, -0.22111887, -0.8088089, -0.89390326, -0.89390326, -0.89390326, -0.013759911, 0.08276688]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Tuto/InstructionPannel:visible")
+tracks/5/path = NodePath("Tuto/Biqueen:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.1, 1.4, 1.7333332, 2.1000001, 2.4333332, 2.8, 3.2, 3.5000002, 4, 4.366667, 4.9000006, 5.4000006, 5.9000006, 6.0666676, 6.4333344, 6.8, 7.200001, 7.466667, 7.8666677, 8.2, 8.433333, 8.666667, 8.9, 9.1, 9.333333, 9.533334, 9.700001, 9.833334, 9.933333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.14599998, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146)]
+}
+
+[sub_resource type="Animation" id="Animation_cl5t0"]
+resource_name = "To_boost"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/AvatarBike:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/Biqueen:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5333334, 1.8000001, 2.1666667, 2.4666667, 2.7333336, 3.0666668, 3.4333334, 3.6000001, 3.8000002, 3.966667, 4.1333337, 4.3333335, 4.5, 4.666667, 4.8, 4.9666667, 5.2333336, 5.5000005, 5.766667, 6.1333337, 6.6000004, 7.066667, 7.3333335, 7.6333337, 8, 8.366667, 8.766667, 9.200001, 9.566668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8708, 667.9998), Vector2(8708, 667.9998), Vector2(9008, 605.00006), Vector2(9373.001, 580), Vector2(9556, 571.9999), Vector2(9691, 570.00006), Vector2(9885.001, 656.99994), Vector2(9975.001, 843.00006), Vector2(10023.001, 962.0002), Vector2(10110.001, 1105.9998), Vector2(10157.001, 1165.0007), Vector2(10287, 1220.9999), Vector2(10422, 1213), Vector2(10546, 1145.0002), Vector2(10657, 1064.0002), Vector2(10841, 1064.9996), Vector2(11006, 1139), Vector2(11135, 1231.0004), Vector2(11246, 1372.0002), Vector2(11402.999, 1477.9998), Vector2(11682, 1548.0002), Vector2(11953, 1517.0001), Vector2(12219.999, 1437), Vector2(12526, 1310.0005), Vector2(12826, 1207.0005), Vector2(13169, 1135.0004), Vector2(13432.001, 1116.9998), Vector2(13676, 1108.9999), Vector2(14023.002, 1099), Vector2(14286.002, 1095.0001), Vector2(14333, 1097.0001), Vector2(14333, 1097.0001)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/Biqueen:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5333334, 1.8000001, 2.1666667, 2.4666667, 2.7333336, 3.0666668, 3.4333334, 3.6000001, 3.8000002, 3.966667, 4.1333337, 4.3333335, 4.5, 4.666667, 4.8, 4.9666667, 5.2333336, 5.5000005, 5.766667, 6.1333337, 6.6000004, 7.066667, 7.3333335, 7.6333337, 8, 8.366667, 8.766667, 9.200001, 9.566668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-6.563764, -6.415018, -6.3573666, -6.192215, -5.9726844, -5.3669367, -5.1117897, -5.1117897, -5.227182, -5.4026475, -5.4026475, -6.0184364, -6.480227, -6.7968645, -7.3752956, -8.4887, -9.818867, -11.200805, -11.897871, -11.989833, -12.433849, -12.666092, -12.842737, -12.842737, -12.713588, -12.697709, -12.5464735, -12.508362, -12.508362, -12.508362, -12.508362, -12.587934]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/Biqueen:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5333334, 1.8000001, 2.1666667, 2.4666667, 2.7333336, 3.0666668, 3.4333334, 3.6000001, 3.8000002, 3.966667, 4.1333337, 4.3333335, 4.5, 4.666667, 4.8, 4.9666667, 5.2333336, 5.5000005, 5.766667, 6.1333337, 6.6000004, 7.066667, 7.3333335, 7.6333337, 8, 8.366667, 8.766667, 9.200001, 9.566668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.14599998, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(-0.146, 0.146)]
+}
+
+[sub_resource type="Animation" id="Animation_eu7g5"]
+resource_name = "To_brake"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tuto/AvatarBike:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tuto/Char1Pannel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tuto/Biqueen:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7666667, 1.1, 1.4666667, 1.8000001, 2.266667, 2.6333334, 2.9000003, 3.1333337, 3.3000002, 3.5666668, 3.7333333, 4.033334, 4.2666664, 4.466666, 4.7, 5.033334, 5.233333, 5.4666667, 5.7, 5.866667, 6.1, 6.3333335, 6.6, 6.9, 7.233333, 7.4666667, 7.7333336, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4770, 587), Vector2(4770, 587), Vector2(4850.0005, 588), Vector2(4975.0005, 590.00006), Vector2(5164.0005, 590), Vector2(5360.9995, 578), Vector2(5656.9995, 527), Vector2(5846.9995, 388.99988), Vector2(5910.9995, 262.99966), Vector2(5965.999, 195.99988), Vector2(6024, 177.00006), Vector2(6082, 215.99998), Vector2(6172, 266.9998), Vector2(6219.999, 371.99988), Vector2(6259, 501), Vector2(6317, 620.00024), Vector2(6468, 752.00024), Vector2(6745.9985, 821.9998), Vector2(7096.9995, 809.99994), Vector2(7400.999, 694), Vector2(7553.9995, 585.0002), Vector2(7733.0005, 556.0001), Vector2(7928.9995, 615), Vector2(8055, 650), Vector2(8240, 675.00006), Vector2(8456.001, 687), Vector2(8678, 673), Vector2(8843.001, 641.0001), Vector2(9057, 594.99994), Vector2(9645, 586.99994)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tuto/Biqueen:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7666667, 1.1, 1.4666667, 1.8000001, 2.266667, 2.6333334, 2.9000003, 3.1333337, 3.3000002, 3.5666668, 3.7333333, 4.033334, 4.2666664, 4.466666, 4.7, 5.033334, 5.233333, 5.4666667, 5.7, 5.866667, 6.1, 6.3333335, 6.6, 6.9, 7.233333, 7.4666667, 7.7333336, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.03366132, 0.12547888, 0.12547888, 0.0868381, 0.058375522, -0.0074331984, -0.15973008, -0.82950443, -1.0838704, -1.8221674, -2.5169833, -3.5198212, -4.1559305, -4.731373, -5.052323, -5.4095817, -5.596962, -6.0900087, -6.3344216, -6.591499, -6.495343, -6.2538385, -5.9957824, -6.049241, -6.049241, -6.2308803, -6.3784237, -6.429722, -6.3837237, -6.224692]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tuto/Biqueen:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7666667, 1.1, 1.4666667, 1.8000001, 2.266667, 2.6333334, 2.9000003, 3.1333337, 3.3000002, 3.5666668, 3.7333333, 4.033334, 4.2666664, 4.466666, 4.7, 5.033334, 5.233333, 5.4666667, 5.7, 5.866667, 6.1, 6.3333335, 6.6, 6.9, 7.233333, 7.4666667, 7.7333336, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.14599998, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Tuto/InstructionPannel:modulate")
+tracks/6/path = NodePath("Tuto/AvatarBike:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(8),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(8425, 668)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Tuto/InstructionPannel/Text:text")
+tracks/7/path = NodePath("Tuto/AvatarBike:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(8),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["                        [colour=white]Timer[/colour]
-                        [colour=red]Timer[/colour]"]
+"update": 0,
+"values": [0.018772572]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Tuto/InstructionPannel:position")
+tracks/8/path = NodePath("Tuto/Char1Pannel:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(8),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-895, -471)]
+"values": [Vector2(8789, 242)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Tuto/InstructionPannel:rotation")
+tracks/9/path = NodePath("Tuto/Char1Pannel:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(8),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
@@ -270,209 +1963,178 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Tuto/InstructionPannel:size")
+tracks/10/path = NodePath("Tuto/TutoNextButton:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(8),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(284, 106)]
+"values": [Vector2(8912, 528)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_left")
+tracks/11/path = NodePath("Tuto/TutoNextButton:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(8),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [209.0]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_top")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [20.0]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("StyleBoxFlat_y8ojh")]
+"values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_y8ojh"]
-resource_name = "Speed_Progress"
+[sub_resource type="Animation" id="Animation_ia065"]
+resource_name = "To_end"
+length = 15.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tuto/InstructionPannel:position")
+tracks/0/path = NodePath("Tuto/BoostPannel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(-895, -471), Vector2(-1284, 8), Vector2(-1284, 8)]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tuto/InstructionPannel:rotation")
+tracks/1/path = NodePath("Tuto/Char1Pannel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.0, 0.0, 0.0]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tuto/InstructionPannel:modulate")
+tracks/2/path = NodePath("Tuto/TutoNextButton:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tuto/InstructionPannel:size")
+tracks/3/path = NodePath("Tuto/AvatarBike:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(289, 106), Vector2(423, 97), Vector2(423, 97)]
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Tuto/TutoNextButton:visible")
+tracks/4/path = NodePath("Tuto/Biqueen:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Tuto/InstructionPannel/Text:text")
+tracks/5/path = NodePath("Tuto/Biqueen:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[color=white]Timer[/color]
-
-[color=red]HP Bar[/color]", "[color=orange]Speed[/color]
-
-[color=green]Progress Bar[/color]", "[color=orange]Speed[/color]
-
-[color=green]Progress Bar[/color]"]
+"times": PackedFloat32Array(0, 0.5, 1, 1.5666667, 2, 2.4333334, 2.7333336, 3.0333335, 3.266667, 3.5333335, 3.766667, 4, 4.3333335, 4.6000004, 4.8333335, 5.1333337, 5.2333336, 5.466667, 5.7000003, 5.866667, 6.066667, 6.266667, 6.466667, 6.6333337, 6.8, 6.966667, 7.166667, 7.3666673, 7.666667, 7.933334, 8.266667, 8.533334, 8.766667, 8.966667, 9.1, 9.233334, 9.3, 9.433333, 9.533334, 9.633334, 9.700001, 9.833334, 10.066668, 10.366667, 10.700001, 11.1, 11.500001, 11.8, 12.200001, 12.500001, 12.800001, 13.1, 13.466667, 13.866668, 14.266667, 14.466667, 14.666667, 14.833334, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(14333, 1097.0001), Vector2(14333, 1097.0001), Vector2(14565, 1094), Vector2(14867, 1105.0001), Vector2(15212, 1138.0002), Vector2(15662.001, 1223), Vector2(15981.001, 1319), Vector2(16386, 1510.0001), Vector2(16781, 1828.0006), Vector2(17103.002, 2239), Vector2(17538.002, 2861.001), Vector2(18248, 3520.9995), Vector2(19008, 3958.0005), Vector2(19618, 4054.9998), Vector2(20146, 3983), Vector2(20355.002, 3898.9985), Vector2(20431, 3812.9995), Vector2(20515.002, 3633.9993), Vector2(20697, 3474.9995), Vector2(20892.002, 3370.001), Vector2(21124, 3430), Vector2(21327, 3532.9993), Vector2(21508, 3667.0002), Vector2(21633.004, 3874.0007), Vector2(21766.998, 4147), Vector2(21844.998, 4403.9995), Vector2(21946, 4655.9995), Vector2(22420, 5190), Vector2(23206, 5503), Vector2(23867.002, 5487.9995), Vector2(24254, 5383.9995), Vector2(24544.002, 5264), Vector2(24704, 5115.001), Vector2(24816.996, 5036.9985), Vector2(24918, 5025.0005), Vector2(25009.998, 5046.0005), Vector2(25125.998, 5097.999), Vector2(25237, 5157), Vector2(25331.002, 5256), Vector2(25416.002, 5375.999), Vector2(25500.998, 5516.9985), Vector2(25593, 5649.9995), Vector2(25940, 5929), Vector2(26386, 6085.0005), Vector2(26875, 6126), Vector2(27351, 6079), Vector2(27613.002, 5965.0005), Vector2(27812.002, 5710.0005), Vector2(28082.002, 5595.9985), Vector2(28410, 5599.9995), Vector2(28642, 5630.0005), Vector2(29036, 5600.0005), Vector2(29539.998, 5559.0005), Vector2(30003.002, 5561), Vector2(30514.998, 5578), Vector2(30698.998, 5559.0005), Vector2(30844.002, 5493), Vector2(30926, 5463), Vector2(30926, 5463)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Tuto/InstructionPannel:visible")
+tracks/6/path = NodePath("Tuto/Biqueen:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
+"times": PackedFloat32Array(0, 0.5, 1, 1.5666667, 2, 2.4333334, 2.7333336, 3.0333335, 3.266667, 3.5333335, 3.766667, 4, 4.3333335, 4.6000004, 4.8333335, 5.1333337, 5.2333336, 5.466667, 5.7000003, 5.866667, 6.066667, 6.266667, 6.466667, 6.6333337, 6.8, 6.966667, 7.166667, 7.3666673, 7.666667, 7.933334, 8.266667, 8.533334, 8.766667, 8.966667, 9.1, 9.233334, 9.3, 9.433333, 9.533334, 9.633334, 9.700001, 9.833334, 10.066668, 10.366667, 10.700001, 11.1, 11.500001, 11.8, 12.200001, 12.500001, 12.800001, 13.1, 13.466667, 13.866668, 14.266667, 14.466667, 14.666667, 14.833334, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-12.587934, -12.505791, -12.505791, -12.41026, -12.32916, -12.1772, -12.097906, -11.884539, -11.68773, -11.54689, -11.616009, -11.808855, -12.064205, -12.484717, -12.709409, -13.102416, -13.418484, -13.67697, -14.777111, -16.069033, -17.735992, -19.231833, -20.206083, -21.586592, -23.048222, -23.774944, -24.131144, -24.315292, -24.851786, -25.27694, -25.388512, -25.671349, -25.813393, -25.461887, -25.190535, -24.904964, -24.588549, -24.421762, -24.421762, -24.282656, -24.213839, -24.213839, -24.46551, -24.855576, -25.01792, -25.264816, -25.816694, -25.634863, -25.27394, -25.142563, -25.142563, -25.166292, -25.120756, -25.01807, -25.066423, -25.316597, -25.6209, -25.160704, -25.160704]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_top")
+tracks/7/path = NodePath("Tuto/Biqueen:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [15.0, 10.0, 10.0]
+"times": PackedFloat32Array(0, 0.5, 1, 1.5666667, 2, 2.4333334, 2.7333336, 3.0333335, 3.266667, 3.5333335, 3.766667, 4, 4.3333335, 4.6000004, 4.8333335, 5.1333337, 5.2333336, 5.466667, 5.7000003, 5.866667, 6.066667, 6.266667, 6.466667, 6.6333337, 6.8, 6.966667, 7.166667, 7.3666673, 7.666667, 7.933334, 8.266667, 8.533334, 8.766667, 8.966667, 9.1, 9.233334, 9.3, 9.433333, 9.533334, 9.633334, 9.700001, 9.833334, 10.066668, 10.366667, 10.700001, 11.1, 11.500001, 11.8, 12.200001, 12.500001, 12.800001, 13.1, 13.466667, 13.866668, 14.266667, 14.466667, 14.666667, 14.833334, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.14599998, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.01, 0.146), Vector2(-0.08, 0.146), Vector2(-0.146, 0.146), Vector2(-0.08, 0.146), Vector2(-0.01, 0.146), Vector2(0.08, 0.146), Vector2(0.1, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146), Vector2(0.146, 0.146)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_left")
+tracks/8/path = NodePath("Tuto/Biqueen:texture")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 14.833334, 15),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [210.0, 285.0, 285.0]
+"values": [ExtResource("21_t1loh"), ExtResource("21_t1loh"), ExtResource("20_7bnou")]
 }
 
-[sub_resource type="Animation" id="Animation_gtja8"]
-resource_name = "Time_HP"
-length = 0.5
+[sub_resource type="Animation" id="Animation_jqggj"]
+resource_name = "To_start"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tuto/InstructionPannel:visible")
+tracks/0/path = NodePath("Tuto/TimeHPPannel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, true]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tuto/InstructionPannel:modulate")
+tracks/1/path = NodePath("Tuto/SpeedProgressPannel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tuto/InstructionPannel/Text:text")
+tracks/2/path = NodePath("Tuto/Char1Pannel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": ["", "[color=white]Timer[/color]
-
-[color=red]HP Bar[/color]"]
+"values": [false, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -481,7 +2143,7 @@ tracks/3/path = NodePath("Tuto/TutoNextButton:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -489,46 +2151,172 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel")
+tracks/4/path = NodePath("Tuto/Biqueen:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [SubResource("StyleBoxFlat_y8ojh"), SubResource("StyleBoxFlat_y8ojh")]
+"times": PackedFloat32Array(0, 1, 1.5000001, 2, 2.5000002, 2.7, 3.0000002, 3.5000002, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-916, -189.00002), Vector2(-775.0001, -167.00003), Vector2(-670.00006, -138.00002), Vector2(-560, -97), Vector2(-387, -31), Vector2(-276.20007, -15.800003), Vector2(-109.999985, 6.9999995), Vector2(182, 4.0000005), Vector2(310.99988, 4), Vector2(443, 7)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_left")
+tracks/5/path = NodePath("Tuto/Biqueen:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1, 1.5000001, 2, 2.5000002, 2.7, 3.0000002, 3.5000002, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [210.0, 210.0]
+"values": [0.0, 0.30087247, 0.38945594, 0.5305737, 0.35218322, 0.24375539, 0.08111348, 0.0791579, 0.07720231, -0.0071412846]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Tuto/InstructionPannel:theme_override_styles/panel:content_margin_top")
+tracks/6/path = NodePath("Tuto/Biqueen:texture")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("20_7bnou"), ExtResource("21_t1loh")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tuto/Biqueen:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.9666667, 1, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.13476573, 0.13476573), Vector2(0.13476573, 0.13476573), Vector2(0.14639175, 0.14639175), Vector2(0.14639175, 0.14639175), Vector2(-0.14599998, 0.146)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera:zoom")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.235, 1.235), Vector2(1.235, 1.235), Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tuto/Char1Pannel:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [15.0, 15.0]
+"values": [Vector2(-1296, -394), Vector2(576, -320)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Tuto/Char1Pannel:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2, 2.0333335, 2.1000001, 2.266667, 3.266667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-782, -181), Vector2(-642, -132), Vector2(-639, -133), Vector2(-620, -132), Vector2(-565, -122), Vector2(-183, -50), Vector2(300, -50)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Tuto/AvatarBike:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.5000002, 3.0000002, 3.5000002, 4, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-740, -180), Vector2(-740, -180), Vector2(-740, -180), Vector2(-666.99994, -155), Vector2(-536, -100), Vector2(-380.00003, -38.000008), Vector2(-192, -11), Vector2(-88, -18), Vector2(6, -11)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Tuto/AvatarBike:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.5000002, 3.0000002, 3.5000002, 4, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.23056334, 0.23056334, 0.23056334, 0.3534248, 0.46101567, 0.39810428, 0.043242365, 0.043242365, 0.043242365]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Tuto/TutoNextButton:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1168, -120), Vector2(704, -48)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Tuto/TutoNextButton:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gtja8"]
 _data = {
+&"1st_crash": SubResource("Animation_2haye"),
+&"Balance": SubResource("Animation_adtlk"),
+&"Boost": SubResource("Animation_yihe6"),
+&"Boost2": SubResource("Animation_x00sa"),
+&"Boost3": SubResource("Animation_rn73c"),
+&"Boost4": SubResource("Animation_qjqpm"),
+&"Brake": SubResource("Animation_xt6la"),
+&"End": SubResource("Animation_t26de"),
+&"End2": SubResource("Animation_h0iu0"),
 &"Intro": SubResource("Animation_o3mju"),
+&"Jump": SubResource("Animation_smw20"),
+&"Jump2": SubResource("Animation_dso7e"),
+&"Jump3": SubResource("Animation_382a6"),
+&"Next": SubResource("Animation_6gurv"),
 &"RESET": SubResource("Animation_t1loh"),
 &"Speed_Progress": SubResource("Animation_y8ojh"),
-&"Time_HP": SubResource("Animation_gtja8")
+&"Time_HP": SubResource("Animation_gtja8"),
+&"To_balance": SubResource("Animation_o3tud"),
+&"To_boost": SubResource("Animation_cl5t0"),
+&"To_brake": SubResource("Animation_eu7g5"),
+&"To_end": SubResource("Animation_ia065"),
+&"To_start": SubResource("Animation_jqggj")
 }
 
 [node name="Game" type="Node2D" unique_id=687301190]
@@ -552,6 +2340,7 @@ unique_name_in_owner = true
 z_index = 2
 
 [node name="InGame_Menus" type="CanvasLayer" parent="." unique_id=1815683310]
+visible = false
 
 [node name="Pause_Menu" type="Panel" parent="InGame_Menus" unique_id=1799553443]
 unique_name_in_owner = true
@@ -868,9 +2657,10 @@ stretch_mode = 0
 [node name="Camera" type="Camera2D" parent="." unique_id=308465975]
 unique_name_in_owner = true
 position = Vector2(-782, -181)
-zoom = Vector2(6, 6)
+zoom = Vector2(1.235, 1.235)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1252788223]
+visible = false
 
 [node name="Ingame_Label" type="Label" parent="CanvasLayer" unique_id=1326302586]
 unique_name_in_owner = true
@@ -893,28 +2683,27 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Avatar" type="Sprite2D" parent="Tuto" unique_id=80643142]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-916, -189.00002)
-scale = Vector2(0.13476573, 0.13476573)
-texture = ExtResource("20_7bnou")
-
 [node name="AvatarBike" type="Sprite2D" parent="Tuto" unique_id=112116030]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 position = Vector2(-740, -180)
 rotation = 0.23056334
 scale = Vector2(0.6064108, 0.6064109)
 texture = ExtResource("21_ubdf1")
 
+[node name="Biqueen" type="Sprite2D" parent="Tuto" unique_id=80643142]
+z_index = 2
+position = Vector2(-916, -189.00002)
+scale = Vector2(0.13476573, 0.13476573)
+texture = ExtResource("20_7bnou")
+
 [node name="Char1Pannel" type="PanelContainer" parent="Tuto" unique_id=235299396]
 unique_name_in_owner = true
-visible = false
+z_index = 4
 layout_mode = 0
 offset_left = -1296.0
-offset_top = -394.0
+offset_top = -392.0
 offset_right = -976.0
-offset_bottom = -65.0
+offset_bottom = -63.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3jwj4")
 
 [node name="Char1Text" type="RichTextLabel" parent="Tuto/Char1Pannel" unique_id=295512363]
@@ -929,10 +2718,7 @@ Let's see the basics."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InstructionPannel" type="PanelContainer" parent="Tuto" unique_id=1831027349]
-unique_name_in_owner = true
-visible = false
-modulate = Color(1, 1, 1, 0)
+[node name="TimeHPPannel" type="PanelContainer" parent="Tuto" unique_id=1831027349]
 layout_mode = 0
 offset_left = -895.0
 offset_top = -471.0
@@ -940,30 +2726,74 @@ offset_right = -606.0
 offset_bottom = -365.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_y8ojh")
 
-[node name="Text" type="RichTextLabel" parent="Tuto/InstructionPannel" unique_id=709745893]
+[node name="TimeHPText" type="RichTextLabel" parent="Tuto/TimeHPPannel" unique_id=709745893]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_y8ojh")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "                        [colour=white]Timer[/colour]
-                        [colour=red]Timer[/colour]"
+text = "[color=white]Timer[/color]
 
-[node name="Pov1" type="Marker2D" parent="Tuto" unique_id=170066243]
-unique_name_in_owner = true
-position = Vector2(-782, -181)
+[color=red]HP Bar[/color]"
+
+[node name="SpeedProgressPannel" type="PanelContainer" parent="Tuto" unique_id=72854948]
+layout_mode = 0
+offset_left = -1284.0
+offset_top = 8.0
+offset_right = -861.0
+offset_bottom = 105.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t1loh")
+
+[node name="SpeedProgressText" type="RichTextLabel" parent="Tuto/SpeedProgressPannel" unique_id=2084408113]
+layout_mode = 2
+theme_override_fonts/normal_font = SubResource("SystemFont_o3mju")
+bbcode_enabled = true
+text = "[color=orange]Speed[/color]
+
+[color=green]Progress Bar[/color]"
 
 [node name="TutoNextButton" type="TextureButton" parent="Tuto" unique_id=844950985]
 unique_name_in_owner = true
-visible = false
+z_index = 4
 layout_mode = 0
 offset_left = -1168.0
-offset_top = -112.0
+offset_top = -120.0
 offset_right = -1104.0
-offset_bottom = -72.0
+offset_bottom = -80.0
 texture_normal = ExtResource("22_ubdf1")
 texture_pressed = ExtResource("23_y8ojh")
 texture_focused = ExtResource("24_t1loh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BoostPannel" type="PanelContainer" parent="Tuto" unique_id=72871737]
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+layout_mode = 0
+offset_left = 14087.0
+offset_top = 1205.0
+offset_right = 14355.0
+offset_bottom = 1313.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o3mju")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tuto/BoostPannel" unique_id=804773807]
+layout_mode = 2
+theme_override_constants/line_separation = -5
+theme_override_fonts/normal_font = SubResource("SystemFont_t1loh")
+bbcode_enabled = true
+text = "      [color=orange]Boost Gauge[/color]"
+
+[node name="EndTutoButton" type="TextureButton" parent="Tuto" unique_id=2133244953]
+visible = false
+z_index = 4
+layout_mode = 0
+offset_left = 30632.0
+offset_top = 5512.0
+offset_right = 30696.0
+offset_bottom = 5552.0
+texture_normal = ExtResource("25_6gurv")
+texture_pressed = ExtResource("26_jqggj")
+texture_focused = ExtResource("27_2haye")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -976,3 +2806,4 @@ libraries/ = SubResource("AnimationLibrary_gtja8")
 [connection signal="pressed" from="InGame_Menus/Finish_Menu/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="InGame_Menus/Finish_Menu/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Tuto/TutoNextButton" to="." method="_on_tuto_next_button_pressed"]
+[connection signal="pressed" from="Tuto/EndTutoButton" to="." method="_on_end_tuto_button_pressed"]
