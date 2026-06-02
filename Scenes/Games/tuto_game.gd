@@ -190,7 +190,6 @@ func _on_end_tuto_button_pressed():
 	AudioManager.stop_ground_sfx()
 	AudioManager.stop_music()
 	AudioManager.stop_sfx()
-	Global.current_profile["state"] = "tuto2"
 	Global.menu_to_show = "Chairlift"
 	Global.start_mod("Menus")
 
@@ -229,7 +228,8 @@ func map_finished():
 		camera_target = map_data["finish"]
 		is_finished = true
 		Global.avancement = 100
-		Global.current_profile["current_run"]["finished_maps"].append("0")
+		Global.current_profile["current_run"]["finished_maps"]["0"] = []
+		Global.current_profile["state"] = "tuto2"
 		SaveManager.save_profile(Global.current_profile)
 		AudioManager.stop_music()
 		#AudioManager.play_sfx("fireworks")
@@ -257,7 +257,6 @@ func load_bike():
 	start_countdown()
 
 func respawn_bike():
-	print(current_act)
 	if current_act in ["To_jump","To_balance","To_brake","To_boost"]:
 		velo_courant.queue_free()
 		await get_tree().process_frame

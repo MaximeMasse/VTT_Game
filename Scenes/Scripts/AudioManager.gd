@@ -19,6 +19,7 @@ var dico_sfx := {
 	"horn": preload("res://Sound/SFX/Start/horn.wav"),
 	"ouch": preload("res://Sound/SFX/ouch.wav"),
 	"bone_crack": preload("res://Sound/SFX/bone_crack.wav"),
+	"ting": preload("res://Sound/SFX/Ting.mp3"),
 }
 var dico_ground_sfx := {
 	"slow_riding":{

@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://bsfq0w2nfdy72"]
+
+[ext_resource type="Script" uid="uid://cixhnle2hslbk" path="res://Scenes/Misc/banana.gd" id="1_a0nx7"]
+[ext_resource type="Texture2D" uid="uid://bh5eh6wgigc3l" path="res://Images/Mapping/Collectibles/Banana/banana00.png" id="1_yksp3"]
+[ext_resource type="Texture2D" uid="uid://cdxu5qp4yahjl" path="res://Images/Mapping/Collectibles/Banana/banana01.png" id="2_a0nx7"]
+[ext_resource type="Texture2D" uid="uid://dja0fu6voe684" path="res://Images/Mapping/Collectibles/Banana/banana02.png" id="3_y5wrl"]
+[ext_resource type="Texture2D" uid="uid://bfmlqevntig1k" path="res://Images/Mapping/Collectibles/Banana/banana03.png" id="4_iq2nt"]
+[ext_resource type="Texture2D" uid="uid://bgcnnfxfy7cwt" path="res://Images/Mapping/Collectibles/Banana/banana04.png" id="5_eo7hl"]
+[ext_resource type="Texture2D" uid="uid://bs1qwq13frsbj" path="res://Images/Mapping/Collectibles/Banana/banana05.png" id="6_1n7w7"]
+[ext_resource type="Texture2D" uid="uid://cst52vrs7id3g" path="res://Images/Mapping/Collectibles/Banana/banana06.png" id="7_p6tvg"]
+[ext_resource type="Texture2D" uid="uid://cu4vb2fykowc6" path="res://Images/Mapping/Collectibles/Banana/banana07.png" id="8_l7ysp"]
+[ext_resource type="Texture2D" uid="uid://bmv1s30trgfth" path="res://Images/Mapping/Collectibles/Banana/banana08.png" id="9_ciswu"]
+[ext_resource type="Texture2D" uid="uid://bff14htfptrx3" path="res://Images/Mapping/Collectibles/Banana/banana09.png" id="10_sdsba"]
+[ext_resource type="Texture2D" uid="uid://c4leqn1d61xwd" path="res://Images/Mapping/Collectibles/Banana/banana10.png" id="11_6t0rv"]
+[ext_resource type="Texture2D" uid="uid://dn3hw48ff7mui" path="res://Images/Mapping/Collectibles/Banana/banana11.png" id="12_vu3i1"]
+[ext_resource type="Texture2D" uid="uid://b6n6ww6plt1ur" path="res://Images/Mapping/Collectibles/Banana/banana12.png" id="13_glqal"]
+[ext_resource type="Texture2D" uid="uid://b3uicjbbxsx1k" path="res://Images/Mapping/Collectibles/Banana/banana13.png" id="14_y0ib3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xpjo"]
+radius = 46.043457
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0r3s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yksp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a0nx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y5wrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iq2nt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eo7hl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1n7w7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p6tvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l7ysp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ciswu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_sdsba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6t0rv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vu3i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_glqal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_y0ib3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_y5wrl"]
+resource_name = "Grabbed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.36666667, 0.5, 0.6333334, 0.7666667, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(63, -92), Vector2(94, -125), Vector2(180, -168), Vector2(254, -176), Vector2(371.99997, -145.00003), Vector2(525, 34), Vector2(579, 213.00002), Vector2(640, 391)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.36666667, 0.5, 0.6333334, 0.7666667, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 3.1415927, 0.0, -3.1415927, 0.0, -3.1415927, 0.0, 3.1415927, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_iq2nt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eo7hl"]
+_data = {
+&"Grabbed": SubResource("Animation_y5wrl"),
+&"RESET": SubResource("Animation_iq2nt")
+}
+
+[node name="Banana" type="Area2D" unique_id=767523825]
+z_index = 3
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_a0nx7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=200428888]
+shape = SubResource("CircleShape2D_8xpjo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=382631478]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_d0r3s")
+autoplay = "default"
+frame_progress = 0.287141
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1859186283]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_eo7hl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

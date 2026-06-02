@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://bhwdw6clbkwqf" path="res://Images/Menus/Maps/Map0_focused.png" id="37_6glyx"]
 [ext_resource type="Texture2D" uid="uid://2rxyc335n81e" path="res://Images/Menus/Maps/Map_valid.png" id="39_hgswm"]
 [ext_resource type="Texture2D" uid="uid://c7jdhcmkuorhl" path="res://Images/Menus/Maps/Map1.png" id="40_hbxnh"]
+[ext_resource type="PackedScene" uid="uid://bea1hvd32kipw" path="res://Scenes/map_stars.tscn" id="40_o23ee"]
 [ext_resource type="Texture2D" uid="uid://dxu8o2xnnmenv" path="res://Images/Menus/Maps/Map1_focused.png" id="41_o23ee"]
 
 [sub_resource type="SystemFont" id="SystemFont_jw3nv"]
@@ -414,6 +415,9 @@ scale = Vector2(0.08691406, 0.08691406)
 texture = ExtResource("39_hgswm")
 centered = false
 
+[node name="MapStars" parent="ChairliftMenu/Maps/Map0_Button" unique_id=1390030682 instance=ExtResource("40_o23ee")]
+layout_mode = 1
+
 [node name="Map1_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=859385007]
 unique_name_in_owner = true
 layout_mode = 0
@@ -431,6 +435,9 @@ position = Vector2(-0.63, -1.285)
 scale = Vector2(0.087, 0.087)
 texture = ExtResource("39_hgswm")
 centered = false
+
+[node name="MapStars" parent="ChairliftMenu/Maps/Map1_Button" unique_id=998240960 instance=ExtResource("40_o23ee")]
+layout_mode = 1
 
 [connection signal="pressed" from="MainMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MainMenu/NewPlayerButton" to="." method="_on_new_player_button_pressed"]

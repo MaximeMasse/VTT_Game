@@ -29,7 +29,11 @@ func get_level_data():
 		"finish": %Finish,
 		"cp1": %Checkpoint_1,
 		"cp2": %Checkpoint_2,
-		"cp3": %Checkpoint_3
+		"cp3": %Checkpoint_3,
+		"target_score" : 10000,
+		"target_time" : 60,
+		"target_score_and_time" : [5000,120]
+		
 		}
 
 signal out_of_bounds

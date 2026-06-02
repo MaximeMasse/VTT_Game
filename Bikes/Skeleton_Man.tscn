@@ -197,7 +197,7 @@ unique_name_in_owner = true
 position = Vector2(1.435, 8.63)
 rotation = 0.08726643
 scale = Vector2(0.9999982, 0.9999982)
-collision_layer = 0
+collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Skeleton2D/Torso/Contact" unique_id=976369075]
@@ -223,7 +223,7 @@ scale = Vector2(0.99999964, 0.99999964)
 rest = Transform2D(0.9904095, 0.13816059, -0.13816059, 0.9904095, 43.664063, 22.76949)
 auto_calculate_length_and_angle = false
 length = 43.837
-bone_angle = 114.17997
+bone_angle = 114.17996
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
@@ -258,7 +258,7 @@ texture = ExtResource("5_yjfd7")
 
 [node name="BackLegDown" type="Bone2D" parent="Skeleton2D/Torso/BackLegUp" unique_id=1071242969]
 position = Vector2(34.6211, 32.409554)
-rotation = 0.015299138
+rotation = 0.015299137
 scale = Vector2(0.9999994, 0.9999994)
 rest = Transform2D(0.9998824, 0.015298534, -0.015298534, 0.9998824, 34.6211, 32.409554)
 auto_calculate_length_and_angle = false

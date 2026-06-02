@@ -10,9 +10,9 @@ var choix_perso :int= 1
 		"Chairlift":%ChairliftMenu
 	}
 @onready var dico_map_buttons := {
-	"0" : [%Map0_Button,["1"]],
-	"1" : [%Map1_Button,[]]
-}
+		"0" : [%Map0_Button,["1"]],
+		"1" : [%Map1_Button,[]]
+	}
 
 func _ready():
 	#print(ProjectSettings.globalize_path("user://"))
@@ -62,17 +62,22 @@ func map_progress_update():
 	for map in dico_map_buttons: 
 		dico_map_buttons[map][0].hide()
 		dico_map_buttons[map][0].get_child(0).hide()
-	var node_to_check :Array = ["0"]
-	var tree_done := false
-	while not tree_done:
-		print(node_to_check)
-		if node_to_check.size() > 0 :
-			var current_map : String = node_to_check.pop_front()
-			dico_map_buttons[current_map][0].show()
-			if current_map in Global.current_profile["current_run"]["finished_maps"]:
-				dico_map_buttons[current_map][0].get_child(0).show()
-				node_to_check.append_array(dico_map_buttons[current_map][1])
-		else:tree_done=true
+		dico_map_buttons[map][0].get_child(1).hide()
+	if Global.get_profile_data("state") == "tuto":%DialogChairlift.play_scene("tuto")
+	else:
+		var node_to_check :Array = ["0"]
+		var tree_done := false
+		while not tree_done:
+			if node_to_check.size() > 0 :
+				var current_map : String = node_to_check.pop_front()
+				dico_map_buttons[current_map][0].show()
+				if current_map in Global.current_profile["current_run"]["finished_maps"].keys():
+					var stars : Array[int] = [1,3]
+					dico_map_buttons[current_map][0].get_child(0).show()
+					dico_map_buttons[current_map][0].get_child(1).stars_update(stars)
+					dico_map_buttons[current_map][0].get_child(1).show()
+					node_to_check.append_array(dico_map_buttons[current_map][1])
+			else:tree_done=true
 
 
 func apply_audio_config():
@@ -137,7 +142,11 @@ func _on_chairlift_pressed() -> void:
 
 func _on_dialog_chairlift_scene_ended(_scene_name):%Map0_Button.show()
 
-func _on_map_0_button_pressed():Global.start_mod("Tuto_Game")
+func _on_map_0_button_pressed():
+	if Global.get_profile_data("state") == "tuto":Global.start_mod("Tuto_Game")
+	else:
+		Global.current_map = "0"
+		Global.start_mod("Main_Game")
 
 func on_button_hover(button:BaseButton):if not button.disabled:button.grab_focus()
 func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()

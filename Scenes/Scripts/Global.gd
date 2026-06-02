@@ -46,6 +46,9 @@ var cp_player_pos : Vector2
 var cp_player_score : float
 var cp_player_boost : float
 
+# Collectible
+var is_collected : bool
+
 # End map
 var new_best_time :bool
 var new_best_score :bool
@@ -112,6 +115,7 @@ func get_profile_bike()->String:return dico_vélo[int(current_profile["bike_mode
 func get_profile_data(data:String)->String:return current_profile[data]
 
 func set_start_values():
+	is_collected = false
 	race_time = 0.0
 	current_hp = 100
 	current_cp = "start"

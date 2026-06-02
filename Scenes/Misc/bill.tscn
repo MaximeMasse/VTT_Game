@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bj7vagcb8aebw"]
+
+[ext_resource type="Texture2D" uid="uid://bcsx42ji6ohy5" path="res://Images/Mapping/Collectibles/Bills/Bill_face.png" id="1_78gxm"]
+[ext_resource type="Texture2D" uid="uid://bpvkm3wubtw7t" path="res://Images/Mapping/Collectibles/Bills/Bill_back.png" id="2_o70ti"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78gxm"]
+size = Vector2(88, 44)
+
+[sub_resource type="Animation" id="Animation_tr3hd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BillFace:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_78gxm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BillFace:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.05, 0.05)]
+}
+
+[sub_resource type="Animation" id="Animation_colo1"]
+resource_name = "spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BillFace:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_78gxm"), ExtResource("2_o70ti"), ExtResource("2_o70ti"), ExtResource("1_78gxm"), ExtResource("1_78gxm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BillFace:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.05, 0.05), Vector2(1e-05, 0.05), Vector2(0.05, 0.05), Vector2(1e-05, 0.05), Vector2(0.05, 0.05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgu1p"]
+_data = {
+&"RESET": SubResource("Animation_tr3hd"),
+&"spin": SubResource("Animation_colo1")
+}
+
+[node name="Bill" type="Area2D" unique_id=597363856]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=639941033]
+shape = SubResource("RectangleShape2D_78gxm")
+
+[node name="BillFace" type="Sprite2D" parent="." unique_id=1488770812]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_78gxm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=607162424]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_lgu1p")
+autoplay = &"spin"
