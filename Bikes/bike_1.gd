@@ -64,7 +64,7 @@ func reset_states():
 	current_frame_state = "slow_riding"
 	actual_state = "slow_riding"
 	previous_actual_state = "slow_riding"
-	
+
 func _physics_process(delta):
 	if not can_drive:
 		Global.vitesse = Vector2.ZERO
@@ -173,11 +173,13 @@ func _physics_process(delta):
 			Global.combo_update()
 			Global.valid_combo()
 			Global.reset_tricks()
-
+	
 	# Audio
 	if actual_state != previous_actual_state: ground_sfx_change()
 	
 	previous_actual_state = actual_state
+
+func _on_trick_status_changer_timeout():actual_state = current_frame_state
 
 func _process(_delta):
 	# Floor detection
@@ -195,9 +197,6 @@ func ground_sfx_change():
 		AudioManager.play_ground_sfx("landing")
 		await get_tree().create_timer(0.5).timeout
 	AudioManager.play_ground_sfx(actual_state)
-	
-func _on_trick_status_changer_timeout():
-	actual_state = current_frame_state
 
 func get_current_state()-> String:
 	if contact_sol_arrière.has_overlapping_bodies() and contact_sol_avant.has_overlapping_bodies():

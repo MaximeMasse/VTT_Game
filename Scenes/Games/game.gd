@@ -81,6 +81,7 @@ func load_map():
 	%MapContainer.add_child(map_courante)
 	map_courante.finish.connect(map_finished)
 	map_courante.out_of_bounds.connect(respawn_bike)
+	Global.return_collectible.connect(map_courante.return_collectible)
 	map_data = map_courante.get_level_data()
 
 func map_finished():
@@ -109,6 +110,9 @@ func load_bike():
 	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
 	Global.set_start_values()
 	start_countdown()
+	if Global.debug :
+		velo_courant.global_position = map_courante.debug_start_position
+		velo_courant.cadre.linear_velocity = map_courante.debug_start_speed * Vector2.RIGHT / (ECHELLE * 3.6)
 
 func respawn_bike():
 	%Camera.global_position = camera_target.global_position
@@ -130,10 +134,11 @@ func respawn_bike():
 func start_countdown():
 	race_started = false
 	%Ingame_Label.show()
+	var duration : float = 0 if Global.debug else 1
 	for i in [3, 2, 1]:
 		%Ingame_Label.text = str(i)
 		AudioManager.play_sfx(str(i))
-		await get_tree().create_timer(0).timeout
+		await get_tree().create_timer(duration).timeout
 	%Ingame_Label.text = "GO !"
 	AudioManager.play_sfx("Go")
 	AudioManager.play_sfx("horn")

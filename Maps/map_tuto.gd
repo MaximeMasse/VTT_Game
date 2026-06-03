@@ -75,7 +75,7 @@ func _on_finish_body_entered(_body):
 	finish.emit()
 
 func _on_checkpoint_1_body_entered(_body):
-	Global.checkpoint_update("cp1")
+	Global.checkpoint_update("cp1",40)
 	if not cp_passed.get("cp1",false):
 		cp_passed["cp1"] = true
 		act_done.emit()

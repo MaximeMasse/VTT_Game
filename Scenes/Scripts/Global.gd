@@ -1,7 +1,7 @@
 extends Node
 
 # Config
-var debug = true
+var debug : bool = false
 const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}
@@ -47,7 +47,9 @@ var cp_player_score : float
 var cp_player_boost : float
 
 # Collectible
-var is_collected : bool
+var is_grabbed : bool
+var is_stored : bool
+signal return_collectible
 
 # End map
 var new_best_time :bool
@@ -115,7 +117,8 @@ func get_profile_bike()->String:return dico_vélo[int(current_profile["bike_mode
 func get_profile_data(data:String)->String:return current_profile[data]
 
 func set_start_values():
-	is_collected = false
+	is_grabbed = false
+	is_stored = false
 	race_time = 0.0
 	current_hp = 100
 	current_cp = "start"
@@ -127,16 +130,20 @@ func set_start_values():
 	current_boost = 0
 
 func handle_crash():
+	# Penaltys
 	penalty_to_show = true
 	race_time += current_profile["upgrades"]["RESPAWN_TIME_PENALTY"]
 	current_hp -= current_profile["upgrades"]["RESPAWN_HP_PENALTY"]
+	# Score and boost reset
 	current_score = cp_player_score
 	current_boost = cp_player_boost
+	# Collectible
+	if not is_stored and is_grabbed: return_collectible.emit()
 
-func checkpoint_update(cp : String):
+func checkpoint_update(cp : String,min_speed : float = 0):
 	if current_cp != cp:
 		current_cp = cp
-		cp_player_speed = vitesse
+		cp_player_speed =  min_speed * vitesse.normalized() if vitesse.length() < min_speed else vitesse
 		cp_player_pos = player_position
 		cp_player_score = current_score
 		cp_player_boost = current_boost
@@ -193,6 +200,8 @@ func valid_combo():
 	current_score += potential_combo_score
 	current_boost = clampf(current_boost+min(potential_combo_score,ONE_TIME_QUANTITY),0,BOOST_MAX_QUANTITY)  
 	hud_score_update.emit(potential_combo_score)
+	# Collectible
+	if not is_stored and is_grabbed : is_stored = true
 	
 func combo_score()-> int:
 	var score :int = 0

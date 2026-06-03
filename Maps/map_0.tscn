@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://brg38ffdjplxy" path="res://Images/Mapping/Assets/Rocks/Cliff.png" id="30_2xn1y"]
 [ext_resource type="Texture2D" uid="uid://ca34rlo7rwvyg" path="res://Images/Mapping/Cover/Chairlift_exit.png" id="32_e3fhd"]
 [ext_resource type="PackedScene" uid="uid://bsfq0w2nfdy72" path="res://Scenes/Misc/banana.tscn" id="33_4wpxc"]
+[ext_resource type="Script" uid="uid://livr32df55qj" path="res://Maps/debug_start.gd" id="35_wrsql"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8lorq"]
 a = Vector2(269.96777, 30.290344)
@@ -158,6 +159,7 @@ build_mode = 1
 polygon = PackedVector2Array(-986, 229, 28048, 7842, 32786, 6160, 32241, 5110, 31386, 6046, 28402, 5950, 27759, 6327, 26946, 6603, 26083, 6327, 25327, 5912, 24523, 5818, 23902, 6016, 21928, 5501, 21237, 4484, 20443, 4287, 18946, 4419, 17120, 3533, 15394, 1622, 13915, 1459, 12801, 1556, 11970, 1804, 11445, 1716, 10030, 1522, 9478, 1054, 8436, 979, 7348, 1286, 3651, 780, 2381, 977)
 
 [node name="Banana" parent="Spots" unique_id=767523825 instance=ExtResource("33_4wpxc")]
+unique_name_in_owner = true
 position = Vector2(300, 3)
 
 [node name="Bills" type="Node2D" parent="Spots" unique_id=2061333666]
@@ -873,6 +875,11 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraEffects" unique_id=1321764425]
 position = Vector2(27701, 6011)
 shape = SubResource("SegmentShape2D_2wbil")
+
+[node name="DebugStart" type="Marker2D" parent="." unique_id=1407101377]
+unique_name_in_owner = true
+z_index = 17
+script = ExtResource("35_wrsql")
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]

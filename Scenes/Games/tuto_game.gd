@@ -146,7 +146,7 @@ func _ready():
 	is_learning = true
 	%Ingame_Label.hide()
 	%AvatarBike.texture = load(Global.get_sprites_path() + "Avatar_bike.png")
-	current_act = "Boosting"
+	current_act = "Intro"
 	_on_tuto_next_button_pressed()
 
 func _on_tuto_next_button_pressed():

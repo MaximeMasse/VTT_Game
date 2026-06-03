@@ -172,7 +172,7 @@ position = Vector2(8.35, 23.555)
 rest = Transform2D(1, 0, 0, 1, 8.35, 23.555)
 auto_calculate_length_and_angle = false
 length = 31.05
-bone_angle = 13.474997
+bone_angle = 13.474996
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmDown" type="Sprite2D" parent="Skeleton2D/Torso/ArmUpFront/ArmDownFront" unique_id=1790196928]
@@ -234,12 +234,12 @@ texture = ExtResource("13_5w3y4")
 
 [node name="BackLegDown" type="Bone2D" parent="Skeleton2D/Torso/BackLegUp" unique_id=1071242969]
 position = Vector2(23.259, 24.069)
-rotation = 0.015299135
+rotation = 0.015299134
 scale = Vector2(0.9999994, 0.9999994)
 rest = Transform2D(0.9998824, 0.015298531, -0.015298531, 0.9998824, 23.259, 24.069)
 auto_calculate_length_and_angle = false
 length = 40.492
-bone_angle = 108.52497
+bone_angle = 108.52496
 metadata/_local_pose_override_enabled_ = true
 
 [node name="BackLegDown" type="Sprite2D" parent="Skeleton2D/Torso/BackLegUp/BackLegDown" unique_id=1442573443]
@@ -268,7 +268,7 @@ unique_name_in_owner = true
 position = Vector2(-0.58500004, 8.735001)
 rotation = 0.087266415
 scale = Vector2(0.9999982, 0.9999982)
-collision_layer = 0
+collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Skeleton2D/Torso/Contact" unique_id=976369075]

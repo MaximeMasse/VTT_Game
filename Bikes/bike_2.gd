@@ -179,6 +179,8 @@ func _physics_process(delta):
 	
 	previous_actual_state = actual_state
 
+func _on_trick_status_changer_timeout():actual_state = current_frame_state
+
 func _process(delta):
 	# Floor detection
 	%FloorScan.global_rotation = 0.0
@@ -195,9 +197,6 @@ func ground_sfx_change():
 		AudioManager.play_ground_sfx("landing")
 		await get_tree().create_timer(0.5).timeout
 	AudioManager.play_ground_sfx(actual_state)
-	
-func _on_trick_status_changer_timeout():
-	actual_state = current_frame_state
 
 func get_current_state()-> String:
 	if contact_sol_arrière.has_overlapping_bodies() and contact_sol_avant.has_overlapping_bodies():

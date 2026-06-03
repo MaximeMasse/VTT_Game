@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var debug_start_speed : float = %DebugStart.debug_start_speed
+@onready var debug_start_position : Vector2 = %DebugStart.debug_start_position
+
 @export var road_texture: Texture2D
 @export var road_width := 50.0
 @export var road_visual_step := 6.0
@@ -33,7 +36,6 @@ func get_level_data():
 		"target_score" : 10000,
 		"target_time" : 60,
 		"target_score_and_time" : [5000,120]
-		
 		}
 
 signal out_of_bounds
@@ -75,6 +77,8 @@ func _on_finish_body_entered(_body):
 	%Finish.activate()
 	finish.emit()
 
-func _on_checkpoint_1_body_entered(_body):Global.checkpoint_update("cp1")
+func return_collectible():%Banana.reset()
+
+func _on_checkpoint_1_body_entered(_body):Global.checkpoint_update("cp1",40)
 func _on_checkpoint_2_body_entered(_body):Global.checkpoint_update("cp2")
 func _on_checkpoint_3_body_entered(_body):Global.checkpoint_update("cp3")
