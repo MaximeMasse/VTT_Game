@@ -1,7 +1,7 @@
 extends Node
 
 # Config
-var debug : bool = false
+var debug : bool = true
 const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}
@@ -50,6 +50,7 @@ var cp_player_boost : float
 var is_grabbed : bool
 var is_stored : bool
 signal return_collectible
+signal store_collectible
 
 # End map
 var new_best_time :bool
@@ -138,7 +139,9 @@ func handle_crash():
 	current_score = cp_player_score
 	current_boost = cp_player_boost
 	# Collectible
-	if not is_stored and is_grabbed: return_collectible.emit()
+	if not is_stored and is_grabbed: 
+		is_grabbed = false
+		return_collectible.emit()
 
 func checkpoint_update(cp : String,min_speed : float = 0):
 	if current_cp != cp:
@@ -201,8 +204,10 @@ func valid_combo():
 	current_boost = clampf(current_boost+min(potential_combo_score,ONE_TIME_QUANTITY),0,BOOST_MAX_QUANTITY)  
 	hud_score_update.emit(potential_combo_score)
 	# Collectible
-	if not is_stored and is_grabbed : is_stored = true
-	
+	if not is_stored and is_grabbed :
+		is_stored = true
+		store_collectible.emit()
+
 func combo_score()-> int:
 	var score :int = 0
 	var combo_multiplier :int = 0
@@ -235,6 +240,10 @@ func check_best_tricks(trick_name:String,length,duration):
 	if is_new_best:hud_new_best.emit(trick_name)
 
 func end_map():
+	avancement = 100
+	AudioManager.stop_music()
+	AudioManager.play_sfx("fireworks")
+	AudioManager.play_music("Victory")
 	check_map_record()
 	SaveManager.save_profile(current_profile)
 

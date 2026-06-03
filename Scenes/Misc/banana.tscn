@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b3uicjbbxsx1k" path="res://Images/Mapping/Collectibles/Banana/banana13.png" id="14_y0ib3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xpjo"]
-radius = 46.043457
+radius = 26.019224
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d0r3s"]
 animations = [{
@@ -69,86 +69,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_y5wrl"]
-resource_name = "Grabbed"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.36666667, 0.5, 0.6333334, 0.7666667, 0.90000004, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(63, -92), Vector2(94, -125), Vector2(180, -168), Vector2(254, -176), Vector2(371.99997, -145.00003), Vector2(525, 34), Vector2(579, 213.00002), Vector2(640, 391)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.36666667, 0.5, 0.6333334, 0.7666667, 0.90000004, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 3.1415927, 0.0, -3.1415927, 0.0, -3.1415927, 0.0, 3.1415927, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_iq2nt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_a0nx7"]
-resource_name = "Return"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -156,10 +78,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, true]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -168,10 +90,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(640, 391), Vector2(0, 0)]
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -180,17 +102,56 @@ tracks/2/path = NodePath("AnimatedSprite2D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 0.0]
+"values": [0.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_eo7hl"]
+[sub_resource type="Animation" id="Animation_y5wrl"]
+resource_name = "Store"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(51, -81), Vector2(113, -144), Vector2(167, -173), Vector2(211, -190), Vector2(257, -194), Vector2(302, -191), Vector2(357, -171), Vector2(405, -142), Vector2(466, -76), Vector2(516, -1), Vector2(541, 78), Vector2(575, 181), Vector2(616, 303), Vector2(652, 418), Vector2(719, 603)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.53333336, 0.6, 0.70000005, 0.8, 0.90000004, 1, 1.0333334, 1.1, 1.2, 1.3000001, 1.4000001, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.2566371, 2.5132742, 3.7699113, 5.0265484, 6.2831855, 0.41887903, 1.2566371, 2.5132742, 3.7699113, 5.0265484, 6.2831855, 0.41887903, 1.2566371, 2.5132742, 3.7699113, 5.0265484, 6.2831855]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iq2nt"]
 _data = {
-&"Grabbed": SubResource("Animation_y5wrl"),
-&"RESET": SubResource("Animation_iq2nt"),
-&"Return": SubResource("Animation_a0nx7")
+&"RESET": SubResource("Animation_a0nx7"),
+&"Store": SubResource("Animation_y5wrl")
 }
 
 [node name="Banana" type="Area2D" unique_id=767523825]
@@ -203,14 +164,14 @@ script = ExtResource("1_a0nx7")
 shape = SubResource("CircleShape2D_8xpjo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=382631478]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_d0r3s")
 autoplay = "default"
 frame_progress = 0.287141
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1859186283]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1187395376]
 unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_eo7hl")
+libraries/ = SubResource("AnimationLibrary_iq2nt")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

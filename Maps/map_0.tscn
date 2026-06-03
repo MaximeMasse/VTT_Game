@@ -160,7 +160,7 @@ polygon = PackedVector2Array(-986, 229, 28048, 7842, 32786, 6160, 32241, 5110, 3
 
 [node name="Banana" parent="Spots" unique_id=767523825 instance=ExtResource("33_4wpxc")]
 unique_name_in_owner = true
-position = Vector2(300, 3)
+position = Vector2(6010, 134)
 
 [node name="Bills" type="Node2D" parent="Spots" unique_id=2061333666]
 
@@ -879,7 +879,9 @@ shape = SubResource("SegmentShape2D_2wbil")
 [node name="DebugStart" type="Marker2D" parent="." unique_id=1407101377]
 unique_name_in_owner = true
 z_index = 17
+position = Vector2(3475, 214)
 script = ExtResource("35_wrsql")
+debug_start_speed = 40.0
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]

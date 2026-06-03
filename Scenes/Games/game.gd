@@ -82,16 +82,13 @@ func load_map():
 	map_courante.finish.connect(map_finished)
 	map_courante.out_of_bounds.connect(respawn_bike)
 	Global.return_collectible.connect(map_courante.return_collectible)
+	Global.store_collectible.connect(map_courante.store_collectible)
 	map_data = map_courante.get_level_data()
 
 func map_finished():
 	camera_target = map_data["finish"]
 	is_finished = true
-	Global.avancement = 100
 	Global.end_map()
-	AudioManager.stop_music()
-	AudioManager.play_sfx("fireworks")
-	AudioManager.play_music("Victory")
 	%Finish_Menu.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	%Time_label.text = Global.format_time(Global.race_time)
@@ -127,6 +124,7 @@ func respawn_bike():
 	velo_courant.crashed.connect(respawn_bike)
 	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
 	Global.handle_crash()
+	%HUD.update_HP_Bar()
 	%HUD.update_score(Global.current_score)
 	velo_courant.global_position = Global.cp_player_pos
 	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (ECHELLE * 3.6)

@@ -35,7 +35,9 @@ func get_level_data():
 		"cp3": %Checkpoint_3,
 		"target_score" : 10000,
 		"target_time" : 60,
-		"target_score_and_time" : [5000,120]
+		"target_score_and_time" : [5000,120],
+		"collectible" : "Golden Banana",
+		"special_trick" : "Frontflip over the Volcano"
 		}
 
 signal out_of_bounds
@@ -78,6 +80,7 @@ func _on_finish_body_entered(_body):
 	finish.emit()
 
 func return_collectible():%Banana.reset()
+func store_collectible():%Banana.store()
 
 func _on_checkpoint_1_body_entered(_body):Global.checkpoint_update("cp1",40)
 func _on_checkpoint_2_body_entered(_body):Global.checkpoint_update("cp2")

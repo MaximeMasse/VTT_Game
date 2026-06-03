@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bpvkm3wubtw7t" path="res://Images/Mapping/Collectibles/Bills/Bill_back.png" id="2_o70ti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78gxm"]
-size = Vector2(88, 44)
+size = Vector2(70, 26)
 
 [sub_resource type="Animation" id="Animation_lgu1p"]
 resource_name = "Grabbed"
