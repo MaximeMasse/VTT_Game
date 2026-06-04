@@ -20,12 +20,13 @@ var ASPECT := 16.0 / 9.0
 var camera_target : Node2D = null
 var map_courante : Node2D
 var velo_courant : Node2D
-var map_data := {}
+var map_finish : Node2D
 var race_started := false
 var distance_restante := 0.0
 var avancement := 0
 var is_paused := false
 var is_finished :=false
+@onready var stars := {1.0:%Star1,2.0:%Star2,3.0:%Star3,4.0:%Star4,5.0:%Star5}
 
 func _ready():
 	Engine.time_scale = TIME_SCALE
@@ -41,7 +42,7 @@ func _ready():
 	var new_size = Vector2i(screen_width,screen_height)
 	DisplayServer.window_set_size(Vector2i(screen_width,screen_height))
 	DisplayServer.window_set_position(screen_rect.position + (screen_rect.size - new_size) / 2)
-	# Buttons
+	# Buttons, controls
 	set_up_buttons(self)
 	# Connections
 	Global.hud_new_best.connect(%HUD.update_best_tricks)
@@ -83,20 +84,33 @@ func load_map():
 	map_courante.out_of_bounds.connect(respawn_bike)
 	Global.return_collectible.connect(map_courante.return_collectible)
 	Global.store_collectible.connect(map_courante.store_collectible)
-	map_data = map_courante.get_level_data()
+	map_courante.gap_entry.connect(Global.gap_entry)
+	map_courante.gap_exit.connect(Global.gap_exit)
+	Global.map_data = map_courante.get_level_data()
+	map_finish = Global.map_data["finish"]
 
 func map_finished():
-	camera_target = map_data["finish"]
-	is_finished = true
-	Global.end_map()
-	%Finish_Menu.show()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if not is_finished:
+		camera_target = map_finish
+		is_finished = true
+		Global.end_map()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		finish_menu_update()
+
+func finish_menu_update():
+	for star in stars:stars[star].animation = "empty"
+	for old_succes in Global.current_profile["current_run"]["finished_maps"][Global.current_map]:
+		stars[old_succes].animation = "gold"
+	for new_succes in Global.objectives_completed:
+		stars[new_succes].animation = "red"
+	%ObjectivesText.text = Global.objectives_text
 	%Time_label.text = Global.format_time(Global.race_time)
 	%PreviousTime_label.text = "-" if str(Global.previous_best["time"]) == "-" else Global.format_time(Global.previous_best["time"])
 	%NewBestTime_label.visible = Global.new_best_time
 	%Score_label.text = str(int(Global.current_score))
 	%PreviousScore_label.text = "-" if str(Global.previous_best["score"]) == "-" else str(int(Global.previous_best["score"]))
 	%NewBestScore_label.visible = Global.new_best_score
+	%Finish_Menu.show()
 
 func load_bike():
 	race_started = false
@@ -174,8 +188,8 @@ func _physics_process(delta):
 	# Avancement
 	if is_instance_valid(velo_courant):
 		Global.avancement = clampi(100 * (
-			1-(map_data["finish"].global_position.x - velo_courant.cadre.global_position.x)
-			/map_data["finish"].global_position.x),
+			1-(map_finish.global_position.x - velo_courant.cadre.global_position.x)
+			/map_finish.global_position.x),
 			0,100)
 	
 func toggle_pause():

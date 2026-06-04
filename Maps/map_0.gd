@@ -37,11 +37,13 @@ func get_level_data():
 		"target_time" : 60,
 		"target_score_and_time" : [5000,120],
 		"collectible" : "Golden Banana",
-		"special_trick" : "Frontflip over the Volcano"
+		"special_trick" : {"trick":"Frontflip","spot":"over the Volcano"}
 		}
 
 signal out_of_bounds
 signal finish
+signal gap_entry
+signal gap_exit
 
 func _ready():
 	var road :={
@@ -81,6 +83,9 @@ func _on_finish_body_entered(_body):
 
 func return_collectible():%Banana.reset()
 func store_collectible():%Banana.store()
+
+func _on_volcano_body_entered(body):gap_entry.emit("over the Volcano")
+func _on_volcano_body_exited(body):gap_exit.emit("over the Volcano")
 
 func _on_checkpoint_1_body_entered(_body):Global.checkpoint_update("cp1",40)
 func _on_checkpoint_2_body_entered(_body):Global.checkpoint_update("cp2")

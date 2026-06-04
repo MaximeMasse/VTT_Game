@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://itr7nq5s3o1w" path="res://Images/Menus/Controls/abandon_hover.png" id="8_7sc4i"]
 [ext_resource type="Texture2D" uid="uid://br7sxbwtmc840" path="res://Images/Menus/Controls/retry_down.png" id="8_mfdv2"]
 [ext_resource type="Texture2D" uid="uid://bfagchbmge633" path="res://Images/Menus/Controls/continue_up.png" id="9_iotsf"]
-[ext_resource type="Texture2D" uid="uid://cdlqvunwcwrq0" path="res://Images/Menus/Maps/star_empty.png" id="9_xbsk7"]
+[ext_resource type="SpriteFrames" uid="uid://dw1psg1jlbwg1" path="res://Images/Menus/Maps/Anim/star_sprite_frames.tres" id="9_xbsk7"]
 [ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="10_lc2xo"]
 [ext_resource type="Texture2D" uid="uid://daoo66xd1rllp" path="res://Images/Menus/Controls/retry_hover.png" id="11_80cx4"]
 [ext_resource type="Texture2D" uid="uid://dv62chm0uslkm" path="res://Images/Menus/Controls/continue_hover.png" id="14_e8heu"]
@@ -137,10 +137,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.000061
-offset_top = -296.0
-offset_right = 246.27771
-offset_bottom = 6.0
+offset_left = -352.99994
+offset_top = -232.0
+offset_right = -69.50635
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.5891235, 1.910302)
@@ -170,51 +170,69 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ObjectivesText" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1040561045]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 35.147064
+offset_left = 56.00354
 offset_top = 54.441658
-offset_right = 241.7807
-offset_bottom = 172.22409
+offset_right = 276.1552
+offset_bottom = 182.69363
 theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = SubResource("SystemFont_k57dk")
 theme_override_font_sizes/normal_font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xbsk7")
 bbcode_enabled = true
-text = " Beat 10.000 points
+text = " [color=d9db00ff]Beat 10.000 points[/color]
 
- Finish under 1:00.000
+[color=33333bff] Finish under 1:00.000[/color]
 
  Beat 5.000 point under 1:00.000
 
- Collect the Golden Banana
+[rainbow][wave] Collect the Golden Banana[/wave][/rainbow]
 
  Frontflip over the Volcano"
 
-[node name="StarEmpty" type="Sprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=626976374]
-position = Vector2(20, 59.153)
+[node name="Star1" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1532536221]
+unique_name_in_owner = true
+position = Vector2(40.856934, 59.152954)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("9_xbsk7")
+sprite_frames = ExtResource("9_xbsk7")
+animation = &"gold"
+autoplay = "red"
+frame_progress = 0.15063757
 
-[node name="StarEmpty2" type="Sprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=733324642]
-position = Vector2(20, 83.233)
+[node name="Star2" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=300912646]
+unique_name_in_owner = true
+position = Vector2(40.856934, 83.23303)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("9_xbsk7")
+sprite_frames = ExtResource("9_xbsk7")
+animation = &"empty"
+autoplay = "red"
 
-[node name="StarEmpty3" type="Sprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=861768810]
-position = Vector2(20, 107.313)
+[node name="Star3" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1492303897]
+unique_name_in_owner = true
+position = Vector2(40.856934, 107.31299)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("9_xbsk7")
+sprite_frames = ExtResource("9_xbsk7")
+animation = &"gold"
+autoplay = "red"
 
-[node name="StarEmpty4" type="Sprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1077563973]
-position = Vector2(20, 131.393)
+[node name="Star4" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=10519218]
+unique_name_in_owner = true
+position = Vector2(40.856934, 131.39307)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("9_xbsk7")
+sprite_frames = ExtResource("9_xbsk7")
+animation = &"red"
+autoplay = "red"
+frame_progress = 0.026819509
 
-[node name="StarEmpty5" type="Sprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=303679895]
-position = Vector2(20, 155.473)
+[node name="Star5" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=205701843]
+unique_name_in_owner = true
+position = Vector2(40.856934, 155.4729)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("9_xbsk7")
+sprite_frames = ExtResource("9_xbsk7")
+animation = &"gold"
+autoplay = "red"
 
 [node name="Bests" type="Control" parent="InGame_Menus/Finish_Menu" unique_id=243776722]
 anchors_preset = 0

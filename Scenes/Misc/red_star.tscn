@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c8j2ea4e34x2l"]
+
+[ext_resource type="Texture2D" uid="uid://b7yr2vnprc8p2" path="res://Images/Menus/Maps/Anim/RedStar/star_red0.png" id="1_otbr8"]
+[ext_resource type="Texture2D" uid="uid://d1h2qfcsmk8q" path="res://Images/Menus/Maps/Anim/RedStar/star_red1.png" id="2_u4p4o"]
+[ext_resource type="Texture2D" uid="uid://cwqydenu6w5yh" path="res://Images/Menus/Maps/Anim/RedStar/star_red2.png" id="3_ghe5l"]
+[ext_resource type="Texture2D" uid="uid://dl3aj0f0pkx0v" path="res://Images/Menus/Maps/Anim/RedStar/star_red3.png" id="4_us7bx"]
+[ext_resource type="Texture2D" uid="uid://cpp6n4g2mgc03" path="res://Images/Menus/Maps/Anim/RedStar/star_red4.png" id="5_rpbpr"]
+[ext_resource type="Texture2D" uid="uid://cr3l1hjm4xmag" path="res://Images/Menus/Maps/Anim/RedStar/star_red5.png" id="6_gou35"]
+[ext_resource type="Texture2D" uid="uid://cmi2emasm0hu6" path="res://Images/Menus/Maps/Anim/RedStar/star_red6.png" id="7_nmkxc"]
+[ext_resource type="Texture2D" uid="uid://cgmgivm70p1iw" path="res://Images/Menus/Maps/Anim/RedStar/star_red7.png" id="8_lgv2o"]
+[ext_resource type="Texture2D" uid="uid://dx6ushxhhty3t" path="res://Images/Menus/Maps/Anim/RedStar/star_red8.png" id="9_mbf5h"]
+[ext_resource type="Texture2D" uid="uid://uclcqni5w517" path="res://Images/Menus/Maps/Anim/RedStar/star_red9.png" id="10_jegtt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3hxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_otbr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_u4p4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ghe5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_us7bx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rpbpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gou35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nmkxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lgv2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mbf5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jegtt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="RedStar" type="AnimatedSprite2D" unique_id=1862349431]
+sprite_frames = SubResource("SpriteFrames_d3hxp")
+autoplay = "default"
+frame_progress = 0.021912146

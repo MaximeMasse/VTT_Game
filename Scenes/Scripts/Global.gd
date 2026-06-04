@@ -8,6 +8,7 @@ var config := {}
 
 # Sélections
 var current_map := "0"
+var map_data : Dictionary
 
 # HUD
 var race_time : float
@@ -31,6 +32,11 @@ var potential_trick_score :int
 var potential_combo_score :int
 var potential_trick := {}
 var current_combo :Array[Dictionary]= []
+# Gap
+var is_gapping : String
+var is_in_gap : bool
+var gap_combo : Array[String]
+var special_trick_done : bool
 
 # Boost
 var BOOST_MAX_QUANTITY :float
@@ -56,6 +62,8 @@ signal store_collectible
 var new_best_time :bool
 var new_best_score :bool
 var previous_best :Dictionary
+var objectives_completed : Array
+var objectives_text : String
 
 #Menus
 var menu_to_show := "MainMenu"
@@ -120,6 +128,11 @@ func get_profile_data(data:String)->String:return current_profile[data]
 func set_start_values():
 	is_grabbed = false
 	is_stored = false
+	is_gapping = ""
+	is_in_gap = false
+	special_trick_done = false
+	objectives_completed = []
+	objectives_text = ""
 	race_time = 0.0
 	current_hp = 100
 	current_cp = "start"
@@ -142,6 +155,9 @@ func handle_crash():
 	if not is_stored and is_grabbed: 
 		is_grabbed = false
 		return_collectible.emit()
+	# Gap
+	is_gapping = ""
+	is_in_gap = false
 
 func checkpoint_update(cp : String,min_speed : float = 0):
 	if current_cp != cp:
@@ -150,6 +166,21 @@ func checkpoint_update(cp : String,min_speed : float = 0):
 		cp_player_pos = player_position
 		cp_player_score = current_score
 		cp_player_boost = current_boost
+
+func gap_entry(gap_name : String):
+	if current_trick["trick"] != "" or not contact_sol:
+		print("good entry ",gap_name)
+		is_gapping = gap_name
+		is_in_gap = true
+		gap_combo = []
+	else:print("bad entry ",gap_name)
+
+func gap_exit(gap_name : String):
+	print("out ",gap_name)
+	if is_gapping == gap_name: 
+		gap_combo.append(current_trick["trick"])
+		combo_update(gap_name)
+	is_in_gap = false
 
 func reset_tricks():
 	current_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
@@ -176,10 +207,14 @@ func trick_update(distance,time,angle,potential:bool=false):
 		if current_trick["trick"] not in ["","Wheelie","Nose Wheelie"]:check_air_rotation()
 		potential_trick_score = trick_score(current_trick) * 2 ** current_combo.size()
 
-func combo_update():
-	potential_combo_score += potential_trick_score
-	current_combo.append(current_trick.duplicate())
-	hud_combo_update.emit(current_trick["trick"])
+func combo_update(gap=null):
+	var score_to_add : float = potential_trick_score if gap == null else 100
+	var trick_to_add : Dictionary = current_trick.duplicate() if gap == null else \
+						{"trick":"[color=4a5ef5ff]" + gap + "[/color]","length":0.0,"duration":0.0,"rotation":0.0}
+	potential_combo_score += score_to_add
+	current_combo.append(trick_to_add)
+	if is_in_gap : gap_combo.append(current_trick["trick"])
+	hud_combo_update.emit(trick_to_add["trick"])
 
 func check_air_rotation():
 	var angle :float = current_trick["rotation"]
@@ -207,6 +242,11 @@ func valid_combo():
 	if not is_stored and is_grabbed :
 		is_stored = true
 		store_collectible.emit()
+	# Gap
+	if is_gapping == map_data["special_trick"]["spot"]:
+		for trick in gap_combo: if map_data["special_trick"]["trick"] in trick : special_trick_done = true
+		if special_trick_done:print("Yay")
+	is_gapping = ""
 
 func combo_score()-> int:
 	var score :int = 0
@@ -244,8 +284,33 @@ func end_map():
 	AudioManager.stop_music()
 	AudioManager.play_sfx("fireworks")
 	AudioManager.play_music("Victory")
+	check_map_objectives()
 	check_map_record()
 	SaveManager.save_profile(current_profile)
+
+func check_map_objectives():
+	var previous_stars : Array = current_profile["current_run"]["finished_maps"].get(current_map,[])
+	if 1.0 not in previous_stars and current_score >= map_data["target_score"] : objectives_completed.append(1.0)
+	if 2.0 not in previous_stars and race_time < map_data["target_time"] : objectives_completed.append(2.0)
+	if 3.0 not in previous_stars and current_score >= map_data["target_score_and_time"][0]\
+		and  race_time < map_data["target_score_and_time"][1] : objectives_completed.append(3.0)
+	if 4.0 not in previous_stars and is_stored : objectives_completed.append(4.0)
+	if 5.0 not in previous_stars and special_trick_done : objectives_completed.append(5.0)
+	if 1.0 in previous_stars : objectives_text += " [color=d9db00ff]Beat 10.000 points[/color]\n\n"
+	elif 1.0 in objectives_completed : objectives_text += " [rainbow][wave]Beat 10.000 points[/wave][/rainbow]\n\n"
+	else : objectives_text += " [color=33333bff]Beat 10.000 points[/color]\n\n"
+	if 2.0 in previous_stars : objectives_text += " [color=d9db00ff]Finish under 1:00.000[/color]\n\n"
+	elif 2.0 in objectives_completed : objectives_text += " [rainbow][wave]Finish under 1:00.000[/wave][/rainbow]\n\n"
+	else : objectives_text += " [color=33333bff]Finish under 1:00.000[/color]\n\n"
+	if 3.0 in previous_stars : objectives_text += " [color=d9db00ff]Beat 5.000 point under 1:00.000[/color]\n\n"
+	elif 3.0 in objectives_completed : objectives_text += " [rainbow][wave]Beat 5.000 point under 1:00.000[/wave][/rainbow]\n\n"
+	else : objectives_text += " [color=33333bff]Beat 5.000 point under 1:00.000[/color]\n\n"
+	if 4.0 in previous_stars : objectives_text += " [color=d9db00ff]Collect the Golden Banana[/color]\n\n"
+	elif 4.0 in objectives_completed : objectives_text += " [rainbow][wave]Collect the Golden Banana[/wave][/rainbow]\n\n"
+	else : objectives_text += " [color=33333bff]Collect the Golden Banana[/color]\n\n"
+	if 5.0 in previous_stars : objectives_text += " [color=d9db00ff]Frontflip over the Volcano[/color]\n\n"
+	elif 5.0 in objectives_completed : objectives_text += " [rainbow][wave]Frontflip over the Volcano[/wave][/rainbow]\n\n"
+	else : objectives_text += " [color=33333bff]Frontflip over the Volcano[/color]\n\n"
 
 func check_map_record():
 	new_best_score = false
@@ -253,18 +318,18 @@ func check_map_record():
 	previous_best = {"time":"-","score":"-"}
 	if current_map in current_profile["map_record"]:
 		previous_best = current_profile["map_record"][current_map].duplicate()
-		if previous_best["time"] > Global.race_time:
+		if previous_best["time"] > race_time:
 			new_best_time = true
-			current_profile["map_record"][current_map]["time"]=Global.race_time
-		if previous_best["score"] < Global.current_score:
+			current_profile["map_record"][current_map]["time"]=race_time
+		if previous_best["score"] < current_score:
 			new_best_score = true
-			current_profile["map_record"][current_map]["score"]=Global.current_score
+			current_profile["map_record"][current_map]["score"]=current_score
 	else:
 		current_profile["map_record"][current_map] = {}
 		new_best_time = true
-		current_profile["map_record"][current_map]["time"]=Global.race_time
+		current_profile["map_record"][current_map]["time"]=race_time
 		new_best_score = true
-		current_profile["map_record"][current_map]["score"]=Global.current_score
+		current_profile["map_record"][current_map]["score"]=current_score
 
 func format_time(t: float) -> String:
 	var minutes := int(t/60)

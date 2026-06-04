@@ -2,8 +2,8 @@ extends CanvasLayer
 
 var colors := {
 	"RED":Color(1,0.04,0.04,1),
-	"YELLOW":Color(0.85,0.86,0,1),
-	"DARK_GREY":Color(0.2,0.2,0.23,1),
+	"YELLOW":Color("d9db00ff"),
+	"DARK_GREY":Color("33333bff"),
 	"LIGHT_GREEN":Color(0.2,0.9,0.23,1),
 	"ORANGE":Color(0.76,0.37,0,1),
 	"LIGHT_BLUE":Color("4a5ef5ff")
@@ -68,7 +68,6 @@ func reset():
 	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
 	%Boost_gauge.value = 0
 	set_boost_geometry()
-	for moment in dico_to_hide:set_visibility(moment)
 
 func set_visibility(moment:String):for node in dico_to_hide[moment][0]:node.visible = dico_to_hide[moment][1]
 
@@ -122,7 +121,7 @@ func round_to(value: float, decimals: int) -> float:
 	var factor = pow(10, decimals)
 	return round(value * factor) / factor
 
-func fade_out_label(label: Label,scaling: Vector2,offseting: Vector2,effect_duration: float):
+func fade_out_label(label: Control,scaling: Vector2,offseting: Vector2,effect_duration: float):
 	if not label_is_fading[label]:
 		label_is_fading[label] = true
 		var initial_scale = label.scale

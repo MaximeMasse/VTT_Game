@@ -72,7 +72,7 @@ func map_progress_update():
 				var current_map : String = node_to_check.pop_front()
 				dico_map_buttons[current_map][0].show()
 				if current_map in Global.current_profile["current_run"]["finished_maps"].keys():
-					var stars : Array[int] = [1,3]
+					var stars : Array = Global.current_profile["current_run"]["finished_maps"][current_map]
 					dico_map_buttons[current_map][0].get_child(0).show()
 					dico_map_buttons[current_map][0].get_child(1).stars_update(stars)
 					dico_map_buttons[current_map][0].get_child(1).show()
