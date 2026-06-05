@@ -21,7 +21,16 @@ var dico_sfx := {
 	"bone_crack": preload("res://Sound/SFX/bone_crack.wav"),
 	"ting": preload("res://Sound/SFX/Ting.mp3"),
 	"kaching":preload("res://Sound/SFX/kaching.mp3"),
-	"banana":preload("res://Sound/SFX/banana.mp3")
+	"banana":preload("res://Sound/SFX/banana.mp3"),
+	"gap":preload("res://Sound/SFX/Gap.wav"),
+	"special_trick":preload("res://Sound/SFX/SpecialTrick.wav"),
+	"combo1":preload("res://Sound/SFX/Combo1.mp3"),
+	"combo2":preload("res://Sound/SFX/Combo2.mp3"),
+	"combo3":preload("res://Sound/SFX/Combo3.mp3"),
+	"combo4":preload("res://Sound/SFX/Combo4.mp3"),
+	"combo5":preload("res://Sound/SFX/Combo5.mp3"),
+	"combo6":preload("res://Sound/SFX/Combo6.mp3"),
+	"combo7":preload("res://Sound/SFX/Combo7.mp3")
 }
 var dico_ground_sfx := {
 	"slow_riding":{

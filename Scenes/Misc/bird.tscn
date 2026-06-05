@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://c4dgb5i0k1dbp"]
+
+[ext_resource type="Script" uid="uid://dipff2ua3vnff" path="res://Scenes/Misc/bird.gd" id="1_bgj27"]
+[ext_resource type="Texture2D" uid="uid://fi860m030slo" path="res://Images/Mapping/Collectibles/Bird/bird01.png" id="2_okfyn"]
+[ext_resource type="Texture2D" uid="uid://qrx4hk6l8plb" path="res://Images/Mapping/Collectibles/Bird/bird02.png" id="3_3ksit"]
+[ext_resource type="Texture2D" uid="uid://bvpbg3fjbrdj2" path="res://Images/Mapping/Collectibles/Bird/bird03.png" id="4_6f8o8"]
+[ext_resource type="Texture2D" uid="uid://lhs6jh2yqqie" path="res://Images/Mapping/Collectibles/Bird/bird04.png" id="5_bgj27"]
+[ext_resource type="Texture2D" uid="uid://clx62byj2hcfu" path="res://Images/Mapping/Collectibles/Bird/bird05.png" id="6_ejm2l"]
+[ext_resource type="Texture2D" uid="uid://cy7pbh63fc3xw" path="res://Images/Mapping/Collectibles/Bird/bird06.png" id="7_jeryf"]
+[ext_resource type="Texture2D" uid="uid://bt2v1vou2e48q" path="res://Images/Mapping/Collectibles/Bird/bird07.png" id="8_fd182"]
+[ext_resource type="Texture2D" uid="uid://dsgtwvu0kg1dk" path="res://Images/Mapping/Collectibles/Bird/bird08.png" id="9_5glnu"]
+[ext_resource type="Texture2D" uid="uid://c7uo5uirrljwj" path="res://Images/Mapping/Collectibles/Bird/bird09.png" id="10_reku1"]
+[ext_resource type="Texture2D" uid="uid://dhejrsp1cw6j" path="res://Images/Mapping/Collectibles/Bird/bird10.png" id="11_3ckhv"]
+[ext_resource type="Texture2D" uid="uid://cn7cm1g6c7esc" path="res://Images/Mapping/Collectibles/Bird/bird11.png" id="12_04t0e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xpjo"]
+radius = 26.019224
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_47pri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_okfyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3ksit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6f8o8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bgj27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ejm2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jeryf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fd182")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5glnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_reku1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3ckhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_04t0e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_a0nx7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_y5wrl"]
+resource_name = "Store"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(51, -81), Vector2(113, -144), Vector2(167, -173), Vector2(211, -190), Vector2(257, -194), Vector2(302, -191), Vector2(357, -171), Vector2(405, -142), Vector2(466, -76), Vector2(516, -1), Vector2(541, 78), Vector2(575, 181), Vector2(616, 303), Vector2(652, 418), Vector2(719, 603)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.53333336, 0.6, 0.70000005, 0.8, 0.90000004, 1, 1.0333334, 1.1, 1.2, 1.3000001, 1.4000001, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.2566371, 2.5132742, 3.7699113, 5.0265484, 6.2831855, 0.41887903, 1.2566371, 2.5132742, 3.7699113, 5.0265484, 6.2831855, 0.41887903, 1.2566371, 2.5132742, 3.7699113, 5.0265484, 6.2831855]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iq2nt"]
+_data = {
+&"RESET": SubResource("Animation_a0nx7"),
+&"Store": SubResource("Animation_y5wrl")
+}
+
+[node name="Bird" type="Area2D" unique_id=767523825]
+z_index = 3
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_bgj27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=200428888]
+visible = false
+shape = SubResource("CircleShape2D_8xpjo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=382631478]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_47pri")
+frame_progress = 0.8835201
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1187395376]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_iq2nt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

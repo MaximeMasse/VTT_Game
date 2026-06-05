@@ -173,13 +173,12 @@ func gap_entry(gap_name : String):
 		is_gapping = gap_name
 		is_in_gap = true
 		gap_combo = []
-	else:print("bad entry ",gap_name)
 
 func gap_exit(gap_name : String):
-	print("out ",gap_name)
 	if is_gapping == gap_name: 
 		gap_combo.append(current_trick["trick"])
 		combo_update(gap_name)
+		AudioManager.play_sfx("gap")
 	is_in_gap = false
 
 func reset_tricks():
@@ -194,6 +193,7 @@ func new_trick(trick_name:String):
 	current_trick = potential_trick.duplicate()
 	current_trick["trick"] = trick_name
 	hud_trick_activate.emit()
+	if current_combo.size() > 0:AudioManager.play_sfx("combo" + str(current_combo.size()))
 
 func trick_update(distance,time,angle,potential:bool=false):
 	if potential:
@@ -215,6 +215,7 @@ func combo_update(gap=null):
 	current_combo.append(trick_to_add)
 	if is_in_gap : gap_combo.append(current_trick["trick"])
 	hud_combo_update.emit(trick_to_add["trick"])
+	
 
 func check_air_rotation():
 	var angle :float = current_trick["rotation"]
@@ -243,9 +244,9 @@ func valid_combo():
 		is_stored = true
 		store_collectible.emit()
 	# Gap
-	if is_gapping == map_data["special_trick"]["spot"]:
+	if is_gapping == map_data["special_trick"]["spot"] and not special_trick_done:
 		for trick in gap_combo: if map_data["special_trick"]["trick"] in trick : special_trick_done = true
-		if special_trick_done:print("Yay")
+		if special_trick_done:AudioManager.play_sfx("special_trick")
 	is_gapping = ""
 
 func combo_score()-> int:
@@ -290,27 +291,31 @@ func end_map():
 
 func check_map_objectives():
 	var previous_stars : Array = current_profile["current_run"]["finished_maps"].get(current_map,[])
-	if 1.0 not in previous_stars and current_score >= map_data["target_score"] : objectives_completed.append(1.0)
-	if 2.0 not in previous_stars and race_time < map_data["target_time"] : objectives_completed.append(2.0)
-	if 3.0 not in previous_stars and current_score >= map_data["target_score_and_time"][0]\
-		and  race_time < map_data["target_score_and_time"][1] : objectives_completed.append(3.0)
+	var target_score : float = map_data["target_score"]
+	var target_time : float = map_data["target_time"]
+	var tst_score : float = map_data["target_score_and_time"][0]
+	var tst_time : float = map_data["target_score_and_time"][1]
+	var special_trick : String = map_data["special_trick"]["trick"]+ " " + map_data["special_trick"]["spot"]
+	if 1.0 not in previous_stars and current_score >= target_score : objectives_completed.append(1.0)
+	if 2.0 not in previous_stars and race_time < target_time : objectives_completed.append(2.0)
+	if 3.0 not in previous_stars and current_score >= tst_score and  race_time < tst_time : objectives_completed.append(3.0)
 	if 4.0 not in previous_stars and is_stored : objectives_completed.append(4.0)
 	if 5.0 not in previous_stars and special_trick_done : objectives_completed.append(5.0)
-	if 1.0 in previous_stars : objectives_text += " [color=d9db00ff]Beat 10.000 points[/color]\n\n"
-	elif 1.0 in objectives_completed : objectives_text += " [rainbow][wave]Beat 10.000 points[/wave][/rainbow]\n\n"
-	else : objectives_text += " [color=33333bff]Beat 10.000 points[/color]\n\n"
-	if 2.0 in previous_stars : objectives_text += " [color=d9db00ff]Finish under 1:00.000[/color]\n\n"
-	elif 2.0 in objectives_completed : objectives_text += " [rainbow][wave]Finish under 1:00.000[/wave][/rainbow]\n\n"
-	else : objectives_text += " [color=33333bff]Finish under 1:00.000[/color]\n\n"
-	if 3.0 in previous_stars : objectives_text += " [color=d9db00ff]Beat 5.000 point under 1:00.000[/color]\n\n"
-	elif 3.0 in objectives_completed : objectives_text += " [rainbow][wave]Beat 5.000 point under 1:00.000[/wave][/rainbow]\n\n"
-	else : objectives_text += " [color=33333bff]Beat 5.000 point under 1:00.000[/color]\n\n"
-	if 4.0 in previous_stars : objectives_text += " [color=d9db00ff]Collect the Golden Banana[/color]\n\n"
-	elif 4.0 in objectives_completed : objectives_text += " [rainbow][wave]Collect the Golden Banana[/wave][/rainbow]\n\n"
-	else : objectives_text += " [color=33333bff]Collect the Golden Banana[/color]\n\n"
-	if 5.0 in previous_stars : objectives_text += " [color=d9db00ff]Frontflip over the Volcano[/color]\n\n"
-	elif 5.0 in objectives_completed : objectives_text += " [rainbow][wave]Frontflip over the Volcano[/wave][/rainbow]\n\n"
-	else : objectives_text += " [color=33333bff]Frontflip over the Volcano[/color]\n\n"
+	if 1.0 in previous_stars : objectives_text += " [color=d9db00ff]Beat " + format_number(target_score) + " points[/color]\n\n"
+	elif 1.0 in objectives_completed : objectives_text += " [rainbow][wave]Beat " + format_number(target_score) + " points[/wave][/rainbow]\n\n"
+	else : objectives_text += " [color=33333bff]Beat " + format_number(target_score) + " points[/color]\n\n"
+	if 2.0 in previous_stars : objectives_text += " [color=d9db00ff]Finish under " + format_time(target_time) + "[/color]\n\n"
+	elif 2.0 in objectives_completed : objectives_text += " [rainbow][wave]Finish under " + format_time(target_time) + "[/wave][/rainbow]\n\n"
+	else : objectives_text += " [color=33333bff]Finish under " + format_time(target_time) + "[/color]\n\n"
+	if 3.0 in previous_stars : objectives_text += " [color=d9db00ff]Beat " + format_number(tst_score) + " point under " + format_time(tst_time) + "[/color]\n\n"
+	elif 3.0 in objectives_completed : objectives_text += " [rainbow][wave]Beat " + format_number(tst_score) + " point under " + format_time(tst_time) + "[/wave][/rainbow]\n\n"
+	else : objectives_text += " [color=33333bff]Beat " + format_number(tst_score) + " point under " + format_time(tst_time) + "[/color]\n\n"
+	if 4.0 in previous_stars : objectives_text += " [color=d9db00ff]Collect the " + map_data["collectible"] + "[/color]\n\n"
+	elif 4.0 in objectives_completed : objectives_text += " [rainbow][wave]Collect the " + map_data["collectible"] + "[/wave][/rainbow]\n\n"
+	else : objectives_text += " [color=33333bff]Collect the " + map_data["collectible"] + "[/color]\n\n"
+	if 5.0 in previous_stars : objectives_text += " [color=d9db00ff]" + special_trick + "[/color]\n\n"
+	elif 5.0 in objectives_completed : objectives_text += " [rainbow][wave]" + special_trick + "[/wave][/rainbow]\n\n"
+	else : objectives_text += " [color=33333bff]" + special_trick + "[/color]\n\n"
 
 func check_map_record():
 	new_best_score = false
@@ -336,6 +341,11 @@ func format_time(t: float) -> String:
 	var seconds := int(t) % 60
 	var ms := int((t - int(t)) * 1000)
 	return "%02d:%02d.%03d" % [minutes, seconds, ms]
+
+func format_number(value: float) -> String:
+	var s := str(int(value))
+	for i in range(s.length() - 3, 0, -3):s = s.insert(i, ".")
+	return s
 
 func name_rotation(number_of_rotation:int)->String:
 	return rotation_name_and_point[number_of_rotation][0] + " " if number_of_rotation in rotation_name_and_point else "Wow, too much "

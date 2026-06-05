@@ -224,7 +224,7 @@ scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"red"
 autoplay = "red"
-frame_progress = 0.026819509
+frame_progress = 0.66381323
 
 [node name="Star5" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=205701843]
 unique_name_in_owner = true

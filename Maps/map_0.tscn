@@ -40,6 +40,9 @@
 a = Vector2(269.96777, 30.290344)
 b = Vector2(-67.03125, 28.927917)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrsql"]
+size = Vector2(360, 40)
+
 [sub_resource type="Curve2D" id="Curve2D_2m57o"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -469, 64, 0, 0, 0, 0, 771, 62, -69.212006, -41.261, 69.212006, 41.261, 987, 105, 0, 0, 0, 0, 1317, 290, 0, 0, 0, 0, 1596, 442, -102.48701, -9.317, 102.48701, 9.317, 1801, 499, 0, 0, 0, 0, 2120, 506, -88, 8, 88, -8, 2317, 503, 0, 0, 0, 0, 2505, 479)
@@ -160,7 +163,7 @@ polygon = PackedVector2Array(-986, 229, 28048, 7842, 32786, 6160, 32241, 5110, 3
 
 [node name="Banana" parent="Spots" unique_id=767523825 instance=ExtResource("33_4wpxc")]
 unique_name_in_owner = true
-position = Vector2(29879, 5506)
+position = Vector2(10707, 1069)
 
 [node name="Bills" type="Node2D" parent="Spots" unique_id=2061333666]
 
@@ -176,6 +179,15 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spots/Gap/Volcano" unique_id=1378756995]
 polygon = PackedVector2Array(-295, -342, -188, -449, -17, -497, 295, -481, 418, -405, 459, -294, 94, 6, 77, -104)
+
+[node name="WoodenPlatform" type="Area2D" parent="Spots/Gap" unique_id=322914436]
+position = Vector2(3536, 284)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/Gap/WoodenPlatform" unique_id=1387570020]
+position = Vector2(24, -10)
+shape = SubResource("RectangleShape2D_wrsql")
 
 [node name="Paths" type="Node2D" parent="." unique_id=1436220943]
 unique_name_in_owner = true
@@ -218,7 +230,6 @@ collision_mask = 0
 unique_name_in_owner = true
 
 [node name="Assets" type="Node2D" parent="." unique_id=1612230551]
-visible = false
 
 [node name="FrontForest" type="Node2D" parent="Assets" unique_id=1214418813]
 z_index = 1
@@ -815,7 +826,6 @@ scale = Vector2(0.7734375, 0.7734375)
 texture = ExtResource("32_e3fhd")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=746463856]
-visible = false
 
 [node name="Ciel" type="ParallaxLayer" parent="ParallaxBackground" unique_id=146799377]
 position = Vector2(-3, -3)
@@ -891,9 +901,7 @@ shape = SubResource("SegmentShape2D_2wbil")
 [node name="DebugStart" type="Marker2D" parent="." unique_id=1407101377]
 unique_name_in_owner = true
 z_index = 17
-position = Vector2(3673, 194)
 script = ExtResource("35_wrsql")
-debug_start_speed = 40.0
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]
@@ -902,3 +910,5 @@ debug_start_speed = 40.0
 [connection signal="body_entered" from="Spots/CrashZone" to="." method="_on_crash_zone_body_entered"]
 [connection signal="body_entered" from="Spots/Gap/Volcano" to="." method="_on_volcano_body_entered"]
 [connection signal="body_exited" from="Spots/Gap/Volcano" to="." method="_on_volcano_body_exited"]
+[connection signal="body_entered" from="Spots/Gap/WoodenPlatform" to="." method="_on_wooden_platform_body_entered"]
+[connection signal="body_exited" from="Spots/Gap/WoodenPlatform" to="." method="_on_wooden_platform_body_exited"]

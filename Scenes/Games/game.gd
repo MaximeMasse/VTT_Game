@@ -99,7 +99,7 @@ func map_finished():
 
 func finish_menu_update():
 	for star in stars:stars[star].animation = "empty"
-	for old_succes in Global.current_profile["current_run"]["finished_maps"][Global.current_map]:
+	for old_succes in Global.current_profile["current_run"]["finished_maps"].get(Global.current_map,[]):
 		stars[old_succes].animation = "gold"
 	for new_succes in Global.objectives_completed:
 		stars[new_succes].animation = "red"
