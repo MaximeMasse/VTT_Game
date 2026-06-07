@@ -37,7 +37,7 @@ var dico_acts := {
 			"To do so, start loading it by pressing \n\n[img]res://Images/Keys/spacebar.png[/img]",
 			"Jump2"],
 	"Jump2":["The [color=black][pulse]Jump Gauge[/pulse][/color] will appear :\n"+
-			"[img]res://Images/HUD/piston_mini.png[/img]\n"+
+			"[img]res://Images/HUD/jump/piston_mini.png[/img]\n"+
 			"The [color=red]red[/color] dot will change its color. Try to release the jump key "+
 			" when the dot turns [color=green]green[/color]. Releasing too late or too early will make the jump less powerfull.",
 			"Jump3"],
@@ -228,7 +228,7 @@ func map_finished():
 		camera_target = map_data["finish"]
 		is_finished = true
 		Global.avancement = 100
-		Global.current_profile["current_run"]["finished_maps"]["0"] = []
+		Global.current_profile["current_run"]["finished_maps"]["0"] = {"objectives":[],"bills":[]}
 		Global.current_profile["state"] = "tuto2"
 		SaveManager.save_profile(Global.current_profile)
 		AudioManager.stop_music()

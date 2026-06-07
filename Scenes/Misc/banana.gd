@@ -7,7 +7,7 @@ func _on_body_entered(_body: Node2D) -> void:
 		Global.is_grabbed = true
 		AudioManager.play_sfx("banana")
 
-func _on_area_entered(area):_on_body_entered(null)
+func _on_area_entered(_area):_on_body_entered(null)
 
 func reset():while global_position != initial_position: global_position = global_position.lerp(initial_position,0.5)
 
@@ -15,5 +15,5 @@ func store():
 	AudioManager.play_sfx("ting")
 	%AnimationPlayer.play("Store")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Global.is_grabbed and not Global.is_stored: global_position = global_position.lerp(Global.player_position,0.1)

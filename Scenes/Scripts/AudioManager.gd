@@ -22,6 +22,7 @@ var dico_sfx := {
 	"ting": preload("res://Sound/SFX/Ting.mp3"),
 	"kaching":preload("res://Sound/SFX/kaching.mp3"),
 	"banana":preload("res://Sound/SFX/banana.mp3"),
+	"bird":preload("res://Sound/SFX/bird.mp3"),
 	"gap":preload("res://Sound/SFX/Gap.wav"),
 	"special_trick":preload("res://Sound/SFX/SpecialTrick.wav"),
 	"combo1":preload("res://Sound/SFX/Combo1.mp3"),

@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://bfjb48yf137xj"]
+
+[ext_resource type="Script" uid="uid://d05imqlv3ogja" path="res://Scenes/Misc/50_bill.gd" id="1_imm4s"]
+[ext_resource type="Texture2D" uid="uid://b2t4xiu1ohpba" path="res://Images/Mapping/Collectibles/Bills/50_Bill_face.png" id="2_imm4s"]
+[ext_resource type="Texture2D" uid="uid://dpvg55mgdim55" path="res://Images/Mapping/Collectibles/Bills/50_Bill_back.png" id="3_rwref"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78gxm"]
+size = Vector2(70, 26)
+
+[sub_resource type="Animation" id="Animation_lgu1p"]
+resource_name = "Grabbed"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BillFace:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.9999999, -258.99997)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BillFace:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -3.137976, -4.1887903, -5.2359877, 0.0, -3.137976, -4.1887903, -5.2359877, 0.0, -1.0471976, -2.0943952, 3.131752]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BillFace:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_tr3hd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BillFace:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_imm4s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BillFace:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.04, 0.03)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BillFace:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BillFace:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BillFace:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_colo1"]
+resource_name = "spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BillFace:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_imm4s"), ExtResource("3_rwref"), ExtResource("3_rwref"), ExtResource("2_imm4s"), ExtResource("2_imm4s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BillFace:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.04, 0.03), Vector2(1e-05, 0.03), Vector2(0.04, 0.03), Vector2(1e-05, 0.03), Vector2(0.04, 0.03)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgu1p"]
+_data = {
+&"Grabbed": SubResource("Animation_lgu1p"),
+&"RESET": SubResource("Animation_tr3hd"),
+&"spin": SubResource("Animation_colo1")
+}
+
+[node name="50Bill" type="Area2D" unique_id=597363856]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_imm4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=639941033]
+shape = SubResource("RectangleShape2D_78gxm")
+
+[node name="BillFace" type="Sprite2D" parent="." unique_id=1488770812]
+scale = Vector2(0.04, 0.03)
+texture = ExtResource("2_imm4s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=607162424]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_lgu1p")
+autoplay = &"spin"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

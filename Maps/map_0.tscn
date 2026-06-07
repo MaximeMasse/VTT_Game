@@ -13,10 +13,18 @@
 [ext_resource type="Texture2D" uid="uid://vrrxlv0cap0h" path="res://Images/Mapping/Assets/Rocks/rock_big_1.png" id="9_y2cw0"]
 [ext_resource type="Texture2D" uid="uid://b60tpv2slrwef" path="res://Images/Mapping/Fonds/Fond_montagnes.png" id="10_2k2xf"]
 [ext_resource type="Texture2D" uid="uid://bb53ivx7kwmg7" path="res://Images/Mapping/Assets/Rocks/rock_small_1.png" id="11_6tt68"]
-[ext_resource type="PackedScene" uid="uid://bj7vagcb8aebw" path="res://Scenes/Misc/bill.tscn" id="11_xkbuu"]
+[ext_resource type="PackedScene" uid="uid://bj7vagcb8aebw" path="res://Scenes/Misc/100bill.tscn" id="11_xkbuu"]
+[ext_resource type="PackedScene" uid="uid://bfjb48yf137xj" path="res://Scenes/Misc/50bill.tscn" id="11_yncro"]
+[ext_resource type="PackedScene" uid="uid://byo6owss00mjp" path="res://Scenes/Misc/200bill.tscn" id="12_e7mna"]
 [ext_resource type="Texture2D" uid="uid://5k4i7haivqc0" path="res://Images/Mapping/Assets/Rocks/rock_small_2.png" id="12_jldr1"]
+[ext_resource type="Texture2D" uid="uid://odgsdxefv33t" path="res://Images/Mapping/Assets/Clouds/Cloud3.png" id="12_o6hts"]
 [ext_resource type="Texture2D" uid="uid://dqdmt8cisjb1h" path="res://Images/Mapping/Cover/Forest_2.png" id="13_e1l6w"]
+[ext_resource type="Texture2D" uid="uid://0qexyetf38pi" path="res://Images/Mapping/Assets/Clouds/Cloud4.png" id="13_m5lw8"]
+[ext_resource type="PackedScene" uid="uid://ct2duft2f1d51" path="res://Scenes/Misc/500bill.tscn" id="13_weuxy"]
 [ext_resource type="Texture2D" uid="uid://bbdicpo6bmg06" path="res://Images/Mapping/Cover/Forest_1.png" id="14_4hqvm"]
+[ext_resource type="Texture2D" uid="uid://dq7h2qas5uai4" path="res://Images/Mapping/Assets/Clouds/Cloud1.png" id="14_d2x4f"]
+[ext_resource type="Texture2D" uid="uid://bljou6t2m2240" path="res://Images/Mapping/Assets/Clouds/Cloud5.png" id="15_yncro"]
+[ext_resource type="Texture2D" uid="uid://2mumygl5l5wf" path="res://Images/Mapping/Assets/Clouds/Cloud6.png" id="16_e7mna"]
 [ext_resource type="Texture2D" uid="uid://bflvkvtg4acd" path="res://Images/Mapping/Cover/Forest_5.png" id="16_m15sf"]
 [ext_resource type="Texture2D" uid="uid://c3ksrwijri7lb" path="res://Images/Mapping/Assets/Pannels/Compress.png" id="17_7jcjq"]
 [ext_resource type="Texture2D" uid="uid://d1rdp8aqfol8r" path="res://Images/Mapping/Cover/forest_4.png" id="17_dhc5w"]
@@ -41,7 +49,7 @@ a = Vector2(269.96777, 30.290344)
 b = Vector2(-67.03125, 28.927917)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrsql"]
-size = Vector2(360, 40)
+size = Vector2(360, 160)
 
 [sub_resource type="Curve2D" id="Curve2D_2m57o"]
 _data = {
@@ -163,12 +171,32 @@ polygon = PackedVector2Array(-986, 229, 28048, 7842, 32786, 6160, 32241, 5110, 3
 
 [node name="Banana" parent="Spots" unique_id=767523825 instance=ExtResource("33_4wpxc")]
 unique_name_in_owner = true
-position = Vector2(10707, 1069)
+position = Vector2(10373, 621)
 
 [node name="Bills" type="Node2D" parent="Spots" unique_id=2061333666]
+unique_name_in_owner = true
 
-[node name="Bill" parent="Spots/Bills" unique_id=597363856 instance=ExtResource("11_xkbuu")]
-position = Vector2(496, -4)
+[node name="50Bill" parent="Spots/Bills" unique_id=597363856 instance=ExtResource("11_yncro")]
+position = Vector2(2755, 384)
+
+[node name="200Bill" parent="Spots/Bills" unique_id=951897309 instance=ExtResource("12_e7mna")]
+position = Vector2(6047, -3)
+
+[node name="50Bill2" parent="Spots/Bills" unique_id=1090315744 instance=ExtResource("11_yncro")]
+position = Vector2(7629, 554)
+
+[node name="50Bill3" parent="Spots/Bills" unique_id=475593193 instance=ExtResource("11_yncro")]
+position = Vector2(10884, 1127)
+
+[node name="500Bill" parent="Spots/Bills" unique_id=619079270 instance=ExtResource("13_weuxy")]
+position = Vector2(21031, 2929)
+
+[node name="100Bill" parent="Spots/Bills" unique_id=1085927613 instance=ExtResource("11_xkbuu")]
+z_index = 1
+position = Vector2(9840, 722)
+
+[node name="50Bill4" parent="Spots/Bills" unique_id=1184667901 instance=ExtResource("11_yncro")]
+position = Vector2(29746, 5539)
 
 [node name="Gap" type="Node2D" parent="Spots" unique_id=1775026015]
 position = Vector2(6012, 356)
@@ -186,8 +214,44 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/Gap/WoodenPlatform" unique_id=1387570020]
-position = Vector2(24, -10)
+position = Vector2(24, -70)
 shape = SubResource("RectangleShape2D_wrsql")
+
+[node name="Clouds" type="Area2D" parent="Spots/Gap" unique_id=576783291]
+position = Vector2(14990, 2841)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Cloud3" type="Sprite2D" parent="Spots/Gap/Clouds" unique_id=1829120644]
+position = Vector2(-204, 12)
+texture = ExtResource("12_o6hts")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spots/Gap/Clouds" unique_id=1257757425]
+polygon = PackedVector2Array(-92, -26, -366, -133, -497, -350, -201, -468, 243, -502, 545, -440, 729, -225, 654, -78, 322, 21)
+
+[node name="Cloud4" type="Sprite2D" parent="Spots/Gap/Clouds" unique_id=736583042]
+position = Vector2(416, 76)
+texture = ExtResource("13_m5lw8")
+
+[node name="Cloud1" type="Sprite2D" parent="Spots/Gap/Clouds" unique_id=1017172743]
+position = Vector2(70, 38)
+texture = ExtResource("14_d2x4f")
+
+[node name="Cloud5" type="Sprite2D" parent="Spots/Gap/Clouds" unique_id=537747666]
+position = Vector2(-1339, -300)
+texture = ExtResource("13_m5lw8")
+
+[node name="Cloud6" type="Sprite2D" parent="Spots/Gap/Clouds" unique_id=647987481]
+position = Vector2(1369, 46)
+texture = ExtResource("15_yncro")
+
+[node name="Cloud7" type="Sprite2D" parent="Spots/Gap/Clouds" unique_id=1488946521]
+position = Vector2(1001, 171)
+texture = ExtResource("16_e7mna")
+
+[node name="Cloud2" type="Sprite2D" parent="Spots/Gap/Clouds" unique_id=1791104748]
+position = Vector2(-826, -94)
+texture = ExtResource("14_d2x4f")
 
 [node name="Paths" type="Node2D" parent="." unique_id=1436220943]
 unique_name_in_owner = true
@@ -875,20 +939,35 @@ scale = Vector2(2.319, 2.319)
 texture = ExtResource("17_dhc5w")
 region_rect = Rect2(43.605103, 0, 1492.3949, 890)
 
-[node name="Forest5" type="Sprite2D" parent="ParallaxBackground/Foret" unique_id=1264218214]
-position = Vector2(1629, 2790)
-scale = Vector2(2.319, 2.319)
-texture = ExtResource("17_dhc5w")
-
 [node name="Forest6" type="Sprite2D" parent="ParallaxBackground/Foret" unique_id=62667827]
-position = Vector2(1510, 1640)
+position = Vector2(1559, 1305)
 scale = Vector2(2.15, 2.15)
 texture = ExtResource("16_m15sf")
 
+[node name="Forest5" type="Sprite2D" parent="ParallaxBackground/Foret" unique_id=1264218214]
+position = Vector2(1550, 2130)
+scale = Vector2(2.319, 2.319)
+texture = ExtResource("17_dhc5w")
+
 [node name="Forest1" type="Sprite2D" parent="ParallaxBackground/Foret" unique_id=2130288135]
-position = Vector2(1618, 4355)
+position = Vector2(1618, 3006)
 scale = Vector2(2.15, 2.15)
 texture = ExtResource("14_4hqvm")
+
+[node name="Forest3" type="Sprite2D" parent="ParallaxBackground/Foret" unique_id=1683284686]
+position = Vector2(1757, 4132)
+scale = Vector2(2.319, 2.319)
+texture = ExtResource("8_4hqvm")
+
+[node name="Forest7" type="Sprite2D" parent="ParallaxBackground/Foret" unique_id=1299091379]
+position = Vector2(1774, 4783)
+scale = Vector2(2.319, 2.319)
+texture = ExtResource("16_m15sf")
+
+[node name="Forest2" type="Sprite2D" parent="ParallaxBackground/Foret" unique_id=1753408770]
+position = Vector2(1791, 5373)
+scale = Vector2(2.319, 2.319)
+texture = ExtResource("13_e1l6w")
 
 [node name="CameraEffects" type="Area2D" parent="." unique_id=514580993]
 collision_layer = 8
@@ -901,7 +980,9 @@ shape = SubResource("SegmentShape2D_2wbil")
 [node name="DebugStart" type="Marker2D" parent="." unique_id=1407101377]
 unique_name_in_owner = true
 z_index = 17
+position = Vector2(13523, 1004)
 script = ExtResource("35_wrsql")
+debug_start_speed = 10.0
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]
@@ -912,3 +993,5 @@ script = ExtResource("35_wrsql")
 [connection signal="body_exited" from="Spots/Gap/Volcano" to="." method="_on_volcano_body_exited"]
 [connection signal="body_entered" from="Spots/Gap/WoodenPlatform" to="." method="_on_wooden_platform_body_entered"]
 [connection signal="body_exited" from="Spots/Gap/WoodenPlatform" to="." method="_on_wooden_platform_body_exited"]
+[connection signal="body_entered" from="Spots/Gap/Clouds" to="." method="_on_clouds_body_entered"]
+[connection signal="body_exited" from="Spots/Gap/Clouds" to="." method="_on_clouds_body_exited"]

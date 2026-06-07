@@ -6,22 +6,24 @@ var colors := {
 	"DARK_GREY":Color("33333bff"),
 	"LIGHT_GREEN":Color(0.2,0.9,0.23,1),
 	"ORANGE":Color(0.76,0.37,0,1),
-	"LIGHT_BLUE":Color("4a5ef5ff")
+	"LIGHT_BLUE":Color("4a5ef5ff"),
+	"VIOLET":Color("ad29ddff")
 }
 
 var dico_saut :={
-	Vector2(0,10):["Red",load("res://Images/HUD/piston_0.png")],
-	Vector2(10,20):["res://Images/HUD/jump_orange.png",load("res://Images/HUD/piston_10.png")],
-	Vector2(20,30):["res://Images/HUD/jump_orange.png",load("res://Images/HUD/piston_20.png")],
-	Vector2(30,40):["res://Images/HUD/jump_orange.png",load("res://Images/HUD/piston_30.png")],
-	Vector2(40,50):["res://Images/HUD/jump_orange.png",load("res://Images/HUD/piston_40.png")],
-	Vector2(50,60):["res://Images/HUD/jump_yellow.png",load("res://Images/HUD/piston_50.png")],
-	Vector2(60,70):["res://Images/HUD/jump_yellow.png",load("res://Images/HUD/piston_60.png")],
-	Vector2(70,80):["res://Images/HUD/jump_yellow.png",load("res://Images/HUD/piston_70.png")],
-	Vector2(80,90):["res://Images/HUD/jump_yellow.png",load("res://Images/HUD/piston_80.png")],
-	Vector2(90,100):["res://Images/HUD/jump_green.png",load("res://Images/HUD/piston_90.png")]
+	Vector2(0,10):["Red",load("res://Images/HUD/jump/piston_0.png")],
+	Vector2(10,20):["res://Images/HUD/jump/jump_orange.png",load("res://Images/HUD/jump/piston_10.png")],
+	Vector2(20,30):["res://Images/HUD/jump/jump_orange.png",load("res://Images/HUD/jump/piston_20.png")],
+	Vector2(30,40):["res://Images/HUD/jump/jump_orange.png",load("res://Images/HUD/jump/piston_30.png")],
+	Vector2(40,50):["res://Images/HUD/jump/jump_orange.png",load("res://Images/HUD/jump/piston_40.png")],
+	Vector2(50,60):["res://Images/HUD/jump/jump_yellow.png",load("res://Images/HUD/jump/piston_50.png")],
+	Vector2(60,70):["res://Images/HUD/jump/jump_yellow.png",load("res://Images/HUD/jump/piston_60.png")],
+	Vector2(70,80):["res://Images/HUD/jump/jump_yellow.png",load("res://Images/HUD/jump/piston_70.png")],
+	Vector2(80,90):["res://Images/HUD/jump/jump_yellow.png",load("res://Images/HUD/jump/piston_80.png")],
+	Vector2(90,100):["res://Images/HUD/jump/jump_green.png",load("res://Images/HUD/jump/piston_90.png")]
 }
 var dico_to_hide :Dictionary
+var dico_cps_marker : Dictionary
 
 var best_trick_labels:Dictionary
 var is_tricking :bool
@@ -82,7 +84,25 @@ func set_boost_geometry():
 func set_boost_segment_geometry():
 	%Boost_segment.position.x = %Boost_gauge.position.x + Global.current_boost * boost_gauge_size / Global.BOOST_MAX_QUANTITY
 	%Boost_segment.size.x = clampf(boost_segment_max_size,0,boost_gauge_size+%Boost_gauge.position.x-%Boost_segment.position.x)
-	
+
+func set_cp_markers():
+	dico_cps_marker = Global.get_cp_names_and_ratio()
+	var progress_bar_size : float = %Avancement_bar.size.x
+	for marker in dico_cps_marker:
+		var sprite := Sprite2D.new()
+		%Avancement_bar.add_child(sprite)
+		sprite.scale = Vector2(0.1,0.1)
+		sprite.texture = preload("res://Images/HUD/CPs/Light_off.png")
+		sprite.position = Vector2(dico_cps_marker[marker] * progress_bar_size,14)
+		dico_cps_marker[marker] = {"node":sprite,"activated":false}
+
+func update_cp(cp : String):
+	for marker in dico_cps_marker:
+		if marker == cp : 
+			dico_cps_marker[marker]["node"].texture = preload("res://Images/HUD/CPs/Light_focus.png")
+			dico_cps_marker[marker]["activated"] = true
+		elif dico_cps_marker[marker]["activated"] : dico_cps_marker[marker]["node"].texture = preload("res://Images/HUD/CPs/Light_on.png")
+
 func update_score(points):
 	%Trick_scored_label.text = "+ " + str(int(points)) + " Points" 
 	%Trick_scored_label.show()
@@ -144,7 +164,9 @@ func _on_show_penalty_timer_timeout():
 	fade_out_label(%Penalty_label,Vector2(1.5,1.5),Vector2(0,50),1)
 	%Tricks_label.add_theme_color_override("font_color", colors["YELLOW"])
 
-func _physics_process(_delta):
+func _process(_delta):
+	var total_money : String = Global.format_number(Global.current_profile["current_run"]["money"]+Global.money_catched)
+	%Money.text = "Cash : " + total_money + " [img]res://Images/HUD/Player/BucksLogo_mini.png[/img]"
 	%Time_label.text = Global.format_time(Global.race_time)
 	if Global.penalty_to_show and %Show_penalty_timer.is_stopped():
 		%Tricks_label.add_theme_color_override("font_color", colors["RED"])

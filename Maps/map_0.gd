@@ -26,18 +26,27 @@ extends Node2D
 @export var under_visual_step := 20.0
 @export var under_repeat_px := 566.0
 
+var bills_values : Dictionary
+
+func get_bill_value(id : float)->float:return bills_values[id]
+
 func get_level_data():
 	return {
 		"start": %Start,
 		"finish": %Finish,
-		"cp1": %Checkpoint_1,
-		"cp2": %Checkpoint_2,
-		"cp3": %Checkpoint_3,
+		"cps":{
+			"cp1": %Checkpoint_1,
+			"cp2": %Checkpoint_2,
+			"cp3": %Checkpoint_3,
+			},
+		"gaps" : ["over the Volcano","on the Wooden Platform","over the Clouds"],
 		"target_score" : 10000,
 		"target_time" : 60,
 		"target_score_and_time" : [5000,120],
 		"collectible" : "Golden Banana",
-		"special_trick" : {"trick":"Nose Wheelie","spot":"on the Wooden Platform"}
+		"special_trick" : {"trick":"Frontflip","spot":"over the Volcano"},
+		"queen_time":35,
+		"queen_score":30000
 		}
 
 signal out_of_bounds
@@ -75,20 +84,37 @@ func _ready():
 	}
 	Map.generate_all_collisions(%Paths,%Floors)
 	Map.generate_all_visuals(%Paths,%Textures,road,up,down,under)
+	
+	# Collectible loading
+	var dico : Dictionary = Global.current_profile["current_run"]["finished_maps"]\
+											.get(Global.current_map,{"objectives":[],"bills":[]})
+	for bill : Area2D in %Bills.get_children():
+		bill.id = float(bill.get_index())
+		bills_values[bill.id] = bill.value
+		if bill.id in dico["bills"]:
+			bill.monitoring = false
+			bill.visible = false
+	if 4.0 in dico["objectives"]:%Banana.queue_free()
 
+# Zones
 func _on_crash_zone_body_entered(_body):out_of_bounds.emit()
 func _on_finish_body_entered(_body):
 	%Finish.activate()
 	finish.emit()
 
-func return_collectible():%Banana.reset()
-func store_collectible():%Banana.store()
-
-func _on_volcano_body_entered(body):gap_entry.emit("over the Volcano")
-func _on_volcano_body_exited(body):gap_exit.emit("over the Volcano")
-func _on_wooden_platform_body_entered(body: Node2D):gap_entry.emit("on the Wooden Platform")
-func _on_wooden_platform_body_exited(body: Node2D):gap_exit.emit("on the Wooden Platform")
-
+# CPs
 func _on_checkpoint_1_body_entered(_body):Global.checkpoint_update("cp1",40)
 func _on_checkpoint_2_body_entered(_body):Global.checkpoint_update("cp2")
 func _on_checkpoint_3_body_entered(_body):Global.checkpoint_update("cp3")
+
+# Collectible
+func return_collectible():%Banana.reset()
+func store_collectible():%Banana.store()
+
+# Gaps
+func _on_volcano_body_entered(_body):gap_entry.emit("over the Volcano")
+func _on_volcano_body_exited(_body):gap_exit.emit("over the Volcano")
+func _on_wooden_platform_body_entered(_body):gap_entry.emit("on the Wooden Platform")
+func _on_wooden_platform_body_exited(_body):gap_exit.emit("on the Wooden Platform")
+func _on_clouds_body_entered(_body):gap_entry.emit("over the Clouds")
+func _on_clouds_body_exited(_body):gap_exit.emit("over the Clouds")

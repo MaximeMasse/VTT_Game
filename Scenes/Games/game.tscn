@@ -7,14 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://byv50krroasxt" path="res://Images/Menus/Controls/abandon_up.png" id="5_eow3j"]
 [ext_resource type="Texture2D" uid="uid://g81m2v0n4xey" path="res://Images/Menus/Controls/resume_down.png" id="5_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://bgwsl2opkxsyv" path="res://Images/Menus/Controls/abandon_down.png" id="6_j5wjh"]
-[ext_resource type="Texture2D" uid="uid://b4wk8v5s3ct7r" path="res://Images/Menus/Controls/retry_up.png" id="7_hve3p"]
 [ext_resource type="Texture2D" uid="uid://itr7nq5s3o1w" path="res://Images/Menus/Controls/abandon_hover.png" id="8_7sc4i"]
-[ext_resource type="Texture2D" uid="uid://br7sxbwtmc840" path="res://Images/Menus/Controls/retry_down.png" id="8_mfdv2"]
 [ext_resource type="Texture2D" uid="uid://bfagchbmge633" path="res://Images/Menus/Controls/continue_up.png" id="9_iotsf"]
 [ext_resource type="SpriteFrames" uid="uid://dw1psg1jlbwg1" path="res://Images/Menus/Maps/Anim/star_sprite_frames.tres" id="9_xbsk7"]
+[ext_resource type="Texture2D" uid="uid://bkfwxi626mhxn" path="res://Images/HUD/Player/CrownsLogo.png" id="10_awrv3"]
 [ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="10_lc2xo"]
-[ext_resource type="Texture2D" uid="uid://daoo66xd1rllp" path="res://Images/Menus/Controls/retry_hover.png" id="11_80cx4"]
+[ext_resource type="Texture2D" uid="uid://cd6n0fx4hywqq" path="res://Images/Menus/Controls/CheckBox_valid.png" id="11_405dh"]
+[ext_resource type="Texture2D" uid="uid://c7vvpwiyu0iw1" path="res://Images/Menus/Controls/CheckBox_unknow.png" id="12_iapad"]
+[ext_resource type="Texture2D" uid="uid://wfx2lfwfrtnl" path="res://Images/Menus/Controls/CheckBox_empty.png" id="13_vvpir"]
 [ext_resource type="Texture2D" uid="uid://dv62chm0uslkm" path="res://Images/Menus/Controls/continue_hover.png" id="14_e8heu"]
+[ext_resource type="Texture2D" uid="uid://b2t4xiu1ohpba" path="res://Images/Mapping/Collectibles/Bills/50_Bill_face.png" id="14_jpypc"]
+[ext_resource type="Texture2D" uid="uid://d2bo6bqh1tyd1" path="res://Images/Mapping/Collectibles/Bills/100_Bill_face.png" id="15_llc0d"]
+[ext_resource type="Texture2D" uid="uid://d7smnuxn4k8m" path="res://Images/Mapping/Collectibles/Bills/200_Bill_face.png" id="16_f8kff"]
+[ext_resource type="Texture2D" uid="uid://tmy85umvaex2" path="res://Images/Mapping/Collectibles/Bills/500_Bill_face.png" id="17_tq2i4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
 bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
@@ -36,11 +41,265 @@ font_names = PackedStringArray("Pixel Code")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbsk7"]
 
-[sub_resource type="SystemFont" id="SystemFont_ryrav"]
+[sub_resource type="SystemFont" id="SystemFont_ij56o"]
 font_names = PackedStringArray("Pharmakon")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nwt3"]
+bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="SystemFont" id="SystemFont_mhh63"]
+font_names = PackedStringArray("Pixel Code")
+
+[sub_resource type="SystemFont" id="SystemFont_lv8ek"]
+font_names = PackedStringArray("Pixel Code")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lso2o"]
+bg_color = Color(0.07450981, 0.20392157, 0.003921569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="SystemFont" id="SystemFont_j5wjh"]
 font_names = PackedStringArray("Pixel Game")
+
+[sub_resource type="Animation" id="Animation_iapad"]
+resource_name = "BillsCronwSpin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InGame_Menus/Finish_Menu/BillsPanel/BillsCrown:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.34906584, -0.7853982, -0.34906584, 0.0, 0.7853982, 2.3561945, 3.1415927, 3.9269907, 5.497787, 6.2831855, 6.6322513, 7.0685835, 6.6322513, 6.2831855, 5.497787, 3.9269907, 3.1415927, 2.3561945, 0.7853982, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InGame_Menus/Finish_Menu/BillsPanel/BillsCrown:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1, 1.2, 1.4000001, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.02545434, 0.037125926), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.025, 0.036), Vector2(0.03, 0.043), Vector2(0.025, 0.036), Vector2(0.04, 0.059), Vector2(0.02545434, 0.037125926)]
+}
+
+[sub_resource type="Animation" id="Animation_405dh"]
+resource_name = "GapsCrownSpin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InGame_Menus/Finish_Menu/GapPanel/GapsCrown:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.34906584, -0.7853982, -0.34906584, 0.0, 0.7853982, 2.3561945, 3.1415927, 3.9269907, 5.497787, 6.2831855, 6.6322513, 7.0685835, 6.6322513, 6.2831855, 5.497787, 3.9269907, 3.1415927, 2.3561945, 0.7853982, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InGame_Menus/Finish_Menu/GapPanel/GapsCrown:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1, 1.2, 1.4000001, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.02545434, 0.037125926), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.025, 0.036), Vector2(0.03, 0.043), Vector2(0.025, 0.036), Vector2(0.04, 0.059), Vector2(0.02545434, 0.037125926)]
+}
+
+[sub_resource type="Animation" id="Animation_awrv3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InGame_Menus/Finish_Menu/Bests/TimeCrown:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InGame_Menus/Finish_Menu/Bests/ScoreCrown:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InGame_Menus/Finish_Menu/Bests/ScoreCrown:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.02545434, 0.037125926)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InGame_Menus/Finish_Menu/Bests/TimeCrown:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.02545434, 0.037125926)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InGame_Menus/Finish_Menu/GapPanel/GapsCrown:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("InGame_Menus/Finish_Menu/GapPanel/GapsCrown:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.02545434, 0.037125926)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("InGame_Menus/Finish_Menu/BillsPanel/BillsCrown:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("InGame_Menus/Finish_Menu/BillsPanel/BillsCrown:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.02545434, 0.037125926)]
+}
+
+[sub_resource type="Animation" id="Animation_k57dk"]
+resource_name = "ScoreCrownSpin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InGame_Menus/Finish_Menu/Bests/ScoreCrown:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.34906584, -0.7853982, -0.34906584, 0.0, 0.7853982, 2.3561945, 3.1415927, 3.9269907, 5.497787, 6.2831855, 6.6322513, 7.0685835, 6.6322513, 6.2831855, 5.497787, 3.9269907, 3.1415927, 2.3561945, 0.7853982, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InGame_Menus/Finish_Menu/Bests/ScoreCrown:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1, 1.2, 1.4000001, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.02545434, 0.037125926), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.025, 0.036), Vector2(0.03, 0.043), Vector2(0.025, 0.036), Vector2(0.04, 0.059), Vector2(0.02545434, 0.037125926)]
+}
+
+[sub_resource type="Animation" id="Animation_xbsk7"]
+resource_name = "TimeCrownSpin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InGame_Menus/Finish_Menu/Bests/TimeCrown:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.34906584, -0.7853982, -0.34906584, 0.0, 0.7853982, 2.3561945, 3.1415932, 3.9269907, 5.497787, 6.2831855, 6.6322513, 7.0685835, 6.6322513, 6.2831855, 5.497787, 3.9269907, 3.1415927, 2.3561945, 0.7853982, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InGame_Menus/Finish_Menu/Bests/TimeCrown:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1, 1.2, 1.4000001, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.02545434, 0.037125926), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.025, 0.037), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.02545434, 0.037125926)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ckn3a"]
+_data = {
+&"BillsCronwSpin": SubResource("Animation_iapad"),
+&"GapsCrownSpin": SubResource("Animation_405dh"),
+&"RESET": SubResource("Animation_awrv3"),
+&"ScoreCrownSpin": SubResource("Animation_k57dk"),
+&"TimeCrownSpin": SubResource("Animation_xbsk7")
+}
 
 [node name="Game" type="Node2D" unique_id=687301190]
 process_mode = 3
@@ -137,10 +396,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -352.99994
-offset_top = -232.0
-offset_right = -69.50635
-offset_bottom = 70.0
+offset_left = -233.99997
+offset_top = -233.0
+offset_right = 101.2486
+offset_bottom = 73.75778
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.5891235, 1.910302)
@@ -166,16 +425,18 @@ vertical_alignment = 1
 
 [node name="Objectives" type="Control" parent="InGame_Menus/Finish_Menu" unique_id=686463428]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 36.691967
+offset_top = 30.88517
+offset_right = 302.41895
+offset_bottom = 166.98929
 
 [node name="ObjectivesText" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1040561045]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 56.00354
-offset_top = 54.441658
-offset_right = 276.1552
-offset_bottom = 182.69363
+offset_left = 42.485428
+offset_top = 11.516506
+offset_right = 308.2124
+offset_bottom = 147.62064
 theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = SubResource("SystemFont_k57dk")
@@ -194,7 +455,7 @@ text = " [color=d9db00ff]Beat 10.000 points[/color]
 
 [node name="Star1" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1532536221]
 unique_name_in_owner = true
-position = Vector2(40.856934, 59.152954)
+position = Vector2(16.138168, 17.274757)
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"gold"
@@ -203,7 +464,7 @@ frame_progress = 0.15063757
 
 [node name="Star2" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=300912646]
 unique_name_in_owner = true
-position = Vector2(40.856934, 83.23303)
+position = Vector2(16.138168, 41.35483)
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"empty"
@@ -211,7 +472,7 @@ autoplay = "red"
 
 [node name="Star3" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1492303897]
 unique_name_in_owner = true
-position = Vector2(40.856934, 107.31299)
+position = Vector2(16.138168, 65.434784)
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"gold"
@@ -219,16 +480,16 @@ autoplay = "red"
 
 [node name="Star4" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=10519218]
 unique_name_in_owner = true
-position = Vector2(40.856934, 131.39307)
+position = Vector2(16.138168, 89.51486)
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"red"
 autoplay = "red"
-frame_progress = 0.66381323
+frame_progress = 0.23550777
 
 [node name="Star5" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=205701843]
 unique_name_in_owner = true
-position = Vector2(40.856934, 155.4729)
+position = Vector2(16.138168, 113.59471)
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"gold"
@@ -236,18 +497,20 @@ autoplay = "red"
 
 [node name="Bests" type="Control" parent="InGame_Menus/Finish_Menu" unique_id=243776722]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 3.089858
+offset_top = 168.55975
+offset_right = 135.18091
+offset_bottom = 244.46394
 
 [node name="Label2" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1093521803]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 29.312805
-offset_top = 199.445
-offset_right = 80.312805
-offset_bottom = 213.445
+offset_left = -38.747887
+offset_top = -1.5702515
+offset_right = 12.252113
+offset_bottom = 12.429749
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -263,10 +526,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 8.456268
-offset_top = 216.19617
-offset_right = 80.45627
-offset_bottom = 230.19617
+offset_left = -59.60441
+offset_top = 15.180969
+offset_right = 12.395592
+offset_bottom = 29.18097
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -283,10 +546,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 108.87628
-offset_top = 199.445
-offset_right = 150.87628
-offset_bottom = 213.445
+offset_left = 15.449242
+offset_top = -1.5703735
+offset_right = 57.44924
+offset_bottom = 12.429626
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -294,6 +557,24 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = SubResource("SystemFont_fc0e3")
 theme_override_font_sizes/font_size = 13
 text = "00:28.012"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewBestTime_label" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Bests/Time_label" unique_id=515227872]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 22.850739
+offset_top = -16.010284
+offset_right = 67.303925
+offset_bottom = -4.0102844
+rotation = 0.5235988
+theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("SystemFont_ij56o")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[pulse][wave]New Best !"
+fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -303,10 +584,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 108.87628
-offset_top = 216.19618
-offset_right = 150.87628
-offset_bottom = 230.19618
+offset_left = 15.449242
+offset_top = 15.180725
+offset_right = 57.44924
+offset_bottom = 29.180725
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -317,15 +598,131 @@ text = "00:28.012"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="QueenTime_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1232339261]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 162.6301
+offset_top = 6.805237
+offset_right = 204.6301
+offset_bottom = 20.805237
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "00:28.012"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenTime_title" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=883353890]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 98.965004
+offset_top = 6.805237
+offset_right = 155.965
+offset_bottom = 20.805237
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "Queen Time :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenTimeBeaten" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Bests/QueenTime_title" unique_id=1032880798]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -27.760647
+offset_top = -24.006454
+offset_right = 152.11823
+offset_bottom = -10.006454
+rotation = 0.27070323
+theme_override_colors/default_color = Color(0.20784314, 0.9098039, 0.23529412, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("SystemFont_ij56o")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Already Beaten"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenScore_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=694268878]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 169.67795
+offset_top = 44.495605
+offset_right = 197.67795
+offset_bottom = 58.495605
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "12543"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenScore_title" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1510095520]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 93.26139
+offset_top = 44.495605
+offset_right = 156.26138
+offset_bottom = 58.495605
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "Queen Score :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenScoreBeaten" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Bests/QueenScore_title" unique_id=608962579]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -10.161461
+offset_top = -20.262207
+offset_right = 142.51175
+offset_bottom = -6.262207
+rotation = 0.27070323
+theme_override_colors/default_color = Color(0.20784314, 0.9098039, 0.23529412, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("SystemFont_ij56o")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Already Beaten"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label4" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=2028905675]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 47.204254
-offset_top = 237.13528
-offset_right = 80.204254
-offset_bottom = 251.13528
+offset_left = -20.856438
+offset_top = 36.119934
+offset_right = 12.143562
+offset_bottom = 50.119934
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -341,10 +738,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 8.194916
-offset_top = 253.88647
-offset_right = 80.194916
-offset_bottom = 267.88647
+offset_left = -59.865776
+offset_top = 52.871155
+offset_right = 12.134224
+offset_bottom = 66.871155
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -361,10 +758,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 115.95334
-offset_top = 236.61179
-offset_right = 143.95334
-offset_bottom = 250.61179
+offset_left = 22.526299
+offset_top = 36.119934
+offset_right = 50.5263
+offset_bottom = 50.119934
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -375,16 +772,34 @@ text = "12543"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="NewBestScore_label" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Bests/Score_label" unique_id=34561408]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.397734
+offset_top = -10.384766
+offset_right = 60.85092
+offset_bottom = 1.6152344
+rotation = 0.5235988
+theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("SystemFont_ij56o")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[pulse][wave]New Best !"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PreviousScore_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1896041543]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 118.27072
-offset_top = 253.88669
-offset_right = 141.27072
-offset_bottom = 267.88672
+offset_left = 24.843681
+offset_top = 52.871277
+offset_right = 47.84368
+offset_bottom = 66.87131
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -395,50 +810,211 @@ text = "8726"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NewBestTime_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1275943969]
+[node name="TimeCrown" type="Sprite2D" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1408442831]
+unique_name_in_owner = true
+position = Vector2(289.28516, 11.516602)
+scale = Vector2(0.02545434, 0.037125926)
+texture = ExtResource("10_awrv3")
+
+[node name="ScoreCrown" type="Sprite2D" parent="InGame_Menus/Finish_Menu/Bests" unique_id=326810313]
+unique_name_in_owner = true
+position = Vector2(289.28516, 49.734375)
+scale = Vector2(0.02545434, 0.037125926)
+texture = ExtResource("10_awrv3")
+
+[node name="GapPanel" type="Panel" parent="InGame_Menus/Finish_Menu" unique_id=159134335]
+layout_mode = 0
+offset_left = 6.9521637
+offset_top = 239.22919
+offset_right = 139.81566
+offset_bottom = 297.85864
+theme_override_styles/panel = SubResource("StyleBoxFlat_6nwt3")
+
+[node name="GapsDone" type="Label" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=104791506]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 172.6453
-offset_top = 184.78752
-offset_right = 223.6453
-offset_bottom = 198.78752
-rotation = 0.87315524
-theme_override_colors/font_color = Color(0.8862745, 0.6431373, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_ryrav")
-theme_override_font_sizes/font_size = 10
-text = "New Best !"
+offset_left = 3.08985
+offset_top = 2.0938978
+offset_right = 93.08985
+offset_bottom = 14.093898
+theme_override_colors/font_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 8
+text = "Gaps done : 1/3"
 
-[node name="NewBestScore_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1110049564]
+[node name="GapsCrown" type="Sprite2D" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=88356233]
+unique_name_in_owner = true
+position = Vector2(120.50409, 15.704315)
+scale = Vector2(0.02545434, 0.037125926)
+texture = ExtResource("10_awrv3")
+
+[node name="Gap1" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=1407275282]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 172.2591
-offset_top = 226.66571
-offset_right = 223.2591
-offset_bottom = 240.66571
-rotation = 0.87315524
-theme_override_colors/font_color = Color(0.8862745, 0.6431373, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_ryrav")
-theme_override_font_sizes/font_size = 10
-text = "New Best !"
+offset_left = 12.35939
+offset_top = 16.751282
+offset_right = 119.73164
+offset_bottom = 29.314728
+theme_override_colors/default_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = SubResource("SystemFont_lv8ek")
+theme_override_font_sizes/normal_font_size = 7
+text = " Over the Volcano"
+vertical_alignment = 1
 
-[node name="RetryButton" type="TextureButton" parent="InGame_Menus/Finish_Menu" unique_id=1618135702]
+[node name="CheckBoxGap1" type="Sprite2D" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=88292706]
+unique_name_in_owner = true
+position = Vector2(7.8012695, 23.051758)
+scale = Vector2(0.03, 0.0371697)
+texture = ExtResource("11_405dh")
+
+[node name="Gap2" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=689769623]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 51.368713
-offset_top = 272.20825
-offset_right = 82.26721
-offset_bottom = 293.14734
-texture_normal = ExtResource("7_hve3p")
-texture_pressed = ExtResource("8_mfdv2")
-texture_focused = ExtResource("11_80cx4")
-ignore_texture_size = true
-stretch_mode = 0
+offset_left = 12.35939
+offset_top = 29.314728
+offset_right = 122.04903
+offset_bottom = 41.93216
+theme_override_colors/default_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = SubResource("SystemFont_lv8ek")
+theme_override_font_sizes/normal_font_size = 7
+text = " On the Wooden Platform"
+vertical_alignment = 1
+
+[node name="CheckBoxGap2" type="Sprite2D" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=1590837783]
+unique_name_in_owner = true
+position = Vector2(7.7246094, 35.59674)
+scale = Vector2(0.03, 0.037060402)
+texture = ExtResource("13_vvpir")
+
+[node name="Gap3" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=1779260753]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 12.359396
+offset_top = 41.878204
+offset_right = 122.43526
+offset_bottom = 54.495575
+theme_override_colors/default_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = SubResource("SystemFont_lv8ek")
+theme_override_font_sizes/normal_font_size = 7
+text = " ????????????????????"
+vertical_alignment = 1
+
+[node name="CheckBoxGap3" type="Sprite2D" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=731597300]
+unique_name_in_owner = true
+position = Vector2(7.7246094, 48.160156)
+scale = Vector2(0.03, 0.037060473)
+texture = ExtResource("12_iapad")
+
+[node name="BillsPanel" type="Panel" parent="InGame_Menus/Finish_Menu" unique_id=718680963]
+layout_mode = 0
+offset_left = 195.43295
+offset_top = 239.22916
+offset_right = 328.29645
+offset_bottom = 297.85858
+theme_override_styles/panel = SubResource("StyleBoxFlat_lso2o")
+
+[node name="Title" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1205211855]
+layout_mode = 0
+offset_left = 2.7036242
+offset_top = 2.0939636
+offset_right = 122.04902
+offset_bottom = 14.093964
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 8
+text = "Bills caught : 2/6"
+
+[node name="BillsCrown" type="Sprite2D" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=119390235]
+unique_name_in_owner = true
+position = Vector2(119.34277, 15.70459)
+scale = Vector2(0.02545434, 0.037125926)
+texture = ExtResource("10_awrv3")
+
+[node name="50BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1481751945]
+layout_mode = 0
+offset_left = 36.691956
+offset_top = 23.03307
+offset_right = 48.691956
+offset_bottom = 32.03307
+theme_override_colors/font_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 7
+text = "1/3"
+
+[node name="50BillFace" type="Sprite2D" parent="InGame_Menus/Finish_Menu/BillsPanel/50BillLabel" unique_id=1466414713]
+position = Vector2(-17.77008, 4.187622)
+scale = Vector2(0.015, 0.015000002)
+texture = ExtResource("14_jpypc")
+
+[node name="100BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=811373184]
+layout_mode = 0
+offset_left = 36.691956
+offset_top = 43.972168
+offset_right = 48.691956
+offset_bottom = 52.972168
+theme_override_colors/font_color = Color(0.07450981, 0.20392157, 0.003921569, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 7
+text = "0/1"
+
+[node name="100BillFace" type="Sprite2D" parent="InGame_Menus/Finish_Menu/BillsPanel/100BillLabel" unique_id=2146740608]
+position = Vector2(-17.768127, 3.6645508)
+scale = Vector2(0.015, 0.015000001)
+texture = ExtResource("15_llc0d")
+
+[node name="200BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1199701553]
+layout_mode = 0
+offset_left = 93.467896
+offset_top = 23.03307
+offset_right = 108.467896
+offset_bottom = 33.03307
+theme_override_colors/font_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 7
+text = "1/1"
+
+[node name="200BillFace" type="Sprite2D" parent="InGame_Menus/Finish_Menu/BillsPanel/200BillLabel" unique_id=1708819548]
+position = Vector2(-17.76825, 4.187622)
+scale = Vector2(0.015, 0.015000001)
+texture = ExtResource("16_f8kff")
+
+[node name="500BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=924351624]
+layout_mode = 0
+offset_left = 93.4675
+offset_top = 43.972015
+offset_right = 108.4675
+offset_bottom = 53.972015
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 7
+text = "1/1"
+
+[node name="500BillFace" type="Sprite2D" parent="InGame_Menus/Finish_Menu/BillsPanel/500BillLabel" unique_id=1247292943]
+position = Vector2(-17.767853, 3.6647034)
+scale = Vector2(0.015, 0.015000001)
+texture = ExtResource("17_tq2i4")
 
 [node name="Continue" type="TextureButton" parent="InGame_Menus/Finish_Menu" unique_id=2118756166]
-layout_mode = 0
-offset_left = 168.78302
-offset_top = 272.20825
-offset_right = 199.68146
-offset_bottom = 293.14734
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.628952
+offset_top = -38.213867
+offset_right = 21.628922
+offset_bottom = -8.899139
+grow_horizontal = 2
+grow_vertical = 0
 texture_normal = ExtResource("9_iotsf")
 texture_pressed = ExtResource("10_lc2xo")
 texture_focused = ExtResource("14_e8heu")
@@ -449,7 +1025,6 @@ stretch_mode = 0
 unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1252788223]
-visible = false
 
 [node name="Ingame_Label" type="Label" parent="CanvasLayer" unique_id=1326302586]
 unique_name_in_owner = true
@@ -466,7 +1041,10 @@ text = "Get Ready !"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1963012401]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_ckn3a")
+
 [connection signal="pressed" from="InGame_Menus/Pause_Menu/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="InGame_Menus/Pause_Menu/AbandonButton" to="." method="_on_abandon_button_pressed"]
-[connection signal="pressed" from="InGame_Menus/Finish_Menu/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="InGame_Menus/Finish_Menu/Continue" to="." method="_on_continue_pressed"]

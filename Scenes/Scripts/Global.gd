@@ -1,7 +1,7 @@
 extends Node
 
 # Config
-var debug : bool = true
+var debug : bool = false
 const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}
@@ -12,6 +12,7 @@ var map_data : Dictionary
 
 # HUD
 var race_time : float
+var money_catched : float
 var penalty_to_show := false
 var current_hp : float
 var contact_sol := true
@@ -33,10 +34,13 @@ var potential_combo_score :int
 var potential_trick := {}
 var current_combo :Array[Dictionary]= []
 # Gap
-var is_gapping : String
-var is_in_gap : bool
-var gap_combo : Array[String]
+var is_in_gap : String
+var gap_combo : Dictionary
 var special_trick_done : bool
+var gaps_done : Dictionary
+var gaps_already_fulled : bool
+var gaps_fulled : bool
+var gaps_done_data : Dictionary
 
 # Boost
 var BOOST_MAX_QUANTITY :float
@@ -61,15 +65,23 @@ signal store_collectible
 # End map
 var new_best_time :bool
 var new_best_score :bool
-var previous_best :Dictionary
+var previous_map_record :Dictionary
+var previous_obj_and_bills : Dictionary
 var objectives_completed : Array
 var objectives_text : String
+var queen_time_already_beaten : bool
+var queen_time_beaten : bool
+var queen_score_already_beaten : bool
+var queen_score_beaten : bool
+var bills_catched : Array
+var bills_already_fulled : bool
+var bills_fulled : bool
 
 #Menus
 var menu_to_show := "MainMenu"
 
-var rotation_name_and_point := {1:["",1.0],2:["Double",2.0],3:["Triple",3.0],
-							4:["Quadruple",4.0],5:["Quintuple",5.0],6:["Sextuple",6.0],7:["Septuple",7.0]}
+var rotation_name_and_point := {1:["",1.0],2:["Double ",2.0],3:["Triple ",3.0],
+							4:["Quadruple ",4.0],5:["Quintuple ",5.0],6:["Sextuple ",6.0],7:["Septuple ",7.0]}
 var tricks_values : Dictionary = {
 	"":0,
 	"length_to_double":10,
@@ -109,6 +121,7 @@ signal hud_trick_activate
 signal hud_combo_update
 signal hud_score_update
 signal hud_new_best
+signal hud_cp_update
 
 func start_mod(scene_name:String):
 	# Boost
@@ -125,14 +138,25 @@ func get_sprites_path()->String:
 func get_profile_bike()->String:return dico_vélo[int(current_profile["bike_model"])]
 func get_profile_data(data:String)->String:return current_profile[data]
 
+func get_cp_names_and_ratio() -> Dictionary :
+	var cps_markers : Dictionary
+	for cp in map_data["cps"]:cps_markers[cp] = map_data["cps"][cp].global_position.x/map_data["finish"].global_position.x
+	return cps_markers
+
 func set_start_values():
 	is_grabbed = false
 	is_stored = false
-	is_gapping = ""
-	is_in_gap = false
+	is_in_gap = ""
+	gap_combo = {}
 	special_trick_done = false
+	previous_obj_and_bills = current_profile["current_run"]["finished_maps"]\
+	.get(current_map,{"objectives":[],"bills":[],"gaps":{}})
 	objectives_completed = []
 	objectives_text = ""
+	money_catched = 0
+	bills_catched = []
+	previous_map_record = current_profile["map_record"]\
+	.get(current_map,{"score":"-","time":"-","bills_caught":false,"gaps_done":false,"gaps_discovered":[]}).duplicate()
 	race_time = 0.0
 	current_hp = 100
 	current_cp = "start"
@@ -156,8 +180,8 @@ func handle_crash():
 		is_grabbed = false
 		return_collectible.emit()
 	# Gap
-	is_gapping = ""
-	is_in_gap = false
+	is_in_gap = ""
+	gap_combo = {}
 
 func checkpoint_update(cp : String,min_speed : float = 0):
 	if current_cp != cp:
@@ -166,20 +190,22 @@ func checkpoint_update(cp : String,min_speed : float = 0):
 		cp_player_pos = player_position
 		cp_player_score = current_score
 		cp_player_boost = current_boost
+		hud_cp_update.emit(cp)
 
 func gap_entry(gap_name : String):
 	if current_trick["trick"] != "" or not contact_sol:
-		print("good entry ",gap_name)
-		is_gapping = gap_name
-		is_in_gap = true
-		gap_combo = []
+		is_in_gap = gap_name
+		gap_combo[gap_name] = []
 
 func gap_exit(gap_name : String):
-	if is_gapping == gap_name: 
-		gap_combo.append(current_trick["trick"])
+	if is_in_gap == gap_name: 
+		gap_combo[gap_name].append(current_trick["trick"])
 		combo_update(gap_name)
 		AudioManager.play_sfx("gap")
-	is_in_gap = false
+		# Records
+		# if gap not discovered
+		if not previous_obj_and_bills["gaps"].has(gap_name) and not gaps_done.has(gap_name):gaps_done[gap_name] = false
+	is_in_gap = ""
 
 func reset_tricks():
 	current_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
@@ -205,15 +231,15 @@ func trick_update(distance,time,angle,potential:bool=false):
 		current_trick["duration"] += time
 		current_trick["rotation"] += angle
 		if current_trick["trick"] not in ["","Wheelie","Nose Wheelie"]:check_air_rotation()
-		potential_trick_score = trick_score(current_trick) * 2 ** current_combo.size()
+		potential_trick_score = int(trick_score(current_trick) * 2 ** current_combo.size())
 
 func combo_update(gap=null):
 	var score_to_add : float = potential_trick_score if gap == null else 100
 	var trick_to_add : Dictionary = current_trick.duplicate() if gap == null else \
 						{"trick":"[color=4a5ef5ff]" + gap + "[/color]","length":0.0,"duration":0.0,"rotation":0.0}
-	potential_combo_score += score_to_add
+	potential_combo_score += int(score_to_add)
 	current_combo.append(trick_to_add)
-	if is_in_gap : gap_combo.append(current_trick["trick"])
+	if gap == null and is_in_gap != "" : gap_combo[is_in_gap].append(current_trick["trick"])
 	hud_combo_update.emit(trick_to_add["trick"])
 	
 
@@ -227,7 +253,7 @@ func check_air_rotation():
 	if angle < -PI :
 		rotation_name = name_rotation(1+int(-(PI+angle)/(2*PI))) + "Frontflip"
 		name_changed = true
-	if name_changed and rotation_name != current_trick["trick"]:current_trick["trick"]=rotation_name
+	if name_changed and rotation_name != current_trick["trick"]: current_trick["trick"] = rotation_name
 
 func valid_combo():
 	for trick_datas in current_combo:
@@ -244,10 +270,13 @@ func valid_combo():
 		is_stored = true
 		store_collectible.emit()
 	# Gap
-	if is_gapping == map_data["special_trick"]["spot"] and not special_trick_done:
-		for trick in gap_combo: if map_data["special_trick"]["trick"] in trick : special_trick_done = true
-		if special_trick_done:AudioManager.play_sfx("special_trick")
-	is_gapping = ""
+	for gap in gap_combo:
+		gaps_done[gap] = true
+		if gap == map_data["special_trick"]["spot"] and not special_trick_done and \
+		map_data["special_trick"]["trick"] in gap_combo[gap]:
+			special_trick_done = true
+			AudioManager.play_sfx("special_trick")
+	gap_combo = {}
 
 func combo_score()-> int:
 	var score :int = 0
@@ -287,10 +316,13 @@ func end_map():
 	AudioManager.play_music("Victory")
 	check_map_objectives()
 	check_map_record()
+	check_gaps()
+	check_bills()
+	profile_update()
 	SaveManager.save_profile(current_profile)
 
 func check_map_objectives():
-	var previous_stars : Array = current_profile["current_run"]["finished_maps"].get(current_map,[])
+	var previous_stars : Array = previous_obj_and_bills["objectives"]
 	var target_score : float = map_data["target_score"]
 	var target_time : float = map_data["target_time"]
 	var tst_score : float = map_data["target_score_and_time"][0]
@@ -317,24 +349,69 @@ func check_map_objectives():
 	elif 5.0 in objectives_completed : objectives_text += " [rainbow][wave]" + special_trick + "[/wave][/rainbow]\n\n"
 	else : objectives_text += " [color=33333bff]" + special_trick + "[/color]\n\n"
 
+func check_gaps():
+	gaps_already_fulled = previous_map_record["gaps_done"]
+	gaps_done_data["done"] = 0
+	gaps_done_data["size"] = map_data["gaps"].size()
+	for gap in previous_obj_and_bills["gaps"]:if previous_obj_and_bills["gaps"][gap]:gaps_done[gap] = true
+	for i in map_data["gaps"].size():
+		if map_data["gaps"][i] not in previous_map_record["gaps_discovered"] and not gaps_done.has(map_data["gaps"][i]):
+			gaps_done_data["gap"+str(i+1)] = " ????????????????????"
+			gaps_done_data["check"+str(i+1)] = "unknow"
+		else:
+			gaps_done_data["gap"+str(i+1)] = " " + map_data["gaps"][i].substr(0, 1).to_upper() + map_data["gaps"][i].substr(1)
+			if gaps_done.get(map_data["gaps"][i],false) :
+				gaps_done_data["check"+str(i+1)] = "valid"
+				gaps_done_data["done"] += 1
+			else:gaps_done_data["check"+str(i+1)] = "empty"
+	gaps_fulled = int(gaps_done_data["done"]) == map_data["gaps"].size()
+	gaps_done_data["newcrown"] = not gaps_already_fulled and gaps_fulled
+	print(gaps_done_data)
+	
+func check_bills():
+	bills_already_fulled = false
+	bills_fulled = false
+
 func check_map_record():
+	# Best records
 	new_best_score = false
 	new_best_time = false
-	previous_best = {"time":"-","score":"-"}
-	if current_map in current_profile["map_record"]:
-		previous_best = current_profile["map_record"][current_map].duplicate()
-		if previous_best["time"] > race_time:
+	queen_time_already_beaten = false
+	queen_time_beaten = false
+	queen_score_already_beaten = false
+	queen_score_beaten = false
+	if previous_map_record["time"] is float :
+		if previous_map_record["time"] > race_time:
 			new_best_time = true
 			current_profile["map_record"][current_map]["time"]=race_time
-		if previous_best["score"] < current_score:
+		if previous_map_record["score"] < current_score:
 			new_best_score = true
 			current_profile["map_record"][current_map]["score"]=current_score
+		if previous_map_record["time"] < map_data["queen_time"]:queen_time_already_beaten = true
+		if previous_map_record["score"] > map_data["queen_score"]:queen_score_already_beaten = true
 	else:
-		current_profile["map_record"][current_map] = {}
+		current_profile["map_record"][current_map] = previous_map_record.duplicate()
 		new_best_time = true
 		current_profile["map_record"][current_map]["time"]=race_time
 		new_best_score = true
 		current_profile["map_record"][current_map]["score"]=current_score
+	if race_time < map_data["queen_time"]:queen_time_beaten = true
+	if current_score > map_data["queen_score"]:queen_score_beaten = true
+
+func profile_update():
+	current_profile["current_run"]["money"] += money_catched
+	money_catched = 0
+	current_profile["current_run"]["stars"] += objectives_completed.size()
+	var new_crowns := 0
+	if not queen_time_already_beaten and queen_time_beaten: new_crowns += 1
+	if not queen_score_already_beaten and queen_score_beaten: new_crowns += 1
+	if not bills_already_fulled and bills_fulled : new_crowns += 1
+	if not gaps_already_fulled and gaps_fulled : new_crowns += 1
+	current_profile["crowns"] += new_crowns
+	var new_map_data := previous_obj_and_bills.duplicate()
+	new_map_data["objectives"].append_array(objectives_completed)
+	new_map_data["bills"].append_array(bills_catched)
+	current_profile["current_run"]["finished_maps"][current_map] = new_map_data
 
 func format_time(t: float) -> String:
 	var minutes := int(t/60)
@@ -348,7 +425,7 @@ func format_number(value: float) -> String:
 	return s
 
 func name_rotation(number_of_rotation:int)->String:
-	return rotation_name_and_point[number_of_rotation][0] + " " if number_of_rotation in rotation_name_and_point else "Wow, too much "
+	return rotation_name_and_point[number_of_rotation][0] if number_of_rotation in rotation_name_and_point else "Wow, too much "
 
 func points_rotation(number_of_rotation:int)->float:
 	return rotation_name_and_point[number_of_rotation][1] if number_of_rotation in rotation_name_and_point else 10.0

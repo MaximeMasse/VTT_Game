@@ -5,7 +5,7 @@ extends Area2D
 func _on_body_entered(_body: Node2D) -> void:
 	if not Global.is_grabbed:
 		Global.is_grabbed = true
-		AudioManager.play_sfx("banana")
+		AudioManager.play_sfx("bird")
 
 func _on_area_entered(area):_on_body_entered(null)
 

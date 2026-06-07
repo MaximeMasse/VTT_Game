@@ -29,6 +29,8 @@ var is_finished :=false
 @onready var stars := {1.0:%Star1,2.0:%Star2,3.0:%Star3,4.0:%Star4,5.0:%Star5}
 
 func _ready():
+	# Debug
+	get_tree().debug_collisions_hint = Global.debug
 	Engine.time_scale = TIME_SCALE
 	var cursor = load("res://Images/Menus/Controls/cursor.png")
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(0, 0))
@@ -50,6 +52,7 @@ func _ready():
 	Global.hud_trick_reset.connect(%HUD.trick_reset)
 	Global.hud_combo_update.connect(%HUD.update_combo)
 	Global.hud_score_update.connect(%HUD.update_score)
+	Global.hud_cp_update.connect(%HUD.update_cp)
 	# Chargements
 	load_map()
 	load_bike()
@@ -88,6 +91,7 @@ func load_map():
 	map_courante.gap_exit.connect(Global.gap_exit)
 	Global.map_data = map_courante.get_level_data()
 	map_finish = Global.map_data["finish"]
+	%HUD.set_cp_markers()
 
 func map_finished():
 	if not is_finished:
@@ -98,19 +102,61 @@ func map_finished():
 		finish_menu_update()
 
 func finish_menu_update():
+	# Objectives
+	var previously_done:Dictionary= Global.previous_obj_and_bills.duplicate()
 	for star in stars:stars[star].animation = "empty"
-	for old_succes in Global.current_profile["current_run"]["finished_maps"].get(Global.current_map,[]):
+	for old_succes in previously_done["objectives"]:
 		stars[old_succes].animation = "gold"
 	for new_succes in Global.objectives_completed:
 		stars[new_succes].animation = "red"
+		previously_done["objectives"].append(new_succes)
 	%ObjectivesText.text = Global.objectives_text
+	# Best time and score
 	%Time_label.text = Global.format_time(Global.race_time)
-	%PreviousTime_label.text = "-" if str(Global.previous_best["time"]) == "-" else Global.format_time(Global.previous_best["time"])
+	%PreviousTime_label.text = "-" if str(Global.previous_map_record["time"]) == "-" else Global.format_time(Global.previous_map_record["time"])
 	%NewBestTime_label.visible = Global.new_best_time
-	%Score_label.text = str(int(Global.current_score))
-	%PreviousScore_label.text = "-" if str(Global.previous_best["score"]) == "-" else str(int(Global.previous_best["score"]))
+	%Score_label.text = Global.format_number(Global.current_score)
+	%PreviousScore_label.text = "-" if str(Global.previous_map_record["score"]) == "-" else Global.format_number(Global.previous_map_record["score"])
 	%NewBestScore_label.visible = Global.new_best_score
+	# Queen time
+	%QueenTime_label.text = Global.format_time(Global.map_data["queen_time"])
+	%QueenTimeBeaten.visible = true
+	%QueenTime_label.add_theme_color_override("font_color", Color("57079bff"))
+	%QueenTime_title.add_theme_color_override("font_color", Color("57079bff"))
+	if Global.queen_time_already_beaten:%QueenTimeBeaten.text = "Already Beaten"
+	elif Global.queen_time_beaten:
+		%QueenTimeBeaten.text = "[pulse][wave]Queen Time Beaten"
+		%AnimationPlayer.play("TimeCrownSpin")
+	else:
+		%QueenTimeBeaten.visible = false
+		%QueenTime_label.add_theme_color_override("font_color", Color("35343cff"))
+		%QueenTime_title.add_theme_color_override("font_color", Color("35343cff"))
+		%TimeCrown.modulate = Color("35343cff")
+	# Queen score
+	%QueenScore_label.text = Global.format_number(Global.map_data["queen_score"])
+	%QueenScoreBeaten.visible = true
+	%QueenScore_label.add_theme_color_override("font_color", Color("57079bff"))
+	%QueenScore_title.add_theme_color_override("font_color", Color("57079bff"))
+	if Global.queen_score_already_beaten:%QueenScoreBeaten.text = "Already Beaten"
+	elif Global.queen_score_beaten:
+		%QueenScoreBeaten.text = "[pulse][wave]Queen Score Beaten"
+		%AnimationPlayer.play("ScoreCrownSpin")
+	else:
+		%QueenScoreBeaten.visible = false
+		%QueenScore_label.add_theme_color_override("font_color", Color("35343cff"))
+		%QueenScore_title.add_theme_color_override("font_color", Color("35343cff"))
+		%ScoreCrown.modulate = Color("35343cff")
+	# Gaps
+	%GapsDone.text = "Gaps done : " + str(Global.gaps_done_data["done"]) + "/" + str(Global.gaps_done_data["size"])
+	if Global.gaps_done_data["newcrown"]:%AnimationPlayer.play("GapsCrownSpin")
+	%Gap1.text = Global.gaps_done_data["gap1"]
+	%CheckBoxGap1.texture = load("res://Images/Menus/Controls/CheckBox_" + Global.gaps_done_data["check1"] + ".png")
+	%Gap2.text = Global.gaps_done_data["gap2"]
+	%CheckBoxGap2.texture = load("res://Images/Menus/Controls/CheckBox_" + Global.gaps_done_data["check2"] + ".png")
+	%Gap3.text = Global.gaps_done_data["gap3"]
+	%CheckBoxGap3.texture = load("res://Images/Menus/Controls/CheckBox_" + Global.gaps_done_data["check3"] + ".png")
 	%Finish_Menu.show()
+
 
 func load_bike():
 	race_started = false
@@ -208,10 +254,6 @@ func _on_abandon_button_pressed():
 	toggle_pause()
 	Global.menu_to_show = "Carrière"
 	Global.start_mod("Menus")
-
-func _on_retry_button_pressed():
-	%Finish_Menu.hide()
-	restart()
 
 func _on_continue_pressed():
 	Global.menu_to_show = "Carrière"

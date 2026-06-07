@@ -61,8 +61,12 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		"best_combo": [],
 		"map_record": {},
 		"current_run": {
-			"finished_maps" : {}
-		}
+			"finished_maps" : {},
+			"money":100,
+			"stars":0
+		},
+		"crowns":0,
+		"xp":0
 	}
 	save_profile(profile)
 	set_current_profile(profile)
