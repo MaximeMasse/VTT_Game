@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://3rkdpubp057j"]
+
+[ext_resource type="Script" uid="uid://du72t6fxyn2d5" path="res://Scenes/Misc/crown.gd" id="1_5ei3h"]
+[ext_resource type="Texture2D" uid="uid://bkfwxi626mhxn" path="res://Images/HUD/Player/CrownsLogo.png" id="1_xvxx0"]
+
+[sub_resource type="Animation" id="Animation_5ei3h"]
+resource_name = "Locked"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrownsLogo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.20784314, 0.20392157, 0.23529412, 1), Color(0.20784312, 0.20392156, 0.2352941, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_snr7p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrownsLogo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrownsLogo:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CrownsLogo:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.025, 0.037)]
+}
+
+[sub_resource type="Animation" id="Animation_52m8v"]
+resource_name = "Spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrownsLogo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.34906584, -0.7853982, -0.34906584, 0.0, 0.7853982, 2.3561945, 3.1415927, 3.9269907, 5.497787, 6.2831855, 6.6322513, 7.0685835, 6.6322513, 6.2831855, 5.497787, 3.9269907, 3.1415927, 2.3561945, 0.7853982, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrownsLogo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1, 1.2, 1.4000001, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.02545434, 0.037125926), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.025, 0.036), Vector2(0.03, 0.043), Vector2(0.025, 0.036), Vector2(0.04, 0.059), Vector2(0.02545434, 0.037125926)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p34dp"]
+_data = {
+&"Locked": SubResource("Animation_5ei3h"),
+&"RESET": SubResource("Animation_snr7p"),
+&"Spin": SubResource("Animation_52m8v")
+}
+
+[node name="Crown" type="Node2D" unique_id=707510115]
+script = ExtResource("1_5ei3h")
+
+[node name="CrownsLogo" type="Sprite2D" parent="." unique_id=510341681]
+scale = Vector2(0.025, 0.037)
+texture = ExtResource("1_xvxx0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1922876957]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_p34dp")

@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://itr7nq5s3o1w" path="res://Images/Menus/Controls/abandon_hover.png" id="8_7sc4i"]
 [ext_resource type="Texture2D" uid="uid://bfagchbmge633" path="res://Images/Menus/Controls/continue_up.png" id="9_iotsf"]
 [ext_resource type="SpriteFrames" uid="uid://dw1psg1jlbwg1" path="res://Images/Menus/Maps/Anim/star_sprite_frames.tres" id="9_xbsk7"]
-[ext_resource type="Texture2D" uid="uid://bkfwxi626mhxn" path="res://Images/HUD/Player/CrownsLogo.png" id="10_awrv3"]
 [ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="10_lc2xo"]
 [ext_resource type="Texture2D" uid="uid://cd6n0fx4hywqq" path="res://Images/Menus/Controls/CheckBox_valid.png" id="11_405dh"]
 [ext_resource type="Texture2D" uid="uid://c7vvpwiyu0iw1" path="res://Images/Menus/Controls/CheckBox_unknow.png" id="12_iapad"]
@@ -20,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://d2bo6bqh1tyd1" path="res://Images/Mapping/Collectibles/Bills/100_Bill_face.png" id="15_llc0d"]
 [ext_resource type="Texture2D" uid="uid://d7smnuxn4k8m" path="res://Images/Mapping/Collectibles/Bills/200_Bill_face.png" id="16_f8kff"]
 [ext_resource type="Texture2D" uid="uid://tmy85umvaex2" path="res://Images/Mapping/Collectibles/Bills/500_Bill_face.png" id="17_tq2i4"]
+[ext_resource type="PackedScene" uid="uid://3rkdpubp057j" path="res://Scenes/Misc/crown.tscn" id="21_iapad"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
 bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
@@ -76,230 +76,6 @@ corner_radius_bottom_left = 2
 
 [sub_resource type="SystemFont" id="SystemFont_j5wjh"]
 font_names = PackedStringArray("Pixel Game")
-
-[sub_resource type="Animation" id="Animation_iapad"]
-resource_name = "BillsCronwSpin"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InGame_Menus/Finish_Menu/BillsPanel/BillsCrown:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.34906584, -0.7853982, -0.34906584, 0.0, 0.7853982, 2.3561945, 3.1415927, 3.9269907, 5.497787, 6.2831855, 6.6322513, 7.0685835, 6.6322513, 6.2831855, 5.497787, 3.9269907, 3.1415927, 2.3561945, 0.7853982, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InGame_Menus/Finish_Menu/BillsPanel/BillsCrown:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1, 1.2, 1.4000001, 1.7, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.02545434, 0.037125926), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.025, 0.036), Vector2(0.03, 0.043), Vector2(0.025, 0.036), Vector2(0.04, 0.059), Vector2(0.02545434, 0.037125926)]
-}
-
-[sub_resource type="Animation" id="Animation_405dh"]
-resource_name = "GapsCrownSpin"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InGame_Menus/Finish_Menu/GapPanel/GapsCrown:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.34906584, -0.7853982, -0.34906584, 0.0, 0.7853982, 2.3561945, 3.1415927, 3.9269907, 5.497787, 6.2831855, 6.6322513, 7.0685835, 6.6322513, 6.2831855, 5.497787, 3.9269907, 3.1415927, 2.3561945, 0.7853982, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InGame_Menus/Finish_Menu/GapPanel/GapsCrown:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1, 1.2, 1.4000001, 1.7, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.02545434, 0.037125926), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.025, 0.036), Vector2(0.03, 0.043), Vector2(0.025, 0.036), Vector2(0.04, 0.059), Vector2(0.02545434, 0.037125926)]
-}
-
-[sub_resource type="Animation" id="Animation_awrv3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InGame_Menus/Finish_Menu/Bests/TimeCrown:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InGame_Menus/Finish_Menu/Bests/ScoreCrown:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("InGame_Menus/Finish_Menu/Bests/ScoreCrown:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.02545434, 0.037125926)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("InGame_Menus/Finish_Menu/Bests/TimeCrown:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.02545434, 0.037125926)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("InGame_Menus/Finish_Menu/GapPanel/GapsCrown:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("InGame_Menus/Finish_Menu/GapPanel/GapsCrown:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.02545434, 0.037125926)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("InGame_Menus/Finish_Menu/BillsPanel/BillsCrown:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("InGame_Menus/Finish_Menu/BillsPanel/BillsCrown:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.02545434, 0.037125926)]
-}
-
-[sub_resource type="Animation" id="Animation_k57dk"]
-resource_name = "ScoreCrownSpin"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InGame_Menus/Finish_Menu/Bests/ScoreCrown:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.34906584, -0.7853982, -0.34906584, 0.0, 0.7853982, 2.3561945, 3.1415927, 3.9269907, 5.497787, 6.2831855, 6.6322513, 7.0685835, 6.6322513, 6.2831855, 5.497787, 3.9269907, 3.1415927, 2.3561945, 0.7853982, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InGame_Menus/Finish_Menu/Bests/ScoreCrown:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1, 1.2, 1.4000001, 1.7, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.02545434, 0.037125926), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.025, 0.036), Vector2(0.03, 0.043), Vector2(0.025, 0.036), Vector2(0.04, 0.059), Vector2(0.02545434, 0.037125926)]
-}
-
-[sub_resource type="Animation" id="Animation_xbsk7"]
-resource_name = "TimeCrownSpin"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InGame_Menus/Finish_Menu/Bests/TimeCrown:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.34906584, -0.7853982, -0.34906584, 0.0, 0.7853982, 2.3561945, 3.1415932, 3.9269907, 5.497787, 6.2831855, 6.6322513, 7.0685835, 6.6322513, 6.2831855, 5.497787, 3.9269907, 3.1415927, 2.3561945, 0.7853982, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InGame_Menus/Finish_Menu/Bests/TimeCrown:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1, 1.2, 1.4000001, 1.7, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.02545434, 0.037125926), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.025, 0.037), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.02545434, 0.037125926)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ckn3a"]
-_data = {
-&"BillsCronwSpin": SubResource("Animation_iapad"),
-&"GapsCrownSpin": SubResource("Animation_405dh"),
-&"RESET": SubResource("Animation_awrv3"),
-&"ScoreCrownSpin": SubResource("Animation_k57dk"),
-&"TimeCrownSpin": SubResource("Animation_xbsk7")
-}
 
 [node name="Game" type="Node2D" unique_id=687301190]
 process_mode = 3
@@ -687,7 +463,7 @@ offset_top = 44.495605
 offset_right = 156.26138
 offset_bottom = 58.495605
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_colors/font_color = Color(0.34117648, 0.02745098, 0.60784316, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = SubResource("SystemFont_fc0e3")
@@ -810,17 +586,13 @@ text = "8726"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimeCrown" type="Sprite2D" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1408442831]
+[node name="TimeCrown" parent="InGame_Menus/Finish_Menu/Bests" unique_id=707510115 instance=ExtResource("21_iapad")]
 unique_name_in_owner = true
-position = Vector2(289.28516, 11.516602)
-scale = Vector2(0.02545434, 0.037125926)
-texture = ExtResource("10_awrv3")
+position = Vector2(310, 11)
 
-[node name="ScoreCrown" type="Sprite2D" parent="InGame_Menus/Finish_Menu/Bests" unique_id=326810313]
+[node name="ScoreCrown" parent="InGame_Menus/Finish_Menu/Bests" unique_id=2143554743 instance=ExtResource("21_iapad")]
 unique_name_in_owner = true
-position = Vector2(289.28516, 49.734375)
-scale = Vector2(0.02545434, 0.037125926)
-texture = ExtResource("10_awrv3")
+position = Vector2(310, 49.207)
 
 [node name="GapPanel" type="Panel" parent="InGame_Menus/Finish_Menu" unique_id=159134335]
 layout_mode = 0
@@ -843,11 +615,9 @@ theme_override_fonts/font = SubResource("SystemFont_mhh63")
 theme_override_font_sizes/font_size = 8
 text = "Gaps done : 1/3"
 
-[node name="GapsCrown" type="Sprite2D" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=88356233]
+[node name="GapsCrown" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=848090236 instance=ExtResource("21_iapad")]
 unique_name_in_owner = true
-position = Vector2(120.50409, 15.704315)
-scale = Vector2(0.02545434, 0.037125926)
-texture = ExtResource("10_awrv3")
+position = Vector2(120.11786, 15.704315)
 
 [node name="Gap1" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=1407275282]
 unique_name_in_owner = true
@@ -917,7 +687,8 @@ offset_right = 328.29645
 offset_bottom = 297.85858
 theme_override_styles/panel = SubResource("StyleBoxFlat_lso2o")
 
-[node name="Title" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1205211855]
+[node name="BillsCaught" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1205211855]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 2.7036242
 offset_top = 2.0939636
@@ -928,13 +699,12 @@ theme_override_fonts/font = SubResource("SystemFont_mhh63")
 theme_override_font_sizes/font_size = 8
 text = "Bills caught : 2/6"
 
-[node name="BillsCrown" type="Sprite2D" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=119390235]
+[node name="BillsCrown" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1217938664 instance=ExtResource("21_iapad")]
 unique_name_in_owner = true
-position = Vector2(119.34277, 15.70459)
-scale = Vector2(0.02545434, 0.037125926)
-texture = ExtResource("10_awrv3")
+position = Vector2(120.50406, 15.70434)
 
 [node name="50BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1481751945]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 36.691956
 offset_top = 23.03307
@@ -952,6 +722,7 @@ scale = Vector2(0.015, 0.015000002)
 texture = ExtResource("14_jpypc")
 
 [node name="100BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=811373184]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 36.691956
 offset_top = 43.972168
@@ -969,6 +740,7 @@ scale = Vector2(0.015, 0.015000001)
 texture = ExtResource("15_llc0d")
 
 [node name="200BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1199701553]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 93.467896
 offset_top = 23.03307
@@ -986,6 +758,7 @@ scale = Vector2(0.015, 0.015000001)
 texture = ExtResource("16_f8kff")
 
 [node name="500BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=924351624]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 93.4675
 offset_top = 43.972015
@@ -1040,10 +813,6 @@ theme_override_font_sizes/font_size = 45
 text = "Get Ready !"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1963012401]
-unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_ckn3a")
 
 [connection signal="pressed" from="InGame_Menus/Pause_Menu/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="InGame_Menus/Pause_Menu/AbandonButton" to="." method="_on_abandon_button_pressed"]

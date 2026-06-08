@@ -1,7 +1,7 @@
 extends Node
 
 # Config
-var debug : bool = false
+var debug : bool = true
 const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}
@@ -41,21 +41,23 @@ var gaps_done : Dictionary
 var gaps_already_fulled : bool
 var gaps_fulled : bool
 var gaps_done_data : Dictionary
-
+# Money
+var bills_catched : Array
+var bills_already_fulled : bool
+var bills_fulled : bool
+var bills_done_data : Dictionary
 # Boost
 var BOOST_MAX_QUANTITY :float
 var ONE_TIME_RATIO :int
 var BOOST_CONSUMPTION :float
 var ONE_TIME_QUANTITY :float
 var current_boost:float
-
 # CP datas
 var current_cp : String
 var cp_player_speed : Vector2
 var cp_player_pos : Vector2
 var cp_player_score : float
 var cp_player_boost : float
-
 # Collectible
 var is_grabbed : bool
 var is_stored : bool
@@ -73,9 +75,6 @@ var queen_time_already_beaten : bool
 var queen_time_beaten : bool
 var queen_score_already_beaten : bool
 var queen_score_beaten : bool
-var bills_catched : Array
-var bills_already_fulled : bool
-var bills_fulled : bool
 
 #Menus
 var menu_to_show := "MainMenu"
@@ -277,6 +276,7 @@ func valid_combo():
 			special_trick_done = true
 			AudioManager.play_sfx("special_trick")
 	gap_combo = {}
+	is_in_gap = ""
 
 func combo_score()-> int:
 	var score :int = 0
@@ -365,12 +365,25 @@ func check_gaps():
 				gaps_done_data["done"] += 1
 			else:gaps_done_data["check"+str(i+1)] = "empty"
 	gaps_fulled = int(gaps_done_data["done"]) == map_data["gaps"].size()
-	gaps_done_data["newcrown"] = not gaps_already_fulled and gaps_fulled
-	print(gaps_done_data)
+	if gaps_already_fulled : gaps_done_data["crown_anim"] = "RESET"
+	elif gaps_fulled:gaps_done_data["crown_anim"] = "Spin"
+	else : gaps_done_data["crown_anim"] = "Locked"
+	print("gaps data : ",gaps_done_data)
 	
 func check_bills():
-	bills_already_fulled = false
-	bills_fulled = false
+	bills_already_fulled = previous_map_record["bills_caught"]
+	bills_done_data["size"] = map_data["bills"].size()
+	bills_done_data["number_per_value_total"] = {50:0,100:0,200:0,500:0}
+	bills_done_data["number_per_value_caught"] = {50:0,100:0,200:0,500:0}
+	for bill in map_data["bills"]:bills_done_data["number_per_value_total"][map_data["bills"][bill]] += 1
+	for bill in previous_obj_and_bills["bills"]:bills_catched.append(bill)
+	for bill in bills_catched:bills_done_data["number_per_value_caught"][map_data["bills"][bill]] += 1
+	bills_done_data["done"] = bills_catched.size()
+	bills_fulled = bills_done_data["done"] == bills_done_data["size"]
+	if bills_already_fulled : bills_done_data["crown_anim"] = "RESET"
+	elif bills_fulled:bills_done_data["crown_anim"] = "Spin"
+	else : bills_done_data["crown_anim"] = "Locked"
+	print("bills data : ",bills_done_data)
 
 func check_map_record():
 	# Best records
@@ -383,35 +396,46 @@ func check_map_record():
 	if previous_map_record["time"] is float :
 		if previous_map_record["time"] > race_time:
 			new_best_time = true
-			current_profile["map_record"][current_map]["time"]=race_time
+			previous_map_record["time"]=race_time
 		if previous_map_record["score"] < current_score:
 			new_best_score = true
-			current_profile["map_record"][current_map]["score"]=current_score
+			previous_map_record["score"]=current_score
 		if previous_map_record["time"] < map_data["queen_time"]:queen_time_already_beaten = true
 		if previous_map_record["score"] > map_data["queen_score"]:queen_score_already_beaten = true
 	else:
 		current_profile["map_record"][current_map] = previous_map_record.duplicate()
 		new_best_time = true
-		current_profile["map_record"][current_map]["time"]=race_time
+		previous_map_record["time"]=race_time
 		new_best_score = true
-		current_profile["map_record"][current_map]["score"]=current_score
+		previous_map_record["score"]=current_score
 	if race_time < map_data["queen_time"]:queen_time_beaten = true
 	if current_score > map_data["queen_score"]:queen_score_beaten = true
 
 func profile_update():
+	var new_map_data := previous_obj_and_bills.duplicate()
+	# Money
 	current_profile["current_run"]["money"] += money_catched
 	money_catched = 0
+	new_map_data["bills"] = bills_catched
+	previous_map_record["bills_caught"] = bills_already_fulled or bills_fulled
+	# Stars
 	current_profile["current_run"]["stars"] += objectives_completed.size()
+	new_map_data["objectives"].append_array(objectives_completed)
+	# Crowns
 	var new_crowns := 0
 	if not queen_time_already_beaten and queen_time_beaten: new_crowns += 1
 	if not queen_score_already_beaten and queen_score_beaten: new_crowns += 1
 	if not bills_already_fulled and bills_fulled : new_crowns += 1
 	if not gaps_already_fulled and gaps_fulled : new_crowns += 1
 	current_profile["crowns"] += new_crowns
-	var new_map_data := previous_obj_and_bills.duplicate()
-	new_map_data["objectives"].append_array(objectives_completed)
-	new_map_data["bills"].append_array(bills_catched)
+	# Gaps
+	previous_map_record["gaps_done"] = gaps_already_fulled or gaps_fulled
+	for gap in gaps_done:
+		new_map_data["gaps"][gap] = gaps_done[gap]
+		if gap not in previous_map_record["gaps_discovered"]:previous_map_record["gaps_discovered"].append(gap)
+	# Profile update
 	current_profile["current_run"]["finished_maps"][current_map] = new_map_data
+	current_profile["map_record"][current_map] = previous_map_record
 
 func format_time(t: float) -> String:
 	var minutes := int(t/60)

@@ -123,38 +123,49 @@ func finish_menu_update():
 	%QueenTimeBeaten.visible = true
 	%QueenTime_label.add_theme_color_override("font_color", Color("57079bff"))
 	%QueenTime_title.add_theme_color_override("font_color", Color("57079bff"))
-	if Global.queen_time_already_beaten:%QueenTimeBeaten.text = "Already Beaten"
+	if Global.queen_time_already_beaten:
+		%QueenTimeBeaten.text = "Already Beaten"
+		%TimeCrown.play_animation("RESET")
 	elif Global.queen_time_beaten:
 		%QueenTimeBeaten.text = "[pulse][wave]Queen Time Beaten"
-		%AnimationPlayer.play("TimeCrownSpin")
+		%TimeCrown.play_animation("Spin")
 	else:
 		%QueenTimeBeaten.visible = false
 		%QueenTime_label.add_theme_color_override("font_color", Color("35343cff"))
 		%QueenTime_title.add_theme_color_override("font_color", Color("35343cff"))
-		%TimeCrown.modulate = Color("35343cff")
+		%TimeCrown.play_animation("locked")
 	# Queen score
 	%QueenScore_label.text = Global.format_number(Global.map_data["queen_score"])
 	%QueenScoreBeaten.visible = true
 	%QueenScore_label.add_theme_color_override("font_color", Color("57079bff"))
 	%QueenScore_title.add_theme_color_override("font_color", Color("57079bff"))
-	if Global.queen_score_already_beaten:%QueenScoreBeaten.text = "Already Beaten"
+	if Global.queen_score_already_beaten:
+		%QueenScoreBeaten.text = "Already Beaten"
+		%ScoreCrown.play_animation("RESET")
 	elif Global.queen_score_beaten:
 		%QueenScoreBeaten.text = "[pulse][wave]Queen Score Beaten"
-		%AnimationPlayer.play("ScoreCrownSpin")
+		%ScoreCrown.play_animation("Spin")
 	else:
 		%QueenScoreBeaten.visible = false
 		%QueenScore_label.add_theme_color_override("font_color", Color("35343cff"))
 		%QueenScore_title.add_theme_color_override("font_color", Color("35343cff"))
-		%ScoreCrown.modulate = Color("35343cff")
+		%ScoreCrown.play_animation("locked")
 	# Gaps
 	%GapsDone.text = "Gaps done : " + str(Global.gaps_done_data["done"]) + "/" + str(Global.gaps_done_data["size"])
-	if Global.gaps_done_data["newcrown"]:%AnimationPlayer.play("GapsCrownSpin")
+	%GapsCrown.play_animation(Global.gaps_done_data["crown_anim"])
 	%Gap1.text = Global.gaps_done_data["gap1"]
 	%CheckBoxGap1.texture = load("res://Images/Menus/Controls/CheckBox_" + Global.gaps_done_data["check1"] + ".png")
 	%Gap2.text = Global.gaps_done_data["gap2"]
 	%CheckBoxGap2.texture = load("res://Images/Menus/Controls/CheckBox_" + Global.gaps_done_data["check2"] + ".png")
 	%Gap3.text = Global.gaps_done_data["gap3"]
 	%CheckBoxGap3.texture = load("res://Images/Menus/Controls/CheckBox_" + Global.gaps_done_data["check3"] + ".png")
+	# Bills
+	%BillsCaught.text = "Bills caught : " + str(Global.bills_done_data["done"]) + "/" + str(Global.bills_done_data["size"])
+	%BillsCrown.play_animation(Global.bills_done_data["crown_anim"])
+	%"50BillLabel".text = str(Global.bills_done_data["number_per_value_caught"][50]) + "/" + str(Global.bills_done_data["number_per_value_total"][50])
+	%"100BillLabel".text = str(Global.bills_done_data["number_per_value_caught"][100]) + "/" + str(Global.bills_done_data["number_per_value_total"][100])
+	%"200BillLabel".text = str(Global.bills_done_data["number_per_value_caught"][200]) + "/" + str(Global.bills_done_data["number_per_value_total"][200])
+	%"500BillLabel".text = str(Global.bills_done_data["number_per_value_caught"][500]) + "/" + str(Global.bills_done_data["number_per_value_total"][500])
 	%Finish_Menu.show()
 
 

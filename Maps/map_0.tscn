@@ -980,7 +980,7 @@ shape = SubResource("SegmentShape2D_2wbil")
 [node name="DebugStart" type="Marker2D" parent="." unique_id=1407101377]
 unique_name_in_owner = true
 z_index = 17
-position = Vector2(13523, 1004)
+position = Vector2(29380, 5507)
 script = ExtResource("35_wrsql")
 debug_start_speed = 10.0
 
