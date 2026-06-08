@@ -12,6 +12,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dw1psg1jlbwg1" path="res://Images/Menus/Maps/Anim/star_sprite_frames.tres" id="9_xbsk7"]
 [ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="10_lc2xo"]
 [ext_resource type="Texture2D" uid="uid://cd6n0fx4hywqq" path="res://Images/Menus/Controls/CheckBox_valid.png" id="11_405dh"]
+[ext_resource type="StyleBox" uid="uid://cdy5x8mw0va4i" path="res://Styles/Regular_box.tres" id="11_iapad"]
 [ext_resource type="Texture2D" uid="uid://c7vvpwiyu0iw1" path="res://Images/Menus/Controls/CheckBox_unknow.png" id="12_iapad"]
 [ext_resource type="Texture2D" uid="uid://wfx2lfwfrtnl" path="res://Images/Menus/Controls/CheckBox_empty.png" id="13_vvpir"]
 [ext_resource type="Texture2D" uid="uid://dv62chm0uslkm" path="res://Images/Menus/Controls/continue_hover.png" id="14_e8heu"]
@@ -20,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://d7smnuxn4k8m" path="res://Images/Mapping/Collectibles/Bills/200_Bill_face.png" id="16_f8kff"]
 [ext_resource type="Texture2D" uid="uid://tmy85umvaex2" path="res://Images/Mapping/Collectibles/Bills/500_Bill_face.png" id="17_tq2i4"]
 [ext_resource type="PackedScene" uid="uid://3rkdpubp057j" path="res://Scenes/Misc/crown.tscn" id="21_iapad"]
+[ext_resource type="FontFile" uid="uid://ctamdlckg0fvr" path="res://Fonts/PixelGame-R9AZe.otf" id="22_vvpir"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
 bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
@@ -36,6 +38,23 @@ corner_radius_bottom_left = 8
 [sub_resource type="SystemFont" id="SystemFont_fc0e3"]
 font_names = PackedStringArray("Pixel Game", "Pixel Tactical", "Pharmakon")
 
+[sub_resource type="FontVariation" id="FontVariation_jpypc"]
+base_font = ExtResource("22_vvpir")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_llc0d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvpir"]
+bg_color = Color(0.24313726, 0, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="SystemFont" id="SystemFont_k57dk"]
 font_names = PackedStringArray("Pixel Code")
 
@@ -43,18 +62,6 @@ font_names = PackedStringArray("Pixel Code")
 
 [sub_resource type="SystemFont" id="SystemFont_ij56o"]
 font_names = PackedStringArray("Pharmakon")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nwt3"]
-bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
 
 [sub_resource type="SystemFont" id="SystemFont_mhh63"]
 font_names = PackedStringArray("Pixel Code")
@@ -173,9 +180,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -233.99997
-offset_top = -233.0
+offset_top = -237.0
 offset_right = 101.2486
-offset_bottom = 73.75778
+offset_bottom = 71.851685
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.5891235, 1.910302)
@@ -187,9 +194,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -37.589203
-offset_top = 6.2817307
+offset_top = 0.52347565
 offset_right = 37.410797
-offset_bottom = 42.28173
+offset_bottom = 36.523476
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.7294118, 0.7254902, 0, 1)
 theme_override_constants/outline_size = 7
@@ -199,19 +206,41 @@ text = "FINISH"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Objectives" type="Control" parent="InGame_Menus/Finish_Menu" unique_id=686463428]
-anchors_preset = 0
-offset_left = 36.691967
-offset_top = 30.88517
+[node name="MapCrowns" type="RichTextLabel" parent="InGame_Menus/Finish_Menu" unique_id=2011671987]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 269.20306
+offset_top = 3.1408615
+offset_right = 384.29993
+offset_bottom = 65.958145
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_jpypc")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_llc0d")
+bbcode_enabled = true
+text = " 4/5  [img]res://Images/HUD/Player/CrownsLogo_mini.png[/img]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Objectives" type="Panel" parent="InGame_Menus/Finish_Menu" unique_id=1193896400]
+layout_mode = 0
+offset_left = 33.988323
+offset_top = 30.361687
 offset_right = 302.41895
-offset_bottom = 166.98929
+offset_bottom = 166.46582
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvpir")
+
+[node name="ObjectivesCrown" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=707510115 instance=ExtResource("21_iapad")]
+unique_name_in_owner = true
+position = Vector2(248.73283, 19.89212)
 
 [node name="ObjectivesText" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1040561045]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 42.485428
+offset_left = 45.961502
 offset_top = 11.516506
-offset_right = 308.2124
+offset_right = 311.68848
 offset_bottom = 147.62064
 theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_constants/outline_size = 6
@@ -231,7 +260,7 @@ text = " [color=d9db00ff]Beat 10.000 points[/color]
 
 [node name="Star1" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1532536221]
 unique_name_in_owner = true
-position = Vector2(16.138168, 17.274757)
+position = Vector2(19.614258, 17.27478)
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"gold"
@@ -240,7 +269,7 @@ frame_progress = 0.15063757
 
 [node name="Star2" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=300912646]
 unique_name_in_owner = true
-position = Vector2(16.138168, 41.35483)
+position = Vector2(19.614258, 41.354736)
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"empty"
@@ -248,7 +277,7 @@ autoplay = "red"
 
 [node name="Star3" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1492303897]
 unique_name_in_owner = true
-position = Vector2(16.138168, 65.434784)
+position = Vector2(19.614258, 65.434814)
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"gold"
@@ -256,7 +285,7 @@ autoplay = "red"
 
 [node name="Star4" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=10519218]
 unique_name_in_owner = true
-position = Vector2(16.138168, 89.51486)
+position = Vector2(19.614258, 89.51489)
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"red"
@@ -265,7 +294,7 @@ frame_progress = 0.23550777
 
 [node name="Star5" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=205701843]
 unique_name_in_owner = true
-position = Vector2(16.138168, 113.59471)
+position = Vector2(19.614258, 113.59473)
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("9_xbsk7")
 animation = &"gold"
@@ -284,9 +313,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -38.747887
-offset_top = -1.5702515
+offset_top = 1.0471344
 offset_right = 12.252113
-offset_bottom = 12.429749
+offset_bottom = 15.047134
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -303,9 +332,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -59.60441
-offset_top = 15.180969
+offset_top = 17.798355
 offset_right = 12.395592
-offset_bottom = 29.18097
+offset_bottom = 31.798355
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -323,9 +352,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 15.449242
-offset_top = -1.5703735
+offset_top = 1.0470123
 offset_right = 57.44924
-offset_bottom = 12.429626
+offset_bottom = 15.047012
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -361,9 +390,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 15.449242
-offset_top = 15.180725
+offset_top = 17.798111
 offset_right = 57.44924
-offset_bottom = 29.180725
+offset_bottom = 31.798111
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -381,9 +410,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 162.6301
-offset_top = 6.805237
+offset_top = 10.993057
 offset_right = 204.6301
-offset_bottom = 20.805237
+offset_bottom = 24.993057
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -401,9 +430,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 98.965004
-offset_top = 6.805237
+offset_top = 10.993057
 offset_right = 155.965
-offset_bottom = 20.805237
+offset_bottom = 24.993057
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -427,7 +456,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("SystemFont_ij56o")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-text = "Already Beaten"
+text = "Already Unlocked"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -485,7 +514,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("SystemFont_ij56o")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-text = "Already Beaten"
+text = "[pulse][wave]Queen Score Beaten"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -586,13 +615,13 @@ text = "8726"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimeCrown" parent="InGame_Menus/Finish_Menu/Bests" unique_id=707510115 instance=ExtResource("21_iapad")]
+[node name="TimeCrown" parent="InGame_Menus/Finish_Menu/Bests" unique_id=829768451 instance=ExtResource("21_iapad")]
 unique_name_in_owner = true
-position = Vector2(310, 11)
+position = Vector2(297.3979, 15.7043)
 
 [node name="ScoreCrown" parent="InGame_Menus/Finish_Menu/Bests" unique_id=2143554743 instance=ExtResource("21_iapad")]
 unique_name_in_owner = true
-position = Vector2(310, 49.207)
+position = Vector2(297.3979, 47.63644)
 
 [node name="GapPanel" type="Panel" parent="InGame_Menus/Finish_Menu" unique_id=159134335]
 layout_mode = 0
@@ -600,7 +629,7 @@ offset_left = 6.9521637
 offset_top = 239.22919
 offset_right = 139.81566
 offset_bottom = 297.85864
-theme_override_styles/panel = SubResource("StyleBoxFlat_6nwt3")
+theme_override_styles/panel = ExtResource("11_iapad")
 
 [node name="GapsDone" type="Label" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=104791506]
 unique_name_in_owner = true
@@ -617,7 +646,7 @@ text = "Gaps done : 1/3"
 
 [node name="GapsCrown" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=848090236 instance=ExtResource("21_iapad")]
 unique_name_in_owner = true
-position = Vector2(120.11786, 15.704315)
+position = Vector2(120.50409, 15.180838)
 
 [node name="Gap1" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=1407275282]
 unique_name_in_owner = true

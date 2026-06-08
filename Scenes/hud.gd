@@ -33,6 +33,7 @@ var boost_segment_max_size:float
 
 func _ready():
 	reset()
+	Global.set_start_values()
 	%Trick_scored_label.hide()
 	best_trick_labels={"Air":%Air_label,"Wheelie":%Wheelie_label,"Nose Wheelie":%Nose_label}
 	label_is_fading = {%Penalty_label:false,%Tricks_label:false,%Trick_scored_label:false}
@@ -166,7 +167,7 @@ func _on_show_penalty_timer_timeout():
 
 func _process(_delta):
 	var total_money : String = Global.format_number(Global.current_profile["current_run"]["money"]+Global.money_catched)
-	%Money.text = "Cash : " + total_money + " [img]res://Images/HUD/Player/BucksLogo_mini.png[/img]"
+	%Money.text = "[img]res://Images/HUD/Player/BucksLogo_mini.png[/img]  "+ total_money
 	%Time_label.text = Global.format_time(Global.race_time)
 	if Global.penalty_to_show and %Show_penalty_timer.is_stopped():
 		%Tricks_label.add_theme_color_override("font_color", colors["RED"])

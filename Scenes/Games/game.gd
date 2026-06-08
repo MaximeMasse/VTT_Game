@@ -29,6 +29,8 @@ var is_finished :=false
 @onready var stars := {1.0:%Star1,2.0:%Star2,3.0:%Star3,4.0:%Star4,5.0:%Star5}
 
 func _ready():
+	# Loading profile
+	Global.set_start_values()
 	# Debug
 	get_tree().debug_collisions_hint = Global.debug
 	Engine.time_scale = TIME_SCALE
@@ -103,14 +105,13 @@ func map_finished():
 
 func finish_menu_update():
 	# Objectives
-	var previously_done:Dictionary= Global.previous_obj_and_bills.duplicate()
 	for star in stars:stars[star].animation = "empty"
-	for old_succes in previously_done["objectives"]:
-		stars[old_succes].animation = "gold"
-	for new_succes in Global.objectives_completed:
-		stars[new_succes].animation = "red"
-		previously_done["objectives"].append(new_succes)
+	for old_succes in Global.previous_obj_and_bills["objectives"]:stars[old_succes].animation = "gold"
+	for new_succes in Global.objectives_completed:stars[new_succes].animation = "red"
 	%ObjectivesText.text = Global.objectives_text
+	if Global.objectives_already_done:%ObjectivesCrown.play_animation("RESET")
+	elif Global.objectives_done:%ObjectivesCrown.play_animation("Spin")
+	else:%ObjectivesCrown.play_animation("Locked")
 	# Best time and score
 	%Time_label.text = Global.format_time(Global.race_time)
 	%PreviousTime_label.text = "-" if str(Global.previous_map_record["time"]) == "-" else Global.format_time(Global.previous_map_record["time"])
@@ -124,7 +125,7 @@ func finish_menu_update():
 	%QueenTime_label.add_theme_color_override("font_color", Color("57079bff"))
 	%QueenTime_title.add_theme_color_override("font_color", Color("57079bff"))
 	if Global.queen_time_already_beaten:
-		%QueenTimeBeaten.text = "Already Beaten"
+		%QueenTimeBeaten.text = "Already Unlocked"
 		%TimeCrown.play_animation("RESET")
 	elif Global.queen_time_beaten:
 		%QueenTimeBeaten.text = "[pulse][wave]Queen Time Beaten"
@@ -133,14 +134,14 @@ func finish_menu_update():
 		%QueenTimeBeaten.visible = false
 		%QueenTime_label.add_theme_color_override("font_color", Color("35343cff"))
 		%QueenTime_title.add_theme_color_override("font_color", Color("35343cff"))
-		%TimeCrown.play_animation("locked")
+		%TimeCrown.play_animation("Locked")
 	# Queen score
 	%QueenScore_label.text = Global.format_number(Global.map_data["queen_score"])
 	%QueenScoreBeaten.visible = true
 	%QueenScore_label.add_theme_color_override("font_color", Color("57079bff"))
 	%QueenScore_title.add_theme_color_override("font_color", Color("57079bff"))
 	if Global.queen_score_already_beaten:
-		%QueenScoreBeaten.text = "Already Beaten"
+		%QueenScoreBeaten.text = "Already Unlocked"
 		%ScoreCrown.play_animation("RESET")
 	elif Global.queen_score_beaten:
 		%QueenScoreBeaten.text = "[pulse][wave]Queen Score Beaten"
@@ -149,7 +150,7 @@ func finish_menu_update():
 		%QueenScoreBeaten.visible = false
 		%QueenScore_label.add_theme_color_override("font_color", Color("35343cff"))
 		%QueenScore_title.add_theme_color_override("font_color", Color("35343cff"))
-		%ScoreCrown.play_animation("locked")
+		%ScoreCrown.play_animation("Locked")
 	# Gaps
 	%GapsDone.text = "Gaps done : " + str(Global.gaps_done_data["done"]) + "/" + str(Global.gaps_done_data["size"])
 	%GapsCrown.play_animation(Global.gaps_done_data["crown_anim"])
@@ -166,6 +167,9 @@ func finish_menu_update():
 	%"100BillLabel".text = str(Global.bills_done_data["number_per_value_caught"][100]) + "/" + str(Global.bills_done_data["number_per_value_total"][100])
 	%"200BillLabel".text = str(Global.bills_done_data["number_per_value_caught"][200]) + "/" + str(Global.bills_done_data["number_per_value_total"][200])
 	%"500BillLabel".text = str(Global.bills_done_data["number_per_value_caught"][500]) + "/" + str(Global.bills_done_data["number_per_value_total"][500])
+	# Crowns
+	%MapCrowns.text =  str(Global.current_profile["map_record"][Global.current_map]["crowns_unlocked"]) +\
+	"/5  [img]res://Images/HUD/Player/CrownsLogo_mini.png[/img]"
 	%Finish_Menu.show()
 
 
@@ -267,7 +271,7 @@ func _on_abandon_button_pressed():
 	Global.start_mod("Menus")
 
 func _on_continue_pressed():
-	Global.menu_to_show = "Carrière"
+	Global.menu_to_show = "Chairlift"
 	Global.start_mod("Menus")
 
 func set_up_buttons(node):

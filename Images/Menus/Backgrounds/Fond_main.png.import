@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckcatq8ntvr6k"
-path="res://.godot/imported/Fond_carrière.png-e2ffd07a02f5026283d9fa486e44e724.ctex"
+uid="uid://bwrqce6up6ic2"
+path="res://.godot/imported/Fond_main.png-1ef7fb7e95b82d0d154d57de8d1198b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menus/Fond_carrière.png"
-dest_files=["res://.godot/imported/Fond_carrière.png-e2ffd07a02f5026283d9fa486e44e724.ctex"]
+source_file="res://Images/Menus/Backgrounds/Fond_main.png"
+dest_files=["res://.godot/imported/Fond_main.png-1ef7fb7e95b82d0d154d57de8d1198b9.ctex"]
 
 [params]
 

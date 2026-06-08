@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ysg3q6oybscp"]
 
 [ext_resource type="Script" uid="uid://dafspnj4mm4yw" path="res://Scenes/Dialogs/dialog_chairlift.gd" id="1_g4h4j"]
-[ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Fond_maps.png" id="2_ngbna"]
+[ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Backgrounds/Fond_maps.png" id="2_ngbna"]
 [ext_resource type="Texture2D" uid="uid://bgakseio1l8p0" path="res://Avatar/Players/Biqueen/Avatar.png" id="2_o4b1r"]
 [ext_resource type="Texture2D" uid="uid://tat201xsyt04" path="res://Avatar/Players/Man/Avatar.png" id="3_ngbna"]
 [ext_resource type="Texture2D" uid="uid://dw221buwvrsel" path="res://Images/Menus/Controls/next_up.png" id="4_3it35"]

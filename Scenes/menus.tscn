@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://byprtoaxd03pl"]
 
 [ext_resource type="Script" uid="uid://snafuxjgjqen" path="res://Scenes/menus.gd" id="1_06t4h"]
-[ext_resource type="Texture2D" uid="uid://bwrqce6up6ic2" path="res://Images/Menus/Fond_main.png" id="2_ak5mw"]
+[ext_resource type="Texture2D" uid="uid://bwrqce6up6ic2" path="res://Images/Menus/Backgrounds/Fond_main.png" id="2_ak5mw"]
 [ext_resource type="Texture2D" uid="uid://bfagchbmge633" path="res://Images/Menus/Controls/continue_up.png" id="3_uc4vm"]
 [ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="4_36kji"]
 [ext_resource type="Texture2D" uid="uid://dv62chm0uslkm" path="res://Images/Menus/Controls/continue_hover.png" id="5_bhlvn"]
@@ -16,9 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://blsbepqeqpqgd" path="res://Images/Menus/Controls/changeprofile_hover.png" id="11_yp7sa"]
 [ext_resource type="Texture2D" uid="uid://bxpvqii7llwk8" path="res://Images/Menus/Controls/ok_up.png" id="12_5my7x"]
 [ext_resource type="Texture2D" uid="uid://n82c8ivh0jec" path="res://Images/Menus/Controls/ok_down.png" id="13_ola75"]
-[ext_resource type="Texture2D" uid="uid://ckcatq8ntvr6k" path="res://Images/Menus/Fond_carrière.png" id="14_67va8"]
+[ext_resource type="Texture2D" uid="uid://ckcatq8ntvr6k" path="res://Images/Menus/Backgrounds/Fond_carrière.png" id="14_67va8"]
 [ext_resource type="Texture2D" uid="uid://cp4jn4mpwmuou" path="res://Images/Menus/Controls/lineedit.png" id="14_mtcp4"]
-[ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Fond_maps.png" id="15_ldcro"]
+[ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Backgrounds/Fond_maps.png" id="15_ldcro"]
 [ext_resource type="Texture2D" uid="uid://d3s2ymvh17wfv" path="res://Images/Menus/Controls/ok_hover.png" id="17_uvnkm"]
 [ext_resource type="PackedScene" uid="uid://csmqtdn1bqmdt" path="res://Scenes/Dialogs/dialog_tuto.tscn" id="20_vnyao"]
 [ext_resource type="Texture2D" uid="uid://k8tl2mijfawq" path="res://Images/Menus/Shops/Map.png" id="20_x8e7r"]
@@ -42,6 +42,8 @@
 [ext_resource type="Texture2D" uid="uid://c7jdhcmkuorhl" path="res://Images/Menus/Maps/Map1.png" id="40_hbxnh"]
 [ext_resource type="PackedScene" uid="uid://bea1hvd32kipw" path="res://Scenes/map_stars.tscn" id="40_o23ee"]
 [ext_resource type="Texture2D" uid="uid://dxu8o2xnnmenv" path="res://Images/Menus/Maps/Map1_focused.png" id="41_o23ee"]
+[ext_resource type="Texture2D" uid="uid://q442eo5rtj7j" path="res://Images/Menus/Maps/Map2.png" id="43_xa78w"]
+[ext_resource type="Texture2D" uid="uid://irx6hcht474c" path="res://Images/Menus/Maps/Map2_focused.png" id="44_cahet"]
 
 [sub_resource type="SystemFont" id="SystemFont_jw3nv"]
 font_names = PackedStringArray("Pixel Game")
@@ -401,10 +403,10 @@ offset_bottom = 40.0
 [node name="Map0_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=1586592481]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 773.0
-offset_top = 152.0
-offset_right = 861.0
-offset_bottom = 240.0
+offset_left = 640.0
+offset_top = 175.0
+offset_right = 728.0
+offset_bottom = 263.0
 texture_normal = ExtResource("36_hagod")
 texture_focused = ExtResource("37_6glyx")
 ignore_texture_size = true
@@ -421,10 +423,10 @@ layout_mode = 1
 [node name="Map1_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=859385007]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 744.0
-offset_top = 266.0
-offset_right = 832.0
-offset_bottom = 354.0
+offset_left = 942.0
+offset_top = 276.0
+offset_right = 1030.0
+offset_bottom = 364.0
 texture_normal = ExtResource("40_hbxnh")
 texture_focused = ExtResource("41_o23ee")
 ignore_texture_size = true
@@ -438,6 +440,37 @@ centered = false
 
 [node name="MapStars" parent="ChairliftMenu/Maps/Map1_Button" unique_id=998240960 instance=ExtResource("40_o23ee")]
 layout_mode = 1
+
+[node name="Map2_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=1421501063]
+layout_mode = 0
+offset_left = 709.0
+offset_top = 362.0
+offset_right = 797.0
+offset_bottom = 450.0
+texture_normal = ExtResource("43_xa78w")
+texture_focused = ExtResource("44_cahet")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MapValid" type="Sprite2D" parent="ChairliftMenu/Maps/Map2_Button" unique_id=1187280503]
+position = Vector2(0, -3)
+scale = Vector2(0.087, 0.087)
+texture = ExtResource("39_hgswm")
+centered = false
+
+[node name="MapStars2" parent="ChairliftMenu/Maps/Map2_Button" unique_id=1826298006 instance=ExtResource("40_o23ee")]
+layout_mode = 1
+offset_left = 0.725
+offset_top = -3.36
+offset_right = 0.7249985
+offset_bottom = -3.3600006
+
+[node name="Map3_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=1090385409]
+layout_mode = 0
+offset_left = 893.0
+offset_top = 532.0
+offset_right = 933.0
+offset_bottom = 572.0
 
 [connection signal="pressed" from="MainMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MainMenu/NewPlayerButton" to="." method="_on_new_player_button_pressed"]

@@ -48,10 +48,8 @@ func set_up_buttons(node):
 		set_up_buttons(child)
 
 func _unhandled_input(_event):
-	if Input.is_action_just_pressed("ui_down"):
-		%ContinueButton.grab_focus()
-	elif Input.is_action_just_pressed("ui_up"):
-		%ProfileButton.grab_focus()
+	if Input.is_action_just_pressed("ui_down"):%ContinueButton.grab_focus()
+	elif Input.is_action_just_pressed("ui_up"):%ProfileButton.grab_focus()
 
 func show_menu(menu:String):
 	for men in dico_menus:dico_menus[men].hide()

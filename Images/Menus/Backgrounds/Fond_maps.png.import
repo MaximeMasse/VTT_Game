@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cafqa107sjuh2"
-path="res://.godot/imported/Fond_maps.png-ba66ac7c55fb746c278ca8557df11323.ctex"
+path="res://.godot/imported/Fond_maps.png-b066a5c129524411b2fe36306e0e1513.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menus/Fond_maps.png"
-dest_files=["res://.godot/imported/Fond_maps.png-ba66ac7c55fb746c278ca8557df11323.ctex"]
+source_file="res://Images/Menus/Backgrounds/Fond_maps.png"
+dest_files=["res://.godot/imported/Fond_maps.png-b066a5c129524411b2fe36306e0e1513.ctex"]
 
 [params]
 

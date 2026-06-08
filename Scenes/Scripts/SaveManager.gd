@@ -53,12 +53,6 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 			"RESPAWN_TIME_PENALTY" : 5.0,
 			"RESPAWN_HP_PENALTY" : 20
 		},
-		"best_tricks":{
-			"Air": {"length":0.0,"duration":0.0},
-			"Wheelie": {"length":0.0,"duration":0.0},
-			"Nose Wheelie": {"length":0.0,"duration":0.0}
-		},
-		"best_combo": [],
 		"map_record": {},
 		"current_run": {
 			"finished_maps" : {},
@@ -106,8 +100,8 @@ func load_config() -> Dictionary:
 		Global.config = {
 			"profil_en_cours": 0,
 			"profils_existants": 0,
-			"music_volume": 0.7,
-			"sfx_volume": 0.9,
+			"music_volume": 0.5,
+			"sfx_volume": 0.5,
 			"ui_volume": 0.8
 		}
 		save_config()
