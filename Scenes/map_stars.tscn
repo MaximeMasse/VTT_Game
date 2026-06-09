@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bea1hvd32kipw"]
 
-[ext_resource type="Texture2D" uid="uid://mp076uys4gx0" path="res://Images/Menus/Maps/Map0.png" id="1_gvvu8"]
+[ext_resource type="Texture2D" uid="uid://d0vb42pobxhiy" path="res://Images/Menus/Maps/Map0.png" id="1_gvvu8"]
 [ext_resource type="Script" uid="uid://b0rjwghb3s6cw" path="res://Scenes/map_stars.gd" id="1_psydr"]
 [ext_resource type="Texture2D" uid="uid://cdlqvunwcwrq0" path="res://Images/Menus/Maps/star_empty.png" id="1_xwsrt"]
 
@@ -17,37 +17,34 @@ script = ExtResource("1_psydr")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=940562059]
 visible = false
 layout_mode = 0
-offset_right = 88.0
-offset_bottom = 88.0
 texture = ExtResource("1_gvvu8")
-expand_mode = 1
 
 [node name="Star1" type="Sprite2D" parent="." unique_id=1943628876]
 unique_name_in_owner = true
-position = Vector2(79, 21)
-scale = Vector2(0.04, 0.04)
+position = Vector2(164, 68)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_xwsrt")
 
 [node name="Star2" type="Sprite2D" parent="." unique_id=35371759]
 unique_name_in_owner = true
-position = Vector2(85, 36)
-scale = Vector2(0.04, 0.04)
+position = Vector2(178, 96.99999)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_xwsrt")
 
 [node name="Star3" type="Sprite2D" parent="." unique_id=105979999]
 unique_name_in_owner = true
-position = Vector2(84, 51)
-scale = Vector2(0.04, 0.04)
+position = Vector2(174, 126.99999)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_xwsrt")
 
 [node name="Star4" type="Sprite2D" parent="." unique_id=1186936744]
 unique_name_in_owner = true
-position = Vector2(82, 66)
-scale = Vector2(0.04, 0.04)
+position = Vector2(157, 156)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_xwsrt")
 
 [node name="Star5" type="Sprite2D" parent="." unique_id=595978473]
 unique_name_in_owner = true
-position = Vector2(70, 77)
-scale = Vector2(0.04, 0.04)
+position = Vector2(132, 175)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_xwsrt")

@@ -582,8 +582,8 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 16.397734
 offset_top = -10.384766
-offset_right = 60.85092
-offset_bottom = 1.6152344
+offset_right = 58.47986
+offset_bottom = 17.615234
 rotation = 0.5235988
 theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
 theme_override_constants/outline_size = 5
@@ -646,7 +646,7 @@ text = "Gaps done : 1/3"
 
 [node name="GapsCrown" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=848090236 instance=ExtResource("21_iapad")]
 unique_name_in_owner = true
-position = Vector2(120.50409, 15.180838)
+position = Vector2(117.800476, 13.086935)
 
 [node name="Gap1" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=1407275282]
 unique_name_in_owner = true
@@ -730,7 +730,7 @@ text = "Bills caught : 2/6"
 
 [node name="BillsCrown" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1217938664 instance=ExtResource("21_iapad")]
 unique_name_in_owner = true
-position = Vector2(120.50406, 15.70434)
+position = Vector2(117.414215, 12.563471)
 
 [node name="50BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1481751945]
 unique_name_in_owner = true

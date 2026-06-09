@@ -11,7 +11,9 @@ var choix_perso :int= 1
 	}
 @onready var dico_map_buttons := {
 		"0" : [%Map0_Button,["1"]],
-		"1" : [%Map1_Button,[]]
+		"1" : [%Map1_Button,["2"]],
+		"2" : [%Map2_Button,["3"]],
+		"3" : [%Boss1_Button,[]],
 	}
 
 func _ready():
@@ -59,8 +61,7 @@ func show_menu(menu:String):
 func map_progress_update():
 	for map in dico_map_buttons: 
 		dico_map_buttons[map][0].hide()
-		dico_map_buttons[map][0].get_child(0).hide()
-		dico_map_buttons[map][0].get_child(1).hide()
+		for child in dico_map_buttons[map][0].get_children():child.hide()
 	if Global.get_profile_data("state") == "tuto":%DialogChairlift.play_scene("tuto")
 	else:
 		var node_to_check :Array = ["0"]

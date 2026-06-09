@@ -55,7 +55,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.025, 0.037)]
+"values": [Vector2(0.035, 0.035)]
 }
 
 [sub_resource type="Animation" id="Animation_52m8v"]
@@ -84,7 +84,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1, 1.2, 1.4000001, 1.7, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.02545434, 0.037125926), Vector2(0.03, 0.044), Vector2(0.025, 0.037), Vector2(0.04, 0.059), Vector2(0.025, 0.036), Vector2(0.03, 0.043), Vector2(0.025, 0.036), Vector2(0.04, 0.059), Vector2(0.02545434, 0.037125926)]
+"values": [Vector2(0.035, 0.035), Vector2(0.039, 0.039), Vector2(0.037, 0.037), Vector2(0.05, 0.05), Vector2(0.035, 0.035), Vector2(0.039, 0.039), Vector2(0.035, 0.035), Vector2(0.05, 0.05), Vector2(0.035, 0.035)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p34dp"]
@@ -98,7 +98,7 @@ _data = {
 script = ExtResource("1_5ei3h")
 
 [node name="CrownsLogo" type="Sprite2D" parent="." unique_id=510341681]
-scale = Vector2(0.025, 0.037)
+scale = Vector2(0.035, 0.035)
 texture = ExtResource("1_xvxx0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1922876957]
