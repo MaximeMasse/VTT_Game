@@ -380,7 +380,6 @@ func check_gaps():
 	if gaps_already_fulled : gaps_done_data["crown_anim"] = "RESET"
 	elif gaps_fulled:gaps_done_data["crown_anim"] = "Spin"
 	else : gaps_done_data["crown_anim"] = "Locked"
-	print("gaps data : ",gaps_done_data)
 	
 func check_bills():
 	bills_already_fulled = previous_map_record["bills_caught"]
@@ -395,7 +394,6 @@ func check_bills():
 	if bills_already_fulled : bills_done_data["crown_anim"] = "RESET"
 	elif bills_fulled:bills_done_data["crown_anim"] = "Spin"
 	else : bills_done_data["crown_anim"] = "Locked"
-	print("bills data : ",bills_done_data)
 
 func check_map_record():
 	new_best_score = false

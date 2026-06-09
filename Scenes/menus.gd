@@ -10,10 +10,10 @@ var choix_perso :int= 1
 		"Chairlift":%ChairliftMenu
 	}
 @onready var dico_map_buttons := {
-		"0" : [%Map0_Button,["1"]],
-		"1" : [%Map1_Button,["2"]],
-		"2" : [%Map2_Button,["3"]],
-		"3" : [%Boss1_Button,[]],
+		"0" : {"node":%Map0_Button,"links":["1"],"boss":false},
+		"1" : {"node":%Map1_Button,"links":["2"],"boss":false},
+		"2" : {"node":%Map2_Button,"links":["3"],"boss":false},
+		"3" : {"node":%Boss1_Button,"links":[],"boss":true}
 	}
 
 func _ready():
@@ -59,24 +59,27 @@ func show_menu(menu:String):
 	dico_menus[menu].show()
 	
 func map_progress_update():
-	for map in dico_map_buttons: 
-		dico_map_buttons[map][0].hide()
-		for child in dico_map_buttons[map][0].get_children():child.hide()
-	if Global.get_profile_data("state") == "tuto":%DialogChairlift.play_scene("tuto")
-	else:
-		var node_to_check :Array = ["0"]
-		var tree_done := false
-		while not tree_done:
-			if node_to_check.size() > 0 :
-				var current_map : String = node_to_check.pop_front()
-				dico_map_buttons[current_map][0].show()
-				if current_map in Global.current_profile["current_run"]["finished_maps"].keys():
-					var stars : Array = Global.current_profile["current_run"]["finished_maps"][current_map]["objectives"]
-					dico_map_buttons[current_map][0].get_child(0).show()
-					dico_map_buttons[current_map][0].get_child(1).stars_update(stars)
-					dico_map_buttons[current_map][0].get_child(1).show()
-					node_to_check.append_array(dico_map_buttons[current_map][1])
-			else:tree_done=true
+	%Chairlift.play()
+	%Chairlift0.play()
+	#for map in dico_map_buttons:
+		#dico_map_buttons[map]["node"].hide()
+		#for child in dico_map_buttons[map]["node"].get_children():child.hide()
+	#if Global.get_profile_data("state") == "tuto":%DialogChairlift.play_scene("tuto")
+	#else:
+		#var node_to_check :Array = ["0"]
+		#var tree_done := false
+		#while not tree_done:
+			#if node_to_check.size() > 0 :
+				#var current_map : String = node_to_check.pop_front()
+				#dico_map_buttons[current_map]["node"].show()
+				#if current_map in Global.current_profile["current_run"]["finished_maps"].keys():
+					#var stars : Array = Global.current_profile["current_run"]["finished_maps"][current_map]["objectives"]
+					#dico_map_buttons[current_map]["node"].get_child(0).show()
+					#if not dico_map_buttons[current_map]["boss"]:
+						#dico_map_buttons[current_map]["node"].get_child(1).stars_update(stars)
+						#dico_map_buttons[current_map]["node"].get_child(1).show()
+					#node_to_check.append_array(dico_map_buttons[current_map]["links"])
+			#else:tree_done=true
 
 
 func apply_audio_config():
@@ -118,7 +121,7 @@ func _on_ok_pressed():
 func _on_dialog_tuto_scene_ended(scene_name):
 	if scene_name == "tuto":
 		%StartTutoPanel.show()
-	elif scene_name == "tuto_start":%Chairlift.disabled = false
+	elif scene_name == "tuto_start":%World.disabled = false
 	elif scene_name == "tuto_skip":
 		%Tuto.hide()
 		Global.current_profile["state"] = "other"

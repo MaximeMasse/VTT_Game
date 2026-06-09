@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://n82c8ivh0jec" path="res://Images/Menus/Controls/ok_down.png" id="13_ola75"]
 [ext_resource type="Texture2D" uid="uid://ckcatq8ntvr6k" path="res://Images/Menus/Backgrounds/Fond_carrière.png" id="14_67va8"]
 [ext_resource type="Texture2D" uid="uid://cp4jn4mpwmuou" path="res://Images/Menus/Controls/lineedit.png" id="14_mtcp4"]
-[ext_resource type="Texture2D" uid="uid://cafqa107sjuh2" path="res://Images/Menus/Backgrounds/Fond_maps.png" id="15_ldcro"]
 [ext_resource type="Texture2D" uid="uid://d3s2ymvh17wfv" path="res://Images/Menus/Controls/ok_hover.png" id="17_uvnkm"]
 [ext_resource type="PackedScene" uid="uid://csmqtdn1bqmdt" path="res://Scenes/Dialogs/dialog_tuto.tscn" id="20_vnyao"]
 [ext_resource type="Texture2D" uid="uid://k8tl2mijfawq" path="res://Images/Menus/Shops/Map.png" id="20_x8e7r"]
@@ -35,8 +34,10 @@
 [ext_resource type="Texture2D" uid="uid://drvv3f57uleo2" path="res://Images/Menus/Controls/no_down.png" id="26_6i8wr"]
 [ext_resource type="Texture2D" uid="uid://cp3l6n6his8e4" path="res://Images/Menus/Controls/no_hover.png" id="27_638l8"]
 [ext_resource type="Texture2D" uid="uid://cllyfs0hf7xw5" path="res://Images/Menus/Shops/Trailer_focused.png" id="27_duoyf"]
+[ext_resource type="Texture2D" uid="uid://r8arua4apxu0" path="res://Images/Menus/Backgrounds/Forest_Background.png" id="35_kyysu"]
 [ext_resource type="PackedScene" uid="uid://ysg3q6oybscp" path="res://Scenes/Dialogs/dialog_chairlift.tscn" id="36_6glyx"]
 [ext_resource type="Texture2D" uid="uid://d0vb42pobxhiy" path="res://Images/Menus/Maps/Map0.png" id="36_hagod"]
+[ext_resource type="Texture2D" uid="uid://tiqsvtoqlua4" path="res://Images/Menus/Maps/Pannels/Back_village.png" id="36_r06vw"]
 [ext_resource type="Texture2D" uid="uid://dihl605ntfqiw" path="res://Images/Menus/Maps/Map0_focused.png" id="37_6glyx"]
 [ext_resource type="Texture2D" uid="uid://2rxyc335n81e" path="res://Images/Menus/Maps/Map_valid.png" id="39_hgswm"]
 [ext_resource type="Texture2D" uid="uid://dk1i4f2ow2lkg" path="res://Images/Menus/Maps/Map1.png" id="40_hbxnh"]
@@ -46,6 +47,9 @@
 [ext_resource type="Texture2D" uid="uid://c3usbupetv1ue" path="res://Images/Menus/Maps/Map2_focused.png" id="44_cahet"]
 [ext_resource type="Texture2D" uid="uid://idoi3mrjrtta" path="res://Images/Menus/Maps/Map3.png" id="45_h0ibu"]
 [ext_resource type="Texture2D" uid="uid://bpp2lnm6bji37" path="res://Images/Menus/Maps/Map3_focused.png" id="46_2apoy"]
+[ext_resource type="Texture2D" uid="uid://o40nt0tl88xs" path="res://Images/Menus/Controls/down_arrow.png" id="47_2apoy"]
+[ext_resource type="PackedScene" uid="uid://jfv4r26wcm0x" path="res://Scenes/Misc/chairlift.tscn" id="48_iqo24"]
+[ext_resource type="PackedScene" uid="uid://cr35t27ffoqaq" path="res://Scenes/Misc/chairlift0.tscn" id="49_mqvmb"]
 
 [sub_resource type="SystemFont" id="SystemFont_jw3nv"]
 font_names = PackedStringArray("Pixel Game")
@@ -273,7 +277,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Chairlift" type="TextureButton" parent="Carriere/Spots" unique_id=1521398409]
+[node name="World" type="TextureButton" parent="Carriere/Spots" unique_id=1521398409]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 553.0
@@ -388,8 +392,13 @@ unique_name_in_owner = true
 [node name="Fond" type="TextureRect" parent="ChairliftMenu" unique_id=1092760061]
 offset_right = 1280.0
 offset_bottom = 720.0
-texture = ExtResource("15_ldcro")
+texture = ExtResource("35_kyysu")
 expand_mode = 1
+
+[node name="BackVillage" type="Sprite2D" parent="ChairliftMenu" unique_id=369140620]
+position = Vector2(454, 676)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("36_r06vw")
 
 [node name="DialogChairlift" parent="ChairliftMenu" unique_id=393227050 instance=ExtResource("36_6glyx")]
 unique_name_in_owner = true
@@ -402,13 +411,22 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Chairlift0" parent="ChairliftMenu/Maps" unique_id=53479964 instance=ExtResource("49_mqvmb")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = -4.0
+offset_top = 2.0
+offset_right = -4.0
+offset_bottom = 2.0
+
 [node name="Map0_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=1586592481]
 unique_name_in_owner = true
+z_index = 2
 layout_mode = 0
-offset_left = 732.0
-offset_top = 129.0
-offset_right = 908.0
-offset_bottom = 329.0
+offset_left = 767.0
+offset_top = 115.0
+offset_right = 943.0
+offset_bottom = 315.0
 texture_normal = ExtResource("36_hagod")
 texture_focused = ExtResource("37_6glyx")
 
@@ -424,12 +442,20 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Line2D" type="Line2D" parent="ChairliftMenu/Maps/Map0_Button" unique_id=587496792]
+visible = false
+z_index = -1
+points = PackedVector2Array(37, 162, 17, 169, -4, 173, -17, 171, -25, 169, -39, 167, -48, 167, -56, 169, -61, 169, -67, 168, -77, 166, -87, 165, -98, 164, -112, 163)
+width = 8.0
+
 [node name="Map1_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=859385007]
 unique_name_in_owner = true
+visible = false
+z_index = 2
 layout_mode = 0
-offset_left = 492.0
+offset_left = 491.0
 offset_top = 181.0
-offset_right = 668.0
+offset_right = 667.0
 offset_bottom = 381.0
 texture_normal = ExtResource("40_hbxnh")
 texture_focused = ExtResource("41_o23ee")
@@ -441,8 +467,20 @@ centered = false
 [node name="MapStars" parent="ChairliftMenu/Maps/Map1_Button" unique_id=998240960 instance=ExtResource("40_o23ee")]
 layout_mode = 1
 
+[node name="Line2D" type="Line2D" parent="ChairliftMenu/Maps/Map1_Button" unique_id=1195775816]
+z_index = -1
+points = PackedVector2Array(147, 155, 159, 153, 165, 150, 173, 147, 179, 146, 184, 144, 191, 143, 198, 143, 205, 144, 215, 146, 219, 148, 224, 149, 227, 149, 232, 150, 239, 150, 244, 150, 252, 151, 258, 153, 267, 154, 273, 155, 279, 160, 282, 164, 286, 165, 292, 168, 297, 171, 296, 174, 291, 176, 286, 178, 282, 186, 287, 187, 297, 189, 306, 189, 317, 191, 327, 193, 338, 195, 344, 195, 358, 196, 366, 199, 377, 203, 385, 206, 394, 208, 404, 209, 411, 210, 421, 210, 427, 209, 431, 206, 431, 202, 431, 197, 429, 189, 428, 184, 431, 180, 436, 178, 444, 177, 451, 177, 459, 179, 472, 180, 479, 179, 485, 176, 487, 172, 487, 168, 483, 164, 478, 159, 476, 154, 478, 150, 484, 146, 489, 143, 495, 141, 500, 140)
+width = 8.0
+
+[node name="Line2D2" type="Line2D" parent="ChairliftMenu/Maps/Map1_Button" unique_id=1541250702]
+z_index = -1
+points = PackedVector2Array(21, 139, 2, 136, -11, 134, -22, 132, -35, 134, -47, 138, -57, 142, -67, 146, -79, 152, -86, 159, -90, 166, -93, 170, -99, 175, -107, 175)
+width = 8.0
+default_color = Color(0.8862745, 0.6431373, 0, 1)
+
 [node name="Map2_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=1421501063]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 976.0
 offset_top = 217.0
@@ -462,8 +500,15 @@ offset_top = -3.36
 offset_right = 0.7249985
 offset_bottom = -3.3600006
 
+[node name="Line2D" type="Line2D" parent="ChairliftMenu/Maps/Map2_Button" unique_id=1745630869]
+points = PackedVector2Array(87, 186, 87, 192, 86, 195, 84, 197, 79, 200, 71, 202, 66, 204, 56, 205, 50, 206, 43, 210, 38, 213, 33, 216, 23, 219, 7, 219, -5, 216, -15, 214, -27, 210, -40, 208, -51, 208, -58, 210, -62, 213, -64, 218, -48, 228, -36, 229, -25, 228, -18, 227, -11, 227, -3, 231, 2, 234, 9, 237, 20, 240, 33, 242, 43, 244, 59, 245, 70, 249, 81, 254, 86, 258, 85, 265, 78, 274, 70, 281, 60, 287, 45, 291, 35, 295, 25, 298, 14, 301, 6, 304, 1, 306)
+width = 8.0
+default_color = Color(0, 0, 0, 1)
+
 [node name="Boss1_Button" type="TextureButton" parent="ChairliftMenu/Maps" unique_id=1090385409]
 unique_name_in_owner = true
+visible = false
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 825.0
 offset_top = 457.0
@@ -473,15 +518,33 @@ texture_normal = ExtResource("45_h0ibu")
 texture_focused = ExtResource("46_2apoy")
 
 [node name="MapValid" type="Sprite2D" parent="ChairliftMenu/Maps/Boss1_Button" unique_id=69340139]
+visible = false
 texture = ExtResource("39_hgswm")
 centered = false
+
+[node name="TextureButton" type="TextureButton" parent="ChairliftMenu" unique_id=1796053751]
+offset_left = 545.0
+offset_top = 639.0
+offset_right = 1684.999
+offset_bottom = 2098.999
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("47_2apoy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Chairlift" parent="ChairliftMenu" unique_id=1187568341 instance=ExtResource("48_iqo24")]
+unique_name_in_owner = true
+offset_left = 3.0
+offset_top = -6.0
+offset_right = 3.0
+offset_bottom = -6.0
 
 [connection signal="pressed" from="MainMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MainMenu/NewPlayerButton" to="." method="_on_new_player_button_pressed"]
 [connection signal="pressed" from="NewPlayer/BoutonGauche" to="." method="_on_bouton_gauche_pressed"]
 [connection signal="pressed" from="NewPlayer/BoutonDroite" to="." method="_on_bouton_droite_pressed"]
 [connection signal="pressed" from="NewPlayer/Ok" to="." method="_on_ok_pressed"]
-[connection signal="pressed" from="Carriere/Spots/Chairlift" to="." method="_on_chairlift_pressed"]
+[connection signal="pressed" from="Carriere/Spots/World" to="." method="_on_chairlift_pressed"]
 [connection signal="scene_ended" from="Carriere/Tuto/DialogTuto" to="." method="_on_dialog_tuto_scene_ended"]
 [connection signal="pressed" from="Carriere/Tuto/TutoPanels/StartTutoPanel/TutoYesButton" to="." method="_on_tuto_yes_button_pressed"]
 [connection signal="pressed" from="Carriere/Tuto/TutoPanels/StartTutoPanel/TutoNoButton" to="." method="_on_tuto_no_button_pressed"]
