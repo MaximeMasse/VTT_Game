@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs66f4sptrew7"
-path="res://.godot/imported/Fond_maps2.png-47945064cb05ed0361c29066d36a73f3.ctex"
+uid="uid://cvw6tuoyc1c8r"
+path="res://.godot/imported/Desert_Background.png-19d850472002b6122a52ff6c86b0b5f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menus/Backgrounds/Fond_maps2.png"
-dest_files=["res://.godot/imported/Fond_maps2.png-47945064cb05ed0361c29066d36a73f3.ctex"]
+source_file="res://Images/Menus/Backgrounds/Desert_Background.png"
+dest_files=["res://.godot/imported/Desert_Background.png-19d850472002b6122a52ff6c86b0b5f3.ctex"]
 
 [params]
 

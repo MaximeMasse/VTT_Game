@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cafqa107sjuh2"
-path="res://.godot/imported/Fond_maps.png-b066a5c129524411b2fe36306e0e1513.ctex"
+uid="uid://dc14aqtgr2sx8"
+path="res://.godot/imported/Icy_Background.png-26776aa34c2b3cb39712c3d646b33f60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menus/Backgrounds/Fond_maps.png"
-dest_files=["res://.godot/imported/Fond_maps.png-b066a5c129524411b2fe36306e0e1513.ctex"]
+source_file="res://Images/Menus/Backgrounds/Icy_Background.png"
+dest_files=["res://.godot/imported/Icy_Background.png-26776aa34c2b3cb39712c3d646b33f60.ctex"]
 
 [params]
 
