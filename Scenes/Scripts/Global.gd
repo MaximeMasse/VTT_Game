@@ -1,7 +1,7 @@
 extends Node
 
 # Config
-var debug : bool = false
+var debug : bool = true
 const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}

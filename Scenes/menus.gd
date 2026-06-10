@@ -9,12 +9,11 @@ var choix_perso :int= 1
 		"Carrière":%Carriere,
 		"Chairlift":%ChairliftMenu
 	}
-@onready var dico_map_buttons := {
-		"0" : {"node":%Map0_Button,"links":["1"],"boss":false},
-		"1" : {"node":%Map1_Button,"links":["2"],"boss":false},
-		"2" : {"node":%Map2_Button,"links":["3"],"boss":false},
-		"3" : {"node":%Boss1_Button,"links":[],"boss":true}
+@onready var dico_links := {
+		"BaseChairlift" : %Map0_Button
 	}
+@onready var worlds := [%ForestMap]
+var worlds_tree : Dictionary
 
 func _ready():
 	#print(ProjectSettings.globalize_path("user://"))
@@ -38,6 +37,9 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# Buttons
 	set_up_buttons(self)
+	# World referencing
+	for world in worlds:worlds_tree[world] = {"nodes":{},"paths":{},"zones":{}}
+	# Menu
 	show_menu(Global.menu_to_show)
 
 func set_up_buttons(node):
@@ -49,44 +51,86 @@ func set_up_buttons(node):
 			child.pressed.connect(func():on_button_pressed(child))
 		set_up_buttons(child)
 
-func _unhandled_input(_event):
-	if Input.is_action_just_pressed("ui_down"):%ContinueButton.grab_focus()
-	elif Input.is_action_just_pressed("ui_up"):%ProfileButton.grab_focus()
-
 func show_menu(menu:String):
 	for men in dico_menus:dico_menus[men].hide()
 	if menu == "Chairlift":map_progress_update()
 	dico_menus[menu].show()
 	
 func map_progress_update():
-	%Chairlift.play()
-	%Chairlift0.play()
-	#for map in dico_map_buttons:
-		#dico_map_buttons[map]["node"].hide()
-		#for child in dico_map_buttons[map]["node"].get_children():child.hide()
-	#if Global.get_profile_data("state") == "tuto":%DialogChairlift.play_scene("tuto")
-	#else:
-		#var node_to_check :Array = ["0"]
-		#var tree_done := false
-		#while not tree_done:
-			#if node_to_check.size() > 0 :
-				#var current_map : String = node_to_check.pop_front()
-				#dico_map_buttons[current_map]["node"].show()
-				#if current_map in Global.current_profile["current_run"]["finished_maps"].keys():
-					#var stars : Array = Global.current_profile["current_run"]["finished_maps"][current_map]["objectives"]
-					#dico_map_buttons[current_map]["node"].get_child(0).show()
-					#if not dico_map_buttons[current_map]["boss"]:
-						#dico_map_buttons[current_map]["node"].get_child(1).stars_update(stars)
-						#dico_map_buttons[current_map]["node"].get_child(1).show()
-					#node_to_check.append_array(dico_map_buttons[current_map]["links"])
-			#else:tree_done=true
+	for world in worlds :
+		for child in world.get_children():
+			if child.name == "Nodes":
+				for node in child.get_children():node_activation(node)
+			elif child.name == "Paths":pass
+			elif child.name == "Zones":
+				for zone in child.get_children():
+					create_linked_zone(zone)
+	print("Worlds tree : ",worlds_tree)
 
+func node_activation(node:Control):
+	if node.name == "BaseChairlift":node.play()
+
+func draw_path(path:Line2D,duration:float):
+	var path_points : PackedVector2Array = path.points 
+	var copy_line := Line2D.new()
+	path.get_parent().add_child(copy_line)
+	var drawing_frequency : float = duration/path_points.size()
+	# Style copy
+	copy_line.position = path.position
+	copy_line.z_index = path.z_index
+	copy_line.z_as_relative = path.z_as_relative
+	copy_line.width = path.width
+	# Drawing
+	var index : int = 0
+	while index < path_points.size():
+		copy_line.add_point(path_points[index])
+		index += 1
+		await get_tree().create_timer(drawing_frequency).timeout
+
+func create_linked_zone(zone:Area2D):
+	var zone_points : PackedVector2Array = zone.get_child(0).polygon 
+	var outline := Line2D.new()
+	zone.add_child(outline)
+	# Style
+	outline.width = 8
+	outline.closed = true
+	outline.visible = false
+	# Copying
+	var index : int = 0
+	while index < zone_points.size():
+		outline.add_point(zone_points[index])
+		index += 1
+	# Reference
+	worlds_tree[zone.get_parent().get_parent()]["zones"][zone] = {}
+	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["outline"] = outline 
+	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["destination"] = dico_links[zone.name] 
+	# Link
+	zone.mouse_entered.connect(func():on_zone_hover(zone))
+	zone.mouse_exited.connect(func():on_zone_exit(zone))
+
+func on_zone_hover(zone:Area2D):
+	AudioManager.play_ui("hover")
+	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["outline"].show()
+	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["destination"].modulate = Color(1,1,1,1)
+
+func on_zone_exit(zone:Area2D):
+	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["outline"].hide()
+	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["destination"].modulate = Color(0.5,0.5,0.5,1)
+
+func on_button_hover(button:BaseButton):if not button.disabled:button.grab_focus()
+func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()
+func on_button_focus(_button:BaseButton):AudioManager.play_ui("hover")
+func on_button_pressed(_button:BaseButton):AudioManager.play_ui("click")
 
 func apply_audio_config():
 	AudioManager.set_bus_volume("Music", Global.config.get("music_volume", 0.8))
 	AudioManager.set_bus_volume("SFX", Global.config.get("sfx_volume", 0.8))
 	AudioManager.set_bus_volume("GROUND_SFX", Global.config.get("sfx_volume", 0.8))
 	AudioManager.set_bus_volume("UI", Global.config.get("ui_volume", 0.8))
+
+func _unhandled_input(_event):
+	if Input.is_action_just_pressed("ui_down"):%ContinueButton.grab_focus()
+	elif Input.is_action_just_pressed("ui_up"):%ProfileButton.grab_focus()
 
 func _on_continue_button_pressed():
 	AudioManager.stop_music()
@@ -139,7 +183,7 @@ func _on_chairlift_pressed() -> void:
 	AudioManager.stop_music()
 	show_menu("Chairlift")
 	if Global.get_profile_data("state") == "tuto":
-		for button in %Maps.get_children():button.hide()
+		for button in %Nodes.get_children():button.hide()
 		%DialogChairlift.play_scene("tuto")
 
 func _on_dialog_chairlift_scene_ended(_scene_name):%Map0_Button.show()
@@ -149,8 +193,3 @@ func _on_map_0_button_pressed():
 	else:
 		Global.current_map = "0"
 		Global.start_mod("Main_Game")
-
-func on_button_hover(button:BaseButton):if not button.disabled:button.grab_focus()
-func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()
-func on_button_focus(_button:BaseButton):AudioManager.play_ui("hover")
-func on_button_pressed(_button:BaseButton):AudioManager.play_ui("click")
