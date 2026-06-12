@@ -6,7 +6,7 @@ const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}
 
-# Sélections
+# Map
 var current_map := "0"
 var map_data : Dictionary
 

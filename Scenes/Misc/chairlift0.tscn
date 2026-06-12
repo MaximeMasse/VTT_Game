@@ -460,6 +460,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_dwhl7")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=686744214]
@@ -478,6 +479,7 @@ offset_top = 551.0
 offset_right = 578.5453
 offset_bottom = 591.0
 scale = Vector2(2, 2)
+mouse_filter = 2
 texture = ExtResource("1_tvbik")
 expand_mode = 1
 
@@ -488,6 +490,7 @@ offset_left = 16.0
 offset_top = 0.5
 offset_right = 64.11308
 offset_bottom = 36.268555
+mouse_filter = 2
 texture = ExtResource("2_y0md7")
 expand_mode = 1
 
@@ -499,6 +502,7 @@ offset_top = -75.0
 offset_right = 74.61723
 offset_bottom = -39.231445
 scale = Vector2(0.8, 0.8)
+mouse_filter = 2
 texture = ExtResource("2_y0md7")
 expand_mode = 1
 
@@ -510,6 +514,7 @@ offset_top = -149.5
 offset_right = 133.61609
 offset_bottom = -113.731445
 scale = Vector2(0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("2_y0md7")
 expand_mode = 1
 
@@ -521,6 +526,7 @@ offset_top = -202.50002
 offset_right = 197.1123
 offset_bottom = -166.73146
 scale = Vector2(-0.4, 0.4)
+mouse_filter = 2
 texture = ExtResource("2_y0md7")
 expand_mode = 1
 
@@ -532,6 +538,7 @@ offset_top = -140.5
 offset_right = 173.63852
 offset_bottom = -104.731445
 scale = Vector2(-0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("2_y0md7")
 expand_mode = 1
 
@@ -543,6 +550,7 @@ offset_top = -66.0
 offset_right = 129.1189
 offset_bottom = -30.231445
 scale = Vector2(-0.8, 0.8)
+mouse_filter = 2
 texture = ExtResource("2_y0md7")
 expand_mode = 1
 

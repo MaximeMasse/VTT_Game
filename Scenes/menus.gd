@@ -1,23 +1,48 @@
 extends Control
 
+# Activation
+var running : bool
+
+# Character
 var choix_perso :int= 1
+
+# Mouse collision
+var active_zones : Array
+var hovered_zone: Area2D = null
+
+# Player position
+var current_world : Node2D
+var current_node : Control
 
 @onready var dico_menus := {
 		"MainMenu":%MainMenu,
 		"NewPlayer":%NewPlayer,
 		"ChangeProfile":%ChangeProfile,
 		"Carrière":%Carriere,
-		"Chairlift":%ChairliftMenu
+		"Chairlift":%ChairliftMenu,
 	}
-@onready var dico_links := {
-		"BaseChairlift" : %Map0_Button
+@onready var dico_zone_links := {
+		"ForestChairlift" : {"activation_node":%ForestChairlift,"destination_node":%Map_0_Button},
+		"0_1" : {"activation_node":%Map_0_Button,"destination_node":%Map_1_Button},
+		"1_2" : {"activation_node":%Map_1_Button,"destination_node":%Map_2_Button},
+		"2_Boss" : {"activation_node":%Map_2_Button,"destination_node":%Map_Boss_Forest_Button},
+		"1_ChairliftToDesert" : {"activation_node":%Map_1_Button,"destination_node":%ChairliftToDesert},
+		"ChairliftToDesert" : {"activation_node":%ChairliftToDesert,"destination_node":%ToDesert},
 	}
-@onready var worlds := [%ForestMap]
+@onready var dico_worlds_names := {
+		"Forest":%ForestMap,
+		"Desert":%DesertMap,
+		"Icy":%IcyMap,
+		"Tropical":%TropicalMap
+	}
+var dico_nodes_names : Dictionary
 var worlds_tree : Dictionary
+
 
 func _ready():
 	#print(ProjectSettings.globalize_path("user://"))
 	#Config
+	get_tree().debug_collisions_hint = false
 	SaveManager.load_config()
 	apply_audio_config()
 	AudioManager.play_music("MainMenu")
@@ -38,7 +63,17 @@ func _ready():
 	# Buttons
 	set_up_buttons(self)
 	# World referencing
-	for world in worlds:worlds_tree[world] = {"nodes":{},"paths":{},"zones":{}}
+	for world_name in dico_worlds_names:
+		# Node2D World
+		var world : Node2D = dico_worlds_names[world_name]
+		# World init
+		worlds_tree[world] = {"Nodes":{},"Paths":{},"Zones":{}}
+		# Nodes, paths and zones init
+		for node in world.get_children():if node.name != "Background":
+			for child in node.get_children():
+				worlds_tree[world][node.name][child]={}
+	# Activation
+	running = false
 	# Menu
 	show_menu(Global.menu_to_show)
 
@@ -57,18 +92,44 @@ func show_menu(menu:String):
 	dico_menus[menu].show()
 	
 func map_progress_update():
-	for world in worlds :
-		for child in world.get_children():
-			if child.name == "Nodes":
-				for node in child.get_children():node_activation(node)
-			elif child.name == "Paths":pass
-			elif child.name == "Zones":
-				for zone in child.get_children():
-					create_linked_zone(zone)
-	print("Worlds tree : ",worlds_tree)
+	current_world = dico_worlds_names[World.current_world]
+	# Nodes
+	for node in worlds_tree[current_world]["Nodes"]:node_init(node)
+	# Paths
+	for path in worlds_tree[current_world]["Paths"]:path_init(path)
+	# Zones
+	for zone in worlds_tree[current_world]["Zones"]:create_linked_zone(zone)
+	# Activation
+	current_node = dico_nodes_names[World.current_node]
+	active_zones = worlds_tree[current_world]["Nodes"][current_node]["active_zones"]
+	print(worlds_tree[current_world]["Nodes"])
+	print(worlds_tree[current_world]["Paths"])
+	print("Dico node names : ",dico_nodes_names)
+	running = true
 
-func node_activation(node:Control):
-	if node.name == "BaseChairlift":node.play()
+func node_init(node:Control):
+	# Ref
+	dico_nodes_names[node.name] = node
+	worlds_tree[current_world]["Nodes"][node]["active_zones"] = []
+	worlds_tree[current_world]["Nodes"][node]["paths"] = []
+	# Style
+	if node.name in World.worlds_unlocks:
+		node.visible = true
+		node.play()
+	if "Map" in node.name:
+		if node.name.split("_")[1] in World.map_finished:
+			node.disabled = true
+			node.modulate = Color(0.5,0.5,0.5,1)
+			node.visible = true
+			node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		else:node.visible = false
+
+func path_init(path:Line2D):
+	# Ref
+	for node in worlds_tree[current_world]["Nodes"]:
+		if "_" in node.name and node.name.split("_")[1] == path.name.split("_")[1]:
+			worlds_tree[current_world]["Nodes"][node]["paths"].append(path)
+	if path.childre
 
 func draw_path(path:Line2D,duration:float):
 	var path_points : PackedVector2Array = path.points 
@@ -101,21 +162,46 @@ func create_linked_zone(zone:Area2D):
 		outline.add_point(zone_points[index])
 		index += 1
 	# Reference
-	worlds_tree[zone.get_parent().get_parent()]["zones"][zone] = {}
-	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["outline"] = outline 
-	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["destination"] = dico_links[zone.name] 
-	# Link
-	zone.mouse_entered.connect(func():on_zone_hover(zone))
-	zone.mouse_exited.connect(func():on_zone_exit(zone))
+	worlds_tree[current_world]["Nodes"][dico_zone_links[zone.name]["activation_node"]]["active_zones"].append(zone)
+	worlds_tree[current_world]["Zones"][zone]["destination_node"] = dico_zone_links[zone.name]["destination_node"]
+	worlds_tree[current_world]["Zones"][zone]["outline"] = outline
 
 func on_zone_hover(zone:Area2D):
-	AudioManager.play_ui("hover")
-	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["outline"].show()
-	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["destination"].modulate = Color(1,1,1,1)
-
+	AudioManager.play_ui("map_hover")
+	worlds_tree[current_world]["Zones"][zone]["outline"].show()
+	worlds_tree[current_world]["Zones"][zone]["destination_node"].modulate = Color(1,1,1,1)
 func on_zone_exit(zone:Area2D):
-	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["outline"].hide()
-	worlds_tree[zone.get_parent().get_parent()]["zones"][zone]["destination"].modulate = Color(0.5,0.5,0.5,1)
+	worlds_tree[current_world]["Zones"][zone]["outline"].hide()
+	worlds_tree[current_world]["Zones"][zone]["destination_node"].modulate = Color(0.5,0.5,0.5,1)
+func click_zone(zone:Area2D):
+	# Reset zone
+	hovered_zone = null
+	worlds_tree[current_world]["Zones"][zone]["outline"].hide()
+	# From
+	if "Chairlift" in zone.name:AudioManager.play_sfx("chairlift")
+	# To
+	current_node = worlds_tree[current_world]["Zones"][zone]["destination_node"]
+	if "Map" in current_node.name:
+			active_zones = []
+			current_node.disabled = false
+			current_node.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			current_node.mouse_filter = Control.MOUSE_FILTER_PASS
+			World.node_done = false
+
+func _process(_delta):
+	if not running : return
+	var mouse_pos := get_global_mouse_position()
+	var new_hovered_zone: Area2D = null
+	for zone in active_zones:
+		var collision : CollisionPolygon2D = zone.get_child(0)
+		var local_mouse := collision.to_local(mouse_pos)
+		if Geometry2D.is_point_in_polygon(local_mouse, collision.polygon):
+			new_hovered_zone = zone
+			break
+	if new_hovered_zone != hovered_zone:
+		if hovered_zone != null:on_zone_exit(hovered_zone)
+		hovered_zone = new_hovered_zone
+		if hovered_zone != null:on_zone_hover(hovered_zone)
 
 func on_button_hover(button:BaseButton):if not button.disabled:button.grab_focus()
 func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()
@@ -128,12 +214,15 @@ func apply_audio_config():
 	AudioManager.set_bus_volume("GROUND_SFX", Global.config.get("sfx_volume", 0.8))
 	AudioManager.set_bus_volume("UI", Global.config.get("ui_volume", 0.8))
 
-func _unhandled_input(_event):
+func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_down"):%ContinueButton.grab_focus()
 	elif Input.is_action_just_pressed("ui_up"):%ProfileButton.grab_focus()
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:if hovered_zone != null:click_zone(hovered_zone)
 
 func _on_continue_button_pressed():
 	AudioManager.stop_music()
+	World.set_world_values()
 	show_menu("Chairlift")
 	#Global.start_mod("Tuto_Game")
 
@@ -186,7 +275,7 @@ func _on_chairlift_pressed() -> void:
 		for button in %Nodes.get_children():button.hide()
 		%DialogChairlift.play_scene("tuto")
 
-func _on_dialog_chairlift_scene_ended(_scene_name):%Map0_Button.show()
+func _on_dialog_chairlift_scene_ended(_scene_name):%Map_0_Button.show()
 
 func _on_map_0_button_pressed():
 	if Global.get_profile_data("state") == "tuto":Global.start_mod("Tuto_Game")

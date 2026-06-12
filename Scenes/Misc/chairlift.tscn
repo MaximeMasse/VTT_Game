@@ -459,6 +459,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_w7qlu")
 
 [node name="Chairlift2" type="TextureRect" parent="." unique_id=139971771]
@@ -469,6 +470,7 @@ offset_top = 339.0
 offset_right = 455.5453
 offset_bottom = 379.0
 scale = Vector2(-1, 1)
+mouse_filter = 2
 texture = ExtResource("1_xw0g4")
 expand_mode = 1
 
@@ -479,6 +481,7 @@ offset_left = 32.0
 offset_top = 2.0
 offset_right = 80.11665
 offset_bottom = 37.768555
+mouse_filter = 2
 texture = ExtResource("2_6u105")
 expand_mode = 1
 
@@ -490,6 +493,7 @@ offset_top = -63.0
 offset_right = 127.11763
 offset_bottom = -27.231445
 scale = Vector2(0.8, 0.8)
+mouse_filter = 2
 texture = ExtResource("2_6u105")
 expand_mode = 1
 
@@ -501,6 +505,7 @@ offset_top = -145.0
 offset_right = 89.111374
 offset_bottom = -109.231445
 scale = Vector2(0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("2_6u105")
 expand_mode = 1
 
@@ -512,6 +517,7 @@ offset_top = -217.0
 offset_right = 95.104294
 offset_bottom = -181.23145
 scale = Vector2(-0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("2_6u105")
 expand_mode = 1
 
@@ -523,6 +529,7 @@ offset_top = -118.0
 offset_right = 137.12576
 offset_bottom = -82.231445
 scale = Vector2(-0.8, 0.8)
+mouse_filter = 2
 texture = ExtResource("2_6u105")
 expand_mode = 1
 
@@ -534,6 +541,7 @@ offset_top = -37.0
 offset_right = 172.11612
 offset_bottom = -1.2314453
 scale = Vector2(-1, 1)
+mouse_filter = 2
 texture = ExtResource("2_6u105")
 expand_mode = 1
 

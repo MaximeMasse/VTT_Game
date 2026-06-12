@@ -11,6 +11,7 @@ var dico_music := {
 	"Map_3": preload("res://Sound/Music/Map_2.mp3")
 }
 var dico_sfx := {
+	"chairlift": preload("res://Sound/SFX/chairlift.wav"),
 	"fireworks": preload("res://Sound/SFX/fireworks.wav"),
 	"3": preload("res://Sound/SFX/Start/3.wav"),
 	"2": preload("res://Sound/SFX/Start/2.wav"),
@@ -67,7 +68,8 @@ var dico_ground_sfx := {
 }
 var dico_ui := {
 	"click": preload("res://Sound/UI/click.wav"),
-	"hover": preload("res://Sound/UI/hover.wav")
+	"hover": preload("res://Sound/UI/hover.wav"),
+	"map_hover": preload("res://Sound/UI/map_hover.wav")
 }
 
 var music_player: AudioStreamPlayer
