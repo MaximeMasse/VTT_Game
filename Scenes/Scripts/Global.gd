@@ -79,6 +79,9 @@ var queen_score_already_beaten : bool
 var queen_score_beaten : bool
 var crowns_unlocked : int
 
+# Day
+var current_day : Dictionary
+
 #Menus
 var menu_to_show := "MainMenu"
 
@@ -144,6 +147,9 @@ func get_cp_names_and_ratio() -> Dictionary :
 	var cps_markers : Dictionary
 	for cp in map_data["cps"]:cps_markers[cp] = map_data["cps"][cp].global_position.x/map_data["finish"].global_position.x
 	return cps_markers
+
+func new_day():
+	current_day = {"position":{"world":"Forest","node":"ForestChairlift","done":false},"money":0,"stars":0,"crowns":0}
 
 func set_start_values():
 	is_grabbed = false
@@ -327,6 +333,7 @@ func end_map():
 	check_map_record()
 	check_gaps()
 	check_bills()
+	World.end_map()
 	profile_update()
 	SaveManager.save_profile(current_profile)
 

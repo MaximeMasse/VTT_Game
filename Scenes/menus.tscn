@@ -475,7 +475,6 @@ layout_mode = 1
 
 [node name="Map_2_Button" type="TextureButton" parent="ChairliftMenu/ForestMap/Nodes" unique_id=1421501063]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 976.0
 offset_top = 217.0
@@ -497,7 +496,6 @@ offset_bottom = -3.3600006
 
 [node name="Map_Boss_Forest_Button" type="TextureButton" parent="ChairliftMenu/ForestMap/Nodes" unique_id=1090385409]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 825.0
 offset_top = 457.0
@@ -559,6 +557,7 @@ scale = Vector2(0.11555985, 0.090820275)
 texture = ExtResource("51_r06vw")
 
 [node name="Zones" type="Node2D" parent="ChairliftMenu/ForestMap" unique_id=601936769]
+visible = false
 
 [node name="ForestChairlift" type="Area2D" parent="ChairliftMenu/ForestMap/Zones" unique_id=1839556662]
 

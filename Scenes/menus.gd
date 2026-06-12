@@ -99,11 +99,17 @@ func map_progress_update():
 	for path in worlds_tree[current_world]["Paths"]:path_init(path)
 	# Zones
 	for zone in worlds_tree[current_world]["Zones"]:create_linked_zone(zone)
-	# Activation
+	# Positioning 
 	current_node = dico_nodes_names[World.current_node]
+	# Positioning style
+	# Activation
 	active_zones = worlds_tree[current_world]["Nodes"][current_node]["active_zones"]
-	print(worlds_tree[current_world]["Nodes"])
-	print(worlds_tree[current_world]["Paths"])
+	print("Nodes :")
+	for node in worlds_tree[current_world]["Nodes"]:print(node,worlds_tree[current_world]["Nodes"][node])
+	print("Paths :")
+	for node in worlds_tree[current_world]["Paths"]:print(node,worlds_tree[current_world]["Paths"][node])
+	print("Zones :")
+	for node in worlds_tree[current_world]["Zones"]:print(node,worlds_tree[current_world]["Zones"][node])
 	print("Dico node names : ",dico_nodes_names)
 	running = true
 
@@ -113,23 +119,24 @@ func node_init(node:Control):
 	worlds_tree[current_world]["Nodes"][node]["active_zones"] = []
 	worlds_tree[current_world]["Nodes"][node]["paths"] = []
 	# Style
-	if node.name in World.worlds_unlocks:
-		node.visible = true
-		node.play()
-	if "Map" in node.name:
-		if node.name.split("_")[1] in World.map_finished:
-			node.disabled = true
-			node.modulate = Color(0.5,0.5,0.5,1)
-			node.visible = true
-			node.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		else:node.visible = false
+	#if node.name in World.worlds_unlocks:
+		#node.visible = true
+		#node.play()
+	#if "Map" in node.name:
+		#if node.name.split("_")[1] in World.finished_maps:
+			#node.disabled = true
+			#node.modulate = Color(0.5,0.5,0.5,1)
+			#node.visible = true
+			#node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		#else:node.visible = false
 
 func path_init(path:Line2D):
 	# Ref
+	worlds_tree[current_world]["Paths"][path]["locked"] = path.get_child_count() != 0
 	for node in worlds_tree[current_world]["Nodes"]:
 		if "_" in node.name and node.name.split("_")[1] == path.name.split("_")[1]:
 			worlds_tree[current_world]["Nodes"][node]["paths"].append(path)
-	if path.childre
+	#if path.childre
 
 func draw_path(path:Line2D,duration:float):
 	var path_points : PackedVector2Array = path.points 
@@ -178,7 +185,9 @@ func click_zone(zone:Area2D):
 	hovered_zone = null
 	worlds_tree[current_world]["Zones"][zone]["outline"].hide()
 	# From
-	if "Chairlift" in zone.name:AudioManager.play_sfx("chairlift")
+	if "Chairlift" in zone.name:
+		AudioManager.play_sfx("chairlift")
+		await get_tree().create_timer(3).timeout
 	# To
 	current_node = worlds_tree[current_world]["Zones"][zone]["destination_node"]
 	if "Map" in current_node.name:
@@ -222,6 +231,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_continue_button_pressed():
 	AudioManager.stop_music()
+	Global.new_day()
 	World.set_world_values()
 	show_menu("Chairlift")
 	#Global.start_mod("Tuto_Game")

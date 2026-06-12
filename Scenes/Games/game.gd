@@ -272,7 +272,6 @@ func _on_abandon_button_pressed():
 
 func _on_continue_pressed():
 	AudioManager.stop_sfx()
-	World.node_done = true
 	Global.menu_to_show = "Chairlift"
 	Global.start_mod("Menus")
 
