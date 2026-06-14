@@ -1,0 +1,860 @@
+[gd_scene format=3 uid="uid://cbbv0j2n3u25e"]
+
+[ext_resource type="Script" uid="uid://b8ns6e4obdqin" path="res://Scenes/Misc/chairlift.gd" id="1_ytrpr"]
+[ext_resource type="Texture2D" uid="uid://r8arua4apxu0" path="res://Images/Menus/Backgrounds/Forest_Background.png" id="2_35wan"]
+[ext_resource type="Texture2D" uid="uid://pgnepxox4tv0" path="res://Images/Menus/Maps/Chairlift/Base.png" id="3_d5y2d"]
+[ext_resource type="Texture2D" uid="uid://i33v3iron58u" path="res://Images/Menus/Maps/Chairlift/Chair.png" id="4_1k1n1"]
+[ext_resource type="Texture2D" uid="uid://cu0e61qffkkku" path="res://Images/Menus/Maps/Chairlift/PoleHead.png" id="5_rdnaq"]
+[ext_resource type="Texture2D" uid="uid://oc6hoxs4lwdt" path="res://Images/Menus/Maps/Chairlift/Pole.png" id="6_u2ig4"]
+
+[sub_resource type="Animation" id="Animation_xw0g4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chairlift2/Chair1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chairlift2/Chair2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(89, -53)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chairlift2/Chair3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, -141)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chairlift2/Chair4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(46, -222.00002)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chairlift2/Chair5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(81, -132)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chairlift2/Chair6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(127, -43)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Chairlift2/Chair1:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Chairlift2/Chair2:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Chairlift2/Chair3:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Chairlift2/Chair4:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.4, 0.4)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Chairlift2/Chair5:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.6, 0.6)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Chairlift2/Chair6:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.8, 0.8)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Chairlift2/Chair1:z_index")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-2]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chairlift2/Chair2:z_index")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-4]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chairlift2/Chair3:z_index")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-6]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Chairlift2/Chair4:z_index")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-7]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Chairlift2/Chair5:z_index")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-5]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Chairlift2/Chair6:z_index")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-3]
+}
+
+[sub_resource type="Animation" id="Animation_ytrpr"]
+resource_name = "on"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chairlift2/Chair1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45), Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134), Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002), Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134), Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958), Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chairlift2/Chair2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134), Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002), Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134), Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958), Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chairlift2/Chair3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002), Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134), Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958), Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45), Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chairlift2/Chair4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134), Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958), Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45), Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134), Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chairlift2/Chair5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958), Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45), Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134), Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002), Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chairlift2/Chair6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45), Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134), Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002), Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134), Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Chairlift2/Chair1:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Chairlift2/Chair2:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Chairlift2/Chair3:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Chairlift2/Chair4:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Chairlift2/Chair5:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Chairlift2/Chair6:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Chairlift2/Chair1:z_index")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-2, -2, -2, -4, -4, -4, -4, -6, -6, -6, -6, -8, -7, -6, -6, -5, -5, -4, -4, -2, -3, -2, -2, -2, -2]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chairlift2/Chair2:z_index")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-4, -4, -4, -6, -6, -6, -6, -8, -7, -6, -6, -5, -5, -4, -4, -2, -3, -2, -2, -2, -2, -2, -2, -4]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chairlift2/Chair3:z_index")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-6, -6, -6, -8, -7, -6, -6, -5, -5, -4, -4, -2, -3, -2, -2, -2, -2, -2, -2, -4, -4, -4, -4, -6]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Chairlift2/Chair4:z_index")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-7, -6, -6, -5, -5, -4, -4, -2, -3, -2, -2, -2, -2, -2, -2, -4, -4, -4, -4, -6, -6, -6, -6, -8]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Chairlift2/Chair5:z_index")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-5, -4, -4, -2, -3, -2, -2, -2, -2, -2, -2, -4, -4, -4, -4, -6, -6, -6, -6, -8, -7, -6, -6, -5]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Chairlift2/Chair6:z_index")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.90000004, 0.9666667, 1, 1.5, 1.9000001, 1.9666667, 2, 2.5, 2.9, 2.9666667, 3, 3.5, 3.9, 3.9666667, 4, 4.5, 4.9, 4.9666667, 5, 5.5, 5.9, 5.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-3, -2, -2, -2, -2, -2, -2, -4, -4, -4, -4, -6, -6, -6, -6, -8, -7, -6, -6, -5, -5, -4, -4, -2]
+}
+
+[sub_resource type="Animation" id="Animation_35wan"]
+resource_name = "on_2"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chairlift2/Chair1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45), Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134), Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002), Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134), Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958), Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chairlift2/Chair2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134), Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002), Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134), Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958), Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chairlift2/Chair3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002), Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134), Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958), Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45), Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chairlift2/Chair4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134), Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958), Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45), Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134), Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chairlift2/Chair5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958), Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45), Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134), Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002), Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chairlift2/Chair6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(127, -43), Vector2(102, -19), Vector2(73, 8), Vector2(16, 7), Vector2(28, 8), Vector2(55, -14), Vector2(89, -43), Vector2(92, -45), Vector2(89, -53), Vector2(70, -93), Vector2(53, -132), Vector2(51, -134), Vector2(50, -141), Vector2(37, -184), Vector2(25, -222.00002), Vector2(46, -224.00002), Vector2(46, -222.00002), Vector2(61, -185), Vector2(78, -140), Vector2(81, -134), Vector2(81, -132), Vector2(103, -95.000015), Vector2(127, -52.00002), Vector2(129, -45.999958)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Chairlift2/Chair1:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Chairlift2/Chair2:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Chairlift2/Chair3:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Chairlift2/Chair4:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Chairlift2/Chair5:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Chairlift2/Chair6:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.8, 0.8), Vector2(-0.9, 0.9), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.4, 0.4), Vector2(-0.5, 0.5), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.6, 0.6), Vector2(-0.7, 0.7), Vector2(-0.8, 0.8), Vector2(-0.8, 0.8)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Chairlift2/Chair1:z_index")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-2, -2, -2, -4, -4, -4, -4, -6, -6, -6, -6, -8, -7, -6, -6, -5, -5, -4, -4, -2, -3, -2, -2, -2, -2]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chairlift2/Chair2:z_index")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-4, -4, -4, -6, -6, -6, -6, -8, -7, -6, -6, -5, -5, -4, -4, -2, -3, -2, -2, -2, -2, -2, -2, -4]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chairlift2/Chair3:z_index")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-6, -6, -6, -8, -7, -6, -6, -5, -5, -4, -4, -2, -3, -2, -2, -2, -2, -2, -2, -4, -4, -4, -4, -6]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Chairlift2/Chair4:z_index")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-7, -6, -6, -5, -5, -4, -4, -2, -3, -2, -2, -2, -2, -2, -2, -4, -4, -4, -4, -6, -6, -6, -6, -8]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Chairlift2/Chair5:z_index")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-5, -4, -4, -2, -3, -2, -2, -2, -2, -2, -2, -4, -4, -4, -4, -6, -6, -6, -6, -8, -7, -6, -6, -5]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Chairlift2/Chair6:z_index")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 1, 1.9000001, 1.9666667, 2, 3, 3.9, 3.9666667, 4, 5, 5.9, 5.9666667, 6, 7, 7.9, 7.9666667, 8, 9, 9.9, 9.966667, 10, 11, 11.9, 11.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-3, -2, -2, -2, -2, -2, -2, -4, -4, -4, -4, -6, -6, -6, -6, -8, -7, -6, -6, -5, -5, -4, -4, -2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7qlu"]
+_data = {
+&"RESET": SubResource("Animation_xw0g4"),
+&"on": SubResource("Animation_ytrpr"),
+&"on_2": SubResource("Animation_35wan")
+}
+
+[node name="_ChairliftToDesert" type="Control" unique_id=53479964]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ytrpr")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=686744214]
+visible = false
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_35wan")
+expand_mode = 1
+
+[node name="Chairlift2" type="TextureRect" parent="." unique_id=1673329349]
+z_index = 20
+layout_mode = 0
+offset_left = 403.0
+offset_top = 336.0
+offset_right = 464.5453
+offset_bottom = 376.0
+scale = Vector2(-1, 1)
+mouse_filter = 2
+texture = ExtResource("3_d5y2d")
+expand_mode = 1
+
+[node name="Chair1" type="TextureRect" parent="Chairlift2" unique_id=1630730836]
+z_index = -2
+layout_mode = 0
+offset_left = 28.0
+offset_top = 8.0
+offset_right = 76.114395
+offset_bottom = 43.768555
+mouse_filter = 2
+texture = ExtResource("4_1k1n1")
+expand_mode = 1
+
+[node name="Chair2" type="TextureRect" parent="Chairlift2" unique_id=2115166242]
+z_index = -4
+layout_mode = 0
+offset_left = 89.0
+offset_top = -53.0
+offset_right = 137.11807
+offset_bottom = -17.231445
+scale = Vector2(0.8, 0.8)
+mouse_filter = 2
+texture = ExtResource("4_1k1n1")
+expand_mode = 1
+
+[node name="Chair3" type="TextureRect" parent="Chairlift2" unique_id=700801822]
+z_index = -6
+layout_mode = 0
+offset_left = 50.0
+offset_top = -141.0
+offset_right = 98.11759
+offset_bottom = -105.231445
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("4_1k1n1")
+expand_mode = 1
+
+[node name="Chair4" type="TextureRect" parent="Chairlift2" unique_id=84041468]
+z_index = -7
+layout_mode = 0
+offset_left = 46.0
+offset_top = -222.00002
+offset_right = 94.113266
+offset_bottom = -186.23146
+scale = Vector2(-0.4, 0.4)
+mouse_filter = 2
+texture = ExtResource("4_1k1n1")
+expand_mode = 1
+
+[node name="Chair5" type="TextureRect" parent="Chairlift2" unique_id=82049757]
+z_index = -5
+layout_mode = 0
+offset_left = 81.0
+offset_top = -132.0
+offset_right = 129.13908
+offset_bottom = -96.231445
+scale = Vector2(-0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("4_1k1n1")
+expand_mode = 1
+
+[node name="Chair6" type="TextureRect" parent="Chairlift2" unique_id=542179858]
+z_index = -3
+layout_mode = 0
+offset_left = 127.0
+offset_top = -43.0
+offset_right = 175.12
+offset_bottom = -7.2314453
+scale = Vector2(-0.8, 0.8)
+mouse_filter = 2
+texture = ExtResource("4_1k1n1")
+expand_mode = 1
+
+[node name="PoleHead3" type="Sprite2D" parent="Chairlift2" unique_id=1981493308]
+z_index = -6
+position = Vector2(34.875008, -225.4375)
+rotation = -3.1415925
+scale = Vector2(0.025, -0.025)
+texture = ExtResource("5_rdnaq")
+
+[node name="Pole3" type="Sprite2D" parent="Chairlift2" unique_id=798969053]
+z_index = -8
+position = Vector2(35.875, -212.43748)
+rotation = -3.1415925
+scale = Vector2(0.02, -0.02)
+texture = ExtResource("6_u2ig4")
+
+[node name="Line2D5" type="Line2D" parent="Chairlift2" unique_id=1738058186]
+z_index = -5
+points = PackedVector2Array(71, -132, 37, -223)
+width = 0.7
+default_color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+
+[node name="Line2D6" type="Line2D" parent="Chairlift2" unique_id=784272149]
+z_index = -4
+points = PackedVector2Array(62, -132, 33, -223)
+width = 0.7
+default_color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+
+[node name="PoleHead2" type="Sprite2D" parent="Chairlift2" unique_id=1872102397]
+z_index = -4
+position = Vector2(66.875, -134.4375)
+rotation = -3.1415925
+scale = Vector2(0.025, -0.025)
+texture = ExtResource("5_rdnaq")
+
+[node name="Pole2" type="Sprite2D" parent="Chairlift2" unique_id=609251718]
+z_index = -6
+position = Vector2(66.875, -118.437485)
+rotation = -3.1415925
+scale = Vector2(0.025, -0.025)
+texture = ExtResource("6_u2ig4")
+
+[node name="Line2D3" type="Line2D" parent="Chairlift2" unique_id=1778439600]
+z_index = -3
+points = PackedVector2Array(117, -44, 70, -133)
+width = 1.0
+default_color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+
+[node name="Line2D4" type="Line2D" parent="Chairlift2" unique_id=369777483]
+z_index = -2
+points = PackedVector2Array(106, -43, 62, -133)
+width = 1.0
+default_color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+
+[node name="PoleHead" type="Sprite2D" parent="Chairlift2" unique_id=849055784]
+z_index = -2
+position = Vector2(111.91636, -45.893417)
+rotation = -3.1415925
+scale = Vector2(0.029038439, -0.027445301)
+texture = ExtResource("5_rdnaq")
+
+[node name="Pole" type="Sprite2D" parent="Chairlift2" unique_id=1989127915]
+z_index = -4
+position = Vector2(112.91637, -24.89344)
+rotation = -3.1415925
+scale = Vector2(0.033617068, -0.034968697)
+texture = ExtResource("6_u2ig4")
+
+[node name="Line2D" type="Line2D" parent="Chairlift2" unique_id=952398798]
+z_index = -1
+position = Vector2(12, -10)
+points = PackedVector2Array(44, 23, 105, -34)
+width = 1.5
+default_color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+
+[node name="Line2D2" type="Line2D" parent="Chairlift2" unique_id=1412119630]
+z_index = -1
+position = Vector2(12, -10)
+points = PackedVector2Array(34, 19, 93, -34)
+width = 1.5
+default_color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=302246732]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_w7qlu")

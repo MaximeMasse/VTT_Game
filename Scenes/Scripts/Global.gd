@@ -118,7 +118,8 @@ var dico_avatars := {
 var dico_scenes :={
 	"Menus":"res://Scenes/menus.tscn",
 	"Main_Game":"res://Scenes/Games/game.tscn",
-	"Tuto_Game":"res://Scenes/Games/tuto_game.tscn"
+	"Tuto_Game":"res://Scenes/Games/tuto_game.tscn",
+	"Forest_Map":"res://Scenes/Worlds/forest_map.tscn"
 }
 
 signal hud_trick_reset
@@ -149,7 +150,7 @@ func get_cp_names_and_ratio() -> Dictionary :
 	return cps_markers
 
 func new_day():
-	current_day = {"position":{"world":"Forest","node":"ForestChairlift","done":false},"money":0,"stars":0,"crowns":0}
+	current_day = {"course":[],"position":{"world":"Forest","node":"ForestChairlift"},"money":0,"stars":0,"crowns":0}
 
 func set_start_values():
 	is_grabbed = false
@@ -458,7 +459,7 @@ func profile_update():
 	# Profile update
 	current_profile["current_run"]["finished_maps"][current_map] = new_map_data
 	current_profile["map_record"][current_map] = new_map_record
-	
+	current_profile["current_run"]["current_day"] = current_day
 
 func format_time(t: float) -> String:
 	var minutes := int(t/60)

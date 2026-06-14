@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://d0vb42pobxhiy" path="res://Images/Menus/Maps/Map0.png" id="1_gvvu8"]
 [ext_resource type="Script" uid="uid://b0rjwghb3s6cw" path="res://Scenes/map_stars.gd" id="1_psydr"]
 [ext_resource type="Texture2D" uid="uid://cdlqvunwcwrq0" path="res://Images/Menus/Maps/star_empty.png" id="1_xwsrt"]
-[ext_resource type="Texture2D" uid="uid://0fp1rfu6ks2k" path="res://Images/Menus/Maps/star_full.png" id="4_ridgc"]
 
 [node name="MapStars" type="Control" unique_id=1390030682]
 layout_mode = 3
@@ -30,7 +29,7 @@ texture = ExtResource("1_xwsrt")
 unique_name_in_owner = true
 position = Vector2(178, 96.99999)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_ridgc")
+texture = ExtResource("1_xwsrt")
 
 [node name="Star3" type="Sprite2D" parent="." unique_id=105979999]
 unique_name_in_owner = true

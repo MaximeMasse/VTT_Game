@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var debug_start_speed : float = %DebugStart.debug_start_speed
+@onready var debug_start_position : Vector2 = %DebugStart.debug_start_position
+
 @export var platform_texture: Texture2D
 @export var platform_width := 50.0
 @export var platform_visual_step := 6.0
@@ -28,15 +31,17 @@ extends Node2D
 @export var under_visual_step := 20.0
 @export var under_repeat_px := 566.0
 
-func get_level_data():
-	return {
-		"start": %Start,
-		"finish": %Finish,
-		"cp1": %Checkpoint_1
-		}
+var bills_values : Dictionary
+var map_data : Dictionary
+
+func get_bill_value(id : float)->float:return bills_values[id]
+
+func get_level_data(): return map_data
 
 signal out_of_bounds
 signal finish
+signal gap_entry
+signal gap_exit
 
 func _ready():
 	var platform :={
@@ -76,10 +81,47 @@ func _ready():
 	Map.generate_all_visuals(%Paths,%Textures,road,up,down,under)
 	Map.generate_platforms_collisions(%PlatformsPaths,%Platforms)
 	Map.generate_platforms_visuals(%PlatformsPaths,%PlatformsTextures,platform)
+	
+	# Map data
+	map_data = {
+		"start": %Start,
+		"finish": %Finish,
+		"bills": {},
+		"cps":{
+			"cp1": %Checkpoint_1,
+			},
+		"gaps" : ["over the Volcano","on the Wooden Platform","over the Clouds"],
+		"target_score" : 10000,
+		"target_time" : 60,
+		"target_score_and_time" : [5000,120],
+		"collectible" : "Golden Banana",
+		"special_trick" : {"trick":"Frontflip","spot":"over the Volcano"},
+		"queen_time":35,
+		"queen_score":30000
+		}
+	
+	# Collectible loading
+	var dico : Dictionary = Global.current_profile["current_run"]["finished_maps"]\
+											.get(Global.current_map,{"objectives":[],"bills":[]})
+	for bill : Area2D in %Bills.get_children():
+		bill.id = float(bill.get_index())
+		map_data["bills"][bill.id] = bill.value
+		if bill.id in dico["bills"]:
+			bill.monitoring = false
+			bill.visible = false
+	if 4.0 in dico["objectives"]:%Bird.queue_free()
 
+# Zones
 func _on_crash_zone_body_entered(_body):out_of_bounds.emit()
 func _on_finish_body_entered(_body):
 	%Finish.activate()
 	finish.emit()
 
+# CPs
 func _on_checkpoint_1_body_entered(_body):Global.checkpoint_update("cp1")
+
+# Collectible
+func return_collectible():%Bird.reset()
+func store_collectible():%Bird.store()
+
+# Gaps

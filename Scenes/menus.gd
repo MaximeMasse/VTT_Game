@@ -22,12 +22,12 @@ var current_node : Control
 		"Chairlift":%ChairliftMenu,
 	}
 @onready var dico_zone_links := {
-		"ForestChairlift" : {"activation_node":%ForestChairlift,"destination_node":%Map_0_Button},
+		"_ForestChairlift" : {"activation_node":%_ForestChairlift,"destination_node":%Map_0_Button},
 		"0_1" : {"activation_node":%Map_0_Button,"destination_node":%Map_1_Button},
 		"1_2" : {"activation_node":%Map_1_Button,"destination_node":%Map_2_Button},
-		"2_Boss" : {"activation_node":%Map_2_Button,"destination_node":%Map_Boss_Forest_Button},
-		"1_ChairliftToDesert" : {"activation_node":%Map_1_Button,"destination_node":%ChairliftToDesert},
-		"ChairliftToDesert" : {"activation_node":%ChairliftToDesert,"destination_node":%ToDesert},
+		"2_ForestBoss" : {"activation_node":%Map_2_Button,"destination_node":%Map_ForestBoss_Button},
+		"1_ChairliftToDesert" : {"activation_node":%Map_1_Button,"destination_node":%_ChairliftToDesert},
+		"_ChairliftToDesert" : {"activation_node":%_ChairliftToDesert,"destination_node":%ToDesert},
 	}
 @onready var dico_worlds_names := {
 		"Forest":%ForestMap,
@@ -88,22 +88,24 @@ func set_up_buttons(node):
 
 func show_menu(menu:String):
 	for men in dico_menus:dico_menus[men].hide()
-	if menu == "Chairlift":map_progress_update()
+	if menu == "Chairlift":Global.start_mod("Forest_Map")
 	dico_menus[menu].show()
 	
 func map_progress_update():
-	current_world = dico_worlds_names[World.current_world]
+	current_world = dico_worlds_names[World.current("current_world")]
+	for world in dico_worlds_names:dico_worlds_names[world].hide()
+	current_world.show()
 	# Nodes
 	for node in worlds_tree[current_world]["Nodes"]:node_init(node)
 	# Paths
 	for path in worlds_tree[current_world]["Paths"]:path_init(path)
 	# Zones
-	for zone in worlds_tree[current_world]["Zones"]:create_linked_zone(zone)
+	for zone in worlds_tree[current_world]["Zones"]:
+		create_linked_zone(zone)
+		zone_path_ref(zone)
 	# Positioning 
-	current_node = dico_nodes_names[World.current_node]
-	# Positioning style
-	# Activation
-	active_zones = worlds_tree[current_world]["Nodes"][current_node]["active_zones"]
+	current_node = dico_nodes_names[World.current("current_node")]
+	# Debug print
 	print("Nodes :")
 	for node in worlds_tree[current_world]["Nodes"]:print(node,worlds_tree[current_world]["Nodes"][node])
 	print("Paths :")
@@ -111,32 +113,124 @@ func map_progress_update():
 	print("Zones :")
 	for node in worlds_tree[current_world]["Zones"]:print(node,worlds_tree[current_world]["Zones"][node])
 	print("Dico node names : ",dico_nodes_names)
+	print("Current_day : ",Global.current_day)
+	print("World data : ",World.current_world_datas)
+	# Positioning style
+	apply_world_style()
+	# Activation
+	active_zones = worlds_tree[current_world]["Nodes"][current_node]["active_zones"]
+	
 	running = true
 
 func node_init(node:Control):
 	# Ref
 	dico_nodes_names[node.name] = node
 	worlds_tree[current_world]["Nodes"][node]["active_zones"] = []
-	worlds_tree[current_world]["Nodes"][node]["paths"] = []
-	# Style
-	#if node.name in World.worlds_unlocks:
-		#node.visible = true
-		#node.play()
-	#if "Map" in node.name:
-		#if node.name.split("_")[1] in World.finished_maps:
-			#node.disabled = true
-			#node.modulate = Color(0.5,0.5,0.5,1)
-			#node.visible = true
-			#node.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		#else:node.visible = false
 
 func path_init(path:Line2D):
 	# Ref
-	worlds_tree[current_world]["Paths"][path]["locked"] = path.get_child_count() != 0
+	var from : String = path.name.split("_")[0]
+	var to : String = path.name.split("_")[1]
+	worlds_tree[current_world]["Paths"][path]["from"] = from
+	worlds_tree[current_world]["Paths"][path]["to"] = to
 	for node in worlds_tree[current_world]["Nodes"]:
-		if "_" in node.name and node.name.split("_")[1] == path.name.split("_")[1]:
-			worlds_tree[current_world]["Nodes"][node]["paths"].append(path)
-	#if path.childre
+		if "_" in node.name and node.name.split("_")[1] == to:worlds_tree[current_world]["Nodes"][node]["paths"] = path
+
+func zone_path_ref(zone:Area2D):
+	worlds_tree[current_world]["Nodes"][dico_zone_links[zone.name]["activation_node"]]["active_zones"].append(zone)
+	worlds_tree[current_world]["Zones"][zone]["destination_node"] = dico_zone_links[zone.name]["destination_node"]
+	for path in worlds_tree[current_world]["Paths"]: if path.name == zone.name :
+		worlds_tree[current_world]["Zones"][zone]["path"] = path
+
+func create_linked_zone(zone:Area2D):
+	var zone_points : PackedVector2Array = zone.get_child(0).polygon 
+	var outline := Line2D.new()
+	zone.add_child(outline)
+	# Style
+	outline.width = 8
+	outline.closed = true
+	outline.visible = false
+	# Copying
+	var index : int = 0
+	while index < zone_points.size():
+		outline.add_point(zone_points[index])
+		index += 1
+	# Reference
+	worlds_tree[current_world]["Zones"][zone]["outline"] = outline
+
+func apply_world_style():
+	var reachable_nodes : Array = []
+	for zone in worlds_tree[current_world]["Nodes"][current_node]["active_zones"]:
+		reachable_nodes.append(worlds_tree[current_world]["Zones"][zone]["destination_node"])
+	print("reachable nodes : ",reachable_nodes)
+	
+	# Nodes
+	#for node in worlds_tree[current_world]["Nodes"]:
+		## Regular map buttons
+		#if "Map" in node.name:
+			#var map_name :String= node.name.split("_")[1]
+			#var is_valided : bool = false
+			#var style : Dictionary = {
+			#"disabled":true,"modulate":Color(0.0, 0.0, 0.0, 1.0),
+			#"visible":false,"mouse_filter":Control.MOUSE_FILTER_IGNORE
+			#}
+			## Already traveled today
+			#if node.name in World.current("day_travel"):
+				#style["modulate"] = Color(0.208, 0.91, 0.235, 1.0)
+				#style["visible"] = true
+				#is_valided = true
+			## Already done this run
+			#elif map_name in World.current("run_finished_maps"):
+				#style["modulate"] = Color(0.5, 0.5, 0.5, 1.0)
+				#style["visible"] = true
+				#is_valided = true
+				## Stars
+				#node.get_child(1).stars_update(
+					#Global.current_profile["current_run"]["finished_maps"][map_name].get("objectives",[]))
+			## Reachable
+			#elif node in reachable_nodes :
+				#style["modulate"] = Color(0.5, 0.5, 0.5, 1.0)
+				#style["visible"] = true
+			## Already seen on previous run
+			#elif map_name in World.current("finished_maps"):style["visible"] = true
+			## Apply style
+			#node.disabled = style["disabled"]
+			#node.modulate = style["modulate"]
+			#node.visible = style["visible"]
+			#node.mouse_filter = style["mouse_filter"]
+			#node.get_child(0).visible = is_valided
+			## Paths
+			#if "paths" in worlds_tree[current_world]["Nodes"][node].keys():
+				#worlds_tree[current_world]["Nodes"][node]["paths"].modulate = style["modulate"]
+				#worlds_tree[current_world]["Nodes"][node]["paths"].visible = style["visible"]
+		## Chairlifts
+		#elif "Chairlift" in node.name:
+			#node.visible = true
+			## Unlockable Chairlift
+			#if "paths" in worlds_tree[current_world]["Nodes"][node].keys():
+				#var path : Line2D = worlds_tree[current_world]["Nodes"][node]["paths"]
+				#var path_origin : String = worlds_tree[current_world]["Paths"][path]["from"]
+				#var path_style : Dictionary = {"modulate":Color(0.0, 0.0, 0.0, 1.0),"visible":false}
+				## If unlocked
+				#if node.name in World.current("worlds_unlocks"):
+					#node.unlock()
+					## Already traveled today
+					#if path.name in World.current("day_travel"):
+						#path_style["modulate"] = Color(0.208, 0.91, 0.235, 1.0)
+						#path_style["visible"] = true
+					## Already done this run
+					#elif path_origin in World.current("run_finished_maps"):
+						#path_style["modulate"] = Color(0.5, 0.5, 0.5, 1.0)
+						#path_style["visible"] = true
+					## Already seen on previous run
+					#elif path_origin in World.current("finished_maps"):path_style["visible"] = true
+				## If locked
+				#else:pass
+				## Apply style
+				#path.modulate = path_style["modulate"]
+				#path.visible = path_style["visible"]
+			## BaseChairlift
+			#else : node.unlock()
 
 func draw_path(path:Line2D,duration:float):
 	var path_points : PackedVector2Array = path.points 
@@ -155,24 +249,6 @@ func draw_path(path:Line2D,duration:float):
 		index += 1
 		await get_tree().create_timer(drawing_frequency).timeout
 
-func create_linked_zone(zone:Area2D):
-	var zone_points : PackedVector2Array = zone.get_child(0).polygon 
-	var outline := Line2D.new()
-	zone.add_child(outline)
-	# Style
-	outline.width = 8
-	outline.closed = true
-	outline.visible = false
-	# Copying
-	var index : int = 0
-	while index < zone_points.size():
-		outline.add_point(zone_points[index])
-		index += 1
-	# Reference
-	worlds_tree[current_world]["Nodes"][dico_zone_links[zone.name]["activation_node"]]["active_zones"].append(zone)
-	worlds_tree[current_world]["Zones"][zone]["destination_node"] = dico_zone_links[zone.name]["destination_node"]
-	worlds_tree[current_world]["Zones"][zone]["outline"] = outline
-
 func on_zone_hover(zone:Area2D):
 	AudioManager.play_ui("map_hover")
 	worlds_tree[current_world]["Zones"][zone]["outline"].show()
@@ -182,20 +258,19 @@ func on_zone_exit(zone:Area2D):
 	worlds_tree[current_world]["Zones"][zone]["destination_node"].modulate = Color(0.5,0.5,0.5,1)
 func click_zone(zone:Area2D):
 	# Reset zone
-	hovered_zone = null
-	worlds_tree[current_world]["Zones"][zone]["outline"].hide()
+	active_zones = []
 	# From
 	if "Chairlift" in zone.name:
 		AudioManager.play_sfx("chairlift")
+		dico_nodes_names[zone.name].play()
 		await get_tree().create_timer(3).timeout
 	# To
 	current_node = worlds_tree[current_world]["Zones"][zone]["destination_node"]
 	if "Map" in current_node.name:
-			active_zones = []
 			current_node.disabled = false
 			current_node.modulate = Color(1.0, 1.0, 1.0, 1.0)
 			current_node.mouse_filter = Control.MOUSE_FILTER_PASS
-			World.node_done = false
+			World.change("node_done",false)
 
 func _process(_delta):
 	if not running : return

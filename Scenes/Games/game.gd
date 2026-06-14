@@ -271,7 +271,10 @@ func _on_abandon_button_pressed():
 	Global.start_mod("Menus")
 
 func _on_continue_pressed():
+	AudioManager.stop_music()
 	AudioManager.stop_sfx()
+	AudioManager.stop_ground_sfx()
+	World.set_world_values()
 	Global.menu_to_show = "Chairlift"
 	Global.start_mod("Menus")
 

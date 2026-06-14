@@ -69,7 +69,8 @@ var dico_ground_sfx := {
 var dico_ui := {
 	"click": preload("res://Sound/UI/click.wav"),
 	"hover": preload("res://Sound/UI/hover.wav"),
-	"map_hover": preload("res://Sound/UI/map_hover.wav")
+	"map_hover": preload("res://Sound/UI/map_hover.wav"),
+	"lock": preload("res://Sound/UI/lock.wav")
 }
 
 var music_player: AudioStreamPlayer

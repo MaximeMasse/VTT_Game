@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="8_yoy1d"]
 [ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="9_w0jt7"]
 [ext_resource type="Texture2D" uid="uid://bd1youvrow1rs" path="res://Images/Mapping/Cover/Poles.png" id="10_1vh13"]
+[ext_resource type="PackedScene" uid="uid://c4dgb5i0k1dbp" path="res://Scenes/Misc/bird.tscn" id="10_okle1"]
 [ext_resource type="Texture2D" uid="uid://tqg8418a4wax" path="res://Images/Mapping/Cover/back_poles.png" id="11_jcyk4"]
+[ext_resource type="Script" uid="uid://livr32df55qj" path="res://Maps/debug_start.gd" id="13_5ii72"]
 
 [sub_resource type="Curve2D" id="Curve2D_4wta3"]
 _data = {
@@ -53,7 +55,7 @@ scale = Vector2(0.2689295, 0.2576923)
 
 [node name="Finish" parent="Spots" unique_id=1211676905 instance=ExtResource("8_yoy1d")]
 unique_name_in_owner = true
-position = Vector2(30422, 5523)
+position = Vector2(355, 0)
 
 [node name="Checkpoint_1" parent="Spots" unique_id=1899925259 instance=ExtResource("9_w0jt7")]
 unique_name_in_owner = true
@@ -62,6 +64,16 @@ position = Vector2(4645, 911)
 [node name="CrashZone" type="Area2D" parent="Spots" unique_id=2108489664]
 collision_layer = 0
 collision_mask = 2
+
+[node name="Bird" parent="Spots" unique_id=767523825 instance=ExtResource("10_okle1")]
+unique_name_in_owner = true
+position = Vector2(3873, 788)
+
+[node name="Bills" type="Node2D" parent="Spots" unique_id=483681637]
+unique_name_in_owner = true
+
+[node name="Gap" type="Node2D" parent="Spots" unique_id=1571153906]
+position = Vector2(6012, 356)
 
 [node name="PlatformsPaths" type="Node2D" parent="." unique_id=1234909233]
 unique_name_in_owner = true
@@ -164,6 +176,15 @@ motion_scale = Vector2(0.5, 0.5)
 [node name="Foret" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1577013277]
 motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(3280, 0)
+
+[node name="CameraEffects" type="Area2D" parent="." unique_id=128169794]
+collision_layer = 8
+collision_mask = 0
+
+[node name="DebugStart" type="Marker2D" parent="." unique_id=823606806]
+unique_name_in_owner = true
+z_index = 17
+script = ExtResource("13_5ii72")
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]
