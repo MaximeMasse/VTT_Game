@@ -23,7 +23,6 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		"id": id,
 		"name": player_name,
 		"avatar": avatar_id,
-		"bike_model": 1, 
 		"state": "tuto",
 		"stats": {
 			"ACCÉLÉRATION": 5000.0,
@@ -54,10 +53,10 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 			"RESPAWN_HP_PENALTY" : 20
 		},
 		"map_record": {},
-		"current_run": {
-			"finished_maps" : {},
-			"money":100,
-			"stars":0
+		"best_tricks" : {
+			"Air": {"length":0.0,"duration":0.0},
+			"Wheelie": {"length":0.0,"duration":0.0},
+			"Nose Wheelie": {"length":0.0,"duration":0.0}
 		},
 		"crowns":0,
 		"xp":0

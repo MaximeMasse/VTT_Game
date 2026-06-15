@@ -101,7 +101,9 @@ var tricks_values : Dictionary = {
 # Dicos
 var dico_maps := {
 	"0":"res://Maps/map_0.tscn",
-	"1":"res://Maps/map_1.tscn"
+	"1":"res://Maps/map_1.tscn",
+	"2":"res://Maps/map_1.tscn",
+	"ForestBoss":"res://Maps/map_1.tscn",
 }
 var dico_vélo := {
 	0:"res://Bikes/bike_0.tscn",
@@ -149,8 +151,11 @@ func get_cp_names_and_ratio() -> Dictionary :
 	for cp in map_data["cps"]:cps_markers[cp] = map_data["cps"][cp].global_position.x/map_data["finish"].global_position.x
 	return cps_markers
 
-func new_day():
-	current_day = {"course":[],"position":{"world":"Forest","node":"ForestChairlift"},"money":0,"stars":0,"crowns":0}
+func set_run():current_profile["current_run"] = current_profile.get("current_run",
+	{"finished_maps":{},"unlocks":[],"money":100,"stars":0})
+
+func set_day():current_day = current_profile["current_run"].get("current_day",
+	{"course":[],"world":"Forest","node":"ForestChairlift","money":0,"stars":0,"crowns":0}) 
 
 func set_start_values():
 	is_grabbed = false
@@ -158,13 +163,7 @@ func set_start_values():
 	is_in_gap = ""
 	gap_combo = {}
 	special_trick_done = false
-	current_profile["best_tricks"] = current_profile.get("best_tricks",{
-			"Air": {"length":0.0,"duration":0.0},
-			"Wheelie": {"length":0.0,"duration":0.0},
-			"Nose Wheelie": {"length":0.0,"duration":0.0}
-			})
-	previous_obj_and_bills = current_profile["current_run"]["finished_maps"]\
-	.get(current_map,{"objectives":[],"bills":[],"gaps":{}})
+	previous_obj_and_bills = current_profile["current_run"]["finished_maps"].get(current_map,{"objectives":[],"bills":[],"gaps":{}})
 	objectives_completed = []
 	objectives_text = ""
 	money_catched = 0
@@ -334,7 +333,6 @@ func end_map():
 	check_map_record()
 	check_gaps()
 	check_bills()
-	World.end_map()
 	profile_update()
 	SaveManager.save_profile(current_profile)
 

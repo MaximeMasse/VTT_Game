@@ -8,7 +8,7 @@ var dico_music := {
 	"Map_0": preload("res://Sound/Music/Map_0.mp3"),
 	"Map_1": preload("res://Sound/Music/Map_1.mp3"),
 	"Map_2": preload("res://Sound/Music/Map_2.mp3"),
-	"Map_3": preload("res://Sound/Music/Map_2.mp3")
+	"Map_ForestBoss": preload("res://Sound/Music/Map_2.mp3")
 }
 var dico_sfx := {
 	"chairlift": preload("res://Sound/SFX/chairlift.wav"),

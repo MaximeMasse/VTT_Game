@@ -4,6 +4,7 @@ var colors := {
 	"RED":Color(1,0.04,0.04,1),
 	"YELLOW":Color("d9db00ff"),
 	"DARK_GREY":Color("33333bff"),
+	"GREEN":Color("5c9f47ff"),
 	"LIGHT_GREEN":Color(0.2,0.9,0.23,1),
 	"ORANGE":Color(0.76,0.37,0,1),
 	"LIGHT_BLUE":Color("4a5ef5ff"),
