@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3usbupetv1ue"
-path="res://.godot/imported/Map2_focused.png-c31738ab69c53007a93e7132a8c954e7.ctex"
+uid="uid://bao4g4uayglvd"
+path="res://.godot/imported/Map3_focused.png-07c7c60405443b0d10697ed143aface5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menus/Maps/Map2_focused.png"
-dest_files=["res://.godot/imported/Map2_focused.png-c31738ab69c53007a93e7132a8c954e7.ctex"]
+source_file="res://Images/Menus/Maps/MapRings/Map3_focused.png"
+dest_files=["res://.godot/imported/Map3_focused.png-07c7c60405443b0d10697ed143aface5.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch8ixmu30f0jv"
-path="res://.godot/imported/ring.png-aa6730ccee7ae45426e7081eaae2f8cb.ctex"
+uid="uid://bfh0cog4730ck"
+path="res://.godot/imported/Map0.png-de8e0c5adbe8152057a7b8832a013657.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menus/Maps/ring.png"
-dest_files=["res://.godot/imported/ring.png-aa6730ccee7ae45426e7081eaae2f8cb.ctex"]
+source_file="res://Images/Menus/Maps/MapRings/Map0.png"
+dest_files=["res://.godot/imported/Map0.png-de8e0c5adbe8152057a7b8832a013657.ctex"]
 
 [params]
 

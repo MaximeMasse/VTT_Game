@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba007na3fp42t"
-path="res://.godot/imported/ring_focused.png-426468b8712ee62570b977d433f3bc2c.ctex"
+uid="uid://c2srhq0d6348u"
+path="res://.godot/imported/Map2.png-bd45d4bd0b564e91331f5f553c9ffb0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menus/Maps/ring_focused.png"
-dest_files=["res://.godot/imported/ring_focused.png-426468b8712ee62570b977d433f3bc2c.ctex"]
+source_file="res://Images/Menus/Maps/MapRings/Map2.png"
+dest_files=["res://.godot/imported/Map2.png-bd45d4bd0b564e91331f5f553c9ffb0a.ctex"]
 
 [params]
 

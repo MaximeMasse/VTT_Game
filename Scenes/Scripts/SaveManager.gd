@@ -52,7 +52,7 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 			"RESPAWN_TIME_PENALTY" : 5.0,
 			"RESPAWN_HP_PENALTY" : 20
 		},
-		"map_record": {},
+		"map_records": {},
 		"best_tricks" : {
 			"Air": {"length":0.0,"duration":0.0},
 			"Wheelie": {"length":0.0,"duration":0.0},

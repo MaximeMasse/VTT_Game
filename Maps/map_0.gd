@@ -90,8 +90,7 @@ func _ready():
 		}
 	
 	# Collectible loading
-	var dico : Dictionary = Global.current_profile["current_run"]["finished_maps"]\
-											.get(Global.current_map,{"objectives":[],"bills":[]})
+	var dico : Dictionary = Global.current_profile["current_run"]["maps"][Global.current_map]
 	for bill : Area2D in %Bills.get_children():
 		bill.id = float(bill.get_index())
 		map_data["bills"][bill.id] = bill.value

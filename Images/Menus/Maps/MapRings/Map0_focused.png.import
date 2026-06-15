@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4drfk36idgi3"
-path="res://.godot/imported/Boss1_head.png-4fb44edff1acfd605915ead939d261a2.ctex"
+uid="uid://dj2hhwrvp07ee"
+path="res://.godot/imported/Map0_focused.png-4bf45ec76a609a4c3752b40a646eed7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menus/Maps/Boss1_head.png"
-dest_files=["res://.godot/imported/Boss1_head.png-4fb44edff1acfd605915ead939d261a2.ctex"]
+source_file="res://Images/Menus/Maps/MapRings/Map0_focused.png"
+dest_files=["res://.godot/imported/Map0_focused.png-4bf45ec76a609a4c3752b40a646eed7f.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dihl605ntfqiw"
-path="res://.godot/imported/Map0_focused.png-e7b91b7d42bb48a9383eed3f459f3d92.ctex"
+uid="uid://ba37jrhpb8153"
+path="res://.godot/imported/narrow_dashed_line_white_back.png-e0c88af27526062e7a9c64ba39c98d74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menus/Maps/Map0_focused.png"
-dest_files=["res://.godot/imported/Map0_focused.png-e7b91b7d42bb48a9383eed3f459f3d92.ctex"]
+source_file="res://Images/Menus/Maps/DashLines/narrow_dashed_line_white_back.png"
+dest_files=["res://.godot/imported/narrow_dashed_line_white_back.png-e0c88af27526062e7a9c64ba39c98d74.ctex"]
 
 [params]
 

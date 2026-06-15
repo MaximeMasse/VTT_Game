@@ -168,7 +168,7 @@ func finish_menu_update():
 	%"200BillLabel".text = str(Global.bills_done_data["number_per_value_caught"][200]) + "/" + str(Global.bills_done_data["number_per_value_total"][200])
 	%"500BillLabel".text = str(Global.bills_done_data["number_per_value_caught"][500]) + "/" + str(Global.bills_done_data["number_per_value_total"][500])
 	# Crowns
-	%MapCrowns.text =  str(Global.current_profile["map_record"][Global.current_map]["crowns_unlocked"]) +\
+	%MapCrowns.text =  str(Global.current_profile["map_records"][Global.current_map]["crowns_unlocked"]) +\
 	"/5  [img]res://Images/HUD/Player/CrownsLogo_mini.png[/img]"
 	%Finish_Menu.show()
 

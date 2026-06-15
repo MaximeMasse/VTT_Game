@@ -79,9 +79,6 @@ var queen_score_already_beaten : bool
 var queen_score_beaten : bool
 var crowns_unlocked : int
 
-# Day
-var current_day : Dictionary
-
 #Menus
 var menu_to_show := "MainMenu"
 
@@ -152,9 +149,9 @@ func get_cp_names_and_ratio() -> Dictionary :
 	return cps_markers
 
 func set_run():current_profile["current_run"] = current_profile.get("current_run",
-	{"finished_maps":{},"unlocks":[],"money":100,"stars":0})
+	{"maps":{},"unlocks":[],"money":100,"stars":0})
 
-func set_day():current_day = current_profile["current_run"].get("current_day",
+func set_day():current_profile["current_run"]["current_day"] = current_profile["current_run"].get("current_day",
 	{"course":[],"world":"Forest","node":"ForestChairlift","money":0,"stars":0,"crowns":0}) 
 
 func set_start_values():
@@ -163,12 +160,13 @@ func set_start_values():
 	is_in_gap = ""
 	gap_combo = {}
 	special_trick_done = false
-	previous_obj_and_bills = current_profile["current_run"]["finished_maps"].get(current_map,{"objectives":[],"bills":[],"gaps":{}})
+	previous_obj_and_bills = current_profile["current_run"]["maps"].get(current_map,{"finished":false,"objectives":[],"bills":[],"gaps":{}})
+	current_profile["current_run"]["maps"][current_map] = previous_obj_and_bills.duplicate()
 	objectives_completed = []
 	objectives_text = ""
 	money_catched = 0
 	bills_catched = []
-	previous_map_record = current_profile["map_record"]\
+	previous_map_record = current_profile["map_records"]\
 	.get(current_map,{"crowns_unlocked":0,"queen_time_beaten":false,"queen_score_beaten":false\
 	,"score":"-","time":"-","objectives_done":false,"bills_caught":false,"gaps_done":false,"gaps_discovered":[]})
 	race_time = 0.0
@@ -455,9 +453,8 @@ func profile_update():
 	for data in new_map_record: if new_map_record[data] is bool and new_map_record[data] :crowns += 1
 	new_map_record["crowns_unlocked"] = crowns
 	# Profile update
-	current_profile["current_run"]["finished_maps"][current_map] = new_map_data
-	current_profile["map_record"][current_map] = new_map_record
-	current_profile["current_run"]["current_day"] = current_day
+	current_profile["current_run"]["maps"][current_map] = new_map_data
+	current_profile["map_records"][current_map] = new_map_record
 
 func format_time(t: float) -> String:
 	var minutes := int(t/60)

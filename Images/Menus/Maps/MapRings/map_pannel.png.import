@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbgu4uorrxh1q"
-path="res://.godot/imported/map_pannel.png-d47e8f90062fb43df1b85ac66ff9244f.ctex"
+uid="uid://cx36b8cm8bp88"
+path="res://.godot/imported/map_pannel.png-d27475ea3ebd5e161d8606770e231920.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Menus/Maps/map_pannel.png"
-dest_files=["res://.godot/imported/map_pannel.png-d47e8f90062fb43df1b85ac66ff9244f.ctex"]
+source_file="res://Images/Menus/Maps/MapRings/map_pannel.png"
+dest_files=["res://.godot/imported/map_pannel.png-d27475ea3ebd5e161d8606770e231920.ctex"]
 
 [params]
 

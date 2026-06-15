@@ -2,7 +2,7 @@ extends Node2D
 
 # Datas
 var world_datas : Dictionary = {"Nodes":{},"Zones":{}}
-var node_by_name : Dictionary
+var player_datas : Dictionary
 
 # State
 var hovered_zone : Area2D
@@ -15,13 +15,20 @@ func _ready():
 	# Ref names, nodes and zones, create outline.
 	# Node init, valid and stars, naming
 	for node in %Nodes.get_children():
-		world_datas["Nodes"][node] = {"paths_to":[],"paths_from":[]}
-		node_by_name[node.name]=node
-		if node.name in Global.current_profile["current_run"]["finished_maps"].keys():node.get_child(0).show()
-		if node.name in Global.current_day["course"]:node.get_child(0).get_child(0).show()
-		if node.get_child_count()>1 and "Boss" not in node.name and\
-			node.name in Global.current_profile["current_run"]["finished_maps"].keys():
-			node.get_child(1).stars_update(Global.current_profile["current_run"]["finished_maps"][node.name]["objectives"])
+		var node_data : Dictionary = {"node":node,"zone_out":[]}
+		# Maps
+		if node is TextureButton:
+			node_data["done"] = node.get_child(0)
+			node_data["valid"] = node.get_child(1)
+			# Regular map
+			if "Boss" not in node.name:
+				node_data["type"] = "Map"
+				node_data["stars"] = node.get_child(2)
+			# Boss map
+			else:node_data["type"] = "Boss"
+		# Chairlifts
+		else: node_data["type"] = "Chairlift"
+		world_datas["Nodes"][node.name] = node_data.duplicate()
 	# Zones outline, lock, path ref and nodes in and out ref
 	for zone in %Zones.get_children():
 		var origin_name : String = zone.name.split("_")[0]
@@ -29,67 +36,68 @@ func _ready():
 		world_datas["Zones"][zone] = {}
 		# Path
 		world_datas["Zones"][zone]["path"] = zone.get_child(1)
-		# Lock
-		world_datas["Zones"][zone]["locked"] = true if zone.get_child(1).get_child_count()!=0\
-		and zone.get_child(1).get_child(0).name == "Lock"\
-		and destination_name not in Global.current_profile["current_run"]["unlocks"] else false
+		# Has Lock
+		world_datas["Zones"][zone]["has_lock"] = true if zone.get_child(1).get_child_count()!=0\
+		and zone.get_child(1).get_child(0).name == "Lock" else false
 		# Outline
 		world_datas["Zones"][zone]["outline"] = create_outline(zone)
 		# In and out
-		for node in %Nodes.get_children():
-			if origin_name == node.name:world_datas["Nodes"][node]["paths_from"].append(zone)
-			if destination_name == node.name:world_datas["Nodes"][node]["paths_to"].append(zone)
+		for node in world_datas["Nodes"]:
+			if origin_name == node:world_datas["Nodes"][node]["zone_out"].append(zone)
+			if destination_name == node:world_datas["Nodes"][node]["zone_in"]=zone
+	# Player_data
+	set_player_datas()
+	# Update world
 	update_world()
 	# Debug print
 	print("Nodes :")
-	for node in world_datas["Nodes"]:print(node.name," : ",world_datas["Nodes"][node])
+	for node in world_datas["Nodes"]:print(node," : ",world_datas["Nodes"][node])
 	print("\nZones :")
-	for zone in world_datas["Zones"]:print(zone.name," : ",world_datas["Zones"][zone])
-	print("\nCurrent_day : ",Global.current_day)
+	for zone in world_datas["Zones"]:print(zone," : ",world_datas["Zones"][zone])
+	print("\nPlayer datas : ",player_datas)
 
 
-func create_outline(zone:Area2D) -> Line2D :
-	var zone_points : PackedVector2Array = zone.get_child(0).polygon 
-	var outline := Line2D.new()
-	zone.add_child(outline)
-	# Style
-	outline.width = 8
-	outline.closed = true
-	outline.visible = false
-	# Copying
-	var index : int = 0
-	while index < zone_points.size():
-		outline.add_point(zone_points[index])
-		index += 1
-	return outline
+func set_player_datas():
+	player_datas["finished_maps"] = []
+	for map in Global.current_profile["map_records"].keys():player_datas["finished_maps"].append(map)
+	player_datas["run_finished_maps"] = []
+	player_datas["run_seen_maps"] = []
+	for map in Global.current_profile["current_run"]["maps"]:
+		player_datas["run_seen_maps"].append(map)
+		if Global.current_profile["current_run"]["maps"][map]["finished"]:player_datas["run_finished_maps"].append(map)
+	player_datas["world"] = Global.current_profile["current_run"]["current_day"]["world"]
+	player_datas["node"] = Global.current_profile["current_run"]["current_day"]["node"]
+	player_datas["course"] = Global.current_profile["current_run"]["current_day"]["course"]
+	player_datas["unlocks"] = Global.current_profile["current_run"]["unlocks"]
 
 func update_world():
-	# Nodes
 	for node in world_datas["Nodes"]:
 		var node_datas : Dictionary = world_datas["Nodes"][node]
-		var paths_to : Array 
-		for zone in node_datas["paths_to"]:paths_to.append(world_datas["Zones"][zone]["path"])
-		var paths_from : Array
-		for zone in node_datas["paths_from"]:paths_from.append(world_datas["Zones"][zone]["path"])
-		# Chairlift
-		if "Chairlift" in node.name:if "To" not in node.name or node.name in Global.current_profile["current_run"]["unlocks"]:paths_from[0].unlock()
-		# Map node
-		# If traveled already
-		if node.name in Global.current_day["course"]:
-			node.modulate = Color(0.363, 0.622, 0.277, 1.0)
-			for path in paths_to:if "Chairlift" not in path.name:path.modulate = Color(0.363, 0.622, 0.277, 1.0)
-		# If seen this run
-		elif node.name in Global.current_profile["current_run"]["finished_maps"].keys():
-			node.modulate = Color(0.502, 0.502, 0.502, 1.0)
-			for path in paths_to:if "Chairlift" not in path.name:path.modulate = Color(0.502, 0.502, 0.502, 1.0)
-		# If seen
-		elif node.name in Global.current_profile["map_record"].keys():
-			node.modulate = Color(0.0, 0.0, 0.0, 1.0)
-			for path in paths_to:if "Chairlift" not in path.name:path.modulate = Color(0.0, 0.0, 0.0, 1.0)
-		# Unknown
-		else:
-			node.hide()
-			for path in paths_to:if "_" in path.name :path.hide()
+		# Chairlifts activation
+		if node_datas["type"] == "Chairlift":
+			var chairlift = world_datas["Zones"][node_datas["zone_out"][0]]["path"]
+			# Animation
+			if "To" not in node or node in player_datas["unlocks"]:chairlift.unlock()
+			
+		# Maps
+		var path_in = world_datas["Zones"][node_datas["zone_in"]]["path"]
+		# Node
+		# Unknow
+		if node not in player_datas["finished_maps"]:
+			node_datas["node"].hide()
+			if path_in is Line2D:path_in.hide()
+		# Finished on previous run
+		elif node not in player_datas["run_seen_maps"]:
+			node_datas["done"].hide()
+			node_datas["node"].modulate = Color(0.0, 0.0, 0.0, 1.0)
+			if path_in is Line2D:path_in.modulate = Color(0.0, 0.0, 0.0, 1.0)
+		# Seen this run
+		elif node not in player_datas["run_finished_maps"]:
+			for thing in ["done","valid"]:node_datas[thing].hide()
+			if "Boss" not in node:node_datas["stars"].hide()
+			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
+			if path_in is Line2D:path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
+		# Finished this run
 
 func on_zone_hover(zone:Area2D):pass
 func on_zone_exit(zone:Area2D):pass
@@ -113,6 +121,21 @@ func _process(_delta):
 		if hovered_zone != null:on_zone_exit(hovered_zone)
 		hovered_zone = new_hovered_zone
 		if hovered_zone != null:on_zone_hover(hovered_zone)
+
+func create_outline(zone:Area2D) -> Line2D :
+	var zone_points : PackedVector2Array = zone.get_child(0).polygon 
+	var outline := Line2D.new()
+	zone.add_child(outline)
+	# Style
+	outline.width = 8
+	outline.closed = true
+	outline.visible = false
+	# Copying
+	var index : int = 0
+	while index < zone_points.size():
+		outline.add_point(zone_points[index])
+		index += 1
+	return outline
 
 func set_up_button(node:BaseButton):
 	node.disabled = true
