@@ -67,7 +67,7 @@ func reset_states():
 
 func _physics_process(delta):
 	if not can_drive:
-		Global.vitesse = Vector2.ZERO
+		cadre.linear_velocity = Vector2.ZERO
 		roue_arrière.constant_force = Vector2.ZERO
 		return
 	

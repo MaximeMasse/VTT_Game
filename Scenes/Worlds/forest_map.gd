@@ -18,16 +18,11 @@ func _ready():
 		var node_data : Dictionary = {"node":node,"zone_out":[]}
 		# Maps
 		if node is TextureButton:
+			node.disabled = true
 			node_data["done"] = node.get_child(0)
 			node_data["valid"] = node.get_child(1)
-			# Regular map
-			if "Boss" not in node.name:
-				node_data["type"] = "Map"
-				node_data["stars"] = node.get_child(2)
-			# Boss map
-			else:node_data["type"] = "Boss"
-		# Chairlifts
-		else: node_data["type"] = "Chairlift"
+			# Stars for regular map
+			if "Boss" not in node.name:node_data["stars"] = node.get_child(2)
 		world_datas["Nodes"][node.name] = node_data.duplicate()
 	# Zones outline, lock, path ref and nodes in and out ref
 	for zone in %Zones.get_children():
@@ -73,19 +68,12 @@ func set_player_datas():
 func update_world():
 	for node in world_datas["Nodes"]:
 		var node_datas : Dictionary = world_datas["Nodes"][node]
-		# Chairlifts activation
-		if node_datas["type"] == "Chairlift":
-			var chairlift = world_datas["Zones"][node_datas["zone_out"][0]]["path"]
-			# Animation
-			if "To" not in node or node in player_datas["unlocks"]:chairlift.unlock()
-			
-		# Maps
 		var path_in = world_datas["Zones"][node_datas["zone_in"]]["path"]
-		# Node
 		# Unknow
 		if node not in player_datas["finished_maps"]:
 			node_datas["node"].hide()
-			if path_in is Line2D:path_in.hide()
+			if path_in is Line2D:
+				path_in.hide()
 		# Finished on previous run
 		elif node not in player_datas["run_seen_maps"]:
 			node_datas["done"].hide()
@@ -94,11 +82,29 @@ func update_world():
 		# Seen this run
 		elif node not in player_datas["run_finished_maps"]:
 			for thing in ["done","valid"]:node_datas[thing].hide()
-			if "Boss" not in node:node_datas["stars"].hide()
 			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
-			if path_in is Line2D:path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
+			if "Boss" not in node:node_datas["stars"].hide()
+			if path_in is Line2D:
+				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
+				path_in.get_child(0).hide()
 		# Finished this run
-
+		elif node not in player_datas["course"]:
+			node_datas["done"].hide()
+			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
+			if "Boss" not in node:node_datas["stars"].stars_update(Global.current_profile["current_run"]["maps"][node]["objectives"])
+			if path_in is Line2D:
+				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
+				path_in.get_child(0).hide()
+		# Traveled
+		else:
+			if "Boss" not in node:node_datas["stars"].stars_update(Global.current_profile["current_run"]["maps"][node]["objectives"])
+		# Chairlifts specifics
+		if "Chairlift" in node:
+			# Anim
+			if "To" not in node or node in player_datas["unlocks"]:world_datas["Zones"][node_datas["zone_out"][0]]["path"].unlock()
+			# Path to final chairlift to see if previous map done
+			#if "To" in node
+		
 func on_zone_hover(zone:Area2D):pass
 func on_zone_exit(zone:Area2D):pass
 func on_zone_click(zone:Area2D):pass
