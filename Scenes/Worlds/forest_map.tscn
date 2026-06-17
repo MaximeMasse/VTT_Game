@@ -35,9 +35,9 @@ expand_mode = 1
 
 [node name="Avatar" type="Sprite2D" parent="." unique_id=2763985]
 unique_name_in_owner = true
+visible = false
 z_index = 50
 position = Vector2(366, 309.00003)
-scale = Vector2(0.055999998, 0.055999998)
 texture = ExtResource("3_g38t1")
 centered = false
 
@@ -233,8 +233,8 @@ texture_mode = 1
 joint_mode = 2
 
 [node name="Lock" type="Sprite2D" parent="Zones/1_ChairliftToDesert" unique_id=1645925090]
-z_index = 3
-position = Vector2(446, 317)
+z_index = 30
+position = Vector2(446, 320)
 scale = Vector2(0.11555985, 0.090820275)
 texture = ExtResource("16_d4lkq")
 

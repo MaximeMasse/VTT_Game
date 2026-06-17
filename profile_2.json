@@ -24,11 +24,13 @@
 	"crowns": 5.0,
 	"current_run": {
 		"current_day": {
-			"course": [],
-			"crowns": 0,
-			"money": 0,
+			"course": [
+				"0"
+			],
+			"crowns": 0.0,
+			"money": 0.0,
 			"node": "1",
-			"stars": 0,
+			"stars": 0.0,
 			"world": "Forest"
 		},
 		"maps": {
@@ -42,7 +44,7 @@
 					4.0,
 					6.0
 				],
-				"finished":true,
+				"finished": true,
 				"gaps": {
 					"on the Wooden Platform": true,
 					"over the Clouds": true,
@@ -57,12 +59,8 @@
 				]
 			},
 			"1": {
-				"bills": [
-					3.0,
-					4.0,
-					6.0
-				],
-				"finished":true,
+				"bills": [],
+				"finished": true,
 				"gaps": {
 
 				},
@@ -72,28 +70,27 @@
 				]
 			},
 			"2": {
-				"bills": [
-					2
-				],
-				"finished":false,
+				"bills": [],
+				"finished": false,
 				"gaps": {
 
 				},
 				"objectives": [
 					1.0,
-					3.0
+					3.0,
+					2.0
 				]
 			}
 		},
 		"money": 1100.0,
-		"stars": 5.0,
+		"stars": 8.0,
 		"unlocks": []
 	},
 	"id": 2.0,
 	"map_records": {
 		"0": {
 			"bills_caught": true,
-			"crowns_unlocked": 5,
+			"crowns_unlocked": 5.0,
 			"gaps_discovered": [
 				"over the Volcano",
 				"on the Wooden Platform",
@@ -107,13 +104,49 @@
 			"time": 2.35
 		},
 		"1": {
-
+			"bills_caught": true,
+			"crowns_unlocked": 5.0,
+			"gaps_discovered": [
+				"over the Volcano",
+				"on the Wooden Platform",
+				"over the Clouds"
+			],
+			"gaps_done": true,
+			"objectives_done": true,
+			"queen_score_beaten": true,
+			"queen_time_beaten": true,
+			"score": 31877.0,
+			"time": 2.35
 		},
 		"2": {
-
+			"bills_caught": true,
+			"crowns_unlocked": 5.0,
+			"gaps_discovered": [
+				"over the Volcano",
+				"on the Wooden Platform",
+				"over the Clouds"
+			],
+			"gaps_done": true,
+			"objectives_done": true,
+			"queen_score_beaten": true,
+			"queen_time_beaten": true,
+			"score": 31877.0,
+			"time": 2.0
 		},
 		"ForestBoss": {
-
+			"bills_caught": true,
+			"crowns_unlocked": 5,
+			"gaps_discovered": [
+				"over the Volcano",
+				"on the Wooden Platform",
+				"over the Clouds"
+			],
+			"gaps_done": true,
+			"objectives_done": true,
+			"queen_score_beaten": true,
+			"queen_time_beaten": true,
+			"score": 31877.0,
+			"time": 2.35
 		}
 	},
 	"name": "Juliette",

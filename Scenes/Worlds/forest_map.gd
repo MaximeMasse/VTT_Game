@@ -12,9 +12,12 @@ var running
 func _ready():
 	get_tree().debug_collisions_hint = false
 	running = false
+	# Change scene buttons
 	set_up_button(%ToVillageButton)
 	set_up_button(%Desert)
 	%Desert.hide()
+	# Travel update
+	if Global.current_node_is_map():Global.append_course()
 	# Ref names, nodes and zones, create outline.
 	# Node init, valid and stars, naming
 	for node in %Nodes.get_children():
@@ -79,30 +82,33 @@ func update_world():
 		var path_in = world_datas["Zones"][node_datas["zone_in"]]["path"]
 		# Unknow
 		if node not in player_datas["finished_maps"]:
+			for thing in ["done","valid"]: if node_datas.has(thing):node_datas[thing].hide()
 			node_datas["node"].hide()
 			if path_in is Line2D:
 				path_in.hide()
 		# Finished on previous run
 		elif node not in player_datas["run_seen_maps"]:
-			node_datas["done"].hide()
+			for thing in ["done","valid"]:node_datas[thing].hide()
 			node_datas["node"].modulate = Color(0.0, 0.0, 0.0, 1.0)
-			if path_in is Line2D:path_in.modulate = Color(0.0, 0.0, 0.0, 1.0)
+			if path_in is Line2D:
+				path_in.get_child(0).hide()
+				path_in.modulate = Color(0.0, 0.0, 0.0, 1.0)
 		# Seen this run
 		elif node not in player_datas["run_finished_maps"]:
 			for thing in ["done","valid"]:node_datas[thing].hide()
 			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 			if "Boss" not in node:node_datas["stars"].hide()
 			if path_in is Line2D:
-				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 				path_in.get_child(0).hide()
+				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 		# Finished this run
 		elif node not in player_datas["course"]:
 			node_datas["done"].hide()
 			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 			if "Boss" not in node:node_datas["stars"].stars_update(Global.current_profile["current_run"]["maps"][node]["objectives"])
 			if path_in is Line2D:
-				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 				path_in.get_child(0).hide()
+				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 		# Traveled
 		else:
 			if "Boss" not in node:node_datas["stars"].stars_update(Global.current_profile["current_run"]["maps"][node]["objectives"])
@@ -112,19 +118,21 @@ func update_world():
 			if "To" not in node or node in player_datas["unlocks"]:world_datas["Zones"][node_datas["zone_out"][0]]["path"].unlock()
 			# Path to final chairlift to see if previous map done
 			if "To" in node:
-				# Previous map seen this run
+				# Previous map finished this run
 				if path_in.name.split("_")[0] in player_datas["run_finished_maps"]:
 					path_in.show()
 					path_in.get_child(0).hide()
 					path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
-				# Previous map seen on previous run
+				# Previous map finished on previous run
 				elif path_in.name.split("_")[0] in player_datas["finished_maps"]:
 					path_in.show()
 					path_in.get_child(0).hide()
 					path_in.modulate = Color(0.0, 0.0, 0.0, 1.0)
+				# Hide lock if path hiden
+				else:path_in.get_parent().get_child(2).hide()
 
 func draw_new_paths():
-	print("\ndraw_new_paths :\nCurrent node : ",player_datas["node"])
+	print("\nDraw_new_paths :\nCurrent node : ",player_datas["node"])
 	# Out path of current node
 	for zone in world_datas["Nodes"][player_datas["node"]]["zone_out"]:
 		var destination : String = zone.name.split("_")[1] 
@@ -134,6 +142,12 @@ func draw_new_paths():
 			if destination not in player_datas["finished_maps"]:print("draw never seen path to : ",destination)
 			# Destination never seen this run
 			elif destination not in player_datas["run_seen_maps"]: print("draw never seen this run path to : ",destination)
+		# Map0 enlightment if hiden or black
+		elif not world_datas["Nodes"][destination]["node"].visible or\
+			world_datas["Nodes"][destination]["node"].modulate == Color(0.0, 0.0, 0.0, 1.0):
+				for child in world_datas["Nodes"][destination]["node"].get_children():child.hide()
+				world_datas["Nodes"][destination]["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
+				world_datas["Nodes"][destination]["node"].show()
 
 func set_active_zones():
 	world_datas["Nodes"][player_datas["node"]]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
@@ -164,18 +178,23 @@ func on_zone_click(zone:Area2D):
 		AudioManager.play_ui("click")
 		active_zones = {}
 		running = false
+		on_zone_exit(zone)
 		var origin : String = zone.name.split("_")[0] 
 		var destination : String = zone.name.split("_")[1]
-		world_datas["Nodes"][destination]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
+		Global.current_profile["current_run"]["current_day"]["node"] = destination
 		if "Chairlift" in origin:
+			AudioManager.play_sfx("chairlift")
 			world_datas["Zones"][zone]["path"].play()
-			await get_tree().create_timer(3).timeout
 			if "To" in origin:%Desert.show()
 			else:world_datas["Nodes"][destination]["node"].disabled = false
-		else:pass
+		else:
+			print("travel anim")
+		await get_tree().create_timer(3).timeout
+		world_datas["Nodes"][destination]["node"].disabled = false
+		world_datas["Zones"][zone]["path"].modulate = Color(1.0, 1.0, 1.0, 1.0)
+		world_datas["Nodes"][destination]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
 	else:AudioManager.play_ui("lock")
-		
-	
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

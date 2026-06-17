@@ -136,18 +136,6 @@ func start_mod(scene_name:String):
 	ONE_TIME_QUANTITY = BOOST_MAX_QUANTITY/ONE_TIME_RATIO
 	get_tree().change_scene_to_file(dico_scenes[scene_name])
 
-func get_current_map():return dico_maps[current_map]
-func get_sprites_path()->String:
-	if current_profile != {}:return "res://Avatar/Players/" + dico_avatars[int(current_profile["avatar"])] + "/"
-	else:return ""
-func get_profile_bike()->String:return dico_vélo[int(current_profile["bike_model"])]
-func get_profile_data(data:String)->String:return current_profile[data]
-
-func get_cp_names_and_ratio() -> Dictionary :
-	var cps_markers : Dictionary
-	for cp in map_data["cps"]:cps_markers[cp] = map_data["cps"][cp].global_position.x/map_data["finish"].global_position.x
-	return cps_markers
-
 func set_run():current_profile["current_run"] = current_profile.get("current_run",
 	{"maps":{},"unlocks":[],"money":100,"stars":0})
 
@@ -422,6 +410,8 @@ func check_map_record():
 func profile_update():
 	var new_map_data := previous_obj_and_bills.duplicate()
 	var new_map_record := previous_map_record.duplicate()
+	# Map finished
+	new_map_data["finished"] = true
 	# Map records
 	if new_best_time:new_map_record["time"] = race_time
 	if new_best_score:new_map_record["score"] = current_score
@@ -455,6 +445,21 @@ func profile_update():
 	# Profile update
 	current_profile["current_run"]["maps"][current_map] = new_map_data
 	current_profile["map_records"][current_map] = new_map_record
+
+func get_current_map():return dico_maps[current_map]
+func get_sprites_path()->String:
+	if current_profile != {}:return "res://Avatar/Players/" + dico_avatars[int(current_profile["avatar"])] + "/"
+	else:return ""
+func get_profile_bike()->String:return dico_vélo[int(current_profile["bike_model"])]
+func get_profile_data(data:String)->String:return current_profile[data]
+
+func get_cp_names_and_ratio() -> Dictionary :
+	var cps_markers : Dictionary
+	for cp in map_data["cps"]:cps_markers[cp] = map_data["cps"][cp].global_position.x/map_data["finish"].global_position.x
+	return cps_markers
+
+func current_node_is_map() -> bool:return current_profile["current_run"]["current_day"]["node"] in dico_maps.keys()
+func append_course():current_profile["current_run"]["current_day"]["course"].append(current_profile["current_run"]["current_day"]["node"])
 
 func format_time(t: float) -> String:
 	var minutes := int(t/60)

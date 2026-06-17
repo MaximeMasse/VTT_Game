@@ -3,14 +3,6 @@ extends Control
 # Character
 var choix_perso :int= 1
 
-# Mouse collision
-var active_zones : Array
-var hovered_zone: Area2D = null
-
-# Player position
-var current_world : Node2D
-var current_node : Control
-
 @onready var dico_menus := {
 		"MainMenu":%MainMenu,
 		"NewPlayer":%NewPlayer,
@@ -18,23 +10,6 @@ var current_node : Control
 		"Carrière":%Carriere,
 		"Chairlift":%ChairliftMenu,
 	}
-@onready var dico_zone_links := {
-		"_ForestChairlift" : {"activation_node":%_ForestChairlift,"destination_node":%Map_0_Button},
-		"0_1" : {"activation_node":%Map_0_Button,"destination_node":%Map_1_Button},
-		"1_2" : {"activation_node":%Map_1_Button,"destination_node":%Map_2_Button},
-		"2_ForestBoss" : {"activation_node":%Map_2_Button,"destination_node":%Map_ForestBoss_Button},
-		"1_ChairliftToDesert" : {"activation_node":%Map_1_Button,"destination_node":%_ChairliftToDesert},
-		"_ChairliftToDesert" : {"activation_node":%_ChairliftToDesert,"destination_node":%ToDesert},
-	}
-@onready var dico_worlds_names := {
-		"Forest":%ForestMap,
-		"Desert":%DesertMap,
-		"Icy":%IcyMap,
-		"Tropical":%TropicalMap
-	}
-var dico_nodes_names : Dictionary
-var worlds_tree : Dictionary
-
 
 func _ready():
 	#print(ProjectSettings.globalize_path("user://"))

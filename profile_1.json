@@ -21,10 +21,11 @@
 		"BOOST_MAX_QUANTITY": 5000.0,
 		"ONE_TIME_RATIO": 5.0
 	},
-	"crowns": 6.0,
+	"crowns": 8.0,
+
 	"id": 1.0,
-	"map_records": {"0":{}
-		
+	"map_records": {
+
 	},
 	"name": "Juliette",
 	"state": "tuto2",
