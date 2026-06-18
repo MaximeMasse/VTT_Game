@@ -1,5 +1,11 @@
 extends Node2D
 
+# Anim times
+@export var path_drawing_time : float = 3.0
+@export var path_riding_time : float = 3.0
+@export var to_chairlift_time : float = 1.5
+@export var to_chairlift_scale_factor : float = 0.7
+
 # Datas
 var world_datas : Dictionary = {"Nodes":{},"Zones":{}}
 var player_datas : Dictionary
@@ -16,12 +22,15 @@ func _ready():
 	set_up_button(%ToVillageButton)
 	set_up_button(%Desert)
 	%Desert.hide()
+	# Reset cam
+	%WorldCam.position_cam("full_screen")
 	# Travel update
 	if Global.current_node_is_map():Global.append_course()
 	# Ref names, nodes and zones, create outline.
 	# Node init, valid and stars, naming
 	for node in %Nodes.get_children():
 		var node_data : Dictionary = {"node":node,"zone_out":[]}
+		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		# Maps
 		if node is TextureButton:
 			set_up_button(node)
@@ -51,14 +60,12 @@ func _ready():
 	# Update world
 	update_world()
 	# Current node new paths and active zone
-	draw_new_paths()
-	# Active zones
-	set_active_zones()
+	await draw_new_paths()
 	# Debug print
-	print("Nodes :")
-	for node in world_datas["Nodes"]:print(node," : ",world_datas["Nodes"][node])
-	print("\nZones :")
-	for zone in world_datas["Zones"]:print(zone," : ",world_datas["Zones"][zone])
+	#print("Nodes :")
+	#for node in world_datas["Nodes"]:print(node," : ",world_datas["Nodes"][node])
+	#print("\nZones :")
+	#for zone in world_datas["Zones"]:print(zone," : ",world_datas["Zones"][zone])
 	print("\nPlayer datas : ",player_datas)
 	print("\nActives zones : ",active_zones)
 	running = true
@@ -77,6 +84,9 @@ func set_player_datas():
 	player_datas["unlocks"] = Global.current_profile["current_run"]["unlocks"]
 
 func update_world():
+	# Avatar position and skin
+	position_avatar_on_node(world_datas["Nodes"][player_datas["node"]]["node"])
+	# Nodes
 	for node in world_datas["Nodes"]:
 		var node_datas : Dictionary = world_datas["Nodes"][node]
 		var path_in = world_datas["Zones"][node_datas["zone_in"]]["path"]
@@ -91,7 +101,7 @@ func update_world():
 			for thing in ["done","valid"]:node_datas[thing].hide()
 			node_datas["node"].modulate = Color(0.0, 0.0, 0.0, 1.0)
 			if path_in is Line2D:
-				path_in.get_child(0).hide()
+				#path_in.get_child(0).hide()
 				path_in.modulate = Color(0.0, 0.0, 0.0, 1.0)
 		# Seen this run
 		elif node not in player_datas["run_finished_maps"]:
@@ -99,7 +109,7 @@ func update_world():
 			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 			if "Boss" not in node:node_datas["stars"].hide()
 			if path_in is Line2D:
-				path_in.get_child(0).hide()
+				#path_in.get_child(0).hide()
 				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 		# Finished this run
 		elif node not in player_datas["course"]:
@@ -107,10 +117,12 @@ func update_world():
 			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 			if "Boss" not in node:node_datas["stars"].stars_update(Global.current_profile["current_run"]["maps"][node]["objectives"])
 			if path_in is Line2D:
-				path_in.get_child(0).hide()
+				#path_in.get_child(0).hide()
 				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 		# Traveled
 		else:
+			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
+			if path_in is Line2D:draw_path(path_in,0,true)
 			if "Boss" not in node:node_datas["stars"].stars_update(Global.current_profile["current_run"]["maps"][node]["objectives"])
 		# Chairlifts specifics
 		if "Chairlift" in node:
@@ -121,37 +133,34 @@ func update_world():
 				# Previous map finished this run
 				if path_in.name.split("_")[0] in player_datas["run_finished_maps"]:
 					path_in.show()
-					path_in.get_child(0).hide()
+					#path_in.get_child(0).hide()
 					path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 				# Previous map finished on previous run
 				elif path_in.name.split("_")[0] in player_datas["finished_maps"]:
 					path_in.show()
-					path_in.get_child(0).hide()
+					#path_in.get_child(0).hide()
 					path_in.modulate = Color(0.0, 0.0, 0.0, 1.0)
 				# Hide lock if path hiden
 				else:path_in.get_parent().get_child(2).hide()
 
 func draw_new_paths():
 	print("\nDraw_new_paths :\nCurrent node : ",player_datas["node"])
+	world_datas["Nodes"][player_datas["node"]]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
 	# Out path of current node
 	for zone in world_datas["Nodes"][player_datas["node"]]["zone_out"]:
 		var destination : String = zone.name.split("_")[1] 
 		# Origin or destination not chairlift
 		if "Chairlift" not in zone.name:
 			# Destination never seen
-			if destination not in player_datas["finished_maps"]:print("draw never seen path to : ",destination)
-			# Destination never seen this run
-			elif destination not in player_datas["run_seen_maps"]: print("draw never seen this run path to : ",destination)
-		# Map0 enlightment if hiden or black
-		elif not world_datas["Nodes"][destination]["node"].visible or\
+			if destination not in player_datas["finished_maps"] or destination not in player_datas["run_seen_maps"]:
+				await draw_path(world_datas["Zones"][zone]["path"],path_drawing_time)
+		# Map enlightment if hiden or black
+		if not world_datas["Nodes"][destination]["node"].visible or\
 			world_datas["Nodes"][destination]["node"].modulate == Color(0.0, 0.0, 0.0, 1.0):
 				for child in world_datas["Nodes"][destination]["node"].get_children():child.hide()
 				world_datas["Nodes"][destination]["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 				world_datas["Nodes"][destination]["node"].show()
-
-func set_active_zones():
-	world_datas["Nodes"][player_datas["node"]]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
-	for zone in world_datas["Nodes"][player_datas["node"]]["zone_out"]:
+		# Active zones
 		active_zones[zone] = false if world_datas["Zones"][zone]["has_lock"] and\
 					zone.name.split("_")[1] not in player_datas["unlocks"] else true
 
@@ -176,21 +185,26 @@ func on_zone_exit(zone:Area2D):
 func on_zone_click(zone:Area2D):
 	if active_zones[zone] :
 		AudioManager.play_ui("click")
-		active_zones = {}
+		# Reset zone
 		running = false
+		hovered_zone = null
+		active_zones = {}
 		on_zone_exit(zone)
 		var origin : String = zone.name.split("_")[0] 
 		var destination : String = zone.name.split("_")[1]
 		Global.current_profile["current_run"]["current_day"]["node"] = destination
+		%WorldCam.position_cam(origin)
 		if "Chairlift" in origin:
 			AudioManager.play_sfx("chairlift")
-			world_datas["Zones"][zone]["path"].play()
+			move_avatar_to_chairlift(world_datas["Nodes"][origin]["node"])
+			await world_datas["Zones"][zone]["path"].play()
 			if "To" in origin:%Desert.show()
-			else:world_datas["Nodes"][destination]["node"].disabled = false
+			else:position_avatar_on_node(world_datas["Nodes"][destination]["node"])
 		else:
-			print("travel anim")
-		await get_tree().create_timer(3).timeout
+			world_datas["Nodes"][origin]["node"].modulate = Color(0.5, 0.5, 0.5, 1.0) 
+			await draw_path(world_datas["Zones"][zone]["path"],path_riding_time,true,true)
 		world_datas["Nodes"][destination]["node"].disabled = false
+		world_datas["Nodes"][destination]["node"].mouse_filter = Control.MOUSE_FILTER_STOP
 		world_datas["Zones"][zone]["path"].modulate = Color(1.0, 1.0, 1.0, 1.0)
 		world_datas["Nodes"][destination]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
 	else:AudioManager.play_ui("lock")
@@ -231,22 +245,65 @@ func create_outline(zone:Area2D) -> Line2D :
 		index += 1
 	return outline
 
-func draw_path(path:Line2D,duration:float):
+func position_avatar_on_node(node:Control):
+	%Avatar.texture = load(Global.get_sprites_path() + "Avatar.png")
+	%Avatar.global_position = node.global_position + Vector2(40,25)
+	%Avatar.scale = Vector2(0.1,0.1) * node.scale.x
+	%Avatar.show()
+
+
+func move_avatar_to_chairlift(node:Control):
+	var frame_rate : float = 60 # FPS
+	var frame_distance:float= (node.global_position - %Avatar.global_position).length() / (frame_rate * to_chairlift_time)
+	var final_scale : Vector2 = to_chairlift_scale_factor * %Avatar.scale
+	var frame_scaling:float= (%Avatar.scale - final_scale).length() / (frame_rate * to_chairlift_time)
+	%Avatar.texture = load(Global.get_sprites_path() + "Avatar_back.png")
+	while %Avatar.global_position != node.global_position:
+		%Avatar.global_position = %Avatar.global_position.move_toward(node.global_position,frame_distance)
+		%Avatar.scale = %Avatar.scale.move_toward(final_scale,frame_scaling)
+		await get_tree().create_timer(1/frame_rate).timeout
+	%Avatar.hide()
+
+func draw_path(path:Line2D,duration:float,dashed: bool = false,bike: bool = false):
 	var path_points : PackedVector2Array = path.points
 	var copy_line := Line2D.new()
+	var biker : Sprite2D
+	var previous_point : Vector2
+	var path_direction : Vector2
+	if bike:
+		biker = Sprite2D.new()
+		biker.texture = load(Global.get_sprites_path()+"Avatar_bike.png")
+		biker.scale = Vector2(0.1,0.1)
+		path.get_parent().add_child(biker)
 	path.get_parent().add_child(copy_line)
 	var drawing_frequency : float = duration/path_points.size()
 	# Style copy
+	if dashed :copy_line.texture = load("res://Images/Menus/Maps/DashLines/textured_dashed_line_backless.png")
+	else:copy_line.texture = path.texture
+	copy_line.texture_mode = path.texture_mode
+	copy_line.texture_repeat = path.texture_repeat
 	copy_line.position = path.position
 	copy_line.z_index = path.z_index
 	copy_line.z_as_relative = path.z_as_relative
 	copy_line.width = path.width
 	# Drawing
-	var index : int = 0
-	while index < path_points.size():
+	if drawing_frequency == 0.0:copy_line.points = path.points
+	else:
+		var index : int = 0
+		# First point for bike position
+		if bike:previous_point = path_points[index]
 		copy_line.add_point(path_points[index])
 		index += 1
 		await get_tree().create_timer(drawing_frequency).timeout
+		while index < path_points.size():
+			copy_line.add_point(path_points[index])
+			if bike:
+				path_direction = path_points[index] - previous_point
+				previous_point = path_points[index]
+				biker.position = path.position + previous_point
+				biker.rotation = path_direction.angle()
+			index += 1
+			await get_tree().create_timer(drawing_frequency).timeout
 
 func set_up_button(node:BaseButton):
 	node.mouse_entered.connect(func(): on_button_hover(node))

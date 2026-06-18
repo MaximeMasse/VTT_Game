@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://pgnepxox4tv0" path="res://Images/Menus/Maps/Chairlift/Base.png" id="3_i3el5"]
 [ext_resource type="Texture2D" uid="uid://i33v3iron58u" path="res://Images/Menus/Maps/Chairlift/Chair.png" id="4_64rhq"]
 [ext_resource type="Texture2D" uid="uid://cu0e61qffkkku" path="res://Images/Menus/Maps/Chairlift/PoleHead.png" id="5_t257g"]
+[ext_resource type="Texture2D" uid="uid://pc2iudw65csx" path="res://Avatar/Players/Man/Avatar_backseat.png" id="5_tj7bi"]
 [ext_resource type="Texture2D" uid="uid://oc6hoxs4lwdt" path="res://Images/Menus/Maps/Chairlift/Pole.png" id="6_g2an0"]
 
 [sub_resource type="Animation" id="Animation_xw0g4"]
@@ -225,6 +226,18 @@ tracks/17/keys = {
 "update": 1,
 "values": [-3]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Chairlift2/Chair4/Avatar:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_dwhl7"]
 resource_name = "on"
@@ -444,6 +457,18 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [-3, -2, -2, -2, -2, -2, -2, -4, -4, -4, -4, -6, -6, -6, -6, -8, -7, -6, -6, -5, -5, -4, -4, -3]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Chairlift2/Chair4/Avatar:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 1.5000001, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_8gk4c"]
@@ -666,6 +691,18 @@ tracks/17/keys = {
 "update": 1,
 "values": [-3, -2, -2, -2, -2, -2, -2, -4, -4, -4, -4, -6, -6, -6, -6, -8, -7, -6, -6, -5, -5, -4, -4, -3]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Chairlift2/Chair4/Avatar:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7qlu"]
 _data = {
@@ -709,7 +746,7 @@ z_index = -2
 layout_mode = 0
 offset_left = 16.0
 offset_top = 0.5
-offset_right = 64.113754
+offset_right = 64.11286
 offset_bottom = 36.268555
 mouse_filter = 2
 texture = ExtResource("4_64rhq")
@@ -720,7 +757,7 @@ z_index = -4
 layout_mode = 0
 offset_left = 26.500004
 offset_top = -75.0
-offset_right = 74.617615
+offset_right = 74.617676
 offset_bottom = -39.231445
 scale = Vector2(0.8, 0.8)
 mouse_filter = 2
@@ -732,7 +769,7 @@ z_index = -6
 layout_mode = 0
 offset_left = 85.5
 offset_top = -149.5
-offset_right = 133.61697
+offset_right = 133.61856
 offset_bottom = -113.731445
 scale = Vector2(0.6, 0.6)
 mouse_filter = 2
@@ -744,11 +781,24 @@ z_index = -7
 layout_mode = 0
 offset_left = 149.0
 offset_top = -202.50002
-offset_right = 197.11263
+offset_right = 197.11406
 offset_bottom = -166.73146
 scale = Vector2(-0.4, 0.4)
 mouse_filter = 2
 texture = ExtResource("4_64rhq")
+expand_mode = 1
+
+[node name="Avatar" type="TextureRect" parent="Chairlift2/Chair4" unique_id=2144942084]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = 3.07693
+offset_top = -3.0769596
+offset_right = 35.934048
+offset_bottom = 29.780157
+scale = Vector2(1.2799852, 1.2959601)
+texture = ExtResource("5_tj7bi")
 expand_mode = 1
 
 [node name="Chair5" type="TextureRect" parent="Chairlift2" unique_id=82049757]
@@ -756,7 +806,7 @@ z_index = -5
 layout_mode = 0
 offset_left = 125.5
 offset_top = -140.5
-offset_right = 173.63849
+offset_right = 173.63823
 offset_bottom = -104.731445
 scale = Vector2(-0.6, 0.6)
 mouse_filter = 2
@@ -768,7 +818,7 @@ z_index = -3
 layout_mode = 0
 offset_left = 81.0
 offset_top = -66.0
-offset_right = 129.1194
+offset_right = 129.11906
 offset_bottom = -30.231445
 scale = Vector2(-0.8, 0.8)
 mouse_filter = 2

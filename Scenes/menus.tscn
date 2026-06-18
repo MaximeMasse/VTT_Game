@@ -37,8 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://r8arua4apxu0" path="res://Images/Menus/Backgrounds/Forest_Background.png" id="35_kyysu"]
 [ext_resource type="PackedScene" uid="uid://ysg3q6oybscp" path="res://Scenes/Dialogs/dialog_chairlift.tscn" id="36_6glyx"]
 [ext_resource type="Texture2D" uid="uid://tiqsvtoqlua4" path="res://Images/Menus/Maps/Pannels/Back_village.png" id="36_r06vw"]
-[ext_resource type="PackedScene" uid="uid://bhqr5miqeyypx" path="res://Scenes/Misc/ForestChairlift.tscn" id="37_ry14l"]
-[ext_resource type="PackedScene" uid="uid://cbbv0j2n3u25e" path="res://Scenes/Misc/ChairliftToDesert.tscn" id="38_v2bxe"]
 [ext_resource type="Texture2D" uid="uid://o40nt0tl88xs" path="res://Images/Menus/Controls/down_arrow.png" id="47_2apoy"]
 
 [sub_resource type="SystemFont" id="SystemFont_jw3nv"]
@@ -391,22 +389,6 @@ offset_right = 1280.0
 offset_bottom = 720.0
 texture = ExtResource("35_kyysu")
 expand_mode = 1
-
-[node name="Nodes" type="Control" parent="ChairliftMenu/ForestMap" unique_id=1258441414]
-unique_name_in_owner = true
-z_index = 1
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="_ForestChairlift" parent="ChairliftMenu/ForestMap/Nodes" unique_id=53479964 instance=ExtResource("37_ry14l")]
-unique_name_in_owner = true
-layout_mode = 1
-
-[node name="_ChairliftToDesert" parent="ChairliftMenu/ForestMap/Nodes" unique_id=96286363 instance=ExtResource("38_v2bxe")]
-unique_name_in_owner = true
-layout_mode = 1
 
 [node name="ToVillageButton" type="TextureButton" parent="ChairliftMenu" unique_id=1796053751]
 offset_left = 473.99997

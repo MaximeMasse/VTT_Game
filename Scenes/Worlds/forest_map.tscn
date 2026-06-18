@@ -5,8 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bhqr5miqeyypx" path="res://Scenes/Misc/ForestChairlift.tscn" id="2_e0t5s"]
 [ext_resource type="PackedScene" uid="uid://cbbv0j2n3u25e" path="res://Scenes/Misc/ChairliftToDesert.tscn" id="3_2ym8t"]
 [ext_resource type="Texture2D" uid="uid://tat201xsyt04" path="res://Avatar/Players/Man/Avatar.png" id="3_g38t1"]
+[ext_resource type="Script" uid="uid://bmf486wdqki63" path="res://Scenes/Worlds/world_cam.gd" id="3_q0oio"]
 [ext_resource type="Texture2D" uid="uid://bfh0cog4730ck" path="res://Images/Menus/Maps/MapRings/Map0.png" id="3_rosm6"]
 [ext_resource type="Texture2D" uid="uid://dj2hhwrvp07ee" path="res://Images/Menus/Maps/MapRings/Map0_focused.png" id="4_5uva7"]
+[ext_resource type="Texture2D" uid="uid://dg0y8wwil5yc5" path="res://Avatar/Players/Man/Avatar_bike.png" id="4_dwbos"]
 [ext_resource type="Texture2D" uid="uid://bjvfrlumxswqx" path="res://Images/Menus/Maps/MapRings/Map_valid.png" id="6_g38t1"]
 [ext_resource type="PackedScene" uid="uid://bea1hvd32kipw" path="res://Scenes/map_stars.tscn" id="7_7s3gl"]
 [ext_resource type="Texture2D" uid="uid://dec1h36l5lilj" path="res://Images/Menus/Maps/Pannels/Done.png" id="8_2ym8t"]
@@ -17,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://mi1cnglkixp0" path="res://Images/Menus/Maps/MapRings/Map3.png" id="12_8i06k"]
 [ext_resource type="Texture2D" uid="uid://bao4g4uayglvd" path="res://Images/Menus/Maps/MapRings/Map3_focused.png" id="13_1bcpi"]
 [ext_resource type="Texture2D" uid="uid://csv76qg6eonqu" path="res://Images/Menus/Controls/up_arrow.png" id="14_su80n"]
-[ext_resource type="Texture2D" uid="uid://cdmncn04x4lum" path="res://Images/Menus/Maps/DashLines/textured_dashed_line_backless.png" id="15_5uva7"]
 [ext_resource type="Texture2D" uid="uid://csf252yaa7xrd" path="res://Images/Menus/Maps/Pannels/To_Desert.png" id="15_ckb1c"]
 [ext_resource type="Texture2D" uid="uid://iau7wlipp6ks" path="res://Images/Menus/Lock.png" id="16_d4lkq"]
 [ext_resource type="Texture2D" uid="uid://bu1cop58p6sy" path="res://Images/Menus/Maps/DashLines/BackRoad_texture.png" id="16_g38t1"]
@@ -33,13 +34,27 @@ offset_bottom = 720.0
 texture = ExtResource("1_sp66i")
 expand_mode = 1
 
+[node name="WorldCam" type="Camera2D" parent="." unique_id=770955827]
+unique_name_in_owner = true
+position = Vector2(1145, 569)
+zoom = Vector2(1.2, 1.2)
+script = ExtResource("3_q0oio")
+
 [node name="Avatar" type="Sprite2D" parent="." unique_id=2763985]
 unique_name_in_owner = true
-visible = false
 z_index = 50
-position = Vector2(366, 309.00003)
+position = Vector2(356, 329)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_g38t1")
 centered = false
+
+[node name="Avatarbike" type="Sprite2D" parent="." unique_id=681197340]
+unique_name_in_owner = true
+z_index = 50
+position = Vector2(788, 343)
+rotation = 0.74629974
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_dwbos")
 
 [node name="Nodes" type="Control" parent="." unique_id=284962262]
 unique_name_in_owner = true
@@ -185,13 +200,6 @@ texture = ExtResource("16_g38t1")
 texture_mode = 1
 joint_mode = 2
 
-[node name="0_1" type="Line2D" parent="Zones/0_1/0_1" unique_id=1708288394]
-texture_repeat = 2
-points = PackedVector2Array(37, 162, 17, 169, -4, 173, -17, 171, -25, 169, -39, 167, -48, 167, -56, 169, -61, 169, -67, 168, -77, 166, -87, 165, -98, 164, -112, 163)
-texture = ExtResource("15_5uva7")
-texture_mode = 1
-joint_mode = 2
-
 [node name="1_2" type="Area2D" parent="Zones" unique_id=1366935281]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/1_2" unique_id=439321891]
@@ -205,13 +213,6 @@ texture = ExtResource("16_g38t1")
 texture_mode = 1
 joint_mode = 2
 
-[node name="1_2" type="Line2D" parent="Zones/1_2/1_2" unique_id=292936610]
-texture_repeat = 2
-points = PackedVector2Array(147, 155, 159, 153, 165, 150, 173, 147, 179, 146, 184, 144, 191, 143, 198, 143, 205, 144, 215, 146, 219, 148, 224, 149, 227, 149, 232, 150, 239, 150, 244, 150, 252, 151, 258, 153, 267, 154, 273, 155, 279, 160, 282, 164, 286, 165, 292, 168, 297, 171, 296, 174, 291, 176, 286, 178, 282, 186, 287, 187, 297, 189, 306, 189, 317, 191, 327, 193, 338, 195, 344, 195, 358, 196, 366, 199, 377, 203, 385, 206, 394, 208, 404, 209, 411, 210, 421, 210, 427, 209, 431, 206, 431, 202, 431, 197, 429, 189, 428, 184, 431, 180, 436, 178, 444, 177, 451, 177, 459, 179, 472, 180, 479, 179, 485, 176, 487, 172, 487, 168, 483, 164, 478, 159, 476, 154, 478, 150, 484, 146, 489, 143, 495, 141, 500, 140)
-texture = ExtResource("15_5uva7")
-texture_mode = 1
-joint_mode = 2
-
 [node name="1_ChairliftToDesert" type="Area2D" parent="Zones" unique_id=1353562579]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/1_ChairliftToDesert" unique_id=1596455347]
@@ -222,13 +223,6 @@ texture_repeat = 2
 position = Vector2(491, 181)
 points = PackedVector2Array(21, 139, 2, 136, -11, 134, -22, 132, -35, 134, -47, 138, -57, 142, -67, 146, -79, 152, -86, 159, -90, 166, -93, 170, -99, 175, -107, 175)
 texture = ExtResource("16_g38t1")
-texture_mode = 1
-joint_mode = 2
-
-[node name="1_ChairliftToDesert" type="Line2D" parent="Zones/1_ChairliftToDesert/1_ChairliftToDesert" unique_id=1848142503]
-texture_repeat = 2
-points = PackedVector2Array(21, 139, 2, 136, -11, 134, -22, 132, -35, 134, -47, 138, -57, 142, -67, 146, -79, 152, -86, 159, -90, 166, -93, 170, -99, 175, -107, 175)
-texture = ExtResource("15_5uva7")
 texture_mode = 1
 joint_mode = 2
 
@@ -248,13 +242,6 @@ texture_repeat = 2
 position = Vector2(976, 217)
 points = PackedVector2Array(87, 186, 87, 192, 86, 195, 84, 197, 79, 200, 71, 202, 66, 204, 56, 205, 50, 206, 43, 210, 38, 213, 33, 216, 23, 219, 7, 219, -5, 216, -15, 214, -27, 210, -40, 208, -51, 208, -58, 210, -62, 213, -64, 218, -48, 228, -36, 229, -25, 228, -18, 227, -11, 227, -3, 231, 2, 234, 9, 237, 20, 240, 33, 242, 43, 244, 59, 245, 70, 249, 81, 254, 86, 258, 85, 265, 78, 274, 70, 281, 60, 287, 45, 291, 35, 295, 25, 298, 14, 301, 6, 304, 1, 306)
 texture = ExtResource("16_g38t1")
-texture_mode = 1
-joint_mode = 2
-
-[node name="2_ForestBoss" type="Line2D" parent="Zones/2_ForestBoss/2_ForestBoss" unique_id=104540431]
-texture_repeat = 2
-points = PackedVector2Array(87, 186, 87, 192, 86, 195, 84, 197, 79, 200, 71, 202, 66, 204, 56, 205, 50, 206, 43, 210, 38, 213, 33, 216, 23, 219, 7, 219, -5, 216, -15, 214, -27, 210, -40, 208, -51, 208, -58, 210, -62, 213, -64, 218, -48, 228, -36, 229, -25, 228, -18, 227, -11, 227, -3, 231, 2, 234, 9, 237, 20, 240, 33, 242, 43, 244, 59, 245, 70, 249, 81, 254, 86, 258, 85, 265, 78, 274, 70, 281, 60, 287, 45, 291, 35, 295, 25, 298, 14, 301, 6, 304, 1, 306)
-texture = ExtResource("15_5uva7")
 texture_mode = 1
 joint_mode = 2
 
