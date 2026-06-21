@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxkg1885rmyt4"
-path="res://.godot/imported/Montagnes.png-e424d2d502985adad69b6e1ce69feb5e.ctex"
+uid="uid://cawv4m2tm612k"
+path="res://.godot/imported/Forest_6.png-39a40448b85e2cbef51ca7bad175afbd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Mapping/Fonds/Montagnes.png"
-dest_files=["res://.godot/imported/Montagnes.png-e424d2d502985adad69b6e1ce69feb5e.ctex"]
+source_file="res://Images/Mapping/Cover/Forest_6.png"
+dest_files=["res://.godot/imported/Forest_6.png-39a40448b85e2cbef51ca7bad175afbd.ctex"]
 
 [params]
 

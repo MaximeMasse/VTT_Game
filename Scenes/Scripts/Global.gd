@@ -1,7 +1,7 @@
 extends Node
 
 # Config
-var debug : bool = true
+var debug : bool = false
 const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}
@@ -97,10 +97,10 @@ var tricks_values : Dictionary = {
 
 # Dicos
 var dico_maps := {
-	"0":"res://Maps/map_0.tscn",
-	"1":"res://Maps/map_1.tscn",
-	"2":"res://Maps/map_1.tscn",
-	"ForestBoss":"res://Maps/map_1.tscn",
+	"Map 0":"res://Maps/map_0.tscn",
+	"Map 1":"res://Maps/map_1.tscn",
+	"Map 2":"res://Maps/map_1.tscn",
+	"Boss 1 Map":"res://Maps/map_1.tscn",
 }
 var dico_vélo := {
 	0:"res://Bikes/bike_0.tscn",
@@ -140,7 +140,7 @@ func set_run():current_profile["current_run"] = current_profile.get("current_run
 	{"maps":{},"unlocks":[],"money":100,"stars":0})
 
 func set_day():current_profile["current_run"]["current_day"] = current_profile["current_run"].get("current_day",
-	{"course":[],"world":"Forest","node":"ForestChairlift","money":0,"stars":0,"crowns":0}) 
+	{"course":[],"world":"Forest","node":"Chairlift","money":0,"stars":0,"crowns":0}) 
 
 func set_start_values():
 	is_grabbed = false
@@ -185,6 +185,7 @@ func handle_crash():
 
 func checkpoint_update(cp : String,min_speed : float = 0):
 	if current_cp != cp:
+		AudioManager.play_sfx("cp")
 		current_cp = cp
 		cp_player_speed =  min_speed * vitesse.normalized() if vitesse.length() < min_speed else vitesse
 		cp_player_pos = player_position

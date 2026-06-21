@@ -77,6 +77,7 @@ func restart():
 	%HUD.reset()
 	load_map()
 	load_bike()
+	start_countdown()
 	%HUD.update_score(Global.current_score)
 	is_finished = false
 
@@ -182,7 +183,7 @@ func load_bike():
 	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
 	Global.set_start_values()
 	start_countdown()
-	if Global.debug :
+	if Global.debug and Global.current_profile["bike_model"] != 0.0 :
 		velo_courant.global_position = map_courante.debug_start_position
 		velo_courant.cadre.linear_velocity = map_courante.debug_start_speed * Vector2.RIGHT / (ECHELLE * 3.6)
 
@@ -205,13 +206,18 @@ func respawn_bike():
 	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (ECHELLE * 3.6)
 
 func start_countdown():
+	if Global.debug:
+		velo_courant.can_drive = true
+		race_started = true
+		%Ingame_Label.hide()
+		AudioManager.play_music(Global.current_map)
+		return
 	race_started = false
 	%Ingame_Label.show()
-	var duration : float = 0 if Global.debug else 1
 	for i in [3, 2, 1]:
 		%Ingame_Label.text = str(i)
 		AudioManager.play_sfx(str(i))
-		await get_tree().create_timer(duration).timeout
+		await get_tree().create_timer(1).timeout
 	%Ingame_Label.text = "GO !"
 	AudioManager.play_sfx("Go")
 	AudioManager.play_sfx("horn")
@@ -219,7 +225,7 @@ func start_countdown():
 	race_started = true
 	await get_tree().create_timer(1).timeout
 	%Ingame_Label.hide()
-	AudioManager.play_music("Map_" + str(Global.current_map))
+	AudioManager.play_music(Global.current_map)
 
 func disable_inputs_for_x_second(x:float):
 	velo_courant.input_enabled = false

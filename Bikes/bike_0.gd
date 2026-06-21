@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var cadre := %Cadre
+var input_enabled : bool
 
 var can_drive := false
 var couple_cadre_actuel :float = 0.0

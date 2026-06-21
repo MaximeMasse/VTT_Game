@@ -89,19 +89,21 @@ func _ready():
 		"bills": {},
 		"cps":{
 			"cp1": %Checkpoint_1,
+			"cp2": %Checkpoint_2,
+			"cp3": %Checkpoint_3,
 			},
-		"gaps" : ["over the Volcano","on the Wooden Platform","over the Clouds"],
+		"gaps" : ["the 1st Platform","",""],
 		"target_score" : 10000,
 		"target_time" : 60,
 		"target_score_and_time" : [5000,120],
-		"collectible" : "Golden Banana",
-		"special_trick" : {"trick":"Frontflip","spot":"over the Volcano"},
+		"collectible" : "Shiny Blue Bird",
+		"special_trick" : {"trick":"Wheelie","spot":"the 1st Platform"},
 		"queen_time":35,
 		"queen_score":30000
 		}
 	
 	# Collectible loading
-	var dico : Dictionary = Global.current_profile["current_run"]["maps"][Global.current_map]
+	var dico : Dictionary = Global.current_profile["current_run"]["maps"].get(Global.current_map,{"bills":[],"objectives":[]})
 	for bill : Area2D in %Bills.get_children():
 		bill.id = float(bill.get_index())
 		map_data["bills"][bill.id] = bill.value
@@ -118,9 +120,13 @@ func _on_finish_body_entered(_body):
 
 # CPs
 func _on_checkpoint_1_body_entered(_body):Global.checkpoint_update("cp1")
+func _on_checkpoint_2_body_entered(body):Global.checkpoint_update("cp2")
+func _on_checkpoint_3_body_entered(body):Global.checkpoint_update("cp3")
 
 # Collectible
 func return_collectible():%Bird.reset()
 func store_collectible():%Bird.store()
 
 # Gaps
+func _on_st_platform_body_entered(body):gap_entry.emit("the 1st Platform")
+func _on_st_platform_body_exited(body):gap_exit.emit("the 1st Platform")

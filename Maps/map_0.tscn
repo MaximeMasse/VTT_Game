@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b73u573tnpyi1" path="res://Images/Mapping/Cover/rock_line_1.png" id="9_2k2xf"]
 [ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="9_4hqvm"]
 [ext_resource type="Texture2D" uid="uid://vrrxlv0cap0h" path="res://Images/Mapping/Assets/Rocks/rock_big_1.png" id="9_y2cw0"]
-[ext_resource type="Texture2D" uid="uid://b60tpv2slrwef" path="res://Images/Mapping/Fonds/Fond_montagnes.png" id="10_2k2xf"]
+[ext_resource type="Texture2D" path="res://Images/Mapping/Fonds/Fond_montagnes.png" id="10_2k2xf"]
 [ext_resource type="Texture2D" uid="uid://bb53ivx7kwmg7" path="res://Images/Mapping/Assets/Rocks/rock_small_1.png" id="11_6tt68"]
 [ext_resource type="PackedScene" uid="uid://bj7vagcb8aebw" path="res://Scenes/Misc/100bill.tscn" id="11_xkbuu"]
 [ext_resource type="PackedScene" uid="uid://bfjb48yf137xj" path="res://Scenes/Misc/50bill.tscn" id="11_yncro"]
@@ -38,11 +38,11 @@
 [ext_resource type="Texture2D" uid="uid://cx4dshvuh8its" path="res://Images/Mapping/Assets/Pannels/Down.png" id="24_o1mje"]
 [ext_resource type="Texture2D" uid="uid://ch02ec022aunp" path="res://Images/Mapping/Assets/Pannels/Brake.png" id="25_2xn1y"]
 [ext_resource type="Texture2D" uid="uid://dv2sapakursy5" path="res://Images/Mapping/Assets/Pannels/Cliff.png" id="26_2wbil"]
-[ext_resource type="Texture2D" uid="uid://cwexp7uo8isb8" path="res://Images/Mapping/Fonds/Background_landscape.png" id="29_2xn1y"]
 [ext_resource type="Texture2D" uid="uid://brg38ffdjplxy" path="res://Images/Mapping/Assets/Rocks/Cliff.png" id="30_2xn1y"]
 [ext_resource type="Texture2D" uid="uid://ca34rlo7rwvyg" path="res://Images/Mapping/Cover/Chairlift_exit.png" id="32_e3fhd"]
 [ext_resource type="PackedScene" uid="uid://bsfq0w2nfdy72" path="res://Scenes/Misc/banana.tscn" id="33_4wpxc"]
 [ext_resource type="Script" uid="uid://livr32df55qj" path="res://Maps/debug_start.gd" id="35_wrsql"]
+[ext_resource type="Texture2D" uid="uid://dnp4lgmqclps1" path="res://Images/Mapping/Fonds/Skys/Cloud_sky_morning.png" id="41_yncro"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8lorq"]
 a = Vector2(269.96777, 30.290344)
@@ -894,12 +894,11 @@ texture = ExtResource("32_e3fhd")
 [node name="Ciel" type="ParallaxLayer" parent="ParallaxBackground" unique_id=146799377]
 position = Vector2(-3, -3)
 motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(3070, 0)
+motion_mirroring = Vector2(4608, 3072)
 
-[node name="BackgroundLandscape" type="Sprite2D" parent="ParallaxBackground/Ciel" unique_id=1818437109]
-position = Vector2(15, 651)
-scale = Vector2(2, 2.3457031)
-texture = ExtResource("29_2xn1y")
+[node name="CloudSkyMorning" type="Sprite2D" parent="ParallaxBackground/Ciel" unique_id=1023717731]
+scale = Vector2(3, 3)
+texture = ExtResource("41_yncro")
 
 [node name="Montagnes" type="ParallaxLayer" parent="ParallaxBackground" unique_id=691336840]
 motion_scale = Vector2(0.5, 0.5)

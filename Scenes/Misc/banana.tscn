@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b3uicjbbxsx1k" path="res://Images/Mapping/Collectibles/Banana/banana13.png" id="14_y0ib3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xpjo"]
-radius = 26.019224
+radius = 38.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d0r3s"]
 animations = [{
@@ -167,7 +167,7 @@ shape = SubResource("CircleShape2D_8xpjo")
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_d0r3s")
 autoplay = "default"
-frame_progress = 0.287141
+frame_progress = 0.7768398
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1187395376]
 unique_name_in_owner = true

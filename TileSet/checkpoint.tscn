@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dkbp55uj5ch0u" path="res://Images/Mapping/Assets/Flags/cp_front_2.png" id="2_lrb17"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xrx5v"]
-a = Vector2(0, 128)
-b = Vector2(1, -598)
+a = Vector2(0, 232)
+b = Vector2(0, -598)
 
 [node name="Checkpoint" type="Area2D" unique_id=1899925259]
 collision_layer = 0
@@ -16,12 +16,12 @@ shape = SubResource("SegmentShape2D_xrx5v")
 
 [node name="CpBack" type="Sprite2D" parent="." unique_id=2121103637]
 z_index = -10
-position = Vector2(23.99997, -49.999996)
-scale = Vector2(0.4, 1.3)
+position = Vector2(53.550003, -130)
+scale = Vector2(0.6594462, 1.1740228)
 texture = ExtResource("1_yw0ko")
 
 [node name="CpFront" type="Sprite2D" parent="." unique_id=1268092869]
 z_index = 10
-position = Vector2(-51.999996, 75)
-scale = Vector2(0.54090947, 1.3)
+position = Vector2(-175, -13)
+scale = Vector2(0.78223926, 1.184466)
 texture = ExtResource("2_lrb17")

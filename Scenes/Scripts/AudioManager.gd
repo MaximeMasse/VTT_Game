@@ -5,12 +5,15 @@ var dico_music := {
 	"MainMenu": preload("res://Sound/Music/awesomeness.wav"),
 	"Victory": preload("res://Sound/Music/Victory_music.wav"),
 	"Tuto": preload("res://Sound/Music/Tuto.wav"),
-	"Map_0": preload("res://Sound/Music/Map_0.mp3"),
-	"Map_1": preload("res://Sound/Music/Map_1.mp3"),
-	"Map_2": preload("res://Sound/Music/Map_2.mp3"),
-	"Map_ForestBoss": preload("res://Sound/Music/Map_2.mp3")
+	"Map 0": preload("res://Sound/Music/Map_0.mp3"),
+	"Map 1": preload("res://Sound/Music/Map_1.mp3"),
+	"Map 2": preload("res://Sound/Music/Map_2.mp3"),
+	"Boss 1 Map": preload("res://Sound/Music/Map_2.mp3")
 }
 var dico_sfx := {
+	"unlock": preload("res://Sound/SFX/unlock.wav"),
+	"cp": preload("res://Sound/SFX/cp_valid.mp3"),
+	"woosh": preload("res://Sound/SFX/woosh.mp3"),
 	"chairlift": preload("res://Sound/SFX/chairlift.wav"),
 	"fireworks": preload("res://Sound/SFX/fireworks.wav"),
 	"3": preload("res://Sound/SFX/Start/3.wav"),
@@ -103,7 +106,6 @@ func play_music(music):
 	var stream = dico_music[music]
 	if music_player.stream == stream and music_player.playing:
 		return
-
 	music_player.stream = stream
 	music_player.play()
 

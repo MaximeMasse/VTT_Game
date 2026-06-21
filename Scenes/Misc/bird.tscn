@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cn7cm1g6c7esc" path="res://Images/Mapping/Collectibles/Bird/bird11.png" id="12_04t0e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xpjo"]
-radius = 26.019224
+radius = 38.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_47pri"]
 animations = [{
@@ -154,7 +154,8 @@ shape = SubResource("CircleShape2D_8xpjo")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=382631478]
 scale = Vector2(0.06, 0.06)
 sprite_frames = SubResource("SpriteFrames_47pri")
-frame_progress = 0.8525244
+autoplay = "default"
+frame_progress = 0.25968027
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1187395376]
 unique_name_in_owner = true

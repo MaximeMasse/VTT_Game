@@ -1,19 +1,28 @@
 extends Node2D
 
 # Anim times
-@export var path_drawing_time : float = 3.0
-@export var path_riding_time : float = 3.0
-@export var to_chairlift_time : float = 1.5
-@export var to_chairlift_scale_factor : float = 0.7
+var path_drawing_time : float = 3.0 if not Global.debug else 0.0
+var path_riding_time : float = 5.0 if not Global.debug else 0.0
+var to_chairlift_time : float = 1.5 if not Global.debug else 0.0
+var to_chairlift_scale_factor : float = 0.7
 
 # Datas
-var world_datas : Dictionary = {"Nodes":{},"Zones":{}}
+var world_datas : Dictionary = {"Nodes":{},"Zones":{},"start":"Chairlift"}
 var player_datas : Dictionary
 
 # State
 var hovered_zone : Area2D
 var active_zones : Dictionary
-var running
+var running : bool
+
+# Unlocks
+var unlocks : Dictionary = {
+	"Chairlift To Desert" : {
+		"map_finished":"Boss 1 Map",
+		"stars":5,
+		"cam_position":"Map 1_Chairlift To Desert"
+		}
+}
 
 func _ready():
 	get_tree().debug_collisions_hint = false
@@ -23,6 +32,7 @@ func _ready():
 	set_up_button(%Desert)
 	%Desert.hide()
 	# Reset cam
+	%WorldCam.position_cam("reset",true)
 	%WorldCam.position_cam("full_screen")
 	# Travel update
 	if Global.current_node_is_map():Global.append_course()
@@ -59,15 +69,17 @@ func _ready():
 	set_player_datas()
 	# Update world
 	update_world()
+	# New unlocks
+	check_unlocks()
 	# Current node new paths and active zone
 	await draw_new_paths()
 	# Debug print
-	#print("Nodes :")
-	#for node in world_datas["Nodes"]:print(node," : ",world_datas["Nodes"][node])
-	#print("\nZones :")
-	#for zone in world_datas["Zones"]:print(zone," : ",world_datas["Zones"][zone])
+	print("Nodes :")
+	for node in world_datas["Nodes"]:print(node," : ",world_datas["Nodes"][node])
+	print("\nZones :")
+	for zone in world_datas["Zones"]:print(zone," : ",world_datas["Zones"][zone])
 	print("\nPlayer datas : ",player_datas)
-	print("\nActives zones : ",active_zones)
+	#print("\nActives zones : ",active_zones)
 	running = true
 
 func set_player_datas():
@@ -79,6 +91,9 @@ func set_player_datas():
 		player_datas["run_seen_maps"].append(map)
 		if Global.current_profile["current_run"]["maps"][map]["finished"]:player_datas["run_finished_maps"].append(map)
 	player_datas["world"] = Global.current_profile["current_run"]["current_day"]["world"]
+	# Boss done = start
+	if "Boss" in Global.current_profile["current_run"]["current_day"]["node"]:
+		Global.current_profile["current_run"]["current_day"]["node"] = world_datas["start"]
 	player_datas["node"] = Global.current_profile["current_run"]["current_day"]["node"]
 	player_datas["course"] = Global.current_profile["current_run"]["current_day"]["course"]
 	player_datas["unlocks"] = Global.current_profile["current_run"]["unlocks"]
@@ -122,7 +137,10 @@ func update_world():
 		# Traveled
 		else:
 			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
-			if path_in is Line2D:draw_path(path_in,0,true)
+			if path_in is Line2D:
+				var overpath : Line2D =  await draw_path(path_in,0,true)
+				overpath.modulate = Color(0.5, 0.5, 0.5, 1.0)
+				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 			if "Boss" not in node:node_datas["stars"].stars_update(Global.current_profile["current_run"]["maps"][node]["objectives"])
 		# Chairlifts specifics
 		if "Chairlift" in node:
@@ -143,8 +161,25 @@ func update_world():
 				# Hide lock if path hiden
 				else:path_in.get_parent().get_child(2).hide()
 
+func check_unlocks():
+	for node in unlocks:
+		# Not unlocked already
+		if node not in player_datas["unlocks"]:
+			var unlocked : bool = true
+			for condition_value in unlocks[node]:
+				if condition_value == "map_finished" :
+					unlocked = unlocked and\
+						Global.current_profile["current_run"]["maps"].\
+							get(unlocks[node]["map_finished"],{"finished":false})["finished"]
+				elif condition_value == "stars" :
+					unlocked = unlocked and\
+						Global.current_profile["current_run"]["stars"] >= unlocks[node]["stars"]
+			if unlocked:
+				Global.current_profile["current_run"]["unlocks"].append(node)
+				%WorldCam.position_cam(unlocks[node]["cam_position"])
+				%AnimationPlayer.play("Desert_Unlock")
+
 func draw_new_paths():
-	print("\nDraw_new_paths :\nCurrent node : ",player_datas["node"])
 	world_datas["Nodes"][player_datas["node"]]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
 	# Out path of current node
 	for zone in world_datas["Nodes"][player_datas["node"]]["zone_out"]:
@@ -177,10 +212,11 @@ func on_zone_hover(zone:Area2D):
 		world_datas["Zones"][zone].modulate = Color(0.5, 0.5, 0.5, 1.0)
 		world_datas["Zones"][zone]["outline"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 		world_datas["Zones"][zone]["outline"].show()
-func on_zone_exit(zone:Area2D):
+func on_zone_exit(zone:Area2D,path_light:bool=false):
 		world_datas["Nodes"][zone.name.split("_")[1]]["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
-		world_datas["Zones"][zone].modulate = Color(0.5, 0.5, 0.5, 1.0)
-		if "Chairlift" not in zone.name.split("_")[0]:world_datas["Zones"][zone]["path"].modulate = Color(0.5, 0.5, 0.5, 1.0)
+		if not path_light:
+			world_datas["Zones"][zone].modulate = Color(0.5, 0.5, 0.5, 1.0)
+			if "Chairlift" not in zone.name.split("_")[0]:world_datas["Zones"][zone]["path"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 		world_datas["Zones"][zone]["outline"].hide()
 func on_zone_click(zone:Area2D):
 	if active_zones[zone] :
@@ -189,20 +225,32 @@ func on_zone_click(zone:Area2D):
 		running = false
 		hovered_zone = null
 		active_zones = {}
-		on_zone_exit(zone)
+		on_zone_exit(zone,true)
 		var origin : String = zone.name.split("_")[0] 
 		var destination : String = zone.name.split("_")[1]
 		Global.current_profile["current_run"]["current_day"]["node"] = destination
-		%WorldCam.position_cam(origin)
+		%WorldCam.position_cam(zone.name)
 		if "Chairlift" in origin:
 			AudioManager.play_sfx("chairlift")
+			# Base Chairlift -> restart course
+			if "To" not in origin:
+				Global.current_profile["current_run"]["current_day"]["course"] = []
+				# Overpath delete
+				for tree_zone in world_datas["Zones"]:for node in tree_zone.get_children():
+					if node.name == "overpath":node.queue_free()
+				# Done hide
+				for tree_node in world_datas["Nodes"]:for node in world_datas["Nodes"][tree_node]["node"].get_children():
+					if node.name == "Done":node.hide()
 			move_avatar_to_chairlift(world_datas["Nodes"][origin]["node"])
 			await world_datas["Zones"][zone]["path"].play()
+			# Chairlift to next world
 			if "To" in origin:%Desert.show()
 			else:position_avatar_on_node(world_datas["Nodes"][destination]["node"])
 		else:
+			%Avatar.hide()
 			world_datas["Nodes"][origin]["node"].modulate = Color(0.5, 0.5, 0.5, 1.0) 
 			await draw_path(world_datas["Zones"][zone]["path"],path_riding_time,true,true)
+			position_avatar_on_node(world_datas["Nodes"][destination]["node"])
 		world_datas["Nodes"][destination]["node"].disabled = false
 		world_datas["Nodes"][destination]["node"].mouse_filter = Control.MOUSE_FILTER_STOP
 		world_datas["Zones"][zone]["path"].modulate = Color(1.0, 1.0, 1.0, 1.0)
@@ -264,7 +312,7 @@ func move_avatar_to_chairlift(node:Control):
 		await get_tree().create_timer(1/frame_rate).timeout
 	%Avatar.hide()
 
-func draw_path(path:Line2D,duration:float,dashed: bool = false,bike: bool = false):
+func draw_path(path:Line2D,duration:float,dashed: bool = false,bike: bool = false)->Line2D:
 	var path_points : PackedVector2Array = path.points
 	var copy_line := Line2D.new()
 	var biker : Sprite2D
@@ -273,12 +321,14 @@ func draw_path(path:Line2D,duration:float,dashed: bool = false,bike: bool = fals
 	if bike:
 		biker = Sprite2D.new()
 		biker.texture = load(Global.get_sprites_path()+"Avatar_bike.png")
-		biker.scale = Vector2(0.1,0.1)
 		path.get_parent().add_child(biker)
 	path.get_parent().add_child(copy_line)
 	var drawing_frequency : float = duration/path_points.size()
 	# Style copy
-	if dashed :copy_line.texture = load("res://Images/Menus/Maps/DashLines/textured_dashed_line_backless.png")
+	if dashed :
+		# Name overpath
+		copy_line.name = "overpath"
+		copy_line.texture = load("res://Images/Menus/Maps/DashLines/textured_dashed_line_backless.png")
 	else:copy_line.texture = path.texture
 	copy_line.texture_mode = path.texture_mode
 	copy_line.texture_repeat = path.texture_repeat
@@ -300,10 +350,15 @@ func draw_path(path:Line2D,duration:float,dashed: bool = false,bike: bool = fals
 			if bike:
 				path_direction = path_points[index] - previous_point
 				previous_point = path_points[index]
-				biker.position = path.position + previous_point
-				biker.rotation = path_direction.angle()
+				# Going right
+				biker.scale = Vector2(0.1,0.1) if -PI/2<path_direction.angle() and path_direction.angle()<PI/2 else Vector2(-0.1,0.1)
+				biker.rotation = clampf(path_direction.angle(),-PI/2,PI/4) if -PI/2<path_direction.angle() and\
+					path_direction.angle()<PI/2 else clampf(path_direction.rotated(PI).angle(),-PI/4,PI/2)
+				biker.position = path.position + previous_point + Vector2(0,-10)
 			index += 1
 			await get_tree().create_timer(drawing_frequency).timeout
+		if bike:biker.queue_free()
+	return copy_line
 
 func set_up_button(node:BaseButton):
 	node.mouse_entered.connect(func(): on_button_hover(node))
@@ -313,12 +368,14 @@ func on_button_hover(button:BaseButton):if not button.disabled:AudioManager.play
 func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()
 func on_button_pressed(_button:BaseButton):AudioManager.play_ui("click")
 
+func play_sfx(sfx:String):AudioManager.play_sfx(sfx)
+
 func start_map(map_name:String):
 		Global.current_map = map_name
 		Global.start_mod("Main_Game")
 func _on_0_pressed():
 	if Global.get_profile_data("state") == "tuto":Global.start_mod("Tuto_Game")
-	else:start_map("0")
-func _on_1_pressed():start_map("1")
-func _on_2_pressed():start_map("2")
-func _on_forest_boss_pressed():start_map("ForestBoss")
+	else:start_map("Map 0")
+func _on_1_pressed():start_map("Map 1")
+func _on_2_pressed():start_map("Map 2")
+func _on_forest_boss_pressed():start_map("Boss 1 Map")

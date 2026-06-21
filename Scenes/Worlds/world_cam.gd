@@ -12,12 +12,12 @@ var target_zoom : Vector2
 var node_cam_position : Dictionary = {
 	"full_screen":{"position":Vector2(640.0,360.0),"zoom":Vector2.ONE},
 	"reset":{"position":Vector2(640.0,360.0),"zoom":Vector2(1.2,1.2)},
-	"ForestChairlift":{"position":Vector2(728.0,380.0),"zoom":Vector2(1.375,1.375)},
-	"0":{"position":Vector2(742.0,247.0),"zoom":Vector2(2.415,2.415)},
-	"1":{"position":Vector2(740.0,382.0),"zoom":Vector2(-2.735,-1.34)},
-	"2":{"position":Vector2(740.0,382.0),"zoom":Vector2(-2.735,-1.34)},
-	"ForestBoss":{"position":Vector2(740.0,382.0),"zoom":Vector2(-2.735,-1.34)},
-	"ChairliftToDesert":{"position":Vector2(740.0,382.0),"zoom":Vector2(-2.735,-1.34)}
+	"Chairlift_Map 0":{"position":Vector2(728.0,380.0),"zoom":Vector2(1.375,1.375)},
+	"Map 0_Map 1":{"position":Vector2(742.0,247.0),"zoom":Vector2(2.415,2.415)},
+	"Map 1_Chairlift To Desert":{"position":Vector2(507.0,292.0),"zoom":Vector2(3.02,3.02)},
+	"Map 1_Map 2":{"position":Vector2(843.0,325.0),"zoom":Vector2(1.815,1.815)},
+	"Map 2_Boss 1 Map":{"position":Vector2(873.0,440.0),"zoom":Vector2(1.59,1.59)},
+	"Chairlift To Desert_Desert":{"position":Vector2(328.0,222.0),"zoom":Vector2(2.155,2.155)}
 }
 
 var canvas_size := Vector2(1280.0,720.0)
@@ -25,12 +25,14 @@ var canvas_size := Vector2(1280.0,720.0)
 var dragging := false
 var zooming := false
 
-func position_cam(node:String):
-	position = node_cam_position["reset"]["position"]
-	zoom = node_cam_position["reset"]["zoom"]
-	zooming = true
-	target_position = node_cam_position[node]["position"]
-	target_zoom = node_cam_position[node]["zoom"]
+func position_cam(node:String,instant:bool=false):
+	if instant:
+		position = node_cam_position[node]["position"]
+		zoom = node_cam_position[node]["zoom"]
+	else:
+		zooming = true
+		target_position = node_cam_position[node]["position"]
+		target_zoom = node_cam_position[node]["zoom"]
 
 func _unhandled_input(event: InputEvent) -> void:
 	if zooming:return
@@ -61,7 +63,6 @@ func clamp_camera():
 	position.y = clamp(position.y,half_height,canvas_size.y - half_height)
 	
 func _process(delta):
-	print("zooming : ",zooming)
 	if not zooming:return
 	position = position.lerp(target_position,camera_smooth*delta)
 	zoom = zoom.lerp(target_zoom,camera_smooth*delta)
