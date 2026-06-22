@@ -25,12 +25,17 @@ Global="*uid://d0yckyueosxy7"
 SaveManager="*uid://wnklho31q5lm"
 AudioManager="*uid://5kgdkhd41xqp"
 Map="*uid://cbdvd5i4sansp"
+RunSaveManager="*uid://cs5xe8k3qtmu5"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/maxim/AppData/Roaming/Godot/app_userdata/Projet1/film.avi"
 
 [input]
 

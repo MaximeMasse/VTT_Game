@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://gcf0702xtjek"]
+
+[ext_resource type="Script" uid="uid://b4f0vkli3x0sq" path="res://Scenes/career.gd" id="1_i8fbg"]
+[ext_resource type="Texture2D" uid="uid://ckcatq8ntvr6k" path="res://Images/Menus/Backgrounds/Fond_carrière.png" id="1_orrea"]
+[ext_resource type="Texture2D" uid="uid://k8tl2mijfawq" path="res://Images/Menus/Shops/Map.png" id="2_i8fbg"]
+[ext_resource type="Texture2D" uid="uid://dtuu21v3lrrm6" path="res://Images/Menus/Shops/Map_focused.png" id="3_vbqls"]
+[ext_resource type="Texture2D" uid="uid://de8h4qi18a8w6" path="res://Images/Menus/Shops/Bikeshop.png" id="4_tv3tk"]
+[ext_resource type="Texture2D" uid="uid://clib2qu4ygej7" path="res://Images/Menus/Shops/Bikeshop_focused.png" id="5_8lh5m"]
+[ext_resource type="Texture2D" uid="uid://cig3k4rp62xqx" path="res://Images/Menus/Shops/Workshop.png" id="6_b4607"]
+[ext_resource type="Texture2D" uid="uid://cr78io004766d" path="res://Images/Menus/Shops/Workshop_focused.png" id="7_hy5h6"]
+[ext_resource type="Texture2D" uid="uid://dnjwimidm76hc" path="res://Images/Menus/Shops/Trailer.png" id="8_e4r51"]
+[ext_resource type="Texture2D" uid="uid://cllyfs0hf7xw5" path="res://Images/Menus/Shops/Trailer_focused.png" id="9_1ylap"]
+[ext_resource type="PackedScene" uid="uid://csmqtdn1bqmdt" path="res://Scenes/Dialogs/dialog_tuto.tscn" id="10_7ijny"]
+[ext_resource type="Texture2D" uid="uid://bn1vl0t1t2ntr" path="res://Images/Menus/Controls/yes_up.png" id="11_easlv"]
+[ext_resource type="Texture2D" uid="uid://deej7nsdys71d" path="res://Images/Menus/Controls/yes_down.png" id="12_dqa25"]
+[ext_resource type="Texture2D" uid="uid://csb1d3cb4u7n6" path="res://Images/Menus/Controls/yes_hover.png" id="13_rsanf"]
+[ext_resource type="Texture2D" uid="uid://vud5kjhd6byj" path="res://Images/Menus/Controls/no_up.png" id="14_hol8q"]
+[ext_resource type="Texture2D" uid="uid://drvv3f57uleo2" path="res://Images/Menus/Controls/no_down.png" id="15_3y3i2"]
+[ext_resource type="Texture2D" uid="uid://cp3l6n6his8e4" path="res://Images/Menus/Controls/no_hover.png" id="16_0j8qx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lao23"]
+bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="SystemFont" id="SystemFont_rsn3l"]
+font_names = PackedStringArray("Pixel Game")
+
+[node name="Career" type="Node2D" unique_id=859083673]
+script = ExtResource("1_i8fbg")
+
+[node name="Fond" type="TextureRect" parent="." unique_id=981678962]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_orrea")
+expand_mode = 1
+
+[node name="Spots" type="Control" parent="." unique_id=387321546]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="World" type="TextureButton" parent="Spots" unique_id=926514625]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 553.0
+offset_top = 185.0
+offset_right = 997.0
+offset_bottom = 458.0
+texture_normal = ExtResource("2_i8fbg")
+texture_focused = ExtResource("3_vbqls")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Bikeshop" type="TextureButton" parent="Spots" unique_id=575155307]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 275.0
+offset_right = 624.0
+offset_bottom = 522.0
+texture_normal = ExtResource("4_tv3tk")
+texture_focused = ExtResource("5_8lh5m")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Workshop" type="TextureButton" parent="Spots" unique_id=928450745]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 307.0
+offset_right = 385.0
+offset_bottom = 636.0
+texture_normal = ExtResource("6_b4607")
+texture_focused = ExtResource("7_hy5h6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Trailer" type="TextureButton" parent="Spots" unique_id=113230790]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 293.0
+offset_right = 1282.0
+offset_bottom = 585.0
+texture_normal = ExtResource("8_e4r51")
+texture_focused = ExtResource("9_1ylap")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Tuto" type="Control" parent="." unique_id=232285729]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DialogTuto" parent="Tuto" unique_id=149525802 instance=ExtResource("10_7ijny")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="TutoPanels" type="Control" parent="Tuto" unique_id=2048508433]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 578.0
+offset_top = 360.0
+offset_right = 618.0
+offset_bottom = 400.0
+
+[node name="StartTutoPanel" type="Panel" parent="Tuto/TutoPanels" unique_id=315216340]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 254.0
+offset_bottom = 138.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lao23")
+
+[node name="Label" type="Label" parent="Tuto/TutoPanels/StartTutoPanel" unique_id=2145372077]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 18.0
+offset_right = 200.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("SystemFont_rsn3l")
+theme_override_font_sizes/font_size = 25
+text = "Start Tutorial ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutoYesButton" type="TextureButton" parent="Tuto/TutoPanels/StartTutoPanel" unique_id=1829844915]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 72.0
+offset_right = 94.0
+offset_bottom = 104.0
+texture_normal = ExtResource("11_easlv")
+texture_pressed = ExtResource("12_dqa25")
+texture_focused = ExtResource("13_rsanf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TutoNoButton" type="TextureButton" parent="Tuto/TutoPanels/StartTutoPanel" unique_id=306257564]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 72.0
+offset_right = 222.0
+offset_bottom = 104.0
+texture_normal = ExtResource("14_hol8q")
+texture_pressed = ExtResource("15_3y3i2")
+texture_focused = ExtResource("16_0j8qx")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="Spots/World" to="." method="_on_world_pressed"]
+[connection signal="scene_ended" from="Tuto/DialogTuto" to="." method="_on_dialog_tuto_scene_ended"]
+[connection signal="pressed" from="Tuto/TutoPanels/StartTutoPanel/TutoYesButton" to="." method="_on_tuto_yes_button_pressed"]
+[connection signal="pressed" from="Tuto/TutoPanels/StartTutoPanel/TutoNoButton" to="." method="_on_tuto_no_button_pressed"]

@@ -1,5 +1,5 @@
 {
-	"avatar": 2.0,
+	"avatar": 5.0,
 	"best_tricks": {
 		"Air": {
 			"duration": 2.79999999999999,
@@ -10,28 +10,77 @@
 			"length": 4.50872338633788
 		},
 		"Wheelie": {
-			"duration": 1.71666666666667,
-			"length": 9.17728181199023
+			"duration": 1.86666666666666,
+			"length": 11.1601609154751
 		}
 	},
-	"bike_model": 1.0,
+	"bike_model": 0.0,
 	"boost": {
 		"BOOST_ACCELERATION": 5000.0,
 		"BOOST_CONSUMPTION": 2500.0,
 		"BOOST_MAX_QUANTITY": 5000.0,
 		"ONE_TIME_RATIO": 5.0
 	},
-	"crowns": 8.0,
+	"crowns": 1.0,
+	"current_run": {
+		"current_day": {
+			"course": [
+				"Map 0"
+			],
+			"crowns": 0.0,
+			"money": 0.0,
+			"node": "Map 0",
+			"stars": 0.0,
+			"world": "Forest"
+		},
+		"maps": {
+			"Map 0": {
+				"bills": [
+					6.0
+				],
+				"finished": true,
+				"gaps": {
 
+				},
+				"objectives": [
+					2.0
+				]
+			}
+		},
+		"money": 500.0,
+		"stars": 2.0,
+		"unlocks": []
+	},
 	"id": 1.0,
 	"map_records": {
-
+		"Map 0": {
+			"bills_caught": false,
+			"crowns_unlocked": 1.0,
+			"gaps_discovered": [],
+			"gaps_done": false,
+			"objectives_done": false,
+			"queen_score_beaten": false,
+			"queen_time_beaten": true,
+			"score": 0.0,
+			"time": 4.91666666666665
+		},
+		"Map 1": {
+			"bills_caught": false,
+			"crowns_unlocked": 0,
+			"gaps_discovered": [],
+			"gaps_done": false,
+			"objectives_done": false,
+			"queen_score_beaten": false,
+			"queen_time_beaten": false,
+			"score": 3957.0,
+			"time": 49.2499999999985
+		}
 	},
 	"name": "Juliette",
 	"state": "tuto2",
 	"stats": {
 		"ACCÉLÉRATION": 5000.0,
-		"AIR_ROTATION_CONTROL": 2.0,
+		"AIR_ROTATION_CONTROL": 4.0,
 		"AIR_SPEED_CONTROL": 0.0,
 		"AV_CONTROL": 10.0,
 		"BALANCE_CONTROL": 10.0,

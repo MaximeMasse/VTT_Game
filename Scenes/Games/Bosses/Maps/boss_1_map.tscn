@@ -1,46 +1,46 @@
-[gd_scene format=3 uid="uid://ctbup0hxajn4f"]
+[gd_scene format=3 uid="uid://s17s42qvh0qu"]
 
-[ext_resource type="Script" uid="uid://rtvv8er8c4ef" path="res://Maps/map_1.gd" id="1_csn78"]
-[ext_resource type="Texture2D" uid="uid://k4x8gugoswkg" path="res://Images/Mapping/Textures/wood.png" id="2_csn78"]
-[ext_resource type="Texture2D" uid="uid://cd22yhfyqh57" path="res://Images/Mapping/Textures/grass_1.png" id="3_dulce"]
-[ext_resource type="Texture2D" uid="uid://cmtk0ul0xc75f" path="res://Images/Mapping/Textures/dirt_track_1.png" id="3_p6o8k"]
-[ext_resource type="Texture2D" uid="uid://bu5rffusgbr1h" path="res://Images/Mapping/Textures/dirt_1.png" id="4_5yqqh"]
-[ext_resource type="Texture2D" uid="uid://dmf26y3qj1cnc" path="res://Images/Mapping/Textures/under_rocks_1.png" id="5_112va"]
-[ext_resource type="PackedScene" uid="uid://dwkcoiv7k6b8u" path="res://TileSet/start.tscn" id="7_3ipsw"]
-[ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="8_yoy1d"]
-[ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="9_w0jt7"]
-[ext_resource type="Texture2D" uid="uid://bd1youvrow1rs" path="res://Images/Mapping/Cover/Poles.png" id="10_1vh13"]
-[ext_resource type="PackedScene" uid="uid://c4dgb5i0k1dbp" path="res://Scenes/Misc/bird.tscn" id="10_okle1"]
-[ext_resource type="Texture2D" uid="uid://tqg8418a4wax" path="res://Images/Mapping/Cover/back_poles.png" id="11_jcyk4"]
-[ext_resource type="Texture2D" uid="uid://bydviu6i2qrl2" path="res://Images/Mapping/Bike_model.png" id="11_jitdt"]
-[ext_resource type="PackedScene" uid="uid://bj7vagcb8aebw" path="res://Scenes/Misc/100bill.tscn" id="11_ul7kc"]
-[ext_resource type="PackedScene" uid="uid://bfjb48yf137xj" path="res://Scenes/Misc/50bill.tscn" id="12_krdq0"]
-[ext_resource type="Script" uid="uid://livr32df55qj" path="res://Maps/debug_start.gd" id="13_5ii72"]
-[ext_resource type="PackedScene" uid="uid://byo6owss00mjp" path="res://Scenes/Misc/200bill.tscn" id="13_lc6nm"]
-[ext_resource type="Texture2D" uid="uid://byf576dng0paf" path="res://Images/Mapping/Assets/WoodenPlateforms/Back_eject.png" id="15_krdq0"]
-[ext_resource type="PackedScene" uid="uid://ct2duft2f1d51" path="res://Scenes/Misc/500bill.tscn" id="15_lc6nm"]
-[ext_resource type="Texture2D" uid="uid://dy5nk2818cq5j" path="res://Images/Mapping/Fonds/Backforest/BackForest_up.png" id="16_0bsrj"]
-[ext_resource type="Texture2D" uid="uid://cb8dvuveeoad6" path="res://Images/Mapping/Fonds/Backforest/BackForest_1.png" id="17_ul7kc"]
-[ext_resource type="Texture2D" uid="uid://tyvg03a4vk6h" path="res://Images/Mapping/Assets/Pannels/LoopPannel.png" id="17_x5038"]
-[ext_resource type="Texture2D" uid="uid://ch02ec022aunp" path="res://Images/Mapping/Assets/Pannels/Brake.png" id="18_jlwpy"]
-[ext_resource type="Texture2D" uid="uid://dikdnrpfvruel" path="res://Images/Mapping/Fonds/Skys/Sky_cloud_1.png" id="19_lc6nm"]
-[ext_resource type="Texture2D" uid="uid://qnpbwmwi5ow4" path="res://Images/Mapping/Cover/SideCliffs/Sideclif_diag.png" id="20_h47tk"]
-[ext_resource type="Texture2D" uid="uid://bqsma6w5kg8r0" path="res://Images/Mapping/Fonds/BackMontains/Mountain_background.png" id="20_man1s"]
-[ext_resource type="Texture2D" uid="uid://w3psu774fn7u" path="res://Images/Mapping/Cover/SideCliffs/sidecliff.png" id="24_man1s"]
-[ext_resource type="Texture2D" uid="uid://dqddv4pcd5gda" path="res://Images/Mapping/Cover/Transitions/dirt_wood.png" id="25_bhy3y"]
-[ext_resource type="Texture2D" uid="uid://bbdicpo6bmg06" path="res://Images/Mapping/Cover/Forest_1.png" id="26_dulce"]
-[ext_resource type="Texture2D" uid="uid://c88oftfmcptp6" path="res://Images/Mapping/Fonds/Backforest/BackForest_diag1.png" id="26_nxto0"]
-[ext_resource type="Texture2D" uid="uid://uuoan5p7uhve" path="res://Images/Mapping/Cover/forest_3.png" id="26_yoy1d"]
-[ext_resource type="Texture2D" uid="uid://byyua6ftjvejd" path="res://Images/Mapping/Cover/Transitions/wood_wood.png" id="27_kc8sf"]
-[ext_resource type="Texture2D" uid="uid://brg38ffdjplxy" path="res://Images/Mapping/Assets/Rocks/Cliff.png" id="27_w0jt7"]
-[ext_resource type="Texture2D" uid="uid://dk3mdw5oy2acx" path="res://Images/Mapping/Fonds/Caves/cave_in.png" id="28_bhy3y"]
-[ext_resource type="Texture2D" uid="uid://cxxjk0fv23w1x" path="res://Images/Mapping/Fonds/Caves/cave.png" id="29_dulce"]
-[ext_resource type="Texture2D" uid="uid://d1rdp8aqfol8r" path="res://Images/Mapping/Cover/forest_4.png" id="29_s30ic"]
-[ext_resource type="Texture2D" uid="uid://qtskrqgbadnq" path="res://Images/Mapping/Fonds/Caves/cave_out.png" id="30_5yqqh"]
-[ext_resource type="Texture2D" uid="uid://bflvkvtg4acd" path="res://Images/Mapping/Cover/Forest_5.png" id="30_jlwpy"]
-[ext_resource type="Texture2D" uid="uid://dqdmt8cisjb1h" path="res://Images/Mapping/Cover/Forest_2.png" id="31_kc8sf"]
-[ext_resource type="Texture2D" uid="uid://dv2sapakursy5" path="res://Images/Mapping/Assets/Pannels/Cliff.png" id="34_njb2b"]
-[ext_resource type="Texture2D" uid="uid://cpgufq00epwup" path="res://Images/Mapping/Fonds/Backforest/BackForest_spec.png" id="35_jlwpy"]
+[ext_resource type="Script" uid="uid://ddxhtogi460qn" path="res://Scenes/Games/Bosses/Maps/boss_1_map.gd" id="1_m0sou"]
+[ext_resource type="Texture2D" uid="uid://k4x8gugoswkg" path="res://Images/Mapping/Textures/wood.png" id="2_nqhjo"]
+[ext_resource type="Texture2D" uid="uid://cmtk0ul0xc75f" path="res://Images/Mapping/Textures/dirt_track_1.png" id="3_p6kjk"]
+[ext_resource type="Texture2D" uid="uid://cd22yhfyqh57" path="res://Images/Mapping/Textures/grass_1.png" id="4_u4nps"]
+[ext_resource type="Texture2D" uid="uid://bu5rffusgbr1h" path="res://Images/Mapping/Textures/dirt_1.png" id="5_cyfr7"]
+[ext_resource type="Texture2D" uid="uid://dmf26y3qj1cnc" path="res://Images/Mapping/Textures/under_rocks_1.png" id="6_e1hsf"]
+[ext_resource type="Texture2D" uid="uid://bydviu6i2qrl2" path="res://Images/Mapping/Bike_model.png" id="7_o8nuw"]
+[ext_resource type="PackedScene" uid="uid://dwkcoiv7k6b8u" path="res://TileSet/start.tscn" id="8_37tin"]
+[ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="9_amgwf"]
+[ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="10_05y4q"]
+[ext_resource type="PackedScene" uid="uid://c4dgb5i0k1dbp" path="res://Scenes/Misc/bird.tscn" id="11_mr0vi"]
+[ext_resource type="PackedScene" uid="uid://bj7vagcb8aebw" path="res://Scenes/Misc/100bill.tscn" id="12_ts2sk"]
+[ext_resource type="PackedScene" uid="uid://bfjb48yf137xj" path="res://Scenes/Misc/50bill.tscn" id="13_7ywbr"]
+[ext_resource type="PackedScene" uid="uid://byo6owss00mjp" path="res://Scenes/Misc/200bill.tscn" id="14_ii3x1"]
+[ext_resource type="PackedScene" uid="uid://ct2duft2f1d51" path="res://Scenes/Misc/500bill.tscn" id="15_0yny8"]
+[ext_resource type="Texture2D" uid="uid://byf576dng0paf" path="res://Images/Mapping/Assets/WoodenPlateforms/Back_eject.png" id="16_4oi2h"]
+[ext_resource type="Texture2D" uid="uid://tyvg03a4vk6h" path="res://Images/Mapping/Assets/Pannels/LoopPannel.png" id="17_omcyt"]
+[ext_resource type="Texture2D" uid="uid://ch02ec022aunp" path="res://Images/Mapping/Assets/Pannels/Brake.png" id="18_xp6ts"]
+[ext_resource type="Texture2D" uid="uid://dv2sapakursy5" path="res://Images/Mapping/Assets/Pannels/Cliff.png" id="19_br58r"]
+[ext_resource type="Texture2D" uid="uid://bd1youvrow1rs" path="res://Images/Mapping/Cover/Poles.png" id="20_wai1h"]
+[ext_resource type="Texture2D" uid="uid://tqg8418a4wax" path="res://Images/Mapping/Cover/back_poles.png" id="21_bbhus"]
+[ext_resource type="Texture2D" uid="uid://w3psu774fn7u" path="res://Images/Mapping/Cover/SideCliffs/sidecliff.png" id="22_86b0r"]
+[ext_resource type="Texture2D" uid="uid://qnpbwmwi5ow4" path="res://Images/Mapping/Cover/SideCliffs/Sideclif_diag.png" id="23_gugg2"]
+[ext_resource type="Texture2D" uid="uid://dk3mdw5oy2acx" path="res://Images/Mapping/Fonds/Caves/cave_in.png" id="24_6gqfr"]
+[ext_resource type="Texture2D" uid="uid://cxxjk0fv23w1x" path="res://Images/Mapping/Fonds/Caves/cave.png" id="25_7fqq2"]
+[ext_resource type="Texture2D" uid="uid://qtskrqgbadnq" path="res://Images/Mapping/Fonds/Caves/cave_out.png" id="26_3fnd1"]
+[ext_resource type="Texture2D" uid="uid://dqddv4pcd5gda" path="res://Images/Mapping/Cover/Transitions/dirt_wood.png" id="27_ehxy8"]
+[ext_resource type="Texture2D" uid="uid://byyua6ftjvejd" path="res://Images/Mapping/Cover/Transitions/wood_wood.png" id="28_jfujn"]
+[ext_resource type="Texture2D" uid="uid://uuoan5p7uhve" path="res://Images/Mapping/Cover/forest_3.png" id="29_l3byl"]
+[ext_resource type="Texture2D" uid="uid://brg38ffdjplxy" path="res://Images/Mapping/Assets/Rocks/Cliff.png" id="30_tk7ny"]
+[ext_resource type="Texture2D" uid="uid://bbdicpo6bmg06" path="res://Images/Mapping/Cover/Forest_1.png" id="31_w33wk"]
+[ext_resource type="Texture2D" uid="uid://d1rdp8aqfol8r" path="res://Images/Mapping/Cover/forest_4.png" id="32_xvaii"]
+[ext_resource type="Texture2D" uid="uid://bflvkvtg4acd" path="res://Images/Mapping/Cover/Forest_5.png" id="33_mx42f"]
+[ext_resource type="Texture2D" uid="uid://dqdmt8cisjb1h" path="res://Images/Mapping/Cover/Forest_2.png" id="34_n1vnt"]
+[ext_resource type="Texture2D" uid="uid://cpgufq00epwup" path="res://Images/Mapping/Fonds/Backforest/BackForest_spec.png" id="35_cqsq0"]
+[ext_resource type="Texture2D" uid="uid://dikdnrpfvruel" path="res://Images/Mapping/Fonds/Skys/Sky_cloud_1.png" id="36_dbrxl"]
+[ext_resource type="Texture2D" uid="uid://bqsma6w5kg8r0" path="res://Images/Mapping/Fonds/BackMontains/Mountain_background.png" id="37_oyqmg"]
+[ext_resource type="Texture2D" uid="uid://dy5nk2818cq5j" path="res://Images/Mapping/Fonds/Backforest/BackForest_up.png" id="38_fcdss"]
+[ext_resource type="Texture2D" uid="uid://c88oftfmcptp6" path="res://Images/Mapping/Fonds/Backforest/BackForest_diag1.png" id="39_s8en7"]
+[ext_resource type="Texture2D" uid="uid://cb8dvuveeoad6" path="res://Images/Mapping/Fonds/Backforest/BackForest_1.png" id="40_udbo6"]
+[ext_resource type="Script" uid="uid://livr32df55qj" path="res://Maps/debug_start.gd" id="41_0cni6"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_kc8sf"]
 b = Vector2(0, -262)
@@ -145,40 +145,40 @@ _data = {
 point_count = 7
 
 [node name="Map" type="Node2D" unique_id=1845493518]
-script = ExtResource("1_csn78")
-platform_texture = ExtResource("2_csn78")
-road_texture = ExtResource("3_p6o8k")
-up_texture = ExtResource("3_dulce")
-down_texture = ExtResource("4_5yqqh")
-under_texture = ExtResource("5_112va")
+script = ExtResource("1_m0sou")
+platform_texture = ExtResource("2_nqhjo")
+road_texture = ExtResource("3_p6kjk")
+up_texture = ExtResource("4_u4nps")
+down_texture = ExtResource("5_cyfr7")
+under_texture = ExtResource("6_e1hsf")
 
 [node name="BikeModel" type="Sprite2D" parent="." unique_id=1181483513]
 visible = false
 position = Vector2(11739.001, 853.99976)
 rotation = -0.575022
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("11_jitdt")
+texture = ExtResource("7_o8nuw")
 
 [node name="Spots" type="Node2D" parent="." unique_id=1345368999]
 
-[node name="Start" parent="Spots" unique_id=1752885992 instance=ExtResource("7_3ipsw")]
+[node name="Start" parent="Spots" unique_id=1752885992 instance=ExtResource("8_37tin")]
 unique_name_in_owner = true
 position = Vector2(1.1920929e-07, -19.000004)
 scale = Vector2(0.2689295, 0.2576923)
 
-[node name="Finish" parent="Spots" unique_id=1211676905 instance=ExtResource("8_yoy1d")]
+[node name="Finish" parent="Spots" unique_id=1211676905 instance=ExtResource("9_amgwf")]
 unique_name_in_owner = true
 position = Vector2(25321, 2031)
 
-[node name="Checkpoint_1" parent="Spots" unique_id=1899925259 instance=ExtResource("9_w0jt7")]
+[node name="Checkpoint_1" parent="Spots" unique_id=1899925259 instance=ExtResource("10_05y4q")]
 unique_name_in_owner = true
 position = Vector2(4307, 847)
 
-[node name="Checkpoint_2" parent="Spots" unique_id=1166971781 instance=ExtResource("9_w0jt7")]
+[node name="Checkpoint_2" parent="Spots" unique_id=1166971781 instance=ExtResource("10_05y4q")]
 unique_name_in_owner = true
 position = Vector2(9616, 950)
 
-[node name="Checkpoint_3" parent="Spots" unique_id=37218309 instance=ExtResource("9_w0jt7")]
+[node name="Checkpoint_3" parent="Spots" unique_id=37218309 instance=ExtResource("10_05y4q")]
 unique_name_in_owner = true
 position = Vector2(15656, 2092)
 
@@ -186,45 +186,41 @@ position = Vector2(15656, 2092)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spots/CrashZone" unique_id=1042999941]
-build_mode = 1
-polygon = PackedVector2Array(-678, -1, -479, 158, 127, 172, 309, 384, 442, 581, 814, 957, 1562, 1081, 2165, 888, 2669, 933, 3449, 1106, 4657, 1379, 5678, 1586, 6301, 1740, 7240, 1837, 7656, 1734, 8373, 1585, 8675, 1358, 9771, 1427, 10869, 1591, 12111, 1529, 13708, 1601, 14285, 1777, 14739, 2209, 15467, 2415, 16060, 2436, 18436, 2480, 18980, 2699, 19538, 3056, 20385, 3234, 21345, 3076, 23206, 3179, 26278, 2808, 27562, 2570, 24883, 3771, 14711, 3337, 12576, 2299, 3102, 1910, 304, 1217, -787, 385)
-
-[node name="Bird" parent="Spots" unique_id=767523825 instance=ExtResource("10_okle1")]
+[node name="Bird" parent="Spots" unique_id=767523825 instance=ExtResource("11_mr0vi")]
 unique_name_in_owner = true
 position = Vector2(15105, 998)
 
 [node name="Bills" type="Node2D" parent="Spots" unique_id=483681637]
 unique_name_in_owner = true
 
-[node name="100Bill" parent="Spots/Bills" unique_id=597363856 instance=ExtResource("11_ul7kc")]
+[node name="100Bill" parent="Spots/Bills" unique_id=597363856 instance=ExtResource("12_ts2sk")]
 position = Vector2(3187, 324)
 
-[node name="50Bill" parent="Spots/Bills" unique_id=745390140 instance=ExtResource("12_krdq0")]
+[node name="50Bill" parent="Spots/Bills" unique_id=745390140 instance=ExtResource("13_7ywbr")]
 position = Vector2(5649, 1115)
 
-[node name="200Bill" parent="Spots/Bills" unique_id=1161904164 instance=ExtResource("13_lc6nm")]
+[node name="200Bill" parent="Spots/Bills" unique_id=1161904164 instance=ExtResource("14_ii3x1")]
 position = Vector2(7460, 630)
 
-[node name="50Bill2" parent="Spots/Bills" unique_id=77078577 instance=ExtResource("12_krdq0")]
+[node name="50Bill2" parent="Spots/Bills" unique_id=77078577 instance=ExtResource("13_7ywbr")]
 position = Vector2(3069, 763)
 
-[node name="200Bill2" parent="Spots/Bills" unique_id=111048285 instance=ExtResource("13_lc6nm")]
+[node name="200Bill2" parent="Spots/Bills" unique_id=111048285 instance=ExtResource("14_ii3x1")]
 position = Vector2(12208, 718)
 
-[node name="50Bill3" parent="Spots/Bills" unique_id=1700602950 instance=ExtResource("12_krdq0")]
+[node name="50Bill3" parent="Spots/Bills" unique_id=1700602950 instance=ExtResource("13_7ywbr")]
 position = Vector2(14800, 1531)
 
-[node name="100Bill2" parent="Spots/Bills" unique_id=107266593 instance=ExtResource("11_ul7kc")]
+[node name="100Bill2" parent="Spots/Bills" unique_id=107266593 instance=ExtResource("12_ts2sk")]
 position = Vector2(13562, 919)
 
-[node name="500Bill" parent="Spots/Bills" unique_id=593025306 instance=ExtResource("15_lc6nm")]
+[node name="500Bill" parent="Spots/Bills" unique_id=593025306 instance=ExtResource("15_0yny8")]
 position = Vector2(24371, 1665)
 
-[node name="100Bill3" parent="Spots/Bills" unique_id=1224934120 instance=ExtResource("11_ul7kc")]
+[node name="100Bill3" parent="Spots/Bills" unique_id=1224934120 instance=ExtResource("12_ts2sk")]
 position = Vector2(20161, 2247)
 
-[node name="200Bill3" parent="Spots/Bills" unique_id=368661757 instance=ExtResource("13_lc6nm")]
+[node name="200Bill3" parent="Spots/Bills" unique_id=368661757 instance=ExtResource("14_ii3x1")]
 position = Vector2(26797, 2047)
 
 [node name="Gap" type="Node2D" parent="Spots" unique_id=1571153906]
@@ -294,7 +290,7 @@ show_behind_parent = true
 z_index = 1
 position = Vector2(15168.1, 926.3)
 scale = Vector2(1, 0.86400455)
-texture = ExtResource("15_krdq0")
+texture = ExtResource("16_4oi2h")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="SpecialParts" unique_id=168725637]
 position = Vector2(87, 57)
@@ -302,7 +298,7 @@ polygon = PackedVector2Array(26438, 2471, 26534, 2457, 26587, 2447, 26637, 2431,
 
 [node name="BackEject" type="Sprite2D" parent="SpecialParts/CollisionPolygon2D2" unique_id=170526426]
 position = Vector2(26789, 2157)
-texture = ExtResource("15_krdq0")
+texture = ExtResource("16_4oi2h")
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="SpecialParts" unique_id=557737735]
 polygon = PackedVector2Array(14564, 1092, 14887, 1091, 14885, 950, 14897, 917, 14832, 903, 14731, 896, 14626, 898, 14551, 907, 14546, 920, 14556, 939, 14563, 948)
@@ -310,7 +306,7 @@ polygon = PackedVector2Array(14564, 1092, 14887, 1091, 14885, 950, 14897, 917, 1
 [node name="LoopPannel" type="Sprite2D" parent="SpecialParts/CollisionPolygon2D3" unique_id=948192341]
 position = Vector2(14723, 1000)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("17_x5038")
+texture = ExtResource("17_omcyt")
 
 [node name="PlatformsPaths" type="Node2D" parent="." unique_id=1234909233]
 unique_name_in_owner = true
@@ -388,7 +384,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Assets" type="Node2D" parent="." unique_id=1612230551]
-visible = false
 
 [node name="Pannels" type="Node2D" parent="Assets" unique_id=65779085]
 z_index = -1
@@ -396,67 +391,67 @@ position = Vector2(1, 0)
 
 [node name="Brake" type="Sprite2D" parent="Assets/Pannels" unique_id=2092497593]
 position = Vector2(14449, 1387)
-texture = ExtResource("18_jlwpy")
+texture = ExtResource("18_xp6ts")
 
 [node name="Cliff" type="Sprite2D" parent="Assets/Pannels" unique_id=621147987]
 position = Vector2(13357, 1263)
-texture = ExtResource("34_njb2b")
+texture = ExtResource("19_br58r")
 
 [node name="Cliff2" type="Sprite2D" parent="Assets/Pannels" unique_id=1371290670]
 position = Vector2(5298, 1132)
-texture = ExtResource("34_njb2b")
+texture = ExtResource("19_br58r")
 
 [node name="FrontPoles" type="Node2D" parent="Assets" unique_id=396994357]
 z_index = 3
 
 [node name="Poles" type="Sprite2D" parent="Assets/FrontPoles" unique_id=1541092063]
 position = Vector2(2739.275, 760.92993)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(0, 0, 468.39984, 669)
 
 [node name="Poles2" type="Sprite2D" parent="Assets/FrontPoles" unique_id=1971978307]
 position = Vector2(3226, 758.72)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(510.42316, 0, 383.7025, 669)
 
 [node name="Poles3" type="Sprite2D" parent="Assets/FrontPoles" unique_id=193635764]
 position = Vector2(3662, 829)
 rotation = 0.24091402
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(1007.09094, 0, 109.1792, 669)
 
 [node name="Poles4" type="Sprite2D" parent="Assets/FrontPoles" unique_id=1059651458]
 position = Vector2(6508, 1485)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(0, 0, 745.9951, 669)
 
 [node name="Poles5" type="Sprite2D" parent="Assets/FrontPoles" unique_id=1615601771]
 position = Vector2(7185.999, 1429)
 rotation = -0.23585394
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(722.53076, 0, 518.7488, 669)
 
 [node name="Poles6" type="Sprite2D" parent="Assets/FrontPoles" unique_id=1310839927]
 position = Vector2(8065, 1288)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(955.9678, 0, 515.0322, 669)
 
 [node name="Poles18" type="Sprite2D" parent="Assets/FrontPoles" unique_id=351506161]
 position = Vector2(8747, 1113)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(1226.2366, 0, 244.76343, 669)
 
 [node name="Poles7" type="Sprite2D" parent="Assets/FrontPoles" unique_id=1870692964]
 position = Vector2(14023, 1571)
 rotation = 0.15958439
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(241.44261, 0, 486.27563, 669)
 
@@ -464,41 +459,41 @@ region_rect = Rect2(241.44261, 0, 486.27563, 669)
 position = Vector2(15001, 1750.9999)
 rotation = 0.31781223
 scale = Vector2(1, 1.1035076)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(0, 0, 284.18817, 669)
 
 [node name="Poles9" type="Sprite2D" parent="Assets/FrontPoles" unique_id=1120515653]
 position = Vector2(16322, 1940)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(1220.5295, 0, 250.47046, 669)
 
 [node name="Poles11" type="Sprite2D" parent="Assets/FrontPoles" unique_id=274085643]
 position = Vector2(21170, 2447.9998)
 rotation = -0.52570766
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(1220.5295, 0, 250.47046, 669)
 
 [node name="Poles12" type="Sprite2D" parent="Assets/FrontPoles" unique_id=1072706121]
 position = Vector2(21835.46, 2450.706)
 rotation = 0.25684166
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(1220.5295, 0, 250.47046, 669)
 
 [node name="Poles15" type="Sprite2D" parent="Assets/FrontPoles" unique_id=2062526351]
 position = Vector2(24812.46, 2391.706)
 rotation = 0.25684166
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(1220.5295, 0, 250.47046, 669)
 
 [node name="Poles17" type="Sprite2D" parent="Assets/FrontPoles" unique_id=1454813846]
 position = Vector2(25273.004, 2496.0002)
 rotation = 0.14779738
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(1220.5295, 0, 250.47046, 669)
 
@@ -507,7 +502,7 @@ z_index = 8
 position = Vector2(25110, 2458.0002)
 rotation = 0.15857881
 scale = Vector2(1.6196691, 1)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(1220.5295, 0, 250.47046, 669)
 
@@ -515,7 +510,7 @@ region_rect = Rect2(1220.5295, 0, 250.47046, 669)
 position = Vector2(19494.914, 2605.278)
 rotation = 0.27990478
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(0, 0, 727.71826, 669)
 
@@ -523,13 +518,13 @@ region_rect = Rect2(0, 0, 727.71826, 669)
 position = Vector2(23742, 2383.9998)
 rotation = -0.26250634
 scale = Vector2(0.99999994, 1.1791587)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(0, 0, 727.71826, 669)
 
 [node name="Poles14" type="Sprite2D" parent="Assets/FrontPoles" unique_id=325167515]
 position = Vector2(26009, 2512)
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(234.90704, 0, 1008.96625, 669)
 
@@ -538,52 +533,52 @@ z_index = -1
 
 [node name="BackPoles" type="Sprite2D" parent="Assets/BackPoles" unique_id=1776461589]
 position = Vector2(3211, 759)
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(576.8744, 0, 220.78973, 669)
 
 [node name="BackPoles2" type="Sprite2D" parent="Assets/BackPoles" unique_id=1665812377]
 position = Vector2(2766, 761)
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(0, 0, 523.28467, 669)
 
 [node name="BackPoles3" type="Sprite2D" parent="Assets/BackPoles" unique_id=1971342811]
 position = Vector2(3624, 817.9999)
 rotation = 0.24530742
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(870.4525, 0, 304.42773, 669)
 
 [node name="BackPoles4" type="Sprite2D" parent="Assets/BackPoles" unique_id=1780909285]
 position = Vector2(6501, 1485)
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(0, 0, 734.4657, 669)
 
 [node name="BackPoles5" type="Sprite2D" parent="Assets/BackPoles" unique_id=698013577]
 position = Vector2(7218.0005, 1408.9996)
 rotation = -0.25009838
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(852.218, 0, 329.4054, 669)
 
 [node name="BackPoles6" type="Sprite2D" parent="Assets/BackPoles" unique_id=95928507]
 position = Vector2(8010, 1288)
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(847.0305, 0, 623.9695, 669)
 
 [node name="BackPoles16" type="Sprite2D" parent="Assets/BackPoles" unique_id=1576747083]
 position = Vector2(8715, 1113)
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(1160.6149, 0, 310.38513, 669)
 
 [node name="BackPoles7" type="Sprite2D" parent="Assets/BackPoles" unique_id=1680473888]
 position = Vector2(14082.003, 1579.0002)
 rotation = 0.15073544
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(287.56067, 0, 510.18872, 669)
 
@@ -591,42 +586,42 @@ region_rect = Rect2(287.56067, 0, 510.18872, 669)
 position = Vector2(15004.999, 1799.9993)
 rotation = 0.28194767
 scale = Vector2(1, 1.2378303)
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(0, 0, 299.7506, 669)
 
 [node name="BackPoles9" type="Sprite2D" parent="Assets/BackPoles" unique_id=1584574111]
 position = Vector2(16282.999, 1938)
 rotation = 0.0423823
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(1171.2484, 0, 299.7516, 669)
 
 [node name="BackPoles11" type="Sprite2D" parent="Assets/BackPoles" unique_id=2095256586]
 position = Vector2(21135, 2467.9995)
 rotation = -0.48332536
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(1171.2484, 0, 299.7516, 669)
 
 [node name="BackPoles12" type="Sprite2D" parent="Assets/BackPoles" unique_id=650781705]
 position = Vector2(21801.002, 2441.0002)
 rotation = 0.29922396
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(1171.2484, 0, 299.7516, 669)
 
 [node name="BackPoles15" type="Sprite2D" parent="Assets/BackPoles" unique_id=1333543035]
 position = Vector2(24773.46, 2389.706)
 rotation = 0.29922396
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(1171.2484, 0, 299.7516, 669)
 
 [node name="BackPoles10" type="Sprite2D" parent="Assets/BackPoles" unique_id=1169231495]
 position = Vector2(19527.914, 2610.2776)
 rotation = 0.2823338
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(0, 0, 797.7494, 669)
 
@@ -634,20 +629,20 @@ region_rect = Rect2(0, 0, 797.7494, 669)
 position = Vector2(23774.002, 2379.9998)
 rotation = -0.25539187
 scale = Vector2(1, 1.1898568)
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(0, 0, 797.7494, 669)
 
 [node name="BackPoles14" type="Sprite2D" parent="Assets/BackPoles" unique_id=1501650520]
 position = Vector2(26008, 2513)
-texture = ExtResource("11_jcyk4")
+texture = ExtResource("21_bbhus")
 region_enabled = true
 region_rect = Rect2(281.59442, 0, 912.99774, 669)
 
 [node name="Poles" type="Sprite2D" parent="Assets/BackPoles" unique_id=863763777]
 position = Vector2(14673.001, 1425.0001)
 rotation = 0.017316177
-texture = ExtResource("10_1vh13")
+texture = ExtResource("20_wai1h")
 region_enabled = true
 region_rect = Rect2(0, 0, 234.90704, 669)
 
@@ -656,37 +651,37 @@ region_rect = Rect2(0, 0, 234.90704, 669)
 [node name="Sidecliff" type="Sprite2D" parent="Assets/Sidecliffs" unique_id=343631585]
 position = Vector2(368.6, 145)
 scale = Vector2(0.13007812, 0.21874999)
-texture = ExtResource("24_man1s")
+texture = ExtResource("22_86b0r")
 
 [node name="Sidecliff2" type="Sprite2D" parent="Assets/Sidecliffs" unique_id=1366366541]
 position = Vector2(5291.594, 1280.2225)
 rotation = -0.14473632
 scale = Vector2(0.13007812, 0.22240452)
-texture = ExtResource("24_man1s")
+texture = ExtResource("22_86b0r")
 
 [node name="Sidecliff4" type="Sprite2D" parent="Assets/Sidecliffs" unique_id=992470597]
 position = Vector2(18661, 2229.0002)
 rotation = -0.14473632
 scale = Vector2(0.13007812, 0.22240452)
-texture = ExtResource("24_man1s")
+texture = ExtResource("22_86b0r")
 
 [node name="Sidecliff3" type="Sprite2D" parent="Assets/Sidecliffs" unique_id=2138040500]
 position = Vector2(5929.652, 1400.0927)
 rotation = 0.23472789
 scale = Vector2(-0.13, 0.23124766)
-texture = ExtResource("24_man1s")
+texture = ExtResource("22_86b0r")
 
 [node name="SideclifDiag" type="Sprite2D" parent="Assets/Sidecliffs" unique_id=2120682778]
 position = Vector2(619, 368.99997)
 rotation = 0.080292925
 scale = Vector2(0.26680672, 0.26359648)
-texture = ExtResource("20_h47tk")
+texture = ExtResource("23_gugg2")
 
 [node name="SideclifDiag2" type="Sprite2D" parent="Assets/Sidecliffs" unique_id=1645204659]
 position = Vector2(1997.9999, 732)
 rotation = 0.24039589
 scale = Vector2(-0.267, 0.264)
-texture = ExtResource("20_h47tk")
+texture = ExtResource("23_gugg2")
 region_enabled = true
 region_rect = Rect2(0, 0, 1071, 697.216)
 
@@ -694,7 +689,7 @@ region_rect = Rect2(0, 0, 1071, 697.216)
 position = Vector2(13230, 1227)
 rotation = 0.10550471
 scale = Vector2(-0.23930222, 0.1842065)
-texture = ExtResource("20_h47tk")
+texture = ExtResource("23_gugg2")
 region_enabled = true
 region_rect = Rect2(0, 0, 1071, 811.141)
 
@@ -702,13 +697,13 @@ region_rect = Rect2(0, 0, 1071, 811.141)
 position = Vector2(2753.9995, 763.0001)
 rotation = -0.40419924
 scale = Vector2(0.267, 0.264)
-texture = ExtResource("20_h47tk")
+texture = ExtResource("23_gugg2")
 
 [node name="SideclifDiag5" type="Sprite2D" parent="Assets/Sidecliffs" unique_id=139781016]
 position = Vector2(13718, 1362.9998)
 rotation = -0.27356228
 scale = Vector2(0.267, 0.264)
-texture = ExtResource("20_h47tk")
+texture = ExtResource("23_gugg2")
 region_enabled = true
 region_rect = Rect2(0, 0, 1071, 897.9226)
 
@@ -716,7 +711,7 @@ region_rect = Rect2(0, 0, 1071, 897.9226)
 position = Vector2(19248, 2526)
 rotation = -0.16565795
 scale = Vector2(0.267, 0.264)
-texture = ExtResource("20_h47tk")
+texture = ExtResource("23_gugg2")
 region_enabled = true
 region_rect = Rect2(0, 0, 1071, 897.9226)
 
@@ -728,21 +723,21 @@ z_index = 1
 position = Vector2(25068, 2310.0002)
 rotation = 0.27866623
 scale = Vector2(0.99999994, 0.4082345)
-texture = ExtResource("28_bhy3y")
+texture = ExtResource("24_6gqfr")
 region_enabled = true
 region_rect = Rect2(0, 0, 537.3078, 1024)
 
 [node name="Cave" type="Sprite2D" parent="Assets/Caves" unique_id=2052270895]
 position = Vector2(25814.5, 2400.875)
 scale = Vector2(0.87786883, 0.4450685)
-texture = ExtResource("29_dulce")
+texture = ExtResource("25_7fqq2")
 region_enabled = true
 region_rect = Rect2(0, 0, 1220.4854, 1024)
 
 [node name="CaveOut" type="Sprite2D" parent="Assets/Caves" unique_id=1444706810]
 position = Vector2(26393, 2397.25)
 scale = Vector2(1, 0.4409177)
-texture = ExtResource("30_5yqqh")
+texture = ExtResource("26_3fnd1")
 region_enabled = true
 region_rect = Rect2(1236.4773, 0, 498.5227, 1024)
 
@@ -752,7 +747,7 @@ z_index = 1
 [node name="DirtWood" type="Sprite2D" parent="Assets/Transitions" unique_id=430937057]
 position = Vector2(26535.996, 2548.078)
 scale = Vector2(0.39550793, 0.30874646)
-texture = ExtResource("25_bhy3y")
+texture = ExtResource("27_ehxy8")
 region_enabled = true
 region_rect = Rect2(252.36646, 0, 433.67407, 1024)
 
@@ -760,7 +755,7 @@ region_rect = Rect2(252.36646, 0, 433.67407, 1024)
 position = Vector2(15244.003, 1396)
 rotation = -0.017353874
 scale = Vector2(0.23082423, 0.2113834)
-texture = ExtResource("27_kc8sf")
+texture = ExtResource("28_jfujn")
 
 [node name="FrontCover" type="Node2D" parent="Assets" unique_id=1362465955]
 z_index = 12
@@ -768,109 +763,109 @@ position = Vector2(411, -31)
 
 [node name="Forest3" type="Sprite2D" parent="Assets/FrontCover" unique_id=1057774558]
 position = Vector2(-785, 408)
-texture = ExtResource("26_yoy1d")
+texture = ExtResource("29_l3byl")
 region_enabled = true
 region_rect = Rect2(0, 0, 1498.3987, 1024)
 
 [node name="Cliff" type="Sprite2D" parent="Assets/FrontCover" unique_id=524870084]
 position = Vector2(-163, 466)
-texture = ExtResource("27_w0jt7")
+texture = ExtResource("30_tk7ny")
 
 [node name="Forest1" type="Sprite2D" parent="Assets/FrontCover" unique_id=1008516951]
 position = Vector2(253, 876)
-texture = ExtResource("26_dulce")
+texture = ExtResource("31_w33wk")
 region_enabled = true
 region_rect = Rect2(0, 0, 753.73456, 1024)
 
 [node name="Forest2" type="Sprite2D" parent="Assets/FrontCover" unique_id=389129780]
 position = Vector2(1741, 1060)
 scale = Vector2(-1, 1)
-texture = ExtResource("26_dulce")
+texture = ExtResource("31_w33wk")
 region_enabled = true
 region_rect = Rect2(0, 0, 753.73456, 1024)
 
 [node name="Forest4" type="Sprite2D" parent="Assets/FrontCover" unique_id=919235819]
 position = Vector2(1214, 1111)
-texture = ExtResource("29_s30ic")
+texture = ExtResource("32_xvaii")
 
 [node name="Forest5" type="Sprite2D" parent="Assets/FrontCover" unique_id=1058483609]
 position = Vector2(2711, 982)
-texture = ExtResource("30_jlwpy")
+texture = ExtResource("33_mx42f")
 
 [node name="Forest6" type="Sprite2D" parent="Assets/FrontCover" unique_id=1819702254]
 position = Vector2(3640, 1138)
-texture = ExtResource("26_dulce")
+texture = ExtResource("31_w33wk")
 region_enabled = true
 region_rect = Rect2(0, 0, 748.0284, 1024)
 
 [node name="Forest7" type="Sprite2D" parent="Assets/FrontCover" unique_id=1061912450]
 z_index = 1
 position = Vector2(4591, 1389)
-texture = ExtResource("31_kc8sf")
+texture = ExtResource("34_n1vnt")
 
 [node name="Forest9" type="Sprite2D" parent="Assets/FrontCover" unique_id=980057398]
 z_index = -24
 position = Vector2(4498, 1127)
-texture = ExtResource("31_kc8sf")
+texture = ExtResource("34_n1vnt")
 
 [node name="Forest8" type="Sprite2D" parent="Assets/FrontCover" unique_id=1173843006]
 position = Vector2(5041, 1571)
-texture = ExtResource("26_yoy1d")
+texture = ExtResource("29_l3byl")
 region_enabled = true
 region_rect = Rect2(0, 0, 902.09674, 1024)
 
 [node name="Forest10" type="Sprite2D" parent="Assets/FrontCover" unique_id=552152751]
 position = Vector2(6041, 1630)
-texture = ExtResource("30_jlwpy")
+texture = ExtResource("33_mx42f")
 
 [node name="Forest11" type="Sprite2D" parent="Assets/FrontCover" unique_id=782035615]
 position = Vector2(7312, 1565)
 scale = Vector2(-1, 1)
-texture = ExtResource("31_kc8sf")
+texture = ExtResource("34_n1vnt")
 
 [node name="Forest12" type="Sprite2D" parent="Assets/FrontCover" unique_id=1030102092]
 position = Vector2(9235, 1516.0001)
 scale = Vector2(1.2363281, 1.4042969)
-texture = ExtResource("26_yoy1d")
+texture = ExtResource("29_l3byl")
 
 [node name="Forest13" type="Sprite2D" parent="Assets/FrontCover" unique_id=517758585]
 position = Vector2(8666, 1495)
-texture = ExtResource("26_dulce")
+texture = ExtResource("31_w33wk")
 
 [node name="Forest14" type="Sprite2D" parent="Assets/FrontCover" unique_id=634479537]
 z_index = -1
 position = Vector2(9208, 1202)
-texture = ExtResource("29_s30ic")
+texture = ExtResource("32_xvaii")
 region_enabled = true
 region_rect = Rect2(0, 0, 1155.4397, 798)
 
 [node name="Forest15" type="Sprite2D" parent="Assets/FrontCover" unique_id=981870157]
 position = Vector2(10896, 1378)
-texture = ExtResource("30_jlwpy")
+texture = ExtResource("33_mx42f")
 
 [node name="Forest18" type="Sprite2D" parent="Assets/FrontCover" unique_id=1661243326]
 position = Vector2(13680.5, 1670)
 scale = Vector2(0.8261722, 1)
-texture = ExtResource("30_jlwpy")
+texture = ExtResource("33_mx42f")
 region_enabled = true
 region_rect = Rect2(0, 0, 1472.7205, 724)
 
 [node name="Forest20" type="Sprite2D" parent="Assets/FrontCover" unique_id=1562881865]
 position = Vector2(13422.001, 1992)
 scale = Vector2(0.8261722, 1)
-texture = ExtResource("30_jlwpy")
+texture = ExtResource("33_mx42f")
 region_enabled = true
 region_rect = Rect2(0, 0, 1472.7205, 724)
 
 [node name="Forest16" type="Sprite2D" parent="Assets/FrontCover" unique_id=1183253532]
 position = Vector2(11695.75, 1438)
 scale = Vector2(0.7600908, 1)
-texture = ExtResource("26_dulce")
+texture = ExtResource("31_w33wk")
 
 [node name="Forest17" type="Sprite2D" parent="Assets/FrontCover" unique_id=202184186]
 position = Vector2(12452.001, 1438)
 scale = Vector2(0.9144145, 0.8105469)
-texture = ExtResource("26_dulce")
+texture = ExtResource("31_w33wk")
 region_enabled = true
 region_rect = Rect2(0, 0, 785.11896, 1024)
 
@@ -878,32 +873,32 @@ region_rect = Rect2(0, 0, 785.11896, 1024)
 z_index = -1
 position = Vector2(12845, 1512)
 scale = Vector2(0.613924, 1)
-texture = ExtResource("27_w0jt7")
+texture = ExtResource("30_tk7ny")
 
 [node name="Forest19" type="Sprite2D" parent="Assets/FrontCover" unique_id=788296521]
 position = Vector2(14664, 2209)
-texture = ExtResource("31_kc8sf")
+texture = ExtResource("34_n1vnt")
 
 [node name="Forest23" type="Sprite2D" parent="Assets/FrontCover" unique_id=1075551646]
 position = Vector2(17644, 2242)
-texture = ExtResource("31_kc8sf")
+texture = ExtResource("34_n1vnt")
 
 [node name="Forest21" type="Sprite2D" parent="Assets/FrontCover" unique_id=1821871802]
 position = Vector2(15892, 2196)
 scale = Vector2(-1, 1)
-texture = ExtResource("31_kc8sf")
+texture = ExtResource("34_n1vnt")
 
 [node name="Forest22" type="Sprite2D" parent="Assets/FrontCover" unique_id=1493104869]
 z_index = -1
 position = Vector2(16794, 1977)
-texture = ExtResource("30_jlwpy")
+texture = ExtResource("33_mx42f")
 region_enabled = true
 region_rect = Rect2(0, 0, 611.0787, 724)
 
 [node name="Forest25" type="Sprite2D" parent="Assets/FrontCover" unique_id=1219887299]
 z_index = -7
 position = Vector2(16788, 2316)
-texture = ExtResource("30_jlwpy")
+texture = ExtResource("33_mx42f")
 region_enabled = true
 region_rect = Rect2(0, 0, 611.0787, 724)
 
@@ -911,72 +906,71 @@ region_rect = Rect2(0, 0, 611.0787, 724)
 z_index = -1
 position = Vector2(18266, 2522)
 scale = Vector2(-1, 1)
-texture = ExtResource("30_jlwpy")
+texture = ExtResource("33_mx42f")
 region_enabled = true
 region_rect = Rect2(0, 0, 308.64813, 724)
 
 [node name="Forest26" type="Sprite2D" parent="Assets/FrontCover" unique_id=1165238425]
 position = Vector2(19929, 3084)
-texture = ExtResource("30_jlwpy")
+texture = ExtResource("33_mx42f")
 
 [node name="Forest27" type="Sprite2D" parent="Assets/FrontCover" unique_id=428337545]
 position = Vector2(22289, 3155)
-texture = ExtResource("29_s30ic")
+texture = ExtResource("32_xvaii")
 
 [node name="Forest28" type="Sprite2D" parent="Assets/FrontCover" unique_id=1483769484]
 position = Vector2(21925, 3038)
-texture = ExtResource("31_kc8sf")
+texture = ExtResource("34_n1vnt")
 
 [node name="Forest30" type="Sprite2D" parent="Assets/FrontCover" unique_id=2127437725]
 position = Vector2(19323, 2984)
-texture = ExtResource("31_kc8sf")
+texture = ExtResource("34_n1vnt")
 
 [node name="Forest29" type="Sprite2D" parent="Assets/FrontCover" unique_id=488952049]
 position = Vector2(20529, 3013)
 scale = Vector2(-1, 1)
-texture = ExtResource("31_kc8sf")
+texture = ExtResource("34_n1vnt")
 
 [node name="Forest31" type="Sprite2D" parent="Assets/FrontCover" unique_id=1956271168]
 position = Vector2(24560, 2688)
-texture = ExtResource("26_dulce")
+texture = ExtResource("31_w33wk")
 region_enabled = true
 region_rect = Rect2(0, 0, 793.6783, 1024)
 
 [node name="Forest35" type="Sprite2D" parent="Assets/FrontCover" unique_id=925036521]
 position = Vector2(26695, 2666)
 scale = Vector2(-1, 1)
-texture = ExtResource("26_dulce")
+texture = ExtResource("31_w33wk")
 region_enabled = true
 region_rect = Rect2(0, 0, 793.6783, 1024)
 
 [node name="Forest36" type="Sprite2D" parent="Assets/FrontCover" unique_id=1293563897]
 position = Vector2(23941, 2697)
 scale = Vector2(-1, 1)
-texture = ExtResource("26_dulce")
+texture = ExtResource("31_w33wk")
 region_enabled = true
 region_rect = Rect2(0, 0, 793.6783, 1024)
 
 [node name="Forest32" type="Sprite2D" parent="Assets/FrontCover" unique_id=1011186510]
 z_index = -1
 position = Vector2(23661, 3129)
-texture = ExtResource("26_yoy1d")
+texture = ExtResource("29_l3byl")
 
 [node name="Forest33" type="Sprite2D" parent="Assets/FrontCover" unique_id=86489282]
 position = Vector2(23906, 2810)
-texture = ExtResource("29_s30ic")
+texture = ExtResource("32_xvaii")
 
 [node name="Forest34" type="Sprite2D" parent="Assets/FrontCover" unique_id=130081339]
 position = Vector2(25678, 2865)
-texture = ExtResource("26_yoy1d")
+texture = ExtResource("29_l3byl")
 
 [node name="BackForestSpec" type="Sprite2D" parent="Assets" unique_id=1947355494]
 z_index = -3
 position = Vector2(12203, 1224)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("35_jlwpy")
+texture = ExtResource("35_cqsq0")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=746463856]
-visible = false
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=902193105]
 motion_scale = Vector2(0.2, 0.2)
@@ -984,7 +978,7 @@ motion_mirroring = Vector2(4608, 3072)
 
 [node name="SkyCloud1" type="Sprite2D" parent="ParallaxBackground/Sky" unique_id=1263365679]
 scale = Vector2(3, 3)
-texture = ExtResource("19_lc6nm")
+texture = ExtResource("36_dbrxl")
 
 [node name="BackMountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=146799377]
 position = Vector2(-3, -3)
@@ -994,7 +988,7 @@ motion_mirroring = Vector2(3072, 0)
 [node name="MountainBackground" type="Sprite2D" parent="ParallaxBackground/BackMountains" unique_id=1108388989]
 position = Vector2(8, 1444)
 scale = Vector2(3, 3)
-texture = ExtResource("20_man1s")
+texture = ExtResource("37_oyqmg")
 
 [node name="BackForest" type="ParallaxLayer" parent="ParallaxBackground" unique_id=691336840]
 motion_scale = Vector2(0.8, 0.8)
@@ -1002,80 +996,80 @@ motion_scale = Vector2(0.8, 0.8)
 [node name="BackForestUp" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=1789542135]
 position = Vector2(16, 1519)
 scale = Vector2(3, 3)
-texture = ExtResource("16_0bsrj")
+texture = ExtResource("38_fcdss")
 
 [node name="BackForestUp2" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=2143573850]
 position = Vector2(3072, 1506)
 scale = Vector2(3, 3)
-texture = ExtResource("16_0bsrj")
+texture = ExtResource("38_fcdss")
 
 [node name="BackForestUp6" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=427217009]
 position = Vector2(9509, 2321)
 scale = Vector2(3, 3)
-texture = ExtResource("16_0bsrj")
+texture = ExtResource("38_fcdss")
 
 [node name="BackForestUp10" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=1871580138]
 position = Vector2(12745, 2422)
 scale = Vector2(3, 3)
-texture = ExtResource("16_0bsrj")
+texture = ExtResource("38_fcdss")
 
 [node name="BackForestUp8" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=162588633]
 position = Vector2(22750, 3444)
 scale = Vector2(3, 3)
-texture = ExtResource("16_0bsrj")
+texture = ExtResource("38_fcdss")
 
 [node name="BackForestUp9" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=1809343346]
 position = Vector2(19695, 3549)
 scale = Vector2(3, 3)
-texture = ExtResource("16_0bsrj")
+texture = ExtResource("38_fcdss")
 
 [node name="BackForestUp7" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=1977472121]
 position = Vector2(14989.001, 1031)
 scale = Vector2(3, 3)
-texture = ExtResource("16_0bsrj")
+texture = ExtResource("38_fcdss")
 region_enabled = true
 region_rect = Rect2(0, 0, 423.81232, 1535)
 
 [node name="BackForestUp5" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=966945487]
 position = Vector2(6705, 2700)
 scale = Vector2(3, 3)
-texture = ExtResource("16_0bsrj")
+texture = ExtResource("38_fcdss")
 
 [node name="BackForestUp3" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=269820225]
 position = Vector2(4748.0005, 2089)
 scale = Vector2(3, 3)
-texture = ExtResource("16_0bsrj")
+texture = ExtResource("38_fcdss")
 region_enabled = true
 region_rect = Rect2(927.0773, 0, 96.92273, 1535)
 
 [node name="BackForestUp4" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=1126447796]
 position = Vector2(5034.9995, 2701)
 scale = Vector2(3, 3)
-texture = ExtResource("16_0bsrj")
+texture = ExtResource("38_fcdss")
 region_enabled = true
 region_rect = Rect2(927.0773, 0, 96.92273, 1535)
 
 [node name="BackForestDiag4" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=679589411]
 position = Vector2(17138, 402)
 scale = Vector2(3, 3)
-texture = ExtResource("26_nxto0")
+texture = ExtResource("39_s8en7")
 
 [node name="BackForestDiag3" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=611784394]
 position = Vector2(12836, 997)
 scale = Vector2(-3, 3)
-texture = ExtResource("26_nxto0")
+texture = ExtResource("39_s8en7")
 
 [node name="BackForestDiag2" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=1717049893]
 position = Vector2(11549, 1504)
 scale = Vector2(3, 3)
-texture = ExtResource("26_nxto0")
+texture = ExtResource("39_s8en7")
 region_enabled = true
 region_rect = Rect2(257.81274, 0, 334.59283, 1535)
 
 [node name="BackForest2" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=618035602]
 position = Vector2(16715, 4988)
 scale = Vector2(-3, 3)
-texture = ExtResource("17_ul7kc")
+texture = ExtResource("40_udbo6")
 
 [node name="CameraEffects" type="Area2D" parent="." unique_id=128169794]
 collision_layer = 8
@@ -1084,7 +1078,7 @@ collision_mask = 0
 [node name="DebugStart" type="Marker2D" parent="." unique_id=823606806]
 unique_name_in_owner = true
 z_index = 17
-script = ExtResource("13_5ii72")
+script = ExtResource("41_0cni6")
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]

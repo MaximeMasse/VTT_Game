@@ -443,3 +443,4 @@ libraries/ = SubResource("AnimationLibrary_dwbos")
 [connection signal="pressed" from="Nodes/Map 1" to="." method="_on_1_pressed"]
 [connection signal="pressed" from="Nodes/Map 2" to="." method="_on_2_pressed"]
 [connection signal="pressed" from="Nodes/Boss 1 Map" to="." method="_on_forest_boss_pressed"]
+[connection signal="pressed" from="ToVillageButton" to="." method="_on_to_village_button_pressed"]

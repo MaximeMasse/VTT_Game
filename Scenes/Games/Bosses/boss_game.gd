@@ -212,6 +212,7 @@ func start_countdown():
 		%Ingame_Label.hide()
 		AudioManager.play_music(Global.current_map)
 		RunSaveManager.start_recording()
+		%Boss.started = true
 		return
 	race_started = false
 	%Ingame_Label.show()
@@ -224,6 +225,7 @@ func start_countdown():
 	AudioManager.play_sfx("horn")
 	velo_courant.can_drive = true
 	race_started = true
+	%Boss.started = true
 	RunSaveManager.start_recording()
 	await get_tree().create_timer(1).timeout
 	%Ingame_Label.hide()

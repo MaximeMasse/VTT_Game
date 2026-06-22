@@ -74,11 +74,11 @@ func _ready():
 	# Current node new paths and active zone
 	await draw_new_paths()
 	# Debug print
-	print("Nodes :")
-	for node in world_datas["Nodes"]:print(node," : ",world_datas["Nodes"][node])
-	print("\nZones :")
-	for zone in world_datas["Zones"]:print(zone," : ",world_datas["Zones"][zone])
-	print("\nPlayer datas : ",player_datas)
+	#print("Nodes :")
+	#for node in world_datas["Nodes"]:print(node," : ",world_datas["Nodes"][node])
+	#print("\nZones :")
+	#for zone in world_datas["Zones"]:print(zone," : ",world_datas["Zones"][zone])
+	#print("\nPlayer datas : ",player_datas)
 	#print("\nActives zones : ",active_zones)
 	running = true
 
@@ -378,4 +378,13 @@ func _on_0_pressed():
 	else:start_map("Map 0")
 func _on_1_pressed():start_map("Map 1")
 func _on_2_pressed():start_map("Map 2")
-func _on_forest_boss_pressed():start_map("Boss 1 Map")
+func _on_forest_boss_pressed():
+		Global.current_map = "Boss 1 Map"
+		Global.current_boss = "Adriano"
+		Global.start_mod("Boss_Game")
+
+
+func _on_to_village_button_pressed():
+	Global.current_profile["state"] = "Career"
+	Global.start_mod("Career")
+	SaveManager.save_profile(Global.current_profile)

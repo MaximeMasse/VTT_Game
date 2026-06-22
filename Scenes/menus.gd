@@ -7,8 +7,6 @@ var choix_perso :int= 1
 		"MainMenu":%MainMenu,
 		"NewPlayer":%NewPlayer,
 		"ChangeProfile":%ChangeProfile,
-		"Carrière":%Carriere,
-		"Chairlift":%ChairliftMenu,
 	}
 
 func _ready():
@@ -36,7 +34,7 @@ func _ready():
 	# Buttons
 	set_up_buttons(self)
 	# Menu
-	show_menu(Global.menu_to_show)
+	show_menu()
 
 func set_up_buttons(node):
 	for child in node.get_children():
@@ -47,10 +45,13 @@ func set_up_buttons(node):
 			child.pressed.connect(func():on_button_pressed(child))
 		set_up_buttons(child)
 
-func show_menu(menu:String):
-	for men in dico_menus:dico_menus[men].hide()
-	if menu == "Chairlift":Global.start_mod("Forest_Map")
-	dico_menus[menu].show()
+func show_menu():
+	if Global.menu_to_show == "Chairlift":
+		Global.start_mod(Global.current_profile["current_run"]["current_day"]["world"])
+	elif Global.menu_to_show in ["Career","tuto"]:Global.start_mod("Career")
+	else:
+		for men in dico_menus:dico_menus[men].hide()
+		dico_menus[Global.menu_to_show].show()
 
 func on_button_hover(button:BaseButton):if not button.disabled:button.grab_focus()
 func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()
@@ -68,14 +69,15 @@ func _unhandled_input(_event: InputEvent) -> void:
 	elif Input.is_action_just_pressed("ui_up"):%ProfileButton.grab_focus()
 
 func _on_continue_button_pressed():
+	Global.menu_to_show = Global.current_profile["state"]
 	AudioManager.stop_music()
 	Global.set_run()
 	Global.set_day()
-	show_menu("Chairlift")
-	#Global.start_mod("Tuto_Game")
+	show_menu()
 
 func _on_new_player_button_pressed():
-	show_menu("NewPlayer")
+	Global.menu_to_show = "NewPlayer"
+	show_menu()
 	%Choix.texture = load("res://Avatar/Players/" + Global.dico_avatars[choix_perso] + "/Avatar.png")
 	
 func _on_bouton_gauche_pressed():
@@ -91,39 +93,16 @@ func _on_ok_pressed():
 	var avatar_id = choix_perso
 	SaveManager.create_profile(pseudo, avatar_id)
 	Global.current_profile["bike_model"] = 2 if choix_perso in [3,4] else 1
+	Global.menu_to_show = "Career"
+	Global.set_run()
+	Global.set_day()
 	SaveManager.save_profile(Global.current_profile)
-	show_menu("Carrière")
-	if Global.get_profile_data("state") == "tuto":
-		%StartTutoPanel.hide()
-		%Tuto.show()
-		for button in %Spots.get_children():button.disabled = true
-		%DialogTuto.play_scene("tuto")
-
-func _on_dialog_tuto_scene_ended(scene_name):
-	if scene_name == "tuto":
-		%StartTutoPanel.show()
-	elif scene_name == "tuto_start":%World.disabled = false
-	elif scene_name == "tuto_skip":
-		%Tuto.hide()
-		Global.current_profile["state"] = "other"
-		for button in %Spots.get_children():button.disabled = false
-
-func _on_tuto_yes_button_pressed():
-	%StartTutoPanel.hide()
-	%DialogTuto.play_scene("tuto_start")
-
-func _on_tuto_no_button_pressed():
-	%TutoPanels.hide()
-	%DialogTuto.play_scene("tuto_skip")
+	show_menu()
 
 func _on_chairlift_pressed() -> void:
 	AudioManager.stop_music()
-	show_menu("Chairlift")
-	if Global.get_profile_data("state") == "tuto":
-		for button in %Nodes.get_children():button.hide()
-		%DialogChairlift.play_scene("tuto")
-
-func _on_dialog_chairlift_scene_ended(_scene_name):%Map_0_Button.show()
+	Global.menu_to_show = "Chairlift"
+	show_menu()
 
 func _on_map_0_button_pressed():
 	if Global.get_profile_data("state") == "tuto":Global.start_mod("Tuto_Game")

@@ -1,5 +1,5 @@
 {
-	"avatar": 1.0,
+	"avatar": 5.0,
 	"best_tricks": {
 		"Air": {
 			"duration": 3.86666666666666,
@@ -11,7 +11,7 @@
 		},
 		"Wheelie": {
 			"duration": 2.15,
-			"length": 28.4816183968594
+			"length": 41.7068067651046
 		}
 	},
 	"bike_model": 1.0,
@@ -21,15 +21,20 @@
 		"BOOST_MAX_QUANTITY": 5000.0,
 		"ONE_TIME_RATIO": 5.0
 	},
-	"crowns": 1.0,
+	"crowns": 3.0,
 	"current_run": {
 		"current_day": {
 			"course": [
-				"Map 0"
+				"Map 0",
+				"Map 0",
+				"Map 1",
+				"Map 2",
+				"Map 2",
+				"Map 2"
 			],
 			"crowns": 0.0,
 			"money": 0.0,
-			"node": "Map 0",
+			"node": "Map 2",
 			"stars": 0.0,
 			"world": "Forest"
 		},
@@ -45,13 +50,49 @@
 				"objectives": [
 					2.0
 				]
+			},
+			"Map 1": {
+				"bills": [
+					0.0,
+					2.0,
+					1.0,
+					4.0,
+					6.0,
+					8.0,
+					7.0
+				],
+				"finished": true,
+				"gaps": {
+					"for the Homies": true,
+					"the Last Jump": true
+				},
+				"objectives": [
+					2.0
+				]
+			},
+			"Map 2": {
+				"bills": [
+					0.0,
+					1.0,
+					5.0,
+					9.0
+				],
+				"finished": true,
+				"gaps": {
+					"for the Homies": true
+				},
+				"objectives": [
+					1.0,
+					2.0,
+					3.0
+				]
 			}
 		},
-		"money": 900.0,
-		"stars": 5.0,
+		"money": 4050.0,
+		"stars": 17.0,
 		"unlocks": []
 	},
-	"id": 2.0,
+	"id": 3.0,
 	"map_records": {
 		"Map 0": {
 			"bills_caught": false,
@@ -66,20 +107,34 @@
 		},
 		"Map 1": {
 			"bills_caught": false,
-			"crowns_unlocked": 0,
+			"crowns_unlocked": 0.0,
 			"gaps_discovered": [
-				"the 1st Platform"
+				"for the Homies",
+				"the Last Jump"
 			],
 			"gaps_done": false,
 			"objectives_done": false,
 			"queen_score_beaten": false,
 			"queen_time_beaten": false,
-			"score": 8392.0,
-			"time": 40.5666666666656
+			"score": 4574.0,
+			"time": 56.6666666666648
+		},
+		"Map 2": {
+			"bills_caught": false,
+			"crowns_unlocked": 0.0,
+			"gaps_discovered": [
+				"for the Homies"
+			],
+			"gaps_done": false,
+			"objectives_done": false,
+			"queen_score_beaten": false,
+			"queen_time_beaten": false,
+			"score": 10423.0,
+			"time": 40.6666666666656
 		}
 	},
 	"name": "Juliette",
-	"state": "tuto2",
+	"state": "Chairlift",
 	"stats": {
 		"ACCÉLÉRATION": 10000.0,
 		"AIR_ROTATION_CONTROL": 20.0,

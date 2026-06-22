@@ -9,6 +9,7 @@ var config := {}
 # Map
 var current_map := "0"
 var map_data : Dictionary
+var current_boss : String
 
 # HUD
 var race_time : float
@@ -100,7 +101,7 @@ var dico_maps := {
 	"Map 0":"res://Maps/map_0.tscn",
 	"Map 1":"res://Maps/map_1.tscn",
 	"Map 2":"res://Maps/map_1.tscn",
-	"Boss 1 Map":"res://Maps/map_1.tscn",
+	"Boss 1 Map":"res://Scenes/Games/Bosses/Maps/boss_1_map.tscn",
 }
 var dico_vélo := {
 	0:"res://Bikes/bike_0.tscn",
@@ -117,8 +118,10 @@ var dico_avatars := {
 var dico_scenes :={
 	"Menus":"res://Scenes/menus.tscn",
 	"Main_Game":"res://Scenes/Games/game.tscn",
+	"Boss_Game":"res://Scenes/Games/Bosses/BossGame.tscn",
 	"Tuto_Game":"res://Scenes/Games/tuto_game.tscn",
-	"Forest_Map":"res://Scenes/Worlds/forest_map.tscn"
+	"Career":"res://Scenes/career.tscn",
+	"Forest":"res://Scenes/Worlds/forest_map.tscn"
 }
 
 signal hud_trick_reset
@@ -196,11 +199,12 @@ func checkpoint_update(cp : String,min_speed : float = 0):
 func gap_entry(gap_name : String):
 	if current_trick["trick"] != "" or not contact_sol:
 		is_in_gap = gap_name
-		gap_combo[gap_name] = []
+		gap_combo[gap_name] = {"done":false,"tricks":[]}
 
 func gap_exit(gap_name : String):
 	if is_in_gap == gap_name: 
-		gap_combo[gap_name].append(current_trick["trick"])
+		gap_combo[gap_name]["tricks"].append(current_trick["trick"])
+		gap_combo[gap_name]["done"] = true
 		combo_update(gap_name)
 		AudioManager.play_sfx("gap")
 		# Records
@@ -240,7 +244,7 @@ func combo_update(gap=null):
 						{"trick":"[color=4a5ef5ff]" + gap + "[/color]","length":0.0,"duration":0.0,"rotation":0.0}
 	potential_combo_score += int(score_to_add)
 	current_combo.append(trick_to_add)
-	if gap == null and is_in_gap != "" : gap_combo[is_in_gap].append(current_trick["trick"])
+	if gap == null and is_in_gap != "" : gap_combo[is_in_gap]["tricks"].append(current_trick["trick"])
 	hud_combo_update.emit(trick_to_add["trick"])
 	
 
@@ -272,11 +276,12 @@ func valid_combo():
 		store_collectible.emit()
 	# Gap
 	for gap in gap_combo:
-		gaps_done[gap] = true
-		if gap == map_data["special_trick"]["spot"] and not special_trick_done and \
-		map_data["special_trick"]["trick"] in gap_combo[gap]:
-			special_trick_done = true
-			AudioManager.play_sfx("special_trick")
+		if gap_combo[gap]["done"]:
+			gaps_done[gap] = true
+			if gap == map_data["special_trick"]["spot"] and not special_trick_done and \
+			map_data["special_trick"]["trick"] in gap_combo[gap]["tricks"]:
+				special_trick_done = true
+				AudioManager.play_sfx("special_trick")
 	gap_combo = {}
 	is_in_gap = ""
 
@@ -321,6 +326,7 @@ func end_map():
 	check_gaps()
 	check_bills()
 	profile_update()
+	RunSaveManager.save_run()
 	SaveManager.save_profile(current_profile)
 
 func check_map_objectives():

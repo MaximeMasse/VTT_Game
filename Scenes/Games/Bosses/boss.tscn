@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://baskit0hcl4xe"]
+
+[ext_resource type="Script" uid="uid://cskxrxk75mn0i" path="res://Scenes/Games/Bosses/boss.gd" id="1_c5yv3"]
+[ext_resource type="Texture2D" uid="uid://b0medr2vsdwu" path="res://Avatar/Bosses/Adriano/Avatar_bike.png" id="2_q6khy"]
+
+[node name="Boss" type="Node2D" unique_id=10162340]
+script = ExtResource("1_c5yv3")
+
+[node name="AvatarBike" type="Sprite2D" parent="." unique_id=1816567377]
+unique_name_in_owner = true
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_q6khy")

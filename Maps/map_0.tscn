@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b73u573tnpyi1" path="res://Images/Mapping/Cover/rock_line_1.png" id="9_2k2xf"]
 [ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="9_4hqvm"]
 [ext_resource type="Texture2D" uid="uid://vrrxlv0cap0h" path="res://Images/Mapping/Assets/Rocks/rock_big_1.png" id="9_y2cw0"]
-[ext_resource type="Texture2D" path="res://Images/Mapping/Fonds/Fond_montagnes.png" id="10_2k2xf"]
+[ext_resource type="Texture2D" uid="uid://54bnqsapnnte" path="res://Images/Mapping/Fonds/BackMontains/Fond_montagnes.png" id="10_2k2xf"]
 [ext_resource type="Texture2D" uid="uid://bb53ivx7kwmg7" path="res://Images/Mapping/Assets/Rocks/rock_small_1.png" id="11_6tt68"]
 [ext_resource type="PackedScene" uid="uid://bj7vagcb8aebw" path="res://Scenes/Misc/100bill.tscn" id="11_xkbuu"]
 [ext_resource type="PackedScene" uid="uid://bfjb48yf137xj" path="res://Scenes/Misc/50bill.tscn" id="11_yncro"]

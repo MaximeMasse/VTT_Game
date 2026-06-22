@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://b4p6wo6qok4sk"]
 
 [ext_resource type="Script" uid="uid://clgocw3oket3p" path="res://TileSet/finish.gd" id="1_7tdds"]
-[ext_resource type="Texture2D" uid="uid://28ni6g18d20j" path="res://Images/Mapping/Assets/finish_back.png" id="2_ggg7k"]
-[ext_resource type="Texture2D" uid="uid://c6e3m7y44678u" path="res://Images/Mapping/Assets/finish_front.png" id="3_gnoa8"]
-[ext_resource type="Texture2D" uid="uid://bb53ivx7kwmg7" path="res://Images/Mapping/Assets/rock_small_1.png" id="4_05bfc"]
+[ext_resource type="Texture2D" uid="uid://28ni6g18d20j" path="res://Images/Mapping/Assets/Flags/finish_back.png" id="2_ggg7k"]
+[ext_resource type="Texture2D" uid="uid://c6e3m7y44678u" path="res://Images/Mapping/Assets/Flags/finish_front.png" id="3_gnoa8"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_iy0nh"]
 a = Vector2(-1, 191)
@@ -117,18 +116,16 @@ process_material = SubResource("ParticleProcessMaterial_gnoa8")
 
 [node name="FinishBack" type="Sprite2D" parent="." unique_id=1942263506]
 z_index = -10
-position = Vector2(33.274715, -65)
-scale = Vector2(0.6, 1.3)
+position = Vector2(64.18735, -122)
+scale = Vector2(0.78024864, 1.3)
 texture = ExtResource("2_ggg7k")
+region_enabled = true
+region_rect = Rect2(0, 0, 343, 347.00006)
 
 [node name="FinishFront" type="Sprite2D" parent="." unique_id=371665047]
 z_index = 10
-position = Vector2(-106, 25)
-scale = Vector2(0.6, 1.3)
+position = Vector2(-124.99999, -35)
+scale = Vector2(0.9071429, 1.3)
 texture = ExtResource("3_gnoa8")
-
-[node name="RockSmall1" type="Sprite2D" parent="FinishFront" unique_id=1620996310]
-z_index = 12
-position = Vector2(5.9999943, 149.99998)
-scale = Vector2(1.2513661, 1.0942029)
-texture = ExtResource("4_05bfc")
+region_enabled = true
+region_rect = Rect2(0, 0, 140, 324.99997)

@@ -1,0 +1,853 @@
+[gd_scene format=3 uid="uid://bk680txk0dqxi"]
+
+[ext_resource type="Script" uid="uid://dh7jirdo5p3tk" path="res://Scenes/Games/Bosses/boss_game.gd" id="1_t0tr5"]
+[ext_resource type="PackedScene" uid="uid://c6l7y8jhln7o0" path="res://Scenes/hud.tscn" id="2_ulilq"]
+[ext_resource type="Texture2D" uid="uid://bg87b1ha0jjfv" path="res://Images/Menus/Controls/resume_up.png" id="3_2b3mi"]
+[ext_resource type="PackedScene" uid="uid://baskit0hcl4xe" path="res://Scenes/Games/Bosses/boss.tscn" id="3_na8g0"]
+[ext_resource type="Texture2D" uid="uid://g81m2v0n4xey" path="res://Images/Menus/Controls/resume_down.png" id="4_ptt8y"]
+[ext_resource type="Texture2D" uid="uid://0sq3ldihvxtv" path="res://Images/Menus/Controls/resume_hover.png" id="5_om7hb"]
+[ext_resource type="Texture2D" uid="uid://byv50krroasxt" path="res://Images/Menus/Controls/abandon_up.png" id="6_rtdum"]
+[ext_resource type="Texture2D" uid="uid://bgwsl2opkxsyv" path="res://Images/Menus/Controls/abandon_down.png" id="7_q614p"]
+[ext_resource type="Texture2D" uid="uid://itr7nq5s3o1w" path="res://Images/Menus/Controls/abandon_hover.png" id="8_gf1k3"]
+[ext_resource type="FontFile" uid="uid://ctamdlckg0fvr" path="res://Fonts/PixelGame-R9AZe.otf" id="9_fpljf"]
+[ext_resource type="PackedScene" uid="uid://3rkdpubp057j" path="res://Scenes/Misc/crown.tscn" id="10_k3kg4"]
+[ext_resource type="SpriteFrames" uid="uid://dw1psg1jlbwg1" path="res://Images/Menus/Maps/Anim/star_sprite_frames.tres" id="11_3ubn3"]
+[ext_resource type="StyleBox" uid="uid://cdy5x8mw0va4i" path="res://Styles/Regular_box.tres" id="12_psfqb"]
+[ext_resource type="Texture2D" uid="uid://cd6n0fx4hywqq" path="res://Images/Menus/Controls/CheckBox_valid.png" id="13_1hk2h"]
+[ext_resource type="Texture2D" uid="uid://wfx2lfwfrtnl" path="res://Images/Menus/Controls/CheckBox_empty.png" id="14_d7hfy"]
+[ext_resource type="Texture2D" uid="uid://c7vvpwiyu0iw1" path="res://Images/Menus/Controls/CheckBox_unknow.png" id="15_rora7"]
+[ext_resource type="Texture2D" uid="uid://b2t4xiu1ohpba" path="res://Images/Mapping/Collectibles/Bills/50_Bill_face.png" id="16_a5lg6"]
+[ext_resource type="Texture2D" uid="uid://d2bo6bqh1tyd1" path="res://Images/Mapping/Collectibles/Bills/100_Bill_face.png" id="17_i3wn0"]
+[ext_resource type="Texture2D" uid="uid://d7smnuxn4k8m" path="res://Images/Mapping/Collectibles/Bills/200_Bill_face.png" id="18_hrvuo"]
+[ext_resource type="Texture2D" uid="uid://tmy85umvaex2" path="res://Images/Mapping/Collectibles/Bills/500_Bill_face.png" id="19_er2f1"]
+[ext_resource type="Texture2D" uid="uid://bfagchbmge633" path="res://Images/Menus/Controls/continue_up.png" id="20_ktuyu"]
+[ext_resource type="Texture2D" uid="uid://dp7mve24tielf" path="res://Images/Menus/Controls/continue_down.png" id="21_tycu0"]
+[ext_resource type="Texture2D" uid="uid://dv62chm0uslkm" path="res://Images/Menus/Controls/continue_hover.png" id="22_b178t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
+bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.18039216, 0.007843138, 0.3372549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="SystemFont" id="SystemFont_fc0e3"]
+font_names = PackedStringArray("Pixel Game", "Pixel Tactical", "Pharmakon")
+
+[sub_resource type="FontVariation" id="FontVariation_jpypc"]
+base_font = ExtResource("9_fpljf")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_llc0d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvpir"]
+bg_color = Color(0.24313726, 0, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="SystemFont" id="SystemFont_k57dk"]
+font_names = PackedStringArray("Pixel Code")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbsk7"]
+
+[sub_resource type="SystemFont" id="SystemFont_ij56o"]
+font_names = PackedStringArray("Pharmakon")
+
+[sub_resource type="SystemFont" id="SystemFont_mhh63"]
+font_names = PackedStringArray("Pixel Code")
+
+[sub_resource type="SystemFont" id="SystemFont_lv8ek"]
+font_names = PackedStringArray("Pixel Code")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lso2o"]
+bg_color = Color(0.07450981, 0.20392157, 0.003921569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="SystemFont" id="SystemFont_j5wjh"]
+font_names = PackedStringArray("Pixel Game")
+
+[node name="Game" type="Node2D" unique_id=687301190]
+process_mode = 3
+script = ExtResource("1_t0tr5")
+
+[node name="HUD" parent="." unique_id=1185251805 instance=ExtResource("2_ulilq")]
+unique_name_in_owner = true
+
+[node name="Boss" parent="." unique_id=10162340 instance=ExtResource("3_na8g0")]
+unique_name_in_owner = true
+z_index = 3
+
+[node name="MapContainer" type="Node2D" parent="." unique_id=1502284966]
+unique_name_in_owner = true
+
+[node name="BikeContainer" type="Node2D" parent="." unique_id=100482909]
+unique_name_in_owner = true
+z_index = 2
+
+[node name="InGame_Menus" type="CanvasLayer" parent="." unique_id=1815683310]
+
+[node name="Pause_Menu" type="Panel" parent="InGame_Menus" unique_id=1799553443]
+unique_name_in_owner = true
+process_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -151.0
+offset_right = 99.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_feb5d")
+
+[node name="Label" type="Label" parent="InGame_Menus/Pause_Menu" unique_id=609975466]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = 9.0
+offset_right = 51.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7294118, 0.7254902, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 45
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="TextureButton" parent="InGame_Menus/Pause_Menu" unique_id=1132162140]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -7.0
+offset_right = 32.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_2b3mi")
+texture_pressed = ExtResource("4_ptt8y")
+texture_focused = ExtResource("5_om7hb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AbandonButton" type="TextureButton" parent="InGame_Menus/Pause_Menu" unique_id=393053779]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 56.0
+offset_right = 32.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_rtdum")
+texture_pressed = ExtResource("7_q614p")
+texture_focused = ExtResource("8_gf1k3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Finish_Menu" type="Panel" parent="InGame_Menus" unique_id=179839196]
+unique_name_in_owner = true
+process_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.99997
+offset_top = -237.0
+offset_right = 101.2486
+offset_bottom = 71.851685
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5891235, 1.910302)
+theme_override_styles/panel = SubResource("StyleBoxFlat_feb5d")
+
+[node name="Title" type="Label" parent="InGame_Menus/Finish_Menu" unique_id=1045431519]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.589203
+offset_top = 0.52347565
+offset_right = 37.410797
+offset_bottom = 36.523476
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7294118, 0.7254902, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 35
+text = "FINISH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapCrowns" type="RichTextLabel" parent="InGame_Menus/Finish_Menu" unique_id=2011671987]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 269.20306
+offset_top = 3.1408615
+offset_right = 384.29993
+offset_bottom = 65.958145
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_jpypc")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_llc0d")
+bbcode_enabled = true
+text = " 4/5  [img]res://Images/HUD/Player/CrownsLogo_mini.png[/img]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Objectives" type="Panel" parent="InGame_Menus/Finish_Menu" unique_id=1193896400]
+layout_mode = 0
+offset_left = 33.988323
+offset_top = 30.361687
+offset_right = 302.41895
+offset_bottom = 166.46582
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvpir")
+
+[node name="ObjectivesCrown" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=707510115 instance=ExtResource("10_k3kg4")]
+unique_name_in_owner = true
+position = Vector2(248.73283, 19.89212)
+
+[node name="ObjectivesText" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1040561045]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 45.961502
+offset_top = 11.516506
+offset_right = 311.68848
+offset_bottom = 147.62064
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = SubResource("SystemFont_k57dk")
+theme_override_font_sizes/normal_font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xbsk7")
+bbcode_enabled = true
+text = " [color=d9db00ff]Beat 10.000 points[/color]
+
+[color=33333bff] Finish under 1:00.000[/color]
+
+ Beat 5.000 point under 1:00.000
+
+[rainbow][wave] Collect the Golden Banana[/wave][/rainbow]
+
+ Frontflip over the Volcano"
+
+[node name="Star1" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1532536221]
+unique_name_in_owner = true
+position = Vector2(19.614258, 17.27478)
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("11_3ubn3")
+animation = &"gold"
+autoplay = "red"
+frame_progress = 0.15063757
+
+[node name="Star2" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=300912646]
+unique_name_in_owner = true
+position = Vector2(19.614258, 41.354736)
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("11_3ubn3")
+animation = &"empty"
+autoplay = "red"
+
+[node name="Star3" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=1492303897]
+unique_name_in_owner = true
+position = Vector2(19.614258, 65.434814)
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("11_3ubn3")
+animation = &"gold"
+autoplay = "red"
+
+[node name="Star4" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=10519218]
+unique_name_in_owner = true
+position = Vector2(19.614258, 89.51489)
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("11_3ubn3")
+animation = &"red"
+autoplay = "red"
+frame_progress = 0.23550777
+
+[node name="Star5" type="AnimatedSprite2D" parent="InGame_Menus/Finish_Menu/Objectives" unique_id=205701843]
+unique_name_in_owner = true
+position = Vector2(19.614258, 113.59473)
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("11_3ubn3")
+animation = &"gold"
+autoplay = "red"
+
+[node name="Bests" type="Control" parent="InGame_Menus/Finish_Menu" unique_id=243776722]
+anchors_preset = 0
+offset_left = 3.089858
+offset_top = 168.55975
+offset_right = 135.18091
+offset_bottom = 244.46394
+
+[node name="Label2" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1093521803]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.747887
+offset_top = 1.0471344
+offset_right = 12.252113
+offset_bottom = 15.047134
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "Race Time :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=807612801]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.60441
+offset_top = 17.798355
+offset_right = 12.395592
+offset_bottom = 31.798355
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "Previous Best :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=32275046]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 15.449242
+offset_top = 1.0470123
+offset_right = 57.44924
+offset_bottom = 15.047012
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "00:28.012"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewBestTime_label" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Bests/Time_label" unique_id=515227872]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 22.850739
+offset_top = -16.010284
+offset_right = 67.303925
+offset_bottom = -4.0102844
+rotation = 0.5235988
+theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("SystemFont_ij56o")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[pulse][wave]New Best !"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviousTime_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1141371717]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 15.449242
+offset_top = 17.798111
+offset_right = 57.44924
+offset_bottom = 31.798111
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "00:28.012"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenTime_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1232339261]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 162.6301
+offset_top = 10.993057
+offset_right = 204.6301
+offset_bottom = 24.993057
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "00:28.012"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenTime_title" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=883353890]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 98.965004
+offset_top = 10.993057
+offset_right = 155.965
+offset_bottom = 24.993057
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "Queen Time :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenTimeBeaten" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Bests/QueenTime_title" unique_id=1032880798]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -27.760647
+offset_top = -24.006454
+offset_right = 152.11823
+offset_bottom = -10.006454
+rotation = 0.27070323
+theme_override_colors/default_color = Color(0.20784314, 0.9098039, 0.23529412, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("SystemFont_ij56o")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Already Unlocked"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenScore_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=694268878]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 169.67795
+offset_top = 44.495605
+offset_right = 197.67795
+offset_bottom = 58.495605
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "12543"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenScore_title" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1510095520]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 93.26139
+offset_top = 44.495605
+offset_right = 156.26138
+offset_bottom = 58.495605
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.34117648, 0.02745098, 0.60784316, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "Queen Score :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueenScoreBeaten" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Bests/QueenScore_title" unique_id=608962579]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -10.161461
+offset_top = -20.262207
+offset_right = 142.51175
+offset_bottom = -6.262207
+rotation = 0.27070323
+theme_override_colors/default_color = Color(0.20784314, 0.9098039, 0.23529412, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("SystemFont_ij56o")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[pulse][wave]Queen Score Beaten"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=2028905675]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.856438
+offset_top = 36.119934
+offset_right = 12.143562
+offset_bottom = 50.119934
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "Score :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1020135202]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.865776
+offset_top = 52.871155
+offset_right = 12.134224
+offset_bottom = 66.871155
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "Previous Best :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1775426491]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 22.526299
+offset_top = 36.119934
+offset_right = 50.5263
+offset_bottom = 50.119934
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "12543"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewBestScore_label" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/Bests/Score_label" unique_id=34561408]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.397734
+offset_top = -10.384766
+offset_right = 58.47986
+offset_bottom = 17.615234
+rotation = 0.5235988
+theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("SystemFont_ij56o")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[pulse][wave]New Best !"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviousScore_label" type="Label" parent="InGame_Menus/Finish_Menu/Bests" unique_id=1896041543]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 24.843681
+offset_top = 52.871277
+offset_right = 47.84368
+offset_bottom = 66.87131
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_fc0e3")
+theme_override_font_sizes/font_size = 13
+text = "8726"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeCrown" parent="InGame_Menus/Finish_Menu/Bests" unique_id=829768451 instance=ExtResource("10_k3kg4")]
+unique_name_in_owner = true
+position = Vector2(297.3979, 15.7043)
+
+[node name="ScoreCrown" parent="InGame_Menus/Finish_Menu/Bests" unique_id=2143554743 instance=ExtResource("10_k3kg4")]
+unique_name_in_owner = true
+position = Vector2(297.3979, 47.63644)
+
+[node name="GapPanel" type="Panel" parent="InGame_Menus/Finish_Menu" unique_id=159134335]
+layout_mode = 0
+offset_left = 6.9521637
+offset_top = 239.22919
+offset_right = 139.81566
+offset_bottom = 297.85864
+theme_override_styles/panel = ExtResource("12_psfqb")
+
+[node name="GapsDone" type="Label" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=104791506]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.08985
+offset_top = 2.0938978
+offset_right = 93.08985
+offset_bottom = 14.093898
+theme_override_colors/font_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 8
+text = "Gaps done : 1/3"
+
+[node name="GapsCrown" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=848090236 instance=ExtResource("10_k3kg4")]
+unique_name_in_owner = true
+position = Vector2(117.800476, 13.086935)
+
+[node name="Gap1" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=1407275282]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 12.35939
+offset_top = 16.751282
+offset_right = 119.73164
+offset_bottom = 29.314728
+theme_override_colors/default_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = SubResource("SystemFont_lv8ek")
+theme_override_font_sizes/normal_font_size = 7
+text = " Over the Volcano"
+vertical_alignment = 1
+
+[node name="CheckBoxGap1" type="Sprite2D" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=88292706]
+unique_name_in_owner = true
+position = Vector2(7.8012695, 23.051758)
+scale = Vector2(0.03, 0.0371697)
+texture = ExtResource("13_1hk2h")
+
+[node name="Gap2" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=689769623]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 12.35939
+offset_top = 29.314728
+offset_right = 122.04903
+offset_bottom = 41.93216
+theme_override_colors/default_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = SubResource("SystemFont_lv8ek")
+theme_override_font_sizes/normal_font_size = 7
+text = " On the Wooden Platform"
+vertical_alignment = 1
+
+[node name="CheckBoxGap2" type="Sprite2D" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=1590837783]
+unique_name_in_owner = true
+position = Vector2(7.7246094, 35.59674)
+scale = Vector2(0.03, 0.037060402)
+texture = ExtResource("14_d7hfy")
+
+[node name="Gap3" type="RichTextLabel" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=1779260753]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 12.359396
+offset_top = 41.878204
+offset_right = 122.43526
+offset_bottom = 54.495575
+theme_override_colors/default_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = SubResource("SystemFont_lv8ek")
+theme_override_font_sizes/normal_font_size = 7
+text = " ????????????????????"
+vertical_alignment = 1
+
+[node name="CheckBoxGap3" type="Sprite2D" parent="InGame_Menus/Finish_Menu/GapPanel" unique_id=731597300]
+unique_name_in_owner = true
+position = Vector2(7.7246094, 48.160156)
+scale = Vector2(0.03, 0.037060473)
+texture = ExtResource("15_rora7")
+
+[node name="BillsPanel" type="Panel" parent="InGame_Menus/Finish_Menu" unique_id=718680963]
+layout_mode = 0
+offset_left = 195.43295
+offset_top = 239.22916
+offset_right = 328.29645
+offset_bottom = 297.85858
+theme_override_styles/panel = SubResource("StyleBoxFlat_lso2o")
+
+[node name="BillsCaught" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1205211855]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2.7036242
+offset_top = 2.0939636
+offset_right = 122.04902
+offset_bottom = 14.093964
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 8
+text = "Bills caught : 2/6"
+
+[node name="BillsCrown" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1217938664 instance=ExtResource("10_k3kg4")]
+unique_name_in_owner = true
+position = Vector2(117.414215, 12.563471)
+
+[node name="50BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1481751945]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 36.691956
+offset_top = 23.03307
+offset_right = 48.691956
+offset_bottom = 32.03307
+theme_override_colors/font_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 7
+text = "1/3"
+
+[node name="50BillFace" type="Sprite2D" parent="InGame_Menus/Finish_Menu/BillsPanel/50BillLabel" unique_id=1466414713]
+position = Vector2(-17.77008, 4.187622)
+scale = Vector2(0.015, 0.015000002)
+texture = ExtResource("16_a5lg6")
+
+[node name="100BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=811373184]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 36.691956
+offset_top = 43.972168
+offset_right = 48.691956
+offset_bottom = 52.972168
+theme_override_colors/font_color = Color(0.07450981, 0.20392157, 0.003921569, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 7
+text = "0/1"
+
+[node name="100BillFace" type="Sprite2D" parent="InGame_Menus/Finish_Menu/BillsPanel/100BillLabel" unique_id=2146740608]
+position = Vector2(-17.768127, 3.6645508)
+scale = Vector2(0.015, 0.015000001)
+texture = ExtResource("17_i3wn0")
+
+[node name="200BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=1199701553]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 93.467896
+offset_top = 23.03307
+offset_right = 108.467896
+offset_bottom = 33.03307
+theme_override_colors/font_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 7
+text = "1/1"
+
+[node name="200BillFace" type="Sprite2D" parent="InGame_Menus/Finish_Menu/BillsPanel/200BillLabel" unique_id=1708819548]
+position = Vector2(-17.76825, 4.187622)
+scale = Vector2(0.015, 0.015000001)
+texture = ExtResource("18_hrvuo")
+
+[node name="500BillLabel" type="Label" parent="InGame_Menus/Finish_Menu/BillsPanel" unique_id=924351624]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 93.4675
+offset_top = 43.972015
+offset_right = 108.4675
+offset_bottom = 53.972015
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_mhh63")
+theme_override_font_sizes/font_size = 7
+text = "1/1"
+
+[node name="500BillFace" type="Sprite2D" parent="InGame_Menus/Finish_Menu/BillsPanel/500BillLabel" unique_id=1247292943]
+position = Vector2(-17.767853, 3.6647034)
+scale = Vector2(0.015, 0.015000001)
+texture = ExtResource("19_er2f1")
+
+[node name="Continue" type="TextureButton" parent="InGame_Menus/Finish_Menu" unique_id=2118756166]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.628952
+offset_top = -38.213867
+offset_right = 21.628922
+offset_bottom = -8.899139
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("20_ktuyu")
+texture_pressed = ExtResource("21_tycu0")
+texture_focused = ExtResource("22_b178t")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Camera" type="Camera2D" parent="." unique_id=308465975]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1252788223]
+
+[node name="Ingame_Label" type="Label" parent="CanvasLayer" unique_id=1326302586]
+unique_name_in_owner = true
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 732.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_j5wjh")
+theme_override_font_sizes/font_size = 45
+text = "Get Ready !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="InGame_Menus/Pause_Menu/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="InGame_Menus/Pause_Menu/AbandonButton" to="." method="_on_abandon_button_pressed"]
+[connection signal="pressed" from="InGame_Menus/Finish_Menu/Continue" to="." method="_on_continue_pressed"]
