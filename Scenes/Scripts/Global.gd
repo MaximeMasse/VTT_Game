@@ -108,13 +108,10 @@ var dico_vélo := {
 	1:"res://Bikes/bike_1.tscn",
 	2:"res://Bikes/bike_2.tscn",
 }
-var dico_avatars := {
-	1:"Woman",
-	2:"Man",
-	3:"Girl",
-	4:"Boy",
-	5:"Cat"
+var boss_scenes := {
+	"Forest":"res://Scenes/Games/Bosses/Boss1.tscn"
 }
+var dico_avatars := {1:"Woman",2:"Man",3:"Girl",4:"Boy",5:"Cat"}
 var dico_scenes :={
 	"Menus":"res://Scenes/menus.tscn",
 	"Main_Game":"res://Scenes/Games/game.tscn",
@@ -456,6 +453,7 @@ func profile_update():
 	current_profile["map_records"][current_map] = new_map_record
 
 func get_current_map():return dico_maps[current_map]
+func get_current_boss():return boss_scenes[current_profile["current_run"]["current_day"]["world"]]
 func get_sprites_path()->String:
 	if current_profile != {}:return "res://Avatar/Players/" + dico_avatars[int(current_profile["avatar"])] + "/"
 	else:return ""

@@ -20,6 +20,7 @@ var ASPECT := 16.0 / 9.0
 var camera_target : Node2D = null
 var map_courante : Node2D
 var velo_courant : Node2D
+var boss : Node2D
 var map_finish : Node2D
 var race_started := false
 var distance_restante := 0.0
@@ -58,6 +59,8 @@ func _ready():
 	# Chargements
 	load_map()
 	load_bike()
+	load_boss()
+	start_countdown()
 
 func _input(event):
 	if race_started and not is_finished:
@@ -73,10 +76,12 @@ func restart():
 	AudioManager.stop_music()
 	AudioManager.stop_sfx()
 	map_courante.queue_free()
+	boss.queue_free()
 	await get_tree().process_frame
 	%HUD.reset()
 	load_map()
 	load_bike()
+	load_boss()
 	start_countdown()
 	%HUD.update_score(Global.current_score)
 	is_finished = false
@@ -173,7 +178,6 @@ func finish_menu_update():
 	"/5  [img]res://Images/HUD/Player/CrownsLogo_mini.png[/img]"
 	%Finish_Menu.show()
 
-
 func load_bike():
 	race_started = false
 	velo_courant = load(Global.get_profile_bike()).instantiate()
@@ -182,7 +186,6 @@ func load_bike():
 	velo_courant.crashed.connect(respawn_bike)
 	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
 	Global.set_start_values()
-	start_countdown()
 	if Global.debug and Global.current_profile["bike_model"] != 0.0 :
 		velo_courant.global_position = map_courante.debug_start_position
 		velo_courant.cadre.linear_velocity = map_courante.debug_start_speed * Vector2.RIGHT / (ECHELLE * 3.6)
@@ -205,6 +208,11 @@ func respawn_bike():
 	velo_courant.global_position = Global.cp_player_pos
 	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (ECHELLE * 3.6)
 
+func load_boss():
+	boss = load(Global.get_current_boss()).instantiate()
+	%BossContainer.add_child(boss)
+	camera_target = boss
+
 func start_countdown():
 	if Global.debug:
 		velo_courant.can_drive = true
@@ -212,7 +220,7 @@ func start_countdown():
 		%Ingame_Label.hide()
 		AudioManager.play_music(Global.current_map)
 		RunSaveManager.start_recording()
-		%Boss.started = true
+		boss.start()
 		return
 	race_started = false
 	%Ingame_Label.show()
@@ -225,7 +233,7 @@ func start_countdown():
 	AudioManager.play_sfx("horn")
 	velo_courant.can_drive = true
 	race_started = true
-	%Boss.started = true
+	boss.start()
 	RunSaveManager.start_recording()
 	await get_tree().create_timer(1).timeout
 	%Ingame_Label.hide()

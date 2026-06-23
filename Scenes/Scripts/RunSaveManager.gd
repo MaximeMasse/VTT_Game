@@ -44,6 +44,7 @@ func load_run(path: String) -> Dictionary:
 func _process(_delta):
 	if recording:
 		current_run[Global.race_time] = {
+			"speed":Global.vitesse.length(),
 			"x": Global.player_position.x,
 			"y": Global.player_position.y,
 			"rotation": Global.player_rotation,

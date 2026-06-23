@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dh7jirdo5p3tk" path="res://Scenes/Games/Bosses/boss_game.gd" id="1_t0tr5"]
 [ext_resource type="PackedScene" uid="uid://c6l7y8jhln7o0" path="res://Scenes/hud.tscn" id="2_ulilq"]
 [ext_resource type="Texture2D" uid="uid://bg87b1ha0jjfv" path="res://Images/Menus/Controls/resume_up.png" id="3_2b3mi"]
-[ext_resource type="PackedScene" uid="uid://baskit0hcl4xe" path="res://Scenes/Games/Bosses/boss.tscn" id="3_na8g0"]
 [ext_resource type="Texture2D" uid="uid://g81m2v0n4xey" path="res://Images/Menus/Controls/resume_down.png" id="4_ptt8y"]
 [ext_resource type="Texture2D" uid="uid://0sq3ldihvxtv" path="res://Images/Menus/Controls/resume_hover.png" id="5_om7hb"]
 [ext_resource type="Texture2D" uid="uid://byv50krroasxt" path="res://Images/Menus/Controls/abandon_up.png" id="6_rtdum"]
@@ -92,16 +91,15 @@ script = ExtResource("1_t0tr5")
 [node name="HUD" parent="." unique_id=1185251805 instance=ExtResource("2_ulilq")]
 unique_name_in_owner = true
 
-[node name="Boss" parent="." unique_id=10162340 instance=ExtResource("3_na8g0")]
-unique_name_in_owner = true
-z_index = 3
-
 [node name="MapContainer" type="Node2D" parent="." unique_id=1502284966]
 unique_name_in_owner = true
 
 [node name="BikeContainer" type="Node2D" parent="." unique_id=100482909]
 unique_name_in_owner = true
 z_index = 2
+
+[node name="BossContainer" type="Node2D" parent="." unique_id=1223192544]
+unique_name_in_owner = true
 
 [node name="InGame_Menus" type="CanvasLayer" parent="." unique_id=1815683310]
 
