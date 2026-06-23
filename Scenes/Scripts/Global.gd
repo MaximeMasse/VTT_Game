@@ -140,7 +140,7 @@ func start_mod(scene_name:String):
 	get_tree().change_scene_to_file(dico_scenes[scene_name])
 
 func set_run():current_profile["current_run"] = current_profile.get("current_run",
-	{"maps":{},"unlocks":[],"money":100,"stars":0})
+	{"maps":{},"unlocks":[],"money":100,"stars":0,"hp":100})
 
 func set_day():current_profile["current_run"]["current_day"] = current_profile["current_run"].get("current_day",
 	{"course":[],"world":"Forest","node":"Chairlift","money":0,"stars":0,"crowns":0}) 
@@ -161,7 +161,7 @@ func set_start_values():
 	.get(current_map,{"crowns_unlocked":0,"queen_time_beaten":false,"queen_score_beaten":false\
 	,"score":"-","time":"-","objectives_done":false,"bills_caught":false,"gaps_done":false,"gaps_discovered":[]})
 	race_time = 0.0
-	current_hp = 100
+	current_hp = current_profile["current_run"]["hp"]
 	current_cp = "start"
 	cp_player_speed = Vector2.ZERO
 	cp_player_pos = Vector2.ZERO
@@ -424,6 +424,8 @@ func profile_update():
 	if new_best_score:new_map_record["score"] = current_score
 	new_map_record["queen_time_beaten"] = queen_time_already_beaten or queen_time_beaten
 	new_map_record["queen_score_beaten"] = queen_score_already_beaten or queen_score_beaten
+	# HP
+	current_profile["current_run"]["hp"] = current_hp
 	# Money
 	current_profile["current_run"]["money"] += money_catched
 	money_catched = 0

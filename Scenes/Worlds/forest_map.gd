@@ -321,6 +321,8 @@ func draw_path(path:Line2D,duration:float,dashed: bool = false,bike: bool = fals
 	if bike:
 		biker = Sprite2D.new()
 		biker.texture = load(Global.get_sprites_path()+"Avatar_bike.png")
+		biker.z_index = path.z_index
+		biker.z_as_relative = path.z_as_relative
 		path.get_parent().add_child(biker)
 	path.get_parent().add_child(copy_line)
 	var drawing_frequency : float = duration/path_points.size()

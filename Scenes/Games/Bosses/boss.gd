@@ -2,7 +2,7 @@ extends Node2D
 
 # Boss datas
 var bosses : Dictionary = {
-	"Adriano":{"run_path":"res://Scenes/Games/Bosses/Maps/run_2026-06-22T20-22-23.json"}
+	"Adriano":{"run_path":"res://Scenes/Games/Bosses/Maps/run_2026-06-23T11-59-01.json"}
 }
 var boss_name : String
 
@@ -19,7 +19,6 @@ func set_boss_datas():
 	boss_name = Global.current_boss
 	datas = RunSaveManager.load_run(bosses[boss_name]["run_path"])
 	frames = datas["frames"]
-
 
 func _process(_delta):
 	if not started:return
