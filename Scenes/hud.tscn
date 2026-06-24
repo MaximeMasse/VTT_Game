@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://cs6m4x184ulnh" path="res://Images/HUD/boost_gauge.png" id="7_g10ll"]
 [ext_resource type="Texture2D" uid="uid://bpoiq5c82jbft" path="res://Images/HUD/Boost_segment.png" id="8_gpiub"]
 [ext_resource type="Texture2D" uid="uid://bm2sdlcrnpvbe" path="res://Images/HUD/life_gauge.png" id="11_4f5kr"]
+[ext_resource type="Texture2D" uid="uid://cs28csqmvla8m" path="res://Images/HUD/half_back_gauge.png" id="12_i2avg"]
+[ext_resource type="Texture2D" uid="uid://2xaiehtp234" path="res://Images/HUD/score_gauge.png" id="13_1a2va"]
+[ext_resource type="Texture2D" uid="uid://bk2l3y4jt8qwm" path="res://Images/HUD/Mid_boss_gauge.png" id="14_1a2va"]
 
 [sub_resource type="SystemFont" id="SystemFont_1xsix"]
 font_names = PackedStringArray("Pixel Game", "Jersey 10")
@@ -294,6 +297,45 @@ theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
 text = "[img]res://Images/HUD/Player/BucksLogo_mini.png[/img]  200"
 vertical_alignment = 1
+
+[node name="Boss" type="Control" parent="Live" unique_id=504725465]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 1032.0
+offset_top = 78.0
+offset_right = 1072.0
+offset_bottom = 118.0
+
+[node name="RightScore" type="TextureProgressBar" parent="Live/Boss" unique_id=1500250003]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 112.0
+offset_top = 10.0
+offset_right = 208.0
+offset_bottom = 34.0
+max_value = 5000.0
+nine_patch_stretch = true
+texture_under = ExtResource("12_i2avg")
+texture_progress = ExtResource("13_1a2va")
+
+[node name="LeftScore" type="TextureProgressBar" parent="Live/Boss" unique_id=1161399020]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 112.0
+offset_top = 10.0
+offset_right = 208.0
+offset_bottom = 34.0
+scale = Vector2(-1, 1)
+max_value = 5000.0
+value = 1200.0
+nine_patch_stretch = true
+texture_under = ExtResource("12_i2avg")
+texture_progress = ExtResource("13_1a2va")
+
+[node name="MidBossGauge" type="Sprite2D" parent="Live/Boss" unique_id=1552265911]
+position = Vector2(112, 29.800049)
+scale = Vector2(0.05, 0.047135416)
+texture = ExtResource("14_1a2va")
 
 [node name="Joueur" type="Control" parent="." unique_id=1077279434]
 unique_name_in_owner = true

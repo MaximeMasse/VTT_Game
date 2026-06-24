@@ -87,9 +87,14 @@ font_names = PackedStringArray("Pixel Game")
 [node name="Game" type="Node2D" unique_id=687301190]
 process_mode = 3
 script = ExtResource("1_t0tr5")
+min_zoom = 0.1
 
 [node name="HUD" parent="." unique_id=1185251805 instance=ExtResource("2_ulilq")]
 unique_name_in_owner = true
+
+[node name="Camera" type="Camera2D" parent="." unique_id=308465975]
+unique_name_in_owner = true
+zoom = Vector2(2, 2)
 
 [node name="MapContainer" type="Node2D" parent="." unique_id=1502284966]
 unique_name_in_owner = true
@@ -825,9 +830,6 @@ texture_pressed = ExtResource("21_tycu0")
 texture_focused = ExtResource("22_b178t")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="Camera" type="Camera2D" parent="." unique_id=308465975]
-unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1252788223]
 

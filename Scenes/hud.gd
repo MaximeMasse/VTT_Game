@@ -23,23 +23,7 @@ var dico_saut :={
 	Vector2(80,90):["res://Images/HUD/jump/jump_yellow.png",load("res://Images/HUD/jump/piston_80.png")],
 	Vector2(90,100):["res://Images/HUD/jump/jump_green.png",load("res://Images/HUD/jump/piston_90.png")]
 }
-var dico_to_hide :Dictionary
-var dico_cps_marker : Dictionary
-
-var best_trick_labels:Dictionary
-var is_tricking :bool
-var label_is_fading :Dictionary
-var boost_gauge_size:float
-var boost_segment_max_size:float
-
-func _ready():
-	reset()
-	Global.set_start_values()
-	%Trick_scored_label.hide()
-	best_trick_labels={"Air":%Air_label,"Wheelie":%Wheelie_label,"Nose Wheelie":%Nose_label}
-	label_is_fading = {%Penalty_label:false,%Tricks_label:false,%Trick_scored_label:false}
-	for trick in ["Wheelie","Nose Wheelie","Air"]:update_best_tricks(trick,false)
-	dico_to_hide ={
+@onready var dico_to_hide :={
 		"on_finish":[[%Tricks_label,%Combo_label],false],
 		"Intro":[[%Vitesse_label,%Time_label,%Avancement_bar,%Tricks_label,%Combo_label,%Trick_score_label,%Trick_scored_label,%Score_label,%Boost_gauge,%Boost_segment,%HPBar,%Joueur],false],
 		"Time_HP":[[%HPBar,%Time_label],true],
@@ -60,6 +44,21 @@ func _ready():
 		"End":[[%Boost_segment,%Tricks_label,%Combo_label,%Trick_score_label,%Trick_scored_label,%Score_label],false],
 		"End2":[[],true],
 	}
+var dico_cps_marker : Dictionary
+
+var best_trick_labels:Dictionary
+var is_tricking :bool
+var label_is_fading :Dictionary
+var boost_gauge_size:float
+var boost_segment_max_size:float
+
+func _ready():
+	reset()
+	Global.set_start_values()
+	%Trick_scored_label.hide()
+	best_trick_labels={"Air":%Air_label,"Wheelie":%Wheelie_label,"Nose Wheelie":%Nose_label}
+	label_is_fading = {%Penalty_label:false,%Tricks_label:false,%Trick_scored_label:false}
+	for trick in ["Wheelie","Nose Wheelie","Air"]:update_best_tricks(trick,false)
 
 func reset():
 	%Penalty_label.text = "+ " + str(int(Global.current_profile["upgrades"]["RESPAWN_TIME_PENALTY"])) + " sec"
@@ -71,11 +70,22 @@ func reset():
 	%Trick_score_label.hide()
 	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
 	%Boost_gauge.value = 0
+	%Boss.hide()
 	set_boost_geometry()
 
 func set_visibility(moment:String):for node in dico_to_hide[moment][0]:node.visible = dico_to_hide[moment][1]
 
 func update_HP_Bar():%HPBar.value = Global.current_hp
+
+func update_boss_gauge(player_score:float,boss_score:float):
+	var gap_score := player_score - boss_score
+	if gap_score >= 0.0:
+		%RightScore.value = gap_score
+		%LeftScore.value = 0
+	else:
+		%RightScore.value = 0
+		%LeftScore.value = -gap_score
+	%Boss.show()
 
 func set_boost_geometry():
 	%Boost_gauge.max_value = Global.BOOST_MAX_QUANTITY

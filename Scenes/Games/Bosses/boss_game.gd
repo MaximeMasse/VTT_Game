@@ -211,7 +211,6 @@ func respawn_bike():
 func load_boss():
 	boss = load(Global.get_current_boss()).instantiate()
 	%BossContainer.add_child(boss)
-	camera_target = boss
 
 func start_countdown():
 	if Global.debug:
