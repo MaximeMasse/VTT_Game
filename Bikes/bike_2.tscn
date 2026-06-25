@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://b7ojyut055h2d"]
 
-[ext_resource type="Script" uid="uid://b30dcngjq18rk" path="res://Bikes/bike_2.gd" id="1_bio7g"]
+[ext_resource type="Script" uid="uid://cuxuy38j56qnh" path="res://Bikes/bike_1.gd" id="1_bio7g"]
 [ext_resource type="Texture2D" uid="uid://ci7vylrspef83" path="res://Avatar/Bikes/Wheel_0.png" id="2_4xcus"]
 [ext_resource type="PackedScene" uid="uid://e25qq6np40nf" path="res://Bikes/Skeleton_Kid.tscn" id="3_bio7g"]
+[ext_resource type="PackedScene" uid="uid://c64j0nvyj8vpr" path="res://Bikes/Shaders/dust.tscn" id="4_4xcus"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ow0o1"]
 
@@ -95,6 +96,11 @@ collide_with_areas = true
 [node name="Skeleton" parent="Cadre" unique_id=256030153 instance=ExtResource("3_bio7g")]
 unique_name_in_owner = true
 position = Vector2(-21.255, -13.385)
+
+[node name="Dust" parent="Cadre" unique_id=1644474838 instance=ExtResource("4_4xcus")]
+unique_name_in_owner = true
+position = Vector2(-72, 73)
+scale = Vector2(0.5, 0.5)
 
 [node name="Joint_arrière" type="PinJoint2D" parent="." unique_id=113849391]
 position = Vector2(-50.385, 45.305)

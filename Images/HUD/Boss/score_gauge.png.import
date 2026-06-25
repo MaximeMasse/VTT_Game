@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs6m4x184ulnh"
-path="res://.godot/imported/boost_gauge.png-17eb1073ca927aaa676d53bda6ad916e.ctex"
+uid="uid://l7bvks6sjfyf"
+path="res://.godot/imported/score_gauge.png-63b4fdee4a925af7ee258c8d006a95fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/HUD/boost_gauge.png"
-dest_files=["res://.godot/imported/boost_gauge.png-17eb1073ca927aaa676d53bda6ad916e.ctex"]
+source_file="res://Images/HUD/Boss/score_gauge.png"
+dest_files=["res://.godot/imported/score_gauge.png-63b4fdee4a925af7ee258c8d006a95fb.ctex"]
 
 [params]
 

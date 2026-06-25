@@ -26,7 +26,7 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		"state": "tuto",
 		"stats": {
 			"ACCÉLÉRATION": 5000.0,
-			"AIR_ROTATION_CONTROL": 2.0,
+			"AIR_ROTATION_CONTROL": 3.0,
 			"AIR_SPEED_CONTROL": 0.0,
 			"AV_CONTROL": 10.0,
 			"BALANCE_CONTROL": 10.0,

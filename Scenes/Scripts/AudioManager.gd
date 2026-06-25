@@ -11,6 +11,10 @@ var dico_music := {
 	"Boss 1 Map": preload("res://Sound/Music/Map_2.mp3")
 }
 var dico_sfx := {
+	"heartbeat": preload("res://Sound/SFX/heartbeat.mp3"),
+	"bike_brake": preload("res://Sound/SFX/bike_brake.wav"),
+	"dirt_drift": preload("res://Sound/SFX/dirt_drift.mp3"),
+	"boss_wind": preload("res://Sound/SFX/boss_wind.wav"),
 	"cheering": preload("res://Sound/SFX/cheering.mp3"),
 	"unlock": preload("res://Sound/SFX/unlock.wav"),
 	"cp": preload("res://Sound/SFX/cp_valid.mp3"),
@@ -80,6 +84,7 @@ var dico_ui := {
 var music_player: AudioStreamPlayer
 var ui_player: AudioStreamPlayer
 var sfx_players: Array[AudioStreamPlayer] = []
+var active_sfx := {}
 var ground_sfx_players: Array[AudioStreamPlayer] = []
 
 const SFX_POOL_SIZE := 8
@@ -124,11 +129,17 @@ func play_sfx(music):
 		if not player.playing:
 			player.stream = stream
 			player.play()
+			active_sfx[music] = player
 			return
 
-func stop_sfx():
-	for player in sfx_players:
-		player.stop()
+func stop_sfx(music:String=""):
+	if music == "":
+		for player in sfx_players:player.stop()
+		active_sfx = {}
+	else:
+		if not active_sfx.has(music):return
+		active_sfx[music].stop()
+		active_sfx.erase(music)
 
 func play_ground_sfx(music):
 	var specific_dict = dico_ground_sfx[music]

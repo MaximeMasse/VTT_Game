@@ -30,6 +30,7 @@ const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 @onready var contact_sol_avant := %Contact_sol_avant
 @onready var roue_avant := %Roue_avant
 @onready var cadre := %Cadre
+@onready var dust := %Dust
 
 @export var ground_distance_smoothing := 0.5
 
@@ -64,13 +65,14 @@ func reset_states():
 	current_frame_state = "slow_riding"
 	actual_state = "slow_riding"
 	previous_actual_state = "slow_riding"
+	
 
 func _physics_process(delta):
 	if not can_drive:
 		cadre.linear_velocity = Vector2.ZERO
 		roue_arrière.constant_force = Vector2.ZERO
+		dust.visible = false
 		return
-	
 	# HUD Tracking
 	Global.vitesse = cadre.linear_velocity * ECHELLE * 3.6
 	var traveled = (cadre.global_position - Global.player_position).length() * ECHELLE
@@ -80,14 +82,10 @@ func _physics_process(delta):
 	Global.contact_sol = contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies()
 	#Acceleration direction
 	var acceleration_direction: Vector2
-	if cadre.linear_velocity.x > 5.0:
-		acceleration_direction = cadre.linear_velocity.normalized()
-	else:
-		acceleration_direction = Vector2.RIGHT.rotated(cadre.rotation)
-	
+	if cadre.linear_velocity.x > 5.0:acceleration_direction = cadre.linear_velocity.normalized()
+	else:acceleration_direction = Vector2.RIGHT.rotated(cadre.rotation)
 	# Frictions
 	cadre.apply_central_force(-(FRICTION * Global.vitesse.length_squared()*delta) * acceleration_direction)
-	
 	# Actions
 	var input_balance := Input.get_axis("Arrière", "Avant") if input_enabled else 0.0
 	var couple_cible := 0.0
@@ -109,11 +107,21 @@ func _physics_process(delta):
 		if Input.is_action_pressed("Frein_arrière") and input_enabled:
 			roue_arrière.linear_velocity = lerp(
 				roue_arrière.linear_velocity, Vector2.ZERO, 0.5 * FORCE_FREINS * delta)
+		# Brake sound
+		if Input.is_action_just_pressed("Frein_arrière") and input_enabled:
+			AudioManager.play_sfx("bike_brake")
+			if Global.floor_is == 1:AudioManager.play_sfx("dirt_drift")
+		if Input.is_action_just_released("Frein_arrière") and input_enabled:
+			AudioManager.stop_sfx("bike_brake")
+			AudioManager.stop_sfx("dirt_drift")
 	# Si contact avant
 	if contact_sol_avant.has_overlapping_bodies():
 		if Input.is_action_pressed("Frein_avant") and input_enabled:
 			roue_avant.linear_velocity = lerp(
 				roue_avant.linear_velocity, Vector2.ZERO, FORCE_FREINS * delta)
+		# Brake sound
+		if Input.is_action_just_pressed("Frein_avant") and input_enabled:AudioManager.play_sfx("bike_brake")
+		if Input.is_action_just_released("Frein_avant") and input_enabled:AudioManager.stop_sfx("bike_brake")
 	# Air or Ground
 	if Global.contact_sol:
 		# Balance
@@ -143,7 +151,6 @@ func _physics_process(delta):
 	# Apply balance
 	couple_cadre_actuel = lerp(couple_cadre_actuel,couple_cible,1.0-exp(-BALANCE_CONTROL * delta))
 	cadre.apply_torque(couple_cadre_actuel)
-	
 	# Actual State determination
 	current_frame_state = get_current_state()
 	if current_frame_state not in TRICK_LIST:
@@ -155,7 +162,6 @@ func _physics_process(delta):
 	# Tracking if waiting to become real
 	if not %Trick_status_changer.is_stopped():
 		Global.trick_update(traveled,delta,rotated,true)
-		
 	#Actually tricking
 	if actual_state in TRICK_LIST:
 		Global.trick_update(traveled,delta,rotated)
@@ -173,23 +179,26 @@ func _physics_process(delta):
 			Global.combo_update()
 			Global.valid_combo()
 			Global.reset_tricks()
-	
 	# Audio
 	if actual_state != previous_actual_state: ground_sfx_change()
-	
+	# State update
 	previous_actual_state = actual_state
 
 func _on_trick_status_changer_timeout():actual_state = current_frame_state
 
 func _process(_delta):
 	# Floor detection
+	var target_gap : float = 50
+	%FloorScan.global_position = cadre.global_position + Vector2(80,0)
 	%FloorScan.global_rotation = 0.0
-	if %FloorScan.is_colliding():
+	if contact_sol_arrière.has_overlapping_bodies():
+		Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
+	elif contact_sol_avant.has_overlapping_bodies():
+		Global.floor_is = contact_sol_avant.get_overlapping_bodies()[0].get_collision_layer()
+	elif %FloorScan.is_colliding():
 		Global.floor_is = %FloorScan.get_collider().get_collision_layer()
-		Global.ground_distance = lerp(Global.ground_distance,
-			cadre.global_position.distance_to(%FloorScan.get_collision_point()),
-			ground_distance_smoothing
-			)
+		target_gap = cadre.global_position.distance_to(%FloorScan.get_collision_point())
+	Global.ground_distance = lerp(Global.ground_distance,target_gap,ground_distance_smoothing)
 
 func ground_sfx_change():
 	AudioManager.stop_ground_sfx()

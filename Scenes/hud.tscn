@@ -4,16 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://ld2k0x7688er" path="res://Images/HUD/chrono.png" id="2_1xsix"]
 [ext_resource type="Texture2D" uid="uid://brbdbtxmgfwl7" path="res://Images/HUD/Jump/piston_0.png" id="2_a2258"]
 [ext_resource type="Texture2D" uid="uid://by53st7ljhdsx" path="res://Images/HUD/Jump/contact_red.png" id="3_1xsix"]
-[ext_resource type="Texture2D" uid="uid://bqmie3bghtagg" path="res://Images/HUD/back_gauge.png" id="3_5ep0j"]
-[ext_resource type="Texture2D" uid="uid://b03qvlnng3dg7" path="res://Images/HUD/avancement_gauge.png" id="4_4f5kr"]
+[ext_resource type="Texture2D" uid="uid://hqpnsj4mi6l4" path="res://Images/HUD/Gauges/back_gauge.png" id="3_5ep0j"]
+[ext_resource type="Texture2D" uid="uid://25bf1aivyc67" path="res://Images/HUD/Gauges/avancement_gauge.png" id="4_4f5kr"]
 [ext_resource type="Texture2D" uid="uid://bj5w3ph0yvust" path="res://Images/HUD/Jump/jump_green.png" id="4_rftc2"]
-[ext_resource type="Texture2D" uid="uid://v7m21rkumyb6" path="res://Images/HUD/back_boost_gauge.png" id="6_61f8s"]
-[ext_resource type="Texture2D" uid="uid://cs6m4x184ulnh" path="res://Images/HUD/boost_gauge.png" id="7_g10ll"]
-[ext_resource type="Texture2D" uid="uid://bpoiq5c82jbft" path="res://Images/HUD/Boost_segment.png" id="8_gpiub"]
-[ext_resource type="Texture2D" uid="uid://bm2sdlcrnpvbe" path="res://Images/HUD/life_gauge.png" id="11_4f5kr"]
-[ext_resource type="Texture2D" uid="uid://cs28csqmvla8m" path="res://Images/HUD/half_back_gauge.png" id="12_i2avg"]
-[ext_resource type="Texture2D" uid="uid://2xaiehtp234" path="res://Images/HUD/score_gauge.png" id="13_1a2va"]
-[ext_resource type="Texture2D" uid="uid://bk2l3y4jt8qwm" path="res://Images/HUD/Mid_boss_gauge.png" id="14_1a2va"]
+[ext_resource type="Texture2D" uid="uid://bgwdmgfp2on1n" path="res://Images/HUD/Gauges/back_boost_gauge.png" id="6_61f8s"]
+[ext_resource type="Texture2D" uid="uid://cgspoc6r4frm8" path="res://Images/HUD/Gauges/boost_gauge.png" id="7_g10ll"]
+[ext_resource type="Texture2D" uid="uid://dhdfe3mguna5m" path="res://Images/HUD/Gauges/Boost_segment.png" id="8_gpiub"]
+[ext_resource type="Texture2D" uid="uid://cvyai68pwku41" path="res://Images/HUD/Gauges/life_gauge.png" id="11_4f5kr"]
+[ext_resource type="Texture2D" uid="uid://cp52avp402k7j" path="res://Images/HUD/Boss/half_back_gauge.png" id="12_i2avg"]
+[ext_resource type="Texture2D" uid="uid://l7bvks6sjfyf" path="res://Images/HUD/Boss/score_gauge.png" id="13_1a2va"]
+[ext_resource type="Texture2D" uid="uid://clfwxisdwppq4" path="res://Images/HUD/Boss/Mid_boss_gold.png" id="14_ssfue"]
+[ext_resource type="Texture2D" uid="uid://bqdtl77nm1w3y" path="res://Images/HUD/Injury_1.png" id="15_ssfue"]
+[ext_resource type="Shader" uid="uid://f1enngkxbh3l" path="res://Scenes/injury.gdshader" id="16_ba8gd"]
+[ext_resource type="Texture2D" uid="uid://bexvkywcnb67o" path="res://Images/HUD/Injury_2.png" id="17_36s6t"]
 
 [sub_resource type="SystemFont" id="SystemFont_1xsix"]
 font_names = PackedStringArray("Pixel Game", "Jersey 10")
@@ -36,10 +39,18 @@ subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_i2avg"]
 font_names = PackedStringArray("Pixel Game")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_rftc2"]
 font_names = PackedStringArray("Pixel Game", "Jersey 10")
 subpixel_positioning = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbtju"]
+shader = ExtResource("16_ba8gd")
+shader_parameter/max_boost = 1.6
+shader_parameter/beat_duration = 0.8
+shader_parameter/red_threshold = 0.35
+shader_parameter/red_dominance = 0.12
 
 [node name="HUD" type="CanvasLayer" unique_id=1185251805]
 script = ExtResource("1_64ctp")
@@ -278,7 +289,6 @@ offset_left = 512.0
 offset_top = 78.0
 offset_right = 720.0
 offset_bottom = 118.0
-value = 100.0
 nine_patch_stretch = true
 texture_under = ExtResource("3_5ep0j")
 texture_progress = ExtResource("11_4f5kr")
@@ -314,6 +324,7 @@ offset_top = 10.0
 offset_right = 208.0
 offset_bottom = 34.0
 max_value = 5000.0
+value = 5000.0
 nine_patch_stretch = true
 texture_under = ExtResource("12_i2avg")
 texture_progress = ExtResource("13_1a2va")
@@ -327,15 +338,16 @@ offset_right = 208.0
 offset_bottom = 34.0
 scale = Vector2(-1, 1)
 max_value = 5000.0
-value = 1200.0
+value = 5000.0
 nine_patch_stretch = true
 texture_under = ExtResource("12_i2avg")
 texture_progress = ExtResource("13_1a2va")
+tint_progress = Color(1, 0.26999998, 0.26999998, 1)
 
 [node name="MidBossGauge" type="Sprite2D" parent="Live/Boss" unique_id=1552265911]
-position = Vector2(112, 29.800049)
+position = Vector2(112, 22.235)
 scale = Vector2(0.05, 0.047135416)
-texture = ExtResource("14_1a2va")
+texture = ExtResource("14_ssfue")
 
 [node name="Joueur" type="Control" parent="." unique_id=1077279434]
 unique_name_in_owner = true
@@ -410,5 +422,29 @@ theme_override_fonts/font = SubResource("SystemFont_rftc2")
 theme_override_font_sizes/font_size = 23
 text = "210 m | 255 sec"
 vertical_alignment = 1
+
+[node name="Injury" type="Control" parent="." unique_id=1464288141]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="InjuryCover" type="TextureRect" parent="Injury" unique_id=1985481534]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("15_ssfue")
+expand_mode = 1
+
+[node name="InjuryCover2" type="TextureRect" parent="Injury" unique_id=1510689708]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_pbtju")
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("17_36s6t")
+expand_mode = 1
 
 [connection signal="timeout" from="Live/Time_label/Penalty_label/Show_penalty_timer" to="." method="_on_show_penalty_timer_timeout"]

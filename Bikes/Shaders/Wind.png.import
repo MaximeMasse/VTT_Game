@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpoiq5c82jbft"
-path="res://.godot/imported/Boost_segment.png-961f68fd36723db6172b2a0bf12dc0b7.ctex"
+uid="uid://di7hhjcbg07vn"
+path="res://.godot/imported/Wind.png-68a48e226c46ecc37999358f7cb67afe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/HUD/Boost_segment.png"
-dest_files=["res://.godot/imported/Boost_segment.png-961f68fd36723db6172b2a0bf12dc0b7.ctex"]
+source_file="res://Bikes/Shaders/Wind.png"
+dest_files=["res://.godot/imported/Wind.png-68a48e226c46ecc37999358f7cb67afe.ctex"]
 
 [params]
 

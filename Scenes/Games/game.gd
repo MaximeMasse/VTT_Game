@@ -30,7 +30,7 @@ var is_finished :=false
 
 func _ready():
 	# Loading profile
-	Global.set_start_values()
+	#Global.set_start_values()
 	# Debug
 	get_tree().debug_collisions_hint = Global.debug
 	Engine.time_scale = TIME_SCALE
@@ -55,6 +55,8 @@ func _ready():
 	Global.hud_combo_update.connect(%HUD.update_combo)
 	Global.hud_score_update.connect(%HUD.update_score)
 	Global.hud_cp_update.connect(%HUD.update_cp)
+	Global.hud_injury_update.connect(%HUD.injury_update)
+	Global.hud_hp_update.connect(%HUD.update_HP_Bar)
 	# Chargements
 	load_map()
 	load_bike()
@@ -77,7 +79,6 @@ func restart():
 	%HUD.reset()
 	load_map()
 	load_bike()
-	start_countdown()
 	%HUD.update_score(Global.current_score)
 	is_finished = false
 
@@ -200,30 +201,24 @@ func respawn_bike():
 	velo_courant.crashed.connect(respawn_bike)
 	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
 	Global.handle_crash()
-	%HUD.update_HP_Bar()
 	%HUD.update_score(Global.current_score)
 	velo_courant.global_position = Global.cp_player_pos
 	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (ECHELLE * 3.6)
 
 func start_countdown():
-	if Global.debug:
-		velo_courant.can_drive = true
-		race_started = true
-		%Ingame_Label.hide()
-		AudioManager.play_music(Global.current_map)
-		RunSaveManager.start_recording()
-		return
-	race_started = false
-	%Ingame_Label.show()
-	for i in [3, 2, 1]:
-		%Ingame_Label.text = str(i)
-		AudioManager.play_sfx(str(i))
-		await get_tree().create_timer(1).timeout
+	if not Global.debug:
+		race_started = false
+		%Ingame_Label.show()
+		for i in [3, 2, 1]:
+			%Ingame_Label.text = str(i)
+			AudioManager.play_sfx(str(i))
+			await get_tree().create_timer(1).timeout
 	%Ingame_Label.text = "GO !"
 	AudioManager.play_sfx("Go")
 	AudioManager.play_sfx("horn")
 	velo_courant.can_drive = true
 	race_started = true
+	velo_courant.dust.visible = true
 	RunSaveManager.start_recording()
 	await get_tree().create_timer(1).timeout
 	%Ingame_Label.hide()

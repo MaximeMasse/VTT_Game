@@ -77,8 +77,7 @@ func set_visibility(moment:String):for node in dico_to_hide[moment][0]:node.visi
 
 func update_HP_Bar():%HPBar.value = Global.current_hp
 
-func update_boss_gauge(player_score:float,boss_score:float):
-	var gap_score := player_score - boss_score
+func update_boss_gauge(gap_score:float):
 	if gap_score >= 0.0:
 		%RightScore.value = gap_score
 		%LeftScore.value = 0
@@ -149,6 +148,24 @@ func trick_activate():
 func update_combo(text):
 	%Combo_label.text += text + " + "
 
+func injury_update(state:String):
+	if state =="safe":
+		%Injury.hide()
+		AudioManager.stop_sfx("heartbeat")
+		AudioManager.set_bus_volume("Music", Global.config.get("music_volume", 0.8))
+	elif state == "wounded":
+		%Injury.show()
+		%InjuryCover.show()
+		%InjuryCover2.hide()
+		AudioManager.stop_sfx("heartbeat")
+		AudioManager.set_bus_volume("Music", Global.config.get("music_volume", 0.8))
+	elif state == "critical":
+		%Injury.show()
+		%InjuryCover.hide()
+		%InjuryCover2.show()
+		AudioManager.set_bus_volume("Music", Global.config.get("music_volume", 0.8) * 0.5)
+		AudioManager.play_sfx("heartbeat")
+
 func round_to(value: float, decimals: int) -> float:
 	var factor = pow(10, decimals)
 	return round(value * factor) / factor
@@ -179,7 +196,7 @@ func _on_show_penalty_timer_timeout():
 func _process(_delta):
 	var total_money : String = Global.format_number(Global.current_profile["current_run"]["money"]+Global.money_catched)
 	%Money.text = "[img]res://Images/HUD/Player/BucksLogo_mini.png[/img]  "+ total_money
-	%Time_label.text = Global.format_time(Global.race_time)
+	%Time_label.text = Global.format_time(Global.race_time+Global.penalty_time)
 	if Global.penalty_to_show and %Show_penalty_timer.is_stopped():
 		%Tricks_label.add_theme_color_override("font_color", colors["RED"])
 		%Penalty_label.show()

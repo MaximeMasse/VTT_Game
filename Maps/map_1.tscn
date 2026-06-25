@@ -388,7 +388,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Assets" type="Node2D" parent="." unique_id=1612230551]
-visible = false
 
 [node name="Pannels" type="Node2D" parent="Assets" unique_id=65779085]
 z_index = -1
@@ -976,7 +975,6 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("35_jlwpy")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=746463856]
-visible = false
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=902193105]
 motion_scale = Vector2(0.2, 0.2)

@@ -48,7 +48,7 @@ func set_up_buttons(node):
 func show_menu():
 	if Global.menu_to_show == "Chairlift":
 		Global.start_mod(Global.current_profile["current_run"]["current_day"]["world"])
-	elif Global.menu_to_show in ["Career","tuto"]:Global.start_mod("Career")
+	elif Global.menu_to_show in ["Career","tuto","tuto2"]:Global.start_mod("Career")
 	else:
 		for men in dico_menus:dico_menus[men].hide()
 		dico_menus[Global.menu_to_show].show()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs28csqmvla8m"
-path="res://.godot/imported/half_back_gauge.png-d7c7a239ba9d276b3314200bf38cd9d1.ctex"
+uid="uid://bbmtmxvin33g4"
+path="res://.godot/imported/Dust2.png-4a95b2885c87787b63547dfc6b2aa6e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/HUD/half_back_gauge.png"
-dest_files=["res://.godot/imported/half_back_gauge.png-d7c7a239ba9d276b3314200bf38cd9d1.ctex"]
+source_file="res://Bikes/Shaders/Dust2.png"
+dest_files=["res://.godot/imported/Dust2.png-4a95b2885c87787b63547dfc6b2aa6e6.ctex"]
 
 [params]
 

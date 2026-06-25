@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqmie3bghtagg"
-path="res://.godot/imported/back_gauge.png-b0862345c0e776f9701b1d4edc602117.ctex"
+uid="uid://cg2pb0r45gdys"
+path="res://.godot/imported/Mid_boss_red.png-22666c6b27b7b7c49eb3952339db8ab5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/HUD/back_gauge.png"
-dest_files=["res://.godot/imported/back_gauge.png-b0862345c0e776f9701b1d4edc602117.ctex"]
+source_file="res://Images/HUD/Boss/Mid_boss_red.png"
+dest_files=["res://.godot/imported/Mid_boss_red.png-22666c6b27b7b7c49eb3952339db8ab5.ctex"]
 
 [params]
 

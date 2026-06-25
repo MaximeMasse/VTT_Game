@@ -1,7 +1,7 @@
 extends Node
 
 # Config
-var debug : bool = false
+var debug : bool = true
 const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}
@@ -13,6 +13,7 @@ var current_boss : String
 
 # HUD
 var race_time : float
+var penalty_time : float
 var money_catched : float
 var penalty_to_show := false
 var current_hp : float
@@ -55,6 +56,7 @@ var ONE_TIME_QUANTITY :float
 var current_boost:float
 # CP datas
 var current_cp : String
+var cp_player_time : float
 var cp_player_speed : Vector2
 var cp_player_pos : Vector2
 var cp_player_score : float
@@ -64,6 +66,9 @@ var is_grabbed : bool
 var is_stored : bool
 signal return_collectible
 signal store_collectible
+
+# Boss
+var boss_score : float
 
 # End map
 var new_best_time :bool
@@ -127,6 +132,9 @@ signal hud_combo_update
 signal hud_score_update
 signal hud_new_best
 signal hud_cp_update
+signal hud_hp_update
+signal hud_injury_update
+signal hud_boss_score_update
 
 func start_mod(scene_name:String):
 	# Boost
@@ -158,21 +166,26 @@ func set_start_values():
 	.get(current_map,{"crowns_unlocked":0,"queen_time_beaten":false,"queen_score_beaten":false\
 	,"score":"-","time":"-","objectives_done":false,"bills_caught":false,"gaps_done":false,"gaps_discovered":[]})
 	race_time = 0.0
+	penalty_time = 0.0
 	current_hp = current_profile["current_run"]["hp"]
 	current_cp = "start"
+	cp_player_time = 0.0
 	cp_player_speed = Vector2.ZERO
 	cp_player_pos = Vector2.ZERO
 	cp_player_score = 0
 	cp_player_boost = 0
 	current_score = 0
 	current_boost = 0
+	hud_hp_update.emit()
+	set_wound_state()
 
 func handle_crash():
 	# Penaltys
 	penalty_to_show = true
-	race_time += current_profile["upgrades"]["RESPAWN_TIME_PENALTY"]
+	penalty_time += current_profile["upgrades"]["RESPAWN_TIME_PENALTY"]
 	current_hp -= current_profile["upgrades"]["RESPAWN_HP_PENALTY"]
-	# Score and boost reset
+	# Time, score and boost reset
+	race_time = cp_player_time
 	current_score = cp_player_score
 	current_boost = cp_player_boost
 	# Collectible
@@ -182,16 +195,30 @@ func handle_crash():
 	# Gap
 	is_in_gap = ""
 	gap_combo = {}
+	hud_hp_update.emit()
+	set_wound_state()
+
+func set_wound_state():
+	if current_hp - current_profile["upgrades"]["RESPAWN_HP_PENALTY"] <= 0.0:hud_injury_update.emit("critical")
+	elif current_hp - 3 * current_profile["upgrades"]["RESPAWN_HP_PENALTY"] <= 0.0:hud_injury_update.emit("wounded")
+	else:hud_injury_update.emit("safe")
 
 func checkpoint_update(cp : String,min_speed : float = 0):
 	if current_cp != cp:
 		AudioManager.play_sfx("cp")
 		current_cp = cp
+		cp_player_time = race_time
 		cp_player_speed =  min_speed * vitesse.normalized() if vitesse.length() < min_speed else vitesse
 		cp_player_pos = player_position
 		cp_player_score = current_score
 		cp_player_boost = current_boost
 		hud_cp_update.emit(cp)
+
+func new_boss_score(score:float):
+	boss_score = score
+	new_boss_score_gap()
+
+func new_boss_score_gap():hud_boss_score_update.emit(current_score-boss_score)
 
 func gap_entry(gap_name : String):
 	if current_trick["trick"] != "" or not contact_sol:
@@ -221,7 +248,7 @@ func new_trick(trick_name:String):
 	current_trick = potential_trick.duplicate()
 	current_trick["trick"] = trick_name
 	hud_trick_activate.emit()
-	if current_combo.size() > 0:AudioManager.play_sfx("combo" + str(current_combo.size()))
+	if current_combo.size() > 0:AudioManager.play_sfx("combo" + str(min(current_combo.size(),7)))
 
 func trick_update(distance,time,angle,potential:bool=false):
 	if potential:
@@ -265,6 +292,7 @@ func valid_combo():
 		else:trick_to_check = trick_datas["trick"]
 		check_best_tricks(trick_to_check,trick_datas["length"],trick_datas["duration"])
 	current_score += potential_combo_score
+	new_boss_score_gap()
 	current_boost = clampf(current_boost+min(potential_combo_score,ONE_TIME_QUANTITY),0,BOOST_MAX_QUANTITY)  
 	hud_score_update.emit(potential_combo_score)
 	# Collectible
@@ -328,6 +356,7 @@ func end_map():
 
 func check_map_objectives():
 	objectives_already_done = previous_map_record["objectives_done"]
+	var actual_time := race_time + penalty_time
 	var previous_stars : Array = previous_obj_and_bills["objectives"]
 	var target_score : float = map_data["target_score"]
 	var target_time : float = map_data["target_time"]
@@ -335,8 +364,8 @@ func check_map_objectives():
 	var tst_time : float = map_data["target_score_and_time"][1]
 	var special_trick : String = map_data["special_trick"]["trick"]+ " " + map_data["special_trick"]["spot"]
 	if 1.0 not in previous_stars and current_score >= target_score : objectives_completed.append(1.0)
-	if 2.0 not in previous_stars and race_time < target_time : objectives_completed.append(2.0)
-	if 3.0 not in previous_stars and current_score >= tst_score and  race_time < tst_time : objectives_completed.append(3.0)
+	if 2.0 not in previous_stars and actual_time < target_time : objectives_completed.append(2.0)
+	if 3.0 not in previous_stars and current_score >= tst_score and  actual_time < tst_time : objectives_completed.append(3.0)
 	if 4.0 not in previous_stars and is_stored : objectives_completed.append(4.0)
 	if 5.0 not in previous_stars and special_trick_done : objectives_completed.append(5.0)
 	if 1.0 in previous_stars : objectives_text += " [color=d9db00ff]Beat " + format_number(target_score) + " points[/color]\n\n"
@@ -392,6 +421,7 @@ func check_bills():
 	else : bills_done_data["crown_anim"] = "Locked"
 
 func check_map_record():
+	var actual_time := race_time + penalty_time
 	new_best_score = false
 	new_best_time = false
 	queen_time_already_beaten = false
@@ -399,7 +429,7 @@ func check_map_record():
 	queen_score_already_beaten = false
 	queen_score_beaten = false
 	if previous_map_record["time"] is float :
-		if previous_map_record["time"] > race_time:
+		if previous_map_record["time"] > actual_time:
 			new_best_time = true
 		if previous_map_record["score"] < current_score:
 			new_best_score = true
@@ -408,7 +438,7 @@ func check_map_record():
 	else:
 		new_best_time = true
 		new_best_score = true
-	if race_time < map_data["queen_time"]:queen_time_beaten = true
+	if actual_time < map_data["queen_time"]:queen_time_beaten = true
 	if current_score > map_data["queen_score"]:queen_score_beaten = true
 
 func profile_update():
@@ -417,7 +447,7 @@ func profile_update():
 	# Map finished
 	new_map_data["finished"] = true
 	# Map records
-	if new_best_time:new_map_record["time"] = race_time
+	if new_best_time:new_map_record["time"] = race_time + penalty_time
 	if new_best_score:new_map_record["score"] = current_score
 	new_map_record["queen_time_beaten"] = queen_time_already_beaten or queen_time_beaten
 	new_map_record["queen_score_beaten"] = queen_score_already_beaten or queen_score_beaten

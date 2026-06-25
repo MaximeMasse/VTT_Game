@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b03qvlnng3dg7"
-path="res://.godot/imported/avancement_gauge.png-99f2d89d4343cd38ca8b2522ff09a8f1.ctex"
+uid="uid://cvyai68pwku41"
+path="res://.godot/imported/life_gauge.png-731d8a8f6921a0f1f01a2e23c0d6e9d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/HUD/avancement_gauge.png"
-dest_files=["res://.godot/imported/avancement_gauge.png-99f2d89d4343cd38ca8b2522ff09a8f1.ctex"]
+source_file="res://Images/HUD/Gauges/life_gauge.png"
+dest_files=["res://.godot/imported/life_gauge.png-731d8a8f6921a0f1f01a2e23c0d6e9d3.ctex"]
 
 [params]
 

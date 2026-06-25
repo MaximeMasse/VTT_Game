@@ -831,9 +831,9 @@ texture_focused = ExtResource("22_b178t")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1252788223]
+[node name="IngameCanvas" type="CanvasLayer" parent="." unique_id=1252788223]
 
-[node name="Ingame_Label" type="Label" parent="CanvasLayer" unique_id=1326302586]
+[node name="Ingame_Label" type="Label" parent="IngameCanvas" unique_id=1326302586]
 unique_name_in_owner = true
 offset_left = 548.0
 offset_top = 239.0
