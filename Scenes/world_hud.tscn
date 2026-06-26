@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://char3ty45jk1d" path="res://Scenes/world_hud.gd" id="1_gnrbt"]
 [ext_resource type="Texture2D" uid="uid://0fp1rfu6ks2k" path="res://Images/Menus/Maps/star_full.png" id="1_xyeyt"]
-[ext_resource type="Texture2D" uid="uid://bqmie3bghtagg" path="res://Images/HUD/back_gauge.png" id="3_23jih"]
-[ext_resource type="Texture2D" uid="uid://cxjrvvqi8uqeu" path="res://Images/HUD/xp_gauge.png" id="4_j6ru8"]
-[ext_resource type="Texture2D" uid="uid://bm2sdlcrnpvbe" path="res://Images/HUD/life_gauge.png" id="5_gbmar"]
+[ext_resource type="Texture2D" uid="uid://hqpnsj4mi6l4" path="res://Images/HUD/Gauges/back_gauge.png" id="3_23jih"]
+[ext_resource type="Texture2D" uid="uid://vbtbt8gf2frf" path="res://Images/HUD/Gauges/xp_gauge.png" id="4_j6ru8"]
+[ext_resource type="Texture2D" uid="uid://cvyai68pwku41" path="res://Images/HUD/Gauges/life_gauge.png" id="5_gbmar"]
 
 [sub_resource type="SystemFont" id="SystemFont_tluop"]
 font_names = PackedStringArray("Pixel Game")

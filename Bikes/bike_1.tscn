@@ -56,7 +56,8 @@ collision_mask = 5
 shape = SubResource("CircleShape2D_5jr4r")
 debug_color = Color(0.8320646, 0.37110016, 0.34363505, 0.41960785)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Roue_avant" unique_id=458915302]
+[node name="FrontWheelShape" type="CollisionShape2D" parent="Roue_avant" unique_id=458915302]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_ow0o1")
 
 [node name="Roue1" type="Sprite2D" parent="Roue_avant" unique_id=1336900336]

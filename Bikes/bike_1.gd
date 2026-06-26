@@ -31,6 +31,7 @@ const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 @onready var roue_avant := %Roue_avant
 @onready var cadre := %Cadre
 @onready var dust := %Dust
+@onready var wheel_radius : float = %FrontWheelShape.shape.radius
 
 @export var ground_distance_smoothing := 0.5
 
@@ -40,6 +41,7 @@ var can_drive := false
 var input_enabled := true
 var couple_cadre_actuel :float = 0.0
 var temps_compression := 0.0
+var acceleration_direction : Vector2
 # States
 var current_frame_state :String
 var actual_state :String
@@ -81,7 +83,6 @@ func _physics_process(delta):
 	Global.player_rotation = cadre.rotation
 	Global.contact_sol = contact_sol_arrière.has_overlapping_bodies() or contact_sol_avant.has_overlapping_bodies()
 	#Acceleration direction
-	var acceleration_direction: Vector2
 	if cadre.linear_velocity.x > 5.0:acceleration_direction = cadre.linear_velocity.normalized()
 	else:acceleration_direction = Vector2.RIGHT.rotated(cadre.rotation)
 	# Frictions
@@ -189,7 +190,7 @@ func _on_trick_status_changer_timeout():actual_state = current_frame_state
 func _process(_delta):
 	# Floor detection
 	var target_gap : float = 50
-	%FloorScan.global_position = cadre.global_position + Vector2(80,0)
+	%FloorScan.global_position = cadre.global_position + Vector2(80,50)
 	%FloorScan.global_rotation = 0.0
 	if contact_sol_arrière.has_overlapping_bodies():
 		Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
@@ -199,6 +200,9 @@ func _process(_delta):
 		Global.floor_is = %FloorScan.get_collider().get_collision_layer()
 		target_gap = cadre.global_position.distance_to(%FloorScan.get_collision_point())
 	Global.ground_distance = lerp(Global.ground_distance,target_gap,ground_distance_smoothing)
+	# Dust position and rotation
+	dust.rotation = acceleration_direction.angle()
+	dust.global_position = roue_avant.global_position + Vector2(0,wheel_radius)
 
 func ground_sfx_change():
 	AudioManager.stop_ground_sfx()
@@ -209,15 +213,12 @@ func ground_sfx_change():
 
 func get_current_state()-> String:
 	if contact_sol_arrière.has_overlapping_bodies() and contact_sol_avant.has_overlapping_bodies():
-		#Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
 		if Global.vitesse.length() < 20: return "slow_riding"
 		elif Global.vitesse.length() < 40: return "medium_riding"
 		else: return "fast_riding"
 	elif contact_sol_arrière.has_overlapping_bodies():
-		#Global.floor_is = contact_sol_arrière.get_overlapping_bodies()[0].get_collision_layer()
 		return "Wheelie"
 	elif contact_sol_avant.has_overlapping_bodies():
-		#Global.floor_is = contact_sol_avant.get_overlapping_bodies()[0].get_collision_layer()
 		return "Nose Wheelie"
 	else: return "Air"
 
