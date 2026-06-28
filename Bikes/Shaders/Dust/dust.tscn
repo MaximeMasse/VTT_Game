@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://t0u4kdju0qo4"]
+
+[ext_resource type="Script" uid="uid://dpp5d7b8qpasp" path="res://Bikes/Shaders/Dust/dust.gd" id="1_a6x2n"]
+[ext_resource type="Texture2D" uid="uid://f7g02d8xgoh8" path="res://Bikes/Shaders/Dust/rock.png" id="5_rfisq"]
+[ext_resource type="Texture2D" uid="uid://b8xcu1whpef4a" path="res://Bikes/Shaders/Dust/rock2.png" id="6_rlkd0"]
+[ext_resource type="Texture2D" uid="uid://bf5e5qko4pgv6" path="res://Bikes/Shaders/Dust/Puffs/Puffs1.png" id="7_krjon"]
+[ext_resource type="Texture2D" uid="uid://dgqnr72j2hbai" path="res://Bikes/Shaders/Dust/Puffs/Puffs2.png" id="8_ra0lg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4bjbd"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2uxya"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 1, 1)
+direction = Vector3(-1, 0, 0)
+spread = 10.093
+initial_velocity_max = 100.0
+scale_max = 2.0
+anim_speed_min = 1.11
+anim_speed_max = 1.29
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sodx8"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 22.5
+initial_velocity_max = 500.0
+gravity = Vector3(0, 50, 0)
+scale_min = 0.099999994
+scale_max = 0.5
+
+[node name="Dust" type="Node2D" unique_id=1644474838]
+script = ExtResource("1_a6x2n")
+
+[node name="Particules" type="Node2D" parent="." unique_id=1170501247]
+unique_name_in_owner = true
+
+[node name="DustGPUParticles2D" type="GPUParticles2D" parent="Particules" unique_id=1961015335]
+material = SubResource("CanvasItemMaterial_4bjbd")
+amount = 75
+texture = ExtResource("7_krjon")
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_2uxya")
+
+[node name="DustGPUParticles2D2" type="GPUParticles2D" parent="Particules" unique_id=895903626]
+material = SubResource("CanvasItemMaterial_4bjbd")
+amount = 75
+texture = ExtResource("8_ra0lg")
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_2uxya")
+
+[node name="RocksGPUParticles2D" type="GPUParticles2D" parent="Particules" unique_id=1187766156]
+scale = Vector2(0.5, 0.5)
+amount = 50
+texture = ExtResource("5_rfisq")
+randomness = 0.51
+process_material = SubResource("ParticleProcessMaterial_sodx8")
+
+[node name="RocksGPUParticles2D2" type="GPUParticles2D" parent="Particules" unique_id=168855797]
+scale = Vector2(0.5, 0.5)
+amount = 50
+texture = ExtResource("6_rlkd0")
+randomness = 0.51
+process_material = SubResource("ParticleProcessMaterial_sodx8")

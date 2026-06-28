@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://cuxuy38j56qnh" path="res://Bikes/bike_1.gd" id="1_leoqd"]
 [ext_resource type="Texture2D" uid="uid://ci7vylrspef83" path="res://Avatar/Bikes/Wheel_0.png" id="2_bsf8o"]
 [ext_resource type="PackedScene" uid="uid://ufgds3p8wc7m" path="res://Bikes/Skeleton_Man.tscn" id="4_1nxxo"]
-[ext_resource type="PackedScene" uid="uid://c64j0nvyj8vpr" path="res://Bikes/Shaders/dust.tscn" id="4_v7amu"]
+[ext_resource type="PackedScene" uid="uid://t0u4kdju0qo4" path="res://Bikes/Shaders/Dust/dust.tscn" id="4_v7amu"]
+[ext_resource type="PackedScene" uid="uid://csllld2ixg50l" path="res://Bikes/Shaders/Fire/boost_fx.tscn" id="5_v7amu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ow0o1"]
 
@@ -102,6 +103,11 @@ shape = SubResource("RectangleShape2D_el0nv")
 [node name="Skeleton" parent="Cadre" unique_id=256030153 instance=ExtResource("4_1nxxo")]
 unique_name_in_owner = true
 position = Vector2(-21.09, -12.36)
+
+[node name="BoostFX" parent="Cadre" unique_id=262296089 instance=ExtResource("5_v7amu")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-150, 18)
 
 [node name="Joint_arrière" type="PinJoint2D" parent="." unique_id=113849391]
 position = Vector2(-50.385, 45.305)

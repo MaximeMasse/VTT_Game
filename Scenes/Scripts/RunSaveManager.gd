@@ -43,7 +43,8 @@ func load_run(path: String) -> Dictionary:
 
 func _process(_delta):
 	if recording:
-		current_run[Global.race_time] = {
+		var time := snappedf(Global.race_time+Global.penalty_time,0.000000000001)
+		current_run[time] = {
 			"speed":Global.vitesse.length(),
 			"x": Global.player_position.x,
 			"y": Global.player_position.y,

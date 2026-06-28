@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://muf4e01dhlp3"]
+
+[ext_resource type="Shader" uid="uid://m4q45trblk6s" path="res://Images/HUD/Gauges/lifebar_shader.gdshader" id="1_jb52o"]
+
+[resource]
+shader = ExtResource("1_jb52o")
+shader_parameter/pulse_strength = 0.1
+shader_parameter/glow_strength = 1.25
+shader_parameter/warning_threshold = 0.3
+shader_parameter/life = 100.0

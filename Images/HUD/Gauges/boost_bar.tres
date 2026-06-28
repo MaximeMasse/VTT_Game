@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cg54nonlr7aj3"]
+
+[ext_resource type="Shader" uid="uid://cfbcvj0wi1vu8" path="res://Images/HUD/Gauges/boost_bar.gdshader" id="1_aunc1"]
+
+[resource]
+shader = ExtResource("1_aunc1")
+shader_parameter/flame_strength = 0.172
+shader_parameter/flame_speed = 1.7349999999999999
+shader_parameter/brightness = 0.785
+shader_parameter/pulse_strength = 0.195
+shader_parameter/spark_density = 89.545
+shader_parameter/spark_speed = 4.975
+shader_parameter/spark_color = Color(1, 1, 1, 1)

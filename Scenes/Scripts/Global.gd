@@ -218,7 +218,7 @@ func new_boss_score(score:float):
 	boss_score = score
 	new_boss_score_gap()
 
-func new_boss_score_gap():hud_boss_score_update.emit(current_score-boss_score)
+func new_boss_score_gap():hud_boss_score_update.emit(current_score - boss_score)
 
 func gap_entry(gap_name : String):
 	if current_trick["trick"] != "" or not contact_sol:

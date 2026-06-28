@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c7ui5hhppi35e"]
+
+[ext_resource type="Texture2D" uid="uid://6nplu3mvi007" path="res://Bikes/Shaders/Dust/Dust_back.png" id="1_3neg0"]
+[ext_resource type="Shader" uid="uid://bhnsrr623naic" path="res://Bikes/Shaders/Dust/dust_remain.gdshader" id="1_qwcec"]
+[ext_resource type="Script" uid="uid://dr7t8qde2fwwm" path="res://Bikes/Shaders/Dust/dust_remain.gd" id="2_e7x3t"]
+[ext_resource type="Texture2D" uid="uid://dfcj4fgh3ygj1" path="res://Bikes/Shaders/Dust/Dust_cloud.png" id="2_qwcec"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qwcec"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6klbe"]
+noise = SubResource("FastNoiseLite_qwcec")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3u4p"]
+shader = ExtResource("1_qwcec")
+shader_parameter/mask_texture = ExtResource("2_qwcec")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_6klbe")
+shader_parameter/initial_speed = 0.0
+shader_parameter/start_time = 0.0
+shader_parameter/max_speed = 50.0
+shader_parameter/scroll_speed = 0.1
+shader_parameter/noise_strength = 0.05
+shader_parameter/edge_noise_strength = 0.08
+shader_parameter/alpha_power = 1.0
+shader_parameter/tail_fade = 0.5
+
+[node name="Dust_remain" type="Sprite2D" unique_id=2004539359]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_c3u4p")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_3neg0")
+script = ExtResource("2_e7x3t")

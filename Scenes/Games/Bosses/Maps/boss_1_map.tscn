@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://dqdmt8cisjb1h" path="res://Images/Mapping/Cover/Forest_2.png" id="34_n1vnt"]
 [ext_resource type="Texture2D" uid="uid://cpgufq00epwup" path="res://Images/Mapping/Fonds/Backforest/BackForest_spec.png" id="35_cqsq0"]
 [ext_resource type="Texture2D" uid="uid://dikdnrpfvruel" path="res://Images/Mapping/Fonds/Skys/Sky_cloud_1.png" id="36_dbrxl"]
-[ext_resource type="Texture2D" uid="uid://bqsma6w5kg8r0" path="res://Images/Mapping/Fonds/BackMontains/Mountain_background.png" id="37_oyqmg"]
+[ext_resource type="Texture2D" uid="uid://bsqpnq1kttn7f" path="res://Images/Mapping/Fonds/BackMontains/Mountain_background_2.png" id="37_2lj7m"]
 [ext_resource type="Texture2D" uid="uid://dy5nk2818cq5j" path="res://Images/Mapping/Fonds/Backforest/BackForest_up.png" id="38_fcdss"]
 [ext_resource type="Texture2D" uid="uid://c88oftfmcptp6" path="res://Images/Mapping/Fonds/Backforest/BackForest_diag1.png" id="39_s8en7"]
 [ext_resource type="Texture2D" uid="uid://cb8dvuveeoad6" path="res://Images/Mapping/Fonds/Backforest/BackForest_1.png" id="40_udbo6"]
@@ -186,6 +186,10 @@ position = Vector2(15656, 2092)
 collision_layer = 0
 collision_mask = 2
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spots/CrashZone" unique_id=478475797]
+build_mode = 1
+polygon = PackedVector2Array(-678, -1, -479, 158, 127, 172, 309, 384, 442, 581, 814, 957, 1562, 1081, 2165, 888, 2669, 933, 3449, 1106, 4657, 1379, 5678, 1586, 6301, 1740, 7240, 1837, 7656, 1734, 8373, 1585, 8675, 1358, 9771, 1427, 10869, 1591, 12111, 1529, 13708, 1601, 14285, 1777, 14739, 2209, 15467, 2415, 16060, 2436, 18436, 2480, 18980, 2699, 19538, 3056, 20385, 3234, 21345, 3076, 23206, 3179, 26278, 2808, 27562, 2570, 24883, 3771, 14711, 3337, 12576, 2299, 3102, 1910, 304, 1217, -787, 385)
+
 [node name="Bird" parent="Spots" unique_id=767523825 instance=ExtResource("11_mr0vi")]
 unique_name_in_owner = true
 position = Vector2(15105, 998)
@@ -279,6 +283,7 @@ position = Vector2(289, 51)
 shape = SubResource("SegmentShape2D_lqjhk")
 
 [node name="SpecialParts" type="StaticBody2D" parent="." unique_id=1657836727]
+collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpecialParts" unique_id=182616807]
@@ -986,9 +991,9 @@ motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(3072, 0)
 
 [node name="MountainBackground" type="Sprite2D" parent="ParallaxBackground/BackMountains" unique_id=1108388989]
-position = Vector2(8, 1444)
+position = Vector2(8, 1869)
 scale = Vector2(3, 3)
-texture = ExtResource("37_oyqmg")
+texture = ExtResource("37_2lj7m")
 
 [node name="BackForest" type="ParallaxLayer" parent="ParallaxBackground" unique_id=691336840]
 motion_scale = Vector2(0.8, 0.8)

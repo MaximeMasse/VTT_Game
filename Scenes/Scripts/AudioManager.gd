@@ -11,6 +11,7 @@ var dico_music := {
 	"Boss 1 Map": preload("res://Sound/Music/Map_2.mp3")
 }
 var dico_sfx := {
+	"rocket": preload("res://Sound/SFX/rocket.wav"),
 	"heartbeat": preload("res://Sound/SFX/heartbeat.mp3"),
 	"bike_brake": preload("res://Sound/SFX/bike_brake.wav"),
 	"dirt_drift": preload("res://Sound/SFX/dirt_drift.mp3"),

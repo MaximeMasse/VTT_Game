@@ -8,33 +8,37 @@ var RATIO := 0.8
 var ASPECT := 16.0 / 9.0
 
 # Variables
-@export var camera_offset := Vector2(300,-50)
-@export var ymin_offset :float= -100
-@export var ymax_offset :float= 300
-@export var xspeed_offset_ratio := 15
-@export var yspeed_offset_ratio := 15
-@export var camera_smooth := 2.0
-@export var no_zoom_speed := 30
-@export var min_zoom := 0.8
-@export var max_zoom := 1.1
+# Camera settings
+var camera_offset := Vector2(300,-50)
+var ymin_offset :float= -100
+var ymax_offset :float= 300
+var xspeed_offset_ratio := 15
+var yspeed_offset_ratio := 15
+var camera_smooth := 2.0
+var no_zoom_speed := 30
+var min_zoom := 0.8
+var max_zoom := 1.1
 var camera_target : Node2D = null
+# Nodes
 var map_courante : Node2D
 var velo_courant : Node2D
-var boss : Node2D
 var map_finish : Node2D
+var boss : Node2D
+# Tracking
 var race_started := false
 var distance_restante := 0.0
 var avancement := 0
 var is_paused := false
+# Finish
 var is_finished :=false
 @onready var stars := {1.0:%Star1,2.0:%Star2,3.0:%Star3,4.0:%Star4,5.0:%Star5}
 
 func _ready():
-	# Loading profile
-	#Global.set_start_values()
 	# Debug
 	get_tree().debug_collisions_hint = Global.debug
+	# Config
 	Engine.time_scale = TIME_SCALE
+	# Mouse, menus
 	var cursor = load("res://Images/Menus/Controls/cursor.png")
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(0, 0))
 	%Pause_Menu.hide()
@@ -239,6 +243,7 @@ func disable_inputs_for_x_second(x:float):
 	velo_courant.input_enabled = true
 
 func _process(delta):
+	# Camera
 	if is_instance_valid(camera_target) and not is_finished and velo_courant.input_enabled and race_started:
 		var xoffset :float= Global.vitesse.x * xspeed_offset_ratio
 		var yoffset :float= clamp(Global.vitesse.y * yspeed_offset_ratio + Global.ground_distance,ymin_offset,ymax_offset)

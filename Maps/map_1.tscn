@@ -25,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://ch02ec022aunp" path="res://Images/Mapping/Assets/Pannels/Brake.png" id="18_jlwpy"]
 [ext_resource type="Texture2D" uid="uid://dikdnrpfvruel" path="res://Images/Mapping/Fonds/Skys/Sky_cloud_1.png" id="19_lc6nm"]
 [ext_resource type="Texture2D" uid="uid://qnpbwmwi5ow4" path="res://Images/Mapping/Cover/SideCliffs/Sideclif_diag.png" id="20_h47tk"]
-[ext_resource type="Texture2D" uid="uid://bqsma6w5kg8r0" path="res://Images/Mapping/Fonds/BackMontains/Mountain_background.png" id="20_man1s"]
 [ext_resource type="Texture2D" uid="uid://w3psu774fn7u" path="res://Images/Mapping/Cover/SideCliffs/sidecliff.png" id="24_man1s"]
 [ext_resource type="Texture2D" uid="uid://dqddv4pcd5gda" path="res://Images/Mapping/Cover/Transitions/dirt_wood.png" id="25_bhy3y"]
 [ext_resource type="Texture2D" uid="uid://bbdicpo6bmg06" path="res://Images/Mapping/Cover/Forest_1.png" id="26_dulce"]
@@ -41,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://dqdmt8cisjb1h" path="res://Images/Mapping/Cover/Forest_2.png" id="31_kc8sf"]
 [ext_resource type="Texture2D" uid="uid://dv2sapakursy5" path="res://Images/Mapping/Assets/Pannels/Cliff.png" id="34_njb2b"]
 [ext_resource type="Texture2D" uid="uid://cpgufq00epwup" path="res://Images/Mapping/Fonds/Backforest/BackForest_spec.png" id="35_jlwpy"]
+[ext_resource type="Texture2D" uid="uid://bsqpnq1kttn7f" path="res://Images/Mapping/Fonds/BackMontains/Mountain_background_2.png" id="37_jlwpy"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_kc8sf"]
 b = Vector2(0, -262)
@@ -283,6 +283,7 @@ position = Vector2(289, 51)
 shape = SubResource("SegmentShape2D_lqjhk")
 
 [node name="SpecialParts" type="StaticBody2D" parent="." unique_id=1657836727]
+collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpecialParts" unique_id=182616807]
@@ -990,9 +991,9 @@ motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(3072, 0)
 
 [node name="MountainBackground" type="Sprite2D" parent="ParallaxBackground/BackMountains" unique_id=1108388989]
-position = Vector2(8, 1444)
+position = Vector2(8, 1931)
 scale = Vector2(3, 3)
-texture = ExtResource("20_man1s")
+texture = ExtResource("37_jlwpy")
 
 [node name="BackForest" type="ParallaxLayer" parent="ParallaxBackground" unique_id=691336840]
 motion_scale = Vector2(0.8, 0.8)

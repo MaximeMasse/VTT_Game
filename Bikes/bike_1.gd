@@ -25,11 +25,11 @@ var BOOST_ACCELERATION :float = Global.current_profile["boost"]["BOOST_ACCELERAT
 
 const TRICK_LIST := ["Wheelie","Nose Wheelie","Air"]
 
-@onready var roue_arrière := %Roue_arrière
-@onready var contact_sol_arrière := %Contact_sol_arrière
-@onready var contact_sol_avant := %Contact_sol_avant
-@onready var roue_avant := %Roue_avant
-@onready var cadre := %Cadre
+@onready var roue_arrière : RigidBody2D = %Roue_arrière
+@onready var contact_sol_arrière : Area2D = %Contact_sol_arrière
+@onready var contact_sol_avant : Area2D = %Contact_sol_avant
+@onready var roue_avant : RigidBody2D = %Roue_avant
+@onready var cadre : RigidBody2D = %Cadre
 @onready var dust := %Dust
 @onready var wheel_radius : float = %FrontWheelShape.shape.radius
 
@@ -46,6 +46,7 @@ var acceleration_direction : Vector2
 var current_frame_state :String
 var actual_state :String
 var previous_actual_state :String
+var is_boosting : bool
 
 signal boost_consumed
 signal crashed
@@ -67,10 +68,12 @@ func reset_states():
 	current_frame_state = "slow_riding"
 	actual_state = "slow_riding"
 	previous_actual_state = "slow_riding"
+	is_boosting = false
 	
 
 func _physics_process(delta):
 	if not can_drive:
+		%BoostFX.visible = false
 		cadre.linear_velocity = Vector2.ZERO
 		roue_arrière.constant_force = Vector2.ZERO
 		dust.visible = false
@@ -94,9 +97,17 @@ func _physics_process(delta):
 	%Skeleton.lean(input_balance)
 	# Boost
 	if Input.is_action_pressed("Boost") and input_enabled and Global.current_boost > 0:
+		if not is_boosting:
+			AudioManager.play_sfx("rocket")
+			is_boosting = true
 		cadre.apply_central_force(BOOST_ACCELERATION * delta * acceleration_direction/ECHELLE)
 		Global.current_boost -= Global.BOOST_CONSUMPTION * delta
+		%BoostFX.visible = true
 		boost_consumed.emit()
+	else:
+		AudioManager.stop_sfx("rocket")
+		is_boosting = false
+		%BoostFX.visible = false
 	# Si contact arrière
 	if contact_sol_arrière.has_overlapping_bodies():
 		# Accélération
@@ -120,7 +131,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("Frein_avant") and input_enabled:
 			roue_avant.linear_velocity = lerp(
 				roue_avant.linear_velocity, Vector2.ZERO, FORCE_FREINS * delta)
-		# Brake sound
+		# Brake
 		if Input.is_action_just_pressed("Frein_avant") and input_enabled:AudioManager.play_sfx("bike_brake")
 		if Input.is_action_just_released("Frein_avant") and input_enabled:AudioManager.stop_sfx("bike_brake")
 	# Air or Ground
@@ -201,8 +212,25 @@ func _process(_delta):
 		target_gap = cadre.global_position.distance_to(%FloorScan.get_collision_point())
 	Global.ground_distance = lerp(Global.ground_distance,target_gap,ground_distance_smoothing)
 	# Dust position and rotation
-	dust.rotation = acceleration_direction.angle()
-	dust.global_position = roue_avant.global_position + Vector2(0,wheel_radius)
+	dust.rotation = cadre.linear_velocity.angle()
+	# Go Right
+	if cadre.linear_velocity.x >= 0 :
+		# Nose Wheelie
+		if contact_sol_avant.has_overlapping_bodies() and not contact_sol_arrière.has_overlapping_bodies():
+			# Dust under front wheel
+			dust.global_position = roue_avant.global_position + wheel_radius * Vector2.DOWN.rotated(cadre.rotation)
+		else:
+			# Dust under back wheel
+			dust.global_position = roue_arrière.global_position + wheel_radius * Vector2.DOWN.rotated(cadre.rotation)
+	# Go left
+	else:
+		# Wheelie
+		if contact_sol_arrière.has_overlapping_bodies() and not contact_sol_avant.has_overlapping_bodies():
+			# Dust under back wheel
+			dust.global_position = roue_arrière.global_position + wheel_radius * Vector2.DOWN.rotated(cadre.rotation)
+		else:
+			# Dust under front wheel
+			dust.global_position = roue_avant.global_position + wheel_radius * Vector2.DOWN.rotated(cadre.rotation)
 
 func ground_sfx_change():
 	AudioManager.stop_ground_sfx()

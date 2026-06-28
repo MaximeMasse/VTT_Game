@@ -75,7 +75,9 @@ func reset():
 
 func set_visibility(moment:String):for node in dico_to_hide[moment][0]:node.visible = dico_to_hide[moment][1]
 
-func update_HP_Bar():%HPBar.value = Global.current_hp
+func update_HP_Bar():
+	%HPBar.value = Global.current_hp
+	%HPBar.set_fillshader_param("life",Global.current_hp)
 
 func update_boss_gauge(gap_score:float):
 	if gap_score >= 0.0:

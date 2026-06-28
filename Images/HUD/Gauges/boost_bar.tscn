@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ce13dtdik6umu"]
+
+[ext_resource type="Script" uid="uid://ccm4a3kia3duh" path="res://Images/HUD/Gauges/custom_bar.gd" id="1_akexq"]
+[ext_resource type="Shader" uid="uid://ek4q25whiu2s" path="res://Images/HUD/Gauges/back_gauge.gdshader" id="2_hxist"]
+[ext_resource type="Texture2D" uid="uid://bgwdmgfp2on1n" path="res://Images/HUD/Gauges/back_boost_gauge.png" id="3_fjeh2"]
+[ext_resource type="Texture2D" uid="uid://cgspoc6r4frm8" path="res://Images/HUD/Gauges/boost_gauge.png" id="4_akexq"]
+[ext_resource type="Material" uid="uid://cg54nonlr7aj3" path="res://Images/HUD/Gauges/boost_bar.tres" id="4_hxist"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48qs7"]
+shader = ExtResource("2_hxist")
+shader_parameter/shine_strength = 50.0
+shader_parameter/shine_speed = 1.8
+shader_parameter/edge_threshold = 0.28
+shader_parameter/shine_color = Color(1, 0.85, 0.55, 1)
+
+[node name="Boost_gauge" type="Control" unique_id=895675323]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 30.0
+script = ExtResource("1_akexq")
+
+[node name="Back" type="TextureRect" parent="." unique_id=135043818]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_48qs7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fjeh2")
+expand_mode = 1
+
+[node name="Fillclip" type="Control" parent="." unique_id=641758879]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fill" type="TextureRect" parent="Fillclip" unique_id=130774429]
+unique_name_in_owner = true
+material = ExtResource("4_hxist")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_akexq")
+expand_mode = 1
