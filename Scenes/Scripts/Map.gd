@@ -41,6 +41,7 @@ func create_collision_from_path(path: Path2D, static_body: StaticBody2D):
 	polygon.append(Vector2(first.x, first.y + terrain_depth))
 	var collision = CollisionPolygon2D.new()
 	collision.polygon = polygon
+	collision.set_meta("path",path)
 	static_body.add_child(collision)
 
 func generate_platforms_collisions(paths_node:Node2D,static_body:StaticBody2D):
@@ -82,6 +83,7 @@ func create_collision_from_platform(path: Path2D, static_body: StaticBody2D):
 	#polygon.append(Vector2(first.x, first.y + platform_depth))
 	var collision = CollisionPolygon2D.new()
 	collision.polygon = polygon
+	collision.set_meta("path",path)
 	static_body.add_child(collision)
 
 func generate_all_visuals(paths_node:Node2D,visuals:Node2D,road_texture_data:Dictionary,up_texture_data:Dictionary,down_texture_data:Dictionary,under_texture_data:Dictionary):

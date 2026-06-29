@@ -27,6 +27,7 @@ var current_score :float
 
 # Floors
 var floor_is : int
+var floor_collision_node : CollisionPolygon2D
 var ground_distance : float
 
 #Tricks
@@ -268,9 +269,29 @@ func combo_update(gap=null):
 						{"trick":"[color=4a5ef5ff]" + gap + "[/color]","length":0.0,"duration":0.0,"rotation":0.0}
 	potential_combo_score += int(score_to_add)
 	current_combo.append(trick_to_add)
+	# Middle gap tricks
 	if gap == null and is_in_gap != "" : gap_combo[is_in_gap]["tricks"].append(current_trick["trick"])
+	# Landing check
+	if gap == null and contact_sol and "Wheelie" not in trick_to_add["trick"]:check_landing()
 	hud_combo_update.emit(trick_to_add["trick"])
-	
+
+func check_landing():
+	var path : Path2D = floor_collision_node.get_meta("path")
+	var curve : Curve2D = path.curve
+	var offset : float = curve.get_closest_offset(path.to_local(player_position))
+	var p1 = curve.sample_baked(max(offset - 5, 0.0))
+	var p2 = curve.sample_baked(min(offset + 5, curve.get_baked_length()))
+	var speed_angle = abs(vitesse.angle_to(p2 - p1))
+	if speed_angle > PI / 2:speed_angle = PI - speed_angle
+	if speed_angle < deg_to_rad(5):print("Perfect speed_angle")
+	elif speed_angle < deg_to_rad(25):print("Good speed_angle")
+	else:print("Hard speed_angle")
+	var player_angle = abs(angle_difference(player_rotation,(p2-p1).angle()))
+	if player_angle > PI / 2:player_angle = PI - player_angle
+	if player_angle < deg_to_rad(5):print("Perfect player_angle")
+	elif player_angle < deg_to_rad(25):print("Good player_angle")
+	else:print("Hard player_angle")
+
 
 func check_air_rotation():
 	var angle :float = current_trick["rotation"]

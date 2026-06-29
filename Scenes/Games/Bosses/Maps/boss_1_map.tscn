@@ -60,6 +60,18 @@ b = Vector2(-155, -357)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_lqjhk"]
 b = Vector2(287, -373)
 
+[sub_resource type="Curve2D" id="Curve2D_2lj7m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 26456, 2452, 0, 0, 0, 0, 26585, 2446, 0, 0, 0, 0, 26690, 2406, 0, 0, 0, 0, 26758, 2363, 0, 0, 0, 0, 26807, 2295, 0, 0, 0, 0, 26834, 2221, 0, 0, 0, 0, 26845, 2126, 0, 0, 0, 0, 26843, 2088, 0, 0, 0, 0, 26835, 2041, 0, 0, 0, 0, 26826, 2007, 0, 0, 0, 0, 26806, 1955)
+}
+point_count = 11
+
+[sub_resource type="Curve2D" id="Curve2D_i7vf1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 14886, 921, 0, 0, 0, 0, 14880, 1086, 0, 0, 0, 0, 14565, 1086, 0, 0, 0, 0, 14563, 923, 0, 0, 0, 0, 14594, 907, 0, 0, 0, 0, 14638, 907, 0, 0, 0, 0, 14681, 907, 0, 0, 0, 0, 14718, 907, 0, 0, 0, 0, 14788, 909, 0, 0, 0, 0, 14836, 909, 0, 0, 0, 0, 14872, 914)
+}
+point_count = 11
+
 [sub_resource type="Curve2D" id="Curve2D_4wta3"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 2697, 324, -393.73022, -188.30576, 393.73022, 188.30576, 3928, 410)
@@ -283,12 +295,17 @@ position = Vector2(289, 51)
 shape = SubResource("SegmentShape2D_lqjhk")
 
 [node name="SpecialParts" type="StaticBody2D" parent="." unique_id=1657836727]
+unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpecialParts" unique_id=182616807]
 position = Vector2(381.9004, 212.01001)
 polygon = PackedVector2Array(14852, 1186, 14887, 1185, 14932.1, 1180.3, 14973.1, 1172.3, 15012.1, 1164.3, 15047.1, 1152.3, 15091.1, 1133.3, 15127.1, 1109.3, 15157.1, 1079.3, 15185.1, 1041.3, 15207.1, 994.3, 15226.1, 946.3, 15236.1, 895.3, 15237.1, 864.3, 15234.1, 843.3, 15228.1, 821.3, 15215.1, 778.3, 15199.1, 739.3, 15177.1, 708.3, 15241, 753, 15285.1, 810.3, 15244.1, 1014.3, 15129.1, 1136.3, 14999, 1177, 14899, 1196)
+
+[node name="Path2D2" type="Path2D" parent="SpecialParts/CollisionPolygon2D" unique_id=160380792]
+position = Vector2(-11625.9, -1262.01)
+curve = SubResource("Curve2D_2lj7m")
 
 [node name="BackEject" type="Sprite2D" parent="SpecialParts/CollisionPolygon2D" unique_id=759955596]
 show_behind_parent = true
@@ -301,12 +318,18 @@ texture = ExtResource("16_4oi2h")
 position = Vector2(87, 57)
 polygon = PackedVector2Array(26438, 2471, 26534, 2457, 26587, 2447, 26637, 2431, 26679, 2412, 26720, 2391, 26756, 2362, 26782, 2328, 26807, 2287, 26827, 2245, 26840, 2198, 26847, 2149, 26847, 2102, 26841, 2052, 26830, 2002, 26812, 1961, 26790, 1925, 26774, 1911, 26830, 1895, 26873, 1966, 26890, 2061, 26889, 2213, 26874, 2279, 26828, 2374, 26753, 2412, 26522, 2493)
 
+[node name="Path2D" type="Path2D" parent="SpecialParts/CollisionPolygon2D2" unique_id=1443314803]
+curve = SubResource("Curve2D_2lj7m")
+
 [node name="BackEject" type="Sprite2D" parent="SpecialParts/CollisionPolygon2D2" unique_id=170526426]
 position = Vector2(26789, 2157)
 texture = ExtResource("16_4oi2h")
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="SpecialParts" unique_id=557737735]
 polygon = PackedVector2Array(14564, 1092, 14887, 1091, 14885, 950, 14897, 917, 14832, 903, 14731, 896, 14626, 898, 14551, 907, 14546, 920, 14556, 939, 14563, 948)
+
+[node name="Path2D" type="Path2D" parent="SpecialParts/CollisionPolygon2D3" unique_id=263190281]
+curve = SubResource("Curve2D_i7vf1")
 
 [node name="LoopPannel" type="Sprite2D" parent="SpecialParts/CollisionPolygon2D3" unique_id=948192341]
 position = Vector2(14723, 1000)

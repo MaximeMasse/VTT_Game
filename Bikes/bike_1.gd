@@ -69,7 +69,6 @@ func reset_states():
 	actual_state = "slow_riding"
 	previous_actual_state = "slow_riding"
 	is_boosting = false
-	
 
 func _physics_process(delta):
 	if not can_drive:
@@ -271,3 +270,7 @@ func _on_skeleton_contact(body: Node2D) -> void:
 		AudioManager.play_sfx("ouch")
 		AudioManager.play_sfx("bone_crack")
 		crashed.emit()
+
+func _on_contact_sol_avant_body_shape_entered(_body_rid, body, body_shape_index, _local_shape_index):set_col(body, body_shape_index)
+func _on_contact_sol_arrière_body_shape_entered(_body_rid, body, body_shape_index, _local_shape_index):set_col(body, body_shape_index)
+func set_col(body:, body_shape_index):Global.floor_collision_node = body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))
