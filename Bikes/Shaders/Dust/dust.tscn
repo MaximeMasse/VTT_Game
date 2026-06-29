@@ -19,8 +19,8 @@ direction = Vector3(-1, 0, 0)
 spread = 10.093
 initial_velocity_max = 100.0
 scale_max = 2.0
-anim_speed_min = 1.11
-anim_speed_max = 1.29
+anim_speed_min = 0.91999996
+anim_speed_max = 6.02
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sodx8"]
 particle_flag_disable_z = true
@@ -39,28 +39,28 @@ unique_name_in_owner = true
 
 [node name="DustGPUParticles2D" type="GPUParticles2D" parent="Particules" unique_id=1961015335]
 material = SubResource("CanvasItemMaterial_4bjbd")
-amount = 75
+amount = 150
 texture = ExtResource("7_krjon")
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_2uxya")
 
 [node name="DustGPUParticles2D2" type="GPUParticles2D" parent="Particules" unique_id=895903626]
 material = SubResource("CanvasItemMaterial_4bjbd")
-amount = 75
+amount = 150
 texture = ExtResource("8_ra0lg")
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_2uxya")
 
 [node name="RocksGPUParticles2D" type="GPUParticles2D" parent="Particules" unique_id=1187766156]
 scale = Vector2(0.5, 0.5)
-amount = 50
+amount = 40
 texture = ExtResource("5_rfisq")
 randomness = 0.51
 process_material = SubResource("ParticleProcessMaterial_sodx8")
 
 [node name="RocksGPUParticles2D2" type="GPUParticles2D" parent="Particules" unique_id=168855797]
 scale = Vector2(0.5, 0.5)
-amount = 50
+amount = 40
 texture = ExtResource("6_rlkd0")
 randomness = 0.51
 process_material = SubResource("ParticleProcessMaterial_sodx8")

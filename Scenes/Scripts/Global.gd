@@ -36,6 +36,7 @@ var potential_trick_score :int
 var potential_combo_score :int
 var potential_trick := {}
 var current_combo :Array[Dictionary]= []
+var landing_frame : String
 # Gap
 var is_in_gap : String
 var gap_combo : Dictionary
@@ -154,6 +155,7 @@ func set_day():current_profile["current_run"]["current_day"] = current_profile["
 func set_start_values():
 	is_grabbed = false
 	is_stored = false
+	reset_tricks()
 	is_in_gap = ""
 	gap_combo = {}
 	special_trick_done = false
@@ -193,6 +195,8 @@ func handle_crash():
 	if not is_stored and is_grabbed: 
 		is_grabbed = false
 		return_collectible.emit()
+	# Tricks
+	reset_tricks()
 	# Gap
 	is_in_gap = ""
 	gap_combo = {}
@@ -242,6 +246,7 @@ func reset_tricks():
 	potential_trick_score = 0
 	potential_combo_score = 0
 	potential_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
+	landing_frame = ""
 	current_combo = []
 	hud_trick_reset.emit()
 
@@ -271,27 +276,34 @@ func combo_update(gap=null):
 	current_combo.append(trick_to_add)
 	# Middle gap tricks
 	if gap == null and is_in_gap != "" : gap_combo[is_in_gap]["tricks"].append(current_trick["trick"])
-	# Landing check
-	if gap == null and contact_sol and "Wheelie" not in trick_to_add["trick"]:check_landing()
 	hud_combo_update.emit(trick_to_add["trick"])
 
 func check_landing():
+	if current_trick["trick"] == "" or landing_frame != "" :return
 	var path : Path2D = floor_collision_node.get_meta("path")
 	var curve : Curve2D = path.curve
 	var offset : float = curve.get_closest_offset(path.to_local(player_position))
 	var p1 = curve.sample_baked(max(offset - 5, 0.0))
 	var p2 = curve.sample_baked(min(offset + 5, curve.get_baked_length()))
+	# Speed angle
 	var speed_angle = abs(vitesse.angle_to(p2 - p1))
 	if speed_angle > PI / 2:speed_angle = PI - speed_angle
-	if speed_angle < deg_to_rad(5):print("Perfect speed_angle")
-	elif speed_angle < deg_to_rad(25):print("Good speed_angle")
-	else:print("Hard speed_angle")
+	# Player angle
 	var player_angle = abs(angle_difference(player_rotation,(p2-p1).angle()))
 	if player_angle > PI / 2:player_angle = PI - player_angle
-	if player_angle < deg_to_rad(5):print("Perfect player_angle")
-	elif player_angle < deg_to_rad(25):print("Good player_angle")
-	else:print("Hard player_angle")
-
+	var defect : int = 0
+	if speed_angle < deg_to_rad(15):pass
+	elif speed_angle < deg_to_rad(25):defect += 1
+	else:defect += 2
+	if player_angle < deg_to_rad(10):pass
+	elif player_angle < deg_to_rad(25):defect += 1
+	else:defect += 2
+	if defect == 0:landing_frame = "Perfect"
+	elif defect == 1:landing_frame = "Smooth"
+	elif defect == 2:landing_frame= "Normal"
+	elif defect == 3:landing_frame= "Bad"
+	else:landing_frame= "Terrible"
+	print(landing_frame)
 
 func check_air_rotation():
 	var angle :float = current_trick["rotation"]

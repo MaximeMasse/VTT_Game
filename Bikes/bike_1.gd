@@ -52,9 +52,9 @@ signal boost_consumed
 signal crashed
 
 func _ready():
+	%Trick_status_changer.wait_time = 0.6
 	reset_physic()
 	reset_states()
-	Global.reset_tricks()
 
 func reset_physic():
 	for parts in [cadre, roue_avant, roue_arrière]:
@@ -99,7 +99,7 @@ func _physics_process(delta):
 		if not is_boosting:
 			AudioManager.play_sfx("rocket")
 			is_boosting = true
-		cadre.apply_central_force(BOOST_ACCELERATION * delta * acceleration_direction/ECHELLE)
+		cadre.apply_central_force(BOOST_ACCELERATION * delta * Vector2.RIGHT.rotated(cadre.rotation)/ECHELLE)
 		Global.current_boost -= Global.BOOST_CONSUMPTION * delta
 		%BoostFX.visible = true
 		boost_consumed.emit()
@@ -190,6 +190,8 @@ func _physics_process(delta):
 			Global.combo_update()
 			Global.valid_combo()
 			Global.reset_tricks()
+	# Landing frame
+	if previous_actual_state == "Air" and current_frame_state != "Air":Global.check_landing()
 	# Audio
 	if actual_state != previous_actual_state: ground_sfx_change()
 	# State update

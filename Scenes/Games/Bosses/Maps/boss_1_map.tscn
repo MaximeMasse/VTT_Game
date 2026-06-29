@@ -326,6 +326,7 @@ position = Vector2(26789, 2157)
 texture = ExtResource("16_4oi2h")
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="SpecialParts" unique_id=557737735]
+position = Vector2(-49, 0)
 polygon = PackedVector2Array(14564, 1092, 14887, 1091, 14885, 950, 14897, 917, 14832, 903, 14731, 896, 14626, 898, 14551, 907, 14546, 920, 14556, 939, 14563, 948)
 
 [node name="Path2D" type="Path2D" parent="SpecialParts/CollisionPolygon2D3" unique_id=263190281]

@@ -1,8 +1,12 @@
 extends Node2D
 
+var max_speed : float = 60
+var max_rocks_iv : float = 4000
+
 func _process(delta):
-	var speed_km : float = Global.vitesse.length()
+	var speed_ratio : float = Global.vitesse.length()/max_speed
 	for emiter:GPUParticles2D in %Particules.get_children():
-		if "Rocks" in emiter.name :emiter.process_material.initial_velocity_max = 4000 * speed_km/80
-		emiter.emitting = Global.contact_sol and Global.floor_is == 1 and speed_km > 5
-		
+		var proc : ParticleProcessMaterial = emiter.process_material
+		if "Rocks" in emiter.name :proc.initial_velocity_max = max_rocks_iv * speed_ratio
+		emiter.amount_ratio = speed_ratio
+		emiter.emitting = Global.contact_sol and Global.floor_is == 1 and speed_ratio > 0.05

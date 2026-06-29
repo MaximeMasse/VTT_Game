@@ -165,7 +165,7 @@ func injury_update(state:String):
 		%Injury.show()
 		%InjuryCover.hide()
 		%InjuryCover2.show()
-		AudioManager.set_bus_volume("Music", Global.config.get("music_volume", 0.8) * 0.5)
+		AudioManager.set_bus_volume("Music", Global.config.get("music_volume", 0.8) * 0.3)
 		AudioManager.play_sfx("heartbeat")
 
 func round_to(value: float, decimals: int) -> float:
@@ -193,14 +193,14 @@ func fade_out_label(label: Control,scaling: Vector2,offseting: Vector2,effect_du
 
 func _on_show_penalty_timer_timeout():
 	fade_out_label(%Penalty_label,Vector2(1.5,1.5),Vector2(0,50),1)
-	%Tricks_label.add_theme_color_override("font_color", colors["YELLOW"])
+	%Tricks_label.add_theme_color_override("default_color", colors["YELLOW"])
 
 func _process(_delta):
 	var total_money : String = Global.format_number(Global.current_profile["current_run"]["money"]+Global.money_catched)
 	%Money.text = "[img]res://Images/HUD/Player/BucksLogo_mini.png[/img]  "+ total_money
 	%Time_label.text = Global.format_time(Global.race_time+Global.penalty_time)
 	if Global.penalty_to_show and %Show_penalty_timer.is_stopped():
-		%Tricks_label.add_theme_color_override("font_color", colors["RED"])
+		%Tricks_label.add_theme_color_override("default_color", colors["RED"])
 		%Penalty_label.show()
 		Global.penalty_to_show = false
 		%Show_penalty_timer.start()

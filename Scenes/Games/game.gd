@@ -252,7 +252,9 @@ func _physics_process(delta):
 	# Tracking
 	if not race_started or is_paused or is_finished:return
 	# Cheat
-	Global.current_boost = Global.current_profile["boost"]["BOOST_MAX_QUANTITY"]
+	if Global.debug:
+		Global.current_boost = Global.current_profile["boost"]["BOOST_MAX_QUANTITY"]
+		Global.current_hp = 100
 	# Temps
 	Global.race_time += delta
 	# Avancement
