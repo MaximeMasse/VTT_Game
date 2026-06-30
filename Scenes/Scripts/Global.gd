@@ -107,7 +107,7 @@ var tricks_values : Dictionary = {
 var dico_maps := {
 	"Map 0":"res://Maps/map_0.tscn",
 	"Map 1":"res://Maps/map_1.tscn",
-	"Map 2":"res://Maps/map_1.tscn",
+	"Map 2":"res://Maps/map_2.tscn",
 	"Boss 1 Map":"res://Scenes/Games/Bosses/Maps/boss_1_map.tscn",
 }
 var dico_vélo := {
@@ -128,6 +128,7 @@ var dico_scenes :={
 	"Forest":"res://Scenes/Worlds/forest_map.tscn"
 }
 
+signal hud_money_update
 signal hud_trick_reset
 signal hud_trick_activate
 signal hud_combo_update
@@ -203,6 +204,11 @@ func handle_crash():
 	hud_hp_update.emit()
 	set_wound_state()
 
+func money_update(value:float,id:float):
+	money_catched += value
+	bills_catched.append(id)
+	hud_money_update.emit()
+
 func set_wound_state():
 	if current_hp - current_profile["upgrades"]["RESPAWN_HP_PENALTY"] <= 0.0:hud_injury_update.emit("critical")
 	elif current_hp - 3 * current_profile["upgrades"]["RESPAWN_HP_PENALTY"] <= 0.0:hud_injury_update.emit("wounded")
@@ -241,20 +247,25 @@ func gap_exit(gap_name : String):
 		if not previous_obj_and_bills["gaps"].has(gap_name) and not gaps_done.has(gap_name):gaps_done[gap_name] = false
 	is_in_gap = ""
 
-func reset_tricks():
+func reset_tricks(display_time:float=0):
 	current_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
 	potential_trick_score = 0
 	potential_combo_score = 0
 	potential_trick = {"trick":"","length":0.0,"duration":0.0,"rotation":0.0}
-	landing_frame = ""
 	current_combo = []
-	hud_trick_reset.emit()
+	hud_trick_reset.emit(display_time)
+	await get_tree().create_timer(display_time).timeout
+	landing_frame = ""
 
 func new_trick(trick_name:String):
+	landing_frame = ""
 	current_trick = potential_trick.duplicate()
 	current_trick["trick"] = trick_name
 	hud_trick_activate.emit()
+	# In combo
 	if current_combo.size() > 0:AudioManager.play_sfx("combo" + str(min(current_combo.size(),7)))
+	# First trick
+	else:hud_combo_update.emit("",true)
 
 func trick_update(distance,time,angle,potential:bool=false):
 	if potential:
@@ -268,7 +279,7 @@ func trick_update(distance,time,angle,potential:bool=false):
 		if current_trick["trick"] not in ["","Wheelie","Nose Wheelie"]:check_air_rotation()
 		potential_trick_score = int(trick_score(current_trick) * 2 ** current_combo.size())
 
-func combo_update(gap=null):
+func combo_update(gap=null,is_end:bool=false):
 	var score_to_add : float = potential_trick_score if gap == null else 100
 	var trick_to_add : Dictionary = current_trick.duplicate() if gap == null else \
 						{"trick":"[color=4a5ef5ff]" + gap + "[/color]","length":0.0,"duration":0.0,"rotation":0.0}
@@ -276,10 +287,12 @@ func combo_update(gap=null):
 	current_combo.append(trick_to_add)
 	# Middle gap tricks
 	if gap == null and is_in_gap != "" : gap_combo[is_in_gap]["tricks"].append(current_trick["trick"])
-	hud_combo_update.emit(trick_to_add["trick"])
+	var text : String = trick_to_add["trick"]
+	if not is_end:text += " + "
+	hud_combo_update.emit(text)
 
 func check_landing():
-	if current_trick["trick"] == "" or landing_frame != "" :return
+	if landing_frame != "" or current_trick["trick"] == "" or current_trick["duration"]>1:return
 	var path : Path2D = floor_collision_node.get_meta("path")
 	var curve : Curve2D = path.curve
 	var offset : float = curve.get_closest_offset(path.to_local(player_position))
@@ -293,17 +306,14 @@ func check_landing():
 	if player_angle > PI / 2:player_angle = PI - player_angle
 	var defect : int = 0
 	if speed_angle < deg_to_rad(15):pass
-	elif speed_angle < deg_to_rad(25):defect += 1
+	elif speed_angle < deg_to_rad(20):defect += 1
 	else:defect += 2
 	if player_angle < deg_to_rad(10):pass
-	elif player_angle < deg_to_rad(25):defect += 1
 	else:defect += 2
-	if defect == 0:landing_frame = "Perfect"
-	elif defect == 1:landing_frame = "Smooth"
-	elif defect == 2:landing_frame= "Normal"
-	elif defect == 3:landing_frame= "Bad"
-	else:landing_frame= "Terrible"
-	print(landing_frame)
+	if defect == 0:landing_frame = "[rainbow]Perfect Landing"
+	elif defect == 1:landing_frame = "[wave][color=8d00b4]Smooth landing"
+	elif defect > 3:landing_frame = "[shake][color=ff0c0c]Terrible landing"
+	else:landing_frame = " "
 
 func check_air_rotation():
 	var angle :float = current_trick["rotation"]
@@ -342,6 +352,7 @@ func valid_combo():
 				AudioManager.play_sfx("special_trick")
 	gap_combo = {}
 	is_in_gap = ""
+	reset_tricks(2.0)
 
 func combo_score()-> int:
 	var score :int = 0

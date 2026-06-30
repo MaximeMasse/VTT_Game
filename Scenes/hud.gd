@@ -69,15 +69,21 @@ func reset():
 	%Combo_label.text = ""
 	%Trick_score_label.hide()
 	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
+	%Landing_label.text = ""
 	%Boost_gauge.value = 0
 	%Boss.hide()
 	set_boost_geometry()
+	update_money()
 
 func set_visibility(moment:String):for node in dico_to_hide[moment][0]:node.visible = dico_to_hide[moment][1]
 
 func update_HP_Bar():
 	%HPBar.value = Global.current_hp
 	%HPBar.set_fillshader_param("life",Global.current_hp)
+
+func update_money():
+	var total_money : String = Global.format_number(Global.current_profile["current_run"]["money"]+Global.money_catched)
+	%Money.text = "[img]res://Images/HUD/Player/BucksLogo_mini.png[/img]  "+ total_money
 
 func update_boss_gauge(gap_score:float):
 	if gap_score >= 0.0:
@@ -118,11 +124,11 @@ func update_cp(cp : String):
 
 func update_score(points):
 	%Trick_scored_label.text = "+ " + str(int(points)) + " Points" 
+	%Landing_label.text = Global.landing_frame
 	%Trick_scored_label.show()
 	%Score_label.add_theme_color_override("font_color", colors["ORANGE"])
 	%Score_label.text = "Score : " + str(int(Global.current_score)) + " Points"
-	fade_out_label(%Trick_scored_label,Vector2(2,2),Vector2(100,80),1)
-	await get_tree().create_timer(1).timeout
+	await fade_out_label(%Trick_scored_label,Vector2(2,2),Vector2(100,80),1)
 	%Score_label.add_theme_color_override("font_color", colors["YELLOW"])
 
 func update_best_tricks(trick_name,effect=true):
@@ -133,13 +139,15 @@ func update_best_tricks(trick_name,effect=true):
 		await get_tree().create_timer(1).timeout
 		best_trick_labels[trick_name].add_theme_color_override("font_color", colors["DARK_GREY"])
 
-func trick_reset():
+func trick_reset(display_time:float=0):
 	is_tricking = false
 	%Trick_score_label.hide()
 	fade_out_label(%Tricks_label,Vector2(1,1),Vector2(0,50),1)
-	%Combo_label.text = ""
 	%Boost_segment.hide()
-	
+	await get_tree().create_timer(display_time).timeout
+	%Combo_label.text = ""
+	%Landing_label.text = ""
+
 func trick_activate():
 	is_tricking = true
 	%Tricks_label.show()
@@ -147,8 +155,7 @@ func trick_activate():
 	set_boost_segment_geometry()
 	%Boost_segment.show()
 
-func update_combo(text):
-	%Combo_label.text += text + " + "
+func update_combo(text,clear:bool=false):%Combo_label.text = "" if clear else %Combo_label.text + text
 
 func injury_update(state:String):
 	if state =="safe":
@@ -196,8 +203,6 @@ func _on_show_penalty_timer_timeout():
 	%Tricks_label.add_theme_color_override("default_color", colors["YELLOW"])
 
 func _process(_delta):
-	var total_money : String = Global.format_number(Global.current_profile["current_run"]["money"]+Global.money_catched)
-	%Money.text = "[img]res://Images/HUD/Player/BucksLogo_mini.png[/img]  "+ total_money
 	%Time_label.text = Global.format_time(Global.race_time+Global.penalty_time)
 	if Global.penalty_to_show and %Show_penalty_timer.is_stopped():
 		%Tricks_label.add_theme_color_override("default_color", colors["RED"])
@@ -218,6 +223,7 @@ func _process(_delta):
 					%JumpSignal.texture = load(dico_saut[seuils][0])
 	else : %Piston.hide()
 	if is_tricking:
+		%Tricks_label.show()
 		%Tricks_label.text = Global.current_trick["trick"] + "\n"\
 	 		+ str(round_to(Global.current_trick["length"],1)) + " m | "\
 	 		+ str(round_to(Global.current_trick["duration"],1)) + " sec"

@@ -1,49 +1,163 @@
 [gd_scene format=3 uid="uid://gv6bcl0ssj83"]
 
 [ext_resource type="Script" uid="uid://bn0ya44kuuox2" path="res://Maps/map_2.gd" id="2_0nuxv"]
+[ext_resource type="Texture2D" uid="uid://k4x8gugoswkg" path="res://Images/Mapping/Textures/wood.png" id="2_luntg"]
 [ext_resource type="PackedScene" uid="uid://dwkcoiv7k6b8u" path="res://TileSet/start.tscn" id="3_igs0g"]
-[ext_resource type="Texture2D" uid="uid://bxacxsdfusqlg" path="res://Images/Mapping/Cover/flat.png" id="4_dnqgm"]
+[ext_resource type="Texture2D" uid="uid://cmtk0ul0xc75f" path="res://Images/Mapping/Textures/dirt_track_1.png" id="3_m4hs1"]
+[ext_resource type="Texture2D" uid="uid://cd22yhfyqh57" path="res://Images/Mapping/Textures/grass_1.png" id="4_2fbkx"]
 [ext_resource type="PackedScene" uid="uid://b4p6wo6qok4sk" path="res://TileSet/finish.tscn" id="4_frbht"]
+[ext_resource type="Texture2D" uid="uid://bu5rffusgbr1h" path="res://Images/Mapping/Textures/dirt_1.png" id="5_hh3li"]
+[ext_resource type="Texture2D" uid="uid://dduwvky45o8ry" path="res://Images/Mapping/Fonds/Skys/Cloud_sky_eve.png" id="6_4cnnb"]
+[ext_resource type="Texture2D" uid="uid://dmf26y3qj1cnc" path="res://Images/Mapping/Textures/under_rocks_1.png" id="6_liti6"]
+[ext_resource type="Texture2D" uid="uid://bydviu6i2qrl2" path="res://Images/Mapping/Bike_model.png" id="7_8w2uq"]
+[ext_resource type="PackedScene" uid="uid://jorh80hom1vp" path="res://TileSet/checkpoint.tscn" id="10_54o4m"]
+[ext_resource type="Texture2D" uid="uid://bo1sb6nfegcu8" path="res://Images/Mapping/Assets/WoodenPlateforms/Spine3.png" id="11_kpfto"]
+[ext_resource type="Texture2D" uid="uid://bsqpnq1kttn7f" path="res://Images/Mapping/Fonds/BackMontains/Mountain_background_2.png" id="37_bmj4v"]
+[ext_resource type="Texture2D" uid="uid://dy5nk2818cq5j" path="res://Images/Mapping/Fonds/Backforest/BackForest_up.png" id="38_roq23"]
+[ext_resource type="Script" uid="uid://livr32df55qj" path="res://Maps/debug_start.gd" id="41_luvnx"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_1c7ga"]
-b = Vector2(12147, 5)
+[sub_resource type="Curve2D" id="Curve2D_3vafh"]
+_data = {
+"points": PackedVector2Array(-90.82897, 3.5921059, 0, 0, 2581, 460, -85.800026, 5.6447372, 85.800026, -5.6447372, 2715, 456, 0, 0, 0, 0, 2852.9998, 360.07687, 0, 0, 0, 0, 2891.9998, 256.57974, -15.777616, -33.32525, 15.777616, 33.32525, 2921.9998, 342.82733, -79.026344, -6.2092123, 79.026344, 6.2092123, 3078, 461, 0, 0, 0, 0, 3264, 470)
+}
+point_count = 7
 
-[node name="Node2D" type="Node2D" unique_id=76721891]
+[sub_resource type="Curve2D" id="Curve2D_86g4v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -448, 65, -220.29384, 2.42, 220.29384, -2.42, 154, 62, -126.2393, -161.06311, 126.2393, 161.06311, 566, 299, -296.20508, -3.8974347, 296.20508, 3.8974347, 1241, 791, 0, 0, 0, 0, 1804, 664)
+}
+point_count = 5
+
+[node name="Map" type="Node2D" unique_id=1845493518]
 script = ExtResource("2_0nuxv")
+platform_texture = ExtResource("2_luntg")
+road_texture = ExtResource("3_m4hs1")
+up_texture = ExtResource("4_2fbkx")
+down_texture = ExtResource("5_hh3li")
+under_texture = ExtResource("6_liti6")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1651504015]
-position = Vector2(0, 64)
+[node name="BikeModel" type="Sprite2D" parent="." unique_id=1181483513]
+position = Vector2(158.00024, -13.9999695)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("7_8w2uq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=273301144]
-position = Vector2(-95, 0)
-shape = SubResource("SegmentShape2D_1c7ga")
+[node name="Spots" type="Node2D" parent="." unique_id=1345368999]
 
-[node name="Flat" type="Sprite2D" parent="." unique_id=1384039101]
-position = Vector2(1726.0001, 53)
-scale = Vector2(2.3782551, 1)
-texture = ExtResource("4_dnqgm")
-
-[node name="Flat2" type="Sprite2D" parent="." unique_id=674053896]
-position = Vector2(5179.0005, 53)
-scale = Vector2(2.3782551, 1)
-texture = ExtResource("4_dnqgm")
-
-[node name="Start" parent="." unique_id=1752885992 instance=ExtResource("3_igs0g")]
+[node name="Start" parent="Spots" unique_id=1752885992 instance=ExtResource("3_igs0g")]
 unique_name_in_owner = true
-position = Vector2(6, -74.00001)
+position = Vector2(1.1920929e-07, -19.000004)
+scale = Vector2(0.2689295, 0.2576923)
 
-[node name="Flat4" type="Sprite2D" parent="." unique_id=1009204954]
-position = Vector2(10365.001, 54)
-scale = Vector2(2.3782551, 1)
-texture = ExtResource("4_dnqgm")
-
-[node name="Flat3" type="Sprite2D" parent="." unique_id=1312310811]
-position = Vector2(8663, 54)
-scale = Vector2(2.3782551, 1)
-texture = ExtResource("4_dnqgm")
-
-[node name="Finish" parent="." unique_id=859229829 instance=ExtResource("4_frbht")]
+[node name="Finish" parent="Spots" unique_id=1211676905 instance=ExtResource("4_frbht")]
 unique_name_in_owner = true
-position = Vector2(11986, -60)
+position = Vector2(4932, -2658)
 
-[connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
+[node name="Checkpoint_1" parent="Spots" unique_id=1899925259 instance=ExtResource("10_54o4m")]
+unique_name_in_owner = true
+position = Vector2(2445, -2627)
+
+[node name="Checkpoint_2" parent="Spots" unique_id=1166971781 instance=ExtResource("10_54o4m")]
+unique_name_in_owner = true
+position = Vector2(3367, -2711)
+
+[node name="Checkpoint_3" parent="Spots" unique_id=37218309 instance=ExtResource("10_54o4m")]
+unique_name_in_owner = true
+position = Vector2(4231, -2635)
+
+[node name="CrashZone" type="Area2D" parent="Spots" unique_id=2108489664]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Bills" type="Node2D" parent="Spots" unique_id=483681637]
+unique_name_in_owner = true
+
+[node name="Gap" type="Node2D" parent="Spots" unique_id=1571153906]
+
+[node name="SpecialParts" type="StaticBody2D" parent="." unique_id=1657836727]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpecialParts" unique_id=1756862008]
+z_index = 1
+position = Vector2(656, -914)
+scale = Vector2(0.99999976, 1.6232334)
+polygon = PackedVector2Array(2599.9998, 466.6543, 2685.9998, 463.57397, 2723.9998, 458.02954, 2758.9998, 444.47632, 2785.9998, 427.84283, 2810.9998, 405.6649, 2840.9998, 371.16583, 2861.9998, 334.81866, 2878.9998, 298.47144, 2889.9998, 271.36505, 2903.9998, 305.86407, 2915.9998, 321.8815, 2933.9998, 348.9879, 2970.9998, 395.19196, 2994.9998, 417.98596, 3019.9998, 437.6997, 3040.9998, 448.17267, 3070.9998, 456.79742, 3120.9998, 464.19006, 3206.9998, 469.73456, 2977, 537)
+
+[node name="Spine" type="Sprite2D" parent="SpecialParts/CollisionPolygon2D" unique_id=662035031]
+position = Vector2(2895, 374.2461)
+scale = Vector2(0.8126888, 0.82930386)
+texture = ExtResource("11_kpfto")
+
+[node name="Path2D" type="Path2D" parent="SpecialParts/CollisionPolygon2D" unique_id=1022085122]
+curve = SubResource("Curve2D_3vafh")
+
+[node name="PlatformsPaths" type="Node2D" parent="." unique_id=1234909233]
+unique_name_in_owner = true
+
+[node name="Paths" type="Node2D" parent="." unique_id=1436220943]
+unique_name_in_owner = true
+
+[node name="Path2D" type="Path2D" parent="Paths" unique_id=1982550678]
+curve = SubResource("Curve2D_86g4v")
+
+[node name="Floors" type="StaticBody2D" parent="." unique_id=11458257]
+unique_name_in_owner = true
+collision_mask = 0
+
+[node name="Platforms" type="StaticBody2D" parent="." unique_id=1884454474]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="Textures" type="Node2D" parent="." unique_id=580291734]
+unique_name_in_owner = true
+
+[node name="PlatformsTextures" type="Node2D" parent="." unique_id=741886485]
+unique_name_in_owner = true
+
+[node name="Assets" type="Node2D" parent="." unique_id=1612230551]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=746463856]
+visible = false
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=902193105]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(4608, 3072)
+
+[node name="SkyCloud1" type="Sprite2D" parent="ParallaxBackground/Sky" unique_id=1263365679]
+scale = Vector2(3, 3)
+texture = ExtResource("6_4cnnb")
+
+[node name="BackMountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=146799377]
+position = Vector2(-3, -3)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(3072, 0)
+
+[node name="MountainBackground" type="Sprite2D" parent="ParallaxBackground/BackMountains" unique_id=1108388989]
+position = Vector2(8, 1931)
+scale = Vector2(3, 3)
+texture = ExtResource("37_bmj4v")
+
+[node name="BackForest" type="ParallaxLayer" parent="ParallaxBackground" unique_id=691336840]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="BackForestUp" type="Sprite2D" parent="ParallaxBackground/BackForest" unique_id=1789542135]
+position = Vector2(16, 1519)
+scale = Vector2(3, 3)
+texture = ExtResource("38_roq23")
+
+[node name="CameraEffects" type="Area2D" parent="." unique_id=128169794]
+collision_layer = 8
+collision_mask = 0
+
+[node name="DebugStart" type="Marker2D" parent="." unique_id=823606806]
+unique_name_in_owner = true
+z_index = 17
+script = ExtResource("41_luvnx")
+
+[connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]
+[connection signal="body_entered" from="Spots/Checkpoint_1" to="." method="_on_checkpoint_1_body_entered"]
+[connection signal="body_entered" from="Spots/Checkpoint_2" to="." method="_on_checkpoint_2_body_entered"]
+[connection signal="body_entered" from="Spots/Checkpoint_3" to="." method="_on_checkpoint_3_body_entered"]
+[connection signal="body_entered" from="Spots/CrashZone" to="." method="_on_crash_zone_body_entered"]

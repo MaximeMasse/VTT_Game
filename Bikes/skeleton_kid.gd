@@ -34,11 +34,7 @@ func _ready():
 	%BackFoot.texture = load(sprites_path+"Foot.png")
 	%Tail.texture = load(sprites_path+"Tail.png")
 
-
-func _process(_delta: float) -> void:pass
-	#%Contact.global_position = %Torso.global_position
-	#%Contact.global_rotation = %Torso.global_rotation
-	
+func _process(_delta):if %Contact.has_overlapping_bodies():contact.emit(%Contact.get_overlapping_bodies()[0])
 
 func crank_rotate(angle: float):
 	%Cranks.rotate(angle)

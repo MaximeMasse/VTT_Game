@@ -9,7 +9,6 @@ func _on_body_entered(_body):
 		grabbed = true
 		AudioManager.play_sfx("kaching")
 		%AnimationPlayer.play("Grabbed")
-		Global.money_catched += value
-		Global.bills_catched.append(id)
+		Global.money_update(value,id)
 
 func _on_area_entered(_area):_on_body_entered(null)

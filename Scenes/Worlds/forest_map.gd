@@ -116,7 +116,6 @@ func update_world():
 			for thing in ["done","valid"]:node_datas[thing].hide()
 			node_datas["node"].modulate = Color(0.0, 0.0, 0.0, 1.0)
 			if path_in is Line2D:
-				#path_in.get_child(0).hide()
 				path_in.modulate = Color(0.0, 0.0, 0.0, 1.0)
 		# Seen this run
 		elif node not in player_datas["run_finished_maps"]:
@@ -124,7 +123,6 @@ func update_world():
 			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 			if "Boss" not in node:node_datas["stars"].hide()
 			if path_in is Line2D:
-				#path_in.get_child(0).hide()
 				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 		# Finished this run
 		elif node not in player_datas["course"]:
@@ -132,7 +130,6 @@ func update_world():
 			node_datas["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 			if "Boss" not in node:node_datas["stars"].stars_update(Global.current_profile["current_run"]["maps"][node]["objectives"])
 			if path_in is Line2D:
-				#path_in.get_child(0).hide()
 				path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 		# Traveled
 		else:
@@ -151,12 +148,10 @@ func update_world():
 				# Previous map finished this run
 				if path_in.name.split("_")[0] in player_datas["run_finished_maps"]:
 					path_in.show()
-					#path_in.get_child(0).hide()
 					path_in.modulate = Color(0.5, 0.5, 0.5, 1.0)
 				# Previous map finished on previous run
 				elif path_in.name.split("_")[0] in player_datas["finished_maps"]:
 					path_in.show()
-					#path_in.get_child(0).hide()
 					path_in.modulate = Color(0.0, 0.0, 0.0, 1.0)
 				# Hide lock if path hiden
 				else:path_in.get_parent().get_child(2).hide()

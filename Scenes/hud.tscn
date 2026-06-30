@@ -261,6 +261,31 @@ text = "Score : 54000 points"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Landing_label" type="RichTextLabel" parent="Live" unique_id=79081890]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 251.0
+offset_top = 245.0
+offset_right = 1022.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.55298036, 0.0012230023, 0.70730376, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = SubResource("SystemFont_4f5kr")
+theme_override_font_sizes/normal_font_size = 31
+theme_override_styles/focus = SubResource("StyleBoxFlat_n2snw")
+bbcode_enabled = true
+text = "[rainbow]Perfect Landing[/rainbow]
+[wave][color=8d00b4]Smooth landing[/color][/wave]
+[shake][color=ff0c0c]Terrible landing[/color]
+"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Boost_gauge" parent="Live" unique_id=681212140 instance=ExtResource("9_yidpd")]
 unique_name_in_owner = true
 layout_mode = 0

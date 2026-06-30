@@ -28,6 +28,7 @@ size = Vector2(108, 32)
 [node name="Bike" type="Node2D" unique_id=1924211386]
 visibility_layer = 2
 script = ExtResource("1_leoqd")
+ground_distance_smoothing = null
 
 [node name="Dust" parent="." unique_id=1644474838 instance=ExtResource("4_v7amu")]
 unique_name_in_owner = true

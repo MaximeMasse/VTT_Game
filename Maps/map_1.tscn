@@ -295,6 +295,7 @@ position = Vector2(289, 51)
 shape = SubResource("SegmentShape2D_lqjhk")
 
 [node name="SpecialParts" type="StaticBody2D" parent="." unique_id=1657836727]
+unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 0
 

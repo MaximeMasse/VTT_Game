@@ -81,6 +81,8 @@ func _ready():
 	Map.generate_all_visuals(%Paths,%Textures,road,up,down,under)
 	Map.generate_platforms_collisions(%PlatformsPaths,%Platforms)
 	Map.generate_platforms_visuals(%PlatformsPaths,%PlatformsTextures,platform)
+	# Special parts
+	for part in %SpecialParts.get_children():part.set_meta("path",part.get_child(1))
 	
 	# Map data
 	map_data = {
@@ -120,19 +122,19 @@ func _on_finish_body_entered(_body):
 
 # CPs
 func _on_checkpoint_1_body_entered(_body):Global.checkpoint_update("cp1")
-func _on_checkpoint_2_body_entered(body):Global.checkpoint_update("cp2")
-func _on_checkpoint_3_body_entered(body):Global.checkpoint_update("cp3")
+func _on_checkpoint_2_body_entered(_body):Global.checkpoint_update("cp2")
+func _on_checkpoint_3_body_entered(_body):Global.checkpoint_update("cp3")
 
 # Collectible
 func return_collectible():%Bird.reset()
 func store_collectible():%Bird.store()
 
 # Gaps
-func _on_st_platform_body_entered(body):gap_entry.emit("the 1st Platform")
-func _on_st_platform_2_body_exited(body):gap_exit.emit("the 1st Platform")
-func _on_for_the_homies_body_entered(body):
+func _on_st_platform_body_entered(_body):gap_entry.emit("the 1st Platform")
+func _on_st_platform_2_body_exited(_body):gap_exit.emit("the 1st Platform")
+func _on_for_the_homies_body_entered(_body):
 	AudioManager.play_sfx("cheering")
 	gap_entry.emit("for the Homies")
-func _on_for_the_homies_2_body_exited(body):gap_exit.emit("for the Homies")
-func _on_last_jump_body_entered(body):gap_entry.emit("the Last Jump")
-func _on_last_jump_2_body_exited(body):gap_exit.emit("the Last Jump")
+func _on_for_the_homies_2_body_exited(_body):gap_exit.emit("for the Homies")
+func _on_last_jump_body_entered(_body):gap_entry.emit("the Last Jump")
+func _on_last_jump_2_body_exited(_body):gap_exit.emit("the Last Jump")

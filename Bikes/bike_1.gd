@@ -187,9 +187,8 @@ func _physics_process(delta):
 	else:
 		# Combo end
 		if previous_actual_state in TRICK_LIST:
-			Global.combo_update()
+			Global.combo_update(null,true)
 			Global.valid_combo()
-			Global.reset_tricks()
 	# Landing frame
 	if previous_actual_state == "Air" and current_frame_state != "Air":Global.check_landing()
 	# Audio

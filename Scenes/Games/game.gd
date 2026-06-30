@@ -51,6 +51,7 @@ func _ready():
 	# Buttons, controls
 	set_up_buttons(self)
 	# Connections
+	Global.hud_money_update.connect(%HUD.update_money)
 	Global.hud_new_best.connect(%HUD.update_best_tricks)
 	Global.hud_trick_activate.connect(%HUD.trick_activate)
 	Global.hud_trick_reset.connect(%HUD.trick_reset)

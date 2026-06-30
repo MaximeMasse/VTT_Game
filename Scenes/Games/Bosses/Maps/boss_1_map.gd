@@ -82,7 +82,7 @@ func _ready():
 	Map.generate_platforms_collisions(%PlatformsPaths,%Platforms)
 	Map.generate_platforms_visuals(%PlatformsPaths,%PlatformsTextures,platform)
 	# Special parts
-	for part in %SpecialParts.get_children():part.set_meta("path",part.get_child(0))
+	for part in %SpecialParts.get_children():part.set_meta("path",part.get_child(1))
 	
 	# Map data
 	map_data = {
