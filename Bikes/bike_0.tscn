@@ -7,3 +7,6 @@ script = ExtResource("1_eea15")
 
 [node name="Cadre" type="Node2D" parent="." unique_id=1773187320]
 unique_name_in_owner = true
+
+[node name="Dust" type="Node2D" parent="." unique_id=1739613481]
+unique_name_in_owner = true

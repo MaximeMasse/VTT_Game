@@ -1,23 +1,18 @@
 extends Node
 
 @export var step := 32
-@export var terrain_depth := 4000
+@export var terrain_depth := 100
 @export var platform_depth := 1
 
 func generate_all_collisions(paths_node:Node2D,static_body:StaticBody2D):
 	# Supprime les anciennes collisions générées
-	for child in static_body.get_children():
-		if child is CollisionPolygon2D:
-			child.queue_free()
+	for child in static_body.get_children():if child is CollisionPolygon2D:child.queue_free()
 	# Crée une collision par Path2D
-	for path in paths_node.get_children():
-		if path is Path2D:
-			create_collision_from_path(path, static_body)
+	for path in paths_node.get_children():if path is Path2D:create_collision_from_path(path, static_body)
 
 func create_collision_from_path(path: Path2D, static_body: StaticBody2D):
 	var curve = path.curve
-	if curve == null or curve.point_count < 2:
-		return
+	if curve == null or curve.point_count < 2:return
 	var polygon := PackedVector2Array()
 	var length = curve.get_baked_length()
 	var d := 0.0
@@ -32,13 +27,9 @@ func create_collision_from_path(path: Path2D, static_body: StaticBody2D):
 	var last_local = curve.sample_baked(length)
 	var last_world = path.to_global(last_local)
 	var last_body = static_body.to_local(last_world)
-	if polygon.size() == 0 or polygon[polygon.size() - 1].distance_to(last_body) > 1.0:
-		polygon.append(last_body)
+	if polygon.size() == 0 or polygon[polygon.size() - 1].distance_to(last_body) > 1.0:polygon.append(last_body)
 	# Ferme le terrain vers le bas
-	var first = polygon[0]
-	var last = polygon[polygon.size() - 1]
-	polygon.append(Vector2(last.x, last.y + terrain_depth))
-	polygon.append(Vector2(first.x, first.y + terrain_depth))
+	for k in range(polygon.size()-1,0,-1):polygon.append(polygon[k]+Vector2(0,terrain_depth))
 	var collision = CollisionPolygon2D.new()
 	collision.polygon = polygon
 	collision.set_meta("path",path)
@@ -46,18 +37,13 @@ func create_collision_from_path(path: Path2D, static_body: StaticBody2D):
 
 func generate_platforms_collisions(paths_node:Node2D,static_body:StaticBody2D):
 	# Supprime les anciennes collisions générées
-	for child in static_body.get_children():
-		if child is CollisionPolygon2D:
-			child.queue_free()
+	for child in static_body.get_children():if child is CollisionPolygon2D:child.queue_free()
 	# Crée une collision par Path2D
-	for path in paths_node.get_children():
-		if path is Path2D:
-			create_collision_from_platform(path, static_body)
-			
+	for path in paths_node.get_children():if path is Path2D:create_collision_from_platform(path, static_body)
+
 func create_collision_from_platform(path: Path2D, static_body: StaticBody2D):
 	var curve = path.curve
-	if curve == null or curve.point_count < 2:
-		return
+	if curve == null or curve.point_count < 2:return
 	var polygon := PackedVector2Array()
 	var length = curve.get_baked_length()
 	var d := 0.0
@@ -72,15 +58,9 @@ func create_collision_from_platform(path: Path2D, static_body: StaticBody2D):
 	var last_local = curve.sample_baked(length)
 	var last_world = path.to_global(last_local)
 	var last_body = static_body.to_local(last_world)
-	if polygon.size() == 0 or polygon[polygon.size() - 1].distance_to(last_body) > 1.0:
-		polygon.append(last_body)
+	if polygon.size() == 0 or polygon[polygon.size() - 1].distance_to(last_body) > 1.0:polygon.append(last_body)
 	# Ferme le terrain vers le bas
-	for k in range(polygon.size()-1,0,-1):
-		polygon.append(polygon[k]+Vector2(0,platform_depth))
-	#var first = polygon[0]
-	#var last = polygon[polygon.size() - 1]
-	#polygon.append(Vector2(last.x, last.y + platform_depth))
-	#polygon.append(Vector2(first.x, first.y + platform_depth))
+	for k in range(polygon.size()-1,0,-1):polygon.append(polygon[k]+Vector2(0,platform_depth))
 	var collision = CollisionPolygon2D.new()
 	collision.polygon = polygon
 	collision.set_meta("path",path)
@@ -107,8 +87,7 @@ func create_offset_path(path: Path2D, offset: Vector2) -> Path2D:
 	var new_curve := Curve2D.new()
 	var curve = path.curve
 	var natural_offset := path.position
-	if curve == null:
-		return new_path
+	if curve == null:return new_path
 	for i in range(curve.point_count):
 		var pos = curve.get_point_position(i)
 		var in_ctrl = curve.get_point_in(i)
@@ -123,8 +102,7 @@ func create_offset_path(path: Path2D, offset: Vector2) -> Path2D:
 
 func create_visual_from_path(path: Path2D, visuals: Node2D,texture_data:Dictionary):
 	var curve = path.curve
-	if curve == null or curve.point_count < 2:
-		return
+	if curve == null or curve.point_count < 2:return
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var length = curve.get_baked_length()

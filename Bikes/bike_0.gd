@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var cadre := %Cadre
+@onready var dust := %Dust
 var input_enabled : bool
 
 var can_drive := false

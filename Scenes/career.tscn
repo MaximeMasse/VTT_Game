@@ -61,7 +61,7 @@ texture_focused = ExtResource("3_vbqls")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Bikeshop" type="TextureButton" parent="Spots" unique_id=575155307]
+[node name="SponsorShop" type="TextureButton" parent="Spots" unique_id=575155307]
 layout_mode = 0
 offset_left = 292.0
 offset_top = 275.0
@@ -72,7 +72,7 @@ texture_focused = ExtResource("5_8lh5m")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Workshop" type="TextureButton" parent="Spots" unique_id=928450745]
+[node name="Bikeshop" type="TextureButton" parent="Spots" unique_id=928450745]
 layout_mode = 0
 offset_left = -10.0
 offset_top = 307.0
@@ -96,6 +96,7 @@ stretch_mode = 0
 
 [node name="Tuto" type="Control" parent="." unique_id=232285729]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -159,6 +160,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [connection signal="pressed" from="Spots/World" to="." method="_on_world_pressed"]
+[connection signal="pressed" from="Spots/Bikeshop" to="." method="_on_bikeshop_pressed"]
 [connection signal="scene_ended" from="Tuto/DialogTuto" to="." method="_on_dialog_tuto_scene_ended"]
 [connection signal="pressed" from="Tuto/TutoPanels/StartTutoPanel/TutoYesButton" to="." method="_on_tuto_yes_button_pressed"]
 [connection signal="pressed" from="Tuto/TutoPanels/StartTutoPanel/TutoNoButton" to="." method="_on_tuto_no_button_pressed"]

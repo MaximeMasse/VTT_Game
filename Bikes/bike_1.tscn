@@ -33,7 +33,6 @@ ground_distance_smoothing = null
 [node name="Dust" parent="." unique_id=1644474838 instance=ExtResource("4_v7amu")]
 unique_name_in_owner = true
 position = Vector2(56, 72)
-scale = Vector2(0.5, 0.5)
 
 [node name="FloorScan" type="RayCast2D" parent="." unique_id=1407081841]
 unique_name_in_owner = true

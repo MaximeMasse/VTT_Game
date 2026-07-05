@@ -14,6 +14,7 @@ particles_anim_loop = false
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2uxya"]
 particle_flag_disable_z = true
+emission_shape_offset = Vector3(-42.87, -35.185, 0)
 emission_shape_scale = Vector3(0, 1, 1)
 direction = Vector3(-1, 0, 0)
 spread = 10.093
@@ -37,15 +38,19 @@ script = ExtResource("1_a6x2n")
 [node name="Particules" type="Node2D" parent="." unique_id=1170501247]
 unique_name_in_owner = true
 
-[node name="DustGPUParticles2D" type="GPUParticles2D" parent="Particules" unique_id=1961015335]
+[node name="Dust1" type="GPUParticles2D" parent="Particules" unique_id=1961015335]
+unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_4bjbd")
+scale = Vector2(0.5, 0.5)
 amount = 150
 texture = ExtResource("7_krjon")
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_2uxya")
 
-[node name="DustGPUParticles2D2" type="GPUParticles2D" parent="Particules" unique_id=895903626]
+[node name="Dust2" type="GPUParticles2D" parent="Particules" unique_id=895903626]
+unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_4bjbd")
+scale = Vector2(0.5, 0.5)
 amount = 150
 texture = ExtResource("8_ra0lg")
 lifetime = 3.0

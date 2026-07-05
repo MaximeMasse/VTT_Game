@@ -94,12 +94,12 @@ func _ready():
 			"cp2": %Checkpoint_2,
 			"cp3": %Checkpoint_3,
 			},
-		"gaps" : [],
+		"gaps" : ["the Secret Entry","trough Cave Ceiling","the Wavy Platform"],
 		"target_score" : 10000,
 		"target_time" : 60,
 		"target_score_and_time" : [5000,120],
-		"collectible" : "",
-		"special_trick" : {"trick":"","spot":""},
+		"collectible" : "Silver Book",
+		"special_trick" : {"trick":"Triple Backflip","spot":"trough Cave Ceiling"},
 		"queen_time":35,
 		"queen_score":30000
 		}
@@ -112,7 +112,7 @@ func _ready():
 		if bill.id in dico["bills"]:
 			bill.monitoring = false
 			bill.visible = false
-	if 4.0 in dico["objectives"]:%Bird.queue_free()
+	if 4.0 in dico["objectives"]:%Book.queue_free()
 
 # Zones
 func _on_crash_zone_body_entered(_body):out_of_bounds.emit()
@@ -126,15 +126,13 @@ func _on_checkpoint_2_body_entered(_body):Global.checkpoint_update("cp2")
 func _on_checkpoint_3_body_entered(_body):Global.checkpoint_update("cp3")
 
 # Collectible
-func return_collectible():%Bird.reset()
-func store_collectible():%Bird.store()
+func return_collectible():%Book.reset()
+func store_collectible():%Book.store()
 
 # Gaps
-func _on_st_platform_body_entered(_body):gap_entry.emit("the 1st Platform")
-func _on_st_platform_2_body_exited(_body):gap_exit.emit("the 1st Platform")
-func _on_for_the_homies_body_entered(_body):
-	AudioManager.play_sfx("cheering")
-	gap_entry.emit("for the Homies")
-func _on_for_the_homies_2_body_exited(_body):gap_exit.emit("for the Homies")
-func _on_last_jump_body_entered(_body):gap_entry.emit("the Last Jump")
-func _on_last_jump_2_body_exited(_body):gap_exit.emit("the Last Jump")
+func _on_secret_entry_body_entered(_body):gap_entry.emit("the Secret Entry")
+func _on_secret_entry_2_body_exited(_body):gap_exit.emit("the Secret Entry")
+func _on_trough_cave_ceiling_body_entered(_body):gap_entry.emit("trough Cave Ceiling")
+func _on_trough_cave_ceiling_2_body_exited(_body):gap_exit.emit("trough Cave Ceiling")
+func _on_wavy_platform_body_entered(_body):gap_entry.emit("the Wavy Platform")
+func _on_wavy_platform_2_body_exited(_body):gap_exit.emit("the Wavy Platform")

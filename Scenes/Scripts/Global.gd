@@ -125,6 +125,7 @@ var dico_scenes :={
 	"Boss_Game":"res://Scenes/Games/Bosses/BossGame.tscn",
 	"Tuto_Game":"res://Scenes/Games/tuto_game.tscn",
 	"Career":"res://Scenes/career.tscn",
+	"BikeShop":"res://Scenes/Shops/bike_shop.tscn",
 	"Forest":"res://Scenes/Worlds/forest_map.tscn"
 }
 
@@ -292,7 +293,7 @@ func combo_update(gap=null,is_end:bool=false):
 	hud_combo_update.emit(text)
 
 func check_landing():
-	if landing_frame != "" or current_trick["trick"] == "" or current_trick["duration"]>1:return
+	if landing_frame != "" or current_trick["trick"] == "" or current_trick["duration"] < 1:return
 	var path : Path2D = floor_collision_node.get_meta("path")
 	var curve : Curve2D = path.curve
 	var offset : float = curve.get_closest_offset(path.to_local(player_position))

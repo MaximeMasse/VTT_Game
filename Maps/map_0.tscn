@@ -48,6 +48,12 @@
 a = Vector2(269.96777, 30.290344)
 b = Vector2(-67.03125, 28.927917)
 
+[sub_resource type="Curve2D" id="Curve2D_yncro"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -62.032227, 29.933289, 0, 0, 0, 0, 266.9668, 31.28711)
+}
+point_count = 2
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrsql"]
 size = Vector2(360, 160)
 
@@ -137,6 +143,9 @@ rotation = -0.1905273
 texture = ExtResource("19_dhc5w")
 region_enabled = true
 region_rect = Rect2(638.0001, 403.36313, 433.8003, 199.27542)
+
+[node name="Path2D" type="Path2D" parent="SpecialParts/CollisionShape2D" unique_id=540244262]
+curve = SubResource("Curve2D_yncro")
 
 [node name="Spots" type="Node2D" parent="." unique_id=1345368999]
 

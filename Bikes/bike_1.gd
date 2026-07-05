@@ -47,6 +47,7 @@ var current_frame_state :String
 var actual_state :String
 var previous_actual_state :String
 var is_boosting : bool
+var going_right : bool
 
 signal boost_consumed
 signal crashed
@@ -69,6 +70,7 @@ func reset_states():
 	actual_state = "slow_riding"
 	previous_actual_state = "slow_riding"
 	is_boosting = false
+	going_right = true
 
 func _physics_process(delta):
 	if not can_drive:
@@ -212,9 +214,14 @@ func _process(_delta):
 		target_gap = cadre.global_position.distance_to(%FloorScan.get_collision_point())
 	Global.ground_distance = lerp(Global.ground_distance,target_gap,ground_distance_smoothing)
 	# Dust position and rotation
-	dust.rotation = cadre.linear_velocity.angle()
-	# Go Right
+	# Go right
 	if cadre.linear_velocity.x >= 0 :
+		# check change
+		if not going_right:dust.go_right()
+		going_right = true
+		# Rotation
+		dust.rotation = cadre.linear_velocity.angle()
+		# Position
 		# Nose Wheelie
 		if contact_sol_avant.has_overlapping_bodies() and not contact_sol_arrière.has_overlapping_bodies():
 			# Dust under front wheel
@@ -224,6 +231,12 @@ func _process(_delta):
 			dust.global_position = roue_arrière.global_position + wheel_radius * Vector2.DOWN.rotated(cadre.rotation)
 	# Go left
 	else:
+		# check change
+		if going_right:dust.go_left()
+		going_right = false
+		# Rotation
+		dust.rotation = cadre.linear_velocity.rotated(PI).angle()
+		# Position
 		# Wheelie
 		if contact_sol_arrière.has_overlapping_bodies() and not contact_sol_avant.has_overlapping_bodies():
 			# Dust under back wheel

@@ -124,5 +124,7 @@ process_callback = 0
 wait_time = 0.5
 one_shot = true
 
+[connection signal="body_shape_entered" from="Roue_avant/Contact_sol_avant" to="." method="_on_contact_sol_avant_body_shape_entered"]
+[connection signal="body_shape_entered" from="Roue_arrière/Contact_sol_arrière" to="." method="_on_contact_sol_arrière_body_shape_entered"]
 [connection signal="contact" from="Cadre/Skeleton" to="." method="_on_skeleton_contact"]
 [connection signal="timeout" from="Trick_status_changer" to="." method="_on_trick_status_changer_timeout"]
