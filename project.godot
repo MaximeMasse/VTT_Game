@@ -26,6 +26,7 @@ SaveManager="*uid://wnklho31q5lm"
 AudioManager="*uid://5kgdkhd41xqp"
 Map="*uid://cbdvd5i4sansp"
 RunSaveManager="*uid://cs5xe8k3qtmu5"
+UpgradesManager="*uid://hi08kxnbwrqt"
 
 [display]
 

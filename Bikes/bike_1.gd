@@ -1,8 +1,8 @@
 extends Node2D
 
 var ECHELLE = Global.ECHELLE
-# Accélération
-var ACCÉLÉRATION :float = Global.current_profile["stats"]["ACCÉLÉRATION"]
+# ACCELERATION
+var ACCELERATION :float = Global.current_profile["stats"]["ACCELERATION"]
 var FRICTION :float = Global.current_profile["stats"]["FRICTION"]
 #Freins
 var FORCE_FREINS :float = Global.current_profile["stats"]["FORCE_FREINS"]
@@ -12,7 +12,7 @@ var CM_OFFSET:= Vector2(Global.current_profile["stats"]["CM_OFFSET"][0],
 var COUPLE_CADRE_SOL :float = Global.current_profile["stats"]["COUPLE_CADRE_SOL"]
 var COUPLE_CADRE_AIR :float = Global.current_profile["stats"]["COUPLE_CADRE_AIR"]
 var BALANCE_CONTROL :float = Global.current_profile["stats"]["BALANCE_CONTROL"]
-var AV_CONTROL :float = Global.current_profile["stats"]["AV_CONTROL"]
+var GROUND_ROTATION_CONTROL :float = Global.current_profile["stats"]["GROUND_ROTATION_CONTROL"]
 var AIR_ROTATION_CONTROL :float = Global.current_profile["stats"]["AIR_ROTATION_CONTROL"]
 # Saut
 var GREEN_TIME :float = Global.current_profile["stats"]["GREEN_TIME"]
@@ -111,10 +111,10 @@ func _physics_process(delta):
 		%BoostFX.visible = false
 	# Si contact arrière
 	if contact_sol_arrière.has_overlapping_bodies():
-		# Accélération
+		# ACCELERATION
 		if Input.is_action_pressed("Pédaler") \
 		and not Input.is_action_pressed("Frein_arrière"):
-			roue_arrière.apply_central_force((ACCÉLÉRATION * delta/ECHELLE) * acceleration_direction)
+			roue_arrière.apply_central_force((ACCELERATION * delta/ECHELLE) * acceleration_direction)
 			%Skeleton.crank_rotate(Global.vitesse.length()/5 * delta)
 		# Frein arrière
 		if Input.is_action_pressed("Frein_arrière") and input_enabled:
@@ -140,7 +140,7 @@ func _physics_process(delta):
 		# Balance
 		couple_cible = input_balance * COUPLE_CADRE_SOL
 		# Balance enhancer
-		cadre.angular_velocity = clampf(cadre.angular_velocity,-AV_CONTROL,AV_CONTROL)
+		cadre.angular_velocity = clampf(cadre.angular_velocity,-GROUND_ROTATION_CONTROL,GROUND_ROTATION_CONTROL)
 		# Jump
 		if Input.is_action_pressed("Jump"):
 			temps_compression += delta

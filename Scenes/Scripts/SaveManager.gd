@@ -25,10 +25,10 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		"avatar": avatar_id,
 		"state": "tuto",
 		"stats": {
-			"ACCÉLÉRATION": 5000.0,
+			"ACCELERATION": 5000.0,
 			"AIR_ROTATION_CONTROL": 3.0,
 			"AIR_SPEED_CONTROL": 0.0,
-			"AV_CONTROL": 10.0,
+			"GROUND_ROTATION_CONTROL": 10.0,
 			"BALANCE_CONTROL": 10.0,
 			"CM_OFFSET": [
 				0.0,
@@ -59,6 +59,7 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 			"Nose Wheelie": {"length":0.0,"duration":0.0}
 		},
 		"crowns":0,
+		"lvl":0,
 		"xp":0
 	}
 	save_profile(profile)

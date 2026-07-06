@@ -260,12 +260,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buckslogo" type="TextureRect" parent="RunShop/Tiles/ACCELERATION/NextLvl" unique_id=123124013]
+visible = false
 layout_mode = 0
-offset_left = 77.0
-offset_top = 18.0
-offset_right = 123.0
-offset_bottom = 62.0
-scale = Vector2(0.4, 0.4)
+offset_left = 88.0
+offset_top = 16.0
+offset_right = 134.0
+offset_bottom = 60.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_pplha")
 
 [node name="Logo" type="Panel" parent="RunShop/Tiles/ACCELERATION" unique_id=1678154137]
@@ -284,6 +285,7 @@ texture = ExtResource("6_18yn5")
 expand_mode = 1
 
 [node name="Buy" type="TextureButton" parent="RunShop/Tiles/ACCELERATION" unique_id=1637275125]
+visible = false
 layout_mode = 0
 offset_left = 140.0
 offset_top = 162.0
@@ -382,12 +384,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="RunShop/Tiles/AIR_ROTATION_CONTROL/NextLvl" unique_id=64041563]
+visible = false
 layout_mode = 0
-offset_left = 77.0
-offset_top = 18.0
-offset_right = 123.0
-offset_bottom = 62.0
-scale = Vector2(0.4, 0.4)
+offset_left = 88.0
+offset_top = 16.0
+offset_right = 134.0
+offset_bottom = 60.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_pplha")
 
 [node name="Logo" type="Panel" parent="RunShop/Tiles/AIR_ROTATION_CONTROL" unique_id=1632754564]
@@ -406,6 +409,7 @@ texture = ExtResource("12_5ql6p")
 expand_mode = 1
 
 [node name="Buy" type="TextureButton" parent="RunShop/Tiles/AIR_ROTATION_CONTROL" unique_id=1980477212]
+visible = false
 layout_mode = 0
 offset_left = 140.0
 offset_top = 162.0
@@ -505,11 +509,11 @@ vertical_alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="RunShop/Tiles/GROUND_ROTATION_CONTROL/NextLvl" unique_id=1550001802]
 layout_mode = 0
-offset_left = 77.0
-offset_top = 18.0
-offset_right = 123.0
-offset_bottom = 62.0
-scale = Vector2(0.4, 0.4)
+offset_left = 88.0
+offset_top = 16.0
+offset_right = 134.0
+offset_bottom = 60.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_pplha")
 
 [node name="Logo" type="Panel" parent="RunShop/Tiles/GROUND_ROTATION_CONTROL" unique_id=1979041673]
@@ -627,11 +631,11 @@ vertical_alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="RunShop/Tiles/FORCE_SAUT/NextLvl" unique_id=354954735]
 layout_mode = 0
-offset_left = 77.0
-offset_top = 18.0
-offset_right = 123.0
-offset_bottom = 62.0
-scale = Vector2(0.4, 0.4)
+offset_left = 88.0
+offset_top = 16.0
+offset_right = 134.0
+offset_bottom = 60.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_pplha")
 
 [node name="Logo" type="Panel" parent="RunShop/Tiles/FORCE_SAUT" unique_id=1997928579]
@@ -790,6 +794,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buy" type="TextureButton" parent="CrownShop/Bike/Bike1" unique_id=399981468]
+visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 88.0
@@ -830,6 +835,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buy" type="TextureButton" parent="CrownShop/Bike/Bike2" unique_id=2038222462]
+visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 88.0
@@ -911,6 +917,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buy" type="TextureButton" parent="CrownShop/Bike/Bike4" unique_id=1195820196]
+visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 88.0
@@ -996,6 +1003,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buy" type="TextureButton" parent="CrownShop/Protections/ElbowPad" unique_id=15055228]
+visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 88.0
@@ -1117,6 +1125,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buy" type="TextureButton" parent="CrownShop/Protections/Helmet" unique_id=1943293635]
+visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 88.0
