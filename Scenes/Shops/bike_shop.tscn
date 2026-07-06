@@ -3,6 +3,81 @@
 [ext_resource type="Script" uid="uid://bbhqginpwo6w8" path="res://Scenes/Shops/bike_shop.gd" id="1_1e4ct"]
 [ext_resource type="Texture2D" uid="uid://76fraqfud17o" path="res://Images/Menus/Shops/BikeShop_in.png" id="1_1xrkv"]
 [ext_resource type="Texture2D" uid="uid://uqoeliw77x1o" path="res://Images/Menus/Controls/exit.png" id="3_7jyrd"]
+[ext_resource type="PackedScene" uid="uid://ipancfxf2fio" path="res://Scenes/world_hud.tscn" id="3_vsodv"]
+[ext_resource type="FontFile" uid="uid://mo75h3dryq3e" path="res://Fonts/PixelCode.otf" id="5_t6bnj"]
+[ext_resource type="Texture2D" uid="uid://5l2rk0gxguqb" path="res://Images/Menus/Shops/BikeShop/CrankLogo.png" id="6_18yn5"]
+[ext_resource type="FontFile" uid="uid://ctamdlckg0fvr" path="res://Fonts/PixelGame-R9AZe.otf" id="6_t6bnj"]
+[ext_resource type="Texture2D" uid="uid://bgwaro5ehgtbx" path="res://Images/HUD/Player/BucksLogo_mini.png" id="7_pplha"]
+[ext_resource type="Texture2D" uid="uid://dg0bu04xinv" path="res://Images/Menus/Controls/buy_up.png" id="9_7bwjk"]
+[ext_resource type="Texture2D" uid="uid://2ejspb1x5mwn" path="res://Images/Menus/Shops/BikeShop/ForkLogo.png" id="10_3x3x4"]
+[ext_resource type="Texture2D" uid="uid://backwukwea1sw" path="res://Images/Menus/Shops/BikeShop/FrameLogo.png" id="11_xu6bl"]
+[ext_resource type="Texture2D" uid="uid://b37xi75pt205p" path="res://Images/Menus/Shops/BikeShop/WheelLogo.png" id="12_5ql6p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1nn0"]
+bg_color = Color(0.34117648, 0.02745098, 0.60784316, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="FontVariation" id="FontVariation_1ohty"]
+base_font = ExtResource("5_t6bnj")
+
+[sub_resource type="FontVariation" id="FontVariation_18yn5"]
+base_font = ExtResource("6_t6bnj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pplha"]
+bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bwjk"]
+bg_color = Color(0.3626686, 0.621988, 0.2774344, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3x3x4"]
+bg_color = Color(0.75524235, 0.37284657, 3.85046e-07, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ohty"]
+bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="BikeShop" type="Node2D" unique_id=622571835]
 script = ExtResource("1_1e4ct")
@@ -13,6 +88,9 @@ offset_bottom = 720.0
 texture = ExtResource("1_1xrkv")
 expand_mode = 1
 
+[node name="World_HUD" parent="." unique_id=2061443369 instance=ExtResource("3_vsodv")]
+visible = false
+
 [node name="Exit" type="TextureButton" parent="." unique_id=284795697]
 offset_left = 15.999999
 offset_top = 614.99994
@@ -20,5 +98,515 @@ offset_right = 56.0
 offset_bottom = 654.99994
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("3_7jyrd")
+
+[node name="RunShop" type="Panel" parent="." unique_id=368866387]
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 640.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1nn0")
+
+[node name="Label" type="Label" parent="RunShop" unique_id=2086365563]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -182.0
+offset_top = 13.0
+offset_right = 182.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 26
+text = "Bike Stats Improvment"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Money" type="RichTextLabel" parent="RunShop" unique_id=1882843635]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 56.0
+offset_right = 264.0
+offset_bottom = 120.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = SubResource("FontVariation_18yn5")
+theme_override_font_sizes/normal_font_size = 33
+bbcode_enabled = true
+text = "[img]res://Images/HUD/Player/BucksLogo_mini.png[/img] : 200"
+vertical_alignment = 1
+
+[node name="Level" type="RichTextLabel" parent="RunShop" unique_id=1496225218]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 56.0
+offset_right = 512.0
+offset_bottom = 120.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = SubResource("FontVariation_18yn5")
+theme_override_font_sizes/normal_font_size = 33
+bbcode_enabled = true
+text = "Max LEVEL : 5"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Accel" type="Panel" parent="RunShop" unique_id=574363561]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = 272.0
+offset_bottom = 320.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pplha")
+
+[node name="Label" type="Label" parent="RunShop/Accel" unique_id=34674611]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.5
+offset_right = 93.5
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 18
+text = "Crankset"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="Label" parent="RunShop/Accel" unique_id=1248864881]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_top = 31.0
+offset_right = 94.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 13
+text = "Improve max speed and acceleration"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CurrentLvl" type="Label" parent="RunShop/Accel" unique_id=1085461538]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 80.0
+offset_right = 112.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 10
+text = "Current Level :
+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NextLvl" type="Label" parent="RunShop/Accel" unique_id=2001209437]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 120.0
+offset_right = 112.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 10
+text = "Next Level :
+200"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BucksLogoMini" type="Sprite2D" parent="RunShop/Accel/NextLvl" unique_id=266586163]
+position = Vector2(90, 29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_pplha")
+
+[node name="Logo" type="Panel" parent="RunShop/Accel" unique_id=1678154137]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 112.0
+offset_bottom = 176.0
+
+[node name="TextureRect" type="TextureRect" parent="RunShop/Accel/Logo" unique_id=1243458856]
+layout_mode = 0
+offset_right = 959.9999
+offset_bottom = 960.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_18yn5")
+expand_mode = 1
+
+[node name="Buy" type="TextureButton" parent="RunShop/Accel" unique_id=1637275125]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 162.0
+offset_right = 188.0
+offset_bottom = 186.0
+texture_normal = ExtResource("9_7bwjk")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="GroundControl" type="Panel" parent="RunShop" unique_id=1478117142]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 128.0
+offset_right = 544.0
+offset_bottom = 320.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bwjk")
+
+[node name="Label" type="Label" parent="RunShop/GroundControl" unique_id=369020275]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.5
+offset_right = 93.5
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 18
+text = "Fork"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="Label" parent="RunShop/GroundControl" unique_id=1493844537]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_top = 31.0
+offset_right = 94.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 13
+text = "Improve ground balance"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CurrentLvl" type="Label" parent="RunShop/GroundControl" unique_id=1285585634]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 80.0
+offset_right = 112.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 10
+text = "Current Level :
+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NextLvl" type="Label" parent="RunShop/GroundControl" unique_id=1501769509]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 120.0
+offset_right = 112.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 10
+text = "Next Level :
+200"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BucksLogoMini" type="Sprite2D" parent="RunShop/GroundControl/NextLvl" unique_id=2073674035]
+position = Vector2(90, 29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_pplha")
+
+[node name="Logo" type="Panel" parent="RunShop/GroundControl" unique_id=1979041673]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 112.0
+offset_bottom = 176.0
+
+[node name="TextureRect" type="TextureRect" parent="RunShop/GroundControl/Logo" unique_id=2074298812]
+layout_mode = 0
+offset_right = 959.9999
+offset_bottom = 960.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_3x3x4")
+expand_mode = 1
+
+[node name="Buy" type="TextureButton" parent="RunShop/GroundControl" unique_id=726923711]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 162.0
+offset_right = 188.0
+offset_bottom = 186.0
+texture_normal = ExtResource("9_7bwjk")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="JumpPower" type="Panel" parent="RunShop" unique_id=1259134545]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 352.0
+offset_right = 272.0
+offset_bottom = 544.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3x3x4")
+
+[node name="Label" type="Label" parent="RunShop/JumpPower" unique_id=1349936013]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.5
+offset_right = 93.5
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 18
+text = "Frame"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="Label" parent="RunShop/JumpPower" unique_id=1013691039]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_top = 31.0
+offset_right = 94.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 13
+text = "Improve jump power"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CurrentLvl" type="Label" parent="RunShop/JumpPower" unique_id=103856113]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 80.0
+offset_right = 112.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 10
+text = "Current Level :
+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NextLvl" type="Label" parent="RunShop/JumpPower" unique_id=52998253]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 120.0
+offset_right = 112.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 10
+text = "Next Level :
+200"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BucksLogoMini" type="Sprite2D" parent="RunShop/JumpPower/NextLvl" unique_id=1371946387]
+position = Vector2(90, 29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_pplha")
+
+[node name="Logo" type="Panel" parent="RunShop/JumpPower" unique_id=1997928579]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 112.0
+offset_bottom = 176.0
+
+[node name="TextureRect" type="TextureRect" parent="RunShop/JumpPower/Logo" unique_id=799726509]
+layout_mode = 0
+offset_right = 959.9999
+offset_bottom = 960.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_xu6bl")
+expand_mode = 1
+
+[node name="Buy" type="TextureButton" parent="RunShop/JumpPower" unique_id=2125641913]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 162.0
+offset_right = 188.0
+offset_bottom = 186.0
+texture_normal = ExtResource("9_7bwjk")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AirControl" type="Panel" parent="RunShop" unique_id=1680235823]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 352.0
+offset_right = 544.0
+offset_bottom = 544.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ohty")
+
+[node name="Label" type="Label" parent="RunShop/AirControl" unique_id=1307070961]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.5
+offset_right = 93.5
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 18
+text = "Wheels"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="Label" parent="RunShop/AirControl" unique_id=366883795]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_top = 31.0
+offset_right = 94.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 13
+text = "Improve air balance"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CurrentLvl" type="Label" parent="RunShop/AirControl" unique_id=1928886337]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 80.0
+offset_right = 112.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 10
+text = "Current Level :
+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NextLvl" type="Label" parent="RunShop/AirControl" unique_id=776020754]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 120.0
+offset_right = 112.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_1ohty")
+theme_override_font_sizes/font_size = 10
+text = "Next Level :
+200"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BucksLogoMini" type="Sprite2D" parent="RunShop/AirControl/NextLvl" unique_id=1508192636]
+position = Vector2(90, 29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_pplha")
+
+[node name="Logo" type="Panel" parent="RunShop/AirControl" unique_id=1632754564]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 112.0
+offset_bottom = 176.0
+
+[node name="TextureRect" type="TextureRect" parent="RunShop/AirControl/Logo" unique_id=896186052]
+layout_mode = 0
+offset_right = 959.9999
+offset_bottom = 960.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_5ql6p")
+expand_mode = 1
+
+[node name="Buy" type="TextureButton" parent="RunShop/AirControl" unique_id=1980477212]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 162.0
+offset_right = 188.0
+offset_bottom = 186.0
+texture_normal = ExtResource("9_7bwjk")
+ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
