@@ -129,6 +129,7 @@ down_texture = ExtResource("4_tisqc")
 under_texture = ExtResource("5_o1mje")
 
 [node name="SpecialParts" type="StaticBody2D" parent="." unique_id=839341710]
+collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialParts" unique_id=1490674438]

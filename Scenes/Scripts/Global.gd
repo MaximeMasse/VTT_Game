@@ -1,7 +1,7 @@
 extends Node
 
 # Config
-var debug : bool = true
+var debug : bool = false
 const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}
@@ -27,7 +27,7 @@ var current_score :float
 
 # Floors
 var floor_is : int
-var floor_collision_node : CollisionPolygon2D
+var floor_collision_node : Node2D
 var ground_distance : float
 
 #Tricks

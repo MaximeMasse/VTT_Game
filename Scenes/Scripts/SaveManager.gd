@@ -48,7 +48,8 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 			"BOOST_MAX_QUANTITY": 5000.0,
 			"ONE_TIME_RATIO": 5.0
 		},
-		"Boss_beaten":[],
+		"boss_beaten":["-"],
+		"permanent_unlocks":[],
 		"upgrades": {
 			"RESPAWN_TIME_PENALTY" : 5.0,
 			"RESPAWN_HP_PENALTY" : 20
