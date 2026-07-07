@@ -23,6 +23,12 @@
 [ext_resource type="Texture2D" uid="uid://ck4kdakoin4os" path="res://Images/Menus/Controls/unlock_hover.png" id="17_013vm"]
 [ext_resource type="Texture2D" uid="uid://blcf5s58ntg8" path="res://Images/Menus/Shops/BikeShop/ChestPlate.png" id="17_jvmaw"]
 [ext_resource type="Texture2D" uid="uid://c7fwtq8omaf6u" path="res://Images/Menus/Shops/BikeShop/Helmet.png" id="18_jvmaw"]
+[ext_resource type="Texture2D" uid="uid://bn1vl0t1t2ntr" path="res://Images/Menus/Controls/yes_up.png" id="24_dib87"]
+[ext_resource type="Texture2D" uid="uid://deej7nsdys71d" path="res://Images/Menus/Controls/yes_down.png" id="25_uy76v"]
+[ext_resource type="Texture2D" uid="uid://csb1d3cb4u7n6" path="res://Images/Menus/Controls/yes_hover.png" id="26_w2mql"]
+[ext_resource type="Texture2D" uid="uid://vud5kjhd6byj" path="res://Images/Menus/Controls/no_up.png" id="27_jewt6"]
+[ext_resource type="Texture2D" uid="uid://drvv3f57uleo2" path="res://Images/Menus/Controls/no_down.png" id="28_dvwhv"]
+[ext_resource type="Texture2D" uid="uid://cp3l6n6his8e4" path="res://Images/Menus/Controls/no_hover.png" id="29_dokfr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1nn0"]
 bg_color = Color(0.34117648, 0.02745098, 0.60784316, 1)
@@ -90,7 +96,34 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rh81v"]
+bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="FontVariation" id="FontVariation_gl24b"]
+base_font = ExtResource("6_t6bnj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ifh7"]
+bg_color = Color(0.34117648, 0.02745098, 0.60784316, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="FontVariation" id="FontVariation_4bbrt"]
 base_font = ExtResource("6_t6bnj")
 
 [node name="BikeShop" type="Node2D" unique_id=622571835]
@@ -295,7 +328,7 @@ texture_focused = ExtResource("10_1i6vu")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="AIR_ROTATION_CONTROL" type="Panel" parent="RunShop/Tiles" unique_id=1680235823]
+[node name="AIR BALANCE" type="Panel" parent="RunShop/Tiles" unique_id=1680235823]
 layout_mode = 0
 offset_left = 304.0
 offset_top = 128.0
@@ -303,7 +336,7 @@ offset_right = 544.0
 offset_bottom = 320.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1ohty")
 
-[node name="Label" type="Label" parent="RunShop/Tiles/AIR_ROTATION_CONTROL" unique_id=1307070961]
+[node name="Label" type="Label" parent="RunShop/Tiles/AIR BALANCE" unique_id=1307070961]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -321,7 +354,7 @@ text = "Wheels"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Info" type="Label" parent="RunShop/Tiles/AIR_ROTATION_CONTROL" unique_id=366883795]
+[node name="Info" type="Label" parent="RunShop/Tiles/AIR BALANCE" unique_id=366883795]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -340,7 +373,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="CurrentLvl" type="Label" parent="RunShop/Tiles/AIR_ROTATION_CONTROL" unique_id=1928886337]
+[node name="CurrentLvl" type="Label" parent="RunShop/Tiles/AIR BALANCE" unique_id=1928886337]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -360,7 +393,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="NextLvl" type="RichTextLabel" parent="RunShop/Tiles/AIR_ROTATION_CONTROL" unique_id=759939006]
+[node name="NextLvl" type="RichTextLabel" parent="RunShop/Tiles/AIR BALANCE" unique_id=759939006]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -381,7 +414,7 @@ autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="RunShop/Tiles/AIR_ROTATION_CONTROL/NextLvl" unique_id=64041563]
+[node name="TextureRect2" type="TextureRect" parent="RunShop/Tiles/AIR BALANCE/NextLvl" unique_id=64041563]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 18.0
@@ -390,14 +423,14 @@ offset_bottom = 62.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("7_pplha")
 
-[node name="Logo" type="Panel" parent="RunShop/Tiles/AIR_ROTATION_CONTROL" unique_id=1632754564]
+[node name="Logo" type="Panel" parent="RunShop/Tiles/AIR BALANCE" unique_id=1632754564]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 80.0
 offset_right = 112.0
 offset_bottom = 176.0
 
-[node name="TextureRect" type="TextureRect" parent="RunShop/Tiles/AIR_ROTATION_CONTROL/Logo" unique_id=896186052]
+[node name="TextureRect" type="TextureRect" parent="RunShop/Tiles/AIR BALANCE/Logo" unique_id=896186052]
 layout_mode = 0
 offset_right = 959.9999
 offset_bottom = 960.0
@@ -405,7 +438,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("12_5ql6p")
 expand_mode = 1
 
-[node name="Buy" type="TextureButton" parent="RunShop/Tiles/AIR_ROTATION_CONTROL" unique_id=1980477212]
+[node name="Buy" type="TextureButton" parent="RunShop/Tiles/AIR BALANCE" unique_id=1980477212]
 layout_mode = 0
 offset_left = 140.0
 offset_top = 162.0
@@ -417,7 +450,7 @@ texture_focused = ExtResource("10_1i6vu")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="GROUND_ROTATION_CONTROL" type="Panel" parent="RunShop/Tiles" unique_id=1478117142]
+[node name="GROUND BALANCE" type="Panel" parent="RunShop/Tiles" unique_id=1478117142]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 352.0
@@ -425,7 +458,7 @@ offset_right = 272.0
 offset_bottom = 544.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7bwjk")
 
-[node name="Label" type="Label" parent="RunShop/Tiles/GROUND_ROTATION_CONTROL" unique_id=369020275]
+[node name="Label" type="Label" parent="RunShop/Tiles/GROUND BALANCE" unique_id=369020275]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -443,7 +476,7 @@ text = "Fork"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Info" type="Label" parent="RunShop/Tiles/GROUND_ROTATION_CONTROL" unique_id=1493844537]
+[node name="Info" type="Label" parent="RunShop/Tiles/GROUND BALANCE" unique_id=1493844537]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -462,7 +495,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="CurrentLvl" type="Label" parent="RunShop/Tiles/GROUND_ROTATION_CONTROL" unique_id=1285585634]
+[node name="CurrentLvl" type="Label" parent="RunShop/Tiles/GROUND BALANCE" unique_id=1285585634]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -482,7 +515,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="NextLvl" type="RichTextLabel" parent="RunShop/Tiles/GROUND_ROTATION_CONTROL" unique_id=1097087205]
+[node name="NextLvl" type="RichTextLabel" parent="RunShop/Tiles/GROUND BALANCE" unique_id=1097087205]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -503,7 +536,7 @@ autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="RunShop/Tiles/GROUND_ROTATION_CONTROL/NextLvl" unique_id=1550001802]
+[node name="TextureRect2" type="TextureRect" parent="RunShop/Tiles/GROUND BALANCE/NextLvl" unique_id=1550001802]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 18.0
@@ -512,14 +545,14 @@ offset_bottom = 62.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("7_pplha")
 
-[node name="Logo" type="Panel" parent="RunShop/Tiles/GROUND_ROTATION_CONTROL" unique_id=1979041673]
+[node name="Logo" type="Panel" parent="RunShop/Tiles/GROUND BALANCE" unique_id=1979041673]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 80.0
 offset_right = 112.0
 offset_bottom = 176.0
 
-[node name="TextureRect" type="TextureRect" parent="RunShop/Tiles/GROUND_ROTATION_CONTROL/Logo" unique_id=2074298812]
+[node name="TextureRect" type="TextureRect" parent="RunShop/Tiles/GROUND BALANCE/Logo" unique_id=2074298812]
 layout_mode = 0
 offset_right = 959.9999
 offset_bottom = 960.0
@@ -527,7 +560,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("10_3x3x4")
 expand_mode = 1
 
-[node name="Buy" type="TextureButton" parent="RunShop/Tiles/GROUND_ROTATION_CONTROL" unique_id=726923711]
+[node name="Buy" type="TextureButton" parent="RunShop/Tiles/GROUND BALANCE" unique_id=726923711]
 layout_mode = 0
 offset_left = 140.0
 offset_top = 162.0
@@ -539,7 +572,7 @@ texture_focused = ExtResource("10_1i6vu")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="FORCE_SAUT" type="Panel" parent="RunShop/Tiles" unique_id=1259134545]
+[node name="JUMP POWER" type="Panel" parent="RunShop/Tiles" unique_id=1259134545]
 layout_mode = 0
 offset_left = 304.0
 offset_top = 352.0
@@ -547,7 +580,7 @@ offset_right = 544.0
 offset_bottom = 544.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3x3x4")
 
-[node name="Label" type="Label" parent="RunShop/Tiles/FORCE_SAUT" unique_id=1349936013]
+[node name="Label" type="Label" parent="RunShop/Tiles/JUMP POWER" unique_id=1349936013]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -565,7 +598,7 @@ text = "Frame"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Info" type="Label" parent="RunShop/Tiles/FORCE_SAUT" unique_id=1013691039]
+[node name="Info" type="Label" parent="RunShop/Tiles/JUMP POWER" unique_id=1013691039]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -584,7 +617,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="CurrentLvl" type="Label" parent="RunShop/Tiles/FORCE_SAUT" unique_id=103856113]
+[node name="CurrentLvl" type="Label" parent="RunShop/Tiles/JUMP POWER" unique_id=103856113]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -604,7 +637,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="NextLvl" type="RichTextLabel" parent="RunShop/Tiles/FORCE_SAUT" unique_id=769006188]
+[node name="NextLvl" type="RichTextLabel" parent="RunShop/Tiles/JUMP POWER" unique_id=769006188]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -625,7 +658,7 @@ autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="RunShop/Tiles/FORCE_SAUT/NextLvl" unique_id=354954735]
+[node name="TextureRect2" type="TextureRect" parent="RunShop/Tiles/JUMP POWER/NextLvl" unique_id=354954735]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 18.0
@@ -634,14 +667,14 @@ offset_bottom = 62.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("7_pplha")
 
-[node name="Logo" type="Panel" parent="RunShop/Tiles/FORCE_SAUT" unique_id=1997928579]
+[node name="Logo" type="Panel" parent="RunShop/Tiles/JUMP POWER" unique_id=1997928579]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 80.0
 offset_right = 112.0
 offset_bottom = 176.0
 
-[node name="TextureRect" type="TextureRect" parent="RunShop/Tiles/FORCE_SAUT/Logo" unique_id=799726509]
+[node name="TextureRect" type="TextureRect" parent="RunShop/Tiles/JUMP POWER/Logo" unique_id=799726509]
 layout_mode = 0
 offset_right = 959.9999
 offset_bottom = 960.0
@@ -649,7 +682,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("11_xu6bl")
 expand_mode = 1
 
-[node name="Buy" type="TextureButton" parent="RunShop/Tiles/FORCE_SAUT" unique_id=2125641913]
+[node name="Buy" type="TextureButton" parent="RunShop/Tiles/JUMP POWER" unique_id=2125641913]
 layout_mode = 0
 offset_left = 140.0
 offset_top = 162.0
@@ -718,11 +751,11 @@ vertical_alignment = 1
 
 [node name="Bike" type="Panel" parent="CrownShop" unique_id=22717604]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 20.0
 offset_top = 128.0
-offset_right = 544.0
+offset_right = 556.0
 offset_bottom = 320.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_pplha")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rh81v")
 
 [node name="Label" type="Label" parent="CrownShop/Bike" unique_id=1087880791]
 layout_mode = 1
@@ -763,174 +796,185 @@ autowrap_mode = 2
 
 [node name="Bike1" type="Panel" parent="CrownShop/Bike" unique_id=1362859911]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 24.0
 offset_top = 64.0
-offset_right = 112.0
-offset_bottom = 144.0
+offset_right = 128.0
+offset_bottom = 152.0
 
 [node name="TextureRect" type="TextureRect" parent="CrownShop/Bike/Bike1" unique_id=1575857496]
 layout_mode = 0
-offset_top = 7.9999995
-offset_right = 959.9999
-offset_bottom = 648.0
+offset_left = 3.9999998
+offset_top = 11.999999
+offset_right = 963.9999
+offset_bottom = 652.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("13_7bwjk")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Bike/Bike1" unique_id=567697953]
+[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Bike/Bike1" unique_id=370058848]
 layout_mode = 0
-offset_right = 96.0
-offset_bottom = 80.0
+offset_right = 104.0
+offset_bottom = 88.0
 theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("FontVariation_gl24b")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "OWNED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buy" type="TextureButton" parent="CrownShop/Bike/Bike1" unique_id=399981468]
+[node name="Unlock" type="TextureButton" parent="CrownShop/Bike/Bike1" unique_id=399981468]
+visible = false
 layout_mode = 0
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 72.0
-offset_bottom = 112.0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 76.0
+offset_bottom = 120.0
 texture_normal = ExtResource("15_5bjui")
 texture_pressed = ExtResource("16_fm12a")
 texture_focused = ExtResource("17_013vm")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Bike2" type="Panel" parent="CrownShop/Bike" unique_id=2142435631]
+[node name="Bike2" type="Panel" parent="CrownShop/Bike" unique_id=934658089]
 layout_mode = 0
-offset_left = 144.0
+offset_left = 152.0
 offset_top = 64.0
-offset_right = 240.0
-offset_bottom = 144.0
+offset_right = 256.0
+offset_bottom = 152.0
 
-[node name="TextureRect" type="TextureRect" parent="CrownShop/Bike/Bike2" unique_id=1606463003]
+[node name="TextureRect" type="TextureRect" parent="CrownShop/Bike/Bike2" unique_id=1441375267]
 layout_mode = 0
-offset_top = 7.9999995
-offset_right = 959.9999
-offset_bottom = 648.0
+offset_left = 3.9999998
+offset_top = 11.999999
+offset_right = 963.9999
+offset_bottom = 652.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("14_xu6bl")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Bike/Bike2" unique_id=1103053224]
+[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Bike/Bike2" unique_id=184249231]
 layout_mode = 0
-offset_right = 96.0
-offset_bottom = 80.0
+offset_right = 104.0
+offset_bottom = 88.0
 theme_override_colors/default_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("FontVariation_gl24b")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "EQUIPPED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buy" type="TextureButton" parent="CrownShop/Bike/Bike2" unique_id=2038222462]
+[node name="Unlock" type="TextureButton" parent="CrownShop/Bike/Bike2" unique_id=1144848299]
+visible = false
 layout_mode = 0
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 72.0
-offset_bottom = 112.0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 76.0
+offset_bottom = 120.0
 texture_normal = ExtResource("15_5bjui")
 texture_pressed = ExtResource("16_fm12a")
 texture_focused = ExtResource("17_013vm")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Bike3" type="Panel" parent="CrownShop/Bike" unique_id=1411058829]
+[node name="Bike3" type="Panel" parent="CrownShop/Bike" unique_id=1697706990]
 layout_mode = 0
-offset_left = 272.0
+offset_left = 280.0
 offset_top = 64.0
-offset_right = 368.0
-offset_bottom = 144.0
+offset_right = 384.0
+offset_bottom = 152.0
 
-[node name="TextureRect" type="TextureRect" parent="CrownShop/Bike/Bike3" unique_id=1754600933]
+[node name="TextureRect" type="TextureRect" parent="CrownShop/Bike/Bike3" unique_id=607327492]
 layout_mode = 0
-offset_top = 7.9999995
-offset_right = 959.9999
-offset_bottom = 648.0
+offset_left = 3.9999998
+offset_top = 11.999999
+offset_right = 963.9999
+offset_bottom = 652.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("14_xu6bl")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Bike/Bike3" unique_id=1457865298]
+[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Bike/Bike3" unique_id=997377725]
 layout_mode = 0
-offset_right = 96.0
-offset_bottom = 80.0
-theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+offset_right = 104.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(0.75524235, 0.37284657, 3.85046e-07, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("FontVariation_gl24b")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
-text = "5 [img]res://Images/HUD/Player/CrownsLogo_mini.png[/img]"
+text = "5  [img]res://Images/HUD/Player/CrownsLogo_mini.png"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buy" type="TextureButton" parent="CrownShop/Bike/Bike3" unique_id=32792638]
+[node name="Unlock" type="TextureButton" parent="CrownShop/Bike/Bike3" unique_id=490113360]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 72.0
-offset_bottom = 112.0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 76.0
+offset_bottom = 120.0
 texture_normal = ExtResource("15_5bjui")
 texture_pressed = ExtResource("16_fm12a")
 texture_focused = ExtResource("17_013vm")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Bike4" type="Panel" parent="CrownShop/Bike" unique_id=1719773074]
+[node name="Bike4" type="Panel" parent="CrownShop/Bike" unique_id=1671815206]
 layout_mode = 0
-offset_left = 400.0
+offset_left = 408.0
 offset_top = 64.0
-offset_right = 496.0
-offset_bottom = 144.0
+offset_right = 512.0
+offset_bottom = 152.0
 
-[node name="TextureRect" type="TextureRect" parent="CrownShop/Bike/Bike4" unique_id=1284451386]
+[node name="TextureRect" type="TextureRect" parent="CrownShop/Bike/Bike4" unique_id=1336426340]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_top = 7.9999995
-offset_right = 959.9999
-offset_bottom = 648.0
+offset_left = 3.9999998
+offset_top = 11.999999
+offset_right = 963.9999
+offset_bottom = 652.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("15_5ql6p")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Bike/Bike4" unique_id=429830624]
+[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Bike/Bike4" unique_id=1909651911]
 layout_mode = 0
-offset_right = 96.0
-offset_bottom = 80.0
+offset_right = 104.0
+offset_bottom = 88.0
 theme_override_colors/default_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("FontVariation_gl24b")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "BEAT BOSS4 TO UNLOCK"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buy" type="TextureButton" parent="CrownShop/Bike/Bike4" unique_id=1195820196]
+[node name="Unlock" type="TextureButton" parent="CrownShop/Bike/Bike4" unique_id=18759861]
+visible = false
 layout_mode = 0
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 72.0
-offset_bottom = 112.0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 76.0
+offset_bottom = 120.0
 texture_normal = ExtResource("15_5bjui")
 texture_pressed = ExtResource("16_fm12a")
 texture_focused = ExtResource("17_013vm")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Protections" type="Panel" parent="CrownShop" unique_id=1634557244]
+[node name="Protections" type="Panel" parent="CrownShop" unique_id=637861922]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 20.0
 offset_top = 352.0
-offset_right = 544.0
+offset_right = 556.0
 offset_bottom = 544.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_pplha")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rh81v")
 
-[node name="Label" type="Label" parent="CrownShop/Protections" unique_id=2130485287]
+[node name="Label" type="Label" parent="CrownShop/Protections" unique_id=937298268]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -948,7 +992,7 @@ text = "Protections"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Info" type="Label" parent="CrownShop/Protections" unique_id=864750580]
+[node name="Info" type="Label" parent="CrownShop/Protections" unique_id=1618756127]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -967,164 +1011,262 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="ElbowPad" type="Panel" parent="CrownShop/Protections" unique_id=1656970788]
+[node name="ElbowPad" type="Panel" parent="CrownShop/Protections" unique_id=1150042077]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 24.0
 offset_top = 64.0
-offset_right = 112.0
-offset_bottom = 144.0
+offset_right = 128.0
+offset_bottom = 152.0
 
-[node name="TextureRect" type="TextureRect" parent="CrownShop/Protections/ElbowPad" unique_id=1412784738]
+[node name="TextureRect" type="TextureRect" parent="CrownShop/Protections/ElbowPad" unique_id=1439543186]
 layout_mode = 0
-offset_top = 7.9999995
-offset_right = 959.9999
-offset_bottom = 648.0
+offset_left = 3.9999998
+offset_top = 11.999999
+offset_right = 963.9999
+offset_bottom = 652.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("15_gl24b")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Protections/ElbowPad" unique_id=341445424]
+[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Protections/ElbowPad" unique_id=1545329344]
 layout_mode = 0
-offset_right = 96.0
-offset_bottom = 80.0
+offset_right = 104.0
+offset_bottom = 88.0
 theme_override_colors/default_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("FontVariation_gl24b")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "EQUIPPED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buy" type="TextureButton" parent="CrownShop/Protections/ElbowPad" unique_id=15055228]
+[node name="Unlock" type="TextureButton" parent="CrownShop/Protections/ElbowPad" unique_id=547063793]
+visible = false
 layout_mode = 0
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 72.0
-offset_bottom = 112.0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 76.0
+offset_bottom = 120.0
 texture_normal = ExtResource("15_5bjui")
 texture_pressed = ExtResource("16_fm12a")
 texture_focused = ExtResource("17_013vm")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="KneePad" type="Panel" parent="CrownShop/Protections" unique_id=1829889354]
+[node name="KneePad" type="Panel" parent="CrownShop/Protections" unique_id=954396524]
 layout_mode = 0
-offset_left = 144.0
+offset_left = 152.0
 offset_top = 64.0
-offset_right = 240.0
-offset_bottom = 144.0
+offset_right = 256.0
+offset_bottom = 152.0
 
-[node name="TextureRect" type="TextureRect" parent="CrownShop/Protections/KneePad" unique_id=638188164]
+[node name="TextureRect" type="TextureRect" parent="CrownShop/Protections/KneePad" unique_id=1121455250]
 layout_mode = 0
-offset_top = 7.9999995
-offset_right = 959.9999
-offset_bottom = 648.0
+offset_left = 3.9999998
+offset_top = 11.999999
+offset_right = 963.9999
+offset_bottom = 652.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("16_jvmaw")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Protections/KneePad" unique_id=1132006737]
+[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Protections/KneePad" unique_id=442342617]
 layout_mode = 0
-offset_right = 96.0
-offset_bottom = 80.0
-theme_override_colors/default_color = Color(0.20784314, 0.9098039, 0.23529412, 1)
+offset_right = 104.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(0.2, 0.9, 0.23, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("FontVariation_gl24b")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
-text = "2 [img]res://Images/HUD/Player/CrownsLogo_mini.png[/img]"
+text = "2  [img]res://Images/HUD/Player/CrownsLogo_mini.png"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buy" type="TextureButton" parent="CrownShop/Protections/KneePad" unique_id=47581167]
+[node name="Unlock" type="TextureButton" parent="CrownShop/Protections/KneePad" unique_id=1162667383]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 72.0
-offset_bottom = 112.0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 76.0
+offset_bottom = 120.0
 texture_normal = ExtResource("15_5bjui")
 texture_pressed = ExtResource("16_fm12a")
 texture_focused = ExtResource("17_013vm")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="BreastPlate" type="Panel" parent="CrownShop/Protections" unique_id=1666027845]
+[node name="BreastPlate" type="Panel" parent="CrownShop/Protections" unique_id=1400879667]
 layout_mode = 0
-offset_left = 272.0
+offset_left = 280.0
 offset_top = 64.0
-offset_right = 368.0
-offset_bottom = 144.0
+offset_right = 384.0
+offset_bottom = 152.0
 
-[node name="TextureRect" type="TextureRect" parent="CrownShop/Protections/BreastPlate" unique_id=1514996240]
+[node name="TextureRect" type="TextureRect" parent="CrownShop/Protections/BreastPlate" unique_id=2004985340]
 layout_mode = 0
-offset_top = 7.9999995
-offset_right = 959.9999
-offset_bottom = 648.0
+offset_left = 3.9999998
+offset_top = 11.999999
+offset_right = 963.9999
+offset_bottom = 652.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("17_jvmaw")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Protections/BreastPlate" unique_id=1847743660]
+[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Protections/BreastPlate" unique_id=1319886362]
 layout_mode = 0
-offset_right = 96.0
-offset_bottom = 80.0
-theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+offset_right = 104.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(0.75524235, 0.37284657, 3.85046e-07, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("FontVariation_gl24b")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
-text = "5 [img]res://Images/HUD/Player/CrownsLogo_mini.png[/img]"
+text = "5  [img]res://Images/HUD/Player/CrownsLogo_mini.png"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buy" type="TextureButton" parent="CrownShop/Protections/BreastPlate" unique_id=1950399785]
+[node name="Unlock" type="TextureButton" parent="CrownShop/Protections/BreastPlate" unique_id=573920998]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 72.0
-offset_bottom = 112.0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 76.0
+offset_bottom = 120.0
 texture_normal = ExtResource("15_5bjui")
 texture_pressed = ExtResource("16_fm12a")
 texture_focused = ExtResource("17_013vm")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Helmet" type="Panel" parent="CrownShop/Protections" unique_id=1654510803]
+[node name="Helmet" type="Panel" parent="CrownShop/Protections" unique_id=381788556]
 layout_mode = 0
-offset_left = 400.0
+offset_left = 408.0
 offset_top = 64.0
-offset_right = 496.0
-offset_bottom = 144.0
+offset_right = 512.0
+offset_bottom = 152.0
 
-[node name="TextureRect" type="TextureRect" parent="CrownShop/Protections/Helmet" unique_id=1624197956]
+[node name="TextureRect" type="TextureRect" parent="CrownShop/Protections/Helmet" unique_id=1104259008]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_top = 7.9999995
-offset_right = 959.9999
-offset_bottom = 648.0
+offset_left = 3.9999998
+offset_top = 11.999999
+offset_right = 963.9999
+offset_bottom = 652.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("18_jvmaw")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Protections/Helmet" unique_id=1772321283]
+[node name="RichTextLabel" type="RichTextLabel" parent="CrownShop/Protections/Helmet" unique_id=1211221673]
 layout_mode = 0
-offset_right = 96.0
-offset_bottom = 80.0
+offset_right = 104.0
+offset_bottom = 88.0
 theme_override_colors/default_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("FontVariation_gl24b")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "BEAT BOSS4 TO UNLOCK"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buy" type="TextureButton" parent="CrownShop/Protections/Helmet" unique_id=1943293635]
+[node name="Unlock" type="TextureButton" parent="CrownShop/Protections/Helmet" unique_id=642019632]
+visible = false
 layout_mode = 0
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 72.0
-offset_bottom = 112.0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 76.0
+offset_bottom = 120.0
 texture_normal = ExtResource("15_5bjui")
 texture_pressed = ExtResource("16_fm12a")
 texture_focused = ExtResource("17_013vm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BuyConfirm" type="Panel" parent="." unique_id=1946234388]
+unique_name_in_owner = true
+visible = false
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 768.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ifh7")
+
+[node name="Label" type="Label" parent="BuyConfirm" unique_id=800366132]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -88.0
+offset_right = 92.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("FontVariation_4bbrt")
+theme_override_font_sizes/font_size = 36
+text = "Confirm buy ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyInfos" type="Label" parent="BuyConfirm" unique_id=203041533]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -47.5
+offset_right = 80.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_4bbrt")
+theme_override_font_sizes/font_size = 23
+text = "WHEELS
+Tier 1 -> Tier 2
+200 "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BuyConfirm/BuyInfos" unique_id=1327348912]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 56.5
+offset_right = 158.0
+offset_bottom = 100.5
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_pplha")
+
+[node name="ConfirmBuyButton" type="TextureButton" parent="BuyConfirm" unique_id=1878092175]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = 144.0
+offset_right = 96.0
+offset_bottom = 184.0
+texture_normal = ExtResource("24_dib87")
+texture_pressed = ExtResource("25_uy76v")
+texture_focused = ExtResource("26_w2mql")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="No" type="TextureButton" parent="BuyConfirm" unique_id=1115424870]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 144.0
+offset_right = 224.0
+offset_bottom = 184.0
+texture_normal = ExtResource("27_jewt6")
+texture_pressed = ExtResource("28_dvwhv")
+texture_focused = ExtResource("29_dokfr")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -1133,3 +1275,5 @@ stretch_mode = 0
 [connection signal="mouse_exited" from="RunShop" to="." method="_on_run_shop_mouse_exited"]
 [connection signal="mouse_entered" from="CrownShop" to="." method="_on_crown_shop_mouse_entered"]
 [connection signal="mouse_exited" from="CrownShop" to="." method="_on_crown_shop_mouse_exited"]
+[connection signal="pressed" from="BuyConfirm/ConfirmBuyButton" to="." method="_on_confirm_buy_button_pressed"]
+[connection signal="pressed" from="BuyConfirm/No" to="." method="_on_no_pressed"]

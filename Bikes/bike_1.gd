@@ -12,12 +12,12 @@ var CM_OFFSET:= Vector2(Global.current_profile["stats"]["CM_OFFSET"][0],
 var COUPLE_CADRE_SOL :float = Global.current_profile["stats"]["COUPLE_CADRE_SOL"]
 var COUPLE_CADRE_AIR :float = Global.current_profile["stats"]["COUPLE_CADRE_AIR"]
 var BALANCE_CONTROL :float = Global.current_profile["stats"]["BALANCE_CONTROL"]
-var GROUND_ROTATION_CONTROL :float = Global.current_profile["stats"]["GROUND_ROTATION_CONTROL"]
-var AIR_ROTATION_CONTROL :float = Global.current_profile["stats"]["AIR_ROTATION_CONTROL"]
+var GROUND_ROTATION_CONTROL :float = Global.current_profile["stats"]["GROUND BALANCE"]
+var AIR_BALANCE :float = Global.current_profile["stats"]["AIR BALANCE"]
 # Saut
 var GREEN_TIME :float = Global.current_profile["stats"]["GREEN_TIME"]
 var SWEET_SPOT :float = Global.current_profile["stats"]["SWEET_SPOT"]
-var FORCE_SAUT :float = Global.current_profile["stats"]["FORCE_SAUT"]
+var FORCE_SAUT :float = Global.current_profile["stats"]["JUMP POWER"]
 # Air control
 var AIR_SPEED_CONTROL :float = Global.current_profile["stats"]["AIR_SPEED_CONTROL"]
 # Boost
@@ -155,7 +155,7 @@ func _physics_process(delta):
 		# Balance
 		couple_cible = input_balance * COUPLE_CADRE_AIR
 		# Rotation control
-		cadre.angular_velocity = clampf(cadre.angular_velocity,-AIR_ROTATION_CONTROL,AIR_ROTATION_CONTROL)
+		cadre.angular_velocity = clampf(cadre.angular_velocity,-AIR_BALANCE,AIR_BALANCE)
 		# Air speed control
 		if not Input.is_action_pressed("Pédaler"):
 			cadre.linear_velocity -= AIR_SPEED_CONTROL * acceleration_direction

@@ -26,9 +26,9 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		"state": "tuto",
 		"stats": {
 			"ACCELERATION": 5000.0,
-			"AIR_ROTATION_CONTROL": 3.0,
+			"AIR BALANCE": 3.0,
 			"AIR_SPEED_CONTROL": 0.0,
-			"GROUND_ROTATION_CONTROL": 10.0,
+			"GROUND BALANCE": 10.0,
 			"BALANCE_CONTROL": 10.0,
 			"CM_OFFSET": [
 				0.0,
@@ -37,7 +37,7 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 			"COUPLE_CADRE_AIR": 400000.0,
 			"COUPLE_CADRE_SOL": 1700000.0,
 			"FORCE_FREINS": 75.0,
-			"FORCE_SAUT": 100.0,
+			"JUMP POWER": 100.0,
 			"FRICTION": 150.0,
 			"GREEN_TIME": 1.0,
 			"SWEET_SPOT": 0.1
@@ -48,6 +48,7 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 			"BOOST_MAX_QUANTITY": 5000.0,
 			"ONE_TIME_RATIO": 5.0
 		},
+		"Boss_beaten":[],
 		"upgrades": {
 			"RESPAWN_TIME_PENALTY" : 5.0,
 			"RESPAWN_HP_PENALTY" : 20
