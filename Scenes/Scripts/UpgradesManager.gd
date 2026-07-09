@@ -1,15 +1,15 @@
 extends Node
 
-var bosses_names : Array = ["Adriano","Boss 2","Boss 3","Boss 4"]
+const bosses_names : Array = ["Adriano","Boss 2","Boss 3","Boss 4"]
 
-var bosses_bikes :Dictionary = {
+const bosses_bikes :Dictionary = {
 	"Bike 1":{"name":bosses_names[0],"cost":1},
 	"Bike 2":{"name":bosses_names[1],"cost":2},
 	"Bike 3":{"name":bosses_names[2],"cost":5},
 	"Bike 4":{"name":bosses_names[3],"cost":10}
 }
 
-var datas : Dictionary = {
+const datas : Dictionary = {
 	"ACCELERATION":{
 		"values":[5000.0,6000.0,7000.0,8000.0,9000.0,10000.0],
 		"unlock_lvl":[0,1,5,9,13,17],
@@ -45,6 +45,18 @@ var datas : Dictionary = {
 		"RESPAWN_TIME_PENALTY": [1,1,1,1]
 	}
 }
+
+const ACHIEVEMENTS := {
+	"finish_maps": {
+		"name": "Finisher",
+		"description": "Finir des maps",
+		"stat": "maps_finished",
+		"levels": [1,2,5,10,20]
+	}
+}
+
+const XP_GAIN := [10,25,50,100,150]
+const XP_LEVELS := [10,20,30,40,50,60,70,90,110,130,150,170,190,210,230,250,280,330,410,520]
 
 func get_upgrade_tier(upgrade:String,value:float):return datas[upgrade]["values"].find(value)
 func get_upgrade_tier_data(upgrade:String,tier:float,data:String):return datas[upgrade][data][tier]
