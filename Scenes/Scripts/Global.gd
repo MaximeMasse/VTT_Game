@@ -1,7 +1,7 @@
 extends Node
 
 # Config
-var debug : bool = false
+const debug : bool = false
 const ECHELLE = 1.7/152
 var current_profile := {}
 var config := {}
@@ -90,9 +90,9 @@ var crowns_unlocked : int
 #Menus
 var menu_to_show := "MainMenu"
 
-var rotation_name_and_point := {1:["",1.0],2:["Double ",2.0],3:["Triple ",3.0],
+const rotation_name_and_point := {1:["",1.0],2:["Double ",2.0],3:["Triple ",3.0],
 							4:["Quadruple ",4.0],5:["Quintuple ",5.0],6:["Sextuple ",6.0],7:["Septuple ",7.0]}
-var tricks_values : Dictionary = {
+const tricks_values : Dictionary = {
 	"":0,
 	"length_to_double":10,
 	"duration_to_double":2,
@@ -104,29 +104,31 @@ var tricks_values : Dictionary = {
 }
 
 # Dicos
-var dico_maps := {
+const dico_maps := {
 	"Map 0":"res://Maps/map_0.tscn",
 	"Map 1":"res://Maps/map_1.tscn",
 	"Map 2":"res://Maps/map_2.tscn",
 	"Boss 1 Map":"res://Scenes/Games/Bosses/Maps/boss_1_map.tscn",
 }
-var dico_vélo := {
+const dico_vélo := {
 	0:"res://Bikes/bike_0.tscn",
 	1:"res://Bikes/bike_1.tscn",
 	2:"res://Bikes/bike_2.tscn",
 }
-var boss_scenes := {
+const boss_scenes := {
 	"Forest":"res://Scenes/Games/Bosses/Boss1.tscn"
 }
-var dico_avatars := {1:"Woman",2:"Man",3:"Girl",4:"Boy",5:"Cat"}
-var dico_scenes :={
+const dico_avatars := {1:"Woman",2:"Man",3:"Girl",4:"Boy",5:"Cat"}
+const dico_scenes :={
 	"Menus":"res://Scenes/menus.tscn",
 	"Main_Game":"res://Scenes/Games/game.tscn",
 	"Boss_Game":"res://Scenes/Games/Bosses/BossGame.tscn",
 	"Tuto_Game":"res://Scenes/Games/tuto_game.tscn",
 	"Career":"res://Scenes/career.tscn",
 	"BikeShop":"res://Scenes/Shops/bike_shop.tscn",
-	"Forest":"res://Scenes/Worlds/forest_map.tscn"
+	"Trailer":"res://Scenes/Shops/trailer.tscn",
+	"Forest":"res://Scenes/Worlds/forest_map.tscn",
+	"Desert":"res://Scenes/Worlds/desert_map.tscn"
 }
 
 signal hud_money_update
@@ -139,6 +141,7 @@ signal hud_cp_update
 signal hud_hp_update
 signal hud_injury_update
 signal hud_boss_score_update
+signal game_over
 
 func start_mod(scene_name:String):
 	# Boost
@@ -148,10 +151,17 @@ func start_mod(scene_name:String):
 	ONE_TIME_QUANTITY = BOOST_MAX_QUANTITY/ONE_TIME_RATIO
 	get_tree().change_scene_to_file(dico_scenes[scene_name])
 
-func set_run():current_profile["current_run"] = current_profile.get("current_run",
-	{"maps":{},"unlocks":[],"money":100,"stars":0,"hp":100})
+func set_run(new:bool=false):
+	if new:current_profile.erase("current_run")
+	current_profile["current_run"] = current_profile.get("current_run",
+					{"maps":{},"unlocks":[],"money":100,"stars":0,"hp":100,"days":0})
+	set_day()
 
-func set_day():current_profile["current_run"]["current_day"] = current_profile["current_run"].get("current_day",
+func set_day(new:bool=false):
+	if new:
+		current_profile["current_run"].erase("current_day")
+		current_profile["current_run"]["days"] += 1
+	current_profile["current_run"]["current_day"] = current_profile["current_run"].get("current_day",
 	{"course":[],"world":"Forest","node":"Chairlift","money":0,"stars":0,"crowns":0}) 
 
 func set_start_values():
@@ -168,7 +178,7 @@ func set_start_values():
 	money_catched = 0
 	bills_catched = []
 	previous_map_record = current_profile["map_records"]\
-	.get(current_map,{"crowns_unlocked":0,"queen_time_beaten":false,"queen_score_beaten":false\
+	.get(current_map,{"crowns_unlocked":0,"queen_time_beaten":false,"queen_score_beaten":false,"collectible_stored":false\
 	,"score":"-","time":"-","objectives_done":false,"bills_caught":false,"gaps_done":false,"gaps_discovered":[]})
 	race_time = 0.0
 	penalty_time = 0.0
@@ -189,6 +199,9 @@ func handle_crash():
 	penalty_to_show = true
 	penalty_time += current_profile["upgrades"]["RESPAWN_TIME_PENALTY"]
 	current_hp -= current_profile["upgrades"]["RESPAWN_HP_PENALTY"]
+	if current_hp <= 0:
+		game_over.emit(player_position)
+		return
 	# Time, score and boost reset
 	race_time = cp_player_time
 	current_score = cp_player_score
@@ -503,6 +516,8 @@ func profile_update():
 	money_catched = 0
 	new_map_data["bills"] = bills_catched
 	new_map_record["bills_caught"] = bills_already_fulled or bills_fulled
+	# Collectible
+	new_map_record["collectible_stored"] = new_map_record["collectible_stored"] or is_stored
 	# Stars
 	current_profile["current_run"]["stars"] += objectives_completed.size()
 	new_map_data["objectives"].append_array(objectives_completed)

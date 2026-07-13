@@ -36,6 +36,8 @@ var is_finished :=false
 func _ready():
 	# Debug
 	get_tree().debug_collisions_hint = Global.debug
+	# Save state
+	#SaveManager.save_profile(Global.current_profile)
 	# Config
 	Engine.time_scale = TIME_SCALE
 	# Mouse, menus
@@ -64,6 +66,7 @@ func _ready():
 	Global.hud_boss_score_update.connect(%HUD.update_boss_gauge)
 	Global.hud_injury_update.connect(%HUD.injury_update)
 	Global.hud_hp_update.connect(%HUD.update_HP_Bar)
+	Global.game_over.connect(game_over)
 	# Chargements
 	load_map()
 	load_boss()
@@ -78,10 +81,9 @@ func _input(event):
 func restart():
 	%Camera.global_position = camera_target.global_position
 	if not is_finished:velo_courant.queue_free()
-	SaveManager.load_config()
-	SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
-	AudioManager.stop_music()
-	AudioManager.stop_sfx()
+	#SaveManager.load_config()
+	#SaveManager.set_current_profile(SaveManager.load_profile(Global.config.get("profil_en_cours")))
+	AudioManager.stop_all()
 	map_courante.queue_free()
 	boss.queue_free()
 	await get_tree().process_frame
@@ -106,6 +108,50 @@ func load_map():
 	Global.map_data = map_courante.get_level_data()
 	map_finish = Global.map_data["finish"]
 	%HUD.set_cp_markers()
+
+func load_bike():
+	race_started = false
+	velo_courant = load(Global.get_profile_bike()).instantiate()
+	%BikeContainer.add_child(velo_courant)
+	camera_target = velo_courant.cadre
+	velo_courant.crashed.connect(respawn_bike)
+	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
+	Global.set_start_values()
+	start_countdown()
+	if Global.debug and Global.current_profile["bike_model"] != 0.0 :
+		velo_courant.global_position = map_courante.debug_start_position
+		velo_courant.cadre.linear_velocity = map_courante.debug_start_speed * Vector2.RIGHT / (ECHELLE * 3.6)
+
+func respawn_bike():
+	%Camera.global_position = camera_target.global_position
+	velo_courant.queue_free()
+	if is_finished:return
+	await get_tree().process_frame
+	velo_courant = load(Global.get_profile_bike()).instantiate()
+	%BikeContainer.add_child(velo_courant)
+	disable_inputs_for_x_second(0.5)
+	velo_courant.can_drive = true
+	camera_target = velo_courant.cadre
+	velo_courant.crashed.connect(respawn_bike)
+	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
+	Global.handle_crash()
+	%HUD.update_score(Global.current_score)
+	velo_courant.global_position = Global.cp_player_pos
+	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (ECHELLE * 3.6)
+
+func load_boss():
+	boss = load(Global.get_current_boss()).instantiate()
+	%BossContainer.add_child(boss)
+
+func game_over(death_position:Vector2):
+	if not is_finished:
+		var death_position_node := Node2D.new()
+		death_position_node.global_position = death_position
+		camera_target = death_position_node
+		is_finished = true
+		%HUD.game_over()
+		await get_tree().create_timer(1).timeout
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func map_finished():
 	if not is_finished:
@@ -184,40 +230,6 @@ func finish_menu_update():
 	"/5  [img]res://Images/HUD/Player/CrownsLogo_mini.png[/img]"
 	%Finish_Menu.show()
 
-func load_bike():
-	race_started = false
-	velo_courant = load(Global.get_profile_bike()).instantiate()
-	%BikeContainer.add_child(velo_courant)
-	camera_target = velo_courant.cadre
-	velo_courant.crashed.connect(respawn_bike)
-	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
-	Global.set_start_values()
-	start_countdown()
-	if Global.debug and Global.current_profile["bike_model"] != 0.0 :
-		velo_courant.global_position = map_courante.debug_start_position
-		velo_courant.cadre.linear_velocity = map_courante.debug_start_speed * Vector2.RIGHT / (ECHELLE * 3.6)
-
-func respawn_bike():
-	%Camera.global_position = camera_target.global_position
-	velo_courant.queue_free()
-	if is_finished:return
-	await get_tree().process_frame
-	velo_courant = load(Global.get_profile_bike()).instantiate()
-	%BikeContainer.add_child(velo_courant)
-	disable_inputs_for_x_second(0.5)
-	velo_courant.can_drive = true
-	camera_target = velo_courant.cadre
-	velo_courant.crashed.connect(respawn_bike)
-	velo_courant.boost_consumed.connect(%HUD.set_boost_segment_geometry)
-	Global.handle_crash()
-	%HUD.update_score(Global.current_score)
-	velo_courant.global_position = Global.cp_player_pos
-	velo_courant.cadre.linear_velocity = Global.cp_player_speed / (ECHELLE * 3.6)
-
-func load_boss():
-	boss = load(Global.get_current_boss()).instantiate()
-	%BossContainer.add_child(boss)
-
 func start_countdown():
 	if not Global.debug:
 		race_started = false
@@ -274,7 +286,7 @@ func _physics_process(delta):
 			1-(map_finish.global_position.x - velo_courant.cadre.global_position.x)
 			/map_finish.global_position.x),
 			0,100)
-	
+
 func toggle_pause():
 	is_paused = !is_paused
 	get_tree().paused = is_paused
@@ -293,9 +305,7 @@ func _on_abandon_button_pressed():
 	Global.start_mod("Menus")
 
 func _on_continue_pressed():
-	AudioManager.stop_music()
-	AudioManager.stop_sfx()
-	AudioManager.stop_ground_sfx()
+	AudioManager.stop_all()
 	Global.menu_to_show = "Chairlift"
 	Global.start_mod("Menus")
 

@@ -789,6 +789,7 @@ texture = ExtResource("4_1k1n1")
 expand_mode = 1
 
 [node name="Avatar" type="TextureRect" parent="Chairlift2/Chair4" unique_id=1751041778]
+unique_name_in_owner = true
 visible = false
 show_behind_parent = true
 layout_mode = 0

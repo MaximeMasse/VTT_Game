@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://clpbpa2dvl7y5" path="res://Images/Menus/Lock_up.png" id="19_dwbos"]
 [ext_resource type="Texture2D" uid="uid://o40nt0tl88xs" path="res://Images/Menus/Controls/down_arrow.png" id="20_q0oio"]
 [ext_resource type="Texture2D" uid="uid://tiqsvtoqlua4" path="res://Images/Menus/Maps/Pannels/Back_village.png" id="21_dwbos"]
+[ext_resource type="Texture2D" uid="uid://cbpscdr74d307" path="res://Images/Menus/Controls/end_day.png" id="26_8i06k"]
+[ext_resource type="Texture2D" uid="uid://dukqp1yxfexvf" path="res://Images/Menus/Controls/end_day_hover.png" id="27_1bcpi"]
 
 [sub_resource type="Animation" id="Animation_q0oio"]
 resource_name = "Desert_Unlock"
@@ -180,6 +182,17 @@ _data = {
 script = ExtResource("1_e0t5s")
 
 [node name="World_HUD" parent="." unique_id=2061443369 instance=ExtResource("2_w2l16")]
+unique_name_in_owner = true
+
+[node name="EndDay" type="TextureButton" parent="World_HUD" unique_id=1474000080]
+unique_name_in_owner = true
+offset_left = 1113.9999
+offset_top = 631.00006
+offset_right = 2837.0
+offset_bottom = 1359.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("26_8i06k")
+texture_hover = ExtResource("27_1bcpi")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1702353309]
 offset_right = 1280.0
@@ -310,11 +323,11 @@ centered = false
 
 [node name="Chairlift To Desert" type="Control" parent="Nodes" unique_id=1239546719]
 anchors_preset = 0
-offset_left = 331.0
-offset_top = 274.00003
-offset_right = 371.0
-offset_bottom = 314.00003
-scale = Vector2(0.7, 0.7)
+offset_left = 345.0
+offset_top = 312.0
+offset_right = 385.0
+offset_bottom = 352.0
+scale = Vector2(0.5, 0.5)
 
 [node name="Zones" type="Node2D" parent="." unique_id=817012002]
 unique_name_in_owner = true
@@ -366,12 +379,13 @@ polygon = PackedVector2Array(490, 305, 502, 307, 510, 310, 515, 317, 515, 321, 5
 [node name="Map 1_Chairlift To Desert" type="Line2D" parent="Zones/Map 1_Chairlift To Desert" unique_id=269059064]
 texture_repeat = 2
 position = Vector2(491, 181)
-points = PackedVector2Array(21, 139, 8, 137, -2, 134, -11, 132, -22, 132, -33, 133, -41, 135, -51, 138, -61, 142, -68, 145, -74, 148, -79, 152, -84, 156, -87, 161, -90, 166, -93, 170, -99, 175, -107, 175)
+points = PackedVector2Array(21, 139, 13, 138, 8, 137, 2.5931015, 135.37793, -2, 134, -7.0738525, 132.87247, -11, 132, -16, 131, -22, 131, -28, 131, -33, 132, -36.898182, 133.46182, -41, 135, -46.48497, 136.6455, -51, 138, -55.87161, 139.94864, -61, 142, -64.5352, 143.51509, -68, 145, -70.75287, 146.37643, -74, 148, -78, 150, -82, 153, -84, 156, -87, 161, -90, 166, -93, 170, -95, 173, -99, 175, -103, 175, -107, 175)
 texture = ExtResource("16_g38t1")
 texture_mode = 1
 joint_mode = 2
 
 [node name="Lock" type="Sprite2D" parent="Zones/Map 1_Chairlift To Desert" unique_id=1645925090]
+unique_name_in_owner = true
 z_index = 30
 position = Vector2(446, 320)
 scale = Vector2(0.11555985, 0.090820275)
@@ -398,6 +412,7 @@ texture_mode = 1
 joint_mode = 2
 
 [node name="Chairlift To Desert_Desert" type="Area2D" parent="Zones" unique_id=606752699]
+unique_name_in_owner = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Chairlift To Desert_Desert" unique_id=1675994456]
 polygon = PackedVector2Array(396, 337, 401, 346, 404, 357, 403, 367, 393, 375, 371, 379, 348, 379, 329, 375, 317, 365, 316, 350, 318, 342, 311, 331, 299, 321, 283, 308, 274, 293, 274, 287, 280, 274, 322, 212, 326, 204, 330, 195, 355, 124, 354, 115, 353, 105, 356, 100, 367, 98, 379, 100, 384, 104, 385, 110, 379, 117, 347, 198, 344, 206, 339, 213, 309, 278, 306, 286, 309, 291, 315, 300, 340, 325, 351, 323, 368, 323, 381, 327)
@@ -439,8 +454,10 @@ texture = ExtResource("15_ckb1c")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_dwbos")
 
+[connection signal="pressed" from="World_HUD/EndDay" to="." method="_on_end_day_pressed"]
 [connection signal="pressed" from="Nodes/Map 0" to="." method="_on_0_pressed"]
 [connection signal="pressed" from="Nodes/Map 1" to="." method="_on_1_pressed"]
 [connection signal="pressed" from="Nodes/Map 2" to="." method="_on_2_pressed"]
 [connection signal="pressed" from="Nodes/Boss 1 Map" to="." method="_on_forest_boss_pressed"]
 [connection signal="pressed" from="ToVillageButton" to="." method="_on_to_village_button_pressed"]
+[connection signal="pressed" from="Desert" to="." method="_on_desert_pressed"]

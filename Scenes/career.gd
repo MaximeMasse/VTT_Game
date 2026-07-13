@@ -49,3 +49,4 @@ func _on_tuto_no_button_pressed():
 func _on_dialog_chairlift_scene_ended(_scene_name):%Map_0_Button.show()
 
 func _on_bikeshop_pressed():Global.start_mod("BikeShop")
+func _on_trailer_pressed():Global.start_mod("Trailer")

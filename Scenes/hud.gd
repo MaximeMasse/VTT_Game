@@ -61,6 +61,7 @@ func _ready():
 	for trick in ["Wheelie","Nose Wheelie","Air"]:update_best_tricks(trick,false)
 
 func reset():
+	%GameOver.hide()
 	%Penalty_label.text = "+ " + str(int(Global.current_profile["upgrades"]["RESPAWN_TIME_PENALTY"])) + " sec"
 	%Penalty_label.hide()
 	%Piston.hide()
@@ -175,6 +176,13 @@ func injury_update(state:String):
 		AudioManager.set_bus_volume("Music", Global.config.get("music_volume", 0.8) * 0.3)
 		AudioManager.play_sfx("heartbeat")
 
+func game_over():
+	AudioManager.sfx_muted = true
+	AudioManager.stop_all()
+	AudioManager.set_bus_volume("Music", Global.config.get("music_volume", 0.8))
+	AudioManager.play_music("Game_over")
+	%AnimationPlayer.play("game_over")
+
 func round_to(value: float, decimals: int) -> float:
 	var factor = pow(10, decimals)
 	return round(value * factor) / factor
@@ -229,3 +237,11 @@ func _process(_delta):
 	 		+ str(round_to(Global.current_trick["duration"],1)) + " sec"
 		%Trick_score_label.text = str(int(Global.potential_combo_score+Global.potential_trick_score)) + " Points"
 	%Boost_gauge.value = Global.current_boost + min(Global.potential_combo_score + Global.potential_trick_score,Global.ONE_TIME_QUANTITY)
+
+func _on_new_run_pressed():
+	AudioManager.stop_all()
+	AudioManager.sfx_muted = false
+	Global.current_profile["state"] = "Career"
+	Global.set_run(true)
+	Global.start_mod("Career")
+	SaveManager.save_profile(Global.current_profile)

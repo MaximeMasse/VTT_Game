@@ -1107,6 +1107,7 @@ collision_mask = 0
 [node name="DebugStart" type="Marker2D" parent="." unique_id=823606806]
 unique_name_in_owner = true
 z_index = 17
+position = Vector2(24866, 1871)
 script = ExtResource("41_0cni6")
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]

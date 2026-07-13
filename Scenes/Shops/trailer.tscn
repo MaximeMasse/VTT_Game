@@ -1,0 +1,355 @@
+[gd_scene format=3 uid="uid://i05kj7vqk68t"]
+
+[ext_resource type="Script" uid="uid://b3yul3f65a1qy" path="res://Scenes/Shops/trailer.gd" id="1_e8gbg"]
+[ext_resource type="Texture2D" uid="uid://bre4mk14bhgqa" path="res://Images/Menus/Shops/Trailer/Inside_0.png" id="2_e8gbg"]
+[ext_resource type="Texture2D" uid="uid://uqoeliw77x1o" path="res://Images/Menus/Controls/exit.png" id="3_a10iq"]
+[ext_resource type="Texture2D" uid="uid://bh5eh6wgigc3l" path="res://Images/Mapping/Collectibles/Banana/banana00.png" id="4_51sth"]
+[ext_resource type="Texture2D" uid="uid://fi860m030slo" path="res://Images/Mapping/Collectibles/Bird/bird01.png" id="5_hmxfh"]
+[ext_resource type="Texture2D" uid="uid://c7lallbjrtb74" path="res://Images/Mapping/Collectibles/Book/Book1.png" id="6_sl7sb"]
+[ext_resource type="StyleBox" uid="uid://cdy5x8mw0va4i" path="res://Styles/Regular_box.tres" id="7_jd25r"]
+[ext_resource type="FontFile" uid="uid://ctamdlckg0fvr" path="res://Fonts/PixelGame-R9AZe.otf" id="8_q0ls8"]
+[ext_resource type="Texture2D" uid="uid://bgwaro5ehgtbx" path="res://Images/HUD/Player/BucksLogo_mini.png" id="9_3ukx3"]
+[ext_resource type="Texture2D" uid="uid://0fp1rfu6ks2k" path="res://Images/Menus/Maps/star_full.png" id="10_8moqi"]
+[ext_resource type="Texture2D" uid="uid://cws2x0qoc8rnh" path="res://Images/HUD/Player/CrownsLogo_mini.png" id="11_wd55e"]
+[ext_resource type="Texture2D" uid="uid://bn1vl0t1t2ntr" path="res://Images/Menus/Controls/yes_up.png" id="12_g7eb8"]
+[ext_resource type="Texture2D" uid="uid://deej7nsdys71d" path="res://Images/Menus/Controls/yes_down.png" id="13_m38qa"]
+[ext_resource type="Texture2D" uid="uid://csb1d3cb4u7n6" path="res://Images/Menus/Controls/yes_hover.png" id="14_jplea"]
+[ext_resource type="Texture2D" uid="uid://vud5kjhd6byj" path="res://Images/Menus/Controls/no_up.png" id="15_3m2oc"]
+[ext_resource type="Texture2D" uid="uid://drvv3f57uleo2" path="res://Images/Menus/Controls/no_down.png" id="16_a4l14"]
+[ext_resource type="Texture2D" uid="uid://cp3l6n6his8e4" path="res://Images/Menus/Controls/no_hover.png" id="17_ih47f"]
+[ext_resource type="Texture2D" uid="uid://ccu1hxxhoo1x0" path="res://Images/Menus/Shops/Trailer/Computer/Amazing.png" id="18_wd55e"]
+[ext_resource type="Texture2D" uid="uid://d11kqm30ebi46" path="res://Images/Menus/Shops/Trailer/Computer/Passes.png" id="19_g7eb8"]
+[ext_resource type="Texture2D" uid="uid://c1gcnfmcq6pk7" path="res://Images/Menus/Shops/Trailer/Computer/Achievements.png" id="20_m38qa"]
+[ext_resource type="Texture2D" uid="uid://l6pv0dil1kf0" path="res://Images/Menus/Shops/Trailer/Computer/Exit.png" id="21_jplea"]
+
+[sub_resource type="FontVariation" id="FontVariation_4fely"]
+base_font = ExtResource("8_q0ls8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3m2oc"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Trailer" type="Node2D" unique_id=447153728]
+script = ExtResource("1_e8gbg")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2093087603]
+unique_name_in_owner = true
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_e8gbg")
+expand_mode = 1
+
+[node name="Exit" type="TextureButton" parent="." unique_id=773126671]
+unique_name_in_owner = true
+offset_left = 15.999999
+offset_top = 614.99994
+offset_right = 1641.0
+offset_bottom = 1583.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("3_a10iq")
+
+[node name="Shelf" type="Control" parent="." unique_id=741251951]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Map 0" type="TextureRect" parent="Shelf" unique_id=362963930]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 435.0
+offset_right = 1038.0
+offset_bottom = 498.0
+texture = ExtResource("4_51sth")
+expand_mode = 1
+
+[node name="Map 1" type="TextureRect" parent="Shelf" unique_id=251441856]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 432.0
+offset_right = 1097.0
+offset_bottom = 484.0
+texture = ExtResource("5_hmxfh")
+expand_mode = 1
+
+[node name="Map 2" type="TextureRect" parent="Shelf" unique_id=1722946754]
+layout_mode = 0
+offset_left = 1118.0
+offset_top = 434.0
+offset_right = 1167.0
+offset_bottom = 486.0
+texture = ExtResource("6_sl7sb")
+expand_mode = 1
+
+[node name="Bed" type="Area2D" parent="." unique_id=1908722138]
+unique_name_in_owner = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bed" unique_id=772902167]
+polygon = PackedVector2Array(315, 356, 530, 357, 530, 470, 401, 619, 93, 619, 39, 555, 39, 405)
+
+[node name="Computer" type="Area2D" parent="." unique_id=2083308325]
+unique_name_in_owner = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Computer" unique_id=442085980]
+polygon = PackedVector2Array(733, 287, 828, 287, 814, 359, 717, 354)
+
+[node name="Day" type="Panel" parent="." unique_id=514738352]
+unique_name_in_owner = true
+visible = false
+offset_left = 128.0
+offset_top = 192.0
+offset_right = 448.0
+offset_bottom = 576.0
+theme_override_styles/panel = ExtResource("7_jd25r")
+
+[node name="DayNumber" type="RichTextLabel" parent="Day" unique_id=442883661]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = SubResource("FontVariation_4fely")
+theme_override_font_sizes/normal_font_size = 46
+text = "Day 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label" type="RichTextLabel" parent="Day" unique_id=1037910505]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 32.0
+offset_top = 64.0
+offset_right = -176.0
+offset_bottom = 224.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = SubResource("FontVariation_4fely")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = " Money :
+
+ Stars :
+
+ Crowns :"
+vertical_alignment = 1
+
+[node name="DayDatas" type="RichTextLabel" parent="Day" unique_id=265309742]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = -88.0
+offset_bottom = 224.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = SubResource("FontVariation_4fely")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "+ 1.500 
+
++ 2 
+
++ 0 "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Day" unique_id=1429569498]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 67.0
+offset_right = 286.0
+offset_bottom = 111.0
+texture = ExtResource("9_3ukx3")
+
+[node name="TextureRect2" type="TextureRect" parent="Day" unique_id=1900214012]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 121.0
+offset_right = 286.0
+offset_bottom = 165.0
+texture = ExtResource("10_8moqi")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Day" unique_id=263523731]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 175.0
+offset_right = 286.0
+offset_bottom = 219.0
+texture = ExtResource("11_wd55e")
+
+[node name="EndDay" type="Panel" parent="Day" unique_id=116906495]
+layout_mode = 0
+offset_top = 224.0
+offset_right = 320.0
+offset_bottom = 384.0
+
+[node name="Question" type="RichTextLabel" parent="Day/EndDay" unique_id=38496594]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = SubResource("FontVariation_4fely")
+theme_override_font_sizes/normal_font_size = 35
+text = "End day ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Healing" type="RichTextLabel" parent="Day/EndDay" unique_id=596213345]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 48.0
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = SubResource("FontVariation_4fely")
+theme_override_font_sizes/normal_font_size = 25
+text = "HP after rest : 66 %"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndDay" type="TextureButton" parent="Day/EndDay" unique_id=1888730353]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 104.0
+offset_right = 136.0
+offset_bottom = 144.0
+texture_normal = ExtResource("12_g7eb8")
+texture_pressed = ExtResource("13_m38qa")
+texture_focused = ExtResource("14_jplea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CloseDay" type="TextureButton" parent="Day/EndDay" unique_id=157436174]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 104.0
+offset_right = 256.0
+offset_bottom = 144.0
+texture_normal = ExtResource("15_3m2oc")
+texture_pressed = ExtResource("16_a4l14")
+texture_focused = ExtResource("17_ih47f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ComputerScreen" type="Panel" parent="." unique_id=207542436]
+unique_name_in_owner = true
+visible = false
+offset_left = 320.0
+offset_top = 40.0
+offset_right = 960.0
+offset_bottom = 640.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3m2oc")
+
+[node name="Apps" type="Control" parent="ComputerScreen" unique_id=968603596]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Amazing" type="TextureButton" parent="ComputerScreen/Apps" unique_id=1901142724]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 56.0
+offset_right = 256.0
+offset_bottom = 248.0
+texture_normal = ExtResource("18_wd55e")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ComputerScreen/Apps/Amazing" unique_id=97682134]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 192.0
+offset_bottom = 232.0
+theme_override_font_sizes/normal_font_size = 18
+text = "Delivery Service"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Passes" type="TextureButton" parent="ComputerScreen/Apps" unique_id=581746069]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 56.0
+offset_right = 576.0
+offset_bottom = 248.0
+texture_normal = ExtResource("19_g7eb8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ComputerScreen/Apps/Passes" unique_id=1483925020]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 192.0
+offset_bottom = 232.0
+theme_override_font_sizes/normal_font_size = 18
+text = "Station Passes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievements" type="TextureButton" parent="ComputerScreen/Apps" unique_id=881181140]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 328.0
+offset_right = 256.0
+offset_bottom = 520.0
+texture_normal = ExtResource("20_m38qa")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ComputerScreen/Apps/Achievements" unique_id=730058046]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 192.0
+offset_bottom = 232.0
+theme_override_font_sizes/normal_font_size = 18
+text = "Achievements"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComputerExit" type="TextureButton" parent="ComputerScreen/Apps" unique_id=1914713075]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 328.0
+offset_right = 576.0
+offset_bottom = 520.0
+texture_normal = ExtResource("21_jplea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ComputerScreen/Apps/ComputerExit" unique_id=222905238]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 192.0
+offset_bottom = 232.0
+theme_override_font_sizes/normal_font_size = 18
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Day/EndDay/EndDay" to="." method="_on_end_day_pressed"]
+[connection signal="pressed" from="Day/EndDay/CloseDay" to="." method="_on_close_day_pressed"]
+[connection signal="pressed" from="ComputerScreen/Apps/ComputerExit" to="." method="_on_computer_exit_pressed"]

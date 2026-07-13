@@ -5,12 +5,19 @@
 [ext_resource type="Texture2D" uid="uid://hqpnsj4mi6l4" path="res://Images/HUD/Gauges/back_gauge.png" id="3_23jih"]
 [ext_resource type="Texture2D" uid="uid://vbtbt8gf2frf" path="res://Images/HUD/Gauges/xp_gauge.png" id="4_j6ru8"]
 [ext_resource type="Texture2D" uid="uid://cvyai68pwku41" path="res://Images/HUD/Gauges/life_gauge.png" id="5_gbmar"]
+[ext_resource type="Texture2D" uid="uid://bxpvqii7llwk8" path="res://Images/Menus/Controls/ok_up.png" id="6_68iqp"]
+[ext_resource type="FontFile" uid="uid://mo75h3dryq3e" path="res://Fonts/PixelCode.otf" id="6_drsbk"]
+[ext_resource type="Texture2D" uid="uid://n82c8ivh0jec" path="res://Images/Menus/Controls/ok_down.png" id="7_drsbk"]
+[ext_resource type="Texture2D" uid="uid://d3s2ymvh17wfv" path="res://Images/Menus/Controls/ok_hover.png" id="8_1iyo4"]
+[ext_resource type="FontFile" uid="uid://ctamdlckg0fvr" path="res://Fonts/PixelGame-R9AZe.otf" id="10_1iyo4"]
 
 [sub_resource type="SystemFont" id="SystemFont_tluop"]
 font_names = PackedStringArray("Pixel Game")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_68iqp"]
 font_names = PackedStringArray("Pixel Game")
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23jih"]
 bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
@@ -23,6 +30,132 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8ooh"]
+bg_color = Color(0.33937466, 0.02865291, 0.6065953, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="FontVariation" id="FontVariation_1iyo4"]
+base_font = ExtResource("6_drsbk")
+
+[sub_resource type="FontVariation" id="FontVariation_e8ooh"]
+base_font = ExtResource("10_1iyo4")
+
+[sub_resource type="Animation" id="Animation_8acqq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelUp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(904, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelUp:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelUp:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelUp:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tqusu"]
+resource_name = "level_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelUp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(904, 16), Vector2(1072, 16), Vector2(1024, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelUp:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelUp:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelUp:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4pkvu"]
+_data = {
+&"RESET": SubResource("Animation_8acqq"),
+&"level_up": SubResource("Animation_tqusu")
+}
 
 [node name="World_HUD" type="CanvasLayer" unique_id=2061443369]
 script = ExtResource("1_gnrbt")
@@ -125,3 +258,96 @@ value = 57.0
 nine_patch_stretch = true
 texture_under = ExtResource("3_23jih")
 texture_progress = ExtResource("5_gbmar")
+
+[node name="NewAchievement" type="Panel" parent="." unique_id=1963407822]
+unique_name_in_owner = true
+visible = false
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 768.0
+offset_bottom = 472.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e8ooh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewAchievement" unique_id=1110799163]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = SubResource("FontVariation_1iyo4")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[rainbow][wave] New Achivement"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewAchievementName" type="RichTextLabel" parent="NewAchievement" unique_id=2064702449]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 48.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = SubResource("FontVariation_1iyo4")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Gaps Finisher"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewAchievementDatas" type="RichTextLabel" parent="NewAchievement" unique_id=183166609]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = -8.0
+offset_bottom = 176.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = SubResource("FontVariation_1iyo4")
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "Land the 3 Differents Gaps on x Maps
+
+Tier 0 -> Tier 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementOk" type="TextureButton" parent="NewAchievement" unique_id=1237537760]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 176.0
+offset_right = 160.0
+offset_bottom = 208.0
+texture_normal = ExtResource("6_68iqp")
+texture_pressed = ExtResource("7_drsbk")
+texture_focused = ExtResource("8_1iyo4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LevelUp" type="RichTextLabel" parent="." unique_id=1651586452]
+unique_name_in_owner = true
+offset_left = 904.0
+offset_top = 16.0
+offset_right = 1000.0003
+offset_bottom = 56.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = SubResource("FontVariation_e8ooh")
+theme_override_font_sizes/normal_font_size = 24
+text = "Level Up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2084563524]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_4pkvu")
+
+[connection signal="pressed" from="NewAchievement/AchievementOk" to="." method="_on_achievement_ok_pressed"]

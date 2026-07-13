@@ -164,6 +164,7 @@ stretch_mode = 0
 
 [connection signal="pressed" from="Spots/World" to="." method="_on_world_pressed"]
 [connection signal="pressed" from="Spots/Bikeshop" to="." method="_on_bikeshop_pressed"]
+[connection signal="pressed" from="Spots/Trailer" to="." method="_on_trailer_pressed"]
 [connection signal="scene_ended" from="Tuto/DialogTuto" to="." method="_on_dialog_tuto_scene_ended"]
 [connection signal="pressed" from="Tuto/TutoPanels/StartTutoPanel/TutoYesButton" to="." method="_on_tuto_yes_button_pressed"]
 [connection signal="pressed" from="Tuto/TutoPanels/StartTutoPanel/TutoNoButton" to="." method="_on_tuto_no_button_pressed"]

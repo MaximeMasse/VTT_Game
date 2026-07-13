@@ -20,6 +20,10 @@
 [ext_resource type="Shader" uid="uid://f1enngkxbh3l" path="res://Scenes/injury.gdshader" id="16_ba8gd"]
 [ext_resource type="Texture2D" uid="uid://bexvkywcnb67o" path="res://Images/HUD/Injury_2.png" id="17_36s6t"]
 [ext_resource type="PackedScene" uid="uid://c320qmt58qekt" path="res://Images/HUD/Gauges/custom_bar.tscn" id="18_36s6t"]
+[ext_resource type="FontFile" uid="uid://ctamdlckg0fvr" path="res://Fonts/PixelGame-R9AZe.otf" id="21_oersf"]
+[ext_resource type="Texture2D" uid="uid://b4wk8v5s3ct7r" path="res://Images/Menus/Controls/retry_up.png" id="22_484xk"]
+[ext_resource type="Texture2D" uid="uid://br7sxbwtmc840" path="res://Images/Menus/Controls/retry_down.png" id="23_lkt4f"]
+[ext_resource type="Texture2D" uid="uid://daoo66xd1rllp" path="res://Images/Menus/Controls/retry_hover.png" id="24_wfkbc"]
 
 [sub_resource type="SystemFont" id="SystemFont_1xsix"]
 font_names = PackedStringArray("Pixel Game", "Jersey 10")
@@ -54,6 +58,121 @@ shader_parameter/max_boost = 1.6
 shader_parameter/beat_duration = 0.8
 shader_parameter/red_threshold = 0.35
 shader_parameter/red_dominance = 0.12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s17ah"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_jnyvx"]
+base_font = ExtResource("21_oersf")
+
+[sub_resource type="Animation" id="Animation_oersf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver/NewRun:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOver/RichTextLabel:theme_override_font_sizes/normal_font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOver:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOver:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_484xk"]
+resource_name = "game_over"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver/NewRun:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOver/RichTextLabel:theme_override_font_sizes/normal_font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10, 222]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOver:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOver:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lkt4f"]
+_data = {
+&"RESET": SubResource("Animation_oersf"),
+&"game_over": SubResource("Animation_484xk")
+}
 
 [node name="HUD" type="CanvasLayer" unique_id=1185251805]
 script = ExtResource("1_64ctp")
@@ -473,4 +592,56 @@ offset_bottom = 720.0
 texture = ExtResource("17_36s6t")
 expand_mode = 1
 
+[node name="GameOver" type="Panel" parent="." unique_id=506035616]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+z_index = 7
+offset_right = 1288.0
+offset_bottom = 728.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s17ah")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOver" unique_id=277710029]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -636.0
+offset_top = -156.0
+offset_right = 628.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_jnyvx")
+theme_override_font_sizes/normal_font_size = 10
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewRun" type="TextureButton" parent="GameOver" unique_id=1748730085]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = 212.0
+offset_right = 60.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("22_484xk")
+texture_pressed = ExtResource("23_lkt4f")
+texture_focused = ExtResource("24_wfkbc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=814731030]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_lkt4f")
+
 [connection signal="timeout" from="Live/Time_label/Penalty_label/Show_penalty_timer" to="." method="_on_show_penalty_timer_timeout"]
+[connection signal="pressed" from="GameOver/NewRun" to="." method="_on_new_run_pressed"]

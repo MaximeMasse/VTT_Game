@@ -36,6 +36,15 @@ func _ready():
 	# Menu
 	show_menu()
 
+func show_menu():
+	if Global.menu_to_show == "Chairlift":
+		Global.start_mod(Global.current_profile["current_run"]["current_day"]["world"])
+	elif Global.menu_to_show in ["Career","tuto","tuto2"]:Global.start_mod("Career")
+	elif Global.menu_to_show in ["Trailer","EndDay"]:Global.start_mod("Trailer")
+	else:
+		for men in dico_menus:dico_menus[men].hide()
+		dico_menus[Global.menu_to_show].show()
+
 func set_up_buttons(node):
 	for child in node.get_children():
 		if child is BaseButton:
@@ -44,15 +53,6 @@ func set_up_buttons(node):
 			child.focus_entered.connect(func(): on_button_focus(child))
 			child.pressed.connect(func():on_button_pressed(child))
 		set_up_buttons(child)
-
-func show_menu():
-	if Global.menu_to_show == "Chairlift":
-		Global.start_mod(Global.current_profile["current_run"]["current_day"]["world"])
-	elif Global.menu_to_show in ["Career","tuto","tuto2"]:Global.start_mod("Career")
-	else:
-		for men in dico_menus:dico_menus[men].hide()
-		dico_menus[Global.menu_to_show].show()
-
 func on_button_hover(button:BaseButton):if not button.disabled:button.grab_focus()
 func on_button_hover_exit(_button:BaseButton):get_viewport().gui_release_focus()
 func on_button_focus(_button:BaseButton):AudioManager.play_ui("hover")
@@ -72,7 +72,6 @@ func _on_continue_button_pressed():
 	Global.menu_to_show = Global.current_profile["state"]
 	AudioManager.stop_music()
 	Global.set_run()
-	Global.set_day()
 	show_menu()
 
 func _on_new_player_button_pressed():
@@ -95,17 +94,5 @@ func _on_ok_pressed():
 	Global.current_profile["bike_model"] = 2 if choix_perso in [3,4] else 1
 	Global.menu_to_show = "Career"
 	Global.set_run()
-	Global.set_day()
 	SaveManager.save_profile(Global.current_profile)
 	show_menu()
-
-func _on_chairlift_pressed() -> void:
-	AudioManager.stop_music()
-	Global.menu_to_show = "Chairlift"
-	show_menu()
-
-func _on_map_0_button_pressed():
-	if Global.get_profile_data("state") == "tuto":Global.start_mod("Tuto_Game")
-	else:
-		Global.current_map = "0"
-		Global.start_mod("Main_Game")

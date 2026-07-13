@@ -265,6 +265,7 @@ under_width = 150.0
 under_repeat_px = 657.0
 
 [node name="BikeModel" type="Sprite2D" parent="." unique_id=1181483513]
+visible = false
 position = Vector2(41635.004, 10156)
 rotation = -0.36993974
 scale = Vector2(1.1710075, 1.1710075)
@@ -3373,6 +3374,7 @@ collision_mask = 0
 [node name="DebugStart" type="Marker2D" parent="." unique_id=823606806]
 unique_name_in_owner = true
 z_index = 17
+position = Vector2(43753, 9983)
 script = ExtResource("41_luvnx")
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]

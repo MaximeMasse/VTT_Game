@@ -180,7 +180,7 @@ scale = Vector2(0.2689295, 0.2576923)
 
 [node name="Finish" parent="Spots" unique_id=1211676905 instance=ExtResource("8_yoy1d")]
 unique_name_in_owner = true
-position = Vector2(25321, 2031)
+position = Vector2(25412, 2051)
 
 [node name="Checkpoint_1" parent="Spots" unique_id=1899925259 instance=ExtResource("9_w0jt7")]
 unique_name_in_owner = true
@@ -1107,6 +1107,7 @@ collision_mask = 0
 [node name="DebugStart" type="Marker2D" parent="." unique_id=823606806]
 unique_name_in_owner = true
 z_index = 17
+position = Vector2(24944, 1851)
 script = ExtResource("13_5ii72")
 
 [connection signal="body_entered" from="Spots/Finish" to="." method="_on_finish_body_entered"]

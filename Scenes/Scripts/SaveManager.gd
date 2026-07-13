@@ -50,6 +50,8 @@ func create_profile(player_name: String, avatar_id: int) -> Dictionary:
 		},
 		"boss_beaten":["-"],
 		"permanent_unlocks":[],
+		"played_day":0,
+		"money_gained":0,
 		"upgrades": {
 			"RESPAWN_TIME_PENALTY" : 5.0,
 			"RESPAWN_HP_PENALTY" : 20

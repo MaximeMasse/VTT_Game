@@ -1,16 +1,19 @@
 extends Node
 
 # Dicos
-var dico_music := {
+const dico_music := {
 	"MainMenu": preload("res://Sound/Music/awesomeness.wav"),
 	"Victory": preload("res://Sound/Music/Victory_music.wav"),
+	"Game_over": preload("res://Sound/Music/Game_over.wav"),
 	"Tuto": preload("res://Sound/Music/Tuto.wav"),
 	"Map 0": preload("res://Sound/Music/Map_0.mp3"),
 	"Map 1": preload("res://Sound/Music/Map_1.mp3"),
 	"Map 2": preload("res://Sound/Music/Map_2.mp3"),
 	"Boss 1 Map": preload("res://Sound/Music/Map_2.mp3")
 }
-var dico_sfx := {
+const dico_sfx := {
+	"achievement": preload("res://Sound/SFX/achievement.wav"),
+	"level_up": preload("res://Sound/SFX/level_up.wav"),
 	"rocket": preload("res://Sound/SFX/rocket.wav"),
 	"heartbeat": preload("res://Sound/SFX/heartbeat.mp3"),
 	"bike_brake": preload("res://Sound/SFX/bike_brake.wav"),
@@ -43,7 +46,7 @@ var dico_sfx := {
 	"combo6":preload("res://Sound/SFX/Combo6.mp3"),
 	"combo7":preload("res://Sound/SFX/Combo7.mp3")
 }
-var dico_ground_sfx := {
+const dico_ground_sfx := {
 	"slow_riding":{
 		1: preload("res://Sound/SFX/Ground/low_speed_1.wav"),
 		2: preload("res://Sound/SFX/Ground/low_speed_2.wav")
@@ -75,7 +78,7 @@ var dico_ground_sfx := {
 		3: preload("res://Sound/SFX/Ground/wheeling_3.wav")
 	},
 }
-var dico_ui := {
+const dico_ui := {
 	"click": preload("res://Sound/UI/click.wav"),
 	"hover": preload("res://Sound/UI/hover.wav"),
 	"map_hover": preload("res://Sound/UI/map_hover.wav"),
@@ -87,10 +90,12 @@ var ui_player: AudioStreamPlayer
 var sfx_players: Array[AudioStreamPlayer] = []
 var active_sfx := {}
 var ground_sfx_players: Array[AudioStreamPlayer] = []
+var sfx_muted : bool
 
 const SFX_POOL_SIZE := 8
 
 func _ready():
+	sfx_muted = false
 	music_player = AudioStreamPlayer.new()
 	music_player.bus = "Music"
 	add_child(music_player)
@@ -143,6 +148,7 @@ func stop_sfx(music:String=""):
 		active_sfx.erase(music)
 
 func play_ground_sfx(music):
+	if sfx_muted:return
 	var specific_dict = dico_ground_sfx[music]
 	var stream = specific_dict[randi_range(1,specific_dict.size())]
 	for player in ground_sfx_players:
@@ -154,6 +160,11 @@ func play_ground_sfx(music):
 func stop_ground_sfx():
 	for player in ground_sfx_players:
 		player.stop()
+
+func stop_all():
+	stop_music()
+	stop_sfx()
+	stop_ground_sfx()
 
 func set_bus_volume(bus_name: String, value: float):
 	var bus_index := AudioServer.get_bus_index(bus_name)

@@ -16,21 +16,31 @@ var active_zones : Dictionary
 var running : bool
 
 # Unlocks
-var unlocks : Dictionary = {
+@onready var unlocks : Dictionary = {
 	"Chairlift To Desert" : {
-		"map_finished":"Boss 1 Map",
-		"stars":5,
-		"cam_position":"Map 1_Chairlift To Desert"
+		"conditions":{
+			"map_finished":"Boss 1 Map",
+			"stars":5,
+			},
+		"cam_position":"Map 1_Chairlift To Desert",
+		"lock_sprite":%Lock,
+		"zone":%"Chairlift To Desert_Desert"
 		}
 }
 
 func _ready():
 	get_tree().debug_collisions_hint = false
 	running = false
+	# Connections
+	UpgradesManager.new_achievement.connect(%World_HUD.new_achievement)
+	UpgradesManager.xp_up.connect(%World_HUD.xp_up)
+	UpgradesManager.level_up.connect(%World_HUD.level_up)
 	# Change scene buttons
 	set_up_button(%ToVillageButton)
+	%ToVillageButton.hide()
 	set_up_button(%Desert)
 	%Desert.hide()
+	set_up_button(%EndDay)
 	# Reset cam
 	%WorldCam.position_cam("reset",true)
 	%WorldCam.position_cam("full_screen")
@@ -66,9 +76,11 @@ func _ready():
 			if origin_name == node:world_datas["Nodes"][node]["zone_out"].append(zone)
 			if destination_name == node:world_datas["Nodes"][node]["zone_in"]=zone
 	# Player_data
-	set_player_datas()
+	await set_player_datas()
 	# Update world
 	update_world()
+	# Achievement
+	await UpgradesManager.check_achievements()
 	# New unlocks
 	check_unlocks()
 	# Current node new paths and active zone
@@ -101,6 +113,8 @@ func set_player_datas():
 func update_world():
 	# Avatar position and skin
 	position_avatar_on_node(world_datas["Nodes"][player_datas["node"]]["node"])
+	# Village if at start
+	if player_datas["node"] == world_datas["start"]:%ToVillageButton.show()
 	# Nodes
 	for node in world_datas["Nodes"]:
 		var node_datas : Dictionary = world_datas["Nodes"][node]
@@ -161,18 +175,21 @@ func check_unlocks():
 		# Not unlocked already
 		if node not in player_datas["unlocks"]:
 			var unlocked : bool = true
-			for condition_value in unlocks[node]:
+			for condition_value in unlocks[node]["conditions"]:
 				if condition_value == "map_finished" :
 					unlocked = unlocked and\
 						Global.current_profile["current_run"]["maps"].\
-							get(unlocks[node]["map_finished"],{"finished":false})["finished"]
+							get(unlocks[node]["conditions"]["map_finished"],{"finished":false})["finished"]
 				elif condition_value == "stars" :
 					unlocked = unlocked and\
-						Global.current_profile["current_run"]["stars"] >= unlocks[node]["stars"]
+						Global.current_profile["current_run"]["stars"] >= unlocks[node]["conditions"]["stars"]
 			if unlocked:
 				Global.current_profile["current_run"]["unlocks"].append(node)
 				%WorldCam.position_cam(unlocks[node]["cam_position"])
 				%AnimationPlayer.play("Desert_Unlock")
+		# Already unlocked
+		else:unlocks[node]["lock_sprite"].hide()
+			
 
 func draw_new_paths():
 	world_datas["Nodes"][player_datas["node"]]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
@@ -198,7 +215,8 @@ func on_zone_hover(zone:Area2D):
 	AudioManager.play_ui("map_hover")
 	# Regular zone
 	if active_zones[zone] :
-		world_datas["Nodes"][zone.name.split("_")[1]]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
+		if zone.name.split("_")[1] in world_datas["Nodes"].keys():
+			world_datas["Nodes"][zone.name.split("_")[1]]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
 		world_datas["Zones"][zone].modulate = Color(1.0, 1.0, 1.0, 1.0)
 		world_datas["Zones"][zone]["path"].modulate = Color(1.0, 1.0, 1.0, 1.0)
 		world_datas["Zones"][zone]["outline"].show()
@@ -208,11 +226,12 @@ func on_zone_hover(zone:Area2D):
 		world_datas["Zones"][zone]["outline"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 		world_datas["Zones"][zone]["outline"].show()
 func on_zone_exit(zone:Area2D,path_light:bool=false):
+	if zone.name.split("_")[1] in world_datas["Nodes"].keys():
 		world_datas["Nodes"][zone.name.split("_")[1]]["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
-		if not path_light:
-			world_datas["Zones"][zone].modulate = Color(0.5, 0.5, 0.5, 1.0)
-			if "Chairlift" not in zone.name.split("_")[0]:world_datas["Zones"][zone]["path"].modulate = Color(0.5, 0.5, 0.5, 1.0)
-		world_datas["Zones"][zone]["outline"].hide()
+	if not path_light:
+		world_datas["Zones"][zone].modulate = Color(0.5, 0.5, 0.5, 1.0)
+		if "Chairlift" not in zone.name.split("_")[0]:world_datas["Zones"][zone]["path"].modulate = Color(0.5, 0.5, 0.5, 1.0)
+	world_datas["Zones"][zone]["outline"].hide()
 func on_zone_click(zone:Area2D):
 	if active_zones[zone] :
 		AudioManager.play_ui("click")
@@ -230,6 +249,8 @@ func on_zone_click(zone:Area2D):
 			# Base Chairlift -> restart course
 			if "To" not in origin:
 				Global.current_profile["current_run"]["current_day"]["course"] = []
+				# Village button
+				%ToVillageButton.hide()
 				# Overpath delete
 				for tree_zone in world_datas["Zones"]:for node in tree_zone.get_children():
 					if node.name == "overpath":node.queue_free()
@@ -239,17 +260,24 @@ func on_zone_click(zone:Area2D):
 			move_avatar_to_chairlift(world_datas["Nodes"][origin]["node"])
 			await world_datas["Zones"][zone]["path"].play()
 			# Chairlift to next world
-			if "To" in origin:%Desert.show()
+			if "To" in origin:
+				%Avatar.hide()
+				%Desert.show()
+				return
 			else:position_avatar_on_node(world_datas["Nodes"][destination]["node"])
 		else:
 			%Avatar.hide()
 			world_datas["Nodes"][origin]["node"].modulate = Color(0.5, 0.5, 0.5, 1.0) 
 			await draw_path(world_datas["Zones"][zone]["path"],path_riding_time,true,true)
 			position_avatar_on_node(world_datas["Nodes"][destination]["node"])
-		world_datas["Nodes"][destination]["node"].disabled = false
+		if world_datas["Nodes"][destination]["node"] is TextureButton:
+			world_datas["Nodes"][destination]["node"].disabled = false
 		world_datas["Nodes"][destination]["node"].mouse_filter = Control.MOUSE_FILTER_STOP
 		world_datas["Zones"][zone]["path"].modulate = Color(1.0, 1.0, 1.0, 1.0)
 		world_datas["Nodes"][destination]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
+		if "Chairlift" in destination:
+			active_zones[unlocks[destination]["zone"]] = true
+			running = true
 	else:AudioManager.play_ui("lock")
 
 
@@ -382,4 +410,11 @@ func _on_forest_boss_pressed():
 func _on_to_village_button_pressed():
 	Global.current_profile["state"] = "Career"
 	Global.start_mod("Career")
+	SaveManager.save_profile(Global.current_profile)
+
+func _on_desert_pressed():Global.start_mod("Desert")
+
+func _on_end_day_pressed():
+	Global.current_profile["state"] = "EndDay"
+	Global.start_mod("Trailer")
 	SaveManager.save_profile(Global.current_profile)
