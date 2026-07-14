@@ -1,4 +1,16 @@
 {
+	"achievements": {
+		"completed": 0,
+		"crowns": 1,
+		"days": 0,
+		"finished_map": 2,
+		"five_stars": 0,
+		"map_gaps_done": 0,
+		"money_gained": 0,
+		"played_day": 0,
+		"queen_obj": 1,
+		"stars": 1
+	},
 	"avatar": 5.0,
 	"best_tricks": {
 		"Air": {
@@ -6,83 +18,39 @@
 			"length": 28.7881164356282
 		},
 		"Nose Wheelie": {
-			"duration": 0.65,
-			"length": 4.50872338633788
+			"duration": 1.05,
+			"length": 9.84796035164281
 		},
 		"Wheelie": {
 			"duration": 1.86666666666666,
 			"length": 11.1601609154751
 		}
 	},
-	"bike_model": 0.0,
+	"bike_model": 1.0,
 	"boost": {
 		"BOOST_ACCELERATION": 5000.0,
 		"BOOST_CONSUMPTION": 2500.0,
 		"BOOST_MAX_QUANTITY": 5000.0,
 		"ONE_TIME_RATIO": 5.0
 	},
+	"boss_beaten": [
+		"-"
+	],
 	"crowns": 1.0,
-	"current_run": {
-		"current_day": {
-			"course": [
-				"Map 0"
-			],
-			"crowns": 0.0,
-			"money": 0.0,
-			"node": "Map 0",
-			"stars": 0.0,
-			"world": "Forest"
-		},
-		"maps": {
-			"Map 0": {
-				"bills": [
-					6.0
-				],
-				"finished": true,
-				"gaps": {
-
-				},
-				"objectives": [
-					2.0
-				]
-			}
-		},
-		"money": 500.0,
-		"stars": 2.0,
-		"unlocks": []
-	},
 	"id": 1.0,
+	"lvl": 3.0,
 	"map_records": {
-		"Map 0": {
-			"bills_caught": false,
-			"crowns_unlocked": 1.0,
-			"gaps_discovered": [],
-			"gaps_done": false,
-			"objectives_done": false,
-			"queen_score_beaten": false,
-			"queen_time_beaten": true,
-			"score": 0.0,
-			"time": 4.91666666666665
-		},
-		"Map 1": {
-			"bills_caught": false,
-			"crowns_unlocked": 0,
-			"gaps_discovered": [],
-			"gaps_done": false,
-			"objectives_done": false,
-			"queen_score_beaten": false,
-			"queen_time_beaten": false,
-			"score": 3957.0,
-			"time": 49.2499999999985
-		}
+
 	},
+	"money_gained": 0.0,
 	"name": "Juliette",
-	"state": "tuto2",
+	"permanent_unlocks": [],
+	"played_day": 0.0,
+	"state": "Career",
 	"stats": {
-		"ACCÉLÉRATION": 5000.0,
-		"AIR_ROTATION_CONTROL": 4.0,
+		"ACCELERATION": 6000.0,
+		"AIR BALANCE": 3.5,
 		"AIR_SPEED_CONTROL": 0.0,
-		"AV_CONTROL": 10.0,
 		"BALANCE_CONTROL": 10.0,
 		"CM_OFFSET": [
 			0.0,
@@ -91,14 +59,15 @@
 		"COUPLE_CADRE_AIR": 400000.0,
 		"COUPLE_CADRE_SOL": 1700000.0,
 		"FORCE_FREINS": 75.0,
-		"FORCE_SAUT": 100.0,
 		"FRICTION": 150.0,
 		"GREEN_TIME": 1.0,
+		"GROUND BALANCE": 8.0,
+		"JUMP POWER": 100.0,
 		"SWEET_SPOT": 0.1
 	},
 	"upgrades": {
 		"RESPAWN_HP_PENALTY": 25.0,
-		"RESPAWN_TIME_PENALTY": 15.0
+		"RESPAWN_TIME_PENALTY": 5.0
 	},
-	"xp": 0.0
+	"xp": 5.0
 }

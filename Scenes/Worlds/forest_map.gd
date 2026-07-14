@@ -7,7 +7,7 @@ var to_chairlift_time : float = 1.5 if not Global.debug else 0.0
 var to_chairlift_scale_factor : float = 0.7
 
 # Datas
-var world_datas : Dictionary = {"Nodes":{},"Zones":{},"start":"Chairlift"}
+var world_datas : Dictionary = {"Nodes":{},"Zones":{},"start":"Forest Chairlift"}
 var player_datas : Dictionary
 
 # State
@@ -195,7 +195,8 @@ func draw_new_paths():
 	world_datas["Nodes"][player_datas["node"]]["node"].modulate = Color(1.0, 1.0, 1.0, 1.0)
 	# Out path of current node
 	for zone in world_datas["Nodes"][player_datas["node"]]["zone_out"]:
-		var destination : String = zone.name.split("_")[1] 
+		var origin : String = zone.name.split("_")[0]
+		var destination : String = zone.name.split("_")[1]
 		# Origin or destination not chairlift
 		if "Chairlift" not in zone.name:
 			# Destination never seen
@@ -208,8 +209,10 @@ func draw_new_paths():
 				world_datas["Nodes"][destination]["node"].modulate = Color(0.5, 0.5, 0.5, 1.0)
 				world_datas["Nodes"][destination]["node"].show()
 		# Active zones
-		active_zones[zone] = false if world_datas["Zones"][zone]["has_lock"] and\
+		var unlocked : bool = false if world_datas["Zones"][zone]["has_lock"] and\
 					zone.name.split("_")[1] not in player_datas["unlocks"] else true
+		var has_pass : bool = UpgradesManager.pass_grants_acces_to(origin) if "Chairlift" in origin else true
+		active_zones[zone] = unlocked and has_pass
 
 func on_zone_hover(zone:Area2D):
 	AudioManager.play_ui("map_hover")

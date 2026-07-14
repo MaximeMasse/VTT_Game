@@ -1,17 +1,29 @@
 {
+	"achievements": {
+		"completed": 0,
+		"crowns": 1,
+		"days": 2,
+		"finished_map": 2,
+		"five_stars": 1,
+		"map_gaps_done": 1,
+		"money_gained": 0,
+		"played_day": 1,
+		"queen_obj": 0,
+		"stars": 2
+	},
 	"avatar": 5.0,
 	"best_tricks": {
 		"Air": {
 			"duration": 3.86666666666666,
-			"length": 48.867503740913
+			"length": 504.828728520733
 		},
 		"Nose Wheelie": {
 			"duration": 5.39999999999999,
 			"length": 47.7844929215155
 		},
 		"Wheelie": {
-			"duration": 2.15,
-			"length": 41.7068067651046
+			"duration": 3.54999999999999,
+			"length": 49.0954267426541
 		}
 	},
 	"bike_model": 1.0,
@@ -21,94 +33,139 @@
 		"BOOST_MAX_QUANTITY": 5000.0,
 		"ONE_TIME_RATIO": 5.0
 	},
-	"crowns": 3.0,
+	"boss_beaten": [
+		"-",
+		"Adriano",
+		"Boss2",
+		"Boss3",
+		"Boss4"
+	],
+	"crowns": 4.0,
 	"current_run": {
 		"current_day": {
-			"course": [
-				"Map 0",
-				"Map 0",
-				"Map 1",
-				"Map 2",
-				"Map 2",
-				"Map 2"
-			],
+			"course": [],
 			"crowns": 0.0,
 			"money": 0.0,
-			"node": "Map 2",
+			"node": "Forest Chairlift",
+			"pass": "Forest",
 			"stars": 0.0,
 			"world": "Forest"
 		},
+		"days": 4.0,
+		"hp": 85.0,
 		"maps": {
 			"Map 0": {
 				"bills": [
+					0.0,
+					2.0,
+					3.0,
 					6.0
 				],
 				"finished": true,
 				"gaps": {
-
+					"over the Clouds": true,
+					"over the Volcano": true
 				},
 				"objectives": [
-					2.0
+					1.0,
+					2.0,
+					3.0,
+					4.0,
+					5.0
 				]
 			},
 			"Map 1": {
 				"bills": [
 					0.0,
-					2.0,
 					1.0,
-					4.0,
 					6.0,
 					8.0,
-					7.0
-				],
-				"finished": true,
-				"gaps": {
-					"for the Homies": true,
-					"the Last Jump": true
-				},
-				"objectives": [
-					2.0
-				]
-			},
-			"Map 2": {
-				"bills": [
-					0.0,
-					1.0,
-					5.0,
+					7.0,
 					9.0
 				],
 				"finished": true,
 				"gaps": {
-					"for the Homies": true
+					"for the Homies": true,
+					"over the Clouds": true,
+					"over the Volcano": true,
+					"the Last Jump": false
 				},
 				"objectives": [
-					1.0,
 					2.0,
 					3.0
 				]
 			}
 		},
-		"money": 4050.0,
-		"stars": 17.0,
-		"unlocks": []
+		"money": 400.0,
+		"stars": 7.0,
+		"unlocks": [
+			"Chairlift To Desert",
+			"Icy"
+		]
 	},
 	"id": 3.0,
+	"lvl": 10.0,
 	"map_records": {
-		"Map 0": {
+		"Boss 1 Map": {
 			"bills_caught": false,
+			"collectible_stored": false,
 			"crowns_unlocked": 1.0,
-			"gaps_discovered": [],
-			"gaps_done": false,
+			"gaps_discovered": [
+				"over the Volcano",
+				"the 1st Platform",
+				"for the Homies",
+				"the Last Jump"
+			],
+			"gaps_done": true,
 			"objectives_done": false,
 			"queen_score_beaten": false,
-			"queen_time_beaten": true,
-			"score": 0.0,
-			"time": 2.84999999999999
+			"queen_time_beaten": false,
+			"score": 2363.0,
+			"time": 38.3333333333326
+		},
+		"Map 0": {
+			"bills_caught": true,
+			"collectible_stored": true,
+			"crowns_unlocked": 3.0,
+			"gaps_discovered": [
+				"over the Volcano",
+				"the 1st Platform",
+				"for the Homies",
+				"the Last Jump",
+				"over the Clouds"
+			],
+			"gaps_done": false,
+			"objectives_done": true,
+			"queen_score_beaten": false,
+			"queen_time_beaten": false,
+			"score": 16643.0,
+			"time": 39.7333333333324
 		},
 		"Map 1": {
 			"bills_caught": false,
-			"crowns_unlocked": 0.0,
+			"collectible_stored": true,
+			"crowns_unlocked": 2.0,
 			"gaps_discovered": [
+				"over the Volcano",
+				"the 1st Platform",
+				"for the Homies",
+				"the Last Jump",
+				"over the Clouds"
+			],
+			"gaps_done": true,
+			"objectives_done": false,
+			"queen_score_beaten": false,
+			"queen_time_beaten": false,
+			"score": 8988.0,
+			"time": 35.3999999999994
+		},
+		"Map 2": {
+			"bills_caught": false,
+			"collectible_stored": true,
+			"crowns_unlocked": 1.0,
+			"gaps_discovered": [
+				"over the Volcano",
+				"the 1st Platform",
 				"for the Homies",
 				"the Last Jump"
 			],
@@ -116,30 +173,30 @@
 			"objectives_done": false,
 			"queen_score_beaten": false,
 			"queen_time_beaten": false,
-			"score": 4574.0,
-			"time": 56.6666666666648
-		},
-		"Map 2": {
-			"bills_caught": false,
-			"crowns_unlocked": 0.0,
-			"gaps_discovered": [
-				"for the Homies"
-			],
-			"gaps_done": false,
-			"objectives_done": false,
-			"queen_score_beaten": false,
-			"queen_time_beaten": false,
-			"score": 10423.0,
-			"time": 40.6666666666656
+			"score": 9538.0,
+			"time": 112.599999999996
 		}
 	},
+	"money_gained": 0.0,
 	"name": "Juliette",
-	"state": "Chairlift",
+	"permanent_unlocks": [
+		"Bike 1",
+		"Elbow Pad",
+		"Bike 2",
+		"Knee Pad",
+		"Bike 3",
+		"Bike 4",
+		"Chest Plate",
+		"Helmet",
+		"Bed 1",
+		"Bed 3"
+	],
+	"played_day": 2.0,
+	"state": "Career",
 	"stats": {
-		"ACCÉLÉRATION": 10000.0,
-		"AIR_ROTATION_CONTROL": 20.0,
-		"AIR_SPEED_CONTROL": 5.0,
-		"AV_CONTROL": 2.0,
+		"ACCELERATION": 10000.0,
+		"AIR BALANCE": 20.0,
+		"AIR_SPEED_CONTROL": 10.0,
 		"BALANCE_CONTROL": 100.0,
 		"CM_OFFSET": [
 			5.0,
@@ -148,14 +205,15 @@
 		"COUPLE_CADRE_AIR": 400000.0,
 		"COUPLE_CADRE_SOL": 1700000.0,
 		"FORCE_FREINS": 150.0,
-		"FORCE_SAUT": 150.0,
 		"FRICTION": 150.0,
-		"GREEN_TIME": 0.3,
-		"SWEET_SPOT": 0.2
+		"GREEN_TIME": 0.2,
+		"GROUND BALANCE": 2.0,
+		"JUMP POWER": 150.0,
+		"SWEET_SPOT": 0.5
 	},
 	"upgrades": {
 		"RESPAWN_HP_PENALTY": 5.0,
 		"RESPAWN_TIME_PENALTY": 1.0
 	},
-	"xp": 0.0
+	"xp": 145.0
 }

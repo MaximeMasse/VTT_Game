@@ -21,6 +21,14 @@
 [ext_resource type="Texture2D" uid="uid://d11kqm30ebi46" path="res://Images/Menus/Shops/Trailer/Computer/Passes.png" id="19_g7eb8"]
 [ext_resource type="Texture2D" uid="uid://c1gcnfmcq6pk7" path="res://Images/Menus/Shops/Trailer/Computer/Achievements.png" id="20_m38qa"]
 [ext_resource type="Texture2D" uid="uid://l6pv0dil1kf0" path="res://Images/Menus/Shops/Trailer/Computer/Exit.png" id="21_jplea"]
+[ext_resource type="Texture2D" uid="uid://dadnykiad7knh" path="res://Images/Menus/Shops/Trailer/Computer/Bank.png" id="21_kuded"]
+[ext_resource type="FontFile" uid="uid://mo75h3dryq3e" path="res://Fonts/PixelCode.otf" id="22_g7eb8"]
+[ext_resource type="Texture2D" uid="uid://ca465kfh2jdfd" path="res://Images/Menus/Shops/Trailer/Computer/Achievements/back_achievement_gauge.png" id="23_3m2oc"]
+[ext_resource type="Texture2D" uid="uid://r8arua4apxu0" path="res://Images/Menus/Backgrounds/Forest_Background.png" id="23_4fely"]
+[ext_resource type="Texture2D" uid="uid://cje0ex2oudavo" path="res://Images/Menus/Shops/Trailer/Computer/Achievements/achievement_gauge.png" id="24_a4l14"]
+[ext_resource type="Texture2D" uid="uid://cvw6tuoyc1c8r" path="res://Images/Menus/Backgrounds/Desert_Background.png" id="24_kuded"]
+[ext_resource type="Texture2D" uid="uid://dc14aqtgr2sx8" path="res://Images/Menus/Backgrounds/Icy_Background.png" id="25_muqbo"]
+[ext_resource type="Texture2D" uid="uid://ben7pht3rx6rt" path="res://Images/Menus/Backgrounds/Tropical_Background.png" id="26_x64eg"]
 
 [sub_resource type="FontVariation" id="FontVariation_4fely"]
 base_font = ExtResource("8_q0ls8")
@@ -36,6 +44,105 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m38qa"]
+bg_color = Color(0.29803923, 0.37254903, 0.96862745, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jplea"]
+bg_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="FontVariation" id="FontVariation_3m2oc"]
+base_font = ExtResource("22_g7eb8")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmp3a"]
+
+[sub_resource type="FontVariation" id="FontVariation_x64eg"]
+base_font = ExtResource("22_g7eb8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmp3a"]
+bg_color = Color(0.53459996, 0.62568, 0.99, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="FontVariation" id="FontVariation_p3mit"]
+base_font = ExtResource("22_g7eb8")
+
+[sub_resource type="FontVariation" id="FontVariation_frolk"]
+base_font = ExtResource("8_q0ls8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3mit"]
+bg_color = Color(0.3019608, 0.38039216, 0.96862745, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptgys"]
+
+[sub_resource type="FontVariation" id="FontVariation_4fo1n"]
+base_font = ExtResource("22_g7eb8")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4fely"]
+
+[sub_resource type="FontVariation" id="FontVariation_kuded"]
+base_font = ExtResource("22_g7eb8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4l14"]
+bg_color = Color(0.24313726, 0, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fely"]
+bg_color = Color(0.34117648, 0.02745098, 0.60784316, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20784314, 0.20392157, 0.23529412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="FontVariation" id="FontVariation_muqbo"]
+base_font = ExtResource("8_q0ls8")
 
 [node name="Trailer" type="Node2D" unique_id=447153728]
 script = ExtResource("1_e8gbg")
@@ -90,28 +197,67 @@ offset_bottom = 486.0
 texture = ExtResource("6_sl7sb")
 expand_mode = 1
 
-[node name="Bed" type="Area2D" parent="." unique_id=1908722138]
+[node name="Windows" type="Node2D" parent="." unique_id=15979295]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.8862745)
+
+[node name="Polygon2D" type="Polygon2D" parent="Windows" unique_id=11626981]
+position = Vector2(0, 47.41748)
+scale = Vector2(1, 0.78640777)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(80.99999, 230.90121, 82.99999, 227.08643, 84.99999, 223.2716, 91.99999, 222, 267.99997, 258.87653, 270.99997, 261.41974, 272.99997, 266.50616, 273.99997, 270.32098, 273.99997, 325, 271.99997, 327.5432, 269.99997, 328.8148, 88.99999, 328.8148, 84.99999, 327.5432, 81.99999, 322.4568, 80.99999, 318.64197)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Windows" unique_id=161321407]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(83, 315, 86, 315, 108, 315, 108, 318, 106, 319, 105, 321, 106, 323, 105, 325, 100, 325, 91, 325, 85, 323, 83, 319, 82, 316)
+
+[node name="Polygon2D4" type="Polygon2D" parent="Windows" unique_id=1202582305]
+position = Vector2(171, -3)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(87, 315, 102, 315, 103, 316, 103, 319, 101, 321, 99, 322, 89, 322, 88, 321, 86, 320, 86, 319, 87, 318, 86, 317, 86, 316)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Windows" unique_id=1355510251]
+position = Vector2(53, -1)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(74, 315, 194, 313, 194, 315, 192, 316, 191, 318, 192, 319, 192, 321, 71, 325, 72, 320, 69, 318, 70, 316)
+
+[node name="Polygon2D5" type="Polygon2D" parent="Windows" unique_id=1664343335]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(548, 94, 547, 96, 556, 110, 560, 111, 569, 111, 620, 111, 661, 111, 664, 110, 665, 109, 665, 102, 665, 95, 664, 94)
+
+[node name="Polygon2D6" type="Polygon2D" parent="Windows" unique_id=312338007]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(573, 224, 575, 222, 577, 220, 583, 219, 621, 219, 628, 220, 630, 222, 632, 226, 632, 326, 631, 330, 629, 332, 625, 334, 581, 334, 578, 333, 576, 331, 573, 328)
+
+[node name="Zones" type="Control" parent="." unique_id=1810851450]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bed" type="Area2D" parent="Zones" unique_id=1908722138]
 unique_name_in_owner = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bed" unique_id=772902167]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Bed" unique_id=772902167]
 polygon = PackedVector2Array(315, 356, 530, 357, 530, 470, 401, 619, 93, 619, 39, 555, 39, 405)
 
-[node name="Computer" type="Area2D" parent="." unique_id=2083308325]
+[node name="Computer" type="Area2D" parent="Zones" unique_id=2083308325]
 unique_name_in_owner = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Computer" unique_id=442085980]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Computer" unique_id=442085980]
 polygon = PackedVector2Array(733, 287, 828, 287, 814, 359, 717, 354)
 
-[node name="Day" type="Panel" parent="." unique_id=514738352]
+[node name="Day" type="Panel" parent="Zones" unique_id=514738352]
 unique_name_in_owner = true
 visible = false
+layout_mode = 0
 offset_left = 128.0
 offset_top = 192.0
 offset_right = 448.0
 offset_bottom = 576.0
 theme_override_styles/panel = ExtResource("7_jd25r")
 
-[node name="DayNumber" type="RichTextLabel" parent="Day" unique_id=442883661]
+[node name="DayNumber" type="RichTextLabel" parent="Zones/Day" unique_id=442883661]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
@@ -126,7 +272,7 @@ text = "Day 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="label" type="RichTextLabel" parent="Day" unique_id=1037910505]
+[node name="label" type="RichTextLabel" parent="Zones/Day" unique_id=1037910505]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -147,7 +293,7 @@ text = " Money :
  Crowns :"
 vertical_alignment = 1
 
-[node name="DayDatas" type="RichTextLabel" parent="Day" unique_id=265309742]
+[node name="DayDatas" type="RichTextLabel" parent="Zones/Day" unique_id=265309742]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
@@ -170,7 +316,7 @@ text = "+ 1.500
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Day" unique_id=1429569498]
+[node name="TextureRect" type="TextureRect" parent="Zones/Day" unique_id=1429569498]
 layout_mode = 0
 offset_left = 240.0
 offset_top = 67.0
@@ -178,7 +324,7 @@ offset_right = 286.0
 offset_bottom = 111.0
 texture = ExtResource("9_3ukx3")
 
-[node name="TextureRect2" type="TextureRect" parent="Day" unique_id=1900214012]
+[node name="TextureRect2" type="TextureRect" parent="Zones/Day" unique_id=1900214012]
 layout_mode = 0
 offset_left = 240.0
 offset_top = 121.0
@@ -187,7 +333,7 @@ offset_bottom = 165.0
 texture = ExtResource("10_8moqi")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="Day" unique_id=263523731]
+[node name="TextureRect3" type="TextureRect" parent="Zones/Day" unique_id=263523731]
 layout_mode = 0
 offset_left = 240.0
 offset_top = 175.0
@@ -195,13 +341,13 @@ offset_right = 286.0
 offset_bottom = 219.0
 texture = ExtResource("11_wd55e")
 
-[node name="EndDay" type="Panel" parent="Day" unique_id=116906495]
+[node name="EndDay" type="Panel" parent="Zones/Day" unique_id=116906495]
 layout_mode = 0
 offset_top = 224.0
 offset_right = 320.0
 offset_bottom = 384.0
 
-[node name="Question" type="RichTextLabel" parent="Day/EndDay" unique_id=38496594]
+[node name="Question" type="RichTextLabel" parent="Zones/Day/EndDay" unique_id=38496594]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -215,7 +361,7 @@ text = "End day ?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Healing" type="RichTextLabel" parent="Day/EndDay" unique_id=596213345]
+[node name="Healing" type="RichTextLabel" parent="Zones/Day/EndDay" unique_id=596213345]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
@@ -231,7 +377,7 @@ text = "HP after rest : 66 %"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EndDay" type="TextureButton" parent="Day/EndDay" unique_id=1888730353]
+[node name="EndDay" type="TextureButton" parent="Zones/Day/EndDay" unique_id=1888730353]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 104.0
@@ -243,7 +389,7 @@ texture_focused = ExtResource("14_jplea")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="CloseDay" type="TextureButton" parent="Day/EndDay" unique_id=157436174]
+[node name="CloseDay" type="TextureButton" parent="Zones/Day/EndDay" unique_id=157436174]
 layout_mode = 0
 offset_left = 184.0
 offset_top = 104.0
@@ -255,31 +401,32 @@ texture_focused = ExtResource("17_ih47f")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ComputerScreen" type="Panel" parent="." unique_id=207542436]
+[node name="ComputerScreen" type="Panel" parent="Zones" unique_id=207542436]
 unique_name_in_owner = true
-visible = false
+layout_mode = 0
 offset_left = 320.0
 offset_top = 40.0
 offset_right = 960.0
 offset_bottom = 640.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3m2oc")
 
-[node name="Apps" type="Control" parent="ComputerScreen" unique_id=968603596]
+[node name="Home" type="Control" parent="Zones/ComputerScreen" unique_id=968603596]
+unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Amazing" type="TextureButton" parent="ComputerScreen/Apps" unique_id=1901142724]
+[node name="Amazing" type="TextureButton" parent="Zones/ComputerScreen/Home" unique_id=1901142724]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 72.0
 offset_top = 56.0
-offset_right = 256.0
+offset_right = 264.0
 offset_bottom = 248.0
 texture_normal = ExtResource("18_wd55e")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ComputerScreen/Apps/Amazing" unique_id=97682134]
+[node name="RichTextLabel" type="RichTextLabel" parent="Zones/ComputerScreen/Home/Amazing" unique_id=97682134]
 layout_mode = 0
 offset_top = 192.0
 offset_right = 192.0
@@ -289,17 +436,17 @@ text = "Delivery Service"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Passes" type="TextureButton" parent="ComputerScreen/Apps" unique_id=581746069]
+[node name="Passes" type="TextureButton" parent="Zones/ComputerScreen/Home" unique_id=581746069]
 layout_mode = 0
-offset_left = 384.0
+offset_left = 376.0
 offset_top = 56.0
-offset_right = 576.0
+offset_right = 568.0
 offset_bottom = 248.0
 texture_normal = ExtResource("19_g7eb8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ComputerScreen/Apps/Passes" unique_id=1483925020]
+[node name="RichTextLabel" type="RichTextLabel" parent="Zones/ComputerScreen/Home/Passes" unique_id=1483925020]
 layout_mode = 0
 offset_top = 192.0
 offset_right = 192.0
@@ -309,17 +456,17 @@ text = "Station Passes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Achievements" type="TextureButton" parent="ComputerScreen/Apps" unique_id=881181140]
+[node name="Achievements" type="TextureButton" parent="Zones/ComputerScreen/Home" unique_id=881181140]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 72.0
 offset_top = 328.0
-offset_right = 256.0
+offset_right = 264.0
 offset_bottom = 520.0
 texture_normal = ExtResource("20_m38qa")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ComputerScreen/Apps/Achievements" unique_id=730058046]
+[node name="RichTextLabel" type="RichTextLabel" parent="Zones/ComputerScreen/Home/Achievements" unique_id=730058046]
 layout_mode = 0
 offset_top = 192.0
 offset_right = 192.0
@@ -329,27 +476,1678 @@ text = "Achievements"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ComputerExit" type="TextureButton" parent="ComputerScreen/Apps" unique_id=1914713075]
+[node name="Bank" type="TextureButton" parent="Zones/ComputerScreen/Home" unique_id=271136683]
 layout_mode = 0
-offset_left = 384.0
+offset_left = 376.0
 offset_top = 328.0
-offset_right = 576.0
+offset_right = 568.0
 offset_bottom = 520.0
-texture_normal = ExtResource("21_jplea")
+texture_normal = ExtResource("21_kuded")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ComputerScreen/Apps/ComputerExit" unique_id=222905238]
+[node name="RichTextLabel" type="RichTextLabel" parent="Zones/ComputerScreen/Home/Bank" unique_id=103335628]
 layout_mode = 0
 offset_top = 192.0
 offset_right = 192.0
 offset_bottom = 232.0
 theme_override_font_sizes/normal_font_size = 18
-text = "Quit"
+text = "Bucks Management"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ComputerExit" type="TextureButton" parent="Zones/ComputerScreen/Home" unique_id=1914713075]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 24.0
+offset_right = 616.0
+offset_bottom = 56.0
+texture_normal = ExtResource("21_jplea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Apps" type="Control" parent="Zones/ComputerScreen" unique_id=1446243534]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Amazing" type="Panel" parent="Zones/ComputerScreen/Apps" unique_id=99515300]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 616.0
+offset_bottom = 576.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m38qa")
+
+[node name="TopBar" type="Panel" parent="Zones/ComputerScreen/Apps/Amazing" unique_id=1257326547]
+layout_mode = 0
+offset_right = 592.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jplea")
+
+[node name="Caption" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Amazing/TopBar" unique_id=125975351]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_3m2oc")
+theme_override_font_sizes/normal_font_size = 20
+text = "Amazing - Improve your lifestyle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitApp" type="TextureButton" parent="Zones/ComputerScreen/Apps/Amazing/TopBar" unique_id=102426982]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 0
+texture_normal = ExtResource("21_jplea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Main" type="Panel" parent="Zones/ComputerScreen/Apps/Amazing" unique_id=2060074372]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 592.0
+offset_bottom = 552.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fmp3a")
+
+[node name="Crowns" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Amazing/Main" unique_id=114981130]
+layout_mode = 0
+offset_right = 296.0
+offset_bottom = 64.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_x64eg")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Crowns :  5 [img]res://Images/HUD/Player/CrownsLogo_mini.png"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Beds" type="Panel" parent="Zones/ComputerScreen/Apps/Amazing/Main" unique_id=1821494670]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 64.0
+offset_right = 552.0
+offset_bottom = 256.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmp3a")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Amazing/Main/Beds" unique_id=540655425]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 40.0
+theme_override_colors/default_color = Color(0.18039216, 0.007843138, 0.3372549, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = SubResource("FontVariation_p3mit")
+theme_override_font_sizes/normal_font_size = 25
+text = "Beds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Zones/ComputerScreen/Apps/Amazing/Main/Beds" unique_id=868151933]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 48.0
+offset_right = 160.0
+offset_bottom = 176.0
+
+[node name="Panel2" type="Panel" parent="Zones/ComputerScreen/Apps/Amazing/Main/Beds" unique_id=819297348]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 48.0
+offset_right = 320.0
+offset_bottom = 176.0
+
+[node name="Panel3" type="Panel" parent="Zones/ComputerScreen/Apps/Amazing/Main/Beds" unique_id=928220344]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 48.0
+offset_right = 480.0
+offset_bottom = 176.0
+
+[node name="Beds2" type="Panel" parent="Zones/ComputerScreen/Apps/Amazing/Main" unique_id=655681604]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 280.0
+offset_right = 552.0
+offset_bottom = 472.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmp3a")
+
+[node name="Passes" type="Panel" parent="Zones/ComputerScreen/Apps" unique_id=2006881174]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 616.0
+offset_bottom = 576.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m38qa")
+
+[node name="TopBar" type="Panel" parent="Zones/ComputerScreen/Apps/Passes" unique_id=2102720698]
+layout_mode = 0
+offset_right = 592.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jplea")
+
+[node name="Caption" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/TopBar" unique_id=374423569]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -56.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_3m2oc")
+theme_override_font_sizes/normal_font_size = 20
+text = "Bike Park - Buy Chairlift Daily Passes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitApp" type="TextureButton" parent="Zones/ComputerScreen/Apps/Passes/TopBar" unique_id=910554495]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 0
+texture_normal = ExtResource("21_jplea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Main" type="Panel" parent="Zones/ComputerScreen/Apps/Passes" unique_id=115048077]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 592.0
+offset_bottom = 552.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fmp3a")
+
+[node name="Money" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main" unique_id=1218441509]
+layout_mode = 0
+offset_right = 296.0
+offset_bottom = 64.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_frolk")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "Money :   20300  [img]res://Images/HUD/Player/BucksLogo_mini.png"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pass" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main" unique_id=1488574050]
+layout_mode = 0
+offset_left = 296.0
+offset_right = 592.0
+offset_bottom = 64.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_frolk")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "Current pass : DESERT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tiles" type="Control" parent="Zones/ComputerScreen/Apps/Passes/Main" unique_id=849658635]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Forest" type="PanelContainer" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles" unique_id=466639281]
+clip_contents = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 248.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p3mit")
+
+[node name="TextureRect" type="TextureButton" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Forest" unique_id=681582305]
+layout_mode = 2
+texture_normal = ExtResource("23_4fely")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Forest" unique_id=2118394665]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ptgys")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Forest/Panel" unique_id=1070598583]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 230.0
+offset_bottom = 43.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.361, 0.624, 0.278, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_frolk")
+theme_override_font_sizes/normal_font_size = 31
+text = "Forest Pass"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Includes" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Forest/Panel" unique_id=1218935392]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 219.0
+offset_bottom = 75.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.361, 0.624, 0.278, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_4fo1n")
+theme_override_font_sizes/normal_font_size = 9
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Forest/Panel" unique_id=799819043]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 99.0
+offset_right = 235.0
+offset_bottom = 179.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.361, 0.624, 0.278, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_frolk")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "OWNED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desert" type="PanelContainer" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles" unique_id=939801855]
+clip_contents = true
+layout_mode = 0
+offset_left = 312.0
+offset_top = 64.0
+offset_right = 552.0
+offset_bottom = 248.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p3mit")
+
+[node name="TextureRect" type="TextureButton" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Desert" unique_id=485171197]
+layout_mode = 2
+texture_normal = ExtResource("24_kuded")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Desert" unique_id=459090303]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ptgys")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Desert/Panel" unique_id=1344434298]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 230.0
+offset_bottom = 43.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_frolk")
+theme_override_font_sizes/normal_font_size = 31
+text = "Desert Pass"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Includes" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Desert/Panel" unique_id=1492029133]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 219.0
+offset_bottom = 75.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_4fo1n")
+theme_override_font_sizes/normal_font_size = 9
+text = "Includes acces to Forest"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Desert/Panel" unique_id=343471954]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 99.0
+offset_right = 235.0
+offset_bottom = 179.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.8862745, 0.6431373, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_frolk")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "OWNED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icy" type="PanelContainer" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles" unique_id=789959720]
+clip_contents = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 264.0
+offset_right = 280.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p3mit")
+
+[node name="TextureRect" type="TextureButton" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Icy" unique_id=1204033391]
+layout_mode = 2
+texture_normal = ExtResource("25_muqbo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Icy" unique_id=218676682]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ptgys")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Icy/Panel" unique_id=817701439]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 230.0
+offset_bottom = 43.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.53459996, 0.62568, 0.99, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_frolk")
+theme_override_font_sizes/normal_font_size = 31
+text = "Icy Pass"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Includes" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Icy/Panel" unique_id=968484449]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 219.0
+offset_bottom = 75.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.53459996, 0.62568, 0.99, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_4fo1n")
+theme_override_font_sizes/normal_font_size = 9
+text = "Includes acces to Forest and Desert"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Icy/Panel" unique_id=1124633702]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 99.0
+offset_right = 235.0
+offset_bottom = 179.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.53459996, 0.62568, 0.99, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_frolk")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "Cost :   500  [img]res://Images/HUD/Player/BucksLogo_mini.png"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tropical" type="PanelContainer" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles" unique_id=1530046471]
+clip_contents = true
+layout_mode = 0
+offset_left = 312.0
+offset_top = 264.0
+offset_right = 552.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p3mit")
+
+[node name="TextureRect" type="TextureButton" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Tropical" unique_id=1467321604]
+layout_mode = 2
+texture_normal = ExtResource("26_x64eg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Tropical" unique_id=991796822]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ptgys")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Tropical/Panel" unique_id=312763036]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 230.0
+offset_bottom = 43.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_frolk")
+theme_override_font_sizes/normal_font_size = 31
+text = "Tropical Pass"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Includes" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Tropical/Panel" unique_id=81156933]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 219.0
+offset_bottom = 75.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_4fo1n")
+theme_override_font_sizes/normal_font_size = 9
+text = "Includes acces to Forest, Desert and Icy World"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Passes/Main/Tiles/Tropical/Panel" unique_id=136307444]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 99.0
+offset_right = 235.0
+offset_bottom = 179.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = SubResource("FontVariation_frolk")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievements" type="Panel" parent="Zones/ComputerScreen/Apps" unique_id=205191837]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 616.0
+offset_bottom = 576.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m38qa")
+
+[node name="TopBar" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements" unique_id=670308624]
+layout_mode = 0
+offset_right = 592.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jplea")
+
+[node name="Caption" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/TopBar" unique_id=457413075]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_3m2oc")
+theme_override_font_sizes/normal_font_size = 20
+text = "Achievements - Get to Know them"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitApp" type="TextureButton" parent="Zones/ComputerScreen/Apps/Achievements/TopBar" unique_id=721925523]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 0
+texture_normal = ExtResource("21_jplea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Main" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements" unique_id=1526011253]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 592.0
+offset_bottom = 552.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4fely")
+
+[node name="Level" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main" unique_id=2017592758]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 12
+text = "Current Level : 8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XP" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main" unique_id=1894158833]
+layout_mode = 0
+offset_left = 208.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 12
+text = "Current XP : 1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNextLvl" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main" unique_id=220478235]
+layout_mode = 0
+offset_left = 384.0
+offset_right = 592.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 12
+text = "XP to Level Up : 2000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tiles" type="Control" parent="Zones/ComputerScreen/Apps/Achievements/Main" unique_id=353302423]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Tile1" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles" unique_id=949738286]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 288.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4l14")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile1" unique_id=1344537332]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = " Objectives Finisher :"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile1" unique_id=2001746487]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Beat x Queen Time or Score Objectives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile1" unique_id=1080797289]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -24.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_3m2oc")
+texture_progress = ExtResource("24_a4l14")
+
+[node name="Tier" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile1" unique_id=910197098]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Tier 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile1" unique_id=1013056725]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNext" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile1" unique_id=1330780659]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "1 more for next Tier"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tile2" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles" unique_id=214028628]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 64.0
+offset_right = 576.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4l14")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile2" unique_id=1443709121]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = " Objectives Finisher :"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile2" unique_id=1575073846]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Beat x Queen Time or Score Objectives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile2" unique_id=1396882324]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -24.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_3m2oc")
+texture_progress = ExtResource("24_a4l14")
+
+[node name="Tier" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile2" unique_id=1946621471]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Tier 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile2" unique_id=2091003506]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNext" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile2" unique_id=695848255]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "1 more for next Tier"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tile3" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles" unique_id=100512787]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 144.0
+offset_right = 288.0
+offset_bottom = 208.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4l14")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile3" unique_id=845441384]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = " Objectives Finisher :"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile3" unique_id=814824284]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Beat x Queen Time or Score Objectives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile3" unique_id=1412156654]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -24.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_3m2oc")
+texture_progress = ExtResource("24_a4l14")
+
+[node name="Tier" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile3" unique_id=1720426220]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Tier 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile3" unique_id=890607091]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNext" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile3" unique_id=1928871880]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "1 more for next Tier"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tile4" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles" unique_id=377033641]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 144.0
+offset_right = 576.0
+offset_bottom = 208.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4l14")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile4" unique_id=1766518875]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = " Objectives Finisher :"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile4" unique_id=525394076]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Beat x Queen Time or Score Objectives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile4" unique_id=772574654]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -24.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_3m2oc")
+texture_progress = ExtResource("24_a4l14")
+
+[node name="Tier" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile4" unique_id=1480100743]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Tier 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile4" unique_id=1530858123]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNext" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile4" unique_id=1906040831]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "1 more for next Tier"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tile5" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles" unique_id=1896544477]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 224.0
+offset_right = 288.0
+offset_bottom = 288.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4l14")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile5" unique_id=384406074]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = " Objectives Finisher :"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile5" unique_id=288389891]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Beat x Queen Time or Score Objectives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile5" unique_id=1388373842]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -24.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_3m2oc")
+texture_progress = ExtResource("24_a4l14")
+
+[node name="Tier" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile5" unique_id=207604917]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Tier 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile5" unique_id=279017485]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNext" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile5" unique_id=520179245]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "1 more for next Tier"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tile6" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles" unique_id=2054973074]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 224.0
+offset_right = 576.0
+offset_bottom = 288.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4l14")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile6" unique_id=501836684]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = " Objectives Finisher :"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile6" unique_id=1556003074]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Beat x Queen Time or Score Objectives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile6" unique_id=1711555569]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -24.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_3m2oc")
+texture_progress = ExtResource("24_a4l14")
+
+[node name="Tier" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile6" unique_id=1715265507]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Tier 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile6" unique_id=549861408]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNext" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile6" unique_id=1426687196]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "1 more for next Tier"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tile7" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles" unique_id=422914895]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 304.0
+offset_right = 288.0
+offset_bottom = 368.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4l14")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile7" unique_id=1966753981]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = " Objectives Finisher :"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile7" unique_id=857956130]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Beat x Queen Time or Score Objectives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile7" unique_id=303969223]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -24.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_3m2oc")
+texture_progress = ExtResource("24_a4l14")
+
+[node name="Tier" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile7" unique_id=2071592309]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Tier 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile7" unique_id=1314019743]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNext" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile7" unique_id=1871421108]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "1 more for next Tier"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tile8" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles" unique_id=2126881950]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 304.0
+offset_right = 576.0
+offset_bottom = 368.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4l14")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile8" unique_id=249906545]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = " Objectives Finisher :"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile8" unique_id=1973520053]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Beat x Queen Time or Score Objectives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile8" unique_id=327221566]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -24.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_3m2oc")
+texture_progress = ExtResource("24_a4l14")
+
+[node name="Tier" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile8" unique_id=2022167683]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Tier 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile8" unique_id=1912195269]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNext" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile8" unique_id=377606420]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "1 more for next Tier"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tile9" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles" unique_id=2134723106]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 384.0
+offset_right = 288.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4l14")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile9" unique_id=650179820]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = " Objectives Finisher :"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile9" unique_id=1929519911]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Beat x Queen Time or Score Objectives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile9" unique_id=605411174]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -24.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_3m2oc")
+texture_progress = ExtResource("24_a4l14")
+
+[node name="Tier" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile9" unique_id=232291015]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Tier 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile9" unique_id=828246469]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNext" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile9" unique_id=629294271]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "1 more for next Tier"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tile10" type="Panel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles" unique_id=1727586476]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 384.0
+offset_right = 576.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4l14")
+
+[node name="Name" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile10" unique_id=1547323552]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = " Objectives Finisher :"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile10" unique_id=2119273055]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Beat x Queen Time or Score Objectives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile10" unique_id=967940637]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -24.0
+offset_right = -120.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 50.0
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_3m2oc")
+texture_progress = ExtResource("24_a4l14")
+
+[node name="Tier" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile10" unique_id=1207118595]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "Tier 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile10" unique_id=1467041371]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToNext" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main/Tiles/Tile10" unique_id=592033130]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 9
+text = "1 more for next Tier"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Completion" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Achievements/Main" unique_id=888123321]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 448.0
+offset_right = 424.0
+offset_bottom = 488.0
+theme_override_colors/default_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("FontVariation_kuded")
+theme_override_font_sizes/normal_font_size = 12
+text = "Completion : 12 %"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bank" type="Panel" parent="Zones/ComputerScreen/Apps" unique_id=291907563]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 616.0
+offset_bottom = 576.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m38qa")
+
+[node name="TopBar" type="Panel" parent="Zones/ComputerScreen/Apps/Bank" unique_id=892842082]
+layout_mode = 0
+offset_right = 592.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jplea")
+
+[node name="Caption" type="RichTextLabel" parent="Zones/ComputerScreen/Apps/Bank/TopBar" unique_id=1113600562]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_3m2oc")
+theme_override_font_sizes/normal_font_size = 20
+text = "Bank - Check accounts or loan Money"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitApp" type="TextureButton" parent="Zones/ComputerScreen/Apps/Bank/TopBar" unique_id=487025460]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 0
+texture_normal = ExtResource("21_jplea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BuyConfirm" type="Panel" parent="Zones/ComputerScreen" unique_id=1739430090]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 192.0
+offset_top = 216.0
+offset_right = 448.0
+offset_bottom = 408.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4fely")
+
+[node name="Label" type="Label" parent="Zones/ComputerScreen/BuyConfirm" unique_id=1785368288]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -88.0
+offset_right = 92.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("FontVariation_muqbo")
+theme_override_font_sizes/font_size = 36
+text = "Confirm buy ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyInfos" type="Label" parent="Zones/ComputerScreen/BuyConfirm" unique_id=1458362325]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -47.5
+offset_right = 80.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8509804, 0.8666667, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_muqbo")
+theme_override_font_sizes/font_size = 23
+text = "
+Knee Pad
+Cost : 1.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Zones/ComputerScreen/BuyConfirm/BuyInfos" unique_id=989064921]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 54.5
+offset_right = 179.0
+offset_bottom = 101.5
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_3ukx3")
+
+[node name="ConfirmBuyButton" type="TextureButton" parent="Zones/ComputerScreen/BuyConfirm" unique_id=1038318575]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = 144.0
+offset_right = 96.0
+offset_bottom = 184.0
+texture_normal = ExtResource("12_g7eb8")
+texture_pressed = ExtResource("13_m38qa")
+texture_focused = ExtResource("14_jplea")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="No" type="TextureButton" parent="Zones/ComputerScreen/BuyConfirm" unique_id=117432973]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 144.0
+offset_right = 224.0
+offset_bottom = 184.0
+texture_normal = ExtResource("15_3m2oc")
+texture_pressed = ExtResource("16_a4l14")
+texture_focused = ExtResource("17_ih47f")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Day/EndDay/EndDay" to="." method="_on_end_day_pressed"]
-[connection signal="pressed" from="Day/EndDay/CloseDay" to="." method="_on_close_day_pressed"]
-[connection signal="pressed" from="ComputerScreen/Apps/ComputerExit" to="." method="_on_computer_exit_pressed"]
+[connection signal="pressed" from="Zones/Day/EndDay/EndDay" to="." method="_on_end_day_pressed"]
+[connection signal="pressed" from="Zones/Day/EndDay/CloseDay" to="." method="_on_close_day_pressed"]
+[connection signal="pressed" from="Zones/ComputerScreen/Home/ComputerExit" to="." method="_on_computer_exit_pressed"]
+[connection signal="pressed" from="Zones/ComputerScreen/BuyConfirm/ConfirmBuyButton" to="." method="_on_confirm_buy_button_pressed"]
+[connection signal="pressed" from="Zones/ComputerScreen/BuyConfirm/No" to="." method="_on_no_pressed"]

@@ -157,12 +157,13 @@ func set_run(new:bool=false):
 					{"maps":{},"unlocks":[],"money":100,"stars":0,"hp":100,"days":0})
 	set_day()
 
-func set_day(new:bool=false):
+func set_day(new:bool=false,bought_pass:String="None"):
 	if new:
 		current_profile["current_run"].erase("current_day")
 		current_profile["current_run"]["days"] += 1
+		current_profile["played_day"] += 1
 	current_profile["current_run"]["current_day"] = current_profile["current_run"].get("current_day",
-	{"course":[],"world":"Forest","node":"Chairlift","money":0,"stars":0,"crowns":0}) 
+	{"course":[],"world":"Forest","node":"Forest Chairlift","money":0,"stars":0,"crowns":0,"pass":bought_pass}) 
 
 func set_start_values():
 	is_grabbed = false
@@ -512,7 +513,9 @@ func profile_update():
 	# HP
 	current_profile["current_run"]["hp"] = current_hp
 	# Money
+	current_profile["money_gained"] += money_catched
 	current_profile["current_run"]["money"] += money_catched
+	current_profile["current_run"]["current_day"]["money"] += money_catched
 	money_catched = 0
 	new_map_data["bills"] = bills_catched
 	new_map_record["bills_caught"] = bills_already_fulled or bills_fulled
@@ -520,6 +523,7 @@ func profile_update():
 	new_map_record["collectible_stored"] = new_map_record["collectible_stored"] or is_stored
 	# Stars
 	current_profile["current_run"]["stars"] += objectives_completed.size()
+	current_profile["current_run"]["current_day"]["stars"] += objectives_completed.size()
 	new_map_data["objectives"].append_array(objectives_completed)
 	new_map_record["objectives_done"] = objectives_already_done or objectives_done
 	# Gaps
@@ -535,6 +539,7 @@ func profile_update():
 	if not bills_already_fulled and bills_fulled : new_crowns += 1
 	if not gaps_already_fulled and gaps_fulled : new_crowns += 1
 	current_profile["crowns"] += new_crowns
+	current_profile["current_run"]["current_day"]["crowns"] += new_crowns
 	var crowns : int = 0 
 	for data in new_map_record: if new_map_record[data] is bool and new_map_record[data] :crowns += 1
 	new_map_record["crowns_unlocked"] = crowns

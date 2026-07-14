@@ -45,10 +45,17 @@ const datas : Dictionary = {
 		"RESPAWN_TIME_PENALTY": [1,1,1,1]
 	},
 	"Beds":{
-		0:{"texture":"res://Images/Menus/Shops/Trailer/Inside_0.png","healing":25},
-		1:{"texture":"res://Images/Menus/Shops/Trailer/Inside_1.png","healing":50},
-		2:{"texture":"res://Images/Menus/Shops/Trailer/Inside_2.png","healing":75},
-		3:{"texture":"res://Images/Menus/Shops/Trailer/Inside_3.png","healing":100}
+		0:{"texture":"res://Images/Menus/Shops/Trailer/Inside_0.png","unlock_lvl":0,"healing":25,"cost":0},
+		1:{"texture":"res://Images/Menus/Shops/Trailer/Inside_1.png","unlock_lvl":5,"healing":50,"cost":1},
+		2:{"texture":"res://Images/Menus/Shops/Trailer/Inside_2.png","unlock_lvl":10,"healing":75,"cost":5},
+		3:{"texture":"res://Images/Menus/Shops/Trailer/Inside_3.png","unlock_lvl":15,"healing":100,"cost":10}
+	},
+	"Passes":{
+		"None":{"price":0,"acces":[]},
+		"Forest":{"price":100,"acces":["Forest"]},
+		"Desert":{"price":200,"acces":["Forest","Desert"]},
+		"Icy":{"price":500,"acces":["Forest","Desert","Icy"]},
+		"Tropical":{"price":1000,"acces":["Forest","Desert","Icy","Tropical"]}
 	}
 }
 
@@ -186,3 +193,8 @@ func get_bed_data(data:String,bed=null):
 		for unlock:String in Global.current_profile["permanent_unlocks"]:
 			if "Bed" in unlock:bed = max(bed,int(unlock.split(" ")[1]))
 	return datas["Beds"][bed][data]
+
+func pass_grants_acces_to(spot:String):
+	for world in datas["Passes"][Global.current_profile["current_run"]["current_day"]["pass"]]["acces"]:
+		if world in spot: return true 
+	return false

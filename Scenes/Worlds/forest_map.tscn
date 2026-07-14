@@ -222,7 +222,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Chairlift" type="Control" parent="Nodes" unique_id=248573451]
+[node name="Forest Chairlift" type="Control" parent="Nodes" unique_id=248573451]
 anchors_preset = 0
 offset_left = 539.0
 offset_top = 526.0
@@ -332,18 +332,18 @@ scale = Vector2(0.5, 0.5)
 [node name="Zones" type="Node2D" parent="." unique_id=817012002]
 unique_name_in_owner = true
 
-[node name="Base_Chairlift" type="Area2D" parent="Zones" unique_id=1838315512]
+[node name="Base_Forest Chairlift" type="Area2D" parent="Zones" unique_id=1838315512]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Base_Chairlift" unique_id=396329560]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Base_Forest Chairlift" unique_id=396329560]
 
-[node name="Node2D" type="Node2D" parent="Zones/Base_Chairlift" unique_id=1919722682]
+[node name="Node2D" type="Node2D" parent="Zones/Base_Forest Chairlift" unique_id=1919722682]
 
-[node name="Chairlift_Map 0" type="Area2D" parent="Zones" unique_id=1057898442]
+[node name="Forest Chairlift_Map 0" type="Area2D" parent="Zones" unique_id=1057898442]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Chairlift_Map 0" unique_id=1957722211]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Forest Chairlift_Map 0" unique_id=1957722211]
 polygon = PackedVector2Array(508, 619, 499, 597, 500, 578, 507, 556, 514, 548, 530, 541, 557, 536, 579, 537, 587, 526, 587, 492, 592, 432, 596, 412, 606, 400, 697, 279, 708, 265, 710, 254, 755, 150, 769, 128, 779, 123, 839, 111, 879, 109, 907, 115, 937, 130, 956, 146, 968, 177, 974, 222, 976, 263, 971, 291, 942, 315, 899, 329, 853, 332, 808, 323, 784, 300, 768, 245, 759, 244, 747, 262, 742, 271, 732, 281, 646, 410, 639, 422, 635, 436, 635, 554, 645, 565, 651, 579, 653, 600, 644, 621, 624, 633, 596, 639, 561, 640, 528, 631)
 
-[node name="ForestChairlift" parent="Zones/Chairlift_Map 0" unique_id=53479964 instance=ExtResource("2_e0t5s")]
+[node name="ForestChairlift" parent="Zones/Forest Chairlift_Map 0" unique_id=53479964 instance=ExtResource("2_e0t5s")]
 
 [node name="Map 0_Map 1" type="Area2D" parent="Zones" unique_id=464631079]
 

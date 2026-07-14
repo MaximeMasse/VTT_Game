@@ -12,7 +12,7 @@ var target_zoom : Vector2
 var node_cam_position : Dictionary = {
 	"full_screen":{"position":Vector2(640.0,360.0),"zoom":Vector2.ONE},
 	"reset":{"position":Vector2(640.0,360.0),"zoom":Vector2(1.2,1.2)},
-	"Chairlift_Map 0":{"position":Vector2(728.0,380.0),"zoom":Vector2(1.375,1.375)},
+	"Forest Chairlift_Map 0":{"position":Vector2(728.0,380.0),"zoom":Vector2(1.375,1.375)},
 	"Map 0_Map 1":{"position":Vector2(742.0,247.0),"zoom":Vector2(2.415,2.415)},
 	"Map 1_Chairlift To Desert":{"position":Vector2(507.0,292.0),"zoom":Vector2(3.02,3.02)},
 	"Map 1_Map 2":{"position":Vector2(843.0,325.0),"zoom":Vector2(1.815,1.815)},
